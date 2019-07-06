@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Yoga_Blog</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+                <h1><img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" />
+                Yoga_Blog</h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Git命令整理
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Git命令整理</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2018-10-14T15:31:00+08:00"> 
+            <a href="/archive/2018/10月/index.html">周日 14 十月 2018 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/git.html">git</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <ol>
+<li>
+<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
+</li>
+<li>
+<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
+</li>
+<li>
+<p>在首次使用Git前需要进行一些简单的配置:</p>
+<ul>
+<li>设置提交中使用的用户名: <ul>
+<li><code>git config --global user.name "yourname"</code></li>
+</ul>
+</li>
+<li>设置提交中使用的邮件地址: <ul>
+<li><code>git config --global user.email "youremail@emai.com"</code></li>
+</ul>
+</li>
+<li>你可以使用以下指令检查你的配置: 
+    *<code>git config --list</code></li>
+</ul>
+</li>
+<li>
+<p>常用指令</p>
+<ul>
+<li>初始化仓库: <ul>
+<li><code>git init</code></li>
+</ul>
+</li>
+<li>跟踪文件(或者添加文件到暂存区): <ul>
+<li><code>git add filename</code>  <code>git add .</code>                   //添加所有文件</li>
+</ul>
+</li>
+<li>提交文件(将暂存区文件保存到本地): <ul>
+<li><code>git commit -m "your commit message"</code></li>
+</ul>
+</li>
+<li>克隆仓库: <ul>
+<li><code>git clone url</code></li>
+<li><code>git clone --recursive url</code>下载所有submodule</li>
+</ul>
+</li>
+<li>查看当前文件处于哪个状态: <ul>
+<li><code>git status</code></li>
+</ul>
+</li>
+<li>忽略文件: <ul>
+<li>修改.gitignore文件，可控制不希望被Git管理的文件</li>
+</ul>
+</li>
+<li>查看文件中具体更新细节: <ul>
+<li><code>git diff</code>      //&nbsp;比较工作目录当前文件与暂存区域之间的差异</li>
+<li><code>git diff --staged</code>   //&nbsp;查看已暂存的将要添加到下次提交里的内容</li>
+</ul>
+</li>
+<li>跳过暂存区域直接提交: <ul>
+<li><code>git commit -a -m "your commit message"</code></li>
+</ul>
+</li>
+<li>删除本地文件和暂存区文件: <ul>
+<li><code>git rm filename</code></li>
+</ul>
+</li>
+<li>删除暂存区文件但保留本地文件: <ul>
+<li><code>git rm --cached filename</code></li>
+</ul>
+</li>
+<li>查看提交历史: <ul>
+<li><code>git log</code></li>
+</ul>
+</li>
+<li>重新提交: <ul>
+<li><code>git commit --amend</code></li>
+</ul>
+</li>
+<li>取消暂存的文件(注意与<code>git rm --cached</code>的区别): <ul>
+<li><code>git reset HEAD filename</code></li>
+</ul>
+</li>
+<li>撤销对文件的修改: <ul>
+<li><code>git checkout -- filename</code></li>
+</ul>
+</li>
+<li>查看远程仓库: <ul>
+<li><code>git remote -v</code></li>
+</ul>
+</li>
+<li>添加远程仓库: <ul>
+<li><code>git remote add &lt;shortname&gt; &lt;url&gt;</code></li>
+</ul>
+</li>
+<li>从远程仓库抓取文件但是不合并: <ul>
+<li><code>git fetch [remote-name]</code></li>
+</ul>
+</li>
+<li>从远程仓库抓取文件并合并: <ul>
+<li><code>git pull</code></li>
+</ul>
+</li>
+<li>推送到远程仓库: <ul>
+<li><code>git push [remote-name] [branch-name]</code></li>
+</ul>
+</li>
+<li>查看远程仓库: <ul>
+<li><code>git remote show [remote-name]</code></li>
+</ul>
+</li>
+<li>远程仓库重命名: <ul>
+<li><code>git remote rename [original-name] [new-name]</code></li>
+</ul>
+</li>
+<li>移除远程仓库: <ul>
+<li><code>git remote rm [original-name]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>分支指令</p>
+<ul>
+<li>创建分支: <ul>
+<li><code>git branch [branch-name]</code></li>
+</ul>
+</li>
+<li>切换分支: <ul>
+<li><code>git checkout [branch-name]</code></li>
+</ul>
+</li>
+<li>新建并切换分支: <ul>
+<li><code>git checkout -b [branch-name]</code></li>
+<li><code>git checkout --orphan [branch-name]</code> 创建一个全新分支，分支历史从零开始</li>
+</ul>
+</li>
+<li>合并到当前分支: <ul>
+<li><code>git merge [branch-name]</code></li>
+</ul>
+</li>
+<li>删除分支: <ul>
+<li><code>git branch -d [branch-name]</code></li>
+</ul>
+</li>
+<li>重命名分支:<ul>
+<li><code>git branch -m [new-branch-name]</code></li>
+</ul>
+</li>
+<li>推送分支: <ul>
+<li><code>git push [remote] [branch]</code></li>
+</ul>
+</li>
+<li>避免输入密码: <ul>
+<li><code>git config --global credential.helper cache</code></li>
+</ul>
+</li>
+<li>跟踪远程分支: <ul>
+<li><code>git checkout -b [branch-name] [remote-name]/[branch-name]</code></li>
+<li><code>git checkout --track [remote-name]/[branch-name]</code></li>
+</ul>
+</li>
+<li>修改上游分支: <ul>
+<li><code>git checkout -u [remote-name]/[branch-name]</code></li>
+</ul>
+</li>
+<li>查看所有跟踪分支: <ul>
+<li><code>git branch -vv</code></li>
+</ul>
+</li>
+<li>变基: <ul>
+<li><code>git rebase [branch-name]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+    </footer>
+    <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "gitming-ling-zheng-li.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section>
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Category
+                </div>
+                <ul>
+                        <li class="dropdown">
+                            <a href="/category/configuration.html" >Configuration </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html" ><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal </a>
+                                    </li>
+                                    <li>
+                                        <a href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html" >解决<span class="caps">VS</span>&nbsp;Code在ubuntu下terminal无法显示下划线的问题 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/math.html" >Math </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/ju-zhen-fu-xi.html" >矩阵复习 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/matrix-calculus.html" >Matrix&nbsp;Calculus </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tong-ji-tui-duan-fu-xi.html" >统计推断复习 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/programming.html" >Programming </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/makezong-jie.html" >Make总结 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/ru-he-ce-shi-pythondai-ma.html" >如何测试python代码 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/she-ji-mo-shi.html" >设计模式 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/pythonlei-zong-jie.html" >Python类总结 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/markdownyu-fa-jie-shao.html" >Markdown语法介绍 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" >二分搜索的各种写法 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" >利用<span class="caps">VS</span> Code&nbsp;Snippets生成C++头文件保护符 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/react.html" >React </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/jsx.html" ><span class="caps">JSX</span> </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactji-chu.html" >React基础 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactte-dian.html" >React特点 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactzu-jian.html" >React组件 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/calculus.html">calculus</a></span>
+                        <span><a href="/tag/pelican.html">pelican</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/markdown.html">markdown</a></span>
+                        <span><a href="/tag/matrix.html">matrix</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/binary-search.html">binary search</a></span>
+                        <span><a href="/tag/python.html">python</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/component.html">component</a></span>
+                        <span><a href="/tag/c.html">c++</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                        <span><a href="/tag/vscode.html">vscode</a></span>
+                        <span><a href="/tag/xu-ni-dom.html">虚拟Dom</a></span>
+                        <span><a href="/tag/blog.html">blog</a></span>
+                        <span><a href="/tag/statistics.html">statistics</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/sjtuzbx">Github</a></li>
+                        <li><a href="https://stupidbookfish.blogspot.com/">Blogger</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
