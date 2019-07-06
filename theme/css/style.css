@@ -1104,8 +1104,7 @@ blockquote {
 
 blockquote p {
 	font-family: 'Georgia', 'Times New Roman', Times, serif;
-	font-style: italic;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 26px;
 }
 
