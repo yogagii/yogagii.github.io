@@ -35,8 +35,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T14:33:25+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+			<abbr class="date" title="2019-07-27T14:33:25+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 27 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -71,8 +71,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T13:51:25+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+			<abbr class="date" title="2019-07-27T13:51:25+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 27 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -91,6 +91,84 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/reactbiao-dan.html" rel="bookmark" title="Permalink to react表单">react表单</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>事件响应</h2>
+<p>表单组件（包括所有<span class="caps">HTML</span>原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
+<p><code>&lt;input&gt; -&gt; value / checked</code></p>
+<p><code>&lt;textarea&gt; -&gt; value</code></p>
+<p><code>&lt;option&gt; -&gt; selected</code></p>
+<p><strong>复用</strong>：只写一个事件处理函数且能处理多个事件</p>
+<ol>
+<li>
+<p>bind复用</p>
+<p>事件响应函数通过bind的参数识别事件源</p>
+<p><code>javascript
+// bind方法为事件响应函数增加一个参数
+&lt;input onChange={this.handleChange.bind(this, ‘checked’)} /&gt;
+hangdeChange = function(name …</code></p></li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/reactfu-he-zu-jian.html" rel="bookmark" title="Permalink to react复合组件">react复合组件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>组件的原则：职责单一，外在体现可复用性，内在体现分装性</p>
+</blockquote>
+<h2>组件嵌套</h2>
+<hr>
+<p>法一：在父组件的render函数中直接渲染子组件</p>
+<p>法二：对于动态的、数量不固定的子组件需要用到this.props.children</p>
+<p><br></p>
+<h2>组件参数传递</h2>
+<hr>
+<ul>
+<li><strong>动态参数传递</strong>：展开属性（参数名称是变量）</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="nx">moreAttr</span><span class="o">=</span><span class="err">“</span><span class="nx">value</span><span class="err">”</span> <span class="o">/&gt;</span>
+  <span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
+</pre></div>
+
+
+<ul>
+<li><strong>Underscore</strong>：提供_.omit()来过滤属性</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 剩余属性：除checked之外的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -140,8 +218,11 @@
 <h3>1.&nbsp;react.js</h3>
 <hr>
 <p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟<span class="caps">DOM</span>树</p>
-<p><strong>React.createElement</strong></p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="err">’</span><span class="nx">myClass</span><span class="err">’</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2 …</span></pre></div></div>
+<ul>
+<li><strong>React.createElement</strong></li>
+</ul>
+<p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -190,7 +271,9 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><ol>
+	<div class="summary"><h2>组件的属性</h2>
+<hr>
+<ol>
 <li>
 <p><strong>props属性集合：</strong> 保存组件的初始属性数据（大部分原始数据）；
 <br> this.props.children数组中会包含本组件实例的所有组件，由React自动填充
@@ -203,7 +286,7 @@
 <p><strong>render函数：</strong> 主要职责是根据state状态，结合props属性，进行虚拟<span class="caps">DOM</span>的构建；render函数内不应该修改组件state，不读写<span class="caps">DOM</span>信息，不与浏览器交互（setTimeOut）</p>
 </li>
 <li>
-<p><strong>setState(data, callback …</strong></p></li></ol></div>
+<p><strong>setState(data …</strong></p></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -270,68 +353,6 @@
 <p>类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保持各自的状态，类实例有类方法来修改类状态。</p>
 <h3>Namespace and&nbsp;Scope</h3>
 <p>namespace(命名空间)是变量名到对象的映射，Python中的命名空间包括：the set of built-in names, global names in a module and the local names in a function invocation …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/ju-zhen-fu-xi.html" rel="bookmark" title="Permalink to 矩阵复习">矩阵复习</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-20T20:48:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周六 20 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>一些有用的结论</h2>
-<ul>
-<li>实对称阵可以正交对角化</li>
-<li>特征值 $\lambda_i$的几何重数是$(\lambda&nbsp;I-A)x=0$的基础解系的个数</li>
-<li>特征值 $\lambda_i$的代数重数$n_i$是$|\lambda&nbsp;I-A|=\Pi_{i=1}^s(\lambda-\lambda_i)^{n_i}$</li>
-<li>矩阵的行列式是所有特征值的乘积</li>
-<li>矩阵的迹是所有特征值的和</li>
-<li>A可逆 $\leftrightarrow$&nbsp;0不是A的特征值</li>
-<li>任何特征值的几何重数不超过其代数重数 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/math.html">Math</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/pelican-blogda-jian.html" rel="bookmark" title="Permalink to pelican blog搭建">pelican&nbsp;blog搭建</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-20T16:32:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周六 20 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Installation</h2>
-<ol>
-<li><code>pip install pelican</code></li>
-<li><code>pip install Markdown</code></li>
-<li><code>pelican-quickstart</code> to build a quick start version&nbsp;project </li>
-<li>[Optional] <code>pip install typogrify</code></li>
-</ol>
-<h2>Usage</h2>
-<p>blog&nbsp;metadata</p>
-<div class="highlight"><pre><span></span><span class="nv">Title</span>: <span class="nv">My</span> <span class="nv">title</span>
-<span class="nv">Date</span>: <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10 …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -425,6 +446,12 @@
                             <a href="/category/react.html" >React </a>
                             <ul class="dropdown-content">
                                     <li>
+                                        <a href="/reactbiao-dan.html" >react表单 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactfu-he-zu-jian.html" >react复合组件 </a>
+                                    </li>
+                                    <li>
                                         <a href="/jsx.html" ><span class="caps">JSX</span> </a>
                                     </li>
                                     <li>
@@ -451,10 +478,11 @@
                         <span><a href="/tag/git.html">git</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/matrix.html">matrix</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/form.html">form</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/python.html">python</a></span>
                         <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/statistics.html">statistics</a></span>
                         <span><a href="/tag/component.html">component</a></span>
                         <span><a href="/tag/c.html">c++</a></span>
                         <span><a href="/tag/react.html">React</a></span>
@@ -463,7 +491,7 @@
                         <span><a href="/tag/xu-ni-dom.html">虚拟Dom</a></span>
                         <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/statistics.html">statistics</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                 </div>
             </section>
