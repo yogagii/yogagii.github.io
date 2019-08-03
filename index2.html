@@ -14,7 +14,7 @@
 <div id="container" class="hfeed">
     <header id="header" >
         <div id="logo">
-                <h1><img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" />
+                <h1><img src="/theme/image/yoga.png" alt="yogaLogo" />
                 Yoga_Blog</h1>
         </div> <!-- /#logo-->
         <nav id="menu" class="main-nav"><ul class="menu">
@@ -31,29 +31,40 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/ju-zhen-fu-xi.html" rel="bookmark" title="Permalink to 矩阵复习">矩阵复习</a>
+			<a href="/she-ji-mo-shi.html" rel="bookmark" title="Permalink to 设计模式">设计模式</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-20T20:48:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周六 20 十月 2018 </a>
+			<abbr class="date" title="2018-10-21T15:53:00+08:00"> 
+				<a href="/archive/2018/10月/index.html">周日 21 十月 2018 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>一些有用的结论</h2>
+	<div class="summary"><h2>Head&nbsp;first设计模式</h2>
+<h3>策略模式</h3>
+<p>策略模式定义了算法族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户</p>
 <ul>
-<li>实对称阵可以正交对角化</li>
-<li>特征值 $\lambda_i$的几何重数是$(\lambda&nbsp;I-A)x=0$的基础解系的个数</li>
-<li>特征值 $\lambda_i$的代数重数$n_i$是$|\lambda&nbsp;I-A|=\Pi_{i=1}^s(\lambda-\lambda_i)^{n_i}$</li>
-<li>矩阵的行列式是所有特征值的乘积</li>
-<li>矩阵的迹是所有特征值的和</li>
-<li>A可逆 $\leftrightarrow$&nbsp;0不是A的特征值</li>
-<li>任何特征值的几何重数不超过其代数重数 …</li></ul></div>
+<li>找出应用中可能需要变化之处，把他们独立出来，不要和那些不需要变化的代码混在一起</li>
+<li>针对接口编程，而不是针对实现编程</li>
+<li>多用组合，少用继承 </li>
+</ul>
+<h3>观察者模式</h3>
+<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，他的所有依赖者都会收到通知并自动更新</p>
+<ul>
+<li>为了交互对象之间的松耦合而努力</li>
+</ul>
+<h3>装饰者模式</h3>
+<p>装饰者模式动态地将责任附加到对象上，若要扩展功能，装饰者提供了比继承更有弹性的替代方案</p>
+<ul>
+<li>类应该对扩展开放，对修改关闭</li>
+</ul>
+<h3>工厂方法模式</h3>
+<p>工厂方法模式通过让子类决定该创建的对象是什么，来达到将对象创建的过程封装的目的．工厂方法模式定义了一个创建对象的接口 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/math.html">Math</a>
+			<a href="/category/programming.html">Programming</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -86,28 +97,6 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/matrix-calculus.html" rel="bookmark" title="Permalink to Matrix Calculus">Matrix&nbsp;Calculus</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-20T16:03:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周六 20 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>这篇文章总结矩阵微积分中使用的一些公式</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/math.html">Math</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -166,39 +155,6 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/tong-ji-tui-duan-fu-xi.html" rel="bookmark" title="Permalink to 统计推断复习">统计推断复习</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T20:52:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>总体</h3>
-<p>所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员)称为个体。与总体相关的特征值称为参数。</p>
-<h3>样本</h3>
-<p>总体的任何一个子集合，称为从总体中抽取的样本。样本中包含个体的数目称为样本容量，通常记为n。因为抽取样本是为了对总体特征进行<em>推断</em>，所以必须对抽样方法提出一定要求。</p>
-<ul>
-<li>随机性:&nbsp;总体中每个个体被抽到的概率是相等的。</li>
-<li>独立性: 每次观察X_1, X_2, &#8230; ,&nbsp;X_n是相互独立的随机变量。</li>
-<li>同分布性:&nbsp;样本与总体同分布。</li>
-</ul>
-<p>满足上述条件的抽样方法称为<em>简单随机抽样</em></p>
-<h3>统计量</h3>
-<p>如果由样本构造一个函数g(X_1, X_2, &#8230;, X_n), 且不含有任何未知参数 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/math.html">Math</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
 			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
 		</h2>
 		<div class="post-info">
@@ -232,87 +188,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html" rel="bookmark" title="Permalink to VS Code使用Anaconda Prompt作为默认terminal"><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-07T21:03:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周日 07 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>Solution</h3>
-<p>在你自己的<code>User settings</code>中添加下列代码</p>
-<div class="highlight"><pre><span></span><span class="s2">&quot;terminal.integrated.shell.windows&quot;</span><span class="o">:</span> <span class="s2">&quot;C:\\WINDOWS\\System32\\cmd.exe&quot;</span><span class="p">,</span>
-<span class="s2">&quot;terminal.integrated.shellArgs.windows&quot;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s2">&quot;/K&quot;</span><span class="p">,</span> <span class="s2">&quot;C:\\Users\\ben\\Anaconda3\\Scripts\\activate.bat C:\\Users\\ben\\Anaconda3 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/configuration.html">Configuration</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" rel="bookmark" title="Permalink to 利用VS Code Snippets生成C++头文件保护符">利用<span class="caps">VS</span> Code&nbsp;Snippets生成C++头文件保护符</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-07T20:54:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周日 07 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>Solution</h3>
-<p>将下列代码贴入你的<code>snippets</code>中，然后在<code>cpp</code>文件中输入<code>pre</code>+<code>tab</code>即可自动生成相关头文件</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;Preprocessor of cpp file&quot;</span><span class="o">:</span><span class="p">{</span>
-        <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;pre&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">&quot;#ifndef ${TM_FILENAME/(.*)(\\.)+(.*)/$${1:/upcase}_${3:/upcase}/}&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;#define ${TM_FILENAME/(.*)(\\.)+(.*)/$${1:/upcase}_${3 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html" rel="bookmark" title="Permalink to 解决VS Code在ubuntu下terminal无法显示下划线的问题">解决<span class="caps">VS</span>&nbsp;Code在ubuntu下terminal无法显示下划线的问题</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-07T20:47:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周日 07 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>Solution</h3>
-<p>输入<code>ctrl + shift + P</code> 打开命令面板搜索 <code>Open User Settings</code> - <code>Open settings.json</code></p>
-<p>添加<code>"editor.fontFamily": "'Ubuntu Mono', monospace"</code>即可</p>
-<h3><span class="caps">VS</span>&nbsp;Code显示数学公式</h3>
-<p>输入<code>ctrl + shift + X</code>搜索<strong> Markdown+Math </strong>安装即可。一共有4种形式的texmath语法 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/configuration.html">Configuration</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index.html">&laquo;</a>
@@ -338,27 +213,10 @@
                 </div>
                 <ul>
                         <li class="dropdown">
-                            <a href="/category/configuration.html" >Configuration </a>
+                            <a href="/category/analytics.html" >Analytics </a>
                             <ul class="dropdown-content">
                                     <li>
-                                        <a href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html" ><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal </a>
-                                    </li>
-                                    <li>
-                                        <a href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html" >解决<span class="caps">VS</span>&nbsp;Code在ubuntu下terminal无法显示下划线的问题 </a>
-                                    </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="/category/math.html" >Math </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/ju-zhen-fu-xi.html" >矩阵复习 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/matrix-calculus.html" >Matrix&nbsp;Calculus </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tong-ji-tui-duan-fu-xi.html" >统计推断复习 </a>
+                                        <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
                                     </li>
                             </ul>
                         </li>
@@ -369,13 +227,7 @@
                                         <a href="/makezong-jie.html" >Make总结 </a>
                                     </li>
                                     <li>
-                                        <a href="/ru-he-ce-shi-pythondai-ma.html" >如何测试python代码 </a>
-                                    </li>
-                                    <li>
                                         <a href="/she-ji-mo-shi.html" >设计模式 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/pythonlei-zong-jie.html" >Python类总结 </a>
                                     </li>
                                     <li>
                                         <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
@@ -389,14 +241,17 @@
                                     <li>
                                         <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
                                     </li>
-                                    <li>
-                                        <a href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" >利用<span class="caps">VS</span> Code&nbsp;Snippets生成C++头文件保护符 </a>
-                                    </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="/category/react.html" >React </a>
                             <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
+                                    </li>
                                     <li>
                                         <a href="/reactbiao-dan.html" >react表单 </a>
                                     </li>
@@ -425,26 +280,25 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/calculus.html">calculus</a></span>
                         <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/matrix.html">matrix</a></span>
-                        <span><a href="/tag/form.html">form</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/python.html">python</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/statistics.html">statistics</a></span>
-                        <span><a href="/tag/component.html">component</a></span>
-                        <span><a href="/tag/c.html">c++</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/vscode.html">vscode</a></span>
-                        <span><a href="/tag/xu-ni-dom.html">虚拟Dom</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
+                        <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
                 </div>
             </section>
 
@@ -454,8 +308,7 @@
                     Links
                 </div>
                 <ul>
-                        <li><a href="https://github.com/sjtuzbx">Github</a></li>
-                        <li><a href="https://stupidbookfish.blogspot.com/">Blogger</a></li>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
                 </ul>
             </section>
             

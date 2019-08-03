@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Yoga_Blog</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+                <h1><img src="/theme/image/yoga.png" alt="yogaLogo" />
+                Yoga_Blog</h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/react.html">React</a> ›React&nbsp;实用技巧
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >React&nbsp;实用技巧</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-08-03T00:00:00+08:00"> 
+            <a href="/archive/2019/8月/index.html">周六 03 八月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/react.html">React</a>
+                <a href="/tag/ref.html">Ref</a>
+                <a href="/tag/ajax.html">AJAX</a>
+                <a href="/tag/classnamejs.html">className.js</a>
+                <a href="/tag/immutablejs.html">Immutable.js</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>绑定未提供的事件</h3>
+<hr>
+<p>在componentDidMount中获取对应的真实<span class="caps">DOM</span>元素绑定事件</p>
+<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><br></p>
+<h3><span class="caps">AJAX</span>加载数据</h3>
+<hr>
+<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
+<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
+<p>1.通过this.isMounted()来检测组件的状态是否已经mounted（<span class="caps">ES6</span>已废除）</p>
+<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//AJAX</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({});</span>
+    <span class="p">}</span>
+  <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>2.在组件卸载之前取消未完成的请求</p>
+<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(...);</span>
+<span class="p">}</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><br></p>
+<h3>ref属性</h3>
+<hr>
+<p>ref字符串</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="s2">&quot;theInput&quot;</span> <span class="o">/&gt;</span>
+<span class="c1">//获得真实DOM</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">theInput</span><span class="p">.</span><span class="nx">getDOMNode</span><span class="p">().</span><span class="nx">focus</span><span class="p">();</span>
+</pre></div>
+
+
+<p>ref回调函数(回调函数会在组件被挂载后立刻执行)</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">compInstance</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">theInput</span> <span class="o">=</span> <span class="nx">compInstance</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">theInput</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+</pre></div>
+
+
+<blockquote>
+<p>对于stateless&nbsp;function来说，引用不会被加载，因为无状态组件被没有对应的实例</p>
+</blockquote>
+<p><br></p>
+<h3>className.js</h3>
+<hr>
+<p>根据isBgRed状态切换不同class项的效果</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">isBgRed</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">classString</span> <span class="o">=</span> <span class="s1">&#39;bg-red&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">classString</span> <span class="o">=</span> <span class="s1">&#39;bg-green&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>className工具</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">classNames</span> <span class="nx">from</span> <span class="s1">&#39;classnames&#39;</span><span class="p">;</span>
+<span class="nx">classSting</span> <span class="o">=</span> <span class="nx">classNames</span><span class="p">({</span> <span class="s1">&#39;bg-red&#39;</span><span class="o">:</span> <span class="nx">isBgRed</span><span class="p">,</span> <span class="s1">&#39;bg-green&#39;</span><span class="o">:</span> <span class="o">!</span><span class="nx">isBgRed</span> <span class="p">});</span>
+
+<span class="nx">classNames</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;boo&#39;</span><span class="p">);</span> <span class="c1">//&quot;foo boo&quot;</span>
+<span class="nx">classNames</span><span class="p">({</span> <span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//&quot;foo&quot;</span>
+<span class="nx">classNames</span><span class="p">({</span> <span class="nx">foo</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">boo</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//&quot;foo boo&quot;</span>
+<span class="nx">classNames</span><span class="p">({</span> <span class="nx">foo</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">boo</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//&quot;foo boo&quot;</span>
+<span class="kd">let</span> <span class="nx">buttonType</span> <span class="o">=</span> <span class="s1">&#39;primary&#39;</span><span class="p">;</span>
+<span class="nx">classNames</span><span class="p">({</span> <span class="p">[</span><span class="sb">`btn-</span><span class="si">${</span><span class="nx">buttonType</span><span class="si">}</span><span class="sb">`</span><span class="p">]</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//ES6</span>
+
+<span class="c1">//多类名去重</span>
+<span class="kd">var</span> <span class="nx">classNames</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;classnames/dedupe&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><br></p>
+<h3>Immutable.js</h3>
+<hr>
+<p><strong>持久化数据结构</strong>：对Immutable数据对象的任何修改、添加、删除操作都会返回一个新的Immutable对象，同时原对象不变。</p>
+<p><strong>结构共享</strong>：如果对象树中只有一个节点发生了变化，则只修改受到影响的父节点对它的引用，其他节点与原对象共享，避免深拷贝。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Immutable</span> <span class="nx">from</span> <span class="s1">&#39;immutable&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">imtArray</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">fromJS</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">}]);</span>
+<span class="kd">var</span> <span class="nx">imtList</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span>
+<span class="kd">var</span> <span class="nx">imtMap</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span> <span class="p">});</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/react.html">React</a>
+        </abbr>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "react-shi-yong-ji-qiao.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Category
+                </div>
+                <ul>
+                        <li class="dropdown">
+                            <a href="/category/analytics.html" >Analytics </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/programming.html" >Programming </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/makezong-jie.html" >Make总结 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/she-ji-mo-shi.html" >设计模式 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/markdownyu-fa-jie-shao.html" >Markdown语法介绍 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" >二分搜索的各种写法 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/react.html" >React </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactbiao-dan.html" >react表单 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactfu-he-zu-jian.html" >react复合组件 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/jsx.html" ><span class="caps">JSX</span> </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactji-chu.html" >React基础 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactte-dian.html" >React特点 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reactzu-jian.html" >React组件 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/pelican.html">pelican</a></span>
+                        <span><a href="/tag/markdown.html">markdown</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                        <span><a href="/tag/blog.html">blog</a></span>
+                        <span><a href="/tag/binary-search.html">binary search</a></span>
+                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
+                        <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

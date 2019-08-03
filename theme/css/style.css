@@ -263,7 +263,7 @@ sub {
 }
 
 .col-300 {
-	width: 31.914893617021%;
+	width: 28%;
 }
 
 .col-380 {
@@ -279,7 +279,7 @@ sub {
 }
 
 .col-620 {
-	width: 65.957446808511%;
+	width: 68%;
 }
 
 .col-700 {
@@ -1241,7 +1241,7 @@ form div {
 -------------------------------------------------------------- */
 #container {
 	margin: 0 auto;
-	max-width: 960px;
+	max-width: 1100px;
 	padding: 0px 25px;
 }
 
@@ -1253,7 +1253,7 @@ form div {
 	border-radius: 4px;
 	clear: both;
 	margin: 20px auto 20px auto;
-	padding: 0 20px 20px 20px;
+	padding: 0 20px 20px 40px;
 	position: relative;
 }
 
@@ -1284,8 +1284,7 @@ form div {
 -------------------------------------------------------------- */
 
 #logo img{
-	width: 50px;
-	height: 50px;
+	width: 28px;
 	display: inline-block;
 }
 

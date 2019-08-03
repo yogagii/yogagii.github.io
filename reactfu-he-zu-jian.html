@@ -14,7 +14,7 @@
 <div id="container" class="hfeed">
     <header id="header" >
         <div id="logo">
-                <h1><img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" />
+                <h1><img src="/theme/image/yoga.png" alt="yogaLogo" />
                 Yoga_Blog</h1>
         </div> <!-- /#logo-->
         <nav id="menu" class="main-nav"><ul class="menu">
@@ -175,6 +175,25 @@
 <blockquote>
 <p>若重复定义了 componentWillMount, 多个&nbsp;mixins按声明顺序依次执行componentWillMount，最后执行组件本身。</p>
 </blockquote>
+<p><br></p>
+<h2>高阶组件</h2>
+<hr>
+<p>高阶组件：对现有组件的动态包装（redux:&nbsp;connect）</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">hoc</span><span class="p">(</span><span class="nx">Comp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kr">class</span> <span class="nx">NewComponent</span> <span class="kr">extends</span> <span class="nx">Component</span><span class="p">{</span>
+    <span class="nx">extendFunc</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">//新增功能</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">Comp</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="o">/&gt;</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">NewComponent</span> <span class="o">=</span> <span class="nx">hoc</span><span class="p">(</span><span class="nx">Comp</span><span class="p">);</span>
+</pre></div>
+
+
+<p>将数据展现封装为一个组件，再通过高阶组件附加数据请求。</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -218,27 +237,10 @@
                 </div>
                 <ul>
                         <li class="dropdown">
-                            <a href="/category/configuration.html" >Configuration </a>
+                            <a href="/category/analytics.html" >Analytics </a>
                             <ul class="dropdown-content">
                                     <li>
-                                        <a href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html" ><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal </a>
-                                    </li>
-                                    <li>
-                                        <a href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html" >解决<span class="caps">VS</span>&nbsp;Code在ubuntu下terminal无法显示下划线的问题 </a>
-                                    </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="/category/math.html" >Math </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/ju-zhen-fu-xi.html" >矩阵复习 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/matrix-calculus.html" >Matrix&nbsp;Calculus </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tong-ji-tui-duan-fu-xi.html" >统计推断复习 </a>
+                                        <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
                                     </li>
                             </ul>
                         </li>
@@ -249,13 +251,7 @@
                                         <a href="/makezong-jie.html" >Make总结 </a>
                                     </li>
                                     <li>
-                                        <a href="/ru-he-ce-shi-pythondai-ma.html" >如何测试python代码 </a>
-                                    </li>
-                                    <li>
                                         <a href="/she-ji-mo-shi.html" >设计模式 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/pythonlei-zong-jie.html" >Python类总结 </a>
                                     </li>
                                     <li>
                                         <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
@@ -269,14 +265,17 @@
                                     <li>
                                         <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
                                     </li>
-                                    <li>
-                                        <a href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" >利用<span class="caps">VS</span> Code&nbsp;Snippets生成C++头文件保护符 </a>
-                                    </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="/category/react.html" >React </a>
                             <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
+                                    </li>
                                     <li>
                                         <a href="/reactbiao-dan.html" >react表单 </a>
                                     </li>
@@ -305,26 +304,25 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/calculus.html">calculus</a></span>
                         <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/matrix.html">matrix</a></span>
-                        <span><a href="/tag/form.html">form</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/python.html">python</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/statistics.html">statistics</a></span>
-                        <span><a href="/tag/component.html">component</a></span>
-                        <span><a href="/tag/c.html">c++</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/vscode.html">vscode</a></span>
-                        <span><a href="/tag/xu-ni-dom.html">虚拟Dom</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
+                        <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
                 </div>
             </section>
 
@@ -334,8 +332,7 @@
                     Links
                 </div>
                 <ul>
-                        <li><a href="https://github.com/sjtuzbx">Github</a></li>
-                        <li><a href="https://stupidbookfish.blogspot.com/">Blogger</a></li>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
                 </ul>
             </section>
             
