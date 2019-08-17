@@ -24,67 +24,65 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›pelican&nbsp;blog搭建
+<a href="">Blog</a> ›<a href="category/react.html">React</a> ›React&nbsp;特点
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" >pelican&nbsp;blog搭建</h2>
+    <h2 class="post-title" >React&nbsp;特点</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2018-10-20T16:32:00+08:00"> 
-            <a href="/archive/2018/10月/index.html">周六 20 十月 2018 </a>
+        <abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+            <a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
-                <a href="/tag/pelican.html">pelican</a>
-                <a href="/tag/blog.html">blog</a>
+                <a href="/tag/react.html">React</a>
+                <a href="/tag/virtual-dom.html">Virtual Dom</a>
+                <a href="/tag/flux.html">Flux</a>
         <!-- TOBE COMMENTS -->
     </div>
     </header>
     <div class="post-entry">
-        <h2>Installation</h2>
-<ol>
-<li><code>pip install pelican</code></li>
-<li><code>pip install Markdown</code></li>
-<li><code>pelican-quickstart</code> to build a quick start version&nbsp;project </li>
-<li>[Optional] <code>pip install typogrify</code></li>
-</ol>
-<h2>Usage</h2>
-<p>blog&nbsp;metadata</p>
-<div class="highlight"><pre><span></span><span class="nv">Title</span>: <span class="nv">My</span> <span class="nv">title</span>
-<span class="nv">Date</span>: <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span>:<span class="mi">20</span>
-<span class="nv">Modified</span>: <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span>:<span class="mi">30</span>
-<span class="nv">Category</span>: <span class="nv">Python</span>
-<span class="nv">Tags</span>: <span class="nv">pelican</span>, <span class="nv">publishing</span>
-<span class="nv">Slug</span>: <span class="nv">my</span><span class="o">-</span><span class="nv">post</span>
-<span class="nv">Authors</span>: <span class="nv">Alexis</span> <span class="nv">Metaireau</span>, <span class="nv">Conan</span> <span class="nv">Doyle</span>
-<span class="nv">Summary</span>: <span class="nv">Short</span> <span class="nv">version</span> <span class="k">for</span> <span class="nv">index</span> <span class="nv">and</span> <span class="nv">feeds</span>
-
-<span class="nv">This</span> <span class="nv">is</span> <span class="nv">the</span> <span class="nv">content</span> <span class="nv">of</span> <span class="nv">my</span> <span class="nv">blog</span> <span class="nv">post</span>.
+        <h3>1.&nbsp;虚拟Dom</h3>
+<hr>
+<p>浏览器<span class="caps">DOM</span>是由HtmlElement元素组成的树，虚拟<span class="caps">DOM</span>是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个<span class="caps">DOM</span>树，自动计算与上次虚拟<span class="caps">DOM</span>的差异变化，然后针对需要变化的部分进行实际的浏览器<span class="caps">DOM</span>更新，从而提高性能。</p>
+<p><em>在文本框中输入任意文本，在禁止文本框，可以发现文本框中原来输入的文本并没有消失，说明React并没有重新渲染input，只是更改了input属性值，这正是react差异对比、局部刷新的特性体现。</em></p>
+<blockquote>
+<p>虚拟<span class="caps">DOM</span>-&gt;真实<span class="caps">DOM</span>: react-dom <br> 虚拟<span class="caps">DOM</span>-&gt;移动<span class="caps">APP</span>:&nbsp;react-native</p>
+</blockquote>
+<p>将一棵树形结构转换成另一棵树形结构传统最优算法的复杂度是O(n3)。</p>
+<p>试探法：通过给子级组件设定唯一的键值，React就能够检测出节点插入、移除和替换，并且借助哈希表使节点移动复杂度变为O(n)。键值只需要在兄弟节点中唯一即可，而不需要是全局唯一的。</p>
+<p>虚拟<span class="caps">DOM</span>的特殊属性：</p>
+<ul>
+<li>key：可选的唯一标识符。</li>
+<li>ref：用于访问组件对应的实际<span class="caps">DOM</span>元素。</li>
+<li>dangerouslySetInnerHTML: 用来直接插入纯<span class="caps">HTML</span>文本字符串，避免React的自动转义。</li>
+</ul>
+<div class="highlight"><pre><span></span>var content = ‘<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>文本内容<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>’;
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">dangerouslySetInnerHTML</span><span class="o">=</span><span class="s">{{_html:</span> <span class="na">content</span><span class="err">}}</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 
 
-<ul>
-<li>make&nbsp;regenerate </li>
-<li>make&nbsp;serve</li>
-<li>make&nbsp;devserve</li>
-</ul>
-<h2>Reference</h2>
-<p><a href="http://docs.getpelican.com/en/stable/install.html">pelican</a></p>
-<p><a href="https://pypi.org/project/typogrify/">typogrify</a></p>
+<h3>2.&nbsp;组件化</h3>
+<hr>
+<p>从功能角度划分，将<span class="caps">UI</span>分解成不同组件，各组件都独立封装，每个组件只关心自身的逻辑。</p>
+<h3>3.&nbsp;单向数据流</h3>
+<hr>
+<p>单项的数据流动：从父节点到子节点</p>
+<p>组件只需要从父节点获取prop渲染即可，如果顶层组件的某个prop改变了，React会递归地向下遍历整棵组件树并重新渲染所有使用这个属性的组件。单项数据流的架构模式Flux，以M层Store为核心，围绕Store设计Action和Dispatcher。</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/programming.html">Programming</a>
+            <a href="/category/react.html">React</a>
         </abbr>
     </footer>
     <!-- <section id="respond">
         <div id="disqus_thread">
         <script type="text/javascript">
-        var disqus_identifier = "pelican-blogda-jian.html";
+        var disqus_identifier = "react-te-dian.html";
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://.disqus.com/embed.js';

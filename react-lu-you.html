@@ -24,67 +24,104 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›pelican&nbsp;blog搭建
+<a href="">Blog</a> ›<a href="category/react.html">React</a> ›React&nbsp;路由
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" >pelican&nbsp;blog搭建</h2>
+    <h2 class="post-title" >React&nbsp;路由</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2018-10-20T16:32:00+08:00"> 
-            <a href="/archive/2018/10月/index.html">周六 20 十月 2018 </a>
+        <abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+            <a href="/archive/2019/8月/index.html">周六 17 八月 2019 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
-                <a href="/tag/pelican.html">pelican</a>
-                <a href="/tag/blog.html">blog</a>
+                <a href="/tag/react.html">React</a>
+                <a href="/tag/route.html">Route</a>
         <!-- TOBE COMMENTS -->
     </div>
     </header>
     <div class="post-entry">
-        <h2>Installation</h2>
-<ol>
-<li><code>pip install pelican</code></li>
-<li><code>pip install Markdown</code></li>
-<li><code>pelican-quickstart</code> to build a quick start version&nbsp;project </li>
-<li>[Optional] <code>pip install typogrify</code></li>
-</ol>
-<h2>Usage</h2>
-<p>blog&nbsp;metadata</p>
-<div class="highlight"><pre><span></span><span class="nv">Title</span>: <span class="nv">My</span> <span class="nv">title</span>
-<span class="nv">Date</span>: <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span>:<span class="mi">20</span>
-<span class="nv">Modified</span>: <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span>:<span class="mi">30</span>
-<span class="nv">Category</span>: <span class="nv">Python</span>
-<span class="nv">Tags</span>: <span class="nv">pelican</span>, <span class="nv">publishing</span>
-<span class="nv">Slug</span>: <span class="nv">my</span><span class="o">-</span><span class="nv">post</span>
-<span class="nv">Authors</span>: <span class="nv">Alexis</span> <span class="nv">Metaireau</span>, <span class="nv">Conan</span> <span class="nv">Doyle</span>
-<span class="nv">Summary</span>: <span class="nv">Short</span> <span class="nv">version</span> <span class="k">for</span> <span class="nv">index</span> <span class="nv">and</span> <span class="nv">feeds</span>
-
-<span class="nv">This</span> <span class="nv">is</span> <span class="nv">the</span> <span class="nv">content</span> <span class="nv">of</span> <span class="nv">my</span> <span class="nv">blog</span> <span class="nv">post</span>.
+        <p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
+<span class="nx">render</span> <span class="p">((</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
+      <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
+      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/messages/:id&quot;</span> <span class="o">/&gt;</span> <span class="c1">//重定向</span>
+      <span class="o">&lt;</span><span class="nx">IndexRedirect</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/welcome&quot;</span> <span class="o">/&gt;</span> <span class="c1">//访问跟路由时重定向到子组件</span>
+      <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;course&quot;</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;course/:id&quot;</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">course</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//带参数</span>
+      <span class="o">&lt;</span><span class="nx">NotFoundRoute</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">NotFound</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//未匹配</span>
+    <span class="o">&lt;</span><span class="err">/Route&gt;</span>
+  <span class="o">&lt;</span><span class="err">/Router&gt;</span>
+<span class="p">),</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">app</span><span class="p">));</span>
+<span class="c1">//嵌套路由</span>
+<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//在APP内部加载About组件</span>
+<span class="kd">let</span> <span class="nx">routes</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/about&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">About</span><span class="p">}</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">routes</span><span class="o">=</span><span class="p">{</span><span class="nx">routes</span><span class="p">}</span> <span class="o">/&gt;</span>
 </pre></div>
 
 
+<h3>路由配置</h3>
+<p>默认路由：指定默认情况下加载的子组件。</p>
+<p>path属性不以&#8221;/&#8221;开头时是相对路径。</p>
+<p>path规则匹配只执行最先遇到的规则（从上往下），所以带参数的路径要写在路由规则底部。</p>
+<p>获得<span class="caps">URL</span>字符串&nbsp;/foo?bar=baz中foo后面的参数：this.props.location.query.bar</p>
+<p>NotFoundRoute组件用于声明父组件匹配成功但未找到子组件</p>
+<p>Redirect用于路由跳转</p>
+<p>IndexRedirect用于访问跟路由时重定向到某个子组件</p>
+<p>history属性用来监听浏览器地址栏的变化</p>
 <ul>
-<li>make&nbsp;regenerate </li>
-<li>make&nbsp;serve</li>
-<li>make&nbsp;devserve</li>
+<li>hashHistory: 路由会计算<span class="caps">URL</span>的hash值，并根据hash值切换</li>
+<li>browserHistory:&nbsp;地址是在本地切换，不能向服务器请求子路由(&#8212;history-api-fallback)</li>
+<li>createMemoryHistory:&nbsp;主要用户服务器渲染</li>
 </ul>
-<h2>Reference</h2>
-<p><a href="http://docs.getpelican.com/en/stable/install.html">pelican</a></p>
-<p><a href="https://pypi.org/project/typogrify/">typogrify</a></p>
+<p>路由回调 Enter/Leave&nbsp;进入/离开该路由时触发</p>
+<div class="highlight"><pre><span></span><span class="c1">//onEnter 实现认证功能</span>
+<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/admin&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Admin</span><span class="p">}</span> <span class="nx">onEnter</span><span class="o">=</span><span class="p">{</span><span class="nx">requireAuth</span><span class="p">}</span> <span class="o">/&gt;</span>
+<span class="c1">//onEnter 实现redirect</span>
+<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/admin&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Admin</span><span class="p">}</span> <span class="nx">onEnter</span><span class="o">=</span><span class="p">{</span>
+  <span class="p">({</span><span class="nx">params</span><span class="p">},</span> <span class="nx">replace</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">replace</span><span class="p">(</span><span class="sb">`messages/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">}</span> <span class="o">/&gt;</span>
+</pre></div>
+
+
+<h3>路由切换</h3>
+<p>a元素的react的版</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;about&quot;</span> <span class="nx">activeStyle</span><span class="o">=</span><span class="p">{{</span><span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><span class="p">}}</span> <span class="nx">activeClassName</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="nx">About</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+</pre></div>
+
+
+<p>IndexLink:&nbsp;可以对路径进行精确匹配</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">IndexLink</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/IndexLink&gt;</span>
+<span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">onlyActiveOnIndex</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+</pre></div>
+
+
+<p>动态切换</p>
+<div class="highlight"><pre><span></span><span class="nx">browserHistory</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/programming.html">Programming</a>
+            <a href="/category/react.html">React</a>
         </abbr>
     </footer>
     <!-- <section id="respond">
         <div id="disqus_thread">
         <script type="text/javascript">
-        var disqus_identifier = "pelican-blogda-jian.html";
+        var disqus_identifier = "react-lu-you.html";
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://.disqus.com/embed.js';

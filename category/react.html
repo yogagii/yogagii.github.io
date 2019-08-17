@@ -33,6 +33,69 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/8月/index.html">周六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>导出</h3>
+<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
+  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
+<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3>展开运算符</h3>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
+  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-lu-you.html" rel="bookmark" title="Permalink to React 路由">React&nbsp;路由</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/8月/index.html">周六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
+<span class="nx">render</span> <span class="p">((</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
+      <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
+      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-chang-yong-zu-jian.html" rel="bookmark" title="Permalink to React 常用组件">React&nbsp;常用组件</a>
 		</h2>
 		<div class="post-info">
@@ -115,7 +178,7 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/reactbiao-dan.html" rel="bookmark" title="Permalink to react表单">react表单</a>
+			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to react 表单">react&nbsp;表单</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -150,7 +213,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/reactfu-he-zu-jian.html" rel="bookmark" title="Permalink to react复合组件">react复合组件</a>
+			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to react 复合组件">react&nbsp;复合组件</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -219,7 +282,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/reactji-chu.html" rel="bookmark" title="Permalink to React基础">React基础</a>
+			<a href="/react-ji-chu.html" rel="bookmark" title="Permalink to React 基础">React&nbsp;基础</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -251,7 +314,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/reactte-dian.html" rel="bookmark" title="Permalink to React特点">React特点</a>
+			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -278,7 +341,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/reactzu-jian.html" rel="bookmark" title="Permalink to React组件">React组件</a>
+			<a href="/react-zu-jian.html" rel="bookmark" title="Permalink to React 组件">React&nbsp;组件</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -370,28 +433,34 @@ hangdeChange = function(name …</code></p></li></ol></div>
                             <a href="/category/react.html" >React </a>
                             <ul class="dropdown-content">
                                     <li>
+                                        <a href="/react-in-es6.html" >React in <span class="caps">ES6</span> </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-lu-you.html" >React&nbsp;路由 </a>
+                                    </li>
+                                    <li>
                                         <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
                                     </li>
                                     <li>
                                         <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
                                     </li>
                                     <li>
-                                        <a href="/reactbiao-dan.html" >react表单 </a>
+                                        <a href="/react-biao-dan.html" >react&nbsp;表单 </a>
                                     </li>
                                     <li>
-                                        <a href="/reactfu-he-zu-jian.html" >react复合组件 </a>
+                                        <a href="/react-fu-he-zu-jian.html" >react&nbsp;复合组件 </a>
                                     </li>
                                     <li>
                                         <a href="/jsx.html" ><span class="caps">JSX</span> </a>
                                     </li>
                                     <li>
-                                        <a href="/reactji-chu.html" >React基础 </a>
+                                        <a href="/react-ji-chu.html" >React&nbsp;基础 </a>
                                     </li>
                                     <li>
-                                        <a href="/reactte-dian.html" >React特点 </a>
+                                        <a href="/react-te-dian.html" >React&nbsp;特点 </a>
                                     </li>
                                     <li>
-                                        <a href="/reactzu-jian.html" >React组件 </a>
+                                        <a href="/react-zu-jian.html" >React&nbsp;组件 </a>
                                     </li>
                             </ul>
                         </li>
@@ -403,7 +472,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/pelican.html">pelican</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/algorithm.html">algorithm</a></span>
                         <span><a href="/tag/form.html">Form</a></span>
@@ -412,6 +481,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
                         <span><a href="/tag/make.html">make</a></span>
                         <span><a href="/tag/component.html">Component</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/pelican.html">pelican</a></span>
                         <span><a href="/tag/react.html">React</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
                         <span><a href="/tag/ajax.html">AJAX</a></span>
@@ -422,6 +492,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
                         <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/classnamejs.html">className.js</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
                 </div>
             </section>
 
