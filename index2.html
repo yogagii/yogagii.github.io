@@ -31,6 +31,64 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/jsx.html" rel="bookmark" title="Permalink to JSX"><span class="caps">JSX</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p><span class="caps">JSX</span>语法转义器会识别嵌入JavaScript代码中的<span class="caps">HTML</span>标签，当遇到‘&lt;’标识符就会启动<span class="caps">JSX</span>转移过程，遇到‘{’标识符就会当作JavaScript代码进行处理。</p>
+<p>引用Babel中负责<span class="caps">JSX</span>转义的模块browser.js，并将使用<span class="caps">JSX</span>语法描述的js文件类型声明为text/babel</p>
+<h3>1.&nbsp;三元表达式</h3>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">:</span><span class="err">’</span><span class="nx">World</span><span class="err">’</span><span class="p">}</span>
+<span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-ji-chu.html" rel="bookmark" title="Permalink to React 基础">React&nbsp;基础</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>使用React只有两个步骤：一是创建虚拟<span class="caps">DOM</span>（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟<span class="caps">DOM</span>树并响应用户的动作来改变虚拟<span class="caps">DOM</span>树的组成。</p>
+</blockquote>
+<h3>1.&nbsp;react.js</h3>
+<hr>
+<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟<span class="caps">DOM</span>树</p>
+<ul>
+<li><strong>React.createElement</strong></li>
+</ul>
+<p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
 		</h2>
 		<div class="post-info">
@@ -285,6 +343,17 @@
                             </ul>
                         </li>
                         <li class="dropdown">
+                            <a href="/category/data.html" >Data </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/flux.html" >Flux </a>
+                                    </li>
+                                    <li>
+                                        <a href="/redux.html" >Redux </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
                             <a href="/category/programming.html" >Programming </a>
                             <ul class="dropdown-content">
                                     <li>
@@ -350,27 +419,28 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/es6.html">ES6</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/form.html">Form</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/component.html">Component</a></span>
-                        <span><a href="/tag/gtm.html">GTM</a></span>
                         <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
+                        <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
                         <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
 

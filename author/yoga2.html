@@ -32,6 +32,65 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-ji-chu.html" rel="bookmark" title="Permalink to React 基础">React&nbsp;基础</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>使用React只有两个步骤：一是创建虚拟<span class="caps">DOM</span>（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟<span class="caps">DOM</span>树并响应用户的动作来改变虚拟<span class="caps">DOM</span>树的组成。</p>
+</blockquote>
+<h3>1.&nbsp;react.js</h3>
+<hr>
+<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟<span class="caps">DOM</span>树</p>
+<ul>
+<li><strong>React.createElement</strong></li>
+</ul>
+<p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>1.&nbsp;虚拟Dom</h3>
+<hr>
+<p>浏览器<span class="caps">DOM</span>是由HtmlElement元素组成的树，虚拟<span class="caps">DOM</span>是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个<span class="caps">DOM</span>树，自动计算与上次虚拟<span class="caps">DOM</span>的差异变化，然后针对需要变化的部分进行实际的浏览器<span class="caps">DOM</span>更新，从而提高性能。</p>
+<p><em>在文本框中输入任意文本，在禁止文本框，可以发现文本框中原来输入的文本并没有消失，说明React并没有重新渲染input，只是更改了input属性值，这正是react差异对比、局部刷新的特性体现。</em></p>
+<blockquote>
+<p>虚拟<span class="caps">DOM</span>-&gt;真实<span class="caps">DOM</span>: react-dom …</p></blockquote></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-zu-jian.html" rel="bookmark" title="Permalink to React 组件">React&nbsp;组件</a>
 		</h2>
 		<div class="post-info">
@@ -95,6 +154,17 @@
                             <ul class="dropdown-content">
                                     <li>
                                         <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/data.html" >Data </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/flux.html" >Flux </a>
+                                    </li>
+                                    <li>
+                                        <a href="/redux.html" >Redux </a>
                                     </li>
                             </ul>
                         </li>
@@ -164,27 +234,28 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/es6.html">ES6</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/form.html">Form</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/component.html">Component</a></span>
-                        <span><a href="/tag/gtm.html">GTM</a></span>
                         <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
+                        <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
                         <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
 

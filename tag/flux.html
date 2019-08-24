@@ -33,6 +33,35 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/flux.html" rel="bookmark" title="Permalink to Flux">Flux</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+				<a href="/archive/2019/8月/index.html">周六 24 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Facebook提出Flux应用架构解决数据模型处理，Flux是一种思想，跟React本身没有必然联系，基于Flux思想的框架有Redux、Reflux、Flummox等产品。</p>
+<h2>单向数据流：</h2>
+<p>界面总是基于内部数据模型的一种呈现，但是用于在界面的输入也会回输到内部数据模型上，这是一种数据的双向流动，双向传递流动很难把握，在复杂情况下，有些操作会触发一连串的变化，有些变化还可能是异步的。</p>
+<p>为此，Flux引入了单向数据流的思想，当需要插入新的数据或改变原有数据时，数据流完全重新开始。</p>
+<p><img alt="Flux" src="img/flux.png"></p>
+<p>Flux中Store的变化由事件Action激发，经由动作分发器Dispatcher派发到存储Store(数据模型)中，并引起Store中数据发生变更，从而影响视图的变化。</p>
+<p><img alt="Flux" src="img/flux2.png"></p>
+<p>Action是一个Javascript Plain&nbsp;Object,主要记录对State的操作信息，包含两方面内容：类型 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
 		</h2>
 		<div class="post-info">
@@ -85,6 +114,17 @@
                             <ul class="dropdown-content">
                                     <li>
                                         <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/data.html" >Data </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/flux.html" >Flux </a>
+                                    </li>
+                                    <li>
+                                        <a href="/redux.html" >Redux </a>
                                     </li>
                             </ul>
                         </li>
@@ -154,27 +194,28 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/es6.html">ES6</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/form.html">Form</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/component.html">Component</a></span>
-                        <span><a href="/tag/gtm.html">GTM</a></span>
                         <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
+                        <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
                         <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
 
