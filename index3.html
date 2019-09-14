@@ -14,7 +14,7 @@
 <div id="container" class="hfeed">
     <header id="header" >
         <div id="logo">
-                <h1><img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" />
+                <h1><img src="/theme/image/yoga.png" alt="yogaLogo" />
                 Yoga_Blog</h1>
         </div> <!-- /#logo-->
         <nav id="menu" class="main-nav"><ul class="menu">
@@ -31,25 +31,35 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html" rel="bookmark" title="Permalink to 解决VS Code在ubuntu下terminal无法显示下划线的问题">解决<span class="caps">VS</span>&nbsp;Code在ubuntu下terminal无法显示下划线的问题</a>
+			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-07T20:47:00+08:00"> 
-				<a href="/archive/2018/10月/index.html">周日 07 十月 2018 </a>
+			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
+				<a href="/archive/2018/10月/index.html">周日 14 十月 2018 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h3>Solution</h3>
-<p>输入<code>ctrl + shift + P</code> 打开命令面板搜索 <code>Open User Settings</code> - <code>Open settings.json</code></p>
-<p>添加<code>"editor.fontFamily": "'Ubuntu Mono', monospace"</code>即可</p>
-<h3><span class="caps">VS</span>&nbsp;Code显示数学公式</h3>
-<p>输入<code>ctrl + shift + X</code>搜索<strong> Markdown+Math </strong>安装即可。一共有4种形式的texmath语法 …</p></div>
+	<div class="summary"><ol>
+<li>
+<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
+</li>
+<li>
+<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
+</li>
+<li>
+<p>在首次使用Git前需要进行一些简单的配置:</p>
+<ul>
+<li>设置提交中使用的用户名: <ul>
+<li><code>git config --global user.name "yourname"</code></li>
+</ul>
+</li>
+<li>设置提交中使用的邮件地址 …</li></ul></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/configuration.html">Configuration</a>
+			<a href="/category/programming.html">Programming</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -87,27 +97,13 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="/category/configuration.html" >Configuration </a>
+                            <a href="/category/data.html" >Data </a>
                             <ul class="dropdown-content">
                                     <li>
-                                        <a href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html" ><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal </a>
+                                        <a href="/flux.html" >Flux </a>
                                     </li>
                                     <li>
-                                        <a href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html" >解决<span class="caps">VS</span>&nbsp;Code在ubuntu下terminal无法显示下划线的问题 </a>
-                                    </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="/category/math.html" >Math </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/ju-zhen-fu-xi.html" >矩阵复习 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/matrix-calculus.html" >Matrix&nbsp;Calculus </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tong-ji-tui-duan-fu-xi.html" >统计推断复习 </a>
+                                        <a href="/redux.html" >Redux </a>
                                     </li>
                             </ul>
                         </li>
@@ -118,13 +114,7 @@
                                         <a href="/makezong-jie.html" >Make总结 </a>
                                     </li>
                                     <li>
-                                        <a href="/ru-he-ce-shi-pythondai-ma.html" >如何测试python代码 </a>
-                                    </li>
-                                    <li>
                                         <a href="/she-ji-mo-shi.html" >设计模式 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/pythonlei-zong-jie.html" >Python类总结 </a>
                                     </li>
                                     <li>
                                         <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
@@ -138,31 +128,51 @@
                                     <li>
                                         <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
                                     </li>
-                                    <li>
-                                        <a href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" >利用<span class="caps">VS</span> Code&nbsp;Snippets生成C++头文件保护符 </a>
-                                    </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="/category/react.html" >React </a>
                             <ul class="dropdown-content">
                                     <li>
-                                        <a href="/reactbiao-dan.html" >react表单 </a>
+                                        <a href="/react-in-es6.html" >React in <span class="caps">ES6</span> </a>
                                     </li>
                                     <li>
-                                        <a href="/reactfu-he-zu-jian.html" >react复合组件 </a>
+                                        <a href="/react-lu-you.html" >React&nbsp;路由 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-biao-dan.html" >react&nbsp;表单 </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-fu-he-zu-jian.html" >react&nbsp;复合组件 </a>
                                     </li>
                                     <li>
                                         <a href="/jsx.html" ><span class="caps">JSX</span> </a>
                                     </li>
                                     <li>
-                                        <a href="/reactji-chu.html" >React基础 </a>
+                                        <a href="/react-ji-chu.html" >React&nbsp;基础 </a>
                                     </li>
                                     <li>
-                                        <a href="/reactte-dian.html" >React特点 </a>
+                                        <a href="/react-te-dian.html" >React&nbsp;特点 </a>
                                     </li>
                                     <li>
-                                        <a href="/reactzu-jian.html" >React组件 </a>
+                                        <a href="/react-zu-jian.html" >React&nbsp;组件 </a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/category/react-admin.html" >React-Admin </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/react-admin.html" >React-Admin </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-hook.html" >React&nbsp;Hook </a>
                                     </li>
                             </ul>
                         </li>
@@ -174,27 +184,30 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/calculus.html">calculus</a></span>
                         <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/matrix.html">matrix</a></span>
-                        <span><a href="/tag/form.html">form</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/python.html">python</a></span>
-                        <span><a href="/tag/c.html">c++</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/statistics.html">statistics</a></span>
-                        <span><a href="/tag/component.html">component</a></span>
-                        <span><a href="/tag/gtm.html">GTM</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/vscode.html">vscode</a></span>
-                        <span><a href="/tag/xu-ni-dom.html">虚拟Dom</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
+                        <span><a href="/tag/classnamejs.html">className.js</a></span>
+                        <span><a href="/tag/git.html">git</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/blog.html">blog</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
 
@@ -204,8 +217,7 @@
                     Links
                 </div>
                 <ul>
-                        <li><a href="https://github.com/sjtuzbx">Github</a></li>
-                        <li><a href="https://stupidbookfish.blogspot.com/">Blogger</a></li>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
                 </ul>
             </section>
             

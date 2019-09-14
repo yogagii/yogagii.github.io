@@ -35,8 +35,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-24T14:33:25+08:00"> 
-				<a href="/archive/2019/8月/index.html">周六 24 八月 2019 </a>
+			<abbr class="date" title="2019-09-14T14:33:25+08:00"> 
+				<a href="/archive/2019/9月/index.html">周六 14 九月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -60,6 +60,64 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-admin.html" rel="bookmark" title="Permalink to React-Admin">React-Admin</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-09-10T00:00:00+08:00"> 
+				<a href="/archive/2019/9月/index.html">周二 10 九月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Setting&nbsp;Up</h2>
+<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
+<span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
+<span class="nx">cd</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
+<span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">admin</span> <span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span> <span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
+<span class="nx">yarn</span> <span class="nx">start</span>
+</pre></div>
+
+
+<h2>Data&nbsp;Provider …</h2></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react-admin.html">React-Admin</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-hook.html" rel="bookmark" title="Permalink to React Hook">React&nbsp;Hook</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-09-07T00:00:00+08:00"> 
+				<a href="/archive/2019/9月/index.html">周六 07 九月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>React 16.8.0 是第一个支持Hook的版本。React Native 从0.59版本开始支持&nbsp;Hook。</p>
+<h2>Why react hook&nbsp;?</h2>
+<hr>
+<h3>在组件之间复用状态逻辑很难</h3>
+<p>React 没有提供将可复用性行为“附加”到组件的途径（例如，把组件连接到 store）。react的解决方案是render props 和&nbsp;高阶组件。但是这类方案需要重新组织你的组件结构。</p>
+<p>React 需要为共享状态逻辑提供更好的原生途径。使用 Hook …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react-admin.html">React-Admin</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -312,87 +370,9 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to react 表单">react&nbsp;表单</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 13 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>事件响应</h2>
-<p>表单组件（包括所有<span class="caps">HTML</span>原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
-<p><code>&lt;input&gt; -&gt; value / checked</code></p>
-<p><code>&lt;textarea&gt; -&gt; value</code></p>
-<p><code>&lt;option&gt; -&gt; selected</code></p>
-<p><strong>复用</strong>：只写一个事件处理函数且能处理多个事件</p>
-<ol>
-<li>
-<p>bind复用</p>
-<p>事件响应函数通过bind的参数识别事件源</p>
-<p><code>javascript
-// bind方法为事件响应函数增加一个参数
-&lt;input onChange={this.handleChange.bind(this, ‘checked’)} /&gt;
-hangdeChange = function(name …</code></p></li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to react 复合组件">react&nbsp;复合组件</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 13 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><blockquote>
-<p>组件的原则：职责单一，外在体现可复用性，内在体现分装性</p>
-</blockquote>
-<h2>组件嵌套</h2>
-<hr>
-<p>法一：在父组件的render函数中直接渲染子组件</p>
-<p>法二：对于动态的、数量不固定的子组件需要用到this.props.children</p>
-<p><br></p>
-<h2>组件参数传递</h2>
-<hr>
-<ul>
-<li><strong>动态参数传递</strong>：展开属性（参数名称是变量）</li>
-</ul>
-<div class="highlight"><pre><span></span>  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="nx">moreAttr</span><span class="o">=</span><span class="err">“</span><span class="nx">value</span><span class="err">”</span> <span class="o">/&gt;</span>
-  <span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
-</pre></div>
-
-
-<ul>
-<li><strong>Underscore</strong>：提供_.omit()来过滤属性</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// 剩余属性：除checked之外的属性 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 2
+    Page 1 / 3
         <a href="/index2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -491,6 +471,17 @@ hangdeChange = function(name …</code></p></li></ol></div>
                                     </li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a href="/category/react-admin.html" >React-Admin </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/react-admin.html" >React-Admin </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-hook.html" >React&nbsp;Hook </a>
+                                    </li>
+                            </ul>
+                        </li>
                 </ul>
             </section>
 
@@ -502,12 +493,13 @@ hangdeChange = function(name …</code></p></li></ol></div>
                         <span><a href="/tag/pelican.html">pelican</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
                         <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/classnamejs.html">className.js</a></span>
                         <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
                         <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
                         <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
@@ -518,8 +510,9 @@ hangdeChange = function(name …</code></p></li></ol></div>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/es6.html">ES6</a></span>
                         <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/route.html">Route</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
                         <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>

@@ -58,7 +58,9 @@
 </pre></div>
 
 
-<p>Dispatcher分发器是Flux应用中的调度枢纽，主要职责是把action分发给Store，每个Store都会预先在Dispatcher中注册Action响应回调函数。Dispatcher维护着一个庞大的需要接受Action的Store回调函数列表，并接受注册。Dispatcher把Action传递给所有登记在册的Store，类似于广播，不是订阅某些Action，而是监听所有Action。</p>
+<p>Dispatcher分发器是Flux应用中的调度枢纽，主要职责是把action分发给Store。Dispatcher维护着一个庞大的需要接受Action的Store回调函数列表，并接受注册。Dispatcher把Action传递给所有登记在册的Store，类似于广播，不是订阅某些Action，而是监听所有Action。</p>
+<p>每个Store都会预先在Dispatcher中注册Action响应回调函数，回调函数接受Action作为参数，根据Action&nbsp;type识别Action并调用对应的处理函数。Store中包含应用所有的数据，Store是应用中唯一数据发生变更的地方。</p>
+<p>整个view是一个树形嵌套结构，这个嵌套结构的根部是一个特殊的view，成为控制视图Controller&nbsp;View(根组件)，控制视图兼具控制功能，它一方面负责接收Store的广播事件，另一方面也从Store中获取数据（调用其getter函数）。</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -178,6 +180,17 @@
                                     </li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a href="/category/react-admin.html" >React-Admin </a>
+                            <ul class="dropdown-content">
+                                    <li>
+                                        <a href="/react-admin.html" >React-Admin </a>
+                                    </li>
+                                    <li>
+                                        <a href="/react-hook.html" >React&nbsp;Hook </a>
+                                    </li>
+                            </ul>
+                        </li>
                 </ul>
             </section>
 
@@ -189,12 +202,13 @@
                         <span><a href="/tag/pelican.html">pelican</a></span>
                         <span><a href="/tag/markdown.html">markdown</a></span>
                         <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
                         <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/classnamejs.html">className.js</a></span>
                         <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
                         <span><a href="/tag/make.html">make</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
                         <span><a href="/tag/blog.html">blog</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
@@ -205,8 +219,9 @@
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/es6.html">ES6</a></span>
                         <span><a href="/tag/algorithm.html">algorithm</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
                         <span><a href="/tag/route.html">Route</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
                         <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
