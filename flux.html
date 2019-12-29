@@ -1,0 +1,187 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/data.html">Data</a> ›Flux
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Flux</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+            <a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/flux.html">Flux</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>Facebook提出Flux应用架构解决数据模型处理，Flux是一种思想，跟React本身没有必然联系，基于Flux思想的框架有Redux、Reflux、Flummox等产品。</p>
+<h2>单向数据流：</h2>
+<p>界面总是基于内部数据模型的一种呈现，但是用于在界面的输入也会回输到内部数据模型上，这是一种数据的双向流动，双向传递流动很难把握，在复杂情况下，有些操作会触发一连串的变化，有些变化还可能是异步的。</p>
+<p>为此，Flux引入了单向数据流的思想，当需要插入新的数据或改变原有数据时，数据流完全重新开始。</p>
+<p><img alt="Flux" src="img/flux.png"></p>
+<p>Flux中Store的变化由事件Action激发，经由动作分发器Dispatcher派发到存储Store(数据模型)中，并引起Store中数据发生变更，从而影响视图的变化。</p>
+<p><img alt="Flux" src="img/flux2.png"></p>
+<p>Action是一个Javascript Plain&nbsp;Object,主要记录对State的操作信息，包含两方面内容：类型(type)和载荷(payload)，type属性是预先定义好的常量标识符，代表特定的action，载荷用于传递具体的数据，action的接收者负责解读和处理这个数据。</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="k">type</span><span class="p">:</span> <span class="s1">&#39;ADD_STUDENT&#39;</span><span class="p">,</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Yoga&#39;</span><span class="p">,</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Dispatcher分发器是Flux应用中的调度枢纽，主要职责是把action分发给Store。Dispatcher维护着一个庞大的需要接受Action的Store回调函数列表，并接受注册。Dispatcher把Action传递给所有登记在册的Store，类似于广播，不是订阅某些Action，而是监听所有Action。</p>
+<p>每个Store都会预先在Dispatcher中注册Action响应回调函数，回调函数接受Action作为参数，根据Action&nbsp;type识别Action并调用对应的处理函数。Store中包含应用所有的数据，Store是应用中唯一数据发生变更的地方。</p>
+<p>整个view是一个树形嵌套结构，这个嵌套结构的根部是一个特殊的view，成为控制视图Controller&nbsp;View(根组件)，控制视图兼具控制功能，它一方面负责接收Store的广播事件，另一方面也从Store中获取数据（调用其getter函数）。</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/data.html">Data</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "flux.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

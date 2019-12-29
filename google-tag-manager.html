@@ -1,0 +1,335 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›Google Tag&nbsp;Manager
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Google Tag&nbsp;Manager</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-07-20T00:00:00+08:00"> 
+            <a href="/archive/2019/ 7/index.html">六 20 七月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/gtm.html">GTM</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>谷歌标签管理器</h2>
+<h3>优点：</h3>
+<ol>
+<li>
+<p>通过GTM可以更快测试和发布代码而不需要在站点上硬编码</p>
+</li>
+<li>
+<p>个性化跟踪</p>
+</li>
+<li>
+<p>管理更有效</p>
+</li>
+<li>
+<p>提高网站加载速度，优化了异步加载</p>
+</li>
+</ol>
+<h3>缺点：</h3>
+<p>多一层跳转：先加载GTM容器，再加载其他跟踪代码，如GA</p>
+<h3>账户结构：</h3>
+<p>一个google可以有多个GTM&nbsp;account，</p>
+<p>一个account可以有多个GTM Container&nbsp;Tag，</p>
+<p>每个容器对应一个站点（Tag，Trigger，Variables）</p>
+<h3>Variable变量</h3>
+<p>变量是键值对，其中的值在运行时填充</p>
+<ol>
+<li>
+<p>在触发器中，变量用来定义指定特定触发器应在何时执行的过滤条件（URL变量）</p>
+</li>
+<li>
+<p>在代码中，变量用来捕获动态值，传递到转化跟踪代码</p>
+</li>
+</ol>
+<h3>built-in&nbsp;variable内置变量：</h3>
+<p>网页：</p>
+<ul>
+<li>
+<p>Page&nbsp;Hostname(域名)</p>
+</li>
+<li>
+<p>Page&nbsp;Path(路径)</p>
+</li>
+<li>
+<p>Page <span class="caps">URL</span>(网址)</p>
+</li>
+<li>
+<p>Referrer(引荐来源网址)utm_source=<span class="caps">BAIDU</span></p>
+</li>
+</ul>
+<p>工具：</p>
+<ul>
+<li>
+<p>Container <span class="caps">ID</span></p>
+</li>
+<li>
+<p>Container&nbsp;Version</p>
+</li>
+<li>
+<p>Environment&nbsp;Name</p>
+</li>
+<li>
+<p>Event(当前dataLayer事件的名称)</p>
+</li>
+<li>
+<p><span class="caps">HTMLID</span></p>
+</li>
+</ul>
+<p>错误：</p>
+<p>点击:（设置Trigger时限定点击位置）</p>
+<ul>
+<li>
+<p>Click&nbsp;Element(访问dataLayer中的gtm.element键)</p>
+</li>
+<li>
+<p>Click&nbsp;Classes</p>
+</li>
+<li>
+<p>Click <span class="caps">ID</span></p>
+</li>
+<li>
+<p>Click&nbsp;Target</p>
+</li>
+<li>
+<p>Click <span class="caps">URL</span></p>
+</li>
+<li>
+<p>Click&nbsp;Text</p>
+</li>
+</ul>
+<p>表单：</p>
+<p>Form <span class="caps">ID</span></p>
+<p>历史</p>
+<h3>User-Defined&nbsp;Variables自定义变量：</h3>
+<p>第一方Cookie:名称与用户所在网域匹配的第一个Cookie（第一方cookie变量返回的是浏览器cookie中该变量的值,如用户等级，用户IP）</p>
+<p>内置变量</p>
+<p>常量字符串(如经常需要使用的ga tracking&nbsp;id可以定义为常量)</p>
+<p>容器版本号</p>
+<p>自定义JavaScript(可返回值的匿名函数)</p>
+<p>数据层变量(dataLayer.push({&#8216;Data Layer Name&#8217;:&nbsp;&#8216;value&#8217;}))</p>
+<p>调试模式</p>
+<p>DOM元素</p>
+<p>HTTP引荐来源网址(用户访问的前一个网页)</p>
+<p>Javascript变量(获取指定的全局变量)</p>
+<p>对照表（批量做数据跟踪）</p>
+<p>随机数字</p>
+<p>网址</p>
+<h3>Trigger:控制触发条件</h3>
+<p>页面触发器：</p>
+<ul>
+<li>
+<p>Page&nbsp;View：GTM容器代码被成功加载，在看到页面内容之前就触发了，用于页面浏览跟踪</p>
+</li>
+<li>
+<p>Dom&nbsp;Ready：当DOM准备好，既已经渲染完所有html元素时触发，用于跟踪某些东西已被呈现</p>
+</li>
+<li>
+<p>Window&nbsp;Loaded：当浏览器已经显示完搜有信息时触发</p>
+</li>
+</ul>
+<p>点击触发器：（监听用户的大部分交互）</p>
+<ul>
+<li>
+<p>All&nbsp;Element：所有左键点击（图片，按钮，链接，元素）</p>
+</li>
+<li>
+<p>Just&nbsp;Links：只有html链接</p>
+</li>
+</ul>
+<p>自定义事件：</p>
+<p>在控制台输入dataLayer可以查看推送到指定页面上的数据层的事件序列</p>
+<h3>Tag</h3>
+<p>代码指的是向第三方（Google）发送信息的js代码段</p>
+<p>应用场景：部署跟踪代码、事件跟踪、电子商务、注入代码</p>
+<p>export container / import&nbsp;container</p>
+<p>下载配置json</p>
+<h3>GTM数据传输模型：</h3>
+<ol>
+<li>
+<p>部署第三方代码：trigger -&gt; tag -&gt; <span class="caps">GA</span></p>
+</li>
+<li>
+<p>主动push数据（电子商务）：Web(dataLayer) -&gt; Trigger -&gt; tag -&gt; <span class="caps">GA</span></p>
+</li>
+<li>
+<p>常规事件跟踪：Web -&gt; Variable/trigger -&gt; tag -&gt; <span class="caps">GA</span></p>
+</li>
+<li>
+<p>网页面注入js跟踪：Web -&gt; Variable/trigger -&gt; tag -&gt; 注入Web主动监听 / <span class="caps">GA</span></p>
+</li>
+</ol>
+<h3><span class="caps">GTM</span> debug: Publish -&gt;&nbsp;Preview</h3>
+<p>事件部署不成功：</p>
+<ol>
+<li>
+<p>触发器没设置正确</p>
+</li>
+<li>
+<p>页面端没有将数据正确推送出去</p>
+</li>
+</ol>
+<p>tag manager&nbsp;inject</p>
+<p>跨子域跟踪：共用顶级域名下的cookie（识别用户唯一性）</p>
+<p>GA默认开启</p>
+<p><span class="caps">GTM</span>：</p>
+<p>Field name: cookie domain;&nbsp;value:auto</p>
+<p>add referer&nbsp;exclusive</p>
+<p>设置cookie&nbsp;domin和引荐流量：将两个二级域名之间跳转事的用户和会话降</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/analytics.html">Analytics</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "google-tag-manager.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

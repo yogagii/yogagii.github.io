@@ -1,0 +1,329 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/react.html">React</a> ›React&nbsp;组件
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >React&nbsp;组件</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+            <a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/react.html">React</a>
+                <a href="/tag/component.html">Component</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>组件的属性</h2>
+<hr>
+<ol>
+<li>
+<p><strong>props属性集合：</strong> 保存组件的初始属性数据（大部分原始数据）；
+<br> this.props.children数组中会包含本组件实例的所有组件，由React自动填充
+<br>&nbsp;this.props.context跨级包含上级组件的数据</p>
+</li>
+<li>
+<p><strong>state状态集合：</strong>&nbsp;保存组件的状态数据（用户输入、服务器请求、时间变化）；</p>
+</li>
+<li>
+<p><strong>render函数：</strong>&nbsp;主要职责是根据state状态，结合props属性，进行虚拟DOM的构建；render函数内不应该修改组件state，不读写DOM信息，不与浏览器交互（setTimeOut）</p>
+</li>
+<li>
+<p><strong>setState(data, callback)成员函数：</strong>&nbsp;页面所有的变化均由状态的变更引发，状态的变更通过调用组件实例的setState函数完成，这个函数合并data到this.state并重新渲染组件，渲染完成后，调用可选的callback回调。</p>
+</li>
+</ol>
+<blockquote>
+<p>props与state的区别：props不能被其所在的组件修改，从父组件传进来的属性不会在组件内部更改；state只能在所在组件内部更改，或在外部调用setState函数对状态进行间接修改。</p>
+</blockquote>
+<p><br></p>
+<h2>组件的生命周期</h2>
+<hr>
+<h3>实例化阶段</h3>
+<p>1.<strong>getDefaultProps</strong></p>
+<p>设置props的默认值，仅调用一次，属性如果没有通过父组件传入的话，返回对象中的相应的属性将合并到this.props·</p>
+<div class="highlight"><pre><span></span><span class="nx">getDefaultProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="p">{</span><span class="nx">dname</span><span class="o">:</span><span class="err">’’</span><span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>2.<strong>getInitialState</strong></p>
+<p>初始化state，仅调用一次，返回的对象会自动合并到this.state上</p>
+<p>3.<strong>componentWillMount</strong></p>
+<p>渲染前，仅调用一次，在这个方法内调用setState，render将感知到更新后的state</p>
+<p>4.<strong>render</strong></p>
+<p>只能读取props和state，不能更改，只能返回一个ReactElement元素或null或false</p>
+<p>5.<strong>componentDidMount</strong></p>
+<p>渲染后，可通过this.getDOMNode获得对应的浏览器DOM元素，可在这个方法里对DOM做进一步修改、进行state数据填充（ajax请求）、继承其他框架（jQuery）。</p>
+<h3>活动阶段</h3>
+<p>1.<strong>componentWillReceiveProps</strong></p>
+<p>初始化时不调用，是在props传入后渲染之前更新state的最佳时机，旧的props可以通过this.props获取到</p>
+<div class="highlight"><pre><span></span><span class="nx">componentWillReceiveProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">increasing</span><span class="o">:</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">count</span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>2.<strong>shouldComponentUpdate</strong></p>
+<p>默认返回true，若确定新的props和state不会更新组件，手动控制组件不更新，返回false，接下来的willUpdate/render/&nbsp;DidUpdate不执行。</p>
+<p>3.<strong>componentWillUpdate</strong></p>
+<p>初始化时不调用，不能在该方法中使用setState</p>
+<p>4.<strong>render</strong></p>
+<p>5.<strong>componentDidUpdate</strong></p>
+<p>初始化时不调用</p>
+<h3>销毁阶段</h3>
+<p>1.<strong>componentWillUnmount</strong></p>
+<p>在该方法中执行必要的清理（无效的定时器、componentDidMount中创建的DOM元素）</p>
+<p><br></p>
+<h2>组件事件响应</h2>
+<hr>
+<ul>
+<li>
+<p><strong>事件代理</strong>：React在顶层使用一个全局的事件监听器监听所有事件，在内部维护一个映射表记录事件与组件事件处理函数的对应关系，当某个事件发生时，React根据这个内部映射表将事件分派给指定的事件处理函数。</p>
+</li>
+<li>
+<p><strong>事件自动绑定</strong>：每个事件处理回调函数会自动绑定到组件实例，回调函数中this所指的是组件实例而不是DOM元素。</p>
+</li>
+</ul>
+<p>React支持的事件：</p>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>事件名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剪贴板事件</td>
+<td>onCopy / onCut / onPaste</td>
+</tr>
+<tr>
+<td>键盘事件</td>
+<td>onKeyDown / onKeyPress / onKeyUp</td>
+</tr>
+<tr>
+<td>焦点事件</td>
+<td>onFocus / onBlur</td>
+</tr>
+<tr>
+<td>表单事件</td>
+<td>onChange / onInput / onSubmit</td>
+</tr>
+<tr>
+<td>鼠标事件</td>
+<td>onClick / onContextMenu / onDoubleClick / onDrag / onDragEnd / <br> onDragEnter / onDragExit / onDragLeave / onDragOver / <br> onDragStart / onDrop / onMouseDown / onMouseEnter /  <br>  onMouseLeave</td>
+</tr>
+<tr>
+<td>触控事件</td>
+<td>onTouchCancel / onTouchEnd / onTouchMove / onTouchStart</td>
+</tr>
+<tr>
+<td>用户界面事件</td>
+<td>onScroll</td>
+</tr>
+<tr>
+<td>滚轮事件</td>
+<td>onWheel</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2>props属性验证</h2>
+<hr>
+<p>React.PropTypes提供各种验证器来验证传入数据的有效性，为了性能考虑只在开发环境下验证。</p>
+<ul>
+<li>
+<p>基本类型：React.PropTypes.array / bool / func / number / object / string / node /&nbsp;element</p>
+</li>
+<li>
+<p>指定类型之一：instanceOf(Message) / oneOf([‘News’, ‘Photos‘]) /&nbsp;oneOfType([React.ProtoTypes.string])</p>
+</li>
+<li>
+<p>特定类型的对象：arrayOf(React.PropTypes.number) /&nbsp;objectOf(React.ProtoTypes.number)</p>
+</li>
+<li>
+<p>不可空：React.Prototypes.func.isRequired /&nbsp;React.ProtoTypes.any.isRequired</p>
+</li>
+</ul>
+<p><br></p>
+<h2>其他成员</h2>
+<hr>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">App</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span><span class="err">​</span>
+   <span class="c1">//用来定义静态方法，可以在组件类上调用:App.staticMethod()</span>
+  <span class="nx">statics</span><span class="o">:</span><span class="p">{</span>
+    <span class="nx">staticMethod</span><span class="o">:</span><span class="kd">function</span><span class="p">(){}</span>
+   <span class="p">}</span>
+  <span class="c1">//组件调试时显示的组件名</span>
+  <span class="nx">displayName</span> <span class="o">:</span> <span class="err">‘</span><span class="nx">APP</span><span class="err">’</span><span class="p">,</span>
+  <span class="c1">//定义在多个组件之间共享的函数代码</span>
+  <span class="nx">mixins</span><span class="o">:</span><span class="p">[]</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">app</span><span class="o">&lt;</span><span class="err">/h1&gt;}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p><br></p>
+<h2>设计原则</h2>
+<hr>
+<p>组件应该尽可能的无状态化，只有对用户输入、服务器请求、时间变化等需要作出响应并暂存中间状态时才需要使用state</p>
+<p>一个有状态组件(stateful)：封装所有用户的交互逻辑</p>
+<p>-&gt; 通过props把状态传给子级&nbsp;-&gt;</p>
+<p>多个无状态组件(stateless)：只负责声明式地渲染数据</p>
+<blockquote>
+<p>应放在state中的数据：可能被组件的事件处理器改变并触发用户界面更新的数据。当创建一个状态化的组件时，想象一下表示它的状态最少需要哪些数据，并只把这些数据存入this.state。<br>&nbsp;不应放在state中的数据:计算所得数据（length）、React组件、基于props的重复数据（在渲染时需要知道它以前的props值时可以把props保存到state）</p>
+</blockquote>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/react.html">React</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "react-zu-jian.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

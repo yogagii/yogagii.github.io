@@ -1,0 +1,274 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime: 2019-12-29 17:31:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/category.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+<!-- <h4 class="content-archive">Articles in the <span style="color:rgb(0,102,204)">Data</span> category</h4> -->
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ››Category: <a href="category/data.html">Data</a>
+                </section>
+
+
+<ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/dvajs.html" rel="bookmark" title="Permalink to DVA.js"><span class="caps">DVA</span>.js</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-12-29T14:33:00+08:00"> 
+				<a href="/archive/2019/12/index.html">日 29 十二月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>目录</h2>
+<h3>hr重构</h3>
+<h4>类dva</h4>
+<h5>redux怎么变成dva的反向</h5>
+<div class="highlight"><pre><span></span><span class="c1">// dva结构</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">state</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="nx">reducers</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="nx">effects</span><span class="o">:</span> <span class="p">{},</span> <span class="c1">//这一层是saga做的</span>
+<span class="p">}</span>
+
+<span class="c1">// redux结构</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span>
+
+<span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">num</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span> 
+<span class="kr">const</span> <span class="nx">reducers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;ADD&#39;</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/restful-api.html" rel="bookmark" title="Permalink to RESTful API">RESTful <span class="caps">API</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
+				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>路径</h2>
+<p>https://api.example.com/v1/</p>
+<p>将API部署在专用域名之下,将API的版本号放入URL。</p>
+<p>路径又称&#8221;终点&#8221;（endpoint），表示API的具体网址。&nbsp;在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&#8221;集合&#8221;（collection），所以API中的名词也应该使用复数。</p>
+<p>https://api.example.com/v1/zoos</p>
+<h2>动词 …</h2></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/flux.html" rel="bookmark" title="Permalink to Flux">Flux</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Facebook提出Flux应用架构解决数据模型处理，Flux是一种思想，跟React本身没有必然联系，基于Flux思想的框架有Redux、Reflux、Flummox等产品。</p>
+<h2>单向数据流：</h2>
+<p>界面总是基于内部数据模型的一种呈现，但是用于在界面的输入也会回输到内部数据模型上，这是一种数据的双向流动，双向传递流动很难把握，在复杂情况下，有些操作会触发一连串的变化，有些变化还可能是异步的。</p>
+<p>为此，Flux引入了单向数据流的思想，当需要插入新的数据或改变原有数据时，数据流完全重新开始。</p>
+<p><img alt="Flux" src="img/flux.png"></p>
+<p>Flux中Store的变化由事件Action激发，经由动作分发器Dispatcher派发到存储Store(数据模型)中，并引起Store中数据发生变更，从而影响视图的变化。</p>
+<p><img alt="Flux" src="img/flux2.png"></p>
+<p>Action是一个Javascript Plain&nbsp;Object,主要记录对State的操作信息，包含两方面内容：类型 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/redux.html" rel="bookmark" title="Permalink to Redux">Redux</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Redux与其他的Flux实现相比更简单，一个Redux应用中Store是唯一的，这样的限定能够使应用中的数据结果集中化，提高了可控性，同时又通过引入Reducer机制巧妙地解决单一Store的限制问题，达到了与使用多个Store同样的效果。</p>
+<p>Redux主要由Action、Reducer及Store三部分组成。Action用来表达操作，Reducer根据Action更新state。</p>
+<p>Redux vs&nbsp;Flux:</p>
+<ul>
+<li>
+<p>Redux中只有一个全局Store，Flux里则可以有多个Store。Flux在Store里执行更新逻辑，当Store变化的时候通知Controller&nbsp;view。而Redux将各个Store整合成一个完整的Store，更新逻辑由Reducer处理。</p>
+</li>
+<li>
+<p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State …</p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+</ul>
+<p class="paginator">
+    Page 1 / 1
+</p>
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                            <ul>
+                                <li>
+                                  <a href="/dvajs.html"><span class="caps">DVA</span>.js</a>
+                                </li>
+                                <li>
+                                  <a href="/restful-api.html">RESTful <span class="caps">API</span></a>
+                                </li>
+                                <li>
+                                  <a href="/flux.html">Flux</a>
+                                </li>
+                                <li>
+                                  <a href="/redux.html">Redux</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
