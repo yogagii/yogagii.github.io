@@ -1,8 +1,16 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime: 2019-12-29 21:31:44
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
-    <title>Yoga_Blog</title>
+    <title>Frontend Learning Book</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -14,10 +22,17 @@
 <div id="container" class="hfeed">
     <header id="header" >
         <div id="logo">
-                <h1><img src="/theme/image/yoga.png" alt="yogaLogo" />
-                Yoga_Blog</h1>
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
         </div> <!-- /#logo-->
         <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -35,7 +50,7 @@
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
         <abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-            <a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+            <a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
                 <a href="/tag/react.html">React</a>
@@ -56,7 +71,7 @@
 <p><strong>state状态集合：</strong>&nbsp;保存组件的状态数据（用户输入、服务器请求、时间变化）；</p>
 </li>
 <li>
-<p><strong>render函数：</strong> 主要职责是根据state状态，结合props属性，进行虚拟<span class="caps">DOM</span>的构建；render函数内不应该修改组件state，不读写<span class="caps">DOM</span>信息，不与浏览器交互（setTimeOut）</p>
+<p><strong>render函数：</strong>&nbsp;主要职责是根据state状态，结合props属性，进行虚拟DOM的构建；render函数内不应该修改组件state，不读写DOM信息，不与浏览器交互（setTimeOut）</p>
 </li>
 <li>
 <p><strong>setState(data, callback)成员函数：</strong>&nbsp;页面所有的变化均由状态的变更引发，状态的变更通过调用组件实例的setState函数完成，这个函数合并data到this.state并重新渲染组件，渲染完成后，调用可选的callback回调。</p>
@@ -84,7 +99,7 @@
 <p>4.<strong>render</strong></p>
 <p>只能读取props和state，不能更改，只能返回一个ReactElement元素或null或false</p>
 <p>5.<strong>componentDidMount</strong></p>
-<p>渲染后，可通过this.getDOMNode获得对应的浏览器<span class="caps">DOM</span>元素，可在这个方法里对<span class="caps">DOM</span>做进一步修改、进行state数据填充（ajax请求）、继承其他框架（jQuery）。</p>
+<p>渲染后，可通过this.getDOMNode获得对应的浏览器DOM元素，可在这个方法里对DOM做进一步修改、进行state数据填充（ajax请求）、继承其他框架（jQuery）。</p>
 <h3>活动阶段</h3>
 <p>1.<strong>componentWillReceiveProps</strong></p>
 <p>初始化时不调用，是在props传入后渲染之前更新state的最佳时机，旧的props可以通过this.props获取到</p>
@@ -103,7 +118,7 @@
 <p>初始化时不调用</p>
 <h3>销毁阶段</h3>
 <p>1.<strong>componentWillUnmount</strong></p>
-<p>在该方法中执行必要的清理（无效的定时器、componentDidMount中创建的<span class="caps">DOM</span>元素）</p>
+<p>在该方法中执行必要的清理（无效的定时器、componentDidMount中创建的DOM元素）</p>
 <p><br></p>
 <h2>组件事件响应</h2>
 <hr>
@@ -112,7 +127,7 @@
 <p><strong>事件代理</strong>：React在顶层使用一个全局的事件监听器监听所有事件，在内部维护一个映射表记录事件与组件事件处理函数的对应关系，当某个事件发生时，React根据这个内部映射表将事件分派给指定的事件处理函数。</p>
 </li>
 <li>
-<p><strong>事件自动绑定</strong>：每个事件处理回调函数会自动绑定到组件实例，回调函数中this所指的是组件实例而不是<span class="caps">DOM</span>元素。</p>
+<p><strong>事件自动绑定</strong>：每个事件处理回调函数会自动绑定到组件实例，回调函数中this所指的是组件实例而不是DOM元素。</p>
 </li>
 </ul>
 <p>React支持的事件：</p>
@@ -242,107 +257,107 @@
             -->
             <section id="widget-category" class="widget-wrapper widget_archive">
                 <div class="widget-title">
-                    Category
+                    Article
                 </div>
                 <ul>
-                        <li class="dropdown">
-                            <a href="/category/analytics.html" >Analytics </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
-                                    </li>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                            <ul>
+                                <li>
+                                  <a href="/google-tag-manager.html">Google Tag&nbsp;Manager</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/data.html" >Data </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/restful-api.html" >RESTful <span class="caps">API</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="/flux.html" >Flux </a>
-                                    </li>
-                                    <li>
-                                        <a href="/redux.html" >Redux </a>
-                                    </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                            <ul>
+                                <li>
+                                  <a href="/restful-api.html">RESTful <span class="caps">API</span></a>
+                                </li>
+                                <li>
+                                  <a href="/flux.html">Flux</a>
+                                </li>
+                                <li>
+                                  <a href="/redux.html">Redux</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/programming.html" >Programming </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/makezong-jie.html" >Make总结 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/she-ji-mo-shi.html" >设计模式 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/markdownyu-fa-jie-shao.html" >Markdown语法介绍 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" >二分搜索的各种写法 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
-                                    </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                            <ul>
+                                <li>
+                                  <a href="/makezong-jie.html">Make总结</a>
+                                </li>
+                                <li>
+                                  <a href="/she-ji-mo-shi.html">设计模式</a>
+                                </li>
+                                <li>
+                                  <a href="/pelican-blogda-jian.html">pelican&nbsp;blog搭建</a>
+                                </li>
+                                <li>
+                                  <a href="/markdownyu-fa-jie-shao.html">Markdown语法介绍</a>
+                                </li>
+                                <li>
+                                  <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html">二分搜索的各种写法</a>
+                                </li>
+                                <li>
+                                  <a href="/gitming-ling-zheng-li.html">Git命令整理</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/react.html" >React </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/react-in-es6.html" >React in <span class="caps">ES6</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-lu-you.html" >React&nbsp;路由 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-biao-dan.html" >react&nbsp;表单 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-fu-he-zu-jian.html" >react&nbsp;复合组件 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/jsx.html" ><span class="caps">JSX</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-ji-chu.html" >React&nbsp;基础 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-te-dian.html" >React&nbsp;特点 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-zu-jian.html" >React&nbsp;组件 </a>
-                                    </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                            <ul>
+                                <li>
+                                  <a href="/react-in-es6.html">React in <span class="caps">ES6</span></a>
+                                </li>
+                                <li>
+                                  <a href="/react-lu-you.html">React&nbsp;路由</a>
+                                </li>
+                                <li>
+                                  <a href="/react-chang-yong-zu-jian.html">React&nbsp;常用组件</a>
+                                </li>
+                                <li>
+                                  <a href="/react-shi-yong-ji-qiao.html">React&nbsp;实用技巧</a>
+                                </li>
+                                <li>
+                                  <a href="/react-biao-dan.html">React&nbsp;表单</a>
+                                </li>
+                                <li>
+                                  <a href="/react-fu-he-zu-jian.html">React&nbsp;复合组件</a>
+                                </li>
+                                <li>
+                                  <a href="/jsx.html"><span class="caps">JSX</span></a>
+                                </li>
+                                <li>
+                                  <a href="/react-ji-chu.html">React&nbsp;基础</a>
+                                </li>
+                                <li>
+                                  <a href="/react-te-dian.html">React&nbsp;特点</a>
+                                </li>
+                                <li>
+                                  <a href="/react-zu-jian.html">React&nbsp;组件</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/react-admin.html" >React-Admin </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/admin.html" >Admin </a>
-                                    </li>
-                                    <li>
-                                        <a href="/data-provider.html" >Data&nbsp;Provider </a>
-                                    </li>
-                                    <li>
-                                        <a href="/resource.html" >Resource </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-admin.html" >React-Admin </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-hook.html" >React&nbsp;Hook </a>
-                                    </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                            <ul>
+                                <li>
+                                  <a href="/admin.html">Admin</a>
+                                </li>
+                                <li>
+                                  <a href="/data-provider.html">Data&nbsp;Provider</a>
+                                </li>
+                                <li>
+                                  <a href="/resource.html">Resource</a>
+                                </li>
+                                <li>
+                                  <a href="/react-admin.html">React-Admin</a>
+                                </li>
+                                <li>
+                                  <a href="/react-hook.html">React&nbsp;Hook</a>
+                                </li>
                             </ul>
                         </li>
                 </ul>
@@ -353,31 +368,6 @@
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/rest.html">Rest</a></span>
-                        <span><a href="/tag/hook.html">hook</a></span>
-                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
-                        <span><a href="/tag/classnamejs.html">className.js</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
-                        <span><a href="/tag/gtm.html">GTM</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
-                        <span><a href="/tag/ref.html">Ref</a></span>
-                        <span><a href="/tag/form.html">Form</a></span>
-                        <span><a href="/tag/component.html">Component</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
-                        <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
-                        <span><a href="/tag/es6.html">ES6</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/route.html">Route</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
 

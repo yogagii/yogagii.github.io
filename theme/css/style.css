@@ -158,14 +158,14 @@ strong {
 pre {
     -moz-box-sizing: border-box;   
 	-moz-border-radius: 2px;
-	-moz-box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,0.2);
+	/* -moz-box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,0.2); */
 	-webkit-border-radius: 2px;
-	-webkit-box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,0.2);
+	/* -webkit-box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,0.2); */
     -webkit-box-sizing: border-box;
-	box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,0.2);
+	/* box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,0.2); */
     box-sizing: border-box;
 	background: #f4f4f4;
-	border: 1px solid #aaa;
+	/* border: 1px solid #aaa; */
 	border-bottom-color: #ccc;
 	border-radius: 2px;
     height: auto;
@@ -263,7 +263,7 @@ sub {
 }
 
 .col-300 {
-	width: 28%;
+	width: 31.914893617021%;
 }
 
 .col-380 {
@@ -279,7 +279,7 @@ sub {
 }
 
 .col-620 {
-	width: 68%;
+	width: 65.957446808511%;
 }
 
 .col-700 {
@@ -367,7 +367,7 @@ svg:not(:root) {
 /* =Links
 -------------------------------------------------------------- */
 a {
-	color: #06c;
+	color: #6a5acd;
 	font-weight: 400;
 	text-decoration: none;
 }
@@ -1094,18 +1094,21 @@ dt {
 /* =Blockquote
 -------------------------------------------------------------- */
 blockquote {
-	background: #f9f9f9;
+	background: #888;
 	border: none;
-	border-left: 4px solid #d6d6d6;
+	border-left: 4px solid #efefef;
 	margin: 20px;
 	overflow: auto;
-	padding: 0 0 10px 12px;
+  padding: 0 0 10px 12px;
+  color: white;
 }
 
 blockquote p {
-	font-family: 'Georgia', 'Times New Roman', Times, serif;
-	font-size: 16px;
-	line-height: 26px;
+	/* font-family: 'Georgia', 'Times New Roman', Times, serif; */
+	/* font-style: italic; */
+	font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
 }
 
 /* =Headings
@@ -1253,7 +1256,7 @@ form div {
 	border-radius: 4px;
 	clear: both;
 	margin: 20px auto 20px auto;
-	padding: 0 20px 20px 40px;
+	padding: 0 20px 20px 20px;
 	position: relative;
 }
 
@@ -1284,7 +1287,8 @@ form div {
 -------------------------------------------------------------- */
 
 #logo img{
-	width: 28px;
+	width: 50px;
+	height: 50px;
 	display: inline-block;
 }
 
@@ -1711,24 +1715,6 @@ li.posts {
     font-size: 14px;
     padding: 0;
     text-align: right;
-}
-
-.dropdown .dropdown-content {
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.5s;
-	-moz-transition: max-height 0.5s;
-    -webkit-transition: max-height 0.5s;
-    -o-transition: max-height 0.5s;
-}
-
-.dropdown:hover .dropdown-content {
-	max-height: 300px;
-	overflow: hidden;
-	transition: max-height 0.5s;
-	-moz-transition: max-height 0.5s;
-    -webkit-transition: max-height 0.5s;
-    -o-transition: max-height 0.5s;
 }
 
 .widget-title a {

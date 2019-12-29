@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Yoga_Blog</title>
+    <title>Frontend Learning Book</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -14,10 +14,17 @@
 <div id="container" class="hfeed">
     <header id="header" >
         <div id="logo">
-                <h1><img src="/theme/image/yoga.png" alt="yogaLogo" />
-                Yoga_Blog</h1>
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
         </div> <!-- /#logo-->
         <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -36,7 +43,7 @@
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
-				<a href="/archive/2019/8月/index.html">周六 17 八月 2019 </a>
+				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -64,7 +71,7 @@
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/8月/index.html">周六 03 八月 2019 </a>
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -107,14 +114,14 @@
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/8月/index.html">周六 03 八月 2019 </a>
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
 	<div class="summary"><h3>绑定未提供的事件</h3>
 <hr>
-<p>在componentDidMount中获取对应的真实<span class="caps">DOM</span>元素绑定事件</p>
+<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
 <div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
 <span class="p">}</span>
@@ -125,11 +132,11 @@
 
 
 <p><br></p>
-<h3><span class="caps">AJAX</span>加载数据</h3>
+<h3>AJAX加载数据</h3>
 <hr>
 <p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
 <p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1 …</p></div>
+<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -146,7 +153,7 @@
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-20T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 20 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 20 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -155,7 +162,7 @@
 <h3>优点：</h3>
 <ol>
 <li>
-<p>通过<span class="caps">GTM</span>可以更快测试和发布代码而不需要在站点上硬编码</p>
+<p>通过GTM可以更快测试和发布代码而不需要在站点上硬编码</p>
 </li>
 <li>
 <p>个性化跟踪</p>
@@ -168,12 +175,19 @@
 </li>
 </ol>
 <h3>缺点：</h3>
-<p>多一层跳转：先加载<span class="caps">GTM</span>容器，再加载其他跟踪代码，如<span class="caps">GA</span></p>
+<p>多一层跳转：先加载GTM容器，再加载其他跟踪代码，如GA</p>
 <h3>账户结构：</h3>
-<p>一个google可以有多个<span class="caps">GTM</span>&nbsp;account，</p>
-<p>一个account可以有多个<span class="caps">GTM</span> Container&nbsp;Tag，</p>
+<p>一个google可以有多个GTM&nbsp;account，</p>
+<p>一个account可以有多个GTM Container&nbsp;Tag，</p>
 <p>每个容器对应一个站点（Tag，Trigger，Variables）</p>
-<h3>Variable变量 …</h3></div>
+<h3>Variable变量</h3>
+<p>变量是键值对，其中的值在运行时填充</p>
+<ol>
+<li>
+<p>在触发器中，变量用来定义指定特定触发器应在何时执行的过滤条件（URL变量）</p>
+</li>
+<li>
+<p>在代码中，变量用来捕获动态值 …</p></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -185,18 +199,18 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to react 表单">react&nbsp;表单</a>
+			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to React 表单">React&nbsp;表单</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 13 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
 	<div class="summary"><h2>事件响应</h2>
-<p>表单组件（包括所有<span class="caps">HTML</span>原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
+<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
 <p><code>&lt;input&gt; -&gt; value / checked</code></p>
 <p><code>&lt;textarea&gt; -&gt; value</code></p>
 <p><code>&lt;option&gt; -&gt; selected</code></p>
@@ -205,10 +219,12 @@
 <li>
 <p>bind复用</p>
 <p>事件响应函数通过bind的参数识别事件源</p>
-<p><code>javascript
-// bind方法为事件响应函数增加一个参数
-&lt;input onChange={this.handleChange.bind(this, ‘checked’)} /&gt;
-hangdeChange = function(name …</code></p></li></ol></div>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="err">‘</span><span class="nx">checked</span><span class="err">’</span><span class="p">)}</span> <span class="o">/&gt;</span>
+  <span class="nx">hangdeChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newState</span><span class="p">[</span><span class="nx">name …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -220,12 +236,12 @@ hangdeChange = function(name …</code></p></li></ol></div>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to react 复合组件">react&nbsp;复合组件</a>
+			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to React 复合组件">React&nbsp;复合组件</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 13 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -268,16 +284,23 @@ hangdeChange = function(name …</code></p></li></ol></div>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p><span class="caps">JSX</span>语法转义器会识别嵌入JavaScript代码中的<span class="caps">HTML</span>标签，当遇到‘&lt;’标识符就会启动<span class="caps">JSX</span>转移过程，遇到‘{’标识符就会当作JavaScript代码进行处理。</p>
-<p>引用Babel中负责<span class="caps">JSX</span>转义的模块browser.js，并将使用<span class="caps">JSX</span>语法描述的js文件类型声明为text/babel</p>
+	<div class="summary"><p>JSX语法转义器会识别嵌入JavaScript代码中的HTML标签，当遇到‘&lt;’标识符就会启动JSX转移过程，遇到‘{’标识符就会当作JavaScript代码进行处理。</p>
+<p>引用Babel中负责JSX转义的模块browser.js，并将使用JSX语法描述的js文件类型声明为text/babel</p>
 <h3>1.&nbsp;三元表达式</h3>
 <div class="highlight"><pre><span></span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">:</span><span class="err">’</span><span class="nx">World</span><span class="err">’</span><span class="p">}</span>
-<span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name …</span></pre></div></div>
+<span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">||</span><span class="err">’</span><span class="nx">World</span><span class="err">’</span><span class="p">}</span>
+</pre></div>
+
+
+<h3>2.&nbsp;注释</h3>
+<p>{/<em> 当注释作为独立子节点时需要用大括号包裹起来 </em>/}</p>
+<h3>3.&nbsp;展开属性</h3>
+<div class="highlight"><pre><span></span><span class="nx">component</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">foo …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -294,22 +317,27 @@ hangdeChange = function(name …</code></p></li></ol></div>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
 	<div class="summary"><blockquote>
-<p>使用React只有两个步骤：一是创建虚拟<span class="caps">DOM</span>（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟<span class="caps">DOM</span>树并响应用户的动作来改变虚拟<span class="caps">DOM</span>树的组成。</p>
+<p>使用React只有两个步骤：一是创建虚拟DOM（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟DOM树并响应用户的动作来改变虚拟DOM树的组成。</p>
 </blockquote>
 <h3>1.&nbsp;react.js</h3>
 <hr>
-<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟<span class="caps">DOM</span>树</p>
+<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟DOM树</p>
 <ul>
 <li><strong>React.createElement</strong></li>
 </ul>
 <p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className …</span></pre></div></div>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="err">’</span><span class="nx">myClass</span><span class="err">’</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li><strong>React.<span class="caps">DOM</span></strong>是预先定义好的HTML元素集，相当于预置了第一个参数 …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -326,17 +354,20 @@ hangdeChange = function(name …</code></p></li></ol></div>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
 	<div class="summary"><h3>1.&nbsp;虚拟Dom</h3>
 <hr>
-<p>浏览器<span class="caps">DOM</span>是由HtmlElement元素组成的树，虚拟<span class="caps">DOM</span>是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个<span class="caps">DOM</span>树，自动计算与上次虚拟<span class="caps">DOM</span>的差异变化，然后针对需要变化的部分进行实际的浏览器<span class="caps">DOM</span>更新，从而提高性能。</p>
+<p>浏览器DOM是由HtmlElement元素组成的树，虚拟DOM是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个DOM树，自动计算与上次虚拟DOM的差异变化，然后针对需要变化的部分进行实际的浏览器DOM更新，从而提高性能。</p>
 <p><em>在文本框中输入任意文本，在禁止文本框，可以发现文本框中原来输入的文本并没有消失，说明React并没有重新渲染input，只是更改了input属性值，这正是react差异对比、局部刷新的特性体现。</em></p>
 <blockquote>
-<p>虚拟<span class="caps">DOM</span>-&gt;真实<span class="caps">DOM</span>: react-dom …</p></blockquote></div>
+<p>虚拟DOM-&gt;真实DOM: react-dom <br> 虚拟DOM-&gt;移动APP:&nbsp;react-native</p>
+</blockquote>
+<p>将一棵树形结构转换成另一棵树形结构传统最优算法的复杂度是O(n3)。</p>
+<p>试探法：通过给子级组件设定唯一的键值，React就能够检测出节点插入、移除和替换，并且借助哈希表使节点移动复杂度变为O(n)。键值只需要在兄弟节点中唯一即可 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -353,7 +384,7 @@ hangdeChange = function(name …</code></p></li></ol></div>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
 			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/7月/index.html">周六 06 七月 2019 </a>
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -370,10 +401,10 @@ hangdeChange = function(name …</code></p></li></ol></div>
 <p><strong>state状态集合：</strong>&nbsp;保存组件的状态数据（用户输入、服务器请求、时间变化）；</p>
 </li>
 <li>
-<p><strong>render函数：</strong> 主要职责是根据state状态，结合props属性，进行虚拟<span class="caps">DOM</span>的构建；render函数内不应该修改组件state，不读写<span class="caps">DOM</span>信息，不与浏览器交互（setTimeOut）</p>
+<p><strong>render函数：</strong>&nbsp;主要职责是根据state状态，结合props属性，进行虚拟DOM的构建；render函数内不应该修改组件state，不读写DOM信息，不与浏览器交互（setTimeOut）</p>
 </li>
 <li>
-<p><strong>setState(data …</strong></p></li></ol></div>
+<p><strong>setState(data, callback)成员函数：</strong>&nbsp;页面所有的变化均由状态的变更引发，状态的变更通过调用组件实例的setState函数完成 …</p></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -404,107 +435,107 @@ hangdeChange = function(name …</code></p></li></ol></div>
             -->
             <section id="widget-category" class="widget-wrapper widget_archive">
                 <div class="widget-title">
-                    Category
+                    Article
                 </div>
                 <ul>
-                        <li class="dropdown">
-                            <a href="/category/analytics.html" >Analytics </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/google-tag-manager.html" >Google Tag&nbsp;Manager </a>
-                                    </li>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                            <ul>
+                                <li>
+                                  <a href="/google-tag-manager.html">Google Tag&nbsp;Manager</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/data.html" >Data </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/restful-api.html" >RESTful <span class="caps">API</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="/flux.html" >Flux </a>
-                                    </li>
-                                    <li>
-                                        <a href="/redux.html" >Redux </a>
-                                    </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                            <ul>
+                                <li>
+                                  <a href="/restful-api.html">RESTful <span class="caps">API</span></a>
+                                </li>
+                                <li>
+                                  <a href="/flux.html">Flux</a>
+                                </li>
+                                <li>
+                                  <a href="/redux.html">Redux</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/programming.html" >Programming </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/makezong-jie.html" >Make总结 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/she-ji-mo-shi.html" >设计模式 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/pelican-blogda-jian.html" >pelican&nbsp;blog搭建 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/markdownyu-fa-jie-shao.html" >Markdown语法介绍 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" >二分搜索的各种写法 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/gitming-ling-zheng-li.html" >Git命令整理 </a>
-                                    </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                            <ul>
+                                <li>
+                                  <a href="/makezong-jie.html">Make总结</a>
+                                </li>
+                                <li>
+                                  <a href="/she-ji-mo-shi.html">设计模式</a>
+                                </li>
+                                <li>
+                                  <a href="/pelican-blogda-jian.html">pelican&nbsp;blog搭建</a>
+                                </li>
+                                <li>
+                                  <a href="/markdownyu-fa-jie-shao.html">Markdown语法介绍</a>
+                                </li>
+                                <li>
+                                  <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html">二分搜索的各种写法</a>
+                                </li>
+                                <li>
+                                  <a href="/gitming-ling-zheng-li.html">Git命令整理</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/react.html" >React </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/react-in-es6.html" >React in <span class="caps">ES6</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-lu-you.html" >React&nbsp;路由 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-chang-yong-zu-jian.html" >React&nbsp;常用组件 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-shi-yong-ji-qiao.html" >React&nbsp;实用技巧 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-biao-dan.html" >react&nbsp;表单 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-fu-he-zu-jian.html" >react&nbsp;复合组件 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/jsx.html" ><span class="caps">JSX</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-ji-chu.html" >React&nbsp;基础 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-te-dian.html" >React&nbsp;特点 </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-zu-jian.html" >React&nbsp;组件 </a>
-                                    </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                            <ul>
+                                <li>
+                                  <a href="/react-in-es6.html">React in <span class="caps">ES6</span></a>
+                                </li>
+                                <li>
+                                  <a href="/react-lu-you.html">React&nbsp;路由</a>
+                                </li>
+                                <li>
+                                  <a href="/react-chang-yong-zu-jian.html">React&nbsp;常用组件</a>
+                                </li>
+                                <li>
+                                  <a href="/react-shi-yong-ji-qiao.html">React&nbsp;实用技巧</a>
+                                </li>
+                                <li>
+                                  <a href="/react-biao-dan.html">React&nbsp;表单</a>
+                                </li>
+                                <li>
+                                  <a href="/react-fu-he-zu-jian.html">React&nbsp;复合组件</a>
+                                </li>
+                                <li>
+                                  <a href="/jsx.html"><span class="caps">JSX</span></a>
+                                </li>
+                                <li>
+                                  <a href="/react-ji-chu.html">React&nbsp;基础</a>
+                                </li>
+                                <li>
+                                  <a href="/react-te-dian.html">React&nbsp;特点</a>
+                                </li>
+                                <li>
+                                  <a href="/react-zu-jian.html">React&nbsp;组件</a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="/category/react-admin.html" >React-Admin </a>
-                            <ul class="dropdown-content">
-                                    <li>
-                                        <a href="/admin.html" >Admin </a>
-                                    </li>
-                                    <li>
-                                        <a href="/data-provider.html" >Data&nbsp;Provider </a>
-                                    </li>
-                                    <li>
-                                        <a href="/resource.html" >Resource </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-admin.html" >React-Admin </a>
-                                    </li>
-                                    <li>
-                                        <a href="/react-hook.html" >React&nbsp;Hook </a>
-                                    </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                            <ul>
+                                <li>
+                                  <a href="/admin.html">Admin</a>
+                                </li>
+                                <li>
+                                  <a href="/data-provider.html">Data&nbsp;Provider</a>
+                                </li>
+                                <li>
+                                  <a href="/resource.html">Resource</a>
+                                </li>
+                                <li>
+                                  <a href="/react-admin.html">React-Admin</a>
+                                </li>
+                                <li>
+                                  <a href="/react-hook.html">React&nbsp;Hook</a>
+                                </li>
                             </ul>
                         </li>
                 </ul>
@@ -515,31 +546,6 @@ hangdeChange = function(name …</code></p></li></ol></div>
                     Tagcloud
                 </div>
                 <div>
-                        <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/rest.html">Rest</a></span>
-                        <span><a href="/tag/hook.html">hook</a></span>
-                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
-                        <span><a href="/tag/classnamejs.html">className.js</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
-                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/make.html">make</a></span>
-                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
-                        <span><a href="/tag/gtm.html">GTM</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
-                        <span><a href="/tag/ref.html">Ref</a></span>
-                        <span><a href="/tag/form.html">Form</a></span>
-                        <span><a href="/tag/component.html">Component</a></span>
-                        <span><a href="/tag/react.html">React</a></span>
-                        <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/jsx.html">JSX</a></span>
-                        <span><a href="/tag/es6.html">ES6</a></span>
-                        <span><a href="/tag/algorithm.html">algorithm</a></span>
-                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/route.html">Route</a></span>
-                        <span><a href="/tag/flux.html">Flux</a></span>
-                        <span><a href="/tag/redux.html">Redux</a></span>
                 </div>
             </section>
 
