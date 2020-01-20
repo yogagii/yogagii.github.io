@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -31,56 +39,76 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">Ref</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/ref.html">Ref</a>
+<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›移动端事件
                 </section>
 
 
-<ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>绑定未提供的事件</h3>
-<hr>
-<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >移动端事件</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-01-20T16:32:00+08:00"> 
+            <a href="/archive/2020/ 1/index.html">一 20 一月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/event.html">event</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>移动端三大事件</h2>
+<p>1、手指按下&nbsp;ontouchstart</p>
+<p>2、手指触摸&nbsp;ontouchmove  </p>
+<p>3、手指抬起&nbsp;ontouchend</p>
+<p>它们的执行顺序是ontouchstart &gt; ontouchend &gt;&nbsp;onclick</p>
+<p>处理ios键盘弹出按钮点击click失效</p>
+<ol>
+<li>用ontouchstart绑定事件即可</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">onTouchEnd</span><span class="o">=</span><span class="err">{</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="err">{</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">preventDefault</span><span class="p">();</span>
+  <span class="n">handleSelectAll</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="err">}}</span>
 </pre></div>
 
 
-<p><br></p>
-<h3>AJAX加载数据</h3>
-<hr>
-<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
-<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-</ul>
-<p class="paginator">
-    Page 1 / 1
-</p>
+<p>用onTouchStart时会有警告：Unable to preventDefault inside passive event listener due to target being treated as&nbsp;passive.</p>
+<ol>
+<li>在IOS下，点击页面中的input时，弹出软键盘时，如果input比较靠下，整个页面会上移，document.body.scrollOffset会由0变成大于0。&nbsp;软键盘消失后，页面会下移。但是document.body.scrollOffset并不会变成0，所以这时候触控不准；</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="s1">&#39;textarea,input&#39;</span><span class="p">).</span><span class="k">on</span><span class="p">(</span><span class="s1">&#39;blur&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="err">{</span>
+  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="err">}</span><span class="p">);</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/javascript.html">Javascript</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "yi-dong-duan-shi-jian.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--

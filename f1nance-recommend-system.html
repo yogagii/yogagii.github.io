@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -31,56 +39,67 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">Ref</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/ref.html">Ref</a>
+<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›F1nance recommend&nbsp;system
                 </section>
 
 
-<ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>绑定未提供的事件</h3>
-<hr>
-<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >F1nance recommend&nbsp;system</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-01-17T00:00:00+08:00"> 
+            <a href="/archive/2020/ 1/index.html">五 17 一月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/algorithm.html">Algorithm</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>流程</h2>
+<p>ETL数据清洗(extract transfer 和load)
+-&gt; Feature engineering数据工程(高并发concurrency)
+-&gt; modeling建模 
+-&gt; data analysis 
+-&gt; data&nbsp;visualization数据可视化</p>
+<h2>热启动</h2>
+<p>根据用户浏览workbook数据聚类，把与用户常看相同一类workbooks的人，也喜欢看的其他workbooks推荐给用户</p>
+<p>COS对象耦合性算法：名词性问题相似度计算，完整的表述是（Coupled Object&nbsp;Similarity，即COS</p>
+<p>缺点：只能定性聚类，不能分析出喜欢程度的不同</p>
+<h2>冷启动</h2>
+<p>首次登录的用户没有浏览的历史记录，不能做聚类分析，根据Role, Sector,&nbsp;Region给用户打标签，根据&#8221;啤酒与尿布&#8221;的原理，相同标签的用户如果在看A类workbooks时也会看B类workbooks，则将AB两类workbooks一起推荐给新用户</p>
+<p>关联规则挖掘算法：
+* apriori
+* association rules&nbsp;learning</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/analytics.html">Analytics</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "f1nance-recommend-system.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
 
 
-<p><br></p>
-<h3>AJAX加载数据</h3>
-<hr>
-<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
-<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-</ul>
-<p class="paginator">
-    Page 1 / 1
-</p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--

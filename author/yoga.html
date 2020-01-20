@@ -20,6 +20,7 @@
           </h1>
         </div> <!-- /#logo-->
         <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
@@ -36,6 +37,77 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/yi-dong-duan-shi-jian.html" rel="bookmark" title="Permalink to 移动端事件">移动端事件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-01-20T16:32:00+08:00"> 
+				<a href="/archive/2020/ 1/index.html">一 20 一月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>移动端三大事件</h2>
+<p>1、手指按下&nbsp;ontouchstart</p>
+<p>2、手指触摸&nbsp;ontouchmove  </p>
+<p>3、手指抬起&nbsp;ontouchend</p>
+<p>它们的执行顺序是ontouchstart &gt; ontouchend &gt;&nbsp;onclick</p>
+<p>处理ios键盘弹出按钮点击click失效</p>
+<ol>
+<li>用ontouchstart绑定事件即可</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">onTouchEnd</span><span class="o">=</span><span class="err">{</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="err">{</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">preventDefault</span><span class="p">();</span>
+  <span class="n">handleSelectAll</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="err">}}</span>
+</pre></div>
+
+
+<p>用onTouchStart时会有警告：Unable to preventDefault inside passive event listener due …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/f1nance-recommend-system.html" rel="bookmark" title="Permalink to F1nance recommend system">F1nance recommend&nbsp;system</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-01-17T00:00:00+08:00"> 
+				<a href="/archive/2020/ 1/index.html">五 17 一月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>流程</h2>
+<p>ETL数据清洗(extract transfer 和load)
+-&gt; Feature engineering数据工程(高并发concurrency)
+-&gt; modeling建模 
+-&gt; data analysis 
+-&gt; data&nbsp;visualization数据可视化</p>
+<h2>热启动</h2>
+<p>根据用户浏览workbook数据聚类，把与用户常看相同一类workbooks的人，也喜欢看的其他workbooks推荐给用户</p>
+<p>COS对象耦合性算法：名词性问题相似度计算，完整的表述是（Coupled Object&nbsp;Similarity，即COS</p>
+<p>缺点：只能定性聚类，不能分析出喜欢程度的不同</p>
+<h2>冷启动</h2>
+<p>首次登录的用户没有浏览的历史记录，不能做聚类分析 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -273,72 +345,9 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>导出</h3>
-<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
-  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
-<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
-</pre></div>
-
-
-<h3>展开运算符</h3>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
-  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
-<span class="p">};</span>
-<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-lu-you.html" rel="bookmark" title="Permalink to React 路由">React&nbsp;路由</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
-<span class="nx">render</span> <span class="p">((</span>
-  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
-      <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
-      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 2
+    Page 1 / 3
         <a href="/author/yoga2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -365,6 +374,9 @@
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
                         </li>
                         <li>
                           <a href="/category/programming.html" >Programming</a>
