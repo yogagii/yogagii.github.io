@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Frontend Learning Book</title>
+    <title>Frontend Learning Book - Articles by 张本轩 & Yoga</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -31,9 +31,8 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">make</span>: </h4>
+<h2>Articles by 张本轩 & Yoga</h2>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/make.html">make</a>
                 </section>
 
 
@@ -41,31 +40,34 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/makezong-jie.html" rel="bookmark" title="Permalink to Make总结">Make总结</a>
+			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-01-22T14:33:00+08:00"> 
-				<a href="/archive/2020/ 1/index.html">三 22 一月 2020 </a>
+			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
+				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Make</h2>
-<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其他文件名.</p>
-<h3>Make&nbsp;rules</h3>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">target</span><span class="o">&gt;:</span> <span class="o">&lt;</span><span class="nx">prerequisites</span><span class="o">&gt;</span>
-<span class="p">[</span><span class="nx">tab</span><span class="p">]</span>   <span class="o">&lt;</span><span class="nx">command</span><span class="o">&gt;</span>
+	<div class="summary"><ol>
+<li>
+<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
+</li>
+<li>
+<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
+</li>
+</ol>
+<h2>在首次使用Git前需要进行一些简单的配置:</h2>
+<ul>
+<li>设置提交中使用的用户名: </li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
 </pre></div>
 
 
-<p>一个目标构成一条规则，即可以是文件名也可以是某个操作的名字．</p>
-<div class="highlight"><pre><span></span><span class="nx">clean</span><span class="o">:</span>
-    <span class="nx">rm</span> <span class="o">*</span><span class="p">.</span><span class="nx">o</span>
-</pre></div>
-
-
-<p>通过调用<code>make clean</code>指令来执行上述程序, 为避免歧义．可以加入<code>.PHONY: clean</code>声明 …</p></div>
+<ul>
+<li>设置提交中使用的邮件地址 …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
