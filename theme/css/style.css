@@ -176,7 +176,7 @@ pre {
     width: 100%;
     word-wrap: break-word;
     white-space: pre-wrap;
-  border: 4px solid #888;
+  border-left: 4px solid #888;
 }
 
 del {
