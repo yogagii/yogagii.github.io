@@ -31,6 +31,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
@@ -71,7 +72,7 @@
 <ul>
 <li>设置提交中使用的用户名: </li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
 </pre></div>
 
 
@@ -131,6 +132,20 @@
 <li>忽略文件: </li>
 </ul>
 <p>修改.gitignore文件，可控制不希望被Git管理的文件</p>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="w"> </span><span class="n">根目录下</span><span class="w"></span>
+<span class="n">vim</span><span class="w"> </span><span class="p">.</span><span class="n">gitignore_global</span><span class="w"></span>
+<span class="o">//</span><span class="w"> </span><span class="o">*~</span><span class="w"></span>
+<span class="o">//</span><span class="w"> </span><span class="p">.</span><span class="n">DS_Store</span><span class="w"></span>
+<span class="n">vim</span><span class="w"> </span><span class="p">.</span><span class="n">gitconfig</span><span class="w"></span>
+<span class="o">//</span><span class="w"> </span><span class="o">[</span><span class="n">user</span><span class="o">]</span><span class="w"></span>
+<span class="o">//</span><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xx</span><span class="w"></span>
+<span class="o">//</span><span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xx</span><span class="nv">@xx</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
+<span class="o">//</span><span class="w"> </span><span class="o">[</span><span class="n">core</span><span class="o">]</span><span class="w"></span>
+<span class="o">//</span><span class="w">  </span><span class="n">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">jyu36</span><span class="o">/</span><span class="p">.</span><span class="n">gitignore_global</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--list</span>
+</pre></div>
+
+
 <ul>
 <li>查看文件中具体更新细节: </li>
 </ul>
@@ -335,8 +350,8 @@
 <ul>
 <li>打tag:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="n">git</span> <span class="n">tag</span> <span class="mi">2019</span><span class="o">-</span><span class="n">R6</span>
-  <span class="n">git</span> <span class="n">push</span> <span class="c1">-- tag</span>
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="mi">2019</span><span class="o">-</span><span class="n">R6</span>
+<span class="n">git</span> <span class="n">push</span> <span class="c1">--tag</span>
 </pre></div>
 
 
@@ -373,31 +388,31 @@
 <ul>
 <li>软连接:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jnjadc</span><span class="p">.</span><span class="n">com</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span>
+<div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jnjadc</span><span class="p">.</span><span class="n">com</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span>
 </pre></div>
 
 
 <ul>
 <li>Nginx:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="o">//</span> <span class="err">测试</span>
-  <span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
-  <span class="o">//</span> <span class="err">重启</span>
-  <span class="n">service</span> <span class="n">nginx</span> <span class="k">restart</span>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="err">测试</span>
+<span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
+<span class="o">//</span> <span class="err">重启</span>
+<span class="n">service</span> <span class="n">nginx</span> <span class="k">restart</span>
 </pre></div>
 
 
 <ul>
 <li>改变文件权限:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="n">chmod</span> <span class="mi">777</span> <span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
+<div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">777</span> <span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
 <ul>
 <li>执行脚本:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -449,6 +464,9 @@
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
                         </li>
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>

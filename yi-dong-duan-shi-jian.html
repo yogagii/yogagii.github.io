@@ -31,6 +31,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
@@ -68,10 +69,10 @@
 <ol>
 <li>用ontouchstart绑定事件即可</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="n">onTouchEnd</span><span class="o">=</span><span class="err">{</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="err">{</span>
-  <span class="n">e</span><span class="p">.</span><span class="n">preventDefault</span><span class="p">();</span>
-  <span class="n">handleSelectAll</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-<span class="err">}}</span>
+<div class="highlight"><pre><span></span><span class="nx">onTouchEnd</span> <span class="o">=</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="nx">handleSelectAll</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -79,9 +80,9 @@
 <ol>
 <li>在IOS下，点击页面中的input时，弹出软键盘时，如果input比较靠下，整个页面会上移，document.body.scrollOffset会由0变成大于0。&nbsp;软键盘消失后，页面会下移。但是document.body.scrollOffset并不会变成0，所以这时候触控不准；</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="s1">&#39;textarea,input&#39;</span><span class="p">).</span><span class="k">on</span><span class="p">(</span><span class="s1">&#39;blur&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="err">{</span>
-  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="err">}</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;textarea,input&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;blur&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">});</span>
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -133,6 +134,9 @@
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
                         </li>
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>

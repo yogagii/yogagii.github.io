@@ -1,0 +1,307 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/ios.html">IOS</a> ›Swift入门
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Swift入门</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-03-12T00:00:00+08:00"> 
+            <a href="/archive/2020/ 3/index.html">四 12 三月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/swift.html">Swift</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p><span class="caps">IOS</span>, iPadOS, maxOS,&nbsp;iwatch</p>
+<h2>class类：面向对象，动物类，引用类型reference&nbsp;type</h2>
+<p>传递时只是传递指针just passing pointers to&nbsp;it</p>
+<p>init在堆内存Heap里引用计数+1,deinit计数-1，容量大，速度慢，计数到0被清理</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">tesla</span> <span class="p">=</span> <span class="n">Car</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;Tesla&quot;</span><span class="p">)</span> <span class="c1">//Heat堆 tesla -&gt; Car(name: &quot;Tesla&quot;)</span>
+
+<span class="kd">let</span> <span class="nv">teslaB</span> <span class="p">=</span> <span class="n">tesla</span>
+
+<span class="n">tesla</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;A&quot;</span>
+</pre></div>
+
+
+<p>Class默认初始化方法:&nbsp;swift只会提供一个默认的空初始化方法。</p>
+<h2>struct结构体：值类型value&nbsp;type，没有继承</h2>
+<p>传递时复制：copy-on-write只有修改时复制</p>
+<p>在栈内存Stack创建，先进后出，进a-&gt;进b-&gt;a+b-&gt;出b-&gt;出a</p>
+<p>栈内存的在function结束就销毁，堆内存的在deinit才销毁</p>
+<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Dog</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">dogA</span> <span class="p">=</span> <span class="n">Dog</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;huahua&quot;</span><span class="p">)</span> <span class="c1">// error! 相当于js const，不能改属性</span>
+<span class="kd">var</span> <span class="nv">dogA</span> <span class="p">=</span> <span class="n">Dog</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;huahua&quot;</span><span class="p">)</span> <span class="c1">// 相当于js let</span>
+
+<span class="kd">let</span> <span class="nv">dogB</span> <span class="p">=</span> <span class="n">DogA</span>
+
+<span class="n">dogA</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;caocao&quot;</span>
+
+<span class="bp">print</span> <span class="n">dogB</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+
+
+<p>Struct默认初始化方法：1、空初始化方法；2、成员初始化方法</p>
+<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Person</span><span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">name</span> <span class="p">=</span> <span class="s">&quot;tom&quot;</span>
+    <span class="kd">var</span> <span class="nv">age</span> <span class="p">=</span> <span class="mi">1</span>
+
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">person</span> <span class="p">=</span> <span class="n">Person</span><span class="p">()</span><span class="c1">//空初始化方法</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;person:name=</span><span class="si">\(</span><span class="n">person</span><span class="p">.</span><span class="n">name</span><span class="si">)</span><span class="s">,age=</span><span class="si">\(</span><span class="n">person</span><span class="p">.</span><span class="n">age</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">person1</span> <span class="p">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="s">&quot;JIM&quot;</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="c1">//成员初始化方法</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;person:name=</span><span class="si">\(</span><span class="n">person1</span><span class="p">.</span><span class="n">name</span><span class="si">)</span><span class="s">,age=</span><span class="si">\(</span><span class="n">person1</span><span class="p">.</span><span class="n">age</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>enum枚举</h2>
+<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">ADC</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">digital</span>
+  <span class="k">case</span> <span class="n">edg</span>
+  <span class="k">case</span> <span class="n">sap</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="nc">ADC</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">digital</span> <span class="p">=</span> <span class="s">&quot;digital&quot;</span>
+  <span class="k">case</span> <span class="n">edg</span> <span class="p">=</span> <span class="s">&quot;edg&quot;</span>
+  <span class="k">case</span> <span class="n">sap</span> <span class="p">=</span> <span class="s">&quot;sap&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">digital</span> <span class="p">=</span> <span class="n">ADC</span><span class="p">.</span><span class="n">digital</span>
+</pre></div>
+
+
+<h2>Object&nbsp;面相对象</h2>
+<h2>Functional</h2>
+<h2>Protocal协议</h2>
+<div class="highlight"><pre><span></span><span class="n">protocal</span> <span class="n">Car</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+  <span class="kd">var</span> <span class="nv">isElectric</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">protocal</span> <span class="n">Car</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">maxSpeed</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+  <span class="kd">func</span> <span class="nf">charging</span><span class="p">(</span><span class="n">dianya</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
+<span class="p">}</span>
+
+<span class="c1">//遵循协议的结构体一定要实现协议的属性</span>
+<span class="kd">struct</span> <span class="nc">Tesla</span><span class="p">:</span> <span class="n">Car</span><span class="p">,</span> <span class="n">ElectricDrive</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">charging</span><span class="p">(</span><span class="n">dianya</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Double</span><span class="p">(</span><span class="n">dianya</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.0</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="kd">var</span> <span class="nv">maxSpeed</span><span class="p">:</span> <span class="nb">Double</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">maxSpeed</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">maxSpeed</span> <span class="p">=</span> <span class="n">maxSpeed</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//扩展</span>
+<span class="kd">extension</span> <span class="nc">Car</span> <span class="k">where</span> <span class="kc">Self</span><span class="p">:</span> <span class="n">ElectricDrive</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">isElectric</span><span class="err">：</span><span class="nb">Bool</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">tesla</span> <span class="p">=</span> <span class="n">Tesla</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;tesla&quot;</span><span class="p">,</span> <span class="n">maxSpeed</span><span class="p">:</span> <span class="mf">200.0</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">tesla</span><span class="p">.</span><span class="n">isElectric</span><span class="p">)</span> <span class="c1">//true</span>
+</pre></div>
+
+
+<h2>keywords关键字</h2>
+<p>inout</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">arrA</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="s">&quot;3&quot;</span><span class="p">];</span>
+<span class="kd">func</span> <span class="nf">arrRemoveFirst</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="kr">inout</span> <span class="p">[</span><span class="nb">String</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">string</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">arr</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>public</p>
+<p>func</p>
+<p>let</p>
+<p>var +1&nbsp;-1(0时deinit)</p>
+<p>week&nbsp;弱引用（对象销毁时deinit）</p>
+<h2>modifier修饰符</h2>
+<h2>optional&nbsp;chain可选链式调用</h2>
+<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">ClassA</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span><span class="nb">String</span><span class="p">?</span> <span class="c1">//?可能有可能没有 nil &amp;非nil</span>
+  <span class="kd">var</span> <span class="nv">grade</span><span class="p">:</span><span class="nb">String</span><span class="p">!</span> <span class="c1">//!初始化时一定要有值</span>
+  <span class="kd">var</span> <span class="nv">nameA</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;123&quot;</span> <span class="c1">//默认值</span>
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/ios.html">IOS</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "swiftru-men.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/ios.html">IOS</a> ›Concentration Game &#8212;&nbsp;Model
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Concentration Game &#8212;&nbsp;Model</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-03-28T00:00:00+08:00"> 
+            <a href="/archive/2020/ 3/index.html">六 28 三月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/swift.html">Swift</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2><span class="caps">MVC</span></h2>
+<p><img alt="Flux" src="img/swift-mvc.png"></p>
+<p><img alt="Flux" src="img/swift-mvc2.png"></p>
+<p><img alt="Flux" src="img/swift-mvc3.png"></p>
+<p>view: your controller&#8217;s minions&nbsp;(Main.storyboard)</p>
+<p>controller: how your model is presented to the user &#8212; <span class="caps">UI</span> logic&nbsp;(ViewController.swift)</p>
+<p>model: what your application is, but not how it is displayed&nbsp;(concentration.swift)</p>
+<h1>Model &#8212;&nbsp;Concentration.swift</h1>
+<blockquote>
+<p><span class="caps">API</span> = Application Programming Interface: a list of all the methods and instancs variables in that class <br />
+public <span class="caps">API</span>: all the instanve variables and methods that you&#8217;re going to allow other classes to&nbsp;call</p>
+</blockquote>
+<h2>Initializer初始化</h2>
+<ul>
+<li>数组初始化</li>
+</ul>
+<p>Array has an init with no arguments and what it does is it creates an empty&nbsp;array</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]()</span>
+<span class="kd">var</span> <span class="nv">yourArray</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
+
+<span class="kd">var</span> <span class="nv">cards</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="n">Card</span><span class="p">&gt;()</span>
+<span class="kd">var</span> <span class="nv">cards</span> <span class="p">=</span> <span class="p">[</span><span class="n">Card</span><span class="p">]()</span>
+</pre></div>
+
+
+<ul>
+<li>类初始化</li>
+</ul>
+<p>Concentration is a class, get a free init with no 
+arguments as long as all of their vars are&nbsp;initialized.</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">game</span><span class="p">:</span> <span class="n">Concentration</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">()</span>
+</pre></div>
+
+
+<ul>
+<li>结构体初始化</li>
+</ul>
+<p>Struct, the free initializer they get, initializes all of their vars, even if they&#8217;re already&nbsp;pre-initialized.</p>
+<p>类没有白送这种可以初始化所有变量的初始化器 </p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">(</span><span class="n">isFaceUp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">isMatched</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">indentifier</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Card</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="nb">Int</span>
+
+  <span class="kd">init</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">identifier</span> <span class="p">=</span> <span class="n">identifier</span> <span class="c1">// 将传进来的identifier值赋值给Card的identifier</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 法一</span>
+  <span class="c1">// init tend to have the same internal name with alternal name</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">identifier</span> <span class="n">i</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 外部参数名 内部参数名</span>
+    <span class="n">identifier</span> <span class="p">=</span> <span class="n">i</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 法二</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">identifier</span> <span class="p">=</span> <span class="n">identifier</span> <span class="c1">//通过self区分传入的identifier和Card的identifier</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>循环体</h2>
+<p>for &#8230; in &#8230;
+in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// [0, numberOfPairsOfCards)</span>
+<span class="k">for</span> <span class="n">indentifier</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="n">numberOfPairsOfCards</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1">// [1, numberOfPairsOfCards]</span>
+<span class="k">for</span> <span class="n">indentifier</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">numberOfPairsOfCards</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">identifier</span><span class="p">)</span>
+
+  <span class="c1">// 法一</span>
+  <span class="kd">let</span> <span class="nv">matchingCard</span> <span class="p">=</span> <span class="n">card</span>
+  <span class="n">cards</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+  <span class="n">cards</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">matchingCard</span><span class="p">)</span>
+
+  <span class="c1">// 法二</span>
+  <span class="n">cards</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+  <span class="n">cards</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+  <span class="c1">// putting things in an array or taking them out also copies the card</span>
+  <span class="c1">// 当翻转一张时，另一张不会翻转，因为是真实的副本，不是指针</span>
+
+  <span class="c1">// 法三</span>
+  <span class="n">cards</span> <span class="o">+=</span> <span class="p">[</span><span class="n">card</span><span class="p">,</span> <span class="n">card</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// 用underbar作为control variable of loop，表示ignore this</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">numberOfPairsOfCards</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">()</span>
+  <span class="n">cards</span> <span class="o">+=</span> <span class="p">[</span><span class="n">card</span><span class="p">,</span> <span class="n">card</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>结构体是值类型，每次使用时复制</p>
+<h2>静态方法</h2>
+<p>Static function is a function even though it&#8217;s in the Card class, you can&#8217;t send it to a&nbsp;card</p>
+<p>类内的静态方法不能传递给实例化对象，类似global function, utility&nbsp;function</p>
+<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Card</span> <span class="p">{</span>
+  <span class="c1">// stored with each individual card -- card</span>
+  <span class="kd">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="nb">Int</span>
+
+  <span class="c1">// 静态变量stored with the type -- Card</span>
+  <span class="kd">static</span> <span class="kd">var</span> <span class="nv">identifierFactory</span> <span class="p">=</span> <span class="mi">0</span>
+
+  <span class="c1">// 静态方法</span>
+  <span class="kd">static</span> <span class="kd">func</span> <span class="nf">getUniqueIdentifier</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="c1">// Card.identifierFactory += 1</span>
+    <span class="c1">// 静态方法内部can access静态变量，不需要Card.</span>
+    <span class="n">identifierFactory</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">identifierFactory</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>延迟加载</h2>
+<blockquote>
+<p>Catch22: one depends on another<br />
+&#8220;catch-22&nbsp;situation&#8221;意为本身就有问题、不符合逻辑而难以实现的规则或者进退两难的境地。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">game</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">(</span><span class="n">numberOfPairsOfCards</span><span class="p">:</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// cardButtons还未初始化</span>
+</pre></div>
+
+
+<p>property initializers run before &#8216;self&#8217; is&nbsp;available</p>
+<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">game</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">(</span><span class="n">numberOfPairsOfCards</span><span class="p">:</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If you make a var lazy, that means it doesn&#8217;t actually initialize until someone grabs&nbsp;it.使用时才初始化</p>
+<p>所谓延迟加载就是在第一次访问某个属性时，要判断这个属性是否已经被初始化，如果已经初始化则直接返回，若没有初始化则进行初始化。这样可以把这个属性延迟初始化，把它和包含它的对象的初始化分隔开，来达到提升性能的目的。</p>
+<p>链接：https://www.jianshu.com/p/d1c4cbb5bede</p>
+<p>缺点：没有didSet</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/ios.html">IOS</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "concentration-game-model.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

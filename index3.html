@@ -23,6 +23,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
@@ -36,6 +37,315 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>导出</h3>
+<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
+  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
+<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3>展开运算符</h3>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
+  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-lu-you.html" rel="bookmark" title="Permalink to React 路由">React&nbsp;路由</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
+<span class="nx">render</span> <span class="p">((</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
+      <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
+      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-chang-yong-zu-jian.html" rel="bookmark" title="Permalink to React 常用组件">React&nbsp;常用组件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>按钮组件</h3>
+<ul>
+<li>
+<p>样式：允许使用者自行定义并作为属性传入，若不传需提供默认样式</p>
+</li>
+<li>
+<p>事件：将自定义的事件处理函数作为属性传入，事件触发时该函数被调用</p>
+</li>
+</ul>
+<h3>分页组件</h3>
+<ul>
+<li>
+<p>数据：pageSize, pageNum, pages, offset, total, col_name,&nbsp;direction</p>
+</li>
+<li>
+<p>事件：onFirst首页, onLast尾页 (-&gt; disabled: true), onPrev上一页, OnNext下一页, onFresh刷新,&nbsp;onChange</p>
+</li>
+</ul>
+<h3>树形组件</h3>
+<p>由于树形结构的级数可变，需要用递归的方式才能实现树形组件的定义</p>
+<h3>Modal对话框</h3>
+<p>弹出Modal时在当前页面先覆盖一个遮罩层 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>绑定未提供的事件</h3>
+<hr>
+<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
+<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><br></p>
+<h3>AJAX加载数据</h3>
+<hr>
+<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
+<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
+<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/google-tag-manager.html" rel="bookmark" title="Permalink to Google Tag Manager">Google Tag&nbsp;Manager</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-20T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 20 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>谷歌标签管理器</h2>
+<h3>优点：</h3>
+<ol>
+<li>
+<p>通过GTM可以更快测试和发布代码而不需要在站点上硬编码</p>
+</li>
+<li>
+<p>个性化跟踪</p>
+</li>
+<li>
+<p>管理更有效</p>
+</li>
+<li>
+<p>提高网站加载速度，优化了异步加载</p>
+</li>
+</ol>
+<h3>缺点：</h3>
+<p>多一层跳转：先加载GTM容器，再加载其他跟踪代码，如GA</p>
+<h3>账户结构：</h3>
+<p>一个google可以有多个GTM&nbsp;account，</p>
+<p>一个account可以有多个GTM Container&nbsp;Tag，</p>
+<p>每个容器对应一个站点（Tag，Trigger，Variables）</p>
+<h3>Variable变量</h3>
+<p>变量是键值对，其中的值在运行时填充</p>
+<ol>
+<li>
+<p>在触发器中，变量用来定义指定特定触发器应在何时执行的过滤条件（URL变量）</p>
+</li>
+<li>
+<p>在代码中，变量用来捕获动态值 …</p></li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to React 表单">React&nbsp;表单</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>事件响应</h2>
+<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
+<p><code>&lt;input&gt; -&gt; value / checked</code></p>
+<p><code>&lt;textarea&gt; -&gt; value</code></p>
+<p><code>&lt;option&gt; -&gt; selected</code></p>
+<p><strong>复用</strong>：只写一个事件处理函数且能处理多个事件</p>
+<ol>
+<li>
+<p>bind复用</p>
+<p>事件响应函数通过bind的参数识别事件源</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">)}</span> <span class="o">/&gt;</span>
+  <span class="nx">hangdeChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newState</span><span class="p">[</span><span class="nx">name …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to React 复合组件">React&nbsp;复合组件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>组件的原则：职责单一，外在体现可复用性，内在体现分装性</p>
+</blockquote>
+<h2>组件嵌套</h2>
+<hr>
+<p>法一：在父组件的render函数中直接渲染子组件</p>
+<p>法二：对于动态的、数量不固定的子组件需要用到this.props.children</p>
+<p><br></p>
+<h2>组件参数传递</h2>
+<hr>
+<ul>
+<li><strong>动态参数传递</strong>：展开属性（参数名称是变量）</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="nx">moreAttr</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="o">/&gt;</span>
+  <span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
+</pre></div>
+
+
+<ul>
+<li><strong>Underscore</strong>：提供_.omit()来过滤属性</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 剩余属性：除checked之外的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/jsx.html" rel="bookmark" title="Permalink to JSX"><span class="caps">JSX</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>JSX语法转义器会识别嵌入JavaScript代码中的HTML标签，当遇到&#8217;&lt;&#8217;标识符就会启动JSX转移过程，遇到&#8217;{&#8216;标识符就会当作JavaScript代码进行处理。</p>
+<p>引用Babel中负责JSX转义的模块browser.js，并将使用JSX语法描述的js文件类型声明为text/babel</p>
+<h3>1.&nbsp;三元表达式</h3>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">||</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<h3>2.&nbsp;注释</h3>
+<p>{/<em> 当注释作为独立子节点时需要用大括号包裹起来 </em>/}</p>
+<h3>3.&nbsp;展开属性</h3>
+<div class="highlight"><pre><span></span><span class="nx">component</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">foo …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -59,7 +369,7 @@
 <li><strong>React.createElement</strong></li>
 </ul>
 <p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">‘</span><span class="nx">ul</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="err">’</span><span class="nx">myClass</span><span class="err">’</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="s1">&#39;myClass&#39;</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2</span><span class="p">);</span>
 </pre></div>
 
 
@@ -103,210 +413,11 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-zu-jian.html" rel="bookmark" title="Permalink to React 组件">React&nbsp;组件</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>组件的属性</h2>
-<hr>
-<ol>
-<li>
-<p><strong>props属性集合：</strong> 保存组件的初始属性数据（大部分原始数据）；
-<br> this.props.children数组中会包含本组件实例的所有组件，由React自动填充
-<br>&nbsp;this.props.context跨级包含上级组件的数据</p>
-</li>
-<li>
-<p><strong>state状态集合：</strong>&nbsp;保存组件的状态数据（用户输入、服务器请求、时间变化）；</p>
-</li>
-<li>
-<p><strong>render函数：</strong>&nbsp;主要职责是根据state状态，结合props属性，进行虚拟DOM的构建；render函数内不应该修改组件state，不读写DOM信息，不与浏览器交互（setTimeOut）</p>
-</li>
-<li>
-<p><strong>setState(data, callback)成员函数：</strong>&nbsp;页面所有的变化均由状态的变更引发，状态的变更通过调用组件实例的setState函数完成 …</p></li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/she-ji-mo-shi.html" rel="bookmark" title="Permalink to 设计模式">设计模式</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-21T15:53:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 21 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Head&nbsp;first设计模式</h2>
-<h3>策略模式</h3>
-<p>策略模式定义了算法族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户</p>
-<ul>
-<li>找出应用中可能需要变化之处，把他们独立出来，不要和那些不需要变化的代码混在一起</li>
-<li>针对接口编程，而不是针对实现编程</li>
-<li>多用组合，少用继承 </li>
-</ul>
-<h3>观察者模式</h3>
-<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，他的所有依赖者都会收到通知并自动更新</p>
-<ul>
-<li>为了交互对象之间的松耦合而努力</li>
-</ul>
-<h3>装饰者模式</h3>
-<p>装饰者模式动态地将责任附加到对象上，若要扩展功能，装饰者提供了比继承更有弹性的替代方案</p>
-<ul>
-<li>类应该对扩展开放，对修改关闭</li>
-</ul>
-<h3>工厂方法模式</h3>
-<p>工厂方法模式通过让子类决定该创建的对象是什么，来达到将对象创建的过程封装的目的．工厂方法模式定义了一个创建对象的接口 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/pelican-blogda-jian.html" rel="bookmark" title="Permalink to pelican blog搭建">pelican&nbsp;blog搭建</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-20T16:32:00+08:00"> 
-				<a href="/archive/2018/10/index.html">六 20 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Installation</h2>
-<ol>
-<li><code>pip install pelican</code></li>
-<li><code>pip install Markdown</code></li>
-<li><code>pelican-quickstart</code> to build a quick start version&nbsp;project </li>
-<li>[Optional] <code>pip install typogrify</code></li>
-</ol>
-<h2>Usage</h2>
-<p>blog&nbsp;metadata</p>
-<div class="highlight"><pre><span></span><span class="nv">Title</span>: <span class="nv">My</span> <span class="nv">title</span>
-<span class="nv">Date</span>: <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/markdownyu-fa-jie-shao.html" rel="bookmark" title="Permalink to Markdown语法介绍">Markdown语法介绍</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T21:14:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>这篇文章介绍Markdown的语法，包括标题、引用、列表、代码、强调、链接、表格、分割线、图片</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" rel="bookmark" title="Permalink to 二分搜索的各种写法">二分搜索的各种写法</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T21:04:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
-<li>对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一)，若t不在x中则返回-1。</li>
-</ol>
-<div class="highlight"><pre><span></span>    <span class="kt">int</span> <span class="nf">binarysearch</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">m …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
-<li>
-<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
-</li>
-<li>
-<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
-</li>
-</ol>
-<h2>在首次使用Git前需要进行一些简单的配置:</h2>
-<ul>
-<li>设置提交中使用的用户名: </li>
-</ul>
-<div class="highlight"><pre><span></span>  <span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
-</pre></div>
-
-
-<ul>
-<li>设置提交中使用的邮件地址 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index2.html">&laquo;</a>
-    Page 3 / 3
+    Page 3 / 4
+        <a href="/index4.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -332,6 +443,9 @@
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
                         </li>
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>

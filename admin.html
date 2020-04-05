@@ -31,6 +31,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
@@ -60,11 +61,11 @@
     </header>
     <div class="post-entry">
         <p>The <Admin> component creates an application with its own state, routing, and controller logic. <Admin> requires only a dataProvider prop, and at least one child <Resource> to&nbsp;work:</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">simpleRestProvider</span><span class="p">(</span><span class="s1">&#39;http://path.to.my.api&#39;</span><span class="p">)}</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
-<span class="p">);</span>
+<div class="highlight"><pre><span></span>const App = () =&gt; (
+    <span class="p">&lt;</span><span class="nt">Admin</span> <span class="na">dataProvider</span><span class="o">=</span><span class="s">{simpleRestProvider(&#39;http://path.to.my.api&#39;)}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">Resource</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;posts&quot;</span> <span class="na">list</span><span class="o">=</span><span class="s">{PostList}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">Admin</span><span class="p">&gt;</span>
+);
 </pre></div>
 
 
@@ -91,7 +92,7 @@
 <h2>title</h2>
 <p>title=&#8221;My Custom&nbsp;Admin&#8221;</p>
 <h2>dashboard</h2>
-<p>By default, the homepage of an admin app is the list of the first child &#8216;Resource&#8217;. But you can also specify a custom component instead. To fit in the general design, use Material <span class="caps">UI</span>’s &#8216;Card&#8217; component, and react-admin’s &#8216;Title&#8217; component to set the title in the&nbsp;AppBar:</p>
+<p>By default, the homepage of an admin app is the list of the first child &#8216;Resource&#8217;. But you can also specify a custom component instead. To fit in the general design, use Material <span class="caps">UI</span>&#8217;s &#8216;Card&#8217; component, and react-admin&#8217;s &#8216;Title&#8217; component to set the title in the&nbsp;AppBar:</p>
 <p>dashboard={Dashboard}</p>
 <div class="highlight"><pre><span></span><span class="c1">// in src/Dashboard.js</span>
 <span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
@@ -108,7 +109,7 @@
 
 
 <h2>catchAll</h2>
-<p>When users type URLs that don’t match any of the children <Resource> components, they see a default “Not Found” page. You can customize this page to use the component of your choice by passing it as the catchAll&nbsp;prop. </p>
+<p>When users type URLs that don&#8217;t match any of the children <Resource> components, they see a default &#8220;Not Found&#8221; page. You can customize this page to use the component of your choice by passing it as the catchAll&nbsp;prop. </p>
 <h2>theme</h2>
 <p>Material <span class="caps">UI</span> supports theming. This lets you customize the look and feel of an admin by overriding fonts, colors, and spacing. You can provide a custom material ui theme by using the theme&nbsp;prop:</p>
 <div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="nx">createMuiTheme</span><span class="p">({</span>
@@ -286,6 +287,9 @@ import { CommentList } from&nbsp;&#8216;./comments&#8217;;</p>
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
                         </li>
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>

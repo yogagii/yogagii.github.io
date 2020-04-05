@@ -1,0 +1,329 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime: 2019-12-29 17:31:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/category.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+<!-- <h4 class="content-archive">Articles in the <span style="color:rgb(0,102,204)">IOS</span> category</h4> -->
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ››Category: <a href="category/ios.html">IOS</a>
+                </section>
+
+
+<ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/concentration-game-controller.html" rel="bookmark" title="Permalink to Concentration Game — Controller">Concentration Game &#8212;&nbsp;Controller</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-28T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">六 28 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h1>Controller &#8212;&nbsp;ViewController.swift</h1>
+<p>hook button and controller&nbsp;up: </p>
+<ol>
+<li>
+<p>按住ctrl拖拽进controller的代码</p>
+</li>
+<li>
+<p>点击dashboard上黄色按钮，拖拽到UI，选择函数</p>
+</li>
+</ol>
+<p><img alt="Flux" src="img/swift4.png"></p>
+<p>函数参数（外部名称&nbsp;内部名称：类型）</p>
+<p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
+<div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">flipCard</span><span class="p">(</span><span class="n">withEmoji</span><span class="p">:</span> <span class="err">&#39;👻&#39;</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">sender …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/concentration-game-model.html" rel="bookmark" title="Permalink to Concentration Game — Model">Concentration Game &#8212;&nbsp;Model</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-28T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">六 28 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">MVC</span></h2>
+<p><img alt="Flux" src="img/swift-mvc.png"></p>
+<p><img alt="Flux" src="img/swift-mvc2.png"></p>
+<p><img alt="Flux" src="img/swift-mvc3.png"></p>
+<p>view: your controller&#8217;s minions&nbsp;(Main.storyboard)</p>
+<p>controller: how your model is presented to the user &#8212; <span class="caps">UI</span> logic&nbsp;(ViewController.swift)</p>
+<p>model: what your application is, but not how it …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/network-and-multithread.html" rel="bookmark" title="Permalink to Network and Multithread">Network and&nbsp;Multithread</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-26T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">四 26 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>load view -&gt; fetch data(Network) -&gt; save data -&gt; display(Multithread) -&gt;&nbsp;action</p>
+<h2>WebView&nbsp;可以装网页的容器</h2>
+<p>网页中的代码可以和原生应用代码交互</p>
+<p>UIwebview 有内存泄漏的问题，苹果优化做了&nbsp;webkitbweview</p>
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="k">class</span><span class="w"> </span><span class="nl">WebViewController</span><span class="p">:</span><span class="w"> </span><span class="n">UIViewController</span><span class="p">,</span><span class="w"> </span><span class="n">WKUIDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">WKNavigationDelegate</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nf">var</span><span class="w"> </span><span class="nl">webView</span><span class="p">:</span><span class="w"> </span><span class="n">WKWebView</span><span class="err">!</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">override</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="n">viewDidLoad</span><span class="p">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">super</span><span class="p">.</span><span class="n">viewDidLoad …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/swift-ui.html" rel="bookmark" title="Permalink to Swift UI">Swift <span class="caps">UI</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-20T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">五 20 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>UIViewController</h2>
+<ol>
+<li>AppDelegate.swift 程序入口&nbsp;(负责逻辑)</li>
+</ol>
+<p>didFinishLauchingOptions第一次打开程序</p>
+<ol>
+<li>SceneDelegate（负责UI）应用的入口和生命周期</li>
+</ol>
+<p>willConnectTo第一加载页面</p>
+<p>sceneWillEnterForeground即将进入前台</p>
+<p>sceneDidBecomeActive进入前台</p>
+<ol>
+<li>ViewController&nbsp;一个页面</li>
+</ol>
+<div class="highlight"><pre><span></span> <span class="k">class</span> <span class="n">ViewController:</span> <span class="n">UIViewController</span>
+</pre></div>
+
+
+<p>UIViewController</p>
+<p>UITabBarController底部tab栏</p>
+<p>UINavigationController数组（栈）路由，有顶层导航栏可以显示页面名字</p>
+<p>UITableViewController&nbsp;list</p>
+<p>UICollectionViewController</p>
+<p>生命周期</p>
+<div class="highlight"><pre><span></span><span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/swiftru-men.html" rel="bookmark" title="Permalink to Swift入门">Swift入门</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-12T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">四 12 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p><span class="caps">IOS</span>, iPadOS, maxOS,&nbsp;iwatch</p>
+<h2>class类：面向对象，动物类，引用类型reference&nbsp;type</h2>
+<p>传递时只是传递指针just passing pointers to&nbsp;it</p>
+<p>init在堆内存Heap里引用计数+1,deinit计数-1，容量大，速度慢，计数到0被清理</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+</ul>
+<p class="paginator">
+    Page 1 / 1
+</p>
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                            <ul>
+                                <li>
+                                  <a href="/concentration-game-controller.html">Concentration Game &#8212;&nbsp;Controller</a>
+                                </li>
+                                <li>
+                                  <a href="/concentration-game-model.html">Concentration Game &#8212;&nbsp;Model</a>
+                                </li>
+                                <li>
+                                  <a href="/network-and-multithread.html">Network and&nbsp;Multithread</a>
+                                </li>
+                                <li>
+                                  <a href="/swift-ui.html">Swift <span class="caps">UI</span></a>
+                                </li>
+                                <li>
+                                  <a href="/swiftru-men.html">Swift入门</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

@@ -31,6 +31,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
@@ -84,10 +85,10 @@
 </pre></div>
 
 
-<p>name=&#8221;users&#8221; informs react-admin to fetch the “users” records from the http://jsonplaceholder.typicode.com/users <span class="caps">URL</span>.</p>
+<p>name=&#8221;users&#8221; informs react-admin to fetch the &#8220;users&#8221; records from the http://jsonplaceholder.typicode.com/users <span class="caps">URL</span>.</p>
 <p>list={ListGuesser} means that react-admin should use the <ListGuesser> component to display the list of&nbsp;posts.</p>
 <h2>Selecting&nbsp;Columns</h2>
-<p>The <ListGuesser> component is not meant to be used in production - it’s just a way to quicky bootstrap an admin. ListGuesser dumps the code of the list it has guessed to the&nbsp;console:</p>
+<p>The <ListGuesser> component is not meant to be used in production - it&#8217;s just a way to quicky bootstrap an admin. ListGuesser dumps the code of the list it has guessed to the&nbsp;console:</p>
 <div class="highlight"><pre><span></span><span class="c1">// in src/users.js</span>
 <span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">EmailField</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
@@ -121,7 +122,7 @@
 
 <p>Now, the app uses a component that you can customize. React-admin provides more Field components, mapping various data types: number, date, image, <span class="caps">HTML</span>, array, reference,&nbsp;etc.</p>
 <h2>Customizing&nbsp;Styles</h2>
-<p>React-admin relies on material-ui, a set of React components modeled after Google’s Material Design <span class="caps">UI</span> Guidelines. Material-ui uses <span class="caps">JSS</span>, a <span class="caps">CSS</span>-in-<span class="caps">JS</span> solution, for styling&nbsp;components.</p>
+<p>React-admin relies on material-ui, a set of React components modeled after Google&#8217;s Material Design <span class="caps">UI</span> Guidelines. Material-ui uses <span class="caps">JSS</span>, a <span class="caps">CSS</span>-in-<span class="caps">JS</span> solution, for styling&nbsp;components.</p>
 <div class="highlight"><pre><span></span><span class="c1">// in src/MyUrlField.js</span>
 <span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">withStyles</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@material-ui/core/styles&quot;</span><span class="p">;</span>
@@ -161,7 +162,7 @@
 
 
 <h2>Handling&nbsp;Relationships</h2>
-<p>React-admin knows how to take advantage of these foreign keys to fetch references. ReferenceField component alone doesn’t display anything. It just fetches the reference data, and passes it as a record to its child component (a TextField in our&nbsp;case).</p>
+<p>React-admin knows how to take advantage of these foreign keys to fetch references. ReferenceField component alone doesn&#8217;t display anything. It just fetches the reference data, and passes it as a record to its child component (a TextField in our&nbsp;case).</p>
 <div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">ReferenceField</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;userId&quot;</span> <span class="nx">reference</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">TextField</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="o">/&gt;</span>
 <span class="o">&lt;</span><span class="err">/ReferenceField&gt;</span>
@@ -219,9 +220,9 @@
 </pre></div>
 
 
-<p>React-admin automatically adds a “create” button on top of the posts list to give access to the <PostCreate> component. And the creation form works ; it issues a <span class="caps">POST</span> request to the <span class="caps">REST</span> <span class="caps">API</span> upon&nbsp;submission.</p>
+<p>React-admin automatically adds a &#8220;create&#8221; button on top of the posts list to give access to the <PostCreate> component. And the creation form works ; it issues a <span class="caps">POST</span> request to the <span class="caps">REST</span> <span class="caps">API</span> upon&nbsp;submission.</p>
 <h2>Undo</h2>
-<p>When a user edits a record and hits the “Save” button, the <span class="caps">UI</span> shows a confirmation and displays the updated data before sending the update query to&nbsp;server. </p>
+<p>When a user edits a record and hits the &#8220;Save&#8221; button, the <span class="caps">UI</span> shows a confirmation and displays the updated data before sending the update query to&nbsp;server. </p>
 <p>Benefit:</p>
 <ol>
 <li>
@@ -254,7 +255,7 @@
 
 
 <h2>responsive</h2>
-<p>The best compromise would be to use <SimpleList> on small screens, and <Datagrid> on other screens. That’s where the <Responsive> component comes&nbsp;in:</p>
+<p>The best compromise would be to use <SimpleList> on small screens, and <Datagrid> on other screens. That&#8217;s where the <Responsive> component comes&nbsp;in:</p>
 <div class="highlight"><pre><span></span><span class="c1">// in src/posts.js</span>
 <span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Responsive</span><span class="p">,</span> <span class="nx">SimpleList</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">ReferenceField</span><span class="p">,</span> <span class="nx">EditButton</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
@@ -334,6 +335,9 @@
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
                         </li>
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>

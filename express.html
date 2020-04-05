@@ -1,0 +1,289 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/data.html">Data</a> ›Express
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Express</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-04-01T00:00:00+08:00"> 
+            <a href="/archive/2019/ 4/index.html">一 01 四月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/express.html">Express</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <div class="highlight"><pre><span></span><span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="p">.</span><span class="nx">babel</span> <span class="nx">es6</span> <span class="p">=&gt;</span> <span class="nx">es5</span> <span class="nx">X</span> 
+<span class="err">#</span> <span class="k">default</span> <span class="p">=&gt;</span> <span class="kr">import</span> 
+<span class="kr">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="nv">const</span> <span class="nv">Com</span> <span class="o">=</span> <span class="ss">()</span> <span class="o">=&gt;</span> {
+    <span class="k">return</span> <span class="ss">(</span><span class="o">&lt;</span><span class="nv">div</span><span class="o">&gt;&lt;/</span><span class="nv">div</span><span class="o">&gt;</span><span class="ss">)</span>
+} 
+
+<span class="nv">export</span> <span class="nv">default</span> <span class="nv">Com</span><span class="c1">;</span>
+</pre></div>
+
+
+<p>正常用Js</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Com</span> <span class="nn">from</span> <span class="s1">&#39;./Com&#39;</span>
+<span class="kn">import</span> <span class="o">*</span> <span class="k">as</span> <span class="n">React</span> <span class="kn">from</span> <span class="s1">&#39;react&#39;</span>
+<span class="n">default</span> <span class="o">=&gt;</span> <span class="n">X</span>
+</pre></div>
+
+
+<p>但使用Ts拿不到，因为Ts的协议更加规范</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">bodyParser</span> <span class="nx">from</span> <span class="s1">&#39;body-parser&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">request</span> <span class="nx">from</span> <span class="s1">&#39;request&#39;</span><span class="p">;</span>
+
+<span class="c1">// dont modify this entry file</span>
+<span class="c1">// when you need to add middleware, please add it to manager/middleware.ts</span>
+
+<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// Use body parser middleware to handle post body data</span>
+<span class="c1">//app.use(bodyParser);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span>: <span class="kt">express.Response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="c1">// </span>
+  <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">qRes</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">qRes</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">qRes</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// slot for the shell to create</span>
+<span class="c1">// req request content</span>
+<span class="c1">// res response action</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/req&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+
+  <span class="kr">const</span> <span class="nx">retMsg</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;hello world&#39;</span> <span class="p">};</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">retMsg</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// start</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8811</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Open the server&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;express-example&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;ts-node-dev index&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;prod&quot;</span><span class="p">:</span> <span class="s2">&quot;ts-node index&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;create&quot;</span><span class="p">:</span> <span class="s2">&quot;ts-node ./bin/create&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;@types/express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.3&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@types/node&quot;</span><span class="p">:</span> <span class="s2">&quot;^13.9.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;body-parser&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.19.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;chalk&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cookie-parser&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.4&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;moment&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.24.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;multer&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.88.2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ts-node&quot;</span><span class="p">:</span> <span class="s2">&quot;^8.6.2&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;eslint&quot;</span><span class="p">:</span> <span class="s2">&quot;^5.4.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;eslint-config-umi&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;eslint-plugin-flowtype&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.50.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;eslint-plugin-import&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.14.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;eslint-plugin-jsx-a11y&quot;</span><span class="p">:</span> <span class="s2">&quot;^5.1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;eslint-plugin-react&quot;</span><span class="p">:</span> <span class="s2">&quot;^7.11.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;nodemon&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.0.2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;prettier&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.19.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ts-node-dev&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.0.0-pre.44&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;typescript&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.8.3&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;lint-staged&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;*.{js,jsx}&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;eslint --fix&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;git add&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Book:&nbsp;深入PHP：面向对象、模式与实践</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/data.html">Data</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Riz</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "express.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
