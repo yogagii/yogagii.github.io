@@ -1,0 +1,267 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›Button模拟键盘事件
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Button模拟键盘事件</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-04-17T00:00:00+08:00"> 
+            <a href="/archive/2020/ 4/index.html">五 17 四月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>尝试方法一：</h3>
+<p>Tableau文档提供的接口</p>
+<p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
+<h3>尝试方法二：</h3>
+<p>前端模拟tableau保存的流程，点击我们的按钮时，请求五六个tableau的接口，根据返回的数据照着做一个保存的窗口，例如:</p>
+<p>https://prodbitabcrp.jnj.com/vizportal/api/web/v1/getDestinationProjects</p>
+<p>困难：跨域问题，无法直接调用tableau的接口</p>
+<h3>尝试方法三：</h3>
+<p>前端做个按钮，点击后向后端发送workbook信息，让后端调用tableau的接口完成保存</p>
+<p>困难：wenyu说后端保存workbook会使发布人从用户变为某个admin账号</p>
+<h3>尝试方法四：</h3>
+<p>模拟ctrl+s ——&nbsp;execCommand(&#8216;SaveAs&#8217;)</p>
+<p>困难：不兼容，在我的mac和Rick的windows（<span class="caps">IE11</span>）上都没有成功</p>
+<p>各浏览器对SaveAs支持：</p>
+<table>
+<thead>
+<tr>
+<th>sCommand</th>
+<th align="center"><span class="caps">IE6</span></th>
+<th align="center"><span class="caps">IE7</span></th>
+<th align="center"><span class="caps">IE8</span></th>
+<th align="center">Firefox</th>
+<th align="center">Chrome</th>
+<th align="center">Safari</th>
+<th align="center">Opera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>saveAs</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center">N</td>
+<td align="center">N</td>
+<td align="center">N</td>
+<td align="center">N</td>
+</tr>
+</tbody>
+</table>
+<h3>尝试方法五：</h3>
+<p>模拟ctrl+s ——&nbsp;创建点击事件</p>
+<ol>
+<li>jQuery.Event(&#8220;keydown&#8221;);</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">=</span><span class="mi">83</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">==</span><span class="mi">83</span><span class="o">&amp;&amp;</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">){</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">&quot;saveAs&quot;</span><span class="p">);</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;按下了ctrl+S`````&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<ol>
+<li>createEvent(&#8216;KeyboardEvent&#8217;)</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">ev</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;KeyboardEvent&#39;</span><span class="p">)</span>
+<span class="nx">ev</span><span class="p">.</span><span class="nx">initKeyboardEvent</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="nb">window</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="kc">false</span><span class="p">,</span><span class="kc">false</span><span class="p">,</span><span class="kc">false</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+</pre></div>
+
+
+<ol>
+<li>createEventObject()</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">eventObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEventObject</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">initEvent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">eventObj</span><span class="p">.</span><span class="nx">initEvent</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">eventObj</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">=</span> <span class="nx">keyCode</span>
+<span class="nx">eventObj</span><span class="p">.</span><span class="nx">which</span> <span class="o">=</span> <span class="nx">keyCode</span>
+<span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span> <span class="o">?</span> <span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span> <span class="o">:</span> <span class="nx">el</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;onkeydown&#39;</span><span class="p">,</span> <span class="nx">eventObj</span><span class="p">)</span>
+</pre></div>
+
+
+<p>困难：试了三种都失败了，首先是初始化的时候keycode赋值无效，即使用Object.defineProperty强行修改keycode，也无法触发原生事件，因为isTrusted值为false，参考下文：https://www.jianshu.com/p/3ca5075229d4</p>
+<ul>
+<li>
+<p>事件生成的用户代理,作为用户交互的结果,或直接导致修改DOM,可信的用户代理与特权,不提供事件生成的脚本通过createEvent()方法,使用initEvent修改()方法,或通过dispatchEvent派遣()方法。可信事件的isTrusted属性值为true，而不可信事件的isTrusted属性值为false。</p>
+</li>
+<li>
+<p>除了click事件外，大多数不受信任的事件不会触发默认操作。这个事件总是触发默认动作，即使isTrusted属性为false(此行为为向后兼容保留)。所有其他不受信任的事件的行为就好像对该事件调用了preventDefault()方法一样。</p>
+</li>
+</ul>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/javascript.html">Javascript</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "buttonmo-ni-jian-pan-shi-jian.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                        <li>
+                          <a href="/category/react-admin.html" >React-Admin</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

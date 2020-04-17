@@ -30,7 +30,6 @@
         <nav id="menu" class="main-nav"><ul class="menu">
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
-            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
@@ -70,7 +69,7 @@
 <p>点击dashboard上黄色按钮，拖拽到UI，选择函数</p>
 </li>
 </ol>
-<p><img alt="Flux" src="img/swift4.png"></p>
+<p><img alt="Swift" src="img/swift4.png"></p>
 <p>函数参数（外部名称&nbsp;内部名称：类型）</p>
 <p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
 <div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
@@ -119,7 +118,7 @@
 <p>Outlet Collection: create an array of the things in <span class="caps">UI</span></p>
 </li>
 </ol>
-<p><img alt="Flux" src="img/swift5.png"></p>
+<p><img alt="Swift" src="img/swift5.png"></p>
 <div class="highlight"><pre><span></span><span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">flipCountLabel</span><span class="p">:</span> <span class="bp">UILabel</span><span class="p">!</span> <span class="c1">//感叹号的变量不必初始化</span>
 
 <span class="kd">var</span> <span class="nv">flipCount</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
@@ -131,7 +130,7 @@
 </pre></div>
 
 
-<p><img alt="Flux" src="img/swift6.png"></p>
+<p><img alt="Swift" src="img/swift6.png"></p>
 <div class="highlight"><pre><span></span><span class="kr">@IBOutlet</span> <span class="kd">var</span> <span class="nv">cardButtons</span><span class="p">:</span> <span class="p">[</span><span class="bp">UIButton</span><span class="p">]</span><span class="o">!</span> 
 </pre></div>
 
@@ -155,6 +154,29 @@
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">of</span> <span class="n">element</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="c1">// 返回值可选，只有两种状态：int/nil</span>
+</pre></div>
+
+
+<h2>Optional</h2>
+<p>返回值为optional的函数：
+* index
+* dictionary
+*&nbsp;&#8230;</p>
+<p>定义optional变量</p>
+<div class="highlight"><pre><span></span><span class="c1">// 法一</span>
+<span class="k">if</span> <span class="kd">let</span> <span class="nv">chosenEmoji</span> <span class="p">=</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">chosenEmoji</span>
+<span class="p">}</span>
+
+<span class="c1">// 法二</span>
+<span class="k">if</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span><span class="o">!</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s">&quot;?&quot;</span>
+<span class="p">}</span>
+
+<span class="c1">// 法三</span>
+<span class="k">return</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span> <span class="p">??</span> <span class="s">&quot;?&quot;</span>
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">

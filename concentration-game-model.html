@@ -30,7 +30,6 @@
         <nav id="menu" class="main-nav"><ul class="menu">
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
-            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
@@ -61,9 +60,9 @@
     </header>
     <div class="post-entry">
         <h2><span class="caps">MVC</span></h2>
-<p><img alt="Flux" src="img/swift-mvc.png"></p>
-<p><img alt="Flux" src="img/swift-mvc2.png"></p>
-<p><img alt="Flux" src="img/swift-mvc3.png"></p>
+<p><img alt="Swift" src="img/swift-mvc.png"></p>
+<p><img alt="Swift" src="img/swift-mvc2.png"></p>
+<p><img alt="Swift" src="img/swift-mvc3.png"></p>
 <p>view: your controller&#8217;s minions&nbsp;(Main.storyboard)</p>
 <p>controller: how your model is presented to the user &#8212; <span class="caps">UI</span> logic&nbsp;(ViewController.swift)</p>
 <p>model: what your application is, but not how it is displayed&nbsp;(concentration.swift)</p>
@@ -160,6 +159,21 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
 
 
 <p>结构体是值类型，每次使用时复制</p>
+<h3>遍历数组</h3>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">button</span> <span class="k">in</span> <span class="n">cardButtons</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="c1">// count数组长度</span>
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..&lt;</span><span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nv">button</span> <span class="p">=</span> <span class="n">cardButtons</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="c1">// indices = a countable range of all the indexes</span>
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">indices</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
 <h2>静态方法</h2>
 <p>Static function is a function even though it&#8217;s in the Card class, you can&#8217;t send it to a&nbsp;card</p>
 <p>类内的静态方法不能传递给实例化对象，类似global function, utility&nbsp;function</p>
@@ -199,6 +213,25 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
 <p>所谓延迟加载就是在第一次访问某个属性时，要判断这个属性是否已经被初始化，如果已经初始化则直接返回，若没有初始化则进行初始化。这样可以把这个属性延迟初始化，把它和包含它的对象的初始化分隔开，来达到提升性能的目的。</p>
 <p>链接：https://www.jianshu.com/p/d1c4cbb5bede</p>
 <p>缺点：没有didSet</p>
+<h2>Dictionary&nbsp;字典</h2>
+<blockquote>
+<p>Dictionary is a generic type like array, but you specify the type both of the key and the&nbsp;value.</p>
+</blockquote>
+<p>Dictionary是一种散列表，可以通过关键值（key）快速地访问其中的元素（value），key必须是符合Hashable协议的类型，而value可以是任何类型。创建空的Dictionary时，必须声明key和value的类型。</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">emoji</span> <span class="p">=</span> <span class="nb">Dictionary</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">,</span><span class="nb">String</span><span class="p">&gt;()</span>
+<span class="kd">var</span> <span class="nv">emoji</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">:</span><span class="nb">String</span><span class="p">]()</span>
+</pre></div>
+
+
+<p>Looking something up in the dictionary returns an&nbsp;optional.</p>
+<h2>Random</h2>
+<p>伪随机数生成器</p>
+<p>arc4random_uniform is a pseudo-random number generator, and it generates a random number between 0 and upper&nbsp;bound.</p>
+<p>生成[0,&nbsp;上限-1]之间的随机数，上限需为UInt32类型，count为Int类型，UInt32是struct，可用UInt32()初始化函数把Int转化为UInt32，同样Int()可将UInt32转化为Int类型</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nv">randomIndex</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">arc4random_uniform</span><span class="p">(</span><span class="nb">UInt32</span><span class="p">(</span><span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>

@@ -30,7 +30,6 @@
         <nav id="menu" class="main-nav"><ul class="menu">
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
-            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
@@ -47,6 +46,38 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/buttonmo-ni-jian-pan-shi-jian.html" rel="bookmark" title="Permalink to Button模拟键盘事件">Button模拟键盘事件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-04-17T00:00:00+08:00"> 
+				<a href="/archive/2020/ 4/index.html">五 17 四月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>尝试方法一：</h3>
+<p>Tableau文档提供的接口</p>
+<p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
+<h3>尝试方法二：</h3>
+<p>前端模拟tableau保存的流程，点击我们的按钮时，请求五六个tableau的接口，根据返回的数据照着做一个保存的窗口，例如:</p>
+<p>https://prodbitabcrp.jnj.com/vizportal/api/web/v1/getDestinationProjects</p>
+<p>困难：跨域问题，无法直接调用tableau的接口</p>
+<h3>尝试方法三：</h3>
+<p>前端做个按钮，点击后向后端发送workbook信息，让后端调用tableau的接口完成保存</p>
+<p>困难：wenyu说后端保存workbook会使发布人从用户变为某个admin账号</p>
+<h3>尝试方法四 …</h3></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -172,6 +203,9 @@
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>
                             <ul>
+                                <li>
+                                  <a href="/buttonmo-ni-jian-pan-shi-jian.html">Button模拟键盘事件</a>
+                                </li>
                                 <li>
                                   <a href="/js-note.html"><span class="caps">JS</span>&nbsp;note</a>
                                 </li>

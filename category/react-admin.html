@@ -30,7 +30,6 @@
         <nav id="menu" class="main-nav"><ul class="menu">
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
-            <li  class="active"><a href="/category/react-admin.html">React-Admin</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
@@ -47,130 +46,6 @@
 
 
 <ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/admin.html" rel="bookmark" title="Permalink to Admin">Admin</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>The <Admin> component creates an application with its own state, routing, and controller logic. <Admin> requires only a dataProvider prop, and at least one child <Resource> to&nbsp;work:</p>
-<div class="highlight"><pre><span></span>const App = () =&gt; (
-    <span class="p">&lt;</span><span class="nt">Admin</span> <span class="na">dataProvider</span><span class="o">=</span><span class="s">{simpleRestProvider …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react-admin.html">React-Admin</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/data-provider.html" rel="bookmark" title="Permalink to Data Provider">Data&nbsp;Provider</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><table>
-<thead>
-<tr>
-<th>Action</th>
-<th>Expected <span class="caps">API</span> request</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Get list</td>
-<td><span class="caps">GET</span> http://my.api.url/posts?sort=[&#8216;title&#8217;,&#8217;<span class="caps">ASC</span>&#8217;]</td>
-</tr>
-<tr>
-<td>Get one record</td>
-<td><span class="caps">GET</span> http://my.api.url/posts/123</td>
-</tr>
-<tr>
-<td>Get several records</td>
-<td ids:_123_456_789_="ids:[123,456,789]"><span class="caps">GET</span> http …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react-admin.html">React-Admin</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/resource.html" rel="bookmark" title="Permalink to Resource">Resource</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Resource allows you to define a component for each <span class="caps">CRUD</span> operation, using the following prop&nbsp;names:</p>
-<ul>
-<li>list (if defined, the resource is displayed on the&nbsp;Menu)</li>
-<li>create</li>
-<li>edit</li>
-<li>show</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kr">import …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react-admin.html">React-Admin</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-admin.html" rel="bookmark" title="Permalink to React-Admin">React-Admin</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-10T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">二 10 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Setting&nbsp;Up</h2>
-<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
-<span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
-<span class="nx">cd</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
-<span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">admin</span> <span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span> <span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
-<span class="nx">yarn</span> <span class="nx">start</span>
-</pre></div>
-
-
-<h2>Data&nbsp;Provider …</h2></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react-admin.html">React-Admin</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -242,18 +117,6 @@
                         <li>
                           <a href="/category/react-admin.html" >React-Admin</a>
                             <ul>
-                                <li>
-                                  <a href="/admin.html">Admin</a>
-                                </li>
-                                <li>
-                                  <a href="/data-provider.html">Data&nbsp;Provider</a>
-                                </li>
-                                <li>
-                                  <a href="/resource.html">Resource</a>
-                                </li>
-                                <li>
-                                  <a href="/react-admin.html">React-Admin</a>
-                                </li>
                                 <li>
                                   <a href="/react-hook.html">React&nbsp;Hook</a>
                                 </li>
