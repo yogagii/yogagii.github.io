@@ -43,8 +43,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-04-17T14:33:00+08:00"> 
-				<a href="/archive/2020/ 4/index.html">五 17 四月 2020 </a>
+			<abbr class="date" title="2020-05-03T14:33:00+08:00"> 
+				<a href="/archive/2020/ 5/index.html">日 03 五月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -83,8 +83,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-04-17T14:33:00+08:00"> 
-				<a href="/archive/2020/ 4/index.html">五 17 四月 2020 </a>
+			<abbr class="date" title="2020-05-03T14:33:00+08:00"> 
+				<a href="/archive/2020/ 5/index.html">日 03 五月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -115,6 +115,35 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/jenkinsbu-shu.html" rel="bookmark" title="Permalink to Jenkins部署">Jenkins部署</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-04-30T00:00:00+08:00"> 
+				<a href="/archive/2020/ 4/index.html">四 30 四月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.jnj.com/scm/asx-nbbg/fpa_mobile.git</p>
+<p>Branch Specifier:&nbsp;*/develop</p>
+<p>Build Triggers: 轮询 <span class="caps">SCM</span></p>
+<p>Build:&nbsp;执行shell</p>
+<div class="highlight"><pre><span></span><span class="nv">npm</span> <span class="nv">i</span>
+<span class="nv">npm</span> <span class="nv">install</span> <span class="nv">aws</span><span class="o">-</span><span class="nv">sdk</span> <span class="o">&amp;</span>
+<span class="nv">export</span> <span class="nv">NODE_OPTIONS</span><span class="o">=--</span><span class="nv">max_old_space_size</span><span class="o">=</span><span class="mi">4096</span>
+<span class="nv">npm …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/buttonmo-ni-jian-pan-shi-jian.html" rel="bookmark" title="Permalink to Button模拟键盘事件">Button模拟键盘事件</a>
 		</h2>
 		<div class="post-info">
@@ -125,7 +154,10 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h3>尝试方法一：</h3>
+	<div class="summary"><p>背景：</p>
+<p>添加按钮，模拟tableau的保存按钮，点击后可保存iframe内的正在编辑的workbook</p>
+<p><img alt="mockKeyboard" src="img/mockKeyboard.jpg"></p>
+<h3>尝试方法一：</h3>
 <p>Tableau文档提供的接口</p>
 <p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
 <h3>尝试方法二：</h3>
@@ -133,9 +165,7 @@
 <p>https://prodbitabcrp.jnj.com/vizportal/api/web/v1/getDestinationProjects</p>
 <p>困难：跨域问题，无法直接调用tableau的接口</p>
 <h3>尝试方法三：</h3>
-<p>前端做个按钮，点击后向后端发送workbook信息，让后端调用tableau的接口完成保存</p>
-<p>困难：wenyu说后端保存workbook会使发布人从用户变为某个admin账号</p>
-<h3>尝试方法四 …</h3></div>
+<p>前端做个按钮，点击后向后端发送workbook信息 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -329,34 +359,6 @@
 <p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
 <div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">flipCard</span><span class="p">(</span><span class="n">withEmoji</span><span class="p">:</span> <span class="err">&#39;👻&#39;</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">sender …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/concentration-game-model.html" rel="bookmark" title="Permalink to Concentration Game — Model">Concentration Game &#8212;&nbsp;Model</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-03-28T00:00:00+08:00"> 
-				<a href="/archive/2020/ 3/index.html">六 28 三月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2><span class="caps">MVC</span></h2>
-<p><img alt="Swift" src="img/swift-mvc.png"></p>
-<p><img alt="Swift" src="img/swift-mvc2.png"></p>
-<p><img alt="Swift" src="img/swift-mvc3.png"></p>
-<p>view: your controller&#8217;s minions&nbsp;(Main.storyboard)</p>
-<p>controller: how your model is presented to the user &#8212; <span class="caps">UI</span> logic&nbsp;(ViewController.swift)</p>
-<p>model: what your application is, but not how it …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

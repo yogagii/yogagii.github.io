@@ -40,6 +40,43 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-ji-chu.html" rel="bookmark" title="Permalink to React 基础">React&nbsp;基础</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>使用React只有两个步骤：一是创建虚拟DOM（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟DOM树并响应用户的动作来改变虚拟DOM树的组成。</p>
+</blockquote>
+<h3>1.&nbsp;react.js</h3>
+<hr>
+<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟DOM树</p>
+<ul>
+<li><strong>React.createElement</strong></li>
+</ul>
+<p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="s1">&#39;myClass&#39;</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li><strong>React.<span class="caps">DOM</span></strong>是预先定义好的HTML元素集，相当于预置了第一个参数 …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
 		</h2>
 		<div class="post-info">

@@ -39,6 +39,43 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to React 表单">React&nbsp;表单</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>事件响应</h2>
+<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
+<p><code>&lt;input&gt; -&gt; value / checked</code></p>
+<p><code>&lt;textarea&gt; -&gt; value</code></p>
+<p><code>&lt;option&gt; -&gt; selected</code></p>
+<p><strong>复用</strong>：只写一个事件处理函数且能处理多个事件</p>
+<ol>
+<li>
+<p>bind复用</p>
+<p>事件响应函数通过bind的参数识别事件源</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">)}</span> <span class="o">/&gt;</span>
+  <span class="nx">hangdeChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newState</span><span class="p">[</span><span class="nx">name …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to React 复合组件">React&nbsp;复合组件</a>
 		</h2>
 		<div class="post-info">
@@ -345,35 +382,6 @@
 		</div>
 	</header>
 	<div class="summary"><p>这篇文章介绍Markdown的语法，包括标题、引用、列表、代码、强调、链接、表格、分割线、图片</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" rel="bookmark" title="Permalink to 二分搜索的各种写法">二分搜索的各种写法</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T21:04:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
-<li>对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一)，若t不在x中则返回-1。</li>
-</ol>
-<div class="highlight"><pre><span></span>    <span class="kt">int</span> <span class="nf">binarysearch</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">m …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

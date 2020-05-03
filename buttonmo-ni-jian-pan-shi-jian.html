@@ -58,7 +58,10 @@
     </div>
     </header>
     <div class="post-entry">
-        <h3>尝试方法一：</h3>
+        <p>背景：</p>
+<p>添加按钮，模拟tableau的保存按钮，点击后可保存iframe内的正在编辑的workbook</p>
+<p><img alt="mockKeyboard" src="img/mockKeyboard.jpg"></p>
+<h3>尝试方法一：</h3>
 <p>Tableau文档提供的接口</p>
 <p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
 <h3>尝试方法二：</h3>
@@ -67,7 +70,7 @@
 <p>困难：跨域问题，无法直接调用tableau的接口</p>
 <h3>尝试方法三：</h3>
 <p>前端做个按钮，点击后向后端发送workbook信息，让后端调用tableau的接口完成保存</p>
-<p>困难：wenyu说后端保存workbook会使发布人从用户变为某个admin账号</p>
+<p>困难：wenyu说后端保存workbook会使发布人从用户变为某个admin账号，而且后端拿不到session&nbsp;id</p>
 <h3>尝试方法四：</h3>
 <p>模拟ctrl+s ——&nbsp;execCommand(&#8216;SaveAs&#8217;)</p>
 <p>困难：不兼容，在我的mac和Rick的windows（<span class="caps">IE11</span>）上都没有成功</p>
@@ -141,7 +144,41 @@
 </pre></div>
 
 
-<p>困难：试了三种都失败了，首先是初始化的时候keycode赋值无效，即使用Object.defineProperty强行修改keycode，也无法触发原生事件，因为isTrusted值为false，参考下文：https://www.jianshu.com/p/3ca5075229d4</p>
+<p>困难：试了三种都失败了，首先是初始化的时候keycode赋值无效，即使用Object.defineProperty强行修改keycode，也无法触发原生事件，因为isTrusted值为false</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">oEvent</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;KeyboardEvent&#39;</span><span class="p">);</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">oEvent</span><span class="p">,</span> <span class="s1">&#39;keyCode&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">get</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">keyCodeVal</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span> 
+<span class="nx">oEvent</span><span class="p">.</span><span class="nx">initKeyboardEvent</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// Event {</span>
+<span class="c1">//   isTrusted: false</span>
+<span class="c1">//   type: &quot;keydown&quot;</span>
+<span class="c1">//   target: body</span>
+<span class="c1">//   currentTarget: null</span>
+<span class="c1">//   eventPhase: 0</span>
+<span class="c1">//   bubbles: true</span>
+<span class="c1">//   cancelable: true</span>
+<span class="c1">//   defaultPrevented: false</span>
+<span class="c1">//   composed: false</span>
+<span class="c1">//   timeStamp: 74508.58999999764</span>
+<span class="c1">//   srcElement: body</span>
+<span class="c1">//   returnValue: true</span>
+<span class="c1">//   cancelBubble: false</span>
+<span class="c1">//   path: (4) [body, html.no-js, document, Window]</span>
+<span class="c1">//   keyCode: 83</span>
+<span class="c1">//   which: 83</span>
+<span class="c1">//   metaKey: true</span>
+<span class="c1">// }</span>
+</pre></div>
+
+
+<p>参考下文：https://www.jianshu.com/p/3ca5075229d4</p>
 <ul>
 <li>
 <p>事件生成的用户代理,作为用户交互的结果,或直接导致修改DOM,可信的用户代理与特权,不提供事件生成的脚本通过createEvent()方法,使用initEvent修改()方法,或通过dispatchEvent派遣()方法。可信事件的isTrusted属性值为true，而不可信事件的isTrusted属性值为false。</p>

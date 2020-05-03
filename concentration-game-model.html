@@ -153,12 +153,21 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
 <span class="c1">// 用underbar作为control variable of loop，表示ignore this</span>
 <span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">numberOfPairsOfCards</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">()</span>
-  <span class="n">cards</span> <span class="o">+=</span> <span class="p">[</span><span class="n">card</span><span class="p">,</span> <span class="n">card</span><span class="p">]</span>
+  <span class="n">cards</span> <span class="o">+=</span> <span class="p">[</span><span class="n">card</span><span class="p">,</span> <span class="n">card</span><span class="p">]</span> <span class="c1">// 结构体是值类型，每次使用时复制</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>结构体是值类型，每次使用时复制</p>
+<p><strong>Stride</strong> is a global function that will create a CountableRange from floating point values. The return type of stride is&nbsp;CountableRange.</p>
+<p>按照指定的递进值生成一个序列</p>
+<p>through包含终点值ClosedCountableaRange</p>
+<p>to不包含终点值CountableaRange</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="bp">stride</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">through</span><span class="p">:</span> <span class="mf">15.25</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
 <h3>遍历数组</h3>
 <div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">button</span> <span class="k">in</span> <span class="n">cardButtons</span> <span class="p">{</span>
 
