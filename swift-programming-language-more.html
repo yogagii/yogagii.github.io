@@ -1,0 +1,247 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/ios.html">IOS</a> ›Swift Programming Language&nbsp;More
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Swift Programming Language&nbsp;More</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-05-03T00:00:00+08:00"> 
+            <a href="/archive/2020/ 5/index.html">日 03 五月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/swift.html">Swift</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h1>Access Control&nbsp;访问控制</h1>
+<p>访问控制可以限定你在源文件或模块中访问代码的级别。这个特性可以让我们隐藏功能实现的一些细节，并且可以明确的指定我们提供给其他人的接口中哪些部分是他们可以使用的，哪些是他们看不到的。</p>
+<h2>访问级别</h2>
+<ul>
+<li>
+<p>public (公开, 供外部调用): (for frameworks only) can be used by objects outside my&nbsp;framework</p>
+</li>
+<li>
+<p>internal (默认, 限module内使用): usable by any object in my app or&nbsp;framework</p>
+</li>
+<li>
+<p>private (私有, 限source file内使用): only callable from within this&nbsp;object</p>
+</li>
+<li>
+<p>private(set): this property is readable outside this object, but not&nbsp;settable</p>
+</li>
+<li>
+<p>fileprivate: accessible by any code in this source&nbsp;file</p>
+</li>
+<li>
+<p>open: (for frameworks only) public and objects outside my framework can subclass&nbsp;this</p>
+</li>
+</ul>
+<p>一个public访问级别的变量，不能将它的类型定义为internal和private的类型。因为变量可以被任何人访问，但是定义它的类型不可以，这样就会出现错误。函数的访问级别不能高于它的参数、返回类型的访问级别。因为如果函数定义为public而参数或者返回类型定义为internal或private，就会出现函数可以被任何人访问，但是它的参数和返回类型不可以，同样会出现错误。</p>
+<p>类的访问级别也可以影响到类成员（属性、函数、初始化方法等）的默认访问级别。如果你将类申明为private类，那么该类的所有成员的默认访问级别也会成为private。如果你将类申明为public或者internal类，那么该类的所有成员的访问级别是internal。</p>
+<p>A good strategy is to just mark everything private by default. Then remove the private designation when that <span class="caps">API</span> is ready to be used by other&nbsp;code.</p>
+<p></br></p>
+<h1>Assertion&nbsp;断言</h1>
+<p>An assertion is just a function that you call where you assert something to be true. And if it&#8217;s not your program crashes and print out an&nbsp;error.</p>
+<p>通过assert实现断言，assert可以帮助开发者比较容易的发现和定位错误。一个断言断定条件是true，通过声明一个断言来确保某个必要的条件是满足的，以便继续执行接下来的代码。如果条件满足了，那么代码像往常一样执行，如果不满足了，代码就停止执行了，应用也随之停下来了。</p>
+<div class="highlight"><pre><span></span><span class="c1">//第一个参数为判断条件，第二个参数为条件&quot;不满足&quot;时的打印信息。</span>
+<span class="bp">assert</span><span class="p">(</span><span class="n">cards</span><span class="p">.</span><span class="bp">indices</span><span class="p">.</span><span class="bp">contains</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="s">&quot;Concentration.chooseCard(at: </span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s">): chosen index not in the cards&quot;</span><span class="p">)</span>
+<span class="c1">//如果断言被触发(index&lt;0或index&gt;cards.count)，将会强制结束程序，并打印相关信息：</span>
+<span class="n">assertion</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Concentration</span><span class="p">.</span><span class="n">chooseCard</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">chosen</span> <span class="n">index</span> <span class="n">not</span> <span class="k">in</span> <span class="n">the</span> <span class="n">cards</span><span class="p">:</span> <span class="n">file</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">mac</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">ViewController</span><span class="p">.</span><span class="n">swift</span><span class="p">,</span> <span class="n">line</span> <span class="mi">17</span>
+</pre></div>
+
+
+<p></br></p>
+<h1>Extensions&nbsp;扩展</h1>
+<p>Extending existing data structures: you can add methods/properties to a class/struct/enum (even if you don&#8217;t have the&nbsp;source)</p>
+<p>swift可以为特定的class, strut,&nbsp;enum或者protocol添加新的特性。当你没有权限对源代码进行改造的时候，此时可以通过extension来对类型进行扩展。</p>
+<ul>
+<li>添加计算属性 - computed&nbsp;properties</li>
+<li>添加方法 -&nbsp;methods</li>
+<li>添加初始化方法 -&nbsp;initializers</li>
+<li>添加附属脚本 -&nbsp;subscripts</li>
+<li>添加并使用嵌套类型 - nested&nbsp;types</li>
+<li>遵循并实现某一协议 - conform&nbsp;protocol</li>
+</ul>
+<p>extension可以为类型添加新的特性，但是它不能覆盖已有的特性。extension可以添加计算属性，但是不能添加存储属性，也不能为当前属性添加观察者。</p>
+<p>链接：https://www.jianshu.com/p/783df05a9b59</p>
+<blockquote>
+<p>Do not abused! The only method and functions you wanna add to string or methods that make string a better class, not make it knows about&nbsp;Concentration.</p>
+</blockquote>
+<p>给Int添加随机数方法</p>
+<div class="highlight"><pre><span></span><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">arc4random</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kc">self</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Int</span><span class="p">(</span><span class="n">arc4random_uniform</span><span class="p">(</span><span class="nb">UInt32</span><span class="p">(</span><span class="kc">self</span><span class="p">)))</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="kc">self</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">-</span><span class="nb">Int</span><span class="p">(</span><span class="n">arc4random_uniform</span><span class="p">(</span><span class="nb">UInt32</span><span class="p">(</span><span class="bp">abs</span><span class="p">(</span><span class="kc">self</span><span class="p">))))</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">randomIndex</span> <span class="p">=</span> <span class="mf">5.</span><span class="n">arc4random</span> <span class="c1">// 0 1 2 3 4</span>
+<span class="kd">let</span> <span class="nv">randomIndex</span> <span class="p">=</span> <span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span><span class="p">.</span><span class="n">arc4random</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/ios.html">IOS</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "swift-programming-language-more.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

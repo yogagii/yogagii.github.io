@@ -1,0 +1,293 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›<span class="caps">WLI</span>&nbsp;Photoframe
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">WLI</span>&nbsp;Photoframe</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-05-17T00:00:00+08:00"> 
+            <a href="/archive/2020/ 5/index.html">日 17 五月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/html2canvas.html">HTML2Canvas</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>背景</h2>
+<p>H5页面上用户上传图片，自动添加相框及宣言，用户保存到本地</p>
+<p>http://wli_photoframe.jnjadc.com/</p>
+<p><img src="img/Women.png" width="300px" /></p>
+<h2>HTML2Canvas</h2>
+<p>用HTML2Canvas将叠加后的photo生成为图片，用户长按可下载</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">html2canvas</span> <span class="nx">from</span> <span class="s1">&#39;html2canvas&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">savePic</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setModal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">html2canvas</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;imgContainer&#39;</span><span class="p">)).</span><span class="nx">then</span><span class="p">(</span><span class="nx">canvas</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;resultImg&#39;</span><span class="p">).</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">());</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+</pre></div>
+
+
+<h2>拖拽</h2>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">styles</span> <span class="nx">from</span> <span class="s1">&#39;./index.less&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Icon</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;antd&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">useRebuildOption</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./service&#39;</span><span class="p">;</span>
+
+<span class="c1">// initState</span>
+<span class="kr">const</span> <span class="nx">stateOrigin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">isDragging</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">pointToOffset</span><span class="o">:</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">({</span> <span class="nx">picRef</span><span class="p">,</span> <span class="nx">avatarHeight</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="c1">// init</span>
+  <span class="kr">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">stateOrigin</span><span class="p">);</span>
+
+  <span class="kr">const</span> <span class="nx">dragRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="kr">const</span> <span class="p">{</span> <span class="nx">touchInstance</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useRebuildOption</span><span class="p">(</span><span class="nx">dragRef</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">,</span> <span class="nx">picRef</span><span class="p">);</span>
+
+  <span class="kr">const</span> <span class="nx">handleStart</span> <span class="o">=</span> <span class="nx">touchInstance</span><span class="p">.</span><span class="nx">start</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">handleMove</span> <span class="o">=</span> <span class="nx">touchInstance</span><span class="p">.</span><span class="nx">move</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">handleEnd</span> <span class="o">=</span> <span class="nx">touchInstance</span><span class="p">.</span><span class="nx">end</span><span class="p">;</span>
+
+  <span class="k">return</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span>
+      <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">dragRef</span><span class="p">}</span>
+      <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">adjustArea</span><span class="p">}</span>
+      <span class="nx">onTouchStart</span><span class="o">=</span><span class="p">{</span><span class="nx">handleStart</span><span class="p">}</span>
+      <span class="nx">onTouchMove</span><span class="o">=</span><span class="p">{</span><span class="nx">handleMove</span><span class="p">}</span>
+      <span class="nx">onTouchEnd</span><span class="o">=</span><span class="p">{</span><span class="nx">handleEnd</span><span class="p">}</span>
+      <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">height</span><span class="o">:</span> <span class="nx">avatarHeight</span> <span class="p">}}</span>
+    <span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Icon</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;fullscreen&quot;</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">moveIcon</span><span class="p">}</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Touch</span><span class="p">,</span> <span class="p">{</span> <span class="nx">calPointToOffset</span><span class="p">,</span> <span class="nx">moveTarget</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@/utils/touch&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">touch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Touch</span><span class="p">();</span>
+
+<span class="c1">// cal the distance between icon and right edge</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">calToRight</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">clientWidth</span> <span class="o">-</span> <span class="mi">55</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// set the long touch action and short touch action</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">useRebuildOption</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dragRef</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">,</span> <span class="nx">picRef</span><span class="p">,</span> <span class="nx">containerRef</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+
+  <span class="kr">const</span> <span class="nx">sameEndCallback</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="s1">&#39;all 0.6s&#39;</span><span class="p">;</span>
+
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">setState</span><span class="p">({</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="nx">isDragging</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">touch</span><span class="p">.</span><span class="nx">setOption</span><span class="p">({</span>
+    <span class="nx">edgeSecond</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span>
+    <span class="nx">judgeOffset</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">startCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">pointToOffset</span> <span class="o">=</span> <span class="nx">calPointToOffset</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">);</span>
+      <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+      <span class="nx">setState</span><span class="p">({</span>
+        <span class="nx">isDragging</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">pointToOffset</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="c1">//</span>
+    <span class="nx">moveCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">isDragging</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">moveTarget</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span> <span class="nx">state</span><span class="p">.</span><span class="nx">pointToOffset</span><span class="p">);</span>
+        <span class="nx">moveTarget</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">picRef</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span> <span class="nx">state</span><span class="p">.</span><span class="nx">pointToOffset</span><span class="p">);</span>
+        <span class="c1">// console.log(dragRef.current.style.left, dragRef.current.style.top);</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">longCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">sameEndCallback</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">shortCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="c1">//sameEndCallback(true);</span>
+    <span class="p">},</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">touchInstance</span><span class="o">:</span> <span class="nx">touch</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/project.html">Project</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "wli-photoframe.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

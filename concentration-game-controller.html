@@ -34,6 +34,7 @@
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -155,134 +156,6 @@
 
 <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">of</span> <span class="n">element</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="c1">// 返回值可选，只有两种状态：int/nil</span>
 </pre></div>
-
-
-<h2>Optional</h2>
-<p>返回值为optional的函数：
-* index
-* dictionary
-*&nbsp;&#8230;</p>
-<p>定义optional变量</p>
-<div class="highlight"><pre><span></span><span class="c1">// 法一</span>
-<span class="k">if</span> <span class="kd">let</span> <span class="nv">chosenEmoji</span> <span class="p">=</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">chosenEmoji</span>
-<span class="p">}</span>
-
-<span class="c1">// 法二</span>
-<span class="k">if</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span><span class="o">!</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s">&quot;?&quot;</span>
-<span class="p">}</span>
-
-<span class="c1">// 法三</span>
-<span class="k">return</span> <span class="n">emoji</span><span class="p">[</span><span class="n">card</span><span class="p">.</span><span class="n">identifier</span><span class="p">]</span> <span class="p">??</span> <span class="s">&quot;?&quot;</span>
-</pre></div>
-
-
-<hr>
-<h2>Tuple&nbsp;元组</h2>
-<blockquote>
-<p>Tuple is like a mini struct that has no methods or vars, just has values in&nbsp;it.</p>
-</blockquote>
-<p>元组（tuples）把多个值组合成一个复合值。元组内的值可以是任意类型，并不要求是相同类型。</p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">x</span><span class="p">:</span> <span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
-<span class="kd">let</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span> <span class="c1">// this names the tuple elements when accessing the tuple</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="c1">// hello</span>
-
-<span class="c1">// tuple elements can be named when the tuple is declared</span>
-<span class="kd">let</span> <span class="nv">x</span><span class="p">:</span> <span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">word</span><span class="p">)</span> <span class="c1">// hello</span>
-<span class="kd">let</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span> <span class="c1">// rename</span>
-</pre></div>
-
-
-<p>use tuples to return multiple values from a function or&nbsp;method</p>
-<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">getSize</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span> <span class="p">}</span>
-<span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="n">getSize</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;weight is </span><span class="si">\(</span><span class="n">x</span><span class="p">.</span><span class="n">weight</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// weight is 250</span>
-</pre></div>
-
-
-<h2>Computed Properties&nbsp;计算属性</h2>
-<blockquote>
-<p>The value of a property can be computed rather than&nbsp;stored</p>
-</blockquote>
-<ul>
-<li>存储属性stored&nbsp;property：一个存储属性就是存储在特定类或结构体的实例里的一个常量或变量&#8212;变量存储属性（var），常量存储属性（let）</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span>
-</pre></div>
-
-
-<ul>
-<li>延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用lazy来标示一个延迟存储属性。必须将延迟存储属性声明成变量（使用var关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">importer</span> <span class="p">=</span> <span class="n">DataImporter</span><span class="p">()</span>
-</pre></div>
-
-
-<ul>
-<li>计算属性computed property: 不直接存储值，而是提供一个 getter 来获取值，一个可选的 setter&nbsp;来间接设置其他属性或变量的值</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
-  <span class="kr">get</span> <span class="p">{</span>
-
-  <span class="p">}</span>
-  <span class="kr">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// defaults to newValue</span>
-
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>可以没有set，不设set时property变为read&nbsp;only</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">numberOfPairsOfCards</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="kr">get</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">// 没有set时可以省略get</span>
-<span class="kd">var</span> <span class="nv">numberOfPairsOfCards</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span><span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>Access Control&nbsp;访问控制</h2>
-<p>访问控制可以限定你在源文件或模块中访问代码的级别。这个特性可以让我们隐藏功能实现的一些细节，并且可以明确的指定我们提供给其他人的接口中哪些部分是他们可以使用的，哪些是他们看不到的。</p>
-<h3>访问级别</h3>
-<ul>
-<li>
-<p>public (公开, 供外部调用): (for frameworks only) can be used by objects outside my&nbsp;framework</p>
-</li>
-<li>
-<p>internal (默认, 限module内使用): usable by any object in my app or&nbsp;framework</p>
-</li>
-<li>
-<p>private (私有, 限source file内使用): only callable from within this&nbsp;object</p>
-</li>
-<li>
-<p>private(set): this property is readable outside this object, but not&nbsp;settable</p>
-</li>
-<li>
-<p>fileprivate: accessible by any code in this source&nbsp;file</p>
-</li>
-<li>
-<p>open: (for frameworks only) public and objects outside my framework can subclass&nbsp;this</p>
-</li>
-</ul>
-<p>一个public访问级别的变量，不能将它的类型定义为internal和private的类型。因为变量可以被任何人访问，但是定义它的类型不可以，这样就会出现错误。函数的访问级别不能高于它的参数、返回类型的访问级别。因为如果函数定义为public而参数或者返回类型定义为internal或private，就会出现函数可以被任何人访问，但是它的参数和返回类型不可以，同样会出现错误。</p>
-<p>类的访问级别也可以影响到类成员（属性、函数、初始化方法等）的默认访问级别。如果你将类申明为private类，那么该类的所有成员的默认访问级别也会成为private。如果你将类申明为public或者internal类，那么该类的所有成员的访问级别是internal。</p>
-<p>A good strategy is to just mark everything private by default. Then remove the private designation when that <span class="caps">API</span> is ready to be used by other&nbsp;code.</p>
-<h2>Assertion&nbsp;断言</h2>
-<p>An assertion is just a function that you call where you assert something to be true. And if it&#8217;s not your program crashes and print out an&nbsp;error.</p>
-<p>通过assert实现断言，assert可以帮助开发者比较容易的发现和定位错误。一个断言断定条件是true，通过声明一个断言来确保某个必要的条件是满足的，以便继续执行接下来的代码。如果条件满足了，那么代码像往常一样执行，如果不满足了，代码就停止执行了，应用也随之停下来了。</p>
-<div class="highlight"><pre><span></span><span class="c1">//第一个参数为判断条件，第二个参数为条件&quot;不满足&quot;时的打印信息。</span>
-<span class="bp">assert</span><span class="p">(</span><span class="n">cards</span><span class="p">.</span><span class="bp">indices</span><span class="p">.</span><span class="bp">contains</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="s">&quot;Concentration.chooseCard(at: </span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s">): chosen index not in the cards&quot;</span><span class="p">)</span>
-<span class="c1">//如果断言被触发(index&lt;0或index&gt;cards.count)，将会强制结束程序，并打印相关信息：</span>
-<span class="n">assertion</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Concentration</span><span class="p">.</span><span class="n">chooseCard</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">chosen</span> <span class="n">index</span> <span class="n">not</span> <span class="k">in</span> <span class="n">the</span> <span class="n">cards</span><span class="p">:</span> <span class="n">file</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">mac</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">ViewController</span><span class="p">.</span><span class="n">swift</span><span class="p">,</span> <span class="n">line</span> <span class="mi">17</span>
-</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -344,10 +217,10 @@
                           <a href="/category/programming.html" >Programming</a>
                         </li>
                         <li>
-                          <a href="/category/react.html" >React</a>
+                          <a href="/category/project.html" >Project</a>
                         </li>
                         <li>
-                          <a href="/category/react-admin.html" >React-Admin</a>
+                          <a href="/category/react.html" >React</a>
                         </li>
                 </ul>
             </section>

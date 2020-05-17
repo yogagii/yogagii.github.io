@@ -34,6 +34,7 @@
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -420,6 +421,82 @@
 </ul>
 <div class="highlight"><pre><span></span><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
+
+
+<h2>netstat</h2>
+<ul>
+<li>查看占用端口号27999的进程</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="o">-</span><span class="n">pan</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">27999</span>
+<span class="o">//</span> <span class="n">tcp6</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="p">:::</span><span class="mi">27999</span>  <span class="p">:::</span><span class="o">*</span>  <span class="k">LISTEN</span>  <span class="mi">15460</span><span class="o">/</span><span class="n">node</span>
+</pre></div>
+
+
+<ul>
+<li>查看指定进程详情</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">15460</span>
+<span class="o">//</span> <span class="n">root</span> <span class="mi">15460</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">2</span> <span class="mi">867324</span> <span class="mi">42508</span> <span class="n">pts</span><span class="o">/</span><span class="mi">5</span> <span class="n">Sl</span><span class="o">+</span> <span class="mi">10</span><span class="p">:</span><span class="mi">14</span> <span class="mi">0</span><span class="p">:</span><span class="mi">00</span> <span class="n">node</span> <span class="k">index</span>
+</pre></div>
+
+
+<ul>
+<li>杀死指定进程</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">kill</span> <span class="mi">15460</span>
+</pre></div>
+
+
+<h2><span class="caps">PM2</span></h2>
+<ul>
+<li>启动index.js（node&nbsp;index）并起名:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="k">start</span> <span class="k">index</span><span class="p">.</span><span class="n">js</span> <span class="c1">--name wxAuthorize</span>
+</pre></div>
+
+
+<ul>
+<li>列表 <span class="caps">PM2</span>&nbsp;启动的所有的应用程序:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">list</span>
+</pre></div>
+
+
+<ul>
+<li>删除指定应用 id&nbsp;0:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="k">delete</span> <span class="mi">0</span>
+</pre></div>
+
+
+<ul>
+<li>停止指定应用:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">stop</span> <span class="n">wxAuthorize</span>
+</pre></div>
+
+
+<h2>less</h2>
+<ul>
+<li>显示CSV的行数:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">cat</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">//</span> <span class="n">wordcount</span> <span class="o">-</span><span class="n">line</span>
+</pre></div>
+
+
+<ul>
+<li>高级的cat:</li>
+</ul>
+<p>大写G文件尾，小写g到文件头，小写q退出,&nbsp;/搜索关键字</p>
+<div class="highlight"><pre><span></span><span class="k">less</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span>
+</pre></div>
+
+
+<ul>
+<li>显示行号</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">less</span> <span class="o">-</span><span class="n">N</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span> 
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -481,10 +558,10 @@
                           <a href="/category/programming.html" >Programming</a>
                         </li>
                         <li>
-                          <a href="/category/react.html" >React</a>
+                          <a href="/category/project.html" >Project</a>
                         </li>
                         <li>
-                          <a href="/category/react-admin.html" >React-Admin</a>
+                          <a href="/category/react.html" >React</a>
                         </li>
                 </ul>
             </section>

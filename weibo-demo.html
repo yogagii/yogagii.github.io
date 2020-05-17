@@ -34,6 +34,7 @@
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -60,6 +61,65 @@
     </header>
     <div class="post-entry">
         <p>open.weibo.com/wiki</p>
+<p>SwiftUI是一个优秀的用户界面框架</p>
+<table>
+<thead>
+<tr>
+<th align="center">UIKit</th>
+<th align="center">SwiftUI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">UILabel</td>
+<td align="center">Text</td>
+</tr>
+<tr>
+<td align="center">UIStackView 垂直排列时</td>
+<td align="center">VStack</td>
+</tr>
+<tr>
+<td align="center">UIStackView 水平排列时</td>
+<td align="center">HStack</td>
+</tr>
+<tr>
+<td align="center">UIButton</td>
+<td align="center">Button</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="nc">ContentView</span><span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+        <span class="n">Text</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="nc">ContentView_Previews</span><span class="p">:</span> <span class="n">PreviewProvider</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">previews</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+        <span class="n">ContentView</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>ContentView遵循View协议，在SwiftUI中想要显示任何的视图，都需要遵循View，通过通过body属性来返回视图</p>
+<p>body返回类型 some View。some是swift5.1新增加的一种返回类型，返回some&nbsp;View意味着body属性将要返回一个遵循View协议的视图，必须返回一个子视图</p>
+<p>Text(&#8220;Hello World&#8221;) 创建一个内容为Hello&nbsp;World的文本</p>
+<p>ContentView_Previews是用来在Xcode中用来预览调试的部分</p>
+<blockquote>
+<p>option+command+enter 预览 </br>
+SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
+</blockquote>
+<p>链接：https://www.jianshu.com/p/e86d110a897f</p>
+<h2>布局</h2>
+<ul>
+<li>VStack:&nbsp;纵向布局，默认居中对齐</li>
+<li>HStack:&nbsp;横向布局，默认居中对齐</li>
+<li>ZStack:&nbsp;覆盖布局，默认居中对齐</li>
+</ul>
+<p>占位&nbsp;Spacer()</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -121,10 +181,10 @@
                           <a href="/category/programming.html" >Programming</a>
                         </li>
                         <li>
-                          <a href="/category/react.html" >React</a>
+                          <a href="/category/project.html" >Project</a>
                         </li>
                         <li>
-                          <a href="/category/react-admin.html" >React-Admin</a>
+                          <a href="/category/react.html" >React</a>
                         </li>
                 </ul>
             </section>

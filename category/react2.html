@@ -34,6 +34,7 @@
             <li  class="active"><a href="/category/data.html">Data</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -46,6 +47,49 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to React 复合组件">React&nbsp;复合组件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>组件的原则：职责单一，外在体现可复用性，内在体现分装性</p>
+</blockquote>
+<h2>组件嵌套</h2>
+<hr>
+<p>法一：在父组件的render函数中直接渲染子组件</p>
+<p>法二：对于动态的、数量不固定的子组件需要用到this.props.children</p>
+<p><br></p>
+<h2>组件参数传递</h2>
+<hr>
+<ul>
+<li><strong>动态参数传递</strong>：展开属性（参数名称是变量）</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="nx">moreAttr</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="o">/&gt;</span>
+  <span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
+</pre></div>
+
+
+<ul>
+<li><strong>Underscore</strong>：提供_.omit()来过滤属性</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 剩余属性：除checked之外的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -223,6 +267,9 @@
                           <a href="/category/programming.html" >Programming</a>
                         </li>
                         <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
                           <a href="/category/react.html" >React</a>
                             <ul>
                                 <li>
@@ -236,6 +283,9 @@
                                 </li>
                                 <li>
                                   <a href="/react-admin.html">React-Admin</a>
+                                </li>
+                                <li>
+                                  <a href="/react-hook.html">React&nbsp;Hook</a>
                                 </li>
                                 <li>
                                   <a href="/react-in-es6.html">React in <span class="caps">ES6</span></a>
@@ -268,9 +318,6 @@
                                   <a href="/react-zu-jian.html">React&nbsp;组件</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                          <a href="/category/react-admin.html" >React-Admin</a>
                         </li>
                 </ul>
             </section>
