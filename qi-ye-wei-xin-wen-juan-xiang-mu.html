@@ -327,8 +327,8 @@
 <span class="kr">const</span> <span class="nx">sftpOption</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./sftp_option&#39;</span><span class="p">)</span>
 
 <span class="kr">const</span> <span class="nx">scheduleCronstylePostData</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">//每小时0分0秒触发:</span>
-  <span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s1">&#39;0 0 * * * *&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">//每小时0分30秒触发:</span>
+  <span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s1">&#39;0 30 * * * *&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; scheduleCronstylePostData: &#39;</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
     <span class="kr">const</span> <span class="nx">sftp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
     <span class="nx">sftp</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">sftpOption</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -337,13 +337,13 @@
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;---- Upload finish ----&quot;</span><span class="p">);</span>
         <span class="nx">sftp</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
         <span class="c1">// 删除文件</span>
-        <span class="c1">// fs.unlink(&#39;data.csv&#39;,function(error){</span>
-        <span class="c1">//   if (error){</span>
-        <span class="c1">//       console.error(error);</span>
-        <span class="c1">//       return false;</span>
-        <span class="c1">//   }</span>
-        <span class="c1">//   console.log(&#39;---- delete csv success ----&#39;);</span>
-        <span class="c1">// })</span>
+        <span class="nx">fs</span><span class="p">.</span><span class="nx">unlink</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+              <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- delete csv success ----&#39;</span><span class="p">);</span>
+        <span class="p">})</span>
     <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
     <span class="p">});</span>
@@ -353,6 +353,93 @@
 </pre></div>
 
 
+<h3>静态资源访问权限</h3>
+<p>https://blog.csdn.net/x746655242/article/details/53318464</p>
+<p>中间件有很多用处，可以做权限的配置，访问前的各种参数校验，</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">,</span><span class="nx">next</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="kr">static</span><span class="o">=</span> <span class="sr">/^(\/data)/g</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kr">static</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">path</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; user: &#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; password: &#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">user</span><span class="o">!==</span><span class="s2">&quot;yoga&quot;</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="o">!==</span><span class="s2">&quot;123&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- illegal request ----&#39;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;请求非法&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">next</span><span class="p">()</span>
+<span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">)));</span>
+
+<span class="c1">// http://localhost:27999/data/total_data.csv?user=yoga&amp;password=123</span>
+</pre></div>
+
+
+<h3>发送文件</h3>
+<ul>
+<li>res.sendFile&nbsp;(chrome在浏览器里打开，ie下载)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">root</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/data/&#39;</span><span class="p">,</span>
+    <span class="nx">dotfiles</span><span class="o">:</span> <span class="s1">&#39;deny&#39;</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;x-timestamp&#39;</span><span class="o">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+      <span class="s1">&#39;x-sent&#39;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="kd">var</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="s1">&#39;total_data.csv&#39;</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">fileName</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; Sent:&#39;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<ul>
+<li>res.download&nbsp;(所有浏览器都下载)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="s1">&#39;total_data.csv&#39;</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="sb">`./data/</span><span class="si">${</span><span class="nx">fileName</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; Sent:&#39;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>nodejs解析csv成json</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">parse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;csv-parse/lib/sync&#39;</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;./data/total_data.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">existData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({});</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">records</span> <span class="o">=</span> <span class="nx">parse</span><span class="p">(</span><span class="nx">existData</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">columns</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">skip_empty_lines</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">})</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">records</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h1>Microsoft&nbsp;flow</h1>
+<p>创建定时任务，每小时通过接口获取数据，创建csv并存入sharepoint</p>
+<p><img alt="flow" src="img/flow1.png"></p>
 <h1>压力测试</h1>
 <p>https://blog.csdn.net/yaorongke/article/details/82799609</p>
 <p><img alt="jmeter" src="img/jmeter1.jpg">
@@ -360,7 +447,9 @@
 <img alt="jmeter" src="img/jmeter3.png">
 <img alt="jmeter" src="img/jmeter4.png">
 <img alt="jmeter" src="img/jmeter5.png"></p>
-<p>Mac运行jmeter：sh&nbsp;jmeter</p>
+<p>Mac运行jmeter：</p>
+<p>cd&nbsp;bin</p>
+<p>sh&nbsp;jmeter</p>
 <p>https://blog.csdn.net/u012972942/article/details/80392792</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
