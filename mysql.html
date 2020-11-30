@@ -1,0 +1,394 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›MySQL
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >MySQL</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-07-25T00:00:00+08:00"> 
+            <a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/mysql.html">mysql</a>
+                <a href="/tag/database.html">database</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>安装&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
+</pre></div>
+
+
+<p>登录&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+
+
+<p>退出&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><span class="k">exit</span>
+</pre></div>
+
+
+<p>创建数据库</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>查看当前的数据库</p>
+<div class="highlight"><pre><span></span><span class="k">show</span> <span class="nv">databases</span><span class="c1">;</span>
+</pre></div>
+
+
+<p>删除数据库</p>
+<div class="highlight"><pre><span></span><span class="k">drop</span> <span class="k">database</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>选择数据库</p>
+<div class="highlight"><pre><span></span><span class="n">use</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>创建数据表</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="p">(</span><span class="k">column_name</span> <span class="n">column_type</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">runoob_tbl</span><span class="p">(</span>
+   <span class="o">-&gt;</span> <span class="n">runoob_id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+   <span class="o">-&gt;</span> <span class="n">runoob_title</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="o">-&gt;</span> <span class="n">runoob_author</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="o">-&gt;</span> <span class="n">submission_date</span> <span class="nb">DATE</span><span class="p">,</span>
+   <span class="o">-&gt;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span> <span class="n">runoob_id</span> <span class="p">)</span>
+   <span class="o">-&gt;</span> <span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">ENGINE</span> <span class="err">设置存储引擎，</span><span class="n">CHARSET</span> <span class="err">设置编码。</span>
+</pre></div>
+
+
+<p>显示当前数据库的表单</p>
+<div class="highlight"><pre><span></span><span class="k">show</span> <span class="nv">tables</span>
+</pre></div>
+
+
+<p>删除数据表</p>
+<div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span>
+</pre></div>
+
+
+<p>插入数据</p>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table_name</span> <span class="p">(</span> <span class="n">field1</span><span class="p">,</span> <span class="n">field2</span><span class="p">,...</span><span class="n">fieldN</span> <span class="p">)</span>
+                       <span class="k">VALUES</span>
+                       <span class="p">(</span> <span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,...</span><span class="n">valueN</span> <span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">runoob_tbl</span>
+    <span class="o">-&gt;</span> <span class="p">(</span><span class="n">runoob_title</span><span class="p">,</span> <span class="n">runoob_author</span><span class="p">,</span> <span class="n">submission_date</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="k">VALUES</span>
+    <span class="o">-&gt;</span> <span class="p">(</span><span class="ss">&quot;学习 PHP&quot;</span><span class="p">,</span> <span class="ss">&quot;菜鸟教程&quot;</span><span class="p">,</span> <span class="n">NOW</span><span class="p">());</span>
+</pre></div>
+
+
+<p>查询数据</p>
+<div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">column_name</span><span class="p">,</span><span class="n">column_name</span>
+<span class="n">FROM</span> <span class="n">table_name</span>
+<span class="p">[</span><span class="n">WHERE</span> <span class="n">Clause</span><span class="p">]</span>
+<span class="p">[</span><span class="n">LIMIT</span> <span class="n">N</span><span class="p">][</span> <span class="n">OFFSET</span> <span class="n">M</span><span class="p">]</span>
+<span class="c1">// LIMIT 返回的记录数</span>
+<span class="c1">// OFFSET 开始查询的数据偏移量, 默认为0</span>
+</pre></div>
+
+
+<p>更新数据</p>
+<div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">table_name</span> <span class="n">SET</span> <span class="n">field1</span><span class="o">=</span><span class="n">new</span><span class="o">-</span><span class="n">value1</span><span class="p">,</span> <span class="n">field2</span><span class="o">=</span><span class="n">new</span><span class="o">-</span><span class="n">value2</span>
+<span class="p">[</span><span class="n">WHERE</span> <span class="n">Clause</span><span class="p">]</span>
+</pre></div>
+
+
+<p><span class="caps">DELETE</span>&nbsp;语句</p>
+<div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">table_name</span> <span class="p">[</span><span class="n">WHERE</span> <span class="n">Clause</span><span class="p">]</span>
+</pre></div>
+
+
+<p><span class="caps">LIKE</span> 子句 (string has&nbsp;somevalue)</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">field1</span><span class="p">,</span><span class="w"> </span><span class="n">field2</span><span class="p">,...</span><span class="n">fieldN</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">table_name</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">field1</span><span class="w"> </span><span class="ow">LIKE</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="o">[</span><span class="n">AND [OR</span><span class="o">]</span><span class="err">]</span><span class="w"> </span><span class="n">filed2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;somevalue&#39;</span><span class="w"></span>
+
+<span class="o">//</span><span class="w"> </span><span class="n">runoob_tbl</span><span class="w"> </span><span class="n">表中获取</span><span class="w"> </span><span class="n">runoob_author</span><span class="w"> </span><span class="n">字段中以</span><span class="w"> </span><span class="n">COM</span><span class="w"> </span><span class="n">为结尾</span><span class="w"></span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">runoob_tbl</span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">runoob_author</span><span class="w"> </span><span class="ow">LIKE</span><span class="w"> </span><span class="s1">&#39;%COM&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+
+
+<p><span class="caps">UNION</span> 操作符 (new&nbsp;set)</p>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="err">排除重复</span>
+<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">Websites</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">apps</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">country</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="err">保留重复</span>
+<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">Websites</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">apps</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">country</span><span class="p">;</span>
+</pre></div>
+
+
+<p>排序</p>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">runoob_tbl</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">submission_date</span> <span class="k">ASC</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">runoob_tbl</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">submission_date</span> <span class="k">DESC</span><span class="p">;</span>
+</pre></div>
+
+
+<p>分组</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">column_name</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="k">column_name</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="k">table_name</span>
+<span class="k">WHERE</span> <span class="k">column_name</span> <span class="k">operator</span> <span class="n">value</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">column_name</span><span class="p">;</span>
+
+<span class="o">//</span><span class="err">在分组统计数据基础上再进行相同的统计（</span><span class="k">SUM</span><span class="p">,</span><span class="k">AVG</span><span class="p">,</span><span class="k">COUNT</span><span class="err">…）</span>
+<span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">singin</span><span class="p">)</span> <span class="k">as</span> <span class="n">singin_count</span> <span class="k">FROM</span>  <span class="n">employee_tbl</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">name</span> <span class="k">WITH</span> <span class="k">ROLLUP</span><span class="p">;</span>
+</pre></div>
+
+
+<p>正则表达式</p>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="err">查找</span><span class="n">name字段中以</span><span class="s1">&#39;st&#39;</span><span class="err">为开头的所有数据</span>
+<span class="k">SELECT</span> <span class="n">name</span> <span class="k">FROM</span> <span class="n">person_tbl</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="n">REGEXP</span> <span class="s1">&#39;^st&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>2020.9.10</p>
+<p>查询缓存：缓存相同查询语句的结果</p>
+<div class="highlight"><pre><span></span><span class="k">SHOW</span> <span class="n">ENGINES</span>
+</pre></div>
+
+
+<p>Mysql&nbsp;常用存储引擎：</p>
+<ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+</ul>
+<p>Charset&nbsp;字符集：</p>
+<ul>
+<li>utf8 (utf8mb3 一个字符最多三个字节，emoji 是 4&nbsp;字节编码)</li>
+<li>utf8mb4&nbsp;(完整)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">character_set_client</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span> <span class="o">//</span> <span class="err">数据库接收到的</span>
+<span class="k">SET</span> <span class="n">character_set_connection</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span> <span class="o">//</span> <span class="err">当前连接</span>
+<span class="k">SET</span> <span class="n">character_set_results</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span> <span class="o">//</span> <span class="err">返回给客户端的</span>
+</pre></div>
+
+
+<h2>B+树</h2>
+<p>每个键都是一个叶节点，每张表不会超过 3-4&nbsp;层</p>
+<p>一级索引里存的是完整记录，二级索引只存了部分字段</p>
+<p>对两个字段做联合索引时，只存了这两个字段和主键</p>
+<p>回表：根据主键索引 id 查询很快，能拿到完整数据，根据二级索引 name 查询只能拿到 name 和&nbsp;id</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;aaa&#39;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="o">=</span> <span class="s1">&#39;aaa%&#39;</span> <span class="o">//</span> <span class="err">模糊匹配</span><span class="p">:</span> <span class="err">以</span><span class="n">aaa开头的字符串</span>
+</pre></div>
+
+
+<p>联合索引：最左匹配原则</p>
+<p>idx_a_b_c</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> <span class="k">AND</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;yyy&#39;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> <span class="k">AND</span> <span class="k">c</span> <span class="o">=</span> <span class="s1">&#39;yyy&#39;</span> <span class="o">//</span> <span class="err">用不到联合索引</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> <span class="k">OR</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;yyy&#39;</span> <span class="o">//</span> <span class="n">a和b两个索引都用不到</span>
+</pre></div>
+
+
+<p>范围索引</p>
+<p>联表查询</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">query</span> <span class="o">=</span> <span class="err">{</span>
+  <span class="k">order</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;updatedAt&#39;</span><span class="p">,</span> <span class="s1">&#39;createdAt&#39;</span><span class="p">]],</span>
+  <span class="n">include</span><span class="p">:</span> <span class="p">[</span><span class="k">user</span><span class="p">]</span> <span class="o">//</span> <span class="err">必须有外键才能联表查询</span> <span class="n">foreignKey</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h2>优化</h2>
+<ul>
+<li>建立合理的索引（避免回表）</li>
+<li>写合理的查询语句 (select a,b 不要select&nbsp;*，尽量少做连表查询）</li>
+<li>分表和分库&nbsp;（根据功能模块，把有业务关联的数据分库）</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="k">set</span> <span class="n">announcement</span> <span class="n">unread</span>
+<span class="k">UPDATE</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Notifications</span><span class="o">`</span> <span class="k">SET</span> <span class="n">isUnread</span><span class="o">=</span><span class="mi">1</span> <span class="k">WHERE</span> <span class="k">USER</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span> <span class="k">AND</span> <span class="k">TYPE</span><span class="o">=</span><span class="s1">&#39;comment&#39;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Notifications</span><span class="o">`</span> <span class="k">WHERE</span> <span class="k">USER</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span> <span class="k">AND</span> <span class="k">TYPE</span><span class="o">=</span><span class="s1">&#39;comment&#39;</span>
+
+<span class="o">//</span> <span class="k">add</span> <span class="n">sap</span> <span class="n">permission</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span> <span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="k">USER</span><span class="p">,</span> <span class="k">TYPE</span><span class="p">,</span> <span class="n">createdAt</span><span class="p">,</span> <span class="n">updatedAt</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;SAP&#39;</span><span class="p">,</span> <span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span><span class="p">,</span> <span class="s1">&#39;GENERAL&#39;</span><span class="p">,</span> <span class="n">NOW</span><span class="p">(),</span> <span class="n">NOW</span><span class="p">())</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span> <span class="k">AND</span> <span class="n">resource</span><span class="o">=</span><span class="s1">&#39;SAP&#39;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span>
+
+<span class="o">//</span> <span class="k">select</span> <span class="k">external</span> <span class="n">resource</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="k">count</span><span class="o">`</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">ExternalResources</span><span class="o">`</span> <span class="k">AS</span> <span class="o">`</span><span class="n">ExternalResource</span><span class="o">`</span> <span class="k">WHERE</span> <span class="p">(</span><span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="k">position</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;PVP&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="k">role</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;IT&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="n">region</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;AP&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="n">sector</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;ALLSECTORS&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="k">update</span>
+<span class="k">UPDATE</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">ViewsCountRecords</span><span class="o">`</span> <span class="k">SET</span> <span class="k">TYPE</span> <span class="o">=</span> <span class="s1">&#39;SAP&#39;</span>
+
+<span class="o">//</span> <span class="k">delete</span> <span class="k">user</span>
+<span class="k">delete</span> <span class="k">from</span> <span class="n">fpa</span><span class="p">.</span><span class="n">users</span> <span class="k">where</span> <span class="n">userId</span><span class="o">=</span><span class="ss">&quot;wfang9&quot;</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">Permissions</span> <span class="k">WHERE</span> <span class="o">`</span><span class="k">user</span><span class="o">`=</span><span class="s1">&#39;c8a5d877-2a18-4bff-8070-b5a4d5d033a3&#39;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "mysql.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

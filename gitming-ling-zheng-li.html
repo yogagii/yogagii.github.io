@@ -35,6 +35,7 @@
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -80,6 +81,10 @@
 <li>设置提交中使用的邮件地址: </li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--global user.email &quot;youremail@emai.com&quot;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://jyu36@sourcecode.jnj.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
 </pre></div>
 
 
@@ -200,6 +205,13 @@
 <li>撤销对文件的修改: </li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="c1">-- filename</span>
+</pre></div>
+
+
+<ul>
+<li>将所有untracked&nbsp;file删除: </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">git</span>  <span class="n">clean</span>  <span class="o">-</span><span class="n">f</span>
 </pre></div>
 
 
@@ -447,7 +459,7 @@
 </pre></div>
 
 
-<h2><span class="caps">PM2</span></h2>
+<h2>PM2进程管理工具</h2>
 <ul>
 <li>启动index.js（node&nbsp;index）并起名:</li>
 </ul>
@@ -472,7 +484,15 @@
 <ul>
 <li>停止指定应用:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">stop</span> <span class="n">wxAuthorize</span>
+<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">stop</span> <span class="mi">0</span>
+<span class="n">pm2</span> <span class="n">stop</span> <span class="n">wxAuthorize</span>
+</pre></div>
+
+
+<ul>
+<li>重启指定应用:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="k">restart</span> <span class="n">wechat_auth</span>
 </pre></div>
 
 
@@ -484,7 +504,7 @@
 
 
 <ul>
-<li>重启指定应用:</li>
+<li>重新加载指定应用:</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">reload</span> <span class="n">wechat_auth</span>
 </pre></div>
@@ -510,6 +530,14 @@
 <li>显示行号</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="k">less</span> <span class="o">-</span><span class="n">N</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span> 
+</pre></div>
+
+
+<h2>Linux</h2>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
+<span class="n">su</span> <span class="n">f1nance</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">fpa_backend</span><span class="o">/</span>
+<span class="n">pm2</span> <span class="n">reload</span> <span class="n">app</span>
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -558,6 +586,9 @@
                 <ul>
                         <li>
                           <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>

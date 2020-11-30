@@ -1,0 +1,548 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›Sails.js
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Sails.js</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-07-19T00:00:00+08:00"> 
+            <a href="/archive/2020/ 7/index.html">日 19 七月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/sails.html">sails</a>
+                <a href="/tag/nodejs.html">nodeJS</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>sails.js 是类似于 Ruby on Rails 的开发平台，可以快速整合数据库资源，非常适合网站和 <span class="caps">API</span>&nbsp;服务的构建</p>
+<p>类似框架：</p>
+<ul>
+<li>ExpressJS</li>
+<li>Koa.js</li>
+<li>Egg.js</li>
+</ul>
+<p>链接：https://www.bilibili.com/video/BV19p411Z7rJ?from=search&amp;seid=13206583137553736240</p>
+<h2>安装</h2>
+<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">show</span> <span class="n">sails</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">sails</span><span class="mf">@0.12.14</span> <span class="c1">// @+版本号</span>
+
+<span class="n">sails</span> <span class="n">new</span> <span class="n">testProject</span>
+<span class="n">cd</span> <span class="n">testProject</span>
+<span class="n">sails</span> <span class="n">lift</span>
+</pre></div>
+
+
+<p>http://localhost:1337/</p>
+<blockquote>
+<p>约定优于配置 CoC（convention over configuration）—— Ruby on&nbsp;Rails</p>
+</blockquote>
+<p><em>就是用事先约定好的规则作为框架来写代码，而不是利用一个中心配置文件。具体例子来说，比如在 rails 里面，生成一个 model 和 controller，约定好了 model 默认用名词单数形式，controller 默认用名词复数形式。rails&nbsp;框架本身会按照这种约定的形式去寻找相应的文件而不是通过一个配置文件告诉框架说我要把这两个文件关联起来。</em></p>
+<p>链接：https://www.zhihu.com/question/62960377/answer/360959520</p>
+<p>在我们开发 sails 应用程序时，如果每一次修改源代码后都要通过【sails lift】命令重新启动服务的话会非常的麻烦，那么通过 nodemon&nbsp;工具的话，我们就可以非常简单地完成自动启动服务。</p>
+<p>http://nodemon.io/</p>
+<div class="highlight"><pre><span></span><span class="ss">&quot;scripts&quot;</span><span class="p">:</span> <span class="err">{</span>
+  <span class="ss">&quot;debug&quot;</span><span class="p">:</span> <span class="ss">&quot;node debug app.js&quot;</span><span class="p">,</span>
+  <span class="ss">&quot;start&quot;</span><span class="p">:</span> <span class="ss">&quot;nodemon app.js&quot;</span>
+<span class="err">}</span><span class="p">,</span>
+</pre></div>
+
+
+<hr>
+<h2>结构</h2>
+<ul>
+<li>api:&nbsp;后台处理程序</li>
+<li>controllers：控制器，映射路由 <span class="caps">URL</span></li>
+<li>hooks:&nbsp;系统功能调用和改变</li>
+<li>models:&nbsp;数据库实体模型，和数据库表一一映射</li>
+<li>policies: 访问策略（权限判断，session&nbsp;认证）</li>
+<li>responses:&nbsp;自定义回应</li>
+<li>services:&nbsp;定制全局服务类（静态服务类，全局函数，邮件服务）</li>
+<li>assets:&nbsp;网站静态文件根目录</li>
+<li>config:&nbsp;系统设置文件集</li>
+<li>env<ul>
+<li>production.js&nbsp;生产环境设置</li>
+</ul>
+</li>
+<li>global.js&nbsp;全局变量</li>
+<li>route.js&nbsp;手动配置路由</li>
+<li>policies.js&nbsp;权限配置</li>
+<li>session.js</li>
+<li>view.js&nbsp;默认布局设定</li>
+<li>blueprints&nbsp;蓝图</li>
+<li>security (<span class="caps">CSRF</span>)</li>
+<li>tasks:&nbsp;打包工具</li>
+<li>pipeline.js&nbsp;编译顺序</li>
+<li>views:&nbsp;网页模版</li>
+<li>app.js:&nbsp;应用程序启动入口</li>
+<li>.sailsrc:&nbsp;设置</li>
+</ul>
+<hr>
+<h2>资源&nbsp;Assets</h2>
+<p>服务器上想让外界存取的静态文档（js、css、图）放在 assets/ 目录，启动应用程序时会被处理并同步到一个隐藏的暂存目录(.tmp/public/)。这个 .tmp/public 文件夹就是 Sails 实际提供的内容，大致等同于 express&nbsp;的「public」文件夹。</p>
+<p>静态中间件是安装在 Sails&nbsp;路由之后，资源目录有文档与自定义路由冲突，自定义路由会在到达静态中间件前拦截请求。</p>
+<h3>默认任务 Default&nbsp;Tasks</h3>
+<blockquote>
+<p>webpack、grunt 都是前端打包的工具。
+Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一种模块化的解决方案，不过 Webpack 的优点使得 Webpack 在很多场景下可以替代 Grunt&nbsp;类的工具。</p>
+</blockquote>
+<p>grunt&nbsp;的工作方式是：在一个配置文件中，指明对某些文件进行压缩、组合、检查等任务的具体步骤，然后在运行中输入相应的命令。</p>
+<p>Sails 内的 asset pipeline 是一组能增加工程一致性和效率的 Grunt&nbsp;任务设置。</p>
+<p>包含在 Sails 工程的 Grunt&nbsp;任务:</p>
+<h3>禁用&nbsp;Grunt</h3>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="ss">&quot;hooks&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="ss">&quot;grunt&quot;</span><span class="p">:</span> <span class="k">false</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<hr>
+<h2>设置&nbsp;Configuration</h2>
+<ul>
+<li>
+<p>程序设置</p>
+</li>
+<li>
+<p>指定环境变量或命令行参数</p>
+</li>
+<li>
+<p>改变 local 或 global .sailsrc&nbsp;文档</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">sails</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sails&#39;</span><span class="p">);</span>
+<span class="nx">rc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sails/accessible/rc’);</span>
+
+<span class="s1">sails.lift(rc(&#39;</span><span class="nx">sails</span><span class="err">&#39;</span><span class="p">));</span>
+</pre></div>
+
+
+<p>rc:&nbsp;检索通过环境变量设置的配置</p>
+<p>With the exception of NODE_ENV and <span class="caps">PORT</span>, configuration set via environment variables will not automatically apply to apps started using .lift(), nor will options set in .sailsrc files. If you wish to use those configuration values, you can retrieve them via require(&#8216;sails/accessible/rc&#8217;)(&#8216;sails&#8217;) and pass them in as the first argument to&nbsp;.lift().</p>
+<ul>
+<li>使用约定位于工程内 config/&nbsp;文件夹的模板设置文档</li>
+</ul>
+<p>执行时期可通过 sails 全局变数的 sails.config&nbsp;在应用程序使用合并后的设置。</p>
+<p>sails.config 对象的顶层键（例如 sails.config.views）对应在应用程序内特定的设置文档（例如&nbsp;config/views.js）</p>
+<div class="highlight"><pre><span></span><span class="c1">// 新增一个新文档config/foo.js</span>
+<span class="c1">// 对象会被合并到 `sails.config.blueprints`</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">blueprints</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">shortcuts</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<h2>控制器&nbsp;Controllers</h2>
+<p><span class="caps">MVC</span> 中的&nbsp;C，负责响应请求，包含项目的大部分业务逻辑。</p>
+<h3>Actions</h3>
+<p>控制器由一组称为 Action 的函数组成, action 可以绑定&nbsp;routes，这样当客户机请求路由时，将执行绑定方法以执行某些业务逻辑并生成响应。</p>
+<p><span class="caps">GET</span> /hello route in your application could be bound to a method&nbsp;like:</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>Generating&nbsp;controllers</h3>
+<blockquote>
+<p>$ sails generate controller <controller name> [action names separated by spaces&#8230;]
+<br/> $ sails generate controller comment create destroy tag&nbsp;like</p>
+</blockquote>
+<p>控制器在 api/Controllers/文件夹中定义，Pascal&nbsp;命名法（UserController.js）</p>
+<p>文件内部定义了一个 object
+{
+action names: corresponding action methods.&nbsp;}</p>
+<div class="highlight"><pre><span></span><span class="c1">// api/controllers/SayController.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">hi</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Hi there!&#39;</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="nx">bye</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;http://www.sayonara.com&#39;</span><span class="p">)</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1">// config/routes.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;GET /say/hi&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;say/hi&#39;</span> <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">// api/controllers/say/hi.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">hi</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">()</span> <span class="c1">// 200</span>
+<span class="p">}</span>
+<span class="c1">/// config/routes.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;GET /say/hi&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;say/hi&#39;</span> <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>There are two main types of routes in&nbsp;Sails:</p>
+<ul>
+<li>automatic (or&nbsp;&#8220;implicit&#8221;隐性的).</li>
+</ul>
+<p>自带路由/say/hi 和&nbsp;/say/bye</p>
+<ul>
+<li>custom (or&nbsp;&#8220;explicit&#8221;显性的)</li>
+</ul>
+<p>在/config/routes&nbsp;里手动配置</p>
+<div class="highlight"><pre><span></span><span class="c1">// [HTTP method (optionally)] [address]: [target]</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;get /signup&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">view</span><span class="o">:</span> <span class="s1">&#39;conversion/signup&#39;</span> <span class="p">},</span>
+  <span class="s1">&#39;POST /make/a/sandwich&#39;</span><span class="o">:</span> <span class="s1">&#39;SandwichController.makeIt&#39;</span><span class="p">,</span> <span class="c1">// trigger the makeIt() action in api/controllers/SandwichController.js</span>
+  <span class="s1">&#39;/logout&#39;</span><span class="o">:</span> <span class="s1">&#39;AuthController.logout&#39;</span><span class="p">,</span> <span class="c1">// bind all request methods</span>
+  <span class="s1">&#39;GET /page2&#39;</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">policy</span><span class="o">:</span> <span class="s1">&#39;accessLog&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;page2&#39;</span> <span class="p">}],</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>Express</h3>
+<p>req 请求对象, res 响应对象, next&nbsp;应用程序请求</p>
+<p>如果当前的中间件函数没有结束请求 - 响应周期，则必须调用&nbsp;next()以将控制传递给下一个中间件函数。否则，请求将被挂起。</p>
+<div class="highlight"><pre><span></span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">next</span><span class="p">()</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<p><em>Sails 缺少参数 next，所以 Sails controller actions should always be the last stop in the request chain&#8212;that is, they should always result in either a response or an&nbsp;error.</em></p>
+<h3><span class="dquo">&#8220;</span>Thin&#8221;&nbsp;Controllers</h3>
+<ul>
+<li>Write a custom model method&nbsp;封装</li>
+<li>Write a service as a function&nbsp;服务</li>
+<li>extract it into a node module&nbsp;模块</li>
+</ul>
+<hr>
+<h2>蓝图 Blueprint <span class="caps">API</span></h2>
+<p>Blueprints are Sails’s way of quickly generating <span class="caps">API</span> routes and actions based on your application&nbsp;design.</p>
+<blockquote>
+<p>\$ sails generate api&nbsp;User</p>
+</blockquote>
+<p>生成文件</p>
+<ul>
+<li>api/controllers/UserController.js</li>
+<li>api/models/User.js</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">attributes</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">address</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Blueprint&nbsp;routes</strong></p>
+<p>If you create a User.js model file in your project, then with blueprints enabled you will be able to immediately visit /user/create?name=joe to create a user, and visit /user to see an array of your app&#8217;s&nbsp;users.</p>
+<p><strong>Blueprint&nbsp;actions</strong></p>
+<ul>
+<li>find</li>
+<li>findOne</li>
+<li>create</li>
+<li>update</li>
+<li>destroy</li>
+<li>populate</li>
+<li>add</li>
+<li>remove</li>
+<li>replace</li>
+</ul>
+<p>To override a RESTful blueprint route for a single model, simply create an action in the relevant controller file (or a standalone action in the relevant folder) with the appropriate name: find, findOne, create, update, destroy, populate, add or&nbsp;remove.</p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="caps">GET</span> /user</td>
+<td>UserController.find</td>
+</tr>
+<tr>
+<td><span class="caps">GET</span> /user/:id</td>
+<td>UserController.findOne</td>
+</tr>
+<tr>
+<td><span class="caps">POST</span> /user</td>
+<td>UserController.create</td>
+</tr>
+<tr>
+<td><span class="caps">PATCH</span> /user/:id</td>
+<td>UserController.update</td>
+</tr>
+<tr>
+<td><span class="caps">DELETE</span> /user/:id</td>
+<td>UserController.destroy</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="c1">// config/blueprints.js</span>
+<span class="nx">actions</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// expose implicit routes 将控制器里的方法自动映射成URL</span>
+<span class="nx">rest</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// expose RESTful routes 将增删改查全部暴露给用户</span>
+<span class="nx">shortcuts</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// CRUD &quot;shortcut&quot; routes to GET requests</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">// actions没开启时可手动增加路由</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;GET /foo/go&#39;</span><span class="o">:</span> <span class="s1">&#39;UserController.find&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>Security</h3>
+<p>If <span class="caps">CSRF</span> protection is enabled, you&#8217;ll need to provide or disable a <span class="caps">CSRF</span> token for <span class="caps">POST</span>/<span class="caps">PUT</span>/<span class="caps">DELETE</span> actions, otherwise you will get a 403 Forbidden&nbsp;response.</p>
+<p>When <span class="caps">CSRF</span> protection is enabled in your Sails app, all non-<span class="caps">GET</span> requests to the server must be accompanied by a special &#8220;<span class="caps">CSRF</span> token&#8221;, which can be included as either the &#8216;_csrf&#8217; parameter or the &#8216;X-<span class="caps">CSRF</span>-Token&#8217;&nbsp;header.</p>
+<div class="highlight"><pre><span></span><span class="c1">// config/security.js</span>
+<span class="nx">csrf</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+
+
+<hr>
+<h2>回应&nbsp;Responses</h2>
+<div class="highlight"><pre><span></span><span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">()</span> <span class="c1">// 200</span>
+   <span class="nx">res</span><span class="p">.</span><span class="nx">forbidden</span><span class="p">()</span> <span class="c1">// 403</span>
+   <span class="nx">res</span><span class="p">.</span><span class="nx">notFound</span><span class="p">()</span> <span class="c1">// 404</span>
+   <span class="nx">res</span><span class="p">.</span><span class="nx">serverError</span><span class="p">()</span> <span class="c1">// 500</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>normalized 标准化的&nbsp;(错误代码是一致的)</li>
+<li>abstracted 被分离的&nbsp;(有考虑到生产环境与开发环境的日志记录)</li>
+<li>content-negotiated 内容协商的(<span class="caps">JSON</span>)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">))</span> <span class="p">{</span>
+     <span class="nx">res</span><span class="p">.</span><span class="nx">badRequest</span><span class="p">(</span><span class="s1">&#39;Sorry, you need to tell us the ID of the FOO you want!&#39;</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>任何储存在 /api/responses 文件夹的 .js 脚本可通过在控制器内呼叫 res.[responseName] 来执行。例如，可以通过呼叫 res.serverError(errors) 来执行&nbsp;/api/responses/serverError.js</p>
+<h3>默认回应 Default&nbsp;responses</h3>
+<ul>
+<li>res.serverError(errors)</li>
+<li>res.badRequest(validationErrors,&nbsp;redirectTo)</li>
+<li>res.notFound()</li>
+<li>res.forbidden(message)</li>
+</ul>
+<h3>自定义回应 Custom&nbsp;Response</h3>
+<p>要加入你自己的自定义回应方法，只需新增与方法名称相同的文档到&nbsp;/api/responses</p>
+<p>To add your own custom response method, simply add a file to /api/responses with the same name as the method you would like to&nbsp;create.</p>
+<hr>
+<h2>部署&nbsp;Deployment</h2>
+<p>所有生产环境设置都储存在&nbsp;config/env/production.js</p>
+<div class="highlight"><pre><span></span><span class="nx">cors</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">allRoutes</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//关闭全路由的跨域存取</span>
+  <span class="nx">origin</span><span class="o">:</span> <span class="s1">&#39;http://foobar.com,https://owlhoot.com&#39;</span><span class="p">,</span> <span class="c1">//允许存取的域名</span>
+  <span class="nx">credentials</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//需要cookies验证</span>
+<span class="p">},</span>
+<span class="nx">csrf</span><span class="o">:</span> <span class="kc">true</span>
+</pre></div>
+
+
+<p>在生产环境中，使用 forever start app.js &#8212;prod 或 pm2 start app.js -x &#8212; &#8212;prod 启动服务器，这和 sails lift &#8212;prod&nbsp;所做的事相同，但是当服务器崩溃时，它会自动重新启动。</p>
+<hr>
+<h2>Views</h2>
+<ul>
+<li>403.ejs</li>
+<li>404.ejs</li>
+<li>500.ejs</li>
+<li>pages</li>
+<li>homepage.ejs:网站主页</li>
+<li>layouts</li>
+<li>layout.ejs:网页公共布局</li>
+</ul>
+<p>pages 中的内容会被渲染到 layout 中的&lt;%- body&nbsp;%&gt;</p>
+<hr>
+<h2>Policies</h2>
+<p>为访问的 <span class="caps">URL</span>&nbsp;绑定存取日志功能。</p>
+<div class="highlight"><pre><span></span><span class="c1">// api/policies/accessLog.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">path</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">next</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">// config/policies.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">policies</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;*&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;is-logged-in&#39;</span><span class="p">,</span> <span class="s1">&#39;accesslog&#39;</span><span class="p">],</span> <span class="c1">// 排在前面的先执行</span>
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "sailsjs.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

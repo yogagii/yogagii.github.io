@@ -27,6 +27,7 @@
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -44,8 +45,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-06-24T14:33:00+08:00"> 
-				<a href="/archive/2020/ 6/index.html">三 24 六月 2020 </a>
+			<abbr class="date" title="2020-11-30T14:33:00+08:00"> 
+				<a href="/archive/2020/11/index.html">一 30 十一月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -84,8 +85,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-06-24T14:33:00+08:00"> 
-				<a href="/archive/2020/ 6/index.html">三 24 六月 2020 </a>
+			<abbr class="date" title="2020-11-30T14:33:00+08:00"> 
+				<a href="/archive/2020/11/index.html">一 30 十一月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -116,191 +117,24 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/qi-ye-wei-xin-wen-juan-xiang-mu.html" rel="bookmark" title="Permalink to 企业微信问卷项目">企业微信问卷项目</a>
+			<a href="/http.html" rel="bookmark" title="Permalink to HTTP"><span class="caps">HTTP</span></a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-05-17T00:00:00+08:00"> 
-				<a href="/archive/2020/ 5/index.html">日 17 五月 2020 </a>
+			<abbr class="date" title="2020-10-09T00:00:00+08:00"> 
+				<a href="/archive/2020/10/index.html">五 09 十月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>背景</h2>
-<p>销售用企业微信添加客户后，系统自动发送问卷，客户填完问卷后将客户数据与销售人员数据一起发送给后台。</p>
-<h2>总体流程</h2>
-<p><img alt="wx" src="img/wx.png"></p>
-<h1>企微接口</h1>
-<p>nodejs+express</p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;view engine&#39;</span><span class="p">,</span><span class="s1">&#39;ejs&#39;</span><span class="p">);</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/project.html">Project</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/wli-photoframe.html" rel="bookmark" title="Permalink to WLI Photoframe"><span class="caps">WLI</span>&nbsp;Photoframe</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-05-17T00:00:00+08:00"> 
-				<a href="/archive/2020/ 5/index.html">日 17 五月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>背景</h2>
-<p>H5页面上用户上传图片，自动添加相框及宣言，用户保存到本地</p>
-<p>http://wli_photoframe.jnjadc.com/</p>
-<p><img src="img/Women.png" width="300px" /></p>
-<h2>HTML2Canvas</h2>
-<p>用HTML2Canvas将叠加后的photo生成为图片，用户长按可下载</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">html2canvas</span> <span class="nx">from</span> <span class="s1">&#39;html2canvas&#39;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">savePic</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">setModal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mi">0 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/project.html">Project</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/swift-programming-language-basic.html" rel="bookmark" title="Permalink to Swift Programming Language Basic">Swift Programming Language&nbsp;Basic</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-05-03T00:00:00+08:00"> 
-				<a href="/archive/2020/ 5/index.html">日 03 五月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h1>Properties&nbsp;属性</h1>
-<h2>存储属性 stored&nbsp;propert</h2>
-<p>一个存储属性就是存储在特定类或结构体的实例里的一个常量或变量&#8212;变量存储属性（var），常量存储属性（let）</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span>
-</pre></div>
-
-
-<h2>延迟存储属性</h2>
-<p>是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用lazy来标示一个延迟存储属性。必须将延迟存储属性声明成变量（使用var关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。</p>
-<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">importer</span> <span class="p">=</span> <span class="n">DataImporter</span><span class="p">()</span>
-</pre></div>
-
-
-<h2>计算属性computed&nbsp;property</h2>
-<p>不直接存储值，而是提供一个 getter …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/swift-programming-language-more.html" rel="bookmark" title="Permalink to Swift Programming Language More">Swift Programming Language&nbsp;More</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-05-03T00:00:00+08:00"> 
-				<a href="/archive/2020/ 5/index.html">日 03 五月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h1>Access Control&nbsp;访问控制</h1>
-<p>访问控制可以限定你在源文件或模块中访问代码的级别。这个特性可以让我们隐藏功能实现的一些细节，并且可以明确的指定我们提供给其他人的接口中哪些部分是他们可以使用的，哪些是他们看不到的。</p>
-<h2>访问级别</h2>
-<ul>
-<li>
-<p>public (公开, 供外部调用): (for frameworks only) can be used by objects outside my&nbsp;framework</p>
-</li>
-<li>
-<p>internal (默认, 限module内使用): usable by any object in …</p></li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/jenkinsbu-shu.html" rel="bookmark" title="Permalink to Jenkins部署">Jenkins部署</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-04-30T00:00:00+08:00"> 
-				<a href="/archive/2020/ 4/index.html">四 30 四月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.jnj.com/scm/asx-nbbg/fpa_mobile.git</p>
-<p>Branch Specifier:&nbsp;*/develop</p>
-<p>Build Triggers: 轮询 <span class="caps">SCM</span></p>
-<p>Build:&nbsp;执行shell</p>
-<div class="highlight"><pre><span></span><span class="nv">npm</span> <span class="nv">i</span>
-<span class="nv">npm</span> <span class="nv">install</span> <span class="nv">aws</span><span class="o">-</span><span class="nv">sdk</span> <span class="o">&amp;</span>
-<span class="nv">export</span> <span class="nv">NODE_OPTIONS</span><span class="o">=--</span><span class="nv">max_old_space_size</span><span class="o">=</span><span class="mi">4096</span>
-<span class="nv">npm …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/buttonmo-ni-jian-pan-shi-jian.html" rel="bookmark" title="Permalink to Button模拟键盘事件">Button模拟键盘事件</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-04-17T00:00:00+08:00"> 
-				<a href="/archive/2020/ 4/index.html">五 17 四月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>背景：</p>
-<p>添加按钮，模拟tableau的保存按钮，点击后可保存iframe内的正在编辑的workbook</p>
-<p><img alt="mockKeyboard" src="img/mockKeyboard.jpg"></p>
-<h3>尝试方法一：</h3>
-<p>Tableau文档提供的接口</p>
-<p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
-<h3>尝试方法二：</h3>
-<p>前端模拟tableau保存的流程，点击我们的按钮时，请求五六个tableau的接口，根据返回的数据照着做一个保存的窗口，例如:</p>
-<p>https://prodbitabcrp.jnj.com/vizportal/api/web/v1/getDestinationProjects</p>
-<p>困难：跨域问题，无法直接调用tableau的接口</p>
-<h3>尝试方法三：</h3>
-<p>前端做个按钮，点击后向后端发送workbook信息 …</p></div>
+	<div class="summary"><p>web socket需要把http设为1.1&nbsp;只握手一次</p>
+<p>location{
+  proxy_http_version: 1,1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection &#8220;upgrade&#8221;; // 升级到最新版本 Status code 101
+  proxy_set_header Host $host; // 暴露被反向代理隐藏的host&nbsp;}</p>
+<h2>iframe</h2>
+<p><img alt="http" src="img/http.jpeg"></p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -312,22 +146,35 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/concentration-game-view.html" rel="bookmark" title="Permalink to Concentration Game — View">Concentration Game &#8212;&nbsp;View</a>
+			<a href="/mocha.html" rel="bookmark" title="Permalink to Mocha">Mocha</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-04-17T00:00:00+08:00"> 
-				<a href="/archive/2020/ 4/index.html">五 17 四月 2020 </a>
+			<abbr class="date" title="2020-08-24T00:00:00+08:00"> 
+				<a href="/archive/2020/ 8/index.html">一 24 八月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h1>UIStackView&nbsp;堆栈视图</h1>
-<p>UIStackView is class in <span class="caps">IOS</span> (like <span class="caps">UI</span> Button and <span class="caps">UI</span> Label). It will take other views and stack them together. It only knows how to stack horizontally or …</p></div>
+	<div class="summary"><p>lifecycle.test.js</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">MockAdaper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">();</span>
+
+<span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">(</span><span class="mi">50000</span><span class="p">)</span> <span class="c1">// 设置超时时间</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="c1">// 服务启动失败</span>
+  <span class="p">}</span>
+
+  <span class="nx">global</span><span class="p">.</span><span class="nx">httpMock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MockAdaper</span><span class="p">(</span><span class="nx">axios</span><span class="p">);</span> <span class="c1">// 模拟获取数据</span>
+
+  <span class="c1">// 创建模拟用户</span>
+  <span class="kr">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">userId</span> <span class="o">=</span> <span class="s1">&#39;user1 …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -335,36 +182,210 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/xcode.html" rel="bookmark" title="Permalink to XCode">XCode</a>
+			<a href="/xena.html" rel="bookmark" title="Permalink to XENA"><span class="caps">XENA</span></a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-04-14T00:00:00+08:00"> 
-				<a href="/archive/2020/ 4/index.html">二 14 四月 2020 </a>
+			<abbr class="date" title="2020-08-21T00:00:00+08:00"> 
+				<a href="/archive/2020/ 8/index.html">五 21 八月 2020 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Key&nbsp;Commands</h2>
-<p>cmd+R&nbsp;运行</p>
-<p>cmd+0&nbsp;打开/关闭左侧文件面板</p>
-<p>cmd+option+0&nbsp;打开/关闭右侧属性面板</p>
-<p>cmd+shift+y&nbsp;打开/关闭底部控制台面板</p>
-<p>cmd+option+enter&nbsp;打开新窗口</p>
-<p>cmd+enter&nbsp;回到一个窗口</p>
-<p>ctrl+i&nbsp;将选中的代码自动缩进</p>
-<p>cmd …</p></div>
+	<div class="summary"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="p">.</span><span class="n">git</span>
+
+<span class="n">cd</span> <span class="n">getting</span><span class="o">-</span><span class="n">started</span>
+<span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">docker101tutorial</span>
+
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">80</span><span class="p">:</span><span class="mi">80</span> <span class="err">\</span> <span class="err">—</span><span class="n">name</span> <span class="n">docker</span><span class="o">-</span><span class="n">tutorial</span> <span class="n">docker101tutorial</span>
+
+<span class="n">docker</span> <span class="n">tag</span> <span class="n">docker101tutorial</span> <span class="n">yogadock …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/jest.html" rel="bookmark" title="Permalink to JEST"><span class="caps">JEST</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-08-20T00:00:00+08:00"> 
+				<a href="/archive/2020/ 8/index.html">四 20 八月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><div class="highlight"><pre><span></span><span class="n">umi</span> <span class="n">test</span> <span class="c1">--coverage</span>
+<span class="n">umi</span> <span class="n">test</span> <span class="c1">--watch</span>
+<span class="n">umi</span> <span class="n">test</span> <span class="err">\</span><span class="n">allWorkbooks</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">// index.test.tsx</span>
+<span class="kr">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/nodejs.html" rel="bookmark" title="Permalink to nodeJS">nodeJS</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-08-03T00:00:00+08:00"> 
+				<a href="/archive/2020/ 8/index.html">一 03 八月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Nginx 比 Apache&nbsp;高并发的原因</p>
+<p>Nginx 负载均衡调度算法&nbsp;负载均衡之轮询算法</p>
+<p>Apache&nbsp;多进程（多线程）</p>
+<p>Nginx&nbsp;单进程（单线程）</p>
+<div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">promise</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1">// 这一轮最后执行</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">// 下一轮执行</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">// 1 3 2 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/mysql.html" rel="bookmark" title="Permalink to MySQL">MySQL</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-07-25T00:00:00+08:00"> 
+				<a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>安装&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
+</pre></div>
+
+
+<p>登录&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+
+
+<p>退出&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><span class="k">exit</span>
+</pre></div>
+
+
+<p>创建数据库</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>查看当前的数据库</p>
+<div class="highlight"><pre><span></span><span class="k">show</span> <span class="nv">databases</span><span class="c1">;</span>
+</pre></div>
+
+
+<p>删除数据库</p>
+<div class="highlight"><pre><span></span><span class="k">drop</span> <span class="k">database</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>选择数据库</p>
+<div class="highlight"><pre><span></span><span class="n">use</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>创建数据表</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/redis.html" rel="bookmark" title="Permalink to Redis">Redis</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-07-25T00:00:00+08:00"> 
+				<a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><ul>
+<li>用作缓存</li>
+<li>用作存 cookie,session: 容量小，提升速度;&nbsp;负载均衡指到其他进程里，</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// callback.js</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadAccessToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">refresh_token</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expires_in</span> <span class="o">*</span> <span class="mi">1000 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/sequelize.html" rel="bookmark" title="Permalink to Sequelize">Sequelize</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-07-25T00:00:00+08:00"> 
+				<a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>链接：https://www.jianshu.com/p/4f7353cd5805</p>
+<p>Sequelize 是一款基于 Nodejs 功能强大的异步 <span class="caps">ORM</span> 框架。
+同时支持 PostgreSQL, MySQL, SQLite and <span class="caps">MSSQL</span> 多种数据库，很适合作为 Nodejs&nbsp;后端数据库的存储接口。</p>
+<p><em><span class="caps">ORM</span> 简单的讲就是对 <span class="caps">SQL</span> 查询语句的封装，让我们可以用 <span class="caps">OOP</span> 的方式操作数据库 …</em></p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 5
+    Page 1 / 6
         <a href="/index2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -388,6 +409,9 @@
                 <ul>
                         <li>
                           <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>

@@ -27,6 +27,7 @@
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -37,6 +38,322 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/some-concept.html" rel="bookmark" title="Permalink to Some Concept">Some&nbsp;Concept</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-04-03T00:00:00+08:00"> 
+				<a href="/archive/2020/ 4/index.html">五 03 四月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Firebase</h2>
+<p>mobile version of <span class="caps">GA</span></p>
+<h2><span class="caps">APIGEE</span></h2>
+<h2>cloudflare</h2>
+<h2>反向代理</h2>
+<p>正向代理代理的对象是客户端，反向代理代理的对象是服务端。
+反向代理隐藏了真实的服务端，当我们请求 www.baidu.com 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，www.baidu.com&nbsp;就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。Nginx就是性能非常好的反向代理服务器，用来做负载均衡。</p>
+<blockquote>
+<p>正向代理隐藏真实客户端 …</p></blockquote></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/js-note.html" rel="bookmark" title="Permalink to JS note"><span class="caps">JS</span>&nbsp;note</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-04-01T00:00:00+08:00"> 
+				<a href="/archive/2020/ 4/index.html">三 01 四月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Prototype</h2>
+<p>历史：没做这个class</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">A</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="c1">// Guozhe 用A -&gt;</span>
+<span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">()</span>
+<span class="nx">a</span><span class="p">......</span>
+
+<span class="c1">// Riz </span>
+<span class="kr">class</span> <span class="nx">A</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">sb</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+    <span class="nx">calc</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//sb -&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>面向对象</p>
+<div class="highlight"><pre><span></span><span class="c1">//Riz</span>
+<span class="kr">class</span> <span class="nx">B</span> <span class="kr">extends</span> <span class="nx">A</span> <span class="p">{</span>
+    <span class="nx">sb</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">....</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">B</span>
+
+<span class="nx">A …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/concentration-game-controller.html" rel="bookmark" title="Permalink to Concentration Game — Controller">Concentration Game &#8212;&nbsp;Controller</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-28T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">六 28 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h1>Controller &#8212;&nbsp;ViewController.swift</h1>
+<p>hook button and controller&nbsp;up: </p>
+<ol>
+<li>
+<p>按住ctrl拖拽进controller的代码</p>
+</li>
+<li>
+<p>点击dashboard上黄色按钮，拖拽到UI，选择函数</p>
+</li>
+</ol>
+<p><img alt="Swift" src="img/swift4.png"></p>
+<p>函数参数（外部名称&nbsp;内部名称：类型）</p>
+<p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
+<div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">flipCard</span><span class="p">(</span><span class="n">withEmoji</span><span class="p">:</span> <span class="err">&#39;👻&#39;</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">sender …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/concentration-game-model.html" rel="bookmark" title="Permalink to Concentration Game — Model">Concentration Game &#8212;&nbsp;Model</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-28T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">六 28 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">MVC</span></h2>
+<p><img alt="Swift" src="img/swift-mvc.png"></p>
+<p><img alt="Swift" src="img/swift-mvc2.png"></p>
+<p><img alt="Swift" src="img/swift-mvc3.png"></p>
+<p>view: your controller&#8217;s minions&nbsp;(Main.storyboard)</p>
+<p>controller: how your model is presented to the user &#8212; <span class="caps">UI</span> logic&nbsp;(ViewController.swift)</p>
+<p>model: what your application is, but not how it …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/network-and-multithread.html" rel="bookmark" title="Permalink to Network and Multithread">Network and&nbsp;Multithread</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-26T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">四 26 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>load view -&gt; fetch data(Network) -&gt; save data -&gt; display(Multithread) -&gt;&nbsp;action</p>
+<h2>WebView&nbsp;可以装网页的容器</h2>
+<p>网页中的代码可以和原生应用代码交互</p>
+<p>UIwebview 有内存泄漏的问题，苹果优化做了&nbsp;webkitbweview</p>
+<div class="highlight"><pre><span></span>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nv">webView</span><span class="p">:</span> <span class="bp">WKWebView</span><span class="p">!</span>
+
+    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/swift-ui.html" rel="bookmark" title="Permalink to Swift UI">Swift <span class="caps">UI</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-20T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">五 20 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>UIViewController</h2>
+<ol>
+<li>AppDelegate.swift 程序入口&nbsp;(负责逻辑)</li>
+</ol>
+<p>didFinishLauchingOptions第一次打开程序</p>
+<ol>
+<li>SceneDelegate（负责UI）应用的入口和生命周期</li>
+</ol>
+<p>willConnectTo第一加载页面</p>
+<p>sceneWillEnterForeground即将进入前台</p>
+<p>sceneDidBecomeActive进入前台</p>
+<ol>
+<li>ViewController&nbsp;一个页面</li>
+</ol>
+<div class="highlight"><pre><span></span> <span class="k">class</span> <span class="n">ViewController:</span> <span class="n">UIViewController</span>
+</pre></div>
+
+
+<p>UIViewController</p>
+<p>UITabBarController底部tab栏</p>
+<p>UINavigationController数组（栈）路由，有顶层导航栏可以显示页面名字</p>
+<p>UITableViewController&nbsp;list</p>
+<p>UICollectionViewController</p>
+<p>生命周期</p>
+<div class="highlight"><pre><span></span><span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/swift-data-structures.html" rel="bookmark" title="Permalink to Swift Data Structures">Swift Data&nbsp;Structures</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-12T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">四 12 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p><span class="caps">IOS</span>, iPadOS, maxOS,&nbsp;iwatch</p>
+<h1>Data&nbsp;Structures</h1>
+<h2>class类：面向对象，动物类，引用类型reference&nbsp;type</h2>
+<blockquote>
+<p>Examples: ViewController, UIButton,&nbsp;Concentration</p>
+</blockquote>
+<p>传递时只是传递指针just passing pointers to&nbsp;it</p>
+<p>When does it get cleaned up out of the&nbsp;heap …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/yi-dong-duan-shi-jian.html" rel="bookmark" title="Permalink to 移动端事件">移动端事件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-01-20T16:32:00+08:00"> 
+				<a href="/archive/2020/ 1/index.html">一 20 一月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>移动端三大事件</h2>
+<p>1、手指按下&nbsp;ontouchstart</p>
+<p>2、手指触摸&nbsp;ontouchmove  </p>
+<p>3、手指抬起&nbsp;ontouchend</p>
+<p>它们的执行顺序是ontouchstart &gt; ontouchend &gt;&nbsp;onclick</p>
+<p>处理ios键盘弹出按钮点击click失效</p>
+<ol>
+<li>用ontouchstart绑定事件即可</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="nx">onTouchEnd</span> <span class="o">=</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="nx">handleSelectAll</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>用onTouchStart时会有警告：Unable to preventDefault inside passive event listener due …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/gtman-zhuang.html" rel="bookmark" title="Permalink to GTM安装">GTM安装</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-01-17T00:00:00+08:00"> 
+				<a href="/archive/2020/ 1/index.html">五 17 一月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>结果&nbsp;https://analytics.google.com/</p>
+<p>配置&nbsp;https://tagmanager.google.com</p>
+<h2>安装</h2>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">addGtm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">gtmscript1</span> <span class="o">=</span> <span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -68,282 +385,10 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-admin-admin.html" rel="bookmark" title="Permalink to React-Admin — Admin">React-Admin &#8212;&nbsp;Admin</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>The <Admin> component creates an application with its own state, routing, and controller logic. <Admin> requires only a dataProvider prop, and at least one child <Resource> to&nbsp;work:</p>
-<div class="highlight"><pre><span></span>const App = () =&gt; (
-    <span class="p">&lt;</span><span class="nt">Admin</span> <span class="na">dataProvider</span><span class="o">=</span><span class="s">{simpleRestProvider …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-admin-data-provider.html" rel="bookmark" title="Permalink to React-Admin — Data Provider">React-Admin &#8212; Data&nbsp;Provider</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><table>
-<thead>
-<tr>
-<th>Action</th>
-<th>Expected <span class="caps">API</span> request</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Get list</td>
-<td><span class="caps">GET</span> http://my.api.url/posts?sort=[&#8216;title&#8217;,&#8217;<span class="caps">ASC</span>&#8217;]</td>
-</tr>
-<tr>
-<td>Get one record</td>
-<td><span class="caps">GET</span> http://my.api.url/posts/123</td>
-</tr>
-<tr>
-<td>Get several records</td>
-<td ids:_123_456_789_="ids:[123,456,789]"><span class="caps">GET</span> http …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-admin-resource.html" rel="bookmark" title="Permalink to React-Admin — Resource">React-Admin &#8212;&nbsp;Resource</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Resource allows you to define a component for each <span class="caps">CRUD</span> operation, using the following prop&nbsp;names:</p>
-<ul>
-<li>list (if defined, the resource is displayed on the&nbsp;Menu)</li>
-<li>create</li>
-<li>edit</li>
-<li>show</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kr">import …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/restful-api.html" rel="bookmark" title="Permalink to RESTful API">RESTful <span class="caps">API</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>路径</h2>
-<p>https://api.example.com/v1/</p>
-<p>将API部署在专用域名之下,将API的版本号放入URL。</p>
-<p>路径又称&#8221;终点&#8221;（endpoint），表示API的具体网址。&nbsp;在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&#8221;集合&#8221;（collection），所以API中的名词也应该使用复数。</p>
-<p>https://api.example.com/v1/zoos</p>
-<h2>动词 …</h2></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/data.html">Data</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-admin.html" rel="bookmark" title="Permalink to React-Admin">React-Admin</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-10T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">二 10 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Setting&nbsp;Up</h2>
-<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
-<span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
-<span class="nx">cd</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
-<span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">admin</span> <span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span> <span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
-<span class="nx">yarn</span> <span class="nx">start</span>
-</pre></div>
-
-
-<h2>Data&nbsp;Provider …</h2></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-hook.html" rel="bookmark" title="Permalink to React Hook">React&nbsp;Hook</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-09-07T00:00:00+08:00"> 
-				<a href="/archive/2019/ 9/index.html">六 07 九月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>React 16.8.0 是第一个支持Hook的版本。React Native 从0.59版本开始支持&nbsp;Hook。</p>
-<h2>Why react hook&nbsp;?</h2>
-<hr>
-<h3>在组件之间复用状态逻辑很难</h3>
-<p>React 没有提供将可复用性行为“附加”到组件的途径（例如，把组件连接到 store）。react的解决方案是render props 和&nbsp;高阶组件。但是这类方案需要重新组织你的组件结构。</p>
-<p>React 需要为共享状态逻辑提供更好的原生途径。使用 Hook …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/flux.html" rel="bookmark" title="Permalink to Flux">Flux</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Facebook提出Flux应用架构解决数据模型处理，Flux是一种思想，跟React本身没有必然联系，基于Flux思想的框架有Redux、Reflux、Flummox等产品。</p>
-<h2>单向数据流：</h2>
-<p>界面总是基于内部数据模型的一种呈现，但是用于在界面的输入也会回输到内部数据模型上，这是一种数据的双向流动，双向传递流动很难把握，在复杂情况下，有些操作会触发一连串的变化，有些变化还可能是异步的。</p>
-<p>为此，Flux引入了单向数据流的思想，当需要插入新的数据或改变原有数据时，数据流完全重新开始。</p>
-<p><img alt="Flux" src="img/flux.png"></p>
-<p>Flux中Store的变化由事件Action激发，经由动作分发器Dispatcher派发到存储Store(数据模型)中，并引起Store中数据发生变更，从而影响视图的变化。</p>
-<p><img alt="Flux" src="img/flux2.png"></p>
-<p>Action是一个Javascript Plain&nbsp;Object,主要记录对State的操作信息，包含两方面内容：类型 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/data.html">Data</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/redux.html" rel="bookmark" title="Permalink to Redux">Redux</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Redux与其他的Flux实现相比更简单，一个Redux应用中Store是唯一的，这样的限定能够使应用中的数据结果集中化，提高了可控性，同时又通过引入Reducer机制巧妙地解决单一Store的限制问题，达到了与使用多个Store同样的效果。</p>
-<p>Redux主要由Action、Reducer及Store三部分组成。Action用来表达操作，Reducer根据Action更新state。</p>
-<p>Redux vs&nbsp;Flux:</p>
-<ul>
-<li>
-<p>Redux中只有一个全局Store，Flux里则可以有多个Store。Flux在Store里执行更新逻辑，当Store变化的时候通知Controller&nbsp;view。而Redux将各个Store整合成一个完整的Store，更新逻辑由Reducer处理。</p>
-</li>
-<li>
-<p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State …</p></li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/data.html">Data</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>导出</h3>
-<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
-  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
-<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
-</pre></div>
-
-
-<h3>展开运算符</h3>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
-  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
-<span class="p">};</span>
-<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index2.html">&laquo;</a>
-    Page 3 / 5
+    Page 3 / 6
         <a href="/index4.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -367,6 +412,9 @@
                 <ul>
                         <li>
                           <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
                           <a href="/category/data.html" >Data</a>

@@ -1,0 +1,303 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›nodeJS
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >nodeJS</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-08-03T00:00:00+08:00"> 
+            <a href="/archive/2020/ 8/index.html">一 03 八月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/nodejs.html">nodeJS</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>Nginx 比 Apache&nbsp;高并发的原因</p>
+<p>Nginx 负载均衡调度算法&nbsp;负载均衡之轮询算法</p>
+<p>Apache&nbsp;多进程（多线程）</p>
+<p>Nginx&nbsp;单进程（单线程）</p>
+<div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">promise</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1">// 这一轮最后执行</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">// 下一轮执行</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">// 1 3 2</span>
+</pre></div>
+
+
+<p>path.resolve()指向根目录</p>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="kr">const</span> <span class="nx">App</span>
+<span class="c1">// import { App } from app.js</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span>
+<span class="c1">// import App from app.js</span>
+
+<span class="nx">Module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1">// import * as Moment from &quot;moment&quot;</span>
+
+<span class="nx">Module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">_default</span><span class="o">:</span> <span class="k">this</span>
+<span class="p">}</span>
+<span class="c1">// import * as React from &#39;react&#39;;</span>
+<span class="c1">// import React from &#39;react&#39;;</span>
+</pre></div>
+
+
+<h2>buffer&nbsp;缓冲器</h2>
+<div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+
+<p>TypedArray&nbsp;有类型的数组</p>
+<ul>
+<li>Uint8Array</li>
+<li>Uint16Array</li>
+<li>Uint32Array</li>
+</ul>
+<p>如果要把 blob 文件转化为二进制的数据的话，要先把 blob 转化为 arraybuffer，然后再使用 typedArray&nbsp;就可以直接编辑二进制数据了</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">ab</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">iA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Int8Array</span><span class="p">(</span><span class="nx">ab</span><span class="p">)</span>
+<span class="nx">iA</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">97</span>
+<span class="kd">var</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">iA</span><span class="p">],</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;application/octet-binary&#39;</span> <span class="p">})</span>
+<span class="kd">var</span> <span class="nx">fr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">()</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">abb</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span>
+  <span class="kd">var</span> <span class="nx">iAA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Int8Array</span><span class="p">(</span><span class="nx">abb</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">iAA</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="c1">//把blob文件转化为arraybuffer；</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="nx">blob</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">Buffer</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;Buffer&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">);</span> <span class="c1">// &lt;Buffer 61 62 63 64&gt;</span>
+<span class="kr">const</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span> <span class="c1">// &lt;Buffer 01 02 03 04&gt;</span>
+<span class="kr">const</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">257</span><span class="p">]);</span> <span class="c1">// &lt;Buffer 01 02 03 01&gt; 257 % 256</span>
+<span class="kr">const</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">257</span><span class="p">,</span> <span class="mi">23</span><span class="p">]);</span> <span class="c1">// &lt;Buffer 01 02 03 01 17&gt; 16进制</span>
+<span class="kr">const</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">257</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">]);</span> <span class="c1">// &lt;Buffer 01 02 03 01 ff&gt; 16进制</span>
+
+<span class="nx">buf</span><span class="p">.</span><span class="nx">buffer</span> <span class="c1">// ArrayBuffer {[uint8Contents]: &lt;63 6f 6e ...&gt;, byteLength: 8192}</span>
+<span class="nx">buf</span><span class="p">.</span><span class="nx">byteOffset</span> <span class="c1">// 152 从第152位开始为实际数据</span>
+<span class="nx">buf</span><span class="p">.</span><span class="nx">byteLength</span> <span class="c1">// 5</span>
+
+<span class="kr">const</span> <span class="nx">buf1</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">buf</span><span class="p">)</span>
+<span class="nx">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span> <span class="c1">// buf1[0] = 1 复制</span>
+<span class="kr">const</span> <span class="nx">buf2</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">buf</span><span class="p">.</span><span class="nx">buffer</span><span class="p">,</span> <span class="nx">buf</span><span class="p">.</span><span class="nx">byteOffset</span><span class="p">,</span> <span class="nx">buf</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span>
+<span class="nx">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span> <span class="c1">// buf2[0] = 9 引用</span>
+<span class="nx">buf2</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">buf</span><span class="p">)</span> <span class="c1">// 0 相同 1 大于 -1 小于</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">alloc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// &lt;Buffer 00 00&gt;</span>
+<span class="nx">buf</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">// &lt;Buffer 61 61&gt;</span>
+<span class="nx">buf</span><span class="p">.</span><span class="nx">writeUInt16BE</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// &lt;Buffer 00 02&gt; 大端字节序</span>
+<span class="nx">buf</span><span class="p">.</span><span class="nx">writeUInt16LE</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// &lt;Buffer 02 00&gt; 小端字节序</span>
+</pre></div>
+
+
+<h2>Event Loop&nbsp;事件循环</h2>
+<p>tick(phase):</p>
+<p>timers (setTimeout,&nbsp;setInterval)</p>
+<p>-&gt; pending callbacks&nbsp;(错误事件) </p>
+<p>-&gt; idle,&nbsp;prepare </p>
+<p>-&gt; poll&nbsp;(绝大多数的callback在这个阶段执行，到队列里把callback找出来执行，socket事件，文件IO) </p>
+<p>-&gt; check&nbsp;(setImmediate)</p>
+<p>-&gt; close callbacks&nbsp;(close事件)</p>
+<p>每个阶段都有一个事件队列，队列里有多个等待执行的事件，有个可以执行的数量上限</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+<span class="c1">// 在poll阶段的回调，下一个阶段是check，所以永远是setImmediate先执行</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">_dirname</span><span class="p">,</span> <span class="s1">&#39;./project.csv&#39;</span><span class="p">),</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;setTimeout&#39;</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="nx">setImmediate</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;setImmediate&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>process.nextTick()&nbsp;当前阶段的队列尾部，无限递归的话会永远停留在这个阶段，上限1000次</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">MyEmitter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">EventEmitter</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">);</span>
+
+  <span class="c1">// use nextTick to emit the event once a handler is assigned</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">inherits</span><span class="p">(</span><span class="nx">MyEmitter</span><span class="p">,</span> <span class="nx">EventEmitter</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">myEmitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyEmitter</span><span class="p">();</span>
+<span class="nx">myEmitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;an event occurred!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// 可能会错过这一次发出的事件</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "nodejs.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
