@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -33,50 +41,62 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">Http</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/http.html">Http</a>
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›Egg.js
                 </section>
 
 
-<ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/http.html" rel="bookmark" title="Permalink to HTTP"><span class="caps">HTTP</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-10-09T00:00:00+08:00"> 
-				<a href="/archive/2020/10/index.html">五 09 十月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>web socket需要把http设为1.1&nbsp;只握手一次</p>
-<div class="highlight"><pre><span></span><span class="nx">location</span><span class="p">{</span>
-  <span class="nx">proxy_http_version</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">;</span>
-  <span class="nx">proxy_set_header</span> <span class="nx">Upgrade</span> <span class="nx">$http_upgrade</span><span class="p">;</span>
-  <span class="nx">proxy_set_header</span> <span class="nx">Connection</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">;</span> <span class="c1">// 升级到最新版本 Status code 101</span>
-  <span class="nx">proxy_set_header</span> <span class="nx">Host</span> <span class="nx">$host</span><span class="p">;</span> <span class="c1">// 暴露被反向代理隐藏的host</span>
-<span class="p">}</span>
-</pre></div>
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Egg.js</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-12-31T00:00:00+08:00"> 
+            <a href="/archive/2020/12/index.html">四 31 十二月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/egg.html">egg</a>
+                <a href="/tag/nodejs.html">nodeJS</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>https://eggjs.org/zh-cn/intro/index.html</p>
+<p>Sails 是和 Egg 一样奉行『约定优于配置』的框架，扩展性也非常好。但是相比 Egg，Sails 支持 Blueprint <span class="caps">REST</span> <span class="caps">API</span>、WaterLine 这样可扩展的 <span class="caps">ORM</span>、前端集成、WebSocket 等。而 Egg&nbsp;不直接提供功能，只是集成各种功能插件(egg-blueprint，egg-waterline)。</p>
+<p>Egg 继承于&nbsp;Koa</p>
+<p>Sails 使用 Express 的静态中间件来提供你的资源。你可以在 /config/http.js 设置这个中间件。与 koa2 中间件不同的是，express中间件一个接一个的顺序执行, 通常会将 response&nbsp;响应写在最后一个中间件中</p>
+<p>Koa 的中间件和 Express 不同，Koa&nbsp;选择了洋葱圈模型。</p>
+<p><img alt="koa" src="img/koa.png"></p>
+<h2>基础对象:</h2>
+<p>从 Koa 继承而来的 4 个对象（Application, Context, Request,&nbsp;Response) </p>
+<p>框架扩展的一些对象（Controller, Service, Helper, Config,&nbsp;Logger）</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "eggjs.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
 
 
-<h2>iframe</h2>
-<p><img alt="http" src="img/http.jpeg"></p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-</ul>
-<p class="paginator">
-    Page 1 / 1
-</p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--

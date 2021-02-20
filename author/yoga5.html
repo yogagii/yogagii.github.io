@@ -42,6 +42,96 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>绑定未提供的事件</h3>
+<hr>
+<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
+<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><br></p>
+<h3>AJAX加载数据</h3>
+<hr>
+<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
+<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
+<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/google-tag-manager.html" rel="bookmark" title="Permalink to Google Tag Manager">Google Tag&nbsp;Manager</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-20T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 20 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>谷歌标签管理器</h2>
+<h3>优点：</h3>
+<ol>
+<li>
+<p>通过GTM可以更快测试和发布代码而不需要在站点上硬编码</p>
+</li>
+<li>
+<p>个性化跟踪</p>
+</li>
+<li>
+<p>管理更有效</p>
+</li>
+<li>
+<p>提高网站加载速度，优化了异步加载</p>
+</li>
+</ol>
+<h3>缺点：</h3>
+<p>多一层跳转：先加载GTM容器，再加载其他跟踪代码，如GA</p>
+<h3>账户结构：</h3>
+<p>一个google可以有多个GTM&nbsp;account，</p>
+<p>一个account可以有多个GTM Container&nbsp;Tag，</p>
+<p>每个容器对应一个站点（Tag，Trigger，Variables）</p>
+<h3>Variable变量</h3>
+<p>变量是键值对，其中的值在运行时填充</p>
+<ol>
+<li>
+<p>在触发器中，变量用来定义指定特定触发器应在何时执行的过滤条件（URL变量）</p>
+</li>
+<li>
+<p>在代码中，变量用来捕获动态值 …</p></li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to React 表单">React&nbsp;表单</a>
 		</h2>
 		<div class="post-info">

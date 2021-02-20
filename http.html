@@ -62,11 +62,15 @@
     </header>
     <div class="post-entry">
         <p>web socket需要把http设为1.1&nbsp;只握手一次</p>
-<p>location{
-  proxy_http_version: 1,1;
-  proxy_set_header Upgrade $http_upgrade;
-  proxy_set_header Connection &#8220;upgrade&#8221;; // 升级到最新版本 Status code 101
-  proxy_set_header Host $host; // 暴露被反向代理隐藏的host&nbsp;}</p>
+<div class="highlight"><pre><span></span><span class="nx">location</span><span class="p">{</span>
+  <span class="nx">proxy_http_version</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">;</span>
+  <span class="nx">proxy_set_header</span> <span class="nx">Upgrade</span> <span class="nx">$http_upgrade</span><span class="p">;</span>
+  <span class="nx">proxy_set_header</span> <span class="nx">Connection</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">;</span> <span class="c1">// 升级到最新版本 Status code 101</span>
+  <span class="nx">proxy_set_header</span> <span class="nx">Host</span> <span class="nx">$host</span><span class="p">;</span> <span class="c1">// 暴露被反向代理隐藏的host</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <h2>iframe</h2>
 <p><img alt="http" src="img/http.jpeg"></p>
     </div><!-- /.entry-content -->
