@@ -72,6 +72,15 @@
 <p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State，然后传递给view。</p>
 </li>
 </ul>
+<div class="highlight"><pre><span></span><span class="c1">// get state in effect</span>
+<span class="kr">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">saveLogin</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">siteConfig</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">sortConfig</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">siteConfig</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">report_type</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="nx">put</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;sortConfig/request&#39;</span> <span class="p">});</span>
+  <span class="nx">siteConfig</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">sortConfig</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -159,6 +168,8 @@
                 </div>
                 <ul>
                         <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537082834907429de68ef592b2817b37bcae93e547761537082781.pdf&t=1615824412&_=1615824412000&web_url=&shareName=&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E5%89%8D%E7%AB%AF.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537389637354fb1ef05e2c2e77035e81f861378884fd1537389631.pdf&t=1615824215&_=1615824215000&web_url=&shareName=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81.pdf">Industrial Design Portfolio</a></li>
                 </ul>
             </section>
             
