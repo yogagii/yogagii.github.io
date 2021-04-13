@@ -41,6 +41,65 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/flux.html" rel="bookmark" title="Permalink to Flux">Flux</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Facebook提出Flux应用架构解决数据模型处理，Flux是一种思想，跟React本身没有必然联系，基于Flux思想的框架有Redux、Reflux、Flummox等产品。</p>
+<h2>单向数据流：</h2>
+<p>界面总是基于内部数据模型的一种呈现，但是用于在界面的输入也会回输到内部数据模型上，这是一种数据的双向流动，双向传递流动很难把握，在复杂情况下，有些操作会触发一连串的变化，有些变化还可能是异步的。</p>
+<p>为此，Flux引入了单向数据流的思想，当需要插入新的数据或改变原有数据时，数据流完全重新开始。</p>
+<p><img alt="Flux" src="img/flux.png"></p>
+<p>Flux中Store的变化由事件Action激发，经由动作分发器Dispatcher派发到存储Store(数据模型)中，并引起Store中数据发生变更，从而影响视图的变化。</p>
+<p><img alt="Flux" src="img/flux2.png"></p>
+<p>Action是一个Javascript Plain&nbsp;Object,主要记录对State的操作信息，包含两方面内容：类型 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/redux.html" rel="bookmark" title="Permalink to Redux">Redux</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Redux与其他的Flux实现相比更简单，一个Redux应用中Store是唯一的，这样的限定能够使应用中的数据结果集中化，提高了可控性，同时又通过引入Reducer机制巧妙地解决单一Store的限制问题，达到了与使用多个Store同样的效果。</p>
+<p>Redux主要由Action、Reducer及Store三部分组成。Action用来表达操作，Reducer根据Action更新state。</p>
+<p>Redux vs&nbsp;Flux:</p>
+<ul>
+<li>
+<p>Redux中只有一个全局Store，Flux里则可以有多个Store。Flux在Store里执行更新逻辑，当Store变化的时候通知Controller&nbsp;view。而Redux将各个Store整合成一个完整的Store，更新逻辑由Reducer处理。</p>
+</li>
+<li>
+<p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State …</p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/data.html">Data</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
 		</h2>
 		<div class="post-info">
@@ -339,73 +398,6 @@
 <p>{/<em> 当注释作为独立子节点时需要用大括号包裹起来 </em>/}</p>
 <h3>3.&nbsp;展开属性</h3>
 <div class="highlight"><pre><span></span><span class="nx">component</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">foo …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-ji-chu.html" rel="bookmark" title="Permalink to React 基础">React&nbsp;基础</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><blockquote>
-<p>使用React只有两个步骤：一是创建虚拟DOM（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟DOM树并响应用户的动作来改变虚拟DOM树的组成。</p>
-</blockquote>
-<h3>1.&nbsp;react.js</h3>
-<hr>
-<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟DOM树</p>
-<ul>
-<li><strong>React.createElement</strong></li>
-</ul>
-<p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="s1">&#39;myClass&#39;</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2</span><span class="p">);</span>
-</pre></div>
-
-
-<ul>
-<li><strong>React.<span class="caps">DOM</span></strong>是预先定义好的HTML元素集，相当于预置了第一个参数 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>1.&nbsp;虚拟Dom</h3>
-<hr>
-<p>浏览器DOM是由HtmlElement元素组成的树，虚拟DOM是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个DOM树，自动计算与上次虚拟DOM的差异变化，然后针对需要变化的部分进行实际的浏览器DOM更新，从而提高性能。</p>
-<p><em>在文本框中输入任意文本，在禁止文本框，可以发现文本框中原来输入的文本并没有消失，说明React并没有重新渲染input，只是更改了input属性值，这正是react差异对比、局部刷新的特性体现。</em></p>
-<blockquote>
-<p>虚拟DOM-&gt;真实DOM: react-dom <br> 虚拟DOM-&gt;移动APP:&nbsp;react-native</p>
-</blockquote>
-<p>将一棵树形结构转换成另一棵树形结构传统最优算法的复杂度是O(n3)。</p>
-<p>试探法：通过给子级组件设定唯一的键值，React就能够检测出节点插入、移除和替换，并且借助哈希表使节点移动复杂度变为O(n)。键值只需要在兄弟节点中唯一即可 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

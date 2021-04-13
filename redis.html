@@ -92,7 +92,7 @@
 <div class="highlight"><pre><span></span><span class="c1">// local.js</span>
 <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">adapter</span><span class="o">:</span> <span class="s1">&#39;@sailshq/connect-redis&#39;</span><span class="p">,</span>
-  <span class="nx">pass</span><span class="o">:</span> <span class="s1">&#39;QPllwnqWyIHJiCwJ1XE2&#39;</span><span class="p">,</span>
+  <span class="nx">pass</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXX&#39;</span><span class="p">,</span>
   <span class="nx">db</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
 <span class="p">},</span>
 </pre></div>
@@ -126,6 +126,16 @@
 
   <span class="nx">await</span> <span class="nx">innerScan</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 <span class="p">}</span>
+</pre></div>
+
+
+<h2>本地启动</h2>
+<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">services</span> <span class="k">start</span> <span class="n">redis</span>
+<span class="n">brew</span> <span class="n">services</span> <span class="n">list</span>
+<span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">ping</span>
+<span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="o">-</span><span class="n">h</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">CONFIG</span> <span class="k">SET</span> <span class="n">requirepass</span> <span class="ss">&quot;####&quot;</span> <span class="o">//</span> <span class="err">同</span><span class="k">local</span><span class="p">.</span><span class="n">js</span>
+<span class="n">AUTH</span> <span class="ss">&quot;root&quot;</span>
 </pre></div>
 
 

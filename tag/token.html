@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2013-11-02 09:09:18
- * @LastEditTime : 2019-12-29 22:05:43
- * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
- -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -41,72 +33,51 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
+<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">Token</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Make总结
+<a href="">Blog</a> ››Tag: <a href="tag/token.html">Token</a>
                 </section>
 
 
-<section id="post" class="post hentry">
-    <header>
-    <h2 class="post-title" >Make总结</h2>
-    
-    <div class="post-meta">
-        <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2021-04-13T14:33:00+08:00"> 
-            <a href="/archive/2021/ 4/index.html">二 13 四月 2021 </a>
-        </abbr>
-        <span class="meta-prep"> |Tags</span>
-                <a href="/tag/make.html">make</a>
-        <!-- TOBE COMMENTS -->
-    </div>
-    </header>
-    <div class="post-entry">
-        <h2>Make</h2>
-<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其他文件名.</p>
-<h3>Make&nbsp;rules</h3>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">target</span><span class="o">&gt;:</span> <span class="o">&lt;</span><span class="nx">prerequisites</span><span class="o">&gt;</span>
-<span class="p">[</span><span class="nx">tab</span><span class="p">]</span>   <span class="o">&lt;</span><span class="nx">command</span><span class="o">&gt;</span>
-</pre></div>
+<ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/token.html" rel="bookmark" title="Permalink to Token">Token</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-04-13T00:00:00+08:00"> 
+				<a href="/archive/2021/ 4/index.html">二 13 四月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Version1:</h2>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">EventEmitter</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">);</span>
 
+<span class="kd">let</span> <span class="nx">globalToken</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="p">();</span>
 
-<p>一个目标构成一条规则，即可以是文件名也可以是某个操作的名字．</p>
-<div class="highlight"><pre><span></span><span class="nx">clean</span><span class="o">:</span>
-    <span class="nx">rm</span> <span class="o">*</span><span class="p">.</span><span class="nx">o</span>
-</pre></div>
-
-
-<p>通过调用<code>make clean</code>指令来执行上述程序, 为避免歧义．可以加入<code>.PHONY: clean</code>声明<code>clean</code>是为目标，但不是文件名来执行．<code>make</code>指令默认执行第一个目标</p>
-<p>前置条件(prerequisites)指定目标是否重新构建的标准，如果前置文件不存在或者更新过，就需要重新构建</p>
-<p>命令表示如何更新目标，由一行或多行Shell命令组成．<code>#</code>表示注释，<code>@</code>关闭回声，允许使用等号自定义变量,变量放在<code>$()</code>之间．</p>
-<p>暂时之需要这些，如果以后还有需要再更新</p>
-<h2>Reference</h2>
-<p><a href="http://www.ruanyifeng.com/blog/2015/02/make.html">make命令教程</a></p>
-    </div><!-- /.entry-content -->
-    <footer class="post-meta">
-        <span class="meta-prep">Category:</span>
-        <abbr class="category">
-            <a href="/category/programming.html">Programming</a>
-        </abbr>
-        <p>
-        <span class="meta-prep">Author: </span><span>张本轩</span>
-      </p>
-    </footer>
-    <!-- <section id="respond">
-        <div id="disqus_thread">
-        <script type="text/javascript">
-        var disqus_identifier = "makezong-jie.html";
-        (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-        </script>
-        </div>
-
-    </section> -->
-</section>
-
-
+<span class="nx">async</span> <span class="nx">getToken</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">globalToken</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">globalToken</span> <span class="o">=</span> <span class="s1">&#39;pending&#39;</span><span class="p">;</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_TLS_REJECT_UNAUTHORIZED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
+      <span class="s1">&#39;logon/long&#39;</span><span class="p">,</span>
+      <span class="nx">sails</span><span class="p">.</span><span class="nx">config …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+</ul>
+<p class="paginator">
+    Page 1 / 1
+</p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--

@@ -41,6 +41,73 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/swift-data-structures.html" rel="bookmark" title="Permalink to Swift Data Structures">Swift Data&nbsp;Structures</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-03-12T00:00:00+08:00"> 
+				<a href="/archive/2020/ 3/index.html">四 12 三月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p><span class="caps">IOS</span>, iPadOS, maxOS,&nbsp;iwatch</p>
+<h1>Data&nbsp;Structures</h1>
+<h2>class类：面向对象，动物类，引用类型reference&nbsp;type</h2>
+<blockquote>
+<p>Examples: ViewController, UIButton,&nbsp;Concentration</p>
+</blockquote>
+<p>传递时只是传递指针just passing pointers to&nbsp;it</p>
+<p>When does it get cleaned up out of the&nbsp;heap …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/yi-dong-duan-shi-jian.html" rel="bookmark" title="Permalink to 移动端事件">移动端事件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-01-20T16:32:00+08:00"> 
+				<a href="/archive/2020/ 1/index.html">一 20 一月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>移动端三大事件</h2>
+<p>1、手指按下&nbsp;ontouchstart</p>
+<p>2、手指触摸&nbsp;ontouchmove  </p>
+<p>3、手指抬起&nbsp;ontouchend</p>
+<p>它们的执行顺序是ontouchstart &gt; ontouchend &gt;&nbsp;onclick</p>
+<p>处理ios键盘弹出按钮点击click失效</p>
+<ol>
+<li>用ontouchstart绑定事件即可</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="nx">onTouchEnd</span> <span class="o">=</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="nx">handleSelectAll</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>用onTouchStart时会有警告：Unable to preventDefault inside passive event listener due …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/gtman-zhuang.html" rel="bookmark" title="Permalink to GTM安装">GTM安装</a>
 		</h2>
 		<div class="post-info">
@@ -269,65 +336,6 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/flux.html" rel="bookmark" title="Permalink to Flux">Flux</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Facebook提出Flux应用架构解决数据模型处理，Flux是一种思想，跟React本身没有必然联系，基于Flux思想的框架有Redux、Reflux、Flummox等产品。</p>
-<h2>单向数据流：</h2>
-<p>界面总是基于内部数据模型的一种呈现，但是用于在界面的输入也会回输到内部数据模型上，这是一种数据的双向流动，双向传递流动很难把握，在复杂情况下，有些操作会触发一连串的变化，有些变化还可能是异步的。</p>
-<p>为此，Flux引入了单向数据流的思想，当需要插入新的数据或改变原有数据时，数据流完全重新开始。</p>
-<p><img alt="Flux" src="img/flux.png"></p>
-<p>Flux中Store的变化由事件Action激发，经由动作分发器Dispatcher派发到存储Store(数据模型)中，并引起Store中数据发生变更，从而影响视图的变化。</p>
-<p><img alt="Flux" src="img/flux2.png"></p>
-<p>Action是一个Javascript Plain&nbsp;Object,主要记录对State的操作信息，包含两方面内容：类型 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/data.html">Data</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/redux.html" rel="bookmark" title="Permalink to Redux">Redux</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Redux与其他的Flux实现相比更简单，一个Redux应用中Store是唯一的，这样的限定能够使应用中的数据结果集中化，提高了可控性，同时又通过引入Reducer机制巧妙地解决单一Store的限制问题，达到了与使用多个Store同样的效果。</p>
-<p>Redux主要由Action、Reducer及Store三部分组成。Action用来表达操作，Reducer根据Action更新state。</p>
-<p>Redux vs&nbsp;Flux:</p>
-<ul>
-<li>
-<p>Redux中只有一个全局Store，Flux里则可以有多个Store。Flux在Store里执行更新逻辑，当Store变化的时候通知Controller&nbsp;view。而Redux将各个Store整合成一个完整的Store，更新逻辑由Reducer处理。</p>
-</li>
-<li>
-<p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State …</p></li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/data.html">Data</a>
 		</abbr>
 	</footer>
 	<hr />
