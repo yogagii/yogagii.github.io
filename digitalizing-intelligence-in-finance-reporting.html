@@ -152,6 +152,38 @@
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">Workbook</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">hideTabs</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;:showShareOptions&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s1">&#39;:linktarget&#39;</span><span class="o">:</span> <span class="s1">&#39;_self&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;:render&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+  <span class="p">};</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">viz</span> <span class="o">&amp;&amp;</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">vizContainer</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;vizContainer&#39;</span><span class="p">);</span>
+    <span class="nx">viz</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainerWrapper</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span>
+        <span class="nx">id</span><span class="o">=</span><span class="s1">&#39;vizContainer&#39;</span>
+        <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nx">iframeContent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+        <span class="p">}}</span>
+      <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Workbook</span><span class="p">;</span>
+</pre></div>
+
+
 <h2>Viz <span class="caps">API</span>:</h2>
 <table>
 <thead>
@@ -270,257 +302,6 @@
 </tbody>
 </table>
 <p>link:&nbsp;https://help.tableau.com/v2018.2/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">Workbook</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">workbook</span><span class="p">,</span> <span class="nx">userDetail</span><span class="p">,</span> <span class="nx">siteConfig</span><span class="p">,</span> <span class="nx">edit</span><span class="p">,</span> <span class="nx">changedFilter</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="p">[</span><span class="nx">url</span><span class="p">,</span> <span class="nx">setUrl</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-
-  <span class="nx">option</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">hideTabs</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;:showShareOptions&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s1">&#39;:linktarget&#39;</span><span class="o">:</span> <span class="s1">&#39;_self&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;:render&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
-    <span class="nx">onFirstInteractive</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">mainWorkbook</span> <span class="o">=</span> <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">getWorkbook</span><span class="p">();</span>
-      <span class="kr">const</span> <span class="nx">_tabName</span> <span class="o">=</span> <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">().</span><span class="nx">getName</span><span class="p">();</span>
-      <span class="kr">const</span> <span class="nx">_tabKey</span> <span class="o">=</span> <span class="nx">current</span><span class="p">.</span><span class="nx">tabs</span><span class="o">?</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">tab</span> <span class="p">=&gt;</span> <span class="nx">tab</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="nx">_tabName</span><span class="p">);</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">_tabKey</span> <span class="o">&amp;&amp;</span> <span class="nx">_tabKey</span><span class="p">.</span><span class="nx">contentUrl</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">_tabKey</span><span class="p">.</span><span class="nx">contentUrl</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">());</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">_tabName</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">isMix</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Fetch all the filter</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">().</span><span class="nx">getSheetType</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;worksheet&#39;</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">worksheets</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="nx">worksheets</span> <span class="o">=</span> <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">().</span><span class="nx">getWorksheets</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
-        <span class="nx">worksheets</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">sheet</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-            <span class="nx">sheet</span><span class="p">.</span><span class="nx">getFiltersAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">filters</span> <span class="p">=&gt;</span> <span class="p">{</span>
-              <span class="k">return</span> <span class="nx">filters</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">filter</span> <span class="p">=&gt;</span> <span class="p">({</span>
-                <span class="nx">name</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">getFieldName</span><span class="p">(),</span>
-                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span>
-              <span class="p">}));</span>
-            <span class="p">}),</span>
-          <span class="p">);</span>
-        <span class="p">});</span>
-        <span class="c1">// Fetch all the parameters</span>
-        <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-          <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getParametersAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">parameters</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">parameters</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">param</span> <span class="p">=&gt;</span> <span class="p">({</span>
-              <span class="nx">name</span><span class="o">:</span> <span class="nx">param</span><span class="p">.</span><span class="nx">getName</span><span class="p">(),</span>
-              <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;param&#39;</span><span class="p">,</span>
-            <span class="p">}));</span>
-          <span class="p">}),</span>
-        <span class="p">);</span>
-        <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">arr</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">filters</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="kr">const</span> <span class="nx">filterNames</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">();</span>
-          <span class="kr">const</span> <span class="nx">reportFilters</span> <span class="o">=</span> <span class="p">[];</span>
-          <span class="nx">filters</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">filter</span> <span class="p">=&gt;</span> <span class="p">{</span>
-              <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">filterNames</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">filter</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
-                <span class="nx">filterNames</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">filter</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-                <span class="nx">reportFilters</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">filter</span><span class="p">);</span>
-              <span class="p">}</span>
-            <span class="p">});</span>
-          <span class="p">});</span>
-        <span class="p">});</span>
-      <span class="p">}</span>
-      <span class="c1">// Fetch all the collection</span>
-      <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getCustomViewsAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">customViews</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="kr">const</span> <span class="nx">impl</span> <span class="o">=</span> <span class="s1">&#39;_impl&#39;</span><span class="p">;</span>
-        <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span> <span class="o">=</span> <span class="p">[];</span>
-        <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistOther</span> <span class="o">=</span> <span class="p">[];</span>
-
-        <span class="nx">customViews</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">view</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span>
-            <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">owner</span><span class="p">.</span><span class="nx">username</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">userDetail</span><span class="p">.</span><span class="nx">userId</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span>
-          <span class="p">)</span> <span class="p">{</span>
-            <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-              <span class="nx">id</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-              <span class="nx">name</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
-              <span class="nx">url</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
-            <span class="p">});</span>
-          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistOther</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-              <span class="nx">id</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-              <span class="nx">name</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
-              <span class="nx">url</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
-            <span class="p">});</span>
-          <span class="p">}</span>
-        <span class="p">});</span>
-        <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">id</span> <span class="o">-</span> <span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-        <span class="nx">setViewlist</span><span class="p">({</span>
-          <span class="p">...</span><span class="nx">viewlist</span><span class="p">,</span>
-          <span class="nx">loading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-          <span class="nx">viewlistMy</span><span class="o">:</span> <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span><span class="p">,</span>
-          <span class="nx">viewlistOther</span><span class="o">:</span> <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistOther</span><span class="p">,</span>
-        <span class="p">});</span>
-      <span class="p">});</span>
-      <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;customviewload&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">setViewlist</span><span class="p">({</span>
-          <span class="p">...</span><span class="nx">viewlist</span><span class="p">,</span>
-          <span class="p">...</span><span class="nx">viewlists</span><span class="p">,</span>
-          <span class="nx">loading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="p">});</span>
-      <span class="p">});</span>
-      <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">TableauEventName</span><span class="p">.</span><span class="nx">TAB_SWITCH</span><span class="p">,</span> <span class="nx">tabsEvent</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="kr">const</span> <span class="nx">_tabUrl</span> <span class="o">=</span> <span class="nx">tabsEvent</span>
-          <span class="p">.</span><span class="nx">getViz</span><span class="p">()</span>
-          <span class="p">.</span><span class="nx">getWorkbook</span><span class="p">()</span>
-          <span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">()</span>
-          <span class="p">.</span><span class="nx">getUrl</span><span class="p">();</span>
-        <span class="kr">const</span> <span class="nx">_tabName</span> <span class="o">=</span> <span class="nx">_tabUrl</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">();</span>
-        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">_tabName</span><span class="p">);</span>
-        <span class="nb">window</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">pushState</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="sb">`</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="si">}</span><span class="sb">?tab=</span><span class="si">${</span><span class="nx">_tabName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-      <span class="p">});</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">isMix</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">TableauEventName</span><span class="p">.</span><span class="nx">FILTER_CHANGE</span><span class="p">,</span> <span class="nx">filterEvent</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">filterEvent</span><span class="p">.</span><span class="nx">getFilterAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">filter</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">dispatch</span><span class="p">({</span>
-              <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;webiWorkbook/changeFilter&#39;</span><span class="p">,</span>
-              <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-                  <span class="nx">name</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">getFieldName</span><span class="p">(),</span>
-                  <span class="nx">value</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">getAppliedValues</span><span class="p">().</span><span class="nx">map</span><span class="p">(</span><span class="nx">i</span> <span class="p">=&gt;</span> <span class="nx">i</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span>
-                <span class="p">},</span>
-                <span class="nx">id</span><span class="p">,</span>
-              <span class="p">},</span>
-            <span class="p">});</span>
-          <span class="p">});</span>
-        <span class="p">});</span>
-        <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span>
-          <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">TableauEventName</span><span class="p">.</span><span class="nx">PARAMETER_VALUE_CHANGE</span><span class="p">,</span>
-          <span class="nx">parameterEvent</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">parameterEvent</span><span class="p">.</span><span class="nx">getParameterAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">parameter</span> <span class="p">=&gt;</span> <span class="p">{</span>
-              <span class="nx">dispatch</span><span class="p">({</span>
-                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;webiWorkbook/changeFilter&#39;</span><span class="p">,</span>
-                <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
-                  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="nx">name</span><span class="o">:</span> <span class="nx">parameter</span><span class="p">.</span><span class="nx">getName</span><span class="p">(),</span>
-                    <span class="nx">value</span><span class="o">:</span> <span class="nx">parameter</span><span class="p">.</span><span class="nx">getCurrentValue</span><span class="p">().</span><span class="nx">formattedValue</span><span class="p">,</span>
-                  <span class="p">},</span>
-                  <span class="nx">id</span><span class="p">,</span>
-                <span class="p">},</span>
-              <span class="p">});</span>
-            <span class="p">});</span>
-          <span class="p">},</span>
-        <span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-  <span class="p">};</span>
-
-  <span class="c1">// add tableau session in IE11</span>
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span>
-      <span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myFrame&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
-      <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">MSInputMethodContext</span> <span class="o">&amp;&amp;</span>
-      <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentMode</span>
-    <span class="p">)</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">ifrm</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">);</span>
-      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;myFrame&#39;</span><span class="p">);</span>
-      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="p">);</span>
-      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
-      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
-      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ifrm</span><span class="p">);</span>
-      <span class="kr">const</span> <span class="nx">ifr</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myFrame&#39;</span><span class="p">);</span>
-      <span class="nx">ifr</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^(.*;)?\s*frameLoaded\s*=\s*[^;]+(.*)?$/</span><span class="p">))</span> <span class="p">{</span>
-          <span class="kr">const</span> <span class="nx">delay</span> <span class="o">=</span> <span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="kd">let</span> <span class="nx">timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">return</span> <span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">ms</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-              <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
-              <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">ms</span><span class="p">);</span>
-            <span class="p">};</span>
-          <span class="p">})();</span>
-          <span class="nx">delay</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="s1">&#39;frameLoaded=yes; expires=Sun, 1 Jan 2023 00:00:00 UTC; path=/&#39;</span><span class="p">;</span>
-            <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
-          <span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
-        <span class="p">}</span>
-      <span class="p">};</span>
-    <span class="p">}</span>
-  <span class="p">},</span> <span class="p">[</span><span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="p">]);</span>
-
-  <span class="c1">// Combine the workbook url with the location search</span>
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">urlTemp</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{};</span>
-    <span class="p">}</span>
-    <span class="nx">urlTemp</span> <span class="o">=</span> <span class="nx">current</span><span class="p">.</span><span class="nx">content_url</span> <span class="o">||</span> <span class="nx">current</span><span class="p">.</span><span class="nx">document_url</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">isEdit</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="p">{</span> <span class="nx">content</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">current</span><span class="p">;</span>
-      <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="si">}</span><span class="sb">/t/WWFPA/authoring/`</span><span class="p">;</span>
-      <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">urlTemp</span> <span class="o">+</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">content</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span> <span class="o">+</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span><span class="si">}</span><span class="sb">#1`</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">searchParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kr">const</span> <span class="nx">share</span> <span class="o">=</span> <span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">);</span>
-        <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">urlTemp</span><span class="si">}</span><span class="sb">?share=</span><span class="si">${</span><span class="nx">share</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;?tab&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">tab</span> <span class="o">=</span> <span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;tab&#39;</span><span class="p">);</span>
-        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">tab</span><span class="p">);</span>
-        <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">urlTemp</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">tab</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">setUrl</span><span class="p">(</span><span class="nx">urlTemp</span><span class="p">);</span>
-  <span class="p">},</span> <span class="p">[</span><span class="nx">isEdit</span><span class="p">,</span> <span class="nx">current</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">,</span> <span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="p">]);</span>
-
-  <span class="c1">// When set url, it will render workbook by Viz, the follow code is the detail.</span>
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span> <span class="o">&amp;&amp;</span> <span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">try</span> <span class="p">{</span>
-        <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">dispose</span><span class="p">();</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;tableau&#39;</span><span class="p">);</span>
-        <span class="nx">tableauStart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
-        <span class="kr">const</span> <span class="nx">vizContainer</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="sb">`vizContainer</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">vizContainer</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; new viz&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-            <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">[</span><span class="nx">id</span><span class="p">],</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">option</span><span class="p">[</span><span class="nx">id</span><span class="p">]);</span>
-            <span class="nx">vizContainer</span>
-              <span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-              <span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span>
-                <span class="s1">&#39;sandbox&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation allow-downloads&#39;</span><span class="p">,</span>
-              <span class="p">);</span>
-          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="kr">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
-            <span class="nx">div</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="nx">messageStyle</span><span class="p">);</span>
-            <span class="nx">div</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">errorMessage</span><span class="p">.</span><span class="nx">tableau</span><span class="p">;</span>
-            <span class="nx">vizContainer</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">},</span> <span class="p">[</span><span class="nx">current</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">current</span><span class="p">.</span><span class="nx">no_tabs</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">userDetail</span><span class="p">.</span><span class="nx">userId</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">]);</span>
-
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainerWrapper</span><span class="p">}</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">div</span>
-        <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="sb">`vizContainer</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span>
-        <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">iframeContent</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
-        <span class="p">}}</span>
-        <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainer</span><span class="p">}</span>
-      <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/div&gt;</span>
-  <span class="p">);</span>
-<span class="p">};</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">Workbook</span><span class="p">;</span>
-</pre></div>
-
-
 <h3>split&nbsp;report</h3>
 <p><img alt="f1nance" src="img/f1nance4.png">
 <img alt="f1nance" src="img/f1nance5.png"></p>
