@@ -42,6 +42,41 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>导出</h3>
+<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
+  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
+<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3>展开运算符</h3>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
+  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-lu-you.html" rel="bookmark" title="Permalink to React 路由">React&nbsp;路由</a>
 		</h2>
 		<div class="post-info">
@@ -380,47 +415,11 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-zu-jian.html" rel="bookmark" title="Permalink to React 组件">React&nbsp;组件</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>组件的属性</h2>
-<hr>
-<ol>
-<li>
-<p><strong>props属性集合：</strong> 保存组件的初始属性数据（大部分原始数据）；
-<br> this.props.children数组中会包含本组件实例的所有组件，由React自动填充
-<br>&nbsp;this.props.context跨级包含上级组件的数据</p>
-</li>
-<li>
-<p><strong>state状态集合：</strong>&nbsp;保存组件的状态数据（用户输入、服务器请求、时间变化）；</p>
-</li>
-<li>
-<p><strong>render函数：</strong>&nbsp;主要职责是根据state状态，结合props属性，进行虚拟DOM的构建；render函数内不应该修改组件state，不读写DOM信息，不与浏览器交互（setTimeOut）</p>
-</li>
-<li>
-<p><strong>setState(data, callback)成员函数：</strong>&nbsp;页面所有的变化均由状态的变更引发，状态的变更通过调用组件实例的setState函数完成 …</p></li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga4.html">&laquo;</a>
-    Page 5 / 5
+    Page 5 / 6
+        <a href="/author/yoga6.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -483,8 +482,8 @@
                 </div>
                 <ul>
                         <li><a href="https://github.com/yogagii">Github</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537082834907429de68ef592b2817b37bcae93e547761537082781.pdf&t=1615824412&_=1615824412000&web_url=&shareName=&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E5%89%8D%E7%AB%AF.pdf">UI/UX/Frontend/Game Design</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537389637354fb1ef05e2c2e77035e81f861378884fd1537389631.pdf&t=1615824215&_=1615824215000&web_url=&shareName=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81.pdf">Industrial Design Portfolio</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
                 </ul>
             </section>
             

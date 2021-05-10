@@ -1,0 +1,882 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›Digitalizing Intelligence in Finance&nbsp;Reporting
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Digitalizing Intelligence in Finance&nbsp;Reporting</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-05-10T00:00:00+08:00"> 
+            <a href="/archive/2021/ 5/index.html">一 10 五月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/tableau.html">Tableau</a>
+                <a href="/tag/sap.html">SAP</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Background</h2>
+<p>The Digital Platform is a web application that hosts finance reports, training, access management, and incident management. When accessing reports, the Digital Platform provides users a personalized experience. The increasing number of users interacting with reports online creates a huge data set that gives us millions of potential insights into user experience, personalization, and finance report improvements. <span class="caps">AI</span> technologies such as Market basket analysis and collaboration filtering methods are deployed to learn users’ behaviors and recommend the relevant finance reports in real-time. Based on the user’s persona, different personalized announcements, training, and finance reports are&nbsp;prioritized.</p>
+<p>The Digital Platform is an innovative solution for finance reports including a creative way to source the data, customizable machine learning algorithm to improve user experience. To source the data from different technologies servers, Google Analytics is deployed to track every users’ behavior. Machine learning Recommendation Engine is implemented to study the user’s behavior. Users are split into Cold and Hot User based on the view&nbsp;history.</p>
+<p>link:&nbsp;https://yogagii.github.io/recommend-system.html</p>
+<h2>Business&nbsp;Value</h2>
+<p>There are more than 600 finance users actively utilize the platform service every month. Because of the good customizable personal user experience, the utilization of the platform is to keep increasing. Every user uses 8.2 times of the Digital Platform every month. User&#8217;s experiences are improved and users spend more than 700 hours per month on the Digital Platform. The digital platform is providing users the customized personalized experience also keeping improve the financial reporting based on&nbsp;feedback.</p>
+<h1>Dashboard</h1>
+<p><img alt="f1nance" src="img/f1nance1.png">
+<img alt="f1nance" src="img/f1nance3.png"></p>
+<h1>Tableau&nbsp;Report</h1>
+<p><img alt="f1nance" src="img/f1nance2.png"></p>
+<h2>Tableau <span class="caps">REST</span> <span class="caps">API</span>:</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th><span class="caps">API</span></th>
+<th>Params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Get Users in Group</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/groups/group-id/users</td>
+<td>pageSize</td>
+</tr>
+<tr>
+<td>Get Users on Site</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/users</td>
+<td>pageSize, filter</td>
+</tr>
+<tr>
+<td>Query Views for Site</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/views</td>
+<td>includeUsageStatistics, fields, pageNumber</td>
+</tr>
+<tr>
+<td>Query Views for Workbook</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/workbooks/workbook-id/views</td>
+<td></td>
+</tr>
+<tr>
+<td>Query Workbook</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/workbooks/workbook-id</td>
+<td></td>
+</tr>
+<tr>
+<td>Query Workbook Permissions</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/workbooks/workbook-id/permissions</td>
+<td></td>
+</tr>
+<tr>
+<td>Query Workbooks for User</td>
+<td><span class="caps">GET</span> /api/api-version/sites/site-id/users/user-id/workbooks</td>
+<td>pageSize, pageNumber</td>
+</tr>
+</tbody>
+</table>
+<p>link: https://help.tableau.com/current/api/rest_api/en-us/<span class="caps">REST</span>/rest_api_ref.htm</p>
+<h2>Viz&nbsp;Option:</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hideTabs</td>
+<td>true</td>
+</tr>
+<tr>
+<td>&#8216;:toolbar&#8217;</td>
+<td>&#8216;top&#8217;</td>
+</tr>
+<tr>
+<td>&#8216;:showShareOptions&#8217;</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&#8216;:render&#8217;</td>
+<td>false</td>
+</tr>
+<tr>
+<td>width</td>
+<td>&#8216;100%&#8217;</td>
+</tr>
+</tbody>
+</table>
+<h2>Viz <span class="caps">API</span>:</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Properties</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Viz</td>
+<td>getWorkbook()</td>
+<td>Workbook</td>
+<td>One Workbook is supported per visualization.</td>
+</tr>
+<tr>
+<td>Workbook</td>
+<td>getActiveSheet()</td>
+<td>Sheet</td>
+<td>Gets the currently active sheet (the active tab)</td>
+</tr>
+<tr>
+<td>SheetInfo</td>
+<td>getName()</td>
+<td>string</td>
+<td>Gets the name of the sheet.</td>
+</tr>
+<tr>
+<td>SheetInfo</td>
+<td>getUrl()</td>
+<td>string</td>
+<td>Gets the <span class="caps">URL</span> for this sheet.</td>
+</tr>
+<tr>
+<td>SheetInfo</td>
+<td>getSheetType()</td>
+<td>SheetType</td>
+<td>Gets the type of the sheet. SheetType is an enum with the following values: <span class="caps">WORKSHEET</span>, <span class="caps">DASHBOARD</span> and <span class="caps">STORY</span>.</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>getWorksheets()</td>
+<td>Worksheet[]</td>
+<td>Gets the collection of worksheets contained in the dashboard.</td>
+</tr>
+<tr>
+<td>Worksheet</td>
+<td>getFiltersAsync()</td>
+<td>Promise<Filter[]></td>
+<td>Fetches the collection of filters used on the sheet.</td>
+</tr>
+<tr>
+<td>Workbook</td>
+<td>getParametersAsync()</td>
+<td>Promise<Parameter[]></td>
+<td>Fetches the parameters for this workbook.</td>
+</tr>
+<tr>
+<td>Workbook</td>
+<td>getCustomViewsAsync()</td>
+<td>Promise<CustomView[]></td>
+<td>Gets the collection of CustomView objects associated with the workbook.</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>getFieldName()</td>
+<td>string</td>
+<td>Gets the name of the field being filtered.</td>
+</tr>
+<tr>
+<td>CategoricalFilter</td>
+<td>getAppliedValues()</td>
+<td>DataValue[]</td>
+<td>Gets the collection of values that are currently set on the filter.</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td>getCurrentValue()</td>
+<td>DataValue</td>
+<td>The current value of the parameter.</td>
+</tr>
+</tbody>
+</table>
+<h2>Viz Event&nbsp;Classes:</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Event Class Passed in the Callback</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUSTOM_VIEW_LOAD</td>
+<td>CustomViewEvent</td>
+<td>Raised when a custom view has finished loading.</td>
+</tr>
+<tr>
+<td>PARAMETER_VALUE_CHANGE</td>
+<td>ParameterEvent</td>
+<td>Raised when any parameter has changed state.</td>
+</tr>
+<tr>
+<td>FILTER_CHANGE</td>
+<td>FilterEvent</td>
+<td>Raised when any filter has changed state.</td>
+</tr>
+<tr>
+<td>TAB_SWITCH</td>
+<td>TabSwitchEvent</td>
+<td>Raised after the tab switched.</td>
+</tr>
+</tbody>
+</table>
+<p>link:&nbsp;https://help.tableau.com/v2018.2/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">Workbook</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">workbook</span><span class="p">,</span> <span class="nx">userDetail</span><span class="p">,</span> <span class="nx">siteConfig</span><span class="p">,</span> <span class="nx">edit</span><span class="p">,</span> <span class="nx">changedFilter</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="p">[</span><span class="nx">url</span><span class="p">,</span> <span class="nx">setUrl</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+
+  <span class="nx">option</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">hideTabs</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;:showShareOptions&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s1">&#39;:linktarget&#39;</span><span class="o">:</span> <span class="s1">&#39;_self&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;:render&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+    <span class="nx">onFirstInteractive</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">mainWorkbook</span> <span class="o">=</span> <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">getWorkbook</span><span class="p">();</span>
+      <span class="kr">const</span> <span class="nx">_tabName</span> <span class="o">=</span> <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">().</span><span class="nx">getName</span><span class="p">();</span>
+      <span class="kr">const</span> <span class="nx">_tabKey</span> <span class="o">=</span> <span class="nx">current</span><span class="p">.</span><span class="nx">tabs</span><span class="o">?</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">tab</span> <span class="p">=&gt;</span> <span class="nx">tab</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="nx">_tabName</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">_tabKey</span> <span class="o">&amp;&amp;</span> <span class="nx">_tabKey</span><span class="p">.</span><span class="nx">contentUrl</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">_tabKey</span><span class="p">.</span><span class="nx">contentUrl</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">());</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">_tabName</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">isMix</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Fetch all the filter</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">().</span><span class="nx">getSheetType</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;worksheet&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">worksheets</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">worksheets</span> <span class="o">=</span> <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">().</span><span class="nx">getWorksheets</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="nx">worksheets</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">sheet</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+            <span class="nx">sheet</span><span class="p">.</span><span class="nx">getFiltersAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">filters</span> <span class="p">=&gt;</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="nx">filters</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">filter</span> <span class="p">=&gt;</span> <span class="p">({</span>
+                <span class="nx">name</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">getFieldName</span><span class="p">(),</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span>
+              <span class="p">}));</span>
+            <span class="p">}),</span>
+          <span class="p">);</span>
+        <span class="p">});</span>
+        <span class="c1">// Fetch all the parameters</span>
+        <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+          <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getParametersAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">parameters</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">parameters</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">param</span> <span class="p">=&gt;</span> <span class="p">({</span>
+              <span class="nx">name</span><span class="o">:</span> <span class="nx">param</span><span class="p">.</span><span class="nx">getName</span><span class="p">(),</span>
+              <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;param&#39;</span><span class="p">,</span>
+            <span class="p">}));</span>
+          <span class="p">}),</span>
+        <span class="p">);</span>
+        <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">arr</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">filters</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="kr">const</span> <span class="nx">filterNames</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">();</span>
+          <span class="kr">const</span> <span class="nx">reportFilters</span> <span class="o">=</span> <span class="p">[];</span>
+          <span class="nx">filters</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">filter</span> <span class="p">=&gt;</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">filterNames</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">filter</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">filterNames</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">filter</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+                <span class="nx">reportFilters</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">filter</span><span class="p">);</span>
+              <span class="p">}</span>
+            <span class="p">});</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+      <span class="c1">// Fetch all the collection</span>
+      <span class="nx">mainWorkbook</span><span class="p">.</span><span class="nx">getCustomViewsAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">customViews</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">impl</span> <span class="o">=</span> <span class="s1">&#39;_impl&#39;</span><span class="p">;</span>
+        <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistOther</span> <span class="o">=</span> <span class="p">[];</span>
+
+        <span class="nx">customViews</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">view</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span>
+            <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">owner</span><span class="p">.</span><span class="nx">username</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">userDetail</span><span class="p">.</span><span class="nx">userId</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span>
+          <span class="p">)</span> <span class="p">{</span>
+            <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+              <span class="nx">id</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+              <span class="nx">name</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+              <span class="nx">url</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
+            <span class="p">});</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistOther</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+              <span class="nx">id</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+              <span class="nx">name</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+              <span class="nx">url</span><span class="o">:</span> <span class="nx">view</span><span class="p">[</span><span class="nx">impl</span><span class="p">].</span><span class="nx">$i</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
+            <span class="p">});</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">id</span> <span class="o">-</span> <span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">setViewlist</span><span class="p">({</span>
+          <span class="p">...</span><span class="nx">viewlist</span><span class="p">,</span>
+          <span class="nx">loading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">viewlistMy</span><span class="o">:</span> <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistMy</span><span class="p">,</span>
+          <span class="nx">viewlistOther</span><span class="o">:</span> <span class="nx">viewlists</span><span class="p">.</span><span class="nx">viewlistOther</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+      <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;customviewload&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setViewlist</span><span class="p">({</span>
+          <span class="p">...</span><span class="nx">viewlist</span><span class="p">,</span>
+          <span class="p">...</span><span class="nx">viewlists</span><span class="p">,</span>
+          <span class="nx">loading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+      <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">TableauEventName</span><span class="p">.</span><span class="nx">TAB_SWITCH</span><span class="p">,</span> <span class="nx">tabsEvent</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">_tabUrl</span> <span class="o">=</span> <span class="nx">tabsEvent</span>
+          <span class="p">.</span><span class="nx">getViz</span><span class="p">()</span>
+          <span class="p">.</span><span class="nx">getWorkbook</span><span class="p">()</span>
+          <span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">()</span>
+          <span class="p">.</span><span class="nx">getUrl</span><span class="p">();</span>
+        <span class="kr">const</span> <span class="nx">_tabName</span> <span class="o">=</span> <span class="nx">_tabUrl</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">_tabName</span><span class="p">);</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">pushState</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="sb">`</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="si">}</span><span class="sb">?tab=</span><span class="si">${</span><span class="nx">_tabName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+      <span class="p">});</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">isMix</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">TableauEventName</span><span class="p">.</span><span class="nx">FILTER_CHANGE</span><span class="p">,</span> <span class="nx">filterEvent</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nx">filterEvent</span><span class="p">.</span><span class="nx">getFilterAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">filter</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">dispatch</span><span class="p">({</span>
+              <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;webiWorkbook/changeFilter&#39;</span><span class="p">,</span>
+              <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="nx">name</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">getFieldName</span><span class="p">(),</span>
+                  <span class="nx">value</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">getAppliedValues</span><span class="p">().</span><span class="nx">map</span><span class="p">(</span><span class="nx">i</span> <span class="p">=&gt;</span> <span class="nx">i</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="nx">id</span><span class="p">,</span>
+              <span class="p">},</span>
+            <span class="p">});</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+        <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">TableauEventName</span><span class="p">.</span><span class="nx">PARAMETER_VALUE_CHANGE</span><span class="p">,</span>
+          <span class="nx">parameterEvent</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">parameterEvent</span><span class="p">.</span><span class="nx">getParameterAsync</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">parameter</span> <span class="p">=&gt;</span> <span class="p">{</span>
+              <span class="nx">dispatch</span><span class="p">({</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;webiWorkbook/changeFilter&#39;</span><span class="p">,</span>
+                <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">name</span><span class="o">:</span> <span class="nx">parameter</span><span class="p">.</span><span class="nx">getName</span><span class="p">(),</span>
+                    <span class="nx">value</span><span class="o">:</span> <span class="nx">parameter</span><span class="p">.</span><span class="nx">getCurrentValue</span><span class="p">().</span><span class="nx">formattedValue</span><span class="p">,</span>
+                  <span class="p">},</span>
+                  <span class="nx">id</span><span class="p">,</span>
+                <span class="p">},</span>
+              <span class="p">});</span>
+            <span class="p">});</span>
+          <span class="p">},</span>
+        <span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+
+  <span class="c1">// add tableau session in IE11</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span>
+      <span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myFrame&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+      <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">MSInputMethodContext</span> <span class="o">&amp;&amp;</span>
+      <span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentMode</span>
+    <span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">ifrm</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">);</span>
+      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;myFrame&#39;</span><span class="p">);</span>
+      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="p">);</span>
+      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+      <span class="nx">ifrm</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ifrm</span><span class="p">);</span>
+      <span class="kr">const</span> <span class="nx">ifr</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myFrame&#39;</span><span class="p">);</span>
+      <span class="nx">ifr</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^(.*;)?\s*frameLoaded\s*=\s*[^;]+(.*)?$/</span><span class="p">))</span> <span class="p">{</span>
+          <span class="kr">const</span> <span class="nx">delay</span> <span class="o">=</span> <span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">timer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">return</span> <span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">ms</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+              <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+              <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">ms</span><span class="p">);</span>
+            <span class="p">};</span>
+          <span class="p">})();</span>
+          <span class="nx">delay</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="s1">&#39;frameLoaded=yes; expires=Sun, 1 Jan 2023 00:00:00 UTC; path=/&#39;</span><span class="p">;</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+          <span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="p">]);</span>
+
+  <span class="c1">// Combine the workbook url with the location search</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">urlTemp</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{};</span>
+    <span class="p">}</span>
+    <span class="nx">urlTemp</span> <span class="o">=</span> <span class="nx">current</span><span class="p">.</span><span class="nx">content_url</span> <span class="o">||</span> <span class="nx">current</span><span class="p">.</span><span class="nx">document_url</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isEdit</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="p">{</span> <span class="nx">content</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">current</span><span class="p">;</span>
+      <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="si">}</span><span class="sb">/t/WWFPA/authoring/`</span><span class="p">;</span>
+      <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">urlTemp</span> <span class="o">+</span>
+        <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">content</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span> <span class="o">+</span>
+        <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span><span class="si">}</span><span class="sb">#1`</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">searchParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">share</span> <span class="o">=</span> <span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">);</span>
+        <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">urlTemp</span><span class="si">}</span><span class="sb">?share=</span><span class="si">${</span><span class="nx">share</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;?tab&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">tab</span> <span class="o">=</span> <span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;tab&#39;</span><span class="p">);</span>
+        <span class="nx">setTabName</span><span class="p">(</span><span class="nx">tab</span><span class="p">);</span>
+        <span class="nx">urlTemp</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">urlTemp</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">tab</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">setUrl</span><span class="p">(</span><span class="nx">urlTemp</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">isEdit</span><span class="p">,</span> <span class="nx">current</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">,</span> <span class="nx">siteConfig</span><span class="p">.</span><span class="nx">tableBaseUrl</span><span class="p">]);</span>
+
+  <span class="c1">// When set url, it will render workbook by Viz, the follow code is the detail.</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span> <span class="o">&amp;&amp;</span> <span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">dispose</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;tableau&#39;</span><span class="p">);</span>
+        <span class="nx">tableauStart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+        <span class="kr">const</span> <span class="nx">vizContainer</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="sb">`vizContainer</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">vizContainer</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; new viz&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+            <span class="nx">viz</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">[</span><span class="nx">id</span><span class="p">],</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">option</span><span class="p">[</span><span class="nx">id</span><span class="p">]);</span>
+            <span class="nx">vizContainer</span>
+              <span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+              <span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span>
+                <span class="s1">&#39;sandbox&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation allow-downloads&#39;</span><span class="p">,</span>
+              <span class="p">);</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="nx">messageStyle</span><span class="p">);</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">errorMessage</span><span class="p">.</span><span class="nx">tableau</span><span class="p">;</span>
+            <span class="nx">vizContainer</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">current</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">current</span><span class="p">.</span><span class="nx">no_tabs</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">userDetail</span><span class="p">.</span><span class="nx">userId</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainerWrapper</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span>
+        <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="sb">`vizContainer</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span>
+        <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nx">iframeContent</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+        <span class="p">}}</span>
+        <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainer</span><span class="p">}</span>
+      <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Workbook</span><span class="p">;</span>
+</pre></div>
+
+
+<h3>split&nbsp;report</h3>
+<p><img alt="f1nance" src="img/f1nance4.png">
+<img alt="f1nance" src="img/f1nance5.png"></p>
+<h3>interactive&nbsp;training</h3>
+<p><img alt="f1nance" src="img/f1nance6.png"></p>
+<h3>share customized&nbsp;view</h3>
+<p><img alt="f1nance" src="img/f1nance7.png"></p>
+<h1><span class="caps">SAP</span>&nbsp;Report</h1>
+<p><img alt="f1nance" src="img/f1nance8.png"></p>
+<h2>FIlter for&nbsp;report:</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Store</th>
+<th>Function</th>
+<th>Action</th>
+<th>Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get report filter list</td>
+<td>getReportStore</td>
+<td>getInputControls</td>
+<td>/</td>
+<td>viewContext</td>
+</tr>
+<tr>
+<td>get report filter detail</td>
+<td>getReportInputControlStore</td>
+<td>getInputControl</td>
+<td>/</td>
+<td>viewContext, inputControlId</td>
+</tr>
+<tr>
+<td>get report filter options</td>
+<td>getReportInputControlStore</td>
+<td>getLov</td>
+<td>/</td>
+<td>viewContext, inputControlId</td>
+</tr>
+<tr>
+<td>get report filter value</td>
+<td>getReportInputControlStore</td>
+<td>getSelection</td>
+<td>/</td>
+<td>viewContext, inputControlId</td>
+</tr>
+<tr>
+<td>set report filter value</td>
+<td>/</td>
+<td>/</td>
+<td>USER_SET_INPUT_CONTROL_SELECTION</td>
+<td>viewContext, inputControlId, selection</td>
+</tr>
+</tbody>
+</table>
+<h2>FIlter for&nbsp;document:</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Store</th>
+<th>Function</th>
+<th>Action</th>
+<th>Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get document filter list</td>
+<td>getDocumentStore</td>
+<td>getInputControls</td>
+<td>/</td>
+<td>viewContext</td>
+</tr>
+<tr>
+<td>get document filter detail</td>
+<td>getDocumentInputControlStore</td>
+<td>getInputControl</td>
+<td>/</td>
+<td>viewContext, inputControlId</td>
+</tr>
+<tr>
+<td>get document filter options</td>
+<td>getDocumentInputControlStore</td>
+<td>getLov</td>
+<td>/</td>
+<td>viewContext, inputControlId</td>
+</tr>
+<tr>
+<td>get document filter value</td>
+<td>getDocumentInputControlStore</td>
+<td>getSelection</td>
+<td>/</td>
+<td>viewContext, inputControlId</td>
+</tr>
+<tr>
+<td>set document filter value</td>
+<td>/</td>
+<td>/</td>
+<td>USER_SET_INPUT_CONTROL_SELECTION</td>
+<td>viewContext, inputControlId, selection</td>
+</tr>
+</tbody>
+</table>
+<h2><span class="caps">SAP</span> Prompt&nbsp;Function:</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Store</th>
+<th>Function</th>
+<th>Action</th>
+<th>Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activate prompt options</td>
+<td>/</td>
+<td>/</td>
+<td>GET_PARAMETER_LOV</td>
+<td>viewContext, parameterId, (prepare, data)</td>
+</tr>
+<tr>
+<td>get prompt value</td>
+<td>getDocumentStore</td>
+<td>getParameters</td>
+<td>/</td>
+<td>viewContext</td>
+</tr>
+<tr>
+<td>get prompt options</td>
+<td>getParameterStore</td>
+<td>getLov</td>
+<td>/</td>
+<td>viewContext, parameterId</td>
+</tr>
+<tr>
+<td>set prompt value</td>
+<td>/</td>
+<td>/</td>
+<td>USER_VALIDATE_PROMPTS</td>
+<td>viewContext, inputControlId, selection</td>
+</tr>
+</tbody>
+</table>
+<h2><span class="caps">SAP</span> Driller&nbsp;Function:</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Store</th>
+<th>Function</th>
+<th>Action</th>
+<th>Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get driller current list</td>
+<td>getReportStore</td>
+<td>getDrillerElements</td>
+<td>/</td>
+<td>viewContext</td>
+</tr>
+<tr>
+<td>get driller all list</td>
+<td>getReportStore</td>
+<td>getDrillerFilters</td>
+<td>/</td>
+<td>viewContext</td>
+</tr>
+<tr>
+<td>get driller detail</td>
+<td>getDrillerFilterStore</td>
+<td>getDrillerFilter</td>
+<td>/</td>
+<td>viewContext, filterId</td>
+</tr>
+</tbody>
+</table>
+<h2>Post&nbsp;Message:</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Type</th>
+<th>Value</th>
+<th>Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code injection finished</td>
+<td>string</td>
+<td>&#8216;SAP_WEBI_INJECTED&#8217;</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Filter data</td>
+<td>object</td>
+<td _filters-selection_="'filters-selection'," data: docId: filters_="filters," getWebiViewerArgs_.id="getWebiViewerArgs().id" type:></td>
+<td>true</td>
+</tr>
+<tr>
+<td>Tab data</td>
+<td>object</td>
+<td _tab-selection_="'tab-selection'," data: docId: getWebiViewerArgs_.id="getWebiViewerArgs().id" tab_="tab," type:></td>
+<td>true</td>
+</tr>
+<tr>
+<td>Prompt data</td>
+<td>object</td>
+<td _parameter-selection_="'parameter-selection'," data: docId: getWebiViewerArgs_.id="getWebiViewerArgs().id" parameters_="parameters," type:></td>
+<td>true</td>
+</tr>
+<tr>
+<td>Click link event</td>
+<td>object</td>
+<td _document-url_="'document-url'," data: docId: getWebiViewerArgs_.id="getWebiViewerArgs().id" item.href_="item.href," type:></td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h2>Code&nbsp;Injection:</h2>
+<p><img alt="f1nance" src="img/f1nance9.png"></p>
+<h1>Design of other&nbsp;page</h1>
+<p><img alt="f1nance" src="img/f1nance14.png">
+<img alt="f1nance" src="img/f1nance10.png">
+<img alt="f1nance" src="img/f1nance11.png">
+<img alt="f1nance" src="img/f1nance12.png">
+<img alt="f1nance" src="img/f1nance13.png">
+<img alt="f1nance" src="img/f1nance15.png">
+<img alt="f1nance" src="img/f1nance16.png">
+<img alt="f1nance" src="img/f1nance17.png">
+<img alt="f1nance" src="img/f1nance18.png"></p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/project.html">Project</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "digitalizing-intelligence-in-finance-reporting.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

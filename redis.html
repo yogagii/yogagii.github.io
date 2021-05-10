@@ -130,12 +130,29 @@
 
 
 <h2>本地启动</h2>
-<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">services</span> <span class="k">start</span> <span class="n">redis</span>
-<span class="n">brew</span> <span class="n">services</span> <span class="n">list</span>
-<span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">ping</span>
-<span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="o">-</span><span class="n">h</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">CONFIG</span> <span class="k">SET</span> <span class="n">requirepass</span> <span class="ss">&quot;####&quot;</span> <span class="o">//</span> <span class="err">同</span><span class="k">local</span><span class="p">.</span><span class="n">js</span>
-<span class="n">AUTH</span> <span class="ss">&quot;root&quot;</span>
+<div class="highlight"><pre><span></span><span class="nx">brew</span> <span class="nx">services</span> <span class="nx">start</span> <span class="nx">redis</span>
+<span class="nx">brew</span> <span class="nx">services</span> <span class="nx">list</span>
+<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="nx">ping</span>
+<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="mf">127.0.0.1</span>
+<span class="nx">CONFIG</span> <span class="nx">SET</span> <span class="nx">requirepass</span> <span class="s2">&quot;xxxxxx&quot;</span> <span class="c1">// 同local.js</span>
+<span class="nx">AUTH</span> <span class="s2">&quot;xxxxxx&quot;</span>
+<span class="nx">select</span> <span class="mi">4</span> <span class="c1">// db</span>
+<span class="nx">flushdb</span> <span class="c1">// clear database</span>
+</pre></div>
+
+
+<h2>启用 Redis&nbsp;密钥空间通知</h2>
+<div class="highlight"><pre><span></span><span class="nx">CONFIG</span> <span class="nx">SET</span> <span class="nx">notify</span><span class="o">-</span><span class="nx">keyspace</span><span class="o">-</span><span class="nx">events</span> <span class="nx">Ex</span>
+
+<span class="c1">// client 1</span>
+<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">xxx</span><span class="o">-</span><span class="nx">dev</span><span class="o">-</span><span class="nx">rep</span><span class="o">-</span><span class="nx">group</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">001.</span><span class="nx">ugvuyh</span><span class="mf">.0001</span><span class="p">.</span><span class="nx">use1</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">amazonaws</span><span class="p">.</span><span class="nx">com</span>
+<span class="nx">setex</span> <span class="nx">name</span> <span class="mi">10</span> <span class="nx">yoga</span>
+
+<span class="c1">// client 2</span>
+<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">xxx</span><span class="o">-</span><span class="nx">dev</span><span class="o">-</span><span class="nx">rep</span><span class="o">-</span><span class="nx">group</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">001.</span><span class="nx">ugvuyh</span><span class="mf">.0001</span><span class="p">.</span><span class="nx">use1</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">amazonaws</span><span class="p">.</span><span class="nx">com</span> <span class="o">--</span><span class="nx">csv</span> <span class="nx">psubscribe</span> <span class="s1">&#39;*&#39;</span>
+<span class="c1">// Reading messages... (press Ctrl-C to quit)</span>
+<span class="c1">// &quot;psubscribe&quot;,&quot;*&quot;,1</span>
+<span class="c1">// &quot;pmessage&quot;,&quot;*&quot;,&quot;__keyevent@0__:expired&quot;,&quot;name&quot;</span>
 </pre></div>
 
 
@@ -245,8 +262,8 @@
                 </div>
                 <ul>
                         <li><a href="https://github.com/yogagii">Github</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537082834907429de68ef592b2817b37bcae93e547761537082781.pdf&t=1615824412&_=1615824412000&web_url=&shareName=&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E5%89%8D%E7%AB%AF.pdf">UI/UX/Frontend/Game Design</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537389637354fb1ef05e2c2e77035e81f861378884fd1537389631.pdf&t=1615824215&_=1615824215000&web_url=&shareName=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81.pdf">Industrial Design Portfolio</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
                 </ul>
             </section>
             

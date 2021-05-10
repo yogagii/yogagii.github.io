@@ -400,6 +400,46 @@ action names: corresponding action methods.&nbsp;}</p>
 
 
 <p>在生产环境中，使用 forever start app.js &#8212;prod 或 pm2 start app.js -x &#8212; &#8212;prod 启动服务器，这和 sails lift &#8212;prod&nbsp;所做的事相同，但是当服务器崩溃时，它会自动重新启动。</p>
+<div class="highlight"><pre><span></span><span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">development</span> <span class="c1">// dev environment</span>
+<span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">staging</span> <span class="c1">// stage environment</span>
+<span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">production</span> <span class="c1">// production environment</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">// ecosystem.config.js </span>
+<span class="kr">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;--env&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="kr">const</span> <span class="nx">isDev</span> <span class="o">=</span> <span class="nx">env</span> <span class="o">===</span> <span class="s1">&#39;development&#39;</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">apps</span><span class="o">:</span> <span class="p">[{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+    <span class="nx">script</span><span class="o">:</span> <span class="s1">&#39;app.js&#39;</span><span class="p">,</span>
+    <span class="nx">log_date_format</span><span class="o">:</span> <span class="s1">&#39;YYYY-MM-DD HH:mm Z&#39;</span><span class="p">,</span>
+    <span class="nx">autorestart</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">watch</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">max_memory_restart</span><span class="o">:</span> <span class="s1">&#39;1G&#39;</span><span class="p">,</span>
+    <span class="nx">exec_mode</span><span class="o">:</span> <span class="s1">&#39;cluster&#39;</span><span class="p">,</span>
+    <span class="nx">instances</span><span class="o">:</span> <span class="nx">isDev</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">env_development</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">NODE_ENV</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
+      <span class="nx">AWS_ACCESS_KEY_ID</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXX&#39;</span><span class="p">,</span>
+      <span class="nx">AWS_SECRET_ACCESS_KEY</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXXXX&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">env_staging</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">NODE_ENV</span><span class="o">:</span> <span class="s1">&#39;staging&#39;</span><span class="p">,</span>
+      <span class="nx">AWS_ACCESS_KEY_ID</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXX&#39;</span><span class="p">,</span>
+      <span class="nx">AWS_SECRET_ACCESS_KEY</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXXXX&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">env_production</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">NODE_ENV</span><span class="o">:</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span>
+      <span class="nx">AWS_ACCESS_KEY_ID</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXX&#39;</span><span class="p">,</span>
+      <span class="nx">AWS_SECRET_ACCESS_KEY</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXXXX&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">}],</span>
+<span class="p">};</span>
+</pre></div>
+
+
 <hr>
 <h2>Views</h2>
 <ul>
@@ -515,8 +555,8 @@ action names: corresponding action methods.&nbsp;}</p>
                 </div>
                 <ul>
                         <li><a href="https://github.com/yogagii">Github</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537082834907429de68ef592b2817b37bcae93e547761537082781.pdf&t=1615824412&_=1615824412000&web_url=&shareName=&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E5%89%8D%E7%AB%AF.pdf">UI/UX/Frontend/Game Design</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537389637354fb1ef05e2c2e77035e81f861378884fd1537389631.pdf&t=1615824215&_=1615824215000&web_url=&shareName=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81.pdf">Industrial Design Portfolio</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
                 </ul>
             </section>
             

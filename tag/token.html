@@ -53,19 +53,27 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Version1:</h2>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">EventEmitter</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">globalToken</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="p">();</span>
-
-<span class="nx">async</span> <span class="nx">getToken</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">globalToken</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">globalToken</span> <span class="o">=</span> <span class="s1">&#39;pending&#39;</span><span class="p">;</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_TLS_REJECT_UNAUTHORIZED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kr">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-      <span class="s1">&#39;logon/long&#39;</span><span class="p">,</span>
-      <span class="nx">sails</span><span class="p">.</span><span class="nx">config …</span></pre></div></div>
+	<div class="summary"><h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th><span class="caps">SI</span>. No.</th>
+<th>Description</th>
+<th><span class="caps">REST</span> <span class="caps">API</span></th>
+<th>Http Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Logon using username and password</td>
+<td>http://host:<port>/biprws/vx/logon/long</td>
+<td><span class="caps">GET</span>,<span class="caps">POST</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Logoff (token must be in Header)</td>
+<td>http …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -139,8 +147,8 @@
                 </div>
                 <ul>
                         <li><a href="https://github.com/yogagii">Github</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537082834907429de68ef592b2817b37bcae93e547761537082781.pdf&t=1615824412&_=1615824412000&web_url=&shareName=&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E5%89%8D%E7%AB%AF.pdf">UI/UX/Frontend/Game Design</a></li>
-                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=//alicliimg.clewm.net/148/295/3295148/1537389637354fb1ef05e2c2e77035e81f861378884fd1537389631.pdf&t=1615824215&_=1615824215000&web_url=&shareName=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81&free=1&collect=0&from=active&filename=%E4%BD%9C%E5%93%81%E9%9B%86-%E4%BA%A7%E5%93%81.pdf">Industrial Design Portfolio</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
                 </ul>
             </section>
             
