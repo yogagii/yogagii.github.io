@@ -65,29 +65,6 @@
 <li>用作缓存</li>
 <li>用作存 cookie,session: 容量小，提升速度;&nbsp;负载均衡指到其他进程里，</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// callback.js</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadAccessToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">refresh_token</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expires_in</span> <span class="o">*</span> <span class="mi">1000</span>
-
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">userId</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">userId</span><span class="p">;</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">uid</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">role</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">sysRole</span><span class="p">;</span>
-
-<span class="c1">// isLoggedIn.js</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">uid</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">proceed</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
-  <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Unauthorized&#39;</span><span class="p">,</span>
-  <span class="nx">sso_url</span><span class="o">:</span> <span class="sb">`https://login.microsoftonline.com/3ac94b33-9135-4821-9502-eafda6592a35/oauth2/v2.0/authorize?</span><span class="si">${</span><span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
-    <span class="nx">params</span>
-  <span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-<span class="p">})</span>
-</pre></div>
-
-
 <p>cookie 的过期时间和 redis&nbsp;保持一致</p>
 <div class="highlight"><pre><span></span><span class="c1">// local.js</span>
 <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
@@ -138,6 +115,27 @@
 <span class="nx">AUTH</span> <span class="s2">&quot;xxxxxx&quot;</span>
 <span class="nx">select</span> <span class="mi">4</span> <span class="c1">// db</span>
 <span class="nx">flushdb</span> <span class="c1">// clear database</span>
+<span class="nx">KEYS</span> <span class="o">*</span> <span class="c1">// get all keys</span>
+<span class="nx">get</span> <span class="nx">sapToken</span> <span class="c1">// get certain key</span>
+<span class="nx">ttl</span> <span class="nx">sapToken</span> <span class="c1">// get expire time</span>
+</pre></div>
+
+
+<h2>Redis&nbsp;读写</h2>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">promisify</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">redisClient</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">({</span>
+  <span class="nx">db</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="p">,</span>
+  <span class="nx">password</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">pass</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
+<span class="p">});</span>
+<span class="kr">const</span> <span class="nx">getRedisAsync</span> <span class="o">=</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">.</span><span class="nx">get</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">);</span>
+
+<span class="nx">redisClient</span><span class="p">.</span><span class="nx">psetex</span><span class="p">(</span><span class="nx">sapTokenKey</span><span class="p">,</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="nx">val</span><span class="p">);</span>
+
+<span class="nx">extoken</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">getRedisAsync</span><span class="p">(</span><span class="nx">sapTokenKey</span><span class="p">);</span>
 </pre></div>
 
 
@@ -153,6 +151,27 @@
 <span class="c1">// Reading messages... (press Ctrl-C to quit)</span>
 <span class="c1">// &quot;psubscribe&quot;,&quot;*&quot;,1</span>
 <span class="c1">// &quot;pmessage&quot;,&quot;*&quot;,&quot;__keyevent@0__:expired&quot;,&quot;name&quot;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">SubscribeExpired</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">({</span>
+    <span class="nx">db</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="p">,</span>
+    <span class="nx">password</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">pass</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="kr">const</span> <span class="nx">expiredSubKey</span> <span class="o">=</span> <span class="sb">`__keyevent@</span><span class="si">${</span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="si">}</span><span class="sb">__:expired`</span><span class="p">;</span>
+  <span class="nx">sub</span><span class="p">.</span><span class="nx">psubscribe</span><span class="p">(</span><span class="nx">expiredSubKey</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pmessage&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="p">...</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+<span class="c1">// 只在instance1上注册事件</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_APP_INSTANCE</span> <span class="o">===</span> <span class="s1">&#39;0&#39;</span> <span class="o">||</span> <span class="o">!</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_APP_INSTANCE</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">redisClient</span><span class="p">.</span><span class="nx">send_command</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;notify-keyspace-events&#39;</span><span class="p">,</span> <span class="s1">&#39;Ex&#39;</span><span class="p">],</span> <span class="nx">SubscribeExpired</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
 

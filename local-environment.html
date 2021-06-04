@@ -61,66 +61,7 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>local.js:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm">* Local environment settings</span>
-<span class="cm">*</span>
-<span class="cm">this file to specify configuration settings for use while developing</span>
-<span class="cm">* the app on your personal system.</span>
-<span class="cm">*</span>
-<span class="cm">* For more information, check out:</span>
-<span class="cm">* https://sailsjs.com/docs/concepts/configuration/the-local-js-file</span>
-<span class="cm">*/</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="c1">// Any configuration settings may be overridden below, whether it&#39;s built-in Sails</span>
-  <span class="c1">// options or custom configuration specifically for your app (e.g. Stripe, Mailgun, etc.)</span>
-  <span class="nx">custom</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">mailEnable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">approvalDebugMode</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">frontendUrl</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8000&quot;</span><span class="p">,</span>
-    <span class="nx">frontHost</span><span class="o">:</span> <span class="s2">&quot;https://dev.fpa.jnj.com&quot;</span><span class="p">,</span>
-    <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8443&quot;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">datastores</span><span class="o">:</span> <span class="p">{</span>
-    <span class="k">default</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">adapter</span><span class="o">:</span> <span class="s2">&quot;sails-mysql&quot;</span><span class="p">,</span>
-      <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-      <span class="nx">port</span><span class="o">:</span> <span class="mi">3306</span><span class="p">,</span>
-      <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
-      <span class="nx">password</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
-      <span class="nx">database</span><span class="o">:</span> <span class="s2">&quot;fpa&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="nx">security</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">cors</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">allowOrigins</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">&quot;http://localhost:8000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;https://localhost:8000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;http://localhost:3000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;https://dev.fpa.jnj.com&quot;</span><span class="p">,</span>
-      <span class="p">],</span>
-      <span class="nx">allowRequestHeaders</span><span class="o">:</span> <span class="s2">&quot;content-type,cache-control,pragma&quot;</span><span class="p">,</span>
-      <span class="nx">allowResponseHeaders</span><span class="o">:</span> <span class="s2">&quot;Location,Content-Type&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="nx">port</span><span class="o">:</span> <span class="mi">8443</span><span class="p">,</span>
-  <span class="nx">http</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">trustProxy</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">adapter</span><span class="o">:</span> <span class="s2">&quot;@sailshq/connect-redis&quot;</span><span class="p">,</span>
-    <span class="nx">pass</span><span class="o">:</span> <span class="s2">&quot;XXXXXXXXXX&quot;</span><span class="p">,</span>
-    <span class="nx">db</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">ssl</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">disableCertificateValidation</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">};</span>
-</pre></div>
-
-
-<h2><span class="caps">SSL</span></h2>
+        <h2><span class="caps">SSL</span></h2>
 <p>Error: unable to get local issuer&nbsp;certificate:</p>
 <p>法一：</p>
 <div class="highlight"><pre><span></span><span class="nx">async</span> <span class="nx">apiLoader</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">forceUpdate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>

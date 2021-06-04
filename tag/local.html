@@ -53,15 +53,16 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>local.js:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm">* Local environment settings</span>
-<span class="cm">*</span>
-<span class="cm">this file to specify configuration settings for use while developing</span>
-<span class="cm">* the app on your personal system.</span>
-<span class="cm">*</span>
-<span class="cm">* For more information, check out:</span>
-<span class="cm">* https://sailsjs.com/docs …</span></pre></div></div>
+	<div class="summary"><h2><span class="caps">SSL</span></h2>
+<p>Error: unable to get local issuer&nbsp;certificate:</p>
+<p>法一：</p>
+<div class="highlight"><pre><span></span><span class="nx">async</span> <span class="nx">apiLoader</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">forceUpdate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">getToken</span><span class="p">();</span>
+      <span class="kr">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s1">&#39;X-SAP-LogonToken&#39;</span><span class="o">:</span> <span class="nx">token</span><span class="p">,</span>
+          <span class="nx">Accept …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

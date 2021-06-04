@@ -115,10 +115,20 @@
 <li>用作缓存</li>
 <li>用作存 cookie,session: 容量小，提升速度;&nbsp;负载均衡指到其他进程里，</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// callback.js</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadAccessToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">refresh_token</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expires_in</span> <span class="o">*</span> <span class="mi">1000 …</span></pre></div></div>
+<p>cookie 的过期时间和 redis&nbsp;保持一致</p>
+<div class="highlight"><pre><span></span><span class="c1">// local.js</span>
+<span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">adapter</span><span class="o">:</span> <span class="s1">&#39;@sailshq/connect-redis&#39;</span><span class="p">,</span>
+  <span class="nx">pass</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXX&#39;</span><span class="p">,</span>
+  <span class="nx">db</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">},</span>
+</pre></div>
+
+
+<p>清缓存</p>
+<div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">flushCacheWithDomain</span><span class="p">(</span><span class="nx">domain</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">domain</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
