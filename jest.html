@@ -401,6 +401,21 @@
   <span class="p">})</span>
 <span class="p">})</span>
 </pre></div>
+
+
+<h3>Problems in <span class="caps">CI</span>/<span class="caps">CD</span></h3>
+<p><span class="dquo">&#8220;</span>@@/history&#8221; is referencing to&nbsp;src/pages/.umi/history.js</p>
+<p><span class="dquo">&#8220;</span>@@/umiExports&#8221; is referencing to&nbsp;src/pages/.umi/umiExports.ts</p>
+<p>Folder .umi will only be created when running &#8220;umi dev&#8221; The folder.umi will consist of the following files by default or other files such as history.js and umiExports.ts based on plugins(umi.js,&nbsp;router.js)</p>
+<p>Folder .umi will not be tracked under git as it will be created every time &#8220;umi dev&#8221; is&nbsp;run.</p>
+<p>Folder .umi-production will only be created when running &#8220;umi build&#8221; and will be deleted automatically when build has&nbsp;completed</p>
+<p>Temporary files under .umi is important as there are functions that has dependencies on it, including test&nbsp;scripts.</p>
+<p>This causes issue when we are setting up the unit test in Jenkins as there is no folder .umi for functions to import or&nbsp;reference</p>
+<p>It does not make sense to run &#8220;umi dev&#8221; in Jenkins as it will increase the cost of Continuous&nbsp;Integration.</p>
+<p>reference:</p>
+<p>https://v2.umijs.org/guide/app-structure.html#src-pages-umi</p>
+<p>https://v2.umijs.org/guide/mock-data.html</p>
+<p><img alt="jest" src="img/jest1.png"></p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
