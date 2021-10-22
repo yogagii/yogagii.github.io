@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -33,53 +41,121 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">make</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/make.html">make</a>
+<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›<span class="caps">CSS</span>
                 </section>
 
 
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">CSS</span></h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-08-18T00:00:00+08:00"> 
+            <a href="/archive/2021/ 8/index.html">三 18 八月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/css.html">CSS</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Position</h2>
 <ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/makezong-jie.html" rel="bookmark" title="Permalink to Make总结">Make总结</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-10-22T14:33:00+08:00"> 
-				<a href="/archive/2021/10/index.html">五 22 十月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Make</h2>
-<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其他文件名.</p>
-<h3>Make&nbsp;rules</h3>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">target</span><span class="o">&gt;:</span> <span class="o">&lt;</span><span class="nx">prerequisites</span><span class="o">&gt;</span>
-<span class="p">[</span><span class="nx">tab</span><span class="p">]</span>   <span class="o">&lt;</span><span class="nx">command</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>一个目标构成一条规则，即可以是文件名也可以是某个操作的名字．</p>
-<div class="highlight"><pre><span></span><span class="nx">clean</span><span class="o">:</span>
-    <span class="nx">rm</span> <span class="o">*</span><span class="p">.</span><span class="nx">o</span>
-</pre></div>
-
-
-<p>通过调用<code>make clean</code>指令来执行上述程序, 为避免歧义．可以加入<code>.PHONY: clean</code>声明 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
+<li>static: 默认值，忽略TRBL,&nbsp;z-index</li>
+<li>inherit:&nbsp;继承</li>
+<li>fixed:&nbsp;固定定位，相对于浏览器窗口TRBL</li>
+<li>relative:&nbsp;相对定位，相对于正常位置TRBL</li>
 </ul>
-<p class="paginator">
-    Page 1 / 1
-</p>
+<p>遵循正常文档流，占有文档空间，父级padding影响，根为root</p>
+<table>
+<thead>
+<tr>
+<th><span class="caps">TRBL</span></th>
+<th>父级</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>无</td>
+<td>上一元素底部/浏览器左上角</td>
+</tr>
+<tr>
+<td>无</td>
+<td>有</td>
+<td>父级左上角</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级有无position</td>
+<td>父级左上角</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级有padding</td>
+<td>内容区域左上角</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>absolute:&nbsp;绝对定位，相对于除static以外第一个父元素TRBL</li>
+</ul>
+<p>脱离文档流，不占文档空间，父级padding不影响，根为html</p>
+<table>
+<thead>
+<tr>
+<th><span class="caps">TRBL</span></th>
+<th>父级</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+<td>默认auto, 变回relative</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级无position</td>
+<td>找上级直到html</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级有position</td>
+<td>父级左上角，无论padding</td>
+</tr>
+</tbody>
+</table>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/javascript.html">Javascript</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "css.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--

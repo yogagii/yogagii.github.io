@@ -1,0 +1,225 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›错误重试和指数退避
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >错误重试和指数退避</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-08-19T00:00:00+08:00"> 
+            <a href="/archive/2021/ 8/index.html">四 19 八月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/aws.html">AWS</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>Introduction</h3>
+<p>网络上的大量组件 (例如 <span class="caps">DNS</span> 服务器、交换机、负载均衡器等)&nbsp;都可能在某个指定请求生命周期中的任一环节出现问题。在联网环境中，处理这些错误回应的常规技术是在客户应用程序中实施重试。此技术可以提高应用程序的可靠性和降低开发人员的操作成本。</p>
+<p>Although Vital backend is a highly available system running on the highly available <span class="caps">AWS</span> infra, there are third-party <span class="caps">API</span> integrations that are upstream. These dependencies might not be highly available. This means there may be instances when the backend <span class="caps">API</span> would fail. This can happen due to variety of issues ranging from network issues to upstream downtime. To handle such situations, it is of grave importance for Vital to have a well-crafted retry logic that can ensure the application itself is highly available for the end&nbsp;user.</p>
+<h3>Design&nbsp;Considerations</h3>
+<p>Before having a retry logic in place it is important to align with the following&nbsp;facts:</p>
+<p><span class="caps">4XX</span> status codes are meant for the client-side errors. This means retries aren&#8217;t supposed to be done on such <span class="caps">HTTP</span> statuses. If the client retries, then it will only aggravate the problems(unnecessary load on&nbsp;server/gateway).</p>
+<p>客户端错误 (4xx)&nbsp;表示您需要对请求本身进行修改，纠正该问题，然后再重试。</p>
+<p><span class="caps">5XX</span> status codes indicate an issue on the server side. Retry can be done with caution.
+If a retry is done on <span class="caps">5XX</span> status code, then the client can adopt an Exponential Back-off strategy for&nbsp;retrying.</p>
+<p>Exponential Back-off strategy employs a progressively delayed retry mechanism. For example, retry after 1 second, retry after 2 seconds, retry after 4 seconds, retry after 8 seconds,&nbsp;etc.</p>
+<p>指数退避的原理是对于连续错误响应，重试等待间隔越来越长。您应该实施最长延迟间隔和最大重试次数。最长延迟间隔和最大重试次数不一定是固定值，并且应当根据正在执行的操作和其他本地因素（例如网络延迟）进行设置。</p>
+<p>To further improve the strategy, we can have a upper limit for the retry. This can be either a time limit(like 250 milliseconds) or a count(like 10). This now makes the strategy, a Truncated Exponential Back-off&nbsp;Strategy.</p>
+<p>Another important consideration is to make sure the APIs we are retrying is actually safe to retry. This is because the previous request might have partially failed but may have induced the expected side-effect as well. If retrying causes an unwanted re-running of the side-effect, then it has to be&nbsp;avoided.</p>
+<p>Another consideration is that although exponential back-off strategy is good, in the worst-case scenario of tons of client requests failing and causing retries, the backend will get a burst of load causing much worse situation. To avoid this a random delay can be added for each back-off retry. This randomness is called the&nbsp;Jitter.</p>
+<p>大多数指数回退算法会利用抖动 (随机延迟)&nbsp;来防止连续的冲突。由于在这些情况下您并未尝试避免此类冲突，因此无需使用此随机数字。但是，如果使用并发客户端，抖动可帮助您更快地成功执行请求。</p>
+<p>Truncated Exponential Back-off strategy is a standard error-handling strategy for networked applications. This can be used for requests that return 429, 408 and <span class="caps">5XX</span> status&nbsp;codes.</p>
+<p>This strategy can be defined as - Wait Interval = Minimum((Base * 2^n) + Random Interval, Maximum Back-off&nbsp;Time)</p>
+<h3>Implementation</h3>
+<p>The default connection timeout value for <span class="caps">API</span> calls in Vital is set to 60 seconds. For <span class="caps">SAP</span> reports this is set to 120&nbsp;seconds.</p>
+<p>The retry mechanism can take this timeout value into consideration when designing the Truncated Exponential Back-off strategy. The <span class="caps">HTTP</span> status code for this would be&nbsp;408.</p>
+<p>For a status code of <span class="caps">5XX</span> or 429, we can have a retry delay of Minimum((1000* 2^n) + Math.floor(Math.random() * 1000) + 1, 15000) milliseconds with a max retry attempt of&nbsp;3.</p>
+<p>For a status code of 408, we can have a retry delay of 1 second with max retry attempt of&nbsp;1.</p>
+<h2>fetch-retry</h2>
+<p>https://www.npmjs.com/package/fetch-retry</p>
+<p>The default behavior of fetch-retry is to wait a fixed amount of time between attempts, but it is also possible to customize this by passing a function as the retryDelay option. The function is supplied three arguments: attempt (starting at 0), error (in case of a network error), and response. It must return a number indicating the&nbsp;delay.</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">originalFetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;isomorphic-fetch&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fetch-retry&#39;</span><span class="p">)(</span><span class="nx">originalFetch</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">retries</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">retryDelay</span><span class="o">:</span> <span class="mi">800</span>
+  <span class="p">});</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">retryDelay</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">attempt</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nx">attempt</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// 1000, 2000, 4000</span>
+    <span class="p">}</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something with the result</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
+  <span class="p">});</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/javascript.html">Javascript</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Ron, Adarsh</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "cuo-wu-zhong-shi-he-zhi-shu-tui-bi.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
