@@ -1,0 +1,637 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›<span class="caps">CI</span>/<span class="caps">CD</span> Pipeline&nbsp;Setup
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">CI</span>/<span class="caps">CD</span> Pipeline&nbsp;Setup</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-10-27T00:00:00+08:00"> 
+            <a href="/archive/2021/10/index.html">三 27 十月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/cicd.html">CI/CD</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Frontend&nbsp;Structure</h2>
+<ul>
+<li>_scm_jenkins</li>
+<li>install.groovy</li>
+<li>jenkins.yaml</li>
+<li>s3Upload.groovy</li>
+<li>unitTest.groovy</li>
+<li>version-calculation.groovy</li>
+<li>public</li>
+<li>src</li>
+<li>node_modules</li>
+<li>automation_pipelies.yaml</li>
+<li>environment-mapping.yaml</li>
+<li>Jenkinsfile</li>
+<li>jest.config.js</li>
+<li>manifest-sources.yaml</li>
+<li>manifest.yaml</li>
+<li>sonar-project.propertieis</li>
+</ul>
+<h2>Steps</h2>
+<ol>
+<li>Create folder called _scm_jenkins under project root&nbsp;directory.</li>
+<li><span class="quo">&#8216;</span>_scm_jenkins/jenkins.yaml&#8217;.</li>
+</ol>
+<p>This file is required to trigger pipeline build for <span class="caps">CI</span>/<span class="caps">CD</span>&nbsp;.</p>
+<div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://jenkins.eat.jnj.com/project-name/</span>
+  <span class="nt">buildFrom</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stage</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">preprod</span>
+  <span class="nt">jobs</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">jobStyle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">multi-branch-pipeline</span>
+      <span class="nt">jobName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-frontend</span>
+      <span class="nt">jobCredentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sourcecode-bitbucket</span>
+      <span class="nt">includeBranches</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">feature/*</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bugfix/*</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hotfix/*</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stage</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">preprod</span>
+</pre></div>
+
+
+<ol>
+<li><span class="quo">&#8216;</span>automation_pipelines.yaml&#8217;</li>
+</ol>
+<p>This file is to trigger the pipeline&nbsp;automatically. </p>
+<div class="highlight"><pre><span></span><span class="c1"># Specify which service to subscribe to. This should not be changed</span>
+<span class="p p-Indicator">-</span> <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">eat-jenkins</span>
+<span class="c1"># This is the environemt of automation_piplines not environment of application or Jenkins</span>
+<span class="nt">environment</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Production</span>
+<span class="nt">teamKey</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tavc</span>
+<span class="nt">jenkinsType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dev</span>
+</pre></div>
+
+
+<ol>
+<li><span class="quo">&#8216;</span>environment-mapping.yaml&#8217;</li>
+</ol>
+<p>This file is required to determine which branch related to which environment and used as an put for pipeline creation. The file looks like as&nbsp;below.</p>
+<div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;(feature|bugfix|hotfix)/.*&quot;</span>
+  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;PREDEV&quot;</span>
+<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;develop&quot;</span>
+  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;DEV&quot;</span>
+<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;stage&quot;</span>
+  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;STAGE&quot;</span>
+<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;preprod&quot;</span>
+  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;PREPROD&quot;</span>
+<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;master&quot;</span>
+  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;PROD&quot;</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>Pipeline Stage</th>
+<th><span class="caps">PREDEV</span></th>
+<th><span class="caps">DEV</span></th>
+<th><span class="caps">STAGE</span></th>
+<th><span class="caps">PROD</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checkout</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Manifest Load</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Setup</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Unit Test</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Lint</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Dependency Analysis</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Static Annalysis</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Package</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Publish</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Version Calculation</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Resolve Artifact</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Intergration Test</td>
+<td>-</td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+</tr>
+<tr>
+<td>Regression Test</td>
+<td>-</td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+</tr>
+<tr>
+<td>Hyperion Test Automation</td>
+<td>-</td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+</tr>
+<tr>
+<td>Robot Test Automation</td>
+<td>-</td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+</tr>
+<tr>
+<td>Sauce Labs</td>
+<td>-</td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+<td><span class="caps">TBD</span></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><span class="quo">&#8216;</span>manifest-sources.yaml&#8217;</li>
+</ol>
+<p>This file defines how many type of manifest file are the project using. There is a two type of manifest are available, common and environment specific. This file is used as an argument during pipeline creation in the&nbsp;jenkinsfile.</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.0&quot;</span>
+<span class="nt">sources</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">common</span>
+    <span class="nt">location</span><span class="p">:</span>
+      <span class="nt">locationType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
+      <span class="nt">file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+    <span class="nt">manifest</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">simple</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">common</span>
+      <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">environment</span>
+    <span class="nt">location</span><span class="p">:</span>
+      <span class="nt">locationType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
+      <span class="nt">file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+    <span class="nt">manifest</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">by-environment</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">environments</span>
+      <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+
+<ol>
+<li><span class="quo">&#8216;</span>manifest.yaml&#8217;</li>
+</ol>
+<p>This file holds the configuration related to your file. It has majorly two parts. One is common, Other is Environment&nbsp;type.</p>
+<div class="highlight"><pre><span></span><span class="nt">common</span><span class="p">:</span>
+  <span class="nt">pipelineType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node</span>
+  <span class="nt">debug</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">npm</span><span class="p">:</span>
+    <span class="nt">dockerImage</span><span class="p">:</span> <span class="s">&#39;jnj.artifactrepo.jnj.com/jpm/node:14&#39;</span>
+  <span class="nt">artifactory</span><span class="p">:</span>
+    <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tafn-npm</span>
+  <span class="nt">customSetup</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/install.groovy</span>
+  <span class="nt">unitTest</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/unitTest.groovy</span>
+  <span class="nt">lint</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">buildAnalysis</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">dependencyAnalysis</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">staticAnalysis</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sonar</span>
+    <span class="nt">directory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
+    <span class="nt">shortLivedAnalysis</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">shortLivedBuildResults</span><span class="p">:</span>
+      <span class="nt">IGNORE</span><span class="p">:</span>
+        <span class="nt">BLOCKER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">CRITICAL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">MAJOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">MINOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">INFO</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">longLivedAnalysis</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">longLivedBuildResults</span><span class="p">:</span>
+      <span class="nt">IGNORE</span><span class="p">:</span>
+        <span class="nt">BLOCKER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">CRITICAL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">MAJOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">MINOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">INFO</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">QUALITY_GATE</span><span class="p">:</span>
+        <span class="nt">ERROR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SUCCESS</span>
+        <span class="nt">WARN</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SUCCESS</span>
+  <span class="nt">release</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">package</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zip</span>
+    <span class="nt">dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
+    <span class="nt">include</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dist/**</span>
+    <span class="nt">versionPackageName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">versionFileUpdates</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;node-package&#39;</span>
+  <span class="nt">publish</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifactory-upload</span>
+  <span class="nt">versionCalculation</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/version-calculation.groovy</span>
+    <span class="nt">confirmVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">resolveArtifacts</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifactory</span>
+    <span class="nt">artifactPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tafn-npm</span>
+  <span class="nt">deploy</span><span class="p">:</span>
+    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">multi</span>
+    <span class="nt">parallel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">stages</span><span class="p">:</span>
+      <span class="nt">s3Upload</span><span class="p">:</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
+        <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/s3Upload.groovy</span>
+<span class="nt">environments</span><span class="p">:</span>
+  <span class="nt">PREDEV</span><span class="p">:</span>
+    <span class="nt">customSetup</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">unitTest</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">DEV</span><span class="p">:</span>
+    <span class="nt">customSetup</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">unitTest</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">staticAnalysis</span><span class="p">:</span>
+      <span class="nt">longLivedAnalysis</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">release</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+      <span class="nt">updateChangelog</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">merge</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">confirmVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">subDirectory</span><span class="p">:</span> <span class="s">&#39;&#39;</span>
+      <span class="nt">branchToRelease</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
+      <span class="nt">releaseDestination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
+    <span class="nt">package</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend</span>
+    <span class="nt">publish</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">filePattern</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend-*.zip</span>
+    <span class="nt">versionCalculation</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">resolveArtifacts</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">artifactPattern</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend-${version}.zip</span>
+    <span class="nt">deploy</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">stages</span><span class="p">:</span>
+        <span class="nt">s3Upload</span><span class="p">:</span>
+          <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+
+<ol>
+<li><span class="quo">&#8216;</span>jenkinsfile&#8217;</li>
+</ol>
+<p>This file creates the pipeline instance by taking multiple arguments like manifestSourcesFile, EnvironmentMappingFile etc. It uses all the shared library required for&nbsp;pipeline.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/groovy</span>
+<span class="nd">@Library</span><span class="p">(</span><span class="s1">&#39;jpm_shared_lib@1.x&#39;</span><span class="p">)</span> <span class="n">_</span>
+<span class="kn">import</span> <span class="nn">org.jnj.pipelines.</span><span class="o">*</span>
+<span class="k">def</span> <span class="nf">args</span> <span class="o">=</span> <span class="p">[:]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">args</span><span class="o">.</span><span class="n">manifestSourcesFile</span> <span class="o">=</span> <span class="s1">&#39;manifest-sources.yaml&#39;</span>
+<span class="n">args</span><span class="o">.</span><span class="n">environmentMappingFile</span> <span class="o">=</span> <span class="s1">&#39;environment-mapping.yaml&#39;</span>
+<span class="n">new</span> <span class="n">stdPipeline</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+
+
+<ol>
+<li>Jenkins configuration in the Jenkins&nbsp;console.</li>
+</ol>
+<p>Create a new pipeline job by clicking on the &#8221; New Item&#8221;. Select Multibranch Pipeline and provide name to your&nbsp;pipeline.</p>
+<p>After creating pipeline Job select the Job you created. Click on Configure button. In the &#8221; Branch Source&#8221; section, provide git repo url. Click on Add button to add the credential to access Git. Filter By name section provide master feature/* (All all&nbsp;feature).</p>
+<p>Click on the Credentials Manager section in Jenkins, select the Pipeline you want to set the credential. Provide credential Id, Access Key and Secret Key ( Received from <span class="caps">AWS</span> console) and click on&nbsp;Save.</p>
+<ol>
+<li><span class="quo">&#8216;</span>_scm_jenkins/s3Upload.groovy&#8217;</li>
+</ol>
+<p>This is the files responsible for uploading your artifact to S3 in <span class="caps">AWS</span>. This file contain S3 credential to upload artifact into S3.The file should looks as&nbsp;below.</p>
+<div class="highlight"><pre><span></span><span class="kt">def</span> <span class="nf">run</span><span class="o">(</span><span class="n">jobManifest</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kt">def</span> <span class="n">jobVars</span> <span class="o">=</span> <span class="n">jobManifest</span><span class="o">.</span><span class="na">getJobVars</span><span class="o">()</span>
+  <span class="n">ensure</span><span class="o">.</span><span class="na">insideDockerContainer</span><span class="o">(</span><span class="s1">&#39;jnj.artifactrepo.jnj.com/jpm/awscli&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">dir</span><span class="o">(</span><span class="s1">&#39;project&#39;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Started inside Dir&quot;</span><span class="o">)</span>
+      <span class="n">deleteDir</span><span class="o">()</span>
+      <span class="n">unstash</span> <span class="n">jobVars</span><span class="o">.</span><span class="na">projectStash</span>
+      <span class="n">jobVars</span><span class="o">.</span><span class="na">packageStashes</span><span class="o">.</span><span class="na">each</span><span class="o">({</span> <span class="n">stashName</span> <span class="o">-&gt;</span>
+          <span class="n">unstash</span> <span class="nl">name:</span> <span class="n">stashName</span>
+      <span class="o">})</span>
+      <span class="kt">def</span> <span class="n">environment</span> <span class="o">=</span> <span class="n">jobVars</span><span class="o">?.</span><span class="na">jpmEnvironment</span>
+      <span class="kt">def</span> <span class="n">awsRegion</span> <span class="o">=</span> <span class="s2">&quot;us-east-1&quot;</span>
+      <span class="kt">def</span> <span class="n">version</span> <span class="o">=</span> <span class="n">jobVars</span><span class="o">?.</span><span class="na">calculatedVersion</span>
+      <span class="kt">def</span> <span class="n">packageName</span><span class="o">=</span><span class="s2">&quot;my-vital-front-end-${version}.zip&quot;</span>
+      <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;PackageName inside Dir&quot;</span><span class="o">+</span><span class="n">packageName</span><span class="o">)</span>
+      <span class="n">withEnv</span><span class="o">([</span><span class="s2">&quot;AWS_DEFAULT_REGION=${awsRegion}&quot;</span><span class="o">])</span> <span class="o">{</span>
+        <span class="n">withCredentials</span><span class="o">(...)</span> <span class="o">{</span>
+          <span class="kt">def</span> <span class="n">keyNotExists</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span>
+            <span class="nl">script:</span> <span class="s2">&quot;aws s3 ls s3://vital-preprod-site-asset/frontend/${packageName}&quot;</span><span class="o">,</span>
+            <span class="nl">returnStatus:</span> <span class="kc">true</span>
+          <span class="o">)</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">keyNotExists</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sh</span> <span class="s2">&quot;aws s3 cp ./dist/${packageName} s3://vital-preprod-site-asset/frontend/ --sse&quot;</span>
+              <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;S3 upload Done&quot;</span><span class="o">)</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Package already exists in the bucket&quot;</span><span class="o">)</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kt">def</span> <span class="nf">expectsManifest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="o">}</span>
+
+<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</pre></div>
+
+
+<ol>
+<li><span class="quo">&#8216;</span>_scm_jenkins/install.groovy&#8217;</li>
+</ol>
+<p>This is where all the prerequisite builds&nbsp;happen. </p>
+<div class="highlight"><pre><span></span><span class="kt">def</span> <span class="nf">run</span><span class="o">(</span><span class="n">jobManifest</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kt">def</span> <span class="n">jobVars</span> <span class="o">=</span> <span class="n">jobManifest</span><span class="o">.</span><span class="na">getJobVars</span><span class="o">()</span>
+  <span class="n">ensure</span><span class="o">.</span><span class="na">insideDockerContainer</span><span class="o">(</span><span class="s1">&#39;jnj.artifactrepo.jnj.com/jpm/node:14&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">dir</span><span class="o">(</span><span class="s1">&#39;project&#39;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">def</span> <span class="n">jpmEnvironment</span> <span class="o">=</span> <span class="n">jobVars</span><span class="o">?.</span><span class="na">jpmEnvironment</span>
+      <span class="kt">def</span> <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;dev&quot;</span>
+      <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;JPM Environment: &quot;</span> <span class="o">+</span> <span class="n">jpmEnvironment</span><span class="o">)</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">jpmEnvironment</span> <span class="o">==</span> <span class="s2">&quot;STAGE&quot;</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;stage&quot;</span>
+      <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">jpmEnvironment</span> <span class="o">==</span> <span class="s2">&quot;PREPROD&quot;</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;preprod&quot;</span>
+      <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">jpmEnvironment</span> <span class="o">==</span> <span class="s2">&quot;PROD&quot;</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;prod&quot;</span>
+      <span class="o">}</span> 
+      <span class="n">sh</span> <span class="s2">&quot;yarn&quot;</span>
+      <span class="n">sh</span> <span class="s2">&quot;yarn build-${branchEnv}&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="kt">def</span> <span class="nf">expectsManifest</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kc">true</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Zack, Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "cicd-pipeline-setup.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/data.html" >Data</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

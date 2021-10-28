@@ -61,7 +61,22 @@
     </div>
     </header>
     <div class="post-entry">
-        <h2>Token</h2>
+        <h2>Authentication and&nbsp;Authorization</h2>
+<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
+<ol>
+<li>Register your app with Azure <span class="caps">AD</span>.</li>
+<li>Get&nbsp;authorization.</li>
+<li>Get an access&nbsp;token.</li>
+<li>Call Microsoft Graph with the access&nbsp;token.</li>
+<li>Use a refresh token to get a new access&nbsp;token.</li>
+</ol>
+<p>To configure an app to use the OAuth 2.0 authorization code grant flow, you&#8217;ll need to save the following values when registering the&nbsp;app:</p>
+<ol>
+<li>The Application (client) <span class="caps">ID</span> assigned by the app registration&nbsp;portal.</li>
+<li>A Client (application)&nbsp;Secret</li>
+<li>A Redirect <span class="caps">URI</span> (or reply <span class="caps">URL</span>) for your app to receive responses from Azure <span class="caps">AD</span>.</li>
+</ol>
+<p>The first step to getting an access token for OAuth 2.0 flow is to redirect the user to the Microsoft identity platform /authorize endpoint. Azure <span class="caps">AD</span> will sign the user in and ensure their consent for the permissions your app requests. In the authorization code grant flow, after consent is obtained, Azure <span class="caps">AD</span> will return an authorization_code to your app that it can use at the Microsoft identity platform /token endpoint for an access&nbsp;token.</p>
 <h3>grant_type:&nbsp;authorization_code</h3>
 <div class="highlight"><pre><span></span><span class="c1">// callback.js</span>
 <span class="kr">const</span> <span class="nx">tokenReq</span> <span class="o">=</span> <span class="p">{</span>
@@ -144,7 +159,7 @@
 </pre></div>
 
 
-<h3>grant_type:&nbsp;client_credentials</h3>
+<h3>grant_type:&nbsp;refresh_token</h3>
 <div class="highlight"><pre><span></span><span class="c1">// azureTokenRefresher.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">isLoggedIn</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">===</span> <span class="s1">&#39;number&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">&lt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="mi">300000</span><span class="p">)</span> <span class="p">{</span>

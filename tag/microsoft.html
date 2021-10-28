@@ -53,15 +53,10 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Token</h2>
-<h3>grant_type:&nbsp;authorization_code</h3>
-<div class="highlight"><pre><span></span><span class="c1">// callback.js</span>
-<span class="kr">const</span> <span class="nx">tokenReq</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">client_id</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientId</span><span class="p">,</span>
-  <span class="nx">scope</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">scope</span><span class="p">,</span>
-  <span class="nx">code</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span>
-  <span class="nx">redirect_uri</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">redirectUri</span><span class="p">,</span>
-  <span class="nx">grant_type …</span></pre></div></div>
+	<div class="summary"><h2>Authentication and&nbsp;Authorization</h2>
+<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
+<ol>
+<li>Register …</li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

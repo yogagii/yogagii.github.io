@@ -42,210 +42,66 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›<span class="caps">CSS</span>
+<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›Timing
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" ><span class="caps">CSS</span></h2>
+    <h2 class="post-title" >Timing</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2021-08-18T00:00:00+08:00"> 
-            <a href="/archive/2021/ 8/index.html">三 18 八月 2021 </a>
+        <abbr class="date" title="2021-10-26T00:00:00+08:00"> 
+            <a href="/archive/2021/10/index.html">二 26 十月 2021 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
-                <a href="/tag/css.html">CSS</a>
+                <a href="/tag/devtools.html">DevTools</a>
         <!-- TOBE COMMENTS -->
     </div>
     </header>
     <div class="post-entry">
-        <h2>Position</h2>
-<ul>
-<li>static: 默认值，忽略TRBL,&nbsp;z-index</li>
-<li>inherit:&nbsp;继承</li>
-<li>fixed:&nbsp;固定定位，相对于浏览器窗口TRBL</li>
-<li>relative:&nbsp;相对定位，相对于正常位置TRBL</li>
+        <ul>
+<li>Resource&nbsp;Scheduling</li>
+<li>Queueing: <strong>队列</strong> &#8212;&nbsp;请求排队的时间。浏览器是有线程限制的，发请求也不能所有的请求同时发送，会将请求加入队列中（Chrome的最大并发连接数是6）。如果说同一时间，发起的同一域名的请求超过了6个，这时候就需要排队了。</li>
+<li>Connection&nbsp;Start</li>
+<li>Stalled:  <strong>阻塞</strong> &#8212;&nbsp;浏览器得到要发出这个请求的指令，到请求可以发出的等待时间，一般是代理协商、以及等待可复用的TCP连接释放的时间，不包括DNS查询、建立TCP连接等时间等</li>
+<li>Proxy&nbsp;nengotiation</li>
+<li><span class="caps">DNS</span> Lookup: <strong>DNS查找</strong> &#8212;&nbsp;请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址</li>
+<li>Initial connection: <strong>建立TCP连接</strong> &#8212;&nbsp;客户端从发请求开始到TCP握手结束这一段，包括DNS查询+Proxy时间+TCP握手时间</li>
+<li><span class="caps">SSL</span>: <strong>安全套阶层</strong> &#8212; 加密数据，https&nbsp;是安全套接字层超文本传输协议，就是在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。</li>
+<li>Request/Reponse</li>
+<li>Request sent:  <strong>发送请求</strong> &#8212;&nbsp;请求第一个字节发出前到最后一个字节发出后的时间，也就是上传时间</li>
+<li>Waiting(<span class="caps">TTFB</span>): <strong>首字节时间</strong> &#8212; 请求发出后，到收到响应的第一个字节所花费的时间(Time To First&nbsp;Byte)</li>
+<li>Content Download: <strong>内容下载</strong> &#8212;&nbsp;收到响应的第一个字节，到接受完最后一个字节的时间，就是下载时间</li>
 </ul>
-<p>遵循正常文档流，占有文档空间，父级padding影响，根为root</p>
-<table>
-<thead>
-<tr>
-<th><span class="caps">TRBL</span></th>
-<th>父级</th>
-<th>定位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>无</td>
-<td>无</td>
-<td>上一元素底部/浏览器左上角</td>
-</tr>
-<tr>
-<td>无</td>
-<td>有</td>
-<td>父级左上角</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级有无position</td>
-<td>父级左上角</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级有padding</td>
-<td>内容区域左上角</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>absolute:&nbsp;绝对定位，相对于除static以外第一个父元素TRBL</li>
-</ul>
-<p>脱离文档流，不占文档空间，父级padding不影响，根为html</p>
-<table>
-<thead>
-<tr>
-<th><span class="caps">TRBL</span></th>
-<th>父级</th>
-<th>定位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>无</td>
-<td></td>
-<td>默认auto, 变回relative</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级无position</td>
-<td>找上级直到html</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级有position</td>
-<td>父级左上角，无论padding</td>
-</tr>
-</tbody>
-</table>
-<h2>Display</h2>
-<p>display: inherit, none, block, inline, inline-block,table,&nbsp;table-cell</p>
-<table>
-<thead>
-<tr>
-<th>元素</th>
-<th>宽高</th>
-<th>margin</th>
-<th>padding</th>
-<th>换行排列</th>
-<th>example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>块状元素</td>
-<td>y</td>
-<td>y</td>
-<td>y</td>
-<td>y (从上至下)</td>
-<td>div, p, nav, ul, li , header, footer, aside</td>
-</tr>
-<tr>
-<td>行内块状元素</td>
-<td>y</td>
-<td>y</td>
-<td>y</td>
-<td>n (从左到右)</td>
-<td></td>
-</tr>
-<tr>
-<td>行内元素</td>
-<td>n</td>
-<td>左右</td>
-<td>y</td>
-<td>n (从左到右)</td>
-<td>span, a, b, i, strong, em, img, input, select</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>None:&nbsp;不存在且不加载</li>
-</ul>
-<p>Visibility: hidden&nbsp;隐藏，仍占据空间</p>
-<ul>
-<li>flex</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
-  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-  <span class="k">align-items</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<ul>
-<li>table</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">table</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">table-cell</span><span class="p">;</span>
-  <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
-  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>//&nbsp;水平居中</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
-  <span class="k">width</span><span class="p">:</span> <span class="n">xxpx</span><span class="p">;</span>
-  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>//&nbsp;水平垂直居中</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
-  <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
-  <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
-  <span class="k">top</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-  <span class="k">left</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-  <span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span> <span class="mi">-50</span><span class="kt">%</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>盒子模型 Box&nbsp;Model</h2>
-<p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：外边距（margin）、边框（border）、内边距（padding）、实际内容（content）四个属性。</p>
-<p>两个上下相邻的盒子垂直相遇时，外边距会合并，等于较大的那个</p>
-<ul>
-<li>W3C标准盒：</li>
-</ul>
-<p>box-sizing:&nbsp;content-box</p>
-<p>总宽度 = margin + border + paddig +&nbsp;width(content)</p>
-<ul>
-<li>IE盒</li>
-</ul>
-<p>box-sizing:&nbsp;border-box</p>
-<p>总宽度 = margin + width(border + padding +&nbsp;content)</p>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">向下三角</span>
-<span class="p">.</span><span class="nc">triangle</span> <span class="p">{</span>
-  <span class="k">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">height</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">border</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">transparent</span><span class="p">;</span>
-  <span class="k">border-top</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">blue</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
+<h2>Stalled优化：</h2>
+<p>浏览器对同一个主机域名的并发连接数有限制，因此如果当前的连接数已经超过上限，那么其余请求就会被阻塞，等待新的可用连接；此外脚本也会阻塞其他组件的下载；</p>
+<p>前端Dashboard页面展示的图表数据最好是提前统计好，然后放到缓存里面，避免统计时间比较长的ajax请求太多阻塞其他请求。</p>
+<p>将资源合理分布到多台主机上，可以提高并发数，但是增加并行下载数量也会增大开销，这取决于带宽和CPU速度，过多的并行下载会降低性能；</p>
+<p>脚本置于页面底部；</p>
+<p>Stalled时间过长是网络问题导致的，有可能是本地网络不好，有可能是服务器网络不好，也有可能是中间链路的网络节点故障（防火墙、网关、VPN等等）。走内网IP访问不存在此问题，在内网做本地DNS，在公司通过域名访问则直接解析到内网IP。</p>
+<h2>DNS优化：</h2>
+<p>在DNS查找完成之前，浏览器不能从主机名那里下载到任何东西。DNS查询的时间，当本地DNS缓存没有的时候，这个时间可能是有一段长度的，但是比如你一旦在host中设置了DNS，或者第二次访问，由于浏览器的DNS缓存还在，这个时间就为0了。</p>
+<p>利用DNS缓存（设置TTL时间）</p>
+<p>利用Connection:keep-alive特性建立持久连接，可以在当前连接上进行多个请求，无需再进行域名解析；</p>
+<h2>Request&nbsp;sent优化：</h2>
+<p>减少HTTP请求，可以使用CSS&nbsp;Sprites、内联图片、合并脚本和样式表等；</p>
+<p>对不常变化的组件添加长久的Expires头（相当于设置久远的过期时间），在后续的页面浏览中可以避免不必要的HTTP请求；</p>
+<h2>Waiting优化：</h2>
+<p>发送请求完毕到接收请求开始的时间；通常是耗费时间最长的。从发送请求到收到服务器响应的第一字节之间的时间，受到线路、服务器距离等因素的影响。</p>
+<p>网页重定向越多，TTFB越高，所以要减少重定向</p>
+<p>使用CDN，将用户的访问指向距离最近的工作正常的缓存服务器上，由缓存服务器直接响应用户请求，提高响应速度；</p>
+<h2>Content&nbsp;Download优化：</h2>
+<p>通过条件Get请求，对比If-Modified-Since和Last-Modified时间，确定是否使用缓存中的组件，服务器会返回“304 Not&nbsp;Modified”状态码，减小响应的大小；</p>
+<p>移除重复脚本，精简和压缩代码，如借助自动化构建工具grunt、gulp等；</p>
+<p>压缩响应内容，服务器端启用gzip压缩，可以减少下载时间；</p>
+<p>原文链接：https://blog.csdn.net/lhz_333/article/details/93544313</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/javascript.html">Javascript</a>
+            <a href="/category/analytics.html">Analytics</a>
         </abbr>
         <p>
         <span class="meta-prep">Author: </span><span>Yoga</span>
@@ -254,7 +110,7 @@
     <!-- <section id="respond">
         <div id="disqus_thread">
         <script type="text/javascript">
-        var disqus_identifier = "css.html";
+        var disqus_identifier = "timing.html";
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://.disqus.com/embed.js';

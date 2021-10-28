@@ -55,8 +55,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-10-22T14:33:00+08:00"> 
-				<a href="/archive/2021/10/index.html">五 22 十月 2021 </a>
+			<abbr class="date" title="2021-10-28T14:33:00+08:00"> 
+				<a href="/archive/2021/10/index.html">四 28 十月 2021 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -76,6 +76,94 @@
 
 
 <p>通过调用<code>make clean</code>指令来执行上述程序, 为避免歧义．可以加入<code>.PHONY: clean</code>声明 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/cicd-pipeline-setup.html" rel="bookmark" title="Permalink to CI/CD Pipeline Setup"><span class="caps">CI</span>/<span class="caps">CD</span> Pipeline&nbsp;Setup</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-10-27T00:00:00+08:00"> 
+				<a href="/archive/2021/10/index.html">三 27 十月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Frontend&nbsp;Structure</h2>
+<ul>
+<li>_scm_jenkins</li>
+<li>install.groovy</li>
+<li>jenkins.yaml</li>
+<li>s3Upload.groovy</li>
+<li>unitTest.groovy</li>
+<li>version-calculation.groovy</li>
+<li>public</li>
+<li>src</li>
+<li>node_modules</li>
+<li>automation_pipelies.yaml</li>
+<li>environment-mapping.yaml</li>
+<li>Jenkinsfile</li>
+<li>jest.config.js</li>
+<li>manifest-sources.yaml</li>
+<li>manifest.yaml</li>
+<li>sonar-project.propertieis …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/feature-toggle.html" rel="bookmark" title="Permalink to Feature Toggle">Feature&nbsp;Toggle</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-10-26T00:00:00+08:00"> 
+				<a href="/archive/2021/10/index.html">二 26 十月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Feature Toggles (often also refered to as Feature Flags) are a powerful technique, allowing teams to modify system behavior without changing code.&nbsp;允许团队不用修改代码而来改变系统的功能行为。</p>
+<p><span class="dquo">&#8220;</span>Feature Toggling&#8221; is a set of patterns …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/blue-green-deployment.html" rel="bookmark" title="Permalink to Blue-Green Deployment">Blue-Green&nbsp;Deployment</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
+				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>Blue Green deployments is a technique for rapidly and repeatedly releasing changes to software in&nbsp;production.</p>
+</blockquote>
+<ol>
+<li>Go to <span class="caps">EC2</span> instances in <span class="caps">AWS</span> and rename environment (<span class="caps">EC2</span>(s) in which you …</li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -267,48 +355,10 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
-<li>
-<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
-</li>
-<li>
-<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
-</li>
-</ol>
-<h2>在首次使用Git前需要进行一些简单的配置:</h2>
-<ul>
-<li>设置提交中使用的用户名: </li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
-</pre></div>
-
-
-<ul>
-<li>设置提交中使用的邮件地址 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="/category/programming2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -349,6 +399,15 @@
                             <ul>
                                 <li>
                                   <a href="/makezong-jie.html">Make总结</a>
+                                </li>
+                                <li>
+                                  <a href="/cicd-pipeline-setup.html"><span class="caps">CI</span>/<span class="caps">CD</span> Pipeline&nbsp;Setup</a>
+                                </li>
+                                <li>
+                                  <a href="/feature-toggle.html">Feature&nbsp;Toggle</a>
+                                </li>
+                                <li>
+                                  <a href="/blue-green-deployment.html">Blue-Green&nbsp;Deployment</a>
                                 </li>
                                 <li>
                                   <a href="/jenkinsbu-shu.html">Jenkins部署</a>

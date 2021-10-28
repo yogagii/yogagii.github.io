@@ -42,219 +42,142 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›<span class="caps">CSS</span>
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Feature&nbsp;Toggle
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" ><span class="caps">CSS</span></h2>
+    <h2 class="post-title" >Feature&nbsp;Toggle</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2021-08-18T00:00:00+08:00"> 
-            <a href="/archive/2021/ 8/index.html">三 18 八月 2021 </a>
+        <abbr class="date" title="2021-10-26T00:00:00+08:00"> 
+            <a href="/archive/2021/10/index.html">二 26 十月 2021 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
-                <a href="/tag/css.html">CSS</a>
         <!-- TOBE COMMENTS -->
     </div>
     </header>
     <div class="post-entry">
-        <h2>Position</h2>
+        <p>Feature Toggles (often also refered to as Feature Flags) are a powerful technique, allowing teams to modify system behavior without changing code.&nbsp;允许团队不用修改代码而来改变系统的功能行为。</p>
+<p><span class="dquo">&#8220;</span>Feature Toggling&#8221; is a set of patterns which can help a team to deliver new functionality to users rapidly but&nbsp;safely. </p>
+<p>https://martinfowler.com/articles/feature-toggles.html</p>
+<h3>Types of Feature&nbsp;Toggles</h3>
 <ul>
-<li>static: 默认值，忽略TRBL,&nbsp;z-index</li>
-<li>inherit:&nbsp;继承</li>
-<li>fixed:&nbsp;固定定位，相对于浏览器窗口TRBL</li>
-<li>relative:&nbsp;相对定位，相对于正常位置TRBL</li>
+<li>Release Toggle: When developing code that is not ready for consumption and has a high risk of breaking the application.&nbsp;发布型：出现在生产环境上，用于开放或者隐藏部分特性功能的toggle；</li>
+<li>Experimental Toggle: When performing multivariate testing (e.g. <span class="caps">AB</span> Testing). 体验型：即A/B&nbsp;testing，用于区分A、B方案的实际使用情况；</li>
+<li>Operation Toggle: When rolling out a new feature with unclear performance impact.&nbsp;操作型：提供给操作员工的一系列特殊操作。比如遭到DOS攻击时可以关掉网络端口。</li>
+<li>Permission Toggle: Used in cases of dogfooding, alpha and beta programs.&nbsp;权限型：使得部分指定范围内的用户可以体验到新特性功能，而并不是面向全部用户。</li>
 </ul>
-<p>遵循正常文档流，占有文档空间，父级padding影响，根为root</p>
+<h3>Why Feature&nbsp;Toggle</h3>
+<blockquote>
+<p>Feature Toggle allows us to decouple Release from&nbsp;Deployment</p>
+</blockquote>
+<ul>
+<li>Deployed: A technical concern that applies in the domain of the team and means <strong>the functionality is introduced in Production</strong>.</li>
+<li>Released: A business term that defines functionality being available to an end-user. <strong>Deployed doesn’t necessarily mean&nbsp;Released.</strong></li>
+</ul>
+<p>每两个周发布一次生产版本，但是同时又需要去维护一个很多个月才能进行发布的特性分支。feature&nbsp;toggle可以保障团队成员们在开发主线(mainline)上的工作不受到未完全实现的特性分支的影响.</p>
+<p>https://www.jianshu.com/p/6931b0abc956</p>
+<h3>When do we remove&nbsp;it</h3>
+<ul>
+<li>When experiment is over (We can’t be doing one experiment&nbsp;forever)</li>
+<li>When release is approved (e.g. Mock Closing&nbsp;ended)</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th><span class="caps">TRBL</span></th>
-<th>父级</th>
-<th>定位</th>
+<th>-</th>
+<th>Permission Toggle</th>
+<th>Authorization Service</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>无</td>
-<td>无</td>
-<td>上一元素底部/浏览器左上角</td>
+<td>Purpose</td>
+<td>To hide release from deployment. Experiment new feature for specific users before releasing for public use.</td>
+<td>To limit user access on long-term capabilities and by job roles. For example, admin page, data access etc.</td>
 </tr>
 <tr>
-<td>无</td>
-<td>有</td>
-<td>父级左上角</td>
+<td>Longevity</td>
+<td>Short Term (Time-boxed)</td>
+<td>Long Term</td>
 </tr>
 <tr>
-<td>有</td>
-<td>父级有无position</td>
-<td>父级左上角</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级有padding</td>
-<td>内容区域左上角</td>
+<td>Maintenance</td>
+<td>Product Team only</td>
+<td>Business Admin (by Job Role)</td>
 </tr>
 </tbody>
 </table>
+<p>Introduce purpose-fit implementation separately for Permission Toggle and Authorization&nbsp;Service.</p>
+<h3>Feature Toggle&nbsp;Lifecycle</h3>
 <ul>
-<li>absolute:&nbsp;绝对定位，相对于除static以外第一个父元素TRBL</li>
+<li>When setting up feature toggle, it will be disabled by default. Any users that want to see the feature needs to opt&nbsp;in.</li>
+<li>When feature is ready to be released to general users, we can enable the feature by&nbsp;default.</li>
+<li>At the end of the lifecycle, the feature toggle would be removed in the next&nbsp;release.</li>
 </ul>
-<p>脱离文档流，不占文档空间，父级padding不影响，根为html</p>
-<table>
-<thead>
-<tr>
-<th><span class="caps">TRBL</span></th>
-<th>父级</th>
-<th>定位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>无</td>
-<td></td>
-<td>默认auto, 变回relative</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级无position</td>
-<td>找上级直到html</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级有position</td>
-<td>父级左上角，无论padding</td>
-</tr>
-</tbody>
-</table>
-<h2>Display</h2>
-<p>display: inherit, none, block, inline, inline-block,table,&nbsp;table-cell</p>
-<table>
-<thead>
-<tr>
-<th>元素</th>
-<th>宽高</th>
-<th>margin</th>
-<th>padding</th>
-<th>换行排列</th>
-<th>example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>块状元素</td>
-<td>y</td>
-<td>y</td>
-<td>y</td>
-<td>y (从上至下)</td>
-<td>div, p, nav, ul, li , header, footer, aside</td>
-</tr>
-<tr>
-<td>行内块状元素</td>
-<td>y</td>
-<td>y</td>
-<td>y</td>
-<td>n (从左到右)</td>
-<td></td>
-</tr>
-<tr>
-<td>行内元素</td>
-<td>n</td>
-<td>左右</td>
-<td>y</td>
-<td>n (从左到右)</td>
-<td>span, a, b, i, strong, em, img, input, select</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<p>Disabled by default -&gt; Enabled for developers -&gt; Enabled for <span class="caps">QA</span> -&gt; Enabled for Product Team -&gt; Enabled for <span class="caps">UAT</span> users -&gt; Enabled for general users -&gt; Remove Feature&nbsp;Toggle</p>
+</blockquote>
+<h3>Maintain Toggle Config&nbsp;file</h3>
+<p>基础思路：存在一个配置文件，配置文件里定义了许多的toggle，这些toggle都是待发布的特性功能。这一些toggle定义了哪一些features需要呈现，哪些并不需要。</p>
 <ul>
-<li>None:&nbsp;不存在且不加载</li>
+<li>Toggle feature (on/off) by updating Toggle Config File for each&nbsp;environments.</li>
+<li>This config file will be maintained in source code repository for version&nbsp;control.</li>
+<li><span class="caps">CICD</span> pipeline will be set up differently from existing Frontend code build&nbsp;pipeline.</li>
+<li>Config file will be maintained in a different bucket / different folder from existing site&nbsp;assets.</li>
+<li>Raise a Jira ticket and assign to dev team to update config file for lower environments (dev,
+stage, preprod); or raise a support&nbsp;ticket.</li>
+<li>
+<p>Raise a support ticket to update config file for production&nbsp;site.</p>
+</li>
+<li>
+<p>Edit config file in code repository&nbsp;(Bitbucket)</p>
+</li>
+<li>Push edited config file into&nbsp;Bitbucket</li>
+<li>Changes in Bitbucket triggers <span class="caps">CICD</span>&nbsp;pipeline</li>
+<li><span class="caps">CICD</span> pipeline
+pushes edited config file into S3&nbsp;bucket</li>
+<li>Config file is served via Lambda <span class="amp">&amp;</span> <span class="caps">API</span>&nbsp;Gateway</li>
 </ul>
-<p>Visibility: hidden&nbsp;隐藏，仍占据空间</p>
-<ul>
-<li>flex</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
-  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-  <span class="k">align-items</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="c1">// toggleConfig.json</span>
+<span class="p">{</span>
+   <span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;feature1&quot;</span><span class="o">:</span> <span class="kc">false</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;groups&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;developer&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;feature1&quot;</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;users&quot;</span><span class="o">:</span><span class="p">{</span>
+      <span class="s2">&quot;user1&quot;</span><span class="o">:</span><span class="p">{</span>
+         <span class="s2">&quot;feature1&quot;</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
-
-<ul>
-<li>table</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">table</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="kc">table-cell</span><span class="p">;</span>
-  <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
-  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>//&nbsp;水平居中</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
-  <span class="k">width</span><span class="p">:</span> <span class="n">xxpx</span><span class="p">;</span>
-  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>//&nbsp;水平垂直居中</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
-  <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
-  <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
-  <span class="k">top</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-  <span class="k">left</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-  <span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span> <span class="mi">-50</span><span class="kt">%</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>盒子模型 Box&nbsp;Model</h2>
-<p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：外边距（margin）、边框（border）、内边距（padding）、实际内容（content）四个属性。</p>
-<p>两个上下相邻的盒子垂直相遇时，外边距会合并，等于较大的那个</p>
-<ul>
-<li>W3C标准盒：</li>
-</ul>
-<p>box-sizing:&nbsp;content-box</p>
-<p>总宽度 = margin + border + paddig +&nbsp;width(content)</p>
-<ul>
-<li>IE盒</li>
-</ul>
-<p>box-sizing:&nbsp;border-box</p>
-<p>总宽度 = margin + width(border + padding +&nbsp;content)</p>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">向下三角</span>
-<span class="p">.</span><span class="nc">triangle</span> <span class="p">{</span>
-  <span class="k">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">height</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">border</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">transparent</span><span class="p">;</span>
-  <span class="k">border-top</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">blue</span><span class="p">;</span>
+<span class="c1">// toggleGroupConfig.json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;developer&quot;</span><span class="o">:</span><span class="p">[</span> <span class="s2">&quot;user1&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;productOwner&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;user2&quot;</span> <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/javascript.html">Javascript</a>
+            <a href="/category/programming.html">Programming</a>
         </abbr>
         <p>
-        <span class="meta-prep">Author: </span><span>Yoga</span>
+        <span class="meta-prep">Author: </span><span>Zack, Yoga</span>
       </p>
     </footer>
     <!-- <section id="respond">
         <div id="disqus_thread">
         <script type="text/javascript">
-        var disqus_identifier = "css.html";
+        var disqus_identifier = "feature-toggle.html";
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://.disqus.com/embed.js';
