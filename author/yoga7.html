@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Frontend Learning Book</title>
+    <title>Frontend Learning Book - Articles by Yoga</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -33,9 +33,8 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">className.js</span>: </h4>
+<h2>Articles by Yoga</h2>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/classnamejs.html">className.js</a>
                 </section>
 
 
@@ -43,45 +42,41 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
+			<a href="/yuan-xing-lian.html" rel="bookmark" title="Permalink to 原型链">原型链</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h3>绑定未提供的事件</h3>
-<hr>
-<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+	<div class="summary"><p>原型链：JS万物皆对象，对象都有_proto_属性，_proto_连起来的链条，最终为null。</p>
+<h2>创建对象</h2>
+<ol>
+<li>工厂模式</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><br></p>
-<h3>AJAX加载数据</h3>
-<hr>
-<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
-<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
+<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">);</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/react.html">React</a>
+			<a href="/category/javascript.html">Javascript</a>
 		</abbr>
 	</footer>
 	<hr />
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 1
+            <a href="/author/yoga6.html">&laquo;</a>
+    Page 7 / 7
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -173,8 +168,6 @@
                         <span><a href="/tag/component.html">Component</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
                         <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/classnamejs.html">className.js</a></span>
-                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
@@ -182,11 +175,6 @@
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
                 </div>
             </section>
 

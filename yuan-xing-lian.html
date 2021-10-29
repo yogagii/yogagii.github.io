@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -33,56 +41,113 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">className.js</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/classnamejs.html">className.js</a>
+<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›原型链
                 </section>
 
 
-<ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>绑定未提供的事件</h3>
-<hr>
-<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >原型链</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+            <a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/javascript.html">Javascript</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>原型链：JS万物皆对象，对象都有_proto_属性，_proto_连起来的链条，最终为null。</p>
+<h2>创建对象</h2>
+<ol>
+<li>工厂模式</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">);</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+</pre></div>
+
+
+<ol>
+<li>构造函数模式</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Person首字母大写</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sayName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 每次调用都要重新创建</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p><br></p>
-<h3>AJAX加载数据</h3>
-<hr>
-<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
-<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-</ul>
-<p class="paginator">
-    Page 1 / 1
-</p>
+<ol>
+<li>原型模式</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">);</span>
+<span class="nx">person2</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Person</span> <span class="c1">// yes</span>
+<span class="nx">person2</span> <span class="k">instanceof</span> <span class="nx">Person</span> <span class="c1">// yes</span>
+<span class="nx">person2</span> <span class="k">instanceof</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+</pre></div>
+
+
+<p>A instanceof B 检测A是否是B&nbsp;new出来的实例</p>
+<p>A的原型链上是否存在B的原型</p>
+<h2>返回实例属性</h2>
+<p>查找对象属性时，先查找对象本身是否存在该属性，如果不存在会在原型链上找</p>
+<ol>
+<li>Object.keys&nbsp;可枚举，自身属性</li>
+<li>for-in&nbsp;所有可枚举属性，包括原型链</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">student1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// 判断是否是自身属性</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ol>
+<li>Object.getOwnPropertyName&nbsp;自身可/不可枚举属性</li>
+</ol>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/javascript.html">Javascript</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "yuan-xing-lian.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--
@@ -173,8 +238,6 @@
                         <span><a href="/tag/component.html">Component</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
                         <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/classnamejs.html">className.js</a></span>
-                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
@@ -182,11 +245,6 @@
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
                 </div>
             </section>
 

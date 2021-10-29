@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -33,56 +41,155 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">className.js</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/classnamejs.html">className.js</a>
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Technical&nbsp;Debt
                 </section>
 
 
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Technical&nbsp;Debt</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-10-29T00:00:00+08:00"> 
+            <a href="/archive/2021/10/index.html">五 29 十月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>What is Technical&nbsp;Debt</h2>
+<p>Technical Debt refers to the need to revisit previously written code. Often associated with the practice of relying on temporary easier-to-implement solutions to achieve short-term results at the expense of efficiency in the long run. That’s a metaphor coined by Ward Cunningham for describing the impact of accruing tech&nbsp;issues.</p>
 <ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>绑定未提供的事件</h3>
-<hr>
-<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><br></p>
-<h3>AJAX加载数据</h3>
-<hr>
-<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
-<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
+<li>
+<p>Principal: The principal is all the work that must be done to modernize the technology&nbsp;stack. </p>
+</li>
+<li>
+<p>Interest: The interest is the complexity tax that project pays. The extra effort that it takes to add new features is the interest paid on the debt. These frictional losses inhibit companies’ long-term velocity and productivity and harm current budgets and returns on&nbsp;investment.</p>
+</li>
 </ul>
-<p class="paginator">
-    Page 1 / 1
-</p>
+<h2>What causes Technical&nbsp;Debt</h2>
+<p>There are in general two types of technical debt that we are&nbsp;concerned:</p>
+<ul>
+<li>
+<p>Intentional tech debt (also called deliberate or active) happens when the team consciously delays the resolution of some issues to yield short term benefit but unsustainable in the longer term. For example, making a release or working on a <span class="caps">POC</span>. Keeping in check the awareness of going back to make changes to the design&nbsp;after. </p>
+</li>
+<li>
+<p>Unintentional tech debt (also called inadvertent, accidental, outdated, passive) occurs when the team is doing a subpar job without even knowing it while accruing many issues along the way. There are times when we did not realize the importance of certain activities, or the good practices behind designing certain solutions. As we become wiser and less ignorant of the good practices, we need to capture all those activies as&nbsp;debt. </p>
+</li>
+</ul>
+<h2>Consequences of Technical&nbsp;Debt</h2>
+<ul>
+<li>Pros:</li>
+<li>We are able to yield short term benefits such as&nbsp;release.</li>
+<li>Gain competitive advantage by shortening&nbsp;time-to-market.</li>
+<li>Gain user feedback faster to test out&nbsp;features. </li>
+<li>Cons:</li>
+<li>Sacrificing future speed due to debt built up in the&nbsp;application. </li>
+<li>Left unchecked, we might arrive at Technical Bankruptcy, which happens when even simple changes of code or extensions become&nbsp;unmanageable. </li>
+</ul>
+<h2>How to measure Technical&nbsp;Debt</h2>
+<h3>What is our Technical Debt&nbsp;Budget</h3>
+<ul>
+<li>Assuming 1 story points is approximately <span class="caps">US</span>$&nbsp;500</li>
+<li>Development Capacity in a year is ~1200 story points (Assuming stable team with average velocity 48 story points per 2-week&nbsp;sprint)</li>
+<li><span class="caps">AMS</span> Support Story Points is ~200 story&nbsp;points </li>
+<li>Technical Debt Budget for Vital is approximately 1400 story points per year.&nbsp;(100%)</li>
+<li>As a start, we will adjust our risk tolerance at 50%. Meaning, we should limit the amount of technical debt in Vital to below 700 story points at any point of&nbsp;time.</li>
+</ul>
+<h3>What is our Technical Debt&nbsp;Interest</h3>
+<p>There are a few metrics that we can use to calculate the weight of&nbsp;interest </p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Interest Rate Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How frequent is our team going to change</td>
+<td>Divide the number of new team members (joined less than 2 months) over total team members as weightage. For example, 2 out of 8 team members are new. The interest rate will be 2/8 = 25%</td>
+</tr>
+<tr>
+<td>How frequent is the code going to change</td>
+<td>50% for code that is changing frequently. 25% for code that has moderate change frequency. 0% for code that is not going to change.</td>
+</tr>
+<tr>
+<td>What is our code test coverage</td>
+<td>50% for features that does not have good test coverage.</td>
+</tr>
+<tr>
+<td>How long has the technical debt exist in the backlog</td>
+<td>5% for every sprint that has passed.</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th>Story Points</th>
+<th>Interest Rate</th>
+<th>Total Story Points</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Remove feature toggle for &#8220;Profile&#8221; page</td>
+<td>2</td>
+<td>2 x ( 0% + 25% + 0% + 2 x 5%) = 0.7</td>
+<td>2 + 0.7 = 2.7 ≅ 3</td>
+<td>Assuming the team is stable - 0%; Assuming the code is not going to change as frequent - 25%; Assuming there are good test coverage on this feature - 0%; Assuming the tech debt has been in backlog for 2 sprints - 2 x 5 %</td>
+</tr>
+</tbody>
+</table>
+<h2>Payback&nbsp;Strategy</h2>
+<ul>
+<li>The goal is not to reach zero technical debt. Rather, we should work to size, value, and control our tech debt and regularly communicate it within the product team and scrum&nbsp;team.</li>
+<li>Not everything needs refactoring. If it&#8217;s not critical, or nobody needs to improve its functionality in the next months, or it&#8217;s just too complicated, consider acknowledging it as tech debt. - Andreas Klinger, Refactoring large Legacy&nbsp;Codebases</li>
+</ul>
+<h3>There are a few actions to take to repay technical&nbsp;debt</h3>
+<ul>
+<li>Track and&nbsp;Socialise</li>
+<li>Keep a view of all technical debts in the application and indicate the principal and&nbsp;interest.</li>
+<li>Avoid reaching technical bankruptcy by using up technical debt&nbsp;budget.</li>
+<li>Technical Debt should be updated timely by scrum team&nbsp;timely.</li>
+<li>Product Team and Scrum Team should review the list in story grooming and sprint&nbsp;planning. </li>
+<li>Prioritise</li>
+<li>Measure the time horizon to an incident of a technical debt. The shorter the time horizon to an incident, the higher the priority of the&nbsp;item.</li>
+<li>Measure the proximity of technical debt to a feature in Product Roadmap. Any upcoming product features that has related technical debt should be prioritised. Any technical debt related to a new user story will create friction in the&nbsp;delivery </li>
+</ul>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Zack, Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "technical-debt.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--
@@ -173,8 +280,6 @@
                         <span><a href="/tag/component.html">Component</a></span>
                         <span><a href="/tag/ref.html">Ref</a></span>
                         <span><a href="/tag/ajax.html">AJAX</a></span>
-                        <span><a href="/tag/classnamejs.html">className.js</a></span>
-                        <span><a href="/tag/immutablejs.html">Immutable.js</a></span>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
@@ -182,11 +287,6 @@
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>
-                        <span><a href="/tag/pelican.html">pelican</a></span>
-                        <span><a href="/tag/blog.html">blog</a></span>
-                        <span><a href="/tag/markdown.html">markdown</a></span>
-                        <span><a href="/tag/binary-search.html">binary search</a></span>
-                        <span><a href="/tag/git.html">git</a></span>
                 </div>
             </section>
 
