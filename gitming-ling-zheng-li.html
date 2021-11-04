@@ -83,7 +83,7 @@
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://jyu36@sourcecode.jnj.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://user@sourcecode.juj.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
 </pre></div>
 
 
@@ -145,7 +145,7 @@
 <span class="o">//</span><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xx</span><span class="w"></span>
 <span class="o">//</span><span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xx</span><span class="nv">@xx</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">[</span><span class="n">core</span><span class="o">]</span><span class="w"></span>
-<span class="o">//</span><span class="w">  </span><span class="n">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">jyu36</span><span class="o">/</span><span class="p">.</span><span class="n">gitignore_global</span><span class="w"></span>
+<span class="o">//</span><span class="w">  </span><span class="n">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="k">user</span><span class="o">/</span><span class="p">.</span><span class="n">gitignore_global</span><span class="w"></span>
 <span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--list</span>
 </pre></div>
 
@@ -376,8 +376,8 @@
 <ul>
 <li>拷贝本地文件去服务器:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">scp</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">root</span><span class="mf">@47.100.43.192</span><span class="o">:~/</span><span class="n">deployf</span>
-<span class="n">fpa_share_doc</span> <span class="n">jyu36</span><span class="err">$</span> <span class="n">scp</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">userAvatar</span><span class="p">.</span><span class="n">png</span> <span class="n">root</span><span class="mf">@47.100.43.192</span><span class="o">:~/</span><span class="n">www</span><span class="o">/</span><span class="n">chatbot_hackathon</span><span class="o">/</span><span class="n">img</span>
+<div class="highlight"><pre><span></span><span class="n">scp</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">root</span><span class="mf">@47.100.43</span><span class="p">.</span><span class="nl">xxx</span><span class="p">:</span><span class="o">~/</span><span class="n">deployf</span>
+<span class="n">fpa_share_doc</span> <span class="n">user</span><span class="err">$</span> <span class="n">scp</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">userAvatar</span><span class="p">.</span><span class="n">png</span> <span class="n">root</span><span class="mf">@47.100.43</span><span class="p">.</span><span class="nl">xxx</span><span class="p">:</span><span class="o">~/</span><span class="n">www</span><span class="o">/</span><span class="n">chatbot_hackathon</span><span class="o">/</span><span class="n">img</span>
 </pre></div>
 
 
@@ -388,7 +388,7 @@
 <p>vim&nbsp;网址</p>
 <div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">build</span>
 <span class="n">server</span> <span class="err">{</span>
-    <span class="k">server_name</span> <span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jnjadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
+    <span class="k">server_name</span> <span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
     <span class="n">root</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">fpa_share_doc</span><span class="o">/</span><span class="n">dist</span><span class="p">;</span>
     <span class="k">location</span> <span class="o">/</span> <span class="err">{</span>
       <span class="n">try_files</span> <span class="err">$</span><span class="n">uri</span> <span class="err">$</span><span class="n">uri</span><span class="o">/</span> <span class="o">/</span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
@@ -396,7 +396,7 @@
   <span class="err">}</span>
 <span class="o">//</span> <span class="err">单页</span>
 <span class="n">server</span> <span class="err">{</span>
-  <span class="k">server_name</span> <span class="n">project_organization</span><span class="p">.</span><span class="n">jnjadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
+  <span class="k">server_name</span> <span class="n">project_organization</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
   <span class="n">root</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">project_organization</span><span class="p">;</span>
   <span class="k">index</span> <span class="n">dateBar</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
 <span class="err">}</span>
@@ -406,7 +406,7 @@
 <ul>
 <li>软连接:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jnjadc</span><span class="p">.</span><span class="n">com</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span>
+<div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span>
 </pre></div>
 
 
@@ -572,8 +572,8 @@
 
 
 <h2>OpenSSL</h2>
-<div class="highlight"><pre><span></span><span class="nv">openssl</span> <span class="nv">s_client</span> <span class="o">-</span><span class="k">connect</span> <span class="nv">wddfx</span>.<span class="nv">jnj</span>.<span class="nv">com</span>:<span class="mi">443</span> <span class="o">//</span> <span class="nv">https</span>默认<span class="mi">443</span>
-<span class="nv">nslookup</span> <span class="mi">10</span>.<span class="mi">47</span>.<span class="mi">227</span>.<span class="mi">107</span> <span class="o">//</span> 诊断网络问题
+<div class="highlight"><pre><span></span><span class="nv">openssl</span> <span class="nv">s_client</span> <span class="o">-</span><span class="k">connect</span> <span class="nv">wddfx</span>.<span class="nv">juj</span>.<span class="nv">com</span>:<span class="mi">443</span> <span class="o">//</span> <span class="nv">https</span>默认<span class="mi">443</span>
+<span class="nv">nslookup</span> <span class="mi">10</span>.<span class="mi">47</span>.<span class="mi">227</span>.<span class="nv">xxx</span> <span class="o">//</span> 诊断网络问题
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -661,11 +661,11 @@
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
-                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/http.html">Http</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
                         <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>

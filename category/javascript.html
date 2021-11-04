@@ -156,7 +156,7 @@
 <p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
 <h3>尝试方法二：</h3>
 <p>前端模拟tableau保存的流程，点击我们的按钮时，请求五六个tableau的接口，根据返回的数据照着做一个保存的窗口，例如:</p>
-<p>https://prodbitabcrp.jnj.com/vizportal/api/web/v1/getDestinationProjects</p>
+<p>https://prodbitabcrp.juj.com/vizportal/api/web/v1/getDestinationProjects</p>
 <p>困难：跨域问题，无法直接调用tableau的接口</p>
 <h3>尝试方法三：</h3>
 <p>前端做个按钮，点击后向后端发送workbook信息 …</p></div>
@@ -351,7 +351,7 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/yuan-xing-lian.html" rel="bookmark" title="Permalink to 原型链">原型链</a>
+			<a href="/gao-jie-han-shu.html" rel="bookmark" title="Permalink to 高阶函数">高阶函数</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -361,19 +361,43 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>原型链：JS万物皆对象，对象都有_proto_属性，_proto_连起来的链条，最终为null。</p>
-<h2>创建对象</h2>
-<ol>
-<li>工厂模式</li>
-</ol>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">);</span>
-<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
-<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object …</span></pre></div></div>
+	<div class="summary"><blockquote>
+<p>高阶函数(Higher-order function)：一个函数可以接收另一个函数作为参数。 e.g. map, reduce,&nbsp;filter</p>
+</blockquote>
+<h3>记忆函数</h3>
+<p>记忆化（memoization）是一种构建函数的处理过程，能够记住上次计算结果的函数。当函数计算得到结果时，就将该结果按照参数存储起来，当另外一个调用也使用相同的参数，可以直接返回上次存储的结果而不是再计算一遍。</p>
+<p>像这样避免既重复又复杂的计算可以显著提高性能。对于动画中的计算、搜索不经常变化的数据或任何耗时的数学计算来说，记忆化这种方式是十分有用的</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">memorize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">return</span> <span class="kd">function …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/shi-jian-chu-li-qi.html" rel="bookmark" title="Permalink to 事件处理器">事件处理器</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>EventEmitter是Node.js的内置模块events提供的一个类，它是Node事件流的核心</p>
+<p>https://www.runoob.com/nodejs/nodejs-event.html</p>
+<p>https://nodejs.org/api/events.html#class-eventemitter</p>
+<p>要实现的API有：
+* on(event, listener)：为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数。
+* off(event)： 移除指定事件的某个监听回调
+* trigger(event …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -384,7 +408,8 @@
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="/category/javascript2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -445,6 +470,12 @@
                                   <a href="/css.html"><span class="caps">CSS</span></a>
                                 </li>
                                 <li>
+                                  <a href="/gao-jie-han-shu.html">高阶函数</a>
+                                </li>
+                                <li>
+                                  <a href="/shi-jian-chu-li-qi.html">事件处理器</a>
+                                </li>
+                                <li>
                                   <a href="/yuan-xing-lian.html">原型链</a>
                                 </li>
                             </ul>
@@ -475,11 +506,11 @@
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
-                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/http.html">Http</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
                         <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>

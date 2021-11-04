@@ -1,8 +1,16 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime: 2019-12-29 17:31:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/category.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
-    <title>Frontend Learning Book - Articles by Zack, Yoga</title>
+    <title>Frontend Learning Book</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -33,8 +41,9 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h2>Articles by Zack, Yoga</h2>
+<!-- <h4 class="content-archive">Articles in the <span style="color:rgb(0,102,204)">Javascript</span> category</h4> -->
                 <section class="breadcrumb-list">
+<a href="">Blog</a> ››Category: <a href="category/javascript.html">Javascript</a>
                 </section>
 
 
@@ -42,91 +51,41 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/technical-debt.html" rel="bookmark" title="Permalink to Technical Debt">Technical&nbsp;Debt</a>
+			<a href="/yuan-xing-lian.html" rel="bookmark" title="Permalink to 原型链">原型链</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-10-29T00:00:00+08:00"> 
-				<a href="/archive/2021/10/index.html">五 29 十月 2021 </a>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>What is Technical&nbsp;Debt</h2>
-<p>Technical Debt refers to the need to revisit previously written code. Often associated with the practice of relying on temporary easier-to-implement solutions to achieve short-term results …</p></div>
+	<div class="summary"><p>原型链：JS万物皆对象，对象都有_proto_属性，_proto_连起来的链条，最终为null。</p>
+<h2>创建对象</h2>
+<ol>
+<li>工厂模式</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">);</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/cicd-pipeline-setup.html" rel="bookmark" title="Permalink to CI/CD Pipeline Setup"><span class="caps">CI</span>/<span class="caps">CD</span> Pipeline&nbsp;Setup</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-10-27T00:00:00+08:00"> 
-				<a href="/archive/2021/10/index.html">三 27 十月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Frontend&nbsp;Structure</h2>
-<ul>
-<li>_scm_jenkins</li>
-<li>install.groovy</li>
-<li>jenkins.yaml</li>
-<li>s3Upload.groovy</li>
-<li>unitTest.groovy</li>
-<li>version-calculation.groovy</li>
-<li>public</li>
-<li>src</li>
-<li>node_modules</li>
-<li>automation_pipelies.yaml</li>
-<li>environment-mapping.yaml</li>
-<li>Jenkinsfile</li>
-<li>jest.config.js</li>
-<li>manifest-sources.yaml</li>
-<li>manifest.yaml</li>
-<li>sonar-project.propertieis …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/feature-toggle.html" rel="bookmark" title="Permalink to Feature Toggle">Feature&nbsp;Toggle</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-10-26T00:00:00+08:00"> 
-				<a href="/archive/2021/10/index.html">二 26 十月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Feature Toggles (often also refered to as Feature Flags) are a powerful technique, allowing teams to modify system behavior without changing code.&nbsp;允许团队不用修改代码而来改变系统的功能行为。</p>
-<p><span class="dquo">&#8220;</span>Feature Toggling&#8221; is a set of patterns …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
+			<a href="/category/javascript.html">Javascript</a>
 		</abbr>
 	</footer>
 	<hr />
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 1
+            <a href="/category/javascript.html">&laquo;</a>
+    Page 2 / 2
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -161,6 +120,41 @@
                         </li>
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>
+                            <ul>
+                                <li>
+                                  <a href="/cuo-wu-zhong-shi-he-zhi-shu-tui-bi.html">错误重试和指数退避</a>
+                                </li>
+                                <li>
+                                  <a href="/regular-expression.html">Regular&nbsp;Expression</a>
+                                </li>
+                                <li>
+                                  <a href="/http.html"><span class="caps">HTTP</span></a>
+                                </li>
+                                <li>
+                                  <a href="/buttonmo-ni-jian-pan-shi-jian.html">Button模拟键盘事件</a>
+                                </li>
+                                <li>
+                                  <a href="/js-note.html"><span class="caps">JS</span>&nbsp;note</a>
+                                </li>
+                                <li>
+                                  <a href="/yi-dong-duan-shi-jian.html">移动端事件</a>
+                                </li>
+                                <li>
+                                  <a href="/bi-bao.html">闭包</a>
+                                </li>
+                                <li>
+                                  <a href="/css.html"><span class="caps">CSS</span></a>
+                                </li>
+                                <li>
+                                  <a href="/gao-jie-han-shu.html">高阶函数</a>
+                                </li>
+                                <li>
+                                  <a href="/shi-jian-chu-li-qi.html">事件处理器</a>
+                                </li>
+                                <li>
+                                  <a href="/yuan-xing-lian.html">原型链</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                           <a href="/category/programming.html" >Programming</a>
