@@ -23,7 +23,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
-            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
@@ -91,19 +91,16 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>原型链：JS万物皆对象，对象都有_proto_属性，_proto_连起来的链条，最终为null。</p>
+	<div class="summary"><p>原型链：<span class="caps">JS</span> 万物皆对象，对象都有<em>proto </em>属性，<em>proto </em>连起来的链条，最终为&nbsp;null。</p>
 <h2>创建对象</h2>
-<ol>
-<li>工厂模式</li>
-</ol>
+<p>1.工厂模式</p>
 <div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
+  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+  <span class="k">return</span> <span class="nx">o</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">);</span>
-<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
-<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object …</span></pre></div></div>
+<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">)</span>
+<span class="nx">person1 …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -142,7 +139,7 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
-                          <a href="/category/data.html" >Data</a>
+                          <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
                           <a href="/category/ios.html" >IOS</a>
@@ -177,9 +174,9 @@
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
-                        <span><a href="/tag/http.html">Http</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
                         <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/database.html">database</a></span>

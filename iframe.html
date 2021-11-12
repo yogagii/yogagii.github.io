@@ -1,0 +1,256 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/frontend.html">Frontend</a> ›iframe
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >iframe</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2020-10-09T00:00:00+08:00"> 
+            <a href="/archive/2020/10/index.html">五 09 十月 2020 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>跨域</h3>
+<p><img alt="http" src="img/http.jpeg"></p>
+<h3>sandbox&nbsp;沙箱模式</h3>
+<ul>
+<li>allow-same-orign&nbsp;允许将内容作为普通来源对待，否则会被设为来自一个独立的源</li>
+<li>allow-top-navigation&nbsp;允许包含文档导航内容</li>
+<li>allow-forms&nbsp;允许表单提交</li>
+<li>allow-scripts&nbsp;允许脚本执行</li>
+<li>allow-modals&nbsp;允许模态窗口</li>
+<li>allow-orientation-lock&nbsp;允许锁定父窗口屏幕方向</li>
+<li>allow-pointer-lock&nbsp;允许使用指针锁API</li>
+<li>allow-popups&nbsp;允许弹出窗口</li>
+<li>allow-popups-to-escape-sandbox&nbsp;允许弹出沙箱窗口</li>
+<li>allow-presentation&nbsp;允许控制session</li>
+<li><span class="dquo">&#8220;</span>&#8221;&nbsp;允许上述所有规则，默认</li>
+</ul>
+<p>原文链接：https://blog.csdn.net/asing1elife/article/details/83044752</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;iframe</span>
+  <span class="na">id=</span><span class="s">{`webiContainer${documentId.replace(/\./g,</span> <span class="err">&#39;&#39;)}`}</span>
+  <span class="na">title=</span><span class="s">{webiDetail.name}</span>
+  <span class="na">className=</span><span class="s">{styles.iframeWrapper}</span>
+  <span class="na">src=</span><span class="s">{webiDetail.document_url}</span>
+  <span class="na">width=</span><span class="s">&quot;100%&quot;</span>
+  <span class="na">height=</span><span class="s">&quot;100%&quot;</span>
+  <span class="na">frameBorder=</span><span class="s">&quot;0&quot;</span>
+  <span class="na">sandbox=</span><span class="s">&#39;allow-scripts allow-forms allow-same-origin allow-top-navigation allow-downloads&#39;</span>
+<span class="nt">/&gt;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/frontend.html">Frontend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "iframe.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

@@ -23,7 +23,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
-            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
@@ -39,6 +39,112 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>导出</h3>
+<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
+  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
+<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3>展开运算符</h3>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
+  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-lu-you.html" rel="bookmark" title="Permalink to React 路由">React&nbsp;路由</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-17T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 17 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
+<span class="nx">render</span> <span class="p">((</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
+      <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
+      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-chang-yong-zu-jian.html" rel="bookmark" title="Permalink to React 常用组件">React&nbsp;常用组件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>按钮组件</h3>
+<ul>
+<li>
+<p>样式：允许使用者自行定义并作为属性传入，若不传需提供默认样式</p>
+</li>
+<li>
+<p>事件：将自定义的事件处理函数作为属性传入，事件触发时该函数被调用</p>
+</li>
+</ul>
+<h3>分页组件</h3>
+<ul>
+<li>
+<p>数据：pageSize, pageNum, pages, offset, total, col_name,&nbsp;direction</p>
+</li>
+<li>
+<p>事件：onFirst首页, onLast尾页 (-&gt; disabled: true), onPrev上一页, OnNext下一页, onFresh刷新,&nbsp;onChange</p>
+</li>
+</ul>
+<h3>树形组件</h3>
+<p>由于树形结构的级数可变，需要用递归的方式才能实现树形组件的定义</p>
+<h3>Modal对话框</h3>
+<p>弹出Modal时在当前页面先覆盖一个遮罩层 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -309,133 +415,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-zu-jian.html" rel="bookmark" title="Permalink to React 组件">React&nbsp;组件</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>组件的属性</h2>
-<hr>
-<ol>
-<li>
-<p><strong>props属性集合：</strong> 保存组件的初始属性数据（大部分原始数据）；
-<br> this.props.children数组中会包含本组件实例的所有组件，由React自动填充
-<br>&nbsp;this.props.context跨级包含上级组件的数据</p>
-</li>
-<li>
-<p><strong>state状态集合：</strong>&nbsp;保存组件的状态数据（用户输入、服务器请求、时间变化）；</p>
-</li>
-<li>
-<p><strong>render函数：</strong>&nbsp;主要职责是根据state状态，结合props属性，进行虚拟DOM的构建；render函数内不应该修改组件state，不读写DOM信息，不与浏览器交互（setTimeOut）</p>
-</li>
-<li>
-<p><strong>setState(data, callback)成员函数：</strong>&nbsp;页面所有的变化均由状态的变更引发，状态的变更通过调用组件实例的setState函数完成 …</p></li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/bi-bao.html" rel="bookmark" title="Permalink to 闭包">闭包</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><blockquote>
-<p>闭包：有权访问另一个函数作用域内变量的函数</p>
-</blockquote>
-<p>C++中函数中的局部变量仅在函数函数执行期间可用，执行完毕不能访问</p>
-<p>JS函数以及创建的词法环境形成闭包，环境包含闭包创建时所能访问的所有局部变量</p>
-<p>闭包有3个特性：
-1. 函数嵌套函数
-2. 函数内部可以引用函数外部的参数和变量
-3.&nbsp;参数和变量不会被垃圾回收机制回收</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">B</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/css.html" rel="bookmark" title="Permalink to CSS"><span class="caps">CSS</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Position</h2>
-<ul>
-<li>static: 默认值，忽略TRBL,&nbsp;z-index</li>
-<li>inherit:&nbsp;继承</li>
-<li>fixed:&nbsp;固定定位，相对于浏览器窗口TRBL</li>
-<li>relative:&nbsp;相对定位，相对于正常位置TRBL</li>
-</ul>
-<p>遵循正常文档流，占有文档空间，父级padding影响，根为root</p>
-<table>
-<thead>
-<tr>
-<th><span class="caps">TRBL</span></th>
-<th>父级</th>
-<th>定位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>无</td>
-<td>无</td>
-<td>上一元素底部/浏览器左上角</td>
-</tr>
-<tr>
-<td>无</td>
-<td>有</td>
-<td>父级左上角</td>
-</tr>
-<tr>
-<td>有</td>
-<td>父级有无position</td>
-<td>父级左上角 …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga5.html">&laquo;</a>
@@ -468,7 +447,7 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
-                          <a href="/category/data.html" >Data</a>
+                          <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
                           <a href="/category/ios.html" >IOS</a>
@@ -503,9 +482,9 @@
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
-                        <span><a href="/tag/http.html">Http</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
                         <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/database.html">database</a></span>

@@ -31,7 +31,7 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
-            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
@@ -42,7 +42,7 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/data.html">Data</a> ›RESTful <span class="caps">API</span>
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›RESTful <span class="caps">API</span>
                 </section>
 
 
@@ -61,7 +61,25 @@
     </div>
     </header>
     <div class="post-entry">
-        <h2>路径</h2>
+        <blockquote>
+<p><span class="caps">REST</span>，即Representational State Transfer(表现层状态转化)。它是一种互联网应用程序的API设计理念：URL定位资源，用HTTP动词（<span class="caps">GET</span>,<span class="caps">POST</span>,<span class="caps">DELETE</span>,<span class="caps">DETC</span>）描述操作。</p>
+</blockquote>
+<p>Restful与传统接口对比</p>
+<p>操作 | 传统风格 | RESTful风格
+| - | - | - 
+查询 | /user/query?name=tom <span class="caps">GET</span> | /user?name=tom <span class="caps">GET</span>
+详情 | /user/getInfo?id=1 <span class="caps">GET</span> | /user/1 <span class="caps">GET</span>
+创建 | /user/create?name=tom <span class="caps">POST</span> | /user <span class="caps">POST</span>
+修改 | /user/update?id=1&amp;name=jquery <span class="caps">POST</span> | /user/1 <span class="caps">PUT</span>
+删除 | /user/delete?id=1 <span class="caps">GET</span> | /user/1 <span class="caps">DELETE</span></p>
+<p>Resultful特点:</p>
+<p>1.使用URL描述资源</p>
+<p>2.使用HTTP方法描述行为。使用HTTP状态码来表示不同的结果</p>
+<p>3.使用json交互数据，传统模式使用的是键值对形式</p>
+<h2>路径&nbsp;Endpoint</h2>
+<blockquote>
+<p>url地址中只包含名词表示资源，使用http动词表示动作进行操作资源</p>
+</blockquote>
 <p>https://api.example.com/v1/</p>
 <p>将API部署在专用域名之下,将API的版本号放入URL。</p>
 <p>路径又称&#8221;终点&#8221;（endpoint），表示API的具体网址。&nbsp;在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&#8221;集合&#8221;（collection），所以API中的名词也应该使用复数。</p>
@@ -142,7 +160,7 @@
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/data.html">Data</a>
+            <a href="/category/backend.html">Backend</a>
         </abbr>
         <p>
         <span class="meta-prep">Author: </span><span>Yoga</span>
@@ -190,7 +208,7 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
-                          <a href="/category/data.html" >Data</a>
+                          <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
                           <a href="/category/ios.html" >IOS</a>
@@ -225,9 +243,9 @@
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
-                        <span><a href="/tag/http.html">Http</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
                         <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/database.html">database</a></span>
