@@ -1,0 +1,411 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/angular.html">Angular</a> ›TypeScript
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >TypeScript</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-12-01T00:00:00+08:00"> 
+            <a href="/archive/2021/12/index.html">三 01 十二月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/typescript.html">TypeScript</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>interface <span class="caps">VS</span>&nbsp;type</h2>
+<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>拓展（extends）</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// interface extends interface</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">age</span>: <span class="kt">number</span>
+<span class="p">}</span>
+
+<span class="c1">// interface extends type</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">age</span>: <span class="kt">number</span>
+<span class="p">}</span>
+
+<span class="c1">// type extends type</span>
+<span class="nx">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
+  <span class="nx">age</span>: <span class="kt">number</span>
+<span class="p">}</span>
+<span class="c1">// type extends interface</span>
+<span class="nx">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
+  <span class="nx">age</span>: <span class="kt">number</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>type&nbsp;可以声明基本类型别名，联合类型，元组等类型</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="kt">string</span> <span class="c1">// 基本类型别名</span>
+<span class="nx">type</span> <span class="nx">PetList</span> <span class="o">=</span> <span class="p">[</span><span class="nx">Dog</span><span class="p">,</span> <span class="nx">Pet</span><span class="p">]</span> <span class="c1">// 具体定义数组每个位置的类型</span>
+</pre></div>
+
+
+<ul>
+<li>type 语句中还可以使用 typeof 获取实例的&nbsp;类型进行赋值</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="nx">type</span> <span class="nx">B</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">div</span>
+</pre></div>
+
+
+<ul>
+<li>interface&nbsp;能够声明合并</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nx">sex</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">User 接口为 {</span>
+<span class="cm"> name: string</span>
+<span class="cm"> sex: string </span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+</pre></div>
+
+
+<p>原文链接：https://juejin.im/post/5c2723635188252d1d34dc7d#heading-11</p>
+<h2>装饰器&nbsp;Decorators</h2>
+<p>随着 TypeScript 和 <span class="caps">ES6</span> 里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。&nbsp;装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。</p>
+<p>在命令行或 tsconfig.json 里启用 experimentalDecorators&nbsp;编译器选项：</p>
+<div class="highlight"><pre><span></span><span class="err">//</span> <span class="err">tsconfig.json</span>
+<span class="p">{</span>
+  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;es2017&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;experimentalDecorators&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>装饰器是一种特殊类型的声明，它能够被附加到类声明，方法， 访问符，属性或参数上。 装饰器使用 @expression 这种形式，expression&nbsp;求值后必须为一个函数，它会在运行时被调用，被装饰的声明信息做为参数传入</p>
+<ul>
+<li>装饰器工厂</li>
+</ul>
+<p>普通装饰器，无法传参，装饰器工厂,可传参</p>
+<div class="highlight"><pre><span></span><span class="c1">// 定义装饰器工厂</span>
+<span class="kd">function</span> <span class="nx">logClass</span><span class="p">(</span><span class="nx">params</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;target：&#39;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;params：&#39;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+
+    <span class="nx">target</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apiUrl</span> <span class="o">=</span> <span class="nx">params</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">@logClass</span><span class="p">(</span><span class="s1">&#39;http:www.baidu.com&#39;</span><span class="p">)</span>
+<span class="kr">class</span> <span class="nx">HttpClient</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">getData() {</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpClient</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">apiUrl</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>装饰器组合</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 书写在同一行上</span>
+<span class="kd">@f</span> <span class="kd">@g</span> <span class="nx">x</span>
+
+<span class="c1">// 书写在多行上</span>
+<span class="kd">@f</span>
+<span class="kd">@g</span>
+<span class="nx">x</span>
+</pre></div>
+
+
+<ul>
+<li>类装饰器</li>
+</ul>
+<p>类装饰器在类声明之前被声明（紧靠着类声明）。&nbsp;类装饰器应用于类构造函数，可以用来监视，修改或替换类定义。</p>
+<p>类装饰器表达式会在运行时当作函数被调用，类的构造函数作为其唯一的参数。如果类装饰器返回一个值，它会使用提供的构造函数来替换类的声明。</p>
+<div class="highlight"><pre><span></span><span class="kd">@sealed</span>
+<span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{}</span>
+</pre></div>
+
+
+<ul>
+<li>方法装饰器</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+  <span class="kd">@enumerable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+  <span class="nx">greet() {</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>访问器装饰器</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Point</span> <span class="p">{</span>
+  <span class="kd">@configurable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+  <span class="nx">get</span> <span class="nx">x() {</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_x</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>属性装饰器</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+  <span class="kd">@format</span><span class="p">(</span><span class="s1">&#39;Hello, %s&#39;</span><span class="p">)</span>
+  <span class="nx">greeting</span>: <span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>参数装饰器</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+  <span class="nx">greet</span><span class="p">(</span><span class="kd">@required</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/angular.html">Angular</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "typescript.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

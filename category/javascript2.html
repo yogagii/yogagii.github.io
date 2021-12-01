@@ -31,11 +31,12 @@
             <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
             <li  class="active"><a href="/category/react.html">React</a></li>
             <li  class="active"><a href="/category/ios.html">IOS</a></li>
-            <li  class="active"><a href="/category/data.html">Data</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
             <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -51,6 +52,61 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/shi-jian-chu-li-qi.html" rel="bookmark" title="Permalink to 事件处理器">事件处理器</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>EventEmitter是Node.js的内置模块events提供的一个类，它是Node事件流的核心</p>
+<p>https://www.runoob.com/nodejs/nodejs-event.html</p>
+<p>https://nodejs.org/api/events.html#class-eventemitter</p>
+<p>要实现的API有：
+* on(event, listener)：为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数。
+* off(event)： 移除指定事件的某个监听回调
+* trigger(event …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/shu-ju-lei-xing.html" rel="bookmark" title="Permalink to 数据类型">数据类型</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>值类型(基本类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。</p>
+<p>引用数据类型：对象(Object)、数组(Array)、函数(Function)。</p>
+<p><img alt="datatype" src="img/datatype.png"></p>
+<p><em>JavaScript 拥有动态类型</em>,相同的变量可用作不同的类型</p>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">;</span>               <span class="o">//</span> <span class="n">x</span> <span class="err">为</span> <span class="n">undefined</span>
+<span class="n">var</span> <span class="n">x …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/yuan-xing-lian.html" rel="bookmark" title="Permalink to 原型链">原型链</a>
 		</h2>
 		<div class="post-info">
@@ -61,19 +117,45 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>原型链：JS万物皆对象，对象都有_proto_属性，_proto_连起来的链条，最终为null。</p>
+	<div class="summary"><p>原型链：<span class="caps">JS</span> 万物皆对象，对象都有<em>proto </em>属性，<em>proto </em>连起来的链条，最终为&nbsp;null。</p>
 <h2>创建对象</h2>
-<ol>
-<li>工厂模式</li>
-</ol>
+<p>1.工厂模式</p>
 <div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
+  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+  <span class="k">return</span> <span class="nx">o</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">);</span>
-<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
-<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object …</span></pre></div></div>
+<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">)</span>
+<span class="nx">person1 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" rel="bookmark" title="Permalink to 二分搜索的各种写法">二分搜索的各种写法</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2018-10-14T21:04:00+08:00"> 
+				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><ol>
+<li>对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一)，若t不在x中则返回-1。</li>
+</ol>
+<div class="highlight"><pre><span></span>    <span class="kt">int</span> <span class="nf">binarysearch</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">m …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -110,10 +192,13 @@
                           <a href="/category/analytics.html" >Analytics</a>
                         </li>
                         <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
-                          <a href="/category/data.html" >Data</a>
+                          <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
                           <a href="/category/ios.html" >IOS</a>
@@ -122,28 +207,31 @@
                           <a href="/category/javascript.html" >Javascript</a>
                             <ul>
                                 <li>
-                                  <a href="/cuo-wu-zhong-shi-he-zhi-shu-tui-bi.html">错误重试和指数退避</a>
+                                  <a href="/bing-fa-kong-zhi.html">并发控制</a>
+                                </li>
+                                <li>
+                                  <a href="/di-gui.html">递归</a>
                                 </li>
                                 <li>
                                   <a href="/regular-expression.html">Regular&nbsp;Expression</a>
                                 </li>
                                 <li>
-                                  <a href="/http.html"><span class="caps">HTTP</span></a>
+                                  <a href="/httpzhuang-tai-ma.html">HTTP状态码</a>
                                 </li>
                                 <li>
                                   <a href="/buttonmo-ni-jian-pan-shi-jian.html">Button模拟键盘事件</a>
                                 </li>
                                 <li>
-                                  <a href="/js-note.html"><span class="caps">JS</span>&nbsp;note</a>
-                                </li>
-                                <li>
-                                  <a href="/yi-dong-duan-shi-jian.html">移动端事件</a>
+                                  <a href="/fang-dou-he-jie-liu.html">防抖和节流</a>
                                 </li>
                                 <li>
                                   <a href="/bi-bao.html">闭包</a>
                                 </li>
                                 <li>
-                                  <a href="/css.html"><span class="caps">CSS</span></a>
+                                  <a href="/chang-yong-nei-zhi-fang-fa.html">常用内置方法</a>
+                                </li>
+                                <li>
+                                  <a href="/es6xin-te-xing.html">ES6新特性</a>
                                 </li>
                                 <li>
                                   <a href="/gao-jie-han-shu.html">高阶函数</a>
@@ -152,7 +240,13 @@
                                   <a href="/shi-jian-chu-li-qi.html">事件处理器</a>
                                 </li>
                                 <li>
+                                  <a href="/shu-ju-lei-xing.html">数据类型</a>
+                                </li>
+                                <li>
                                   <a href="/yuan-xing-lian.html">原型链</a>
+                                </li>
+                                <li>
+                                  <a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html">二分搜索的各种写法</a>
                                 </li>
                             </ul>
                         </li>
@@ -174,6 +268,8 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
@@ -183,9 +279,9 @@
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
-                        <span><a href="/tag/http.html">Http</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
                         <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/database.html">database</a></span>

@@ -36,6 +36,7 @@
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -63,13 +64,47 @@
     <div class="post-entry">
         <ul>
 <li>
-<p>*：匹配前面的子表达式零次或多次。例如，zo 能匹配 &#8220;z&#8221; 以及 &#8220;zoo&#8221;。&nbsp;等价于{0,}。</p>
+<p>*：&gt;= 0次。例如，zo 能匹配 &#8220;z&#8221; 以及 &#8220;zoo&#8221;。&nbsp;等价于{0,}。</p>
 </li>
 <li>
-<p>+：匹配前面的子表达式一次或多次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不能匹配 &#8220;z&#8221;。+ 等价于&nbsp;{1,}。</p>
+<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不能匹配 &#8220;z&#8221;。+ 等价于&nbsp;{1,}。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 连续重复字符</span>
+<span class="sr">/(.)\1+/g</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>?：0次或1次</p>
 </li>
 <li>
-<p>?：匹配前面的子表达式零次或一次</p>
+<p>{n}&nbsp;n次</p>
+</li>
+<li>
+<p>{n,} &gt;=&nbsp;n次</p>
+</li>
+<li>
+<p>\d&nbsp;数字</p>
+</li>
+<li>
+<p>\D&nbsp;非数字</p>
+</li>
+<li>
+<p>\w&nbsp;包括下划线的任何单词字符</p>
+</li>
+<li>
+<p>\W&nbsp;非单词字符</p>
+</li>
+<li>
+<p>g全局</p>
+</li>
+<li>
+<p>i不分大小写</p>
+</li>
+<li>
+<p>m多行</p>
 </li>
 </ul>
 <p>url最后一个params</p>
@@ -130,6 +165,9 @@
                           <a href="/category/analytics.html" >Analytics</a>
                         </li>
                         <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
@@ -159,6 +197,8 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>

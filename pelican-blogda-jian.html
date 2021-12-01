@@ -36,6 +36,7 @@
             <li  class="active"><a href="/category/programming.html">Programming</a></li>
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -90,6 +91,20 @@
 <h2>Reference</h2>
 <p><a href="http://docs.getpelican.com/en/stable/install.html">pelican</a></p>
 <p><a href="https://pypi.org/project/typogrify/">typogrify</a></p>
+<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pelican</span>
+
+<span class="n">echo</span> <span class="err">$</span><span class="n">PATH</span>
+<span class="n">vim</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="ss">&quot;/Users/yoga/Library/Python/3.8/bin:$PATH&quot;</span>
+<span class="k">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span> <span class="o">//</span> <span class="err">使修改的环境变量生效</span>
+<span class="n">which</span> <span class="n">pelican</span>
+
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">typogrify</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">Markdown</span>
+
+<span class="n">make</span> <span class="n">html</span>
+<span class="n">make</span> <span class="n">serve</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -139,6 +154,9 @@
                           <a href="/category/analytics.html" >Analytics</a>
                         </li>
                         <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
@@ -168,6 +186,8 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
