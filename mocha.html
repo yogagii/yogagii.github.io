@@ -62,7 +62,13 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>lifecycle.test.js</p>
+        <h3>单元测试 Unit&nbsp;Testing</h3>
+<p>单元测试是检测一小段代码的良好实践，典型的单元测试是测试独立的function，要保证这个测试是单独孤立的。如果你写的测试用了外部的资源，比如网络或者数据库，它就不是一个单元测试。</p>
+<h3>集成测试 Integration&nbsp;Testing</h3>
+<p>集成测试想要测试的是这个系统的各个部分在一起合作的如何－将各个代码块集成在一起。当你需要验证两个不同的系统是否在一起正常的通信和正常运转，比如你的应用程序和数据库是否集成正确，运转正常，这个时候就需要集成测试了。结果是，当验证集成测试结果时，你通过写数据库连接语句检查数据库状态是否正常而顺便做了数据库连接测试。</p>
+<p>https://blog.csdn.net/aajx90520/article/details/101658973</p>
+<p>sails-disk still is a database: so it&#8217;s prone to &#8220;corruption from outside&#8221; during the course of tests. On top of that this makes testing actually slow. It&#8217;s not really a unit test if the entire app has to be started first, with sails lift. Unit tests should not spin up server or hit&nbsp;databases</p>
+<p>lifecycle.test.js</p>
 <div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">MockAdaper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">();</span>
 
 <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
@@ -251,6 +257,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>

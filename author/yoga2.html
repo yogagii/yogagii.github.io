@@ -43,6 +43,133 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/timing.html" rel="bookmark" title="Permalink to Timing">Timing</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-10-26T00:00:00+08:00"> 
+				<a href="/archive/2021/10/index.html">二 26 十月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><ul>
+<li>Resource&nbsp;Scheduling</li>
+<li>Queueing: <strong>队列</strong> &#8212;&nbsp;请求排队的时间。浏览器是有线程限制的，发请求也不能所有的请求同时发送，会将请求加入队列中（Chrome的最大并发连接数是6）。如果说同一时间，发起的同一域名的请求超过了6个，这时候就需要排队了。</li>
+<li>Connection&nbsp;Start</li>
+<li>Stalled:  <strong>阻塞</strong> &#8212;&nbsp;浏览器得到要发出这个请求的指令，到请求可以发出的等待时间，一般是代理协商、以及等待可复用的TCP连接释放的时间，不包括DNS查询、建立TCP连接等时间等</li>
+<li>Proxy&nbsp;nengotiation</li>
+<li><span class="caps">DNS</span> Lookup: <strong>DNS查找</strong> &#8212;&nbsp;请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址</li>
+<li>Initial …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/amazon-cloudwatch.html" rel="bookmark" title="Permalink to Amazon CloudWatch">Amazon&nbsp;CloudWatch</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
+				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Amazon CloudWatch monitors your Amazon Web Services (<span class="caps">AWS</span>) resources and the applications you run on <span class="caps">AWS</span> in real&nbsp;time.</p>
+<p>End Goal: Keep an application log and a log of <span class="caps">API …</span></p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/blue-green-deployment.html" rel="bookmark" title="Permalink to Blue-Green Deployment">Blue-Green&nbsp;Deployment</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
+				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>Blue Green deployments is a technique for rapidly and repeatedly releasing changes to software in&nbsp;production.</p>
+</blockquote>
+<ol>
+<li>Go to <span class="caps">EC2</span> instances in <span class="caps">AWS</span> and rename environment (<span class="caps">EC2</span>(s) in which you …</li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/aws-kms.html" rel="bookmark" title="Permalink to AWS KMS"><span class="caps">AWS</span> <span class="caps">KMS</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-08-17T00:00:00+08:00"> 
+				<a href="/archive/2021/ 8/index.html">二 17 八月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p><span class="caps">AWS</span> Key Management Service (<span class="caps">AWS</span> <span class="caps">KMS</span>) 是一个密钥管理服务，可以用来创建和管理您的主密钥，<span class="caps">AWS</span> KMS使用信封加密的方式实现数据的保护。简单来说，信封加密就是用数据密钥对明文数据进行加密，然后再使用其他数据密钥对这个数据密钥进行加密，但是您的最后一个数据密必须以明文的形式存在，以便您对其他的数据密钥进行加密和解密操作。这个最顶层的明文密钥称为主密钥，<span class="caps">AWS</span>&nbsp;KMS可以帮我们安全地存储和管理这个主密钥。</p>
+<h3>Background</h3>
+<p>Set up <span class="caps">AWS</span> <span class="caps">KMS</span> to manage and secure Backend Local&nbsp;Configs …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/ms-graph-api.html" rel="bookmark" title="Permalink to MS Graph API"><span class="caps">MS</span> Graph <span class="caps">API</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-06-04T00:00:00+08:00"> 
+				<a href="/archive/2021/ 6/index.html">五 04 六月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Authentication and&nbsp;Authorization</h2>
+<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
+<ol>
+<li>Register …</li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/janssen-training-platform.html" rel="bookmark" title="Permalink to Janssen Training Platform">Janssen Training&nbsp;Platform</a>
 		</h2>
 		<div class="post-info">
@@ -181,228 +308,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/regular-expression.html" rel="bookmark" title="Permalink to Regular Expression">Regular&nbsp;Expression</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-12-14T00:00:00+08:00"> 
-				<a href="/archive/2020/12/index.html">一 14 十二月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ul>
-<li>
-<p>*：&gt;= 0次。例如，zo 能匹配 &#8220;z&#8221; 以及 &#8220;zoo&#8221;。&nbsp;等价于{0,}。</p>
-</li>
-<li>
-<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不能匹配 &#8220;z&#8221;。+ 等价于&nbsp;{1,}。</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// 连续重复字符</span>
-<span class="sr">/(.)\1+/g</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>?：0次或1次</p>
-</li>
-<li>
-<p>{n}&nbsp;n次</p>
-</li>
-<li>
-<p>{n,} &gt;=&nbsp;n次</p>
-</li>
-<li>
-<p>\d&nbsp;数字 …</p></li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/httpzhuang-tai-ma.html" rel="bookmark" title="Permalink to HTTP状态码">HTTP状态码</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-10-09T00:00:00+08:00"> 
-				<a href="/archive/2020/10/index.html">五 09 十月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>含义</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="caps">1XX</span></td>
-<td>信息</td>
-<td></td>
-</tr>
-<tr>
-<td><span class="caps">2XX</span></td>
-<td>成功</td>
-<td></td>
-</tr>
-<tr>
-<td>200</td>
-<td>请求成功</td>
-<td>服务器已成功处理了请求</td>
-</tr>
-<tr>
-<td><span class="caps">3XX</span></td>
-<td>重定向</td>
-<td></td>
-</tr>
-<tr>
-<td>300</td>
-<td>多种选择</td>
-<td>针对请求，服务器可执行多种操作</td>
-</tr>
-<tr>
-<td>301</td>
-<td>永久移动</td>
-<td>请求的页面已永久跳转到新的url</td>
-</tr>
-<tr>
-<td>301</td>
-<td>临时移动</td>
-<td>服务器目前从不同位置的网页响应请求，但请求仍继续使用原有位置来进行以后的请求（tableau embed）</td>
-</tr>
-<tr>
-<td><span class="caps">4XX</span></td>
-<td>客户端错误</td>
-<td></td>
-</tr>
-<tr>
-<td>400</td>
-<td>错误请求 Bad …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/iframe.html" rel="bookmark" title="Permalink to iframe">iframe</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-10-09T00:00:00+08:00"> 
-				<a href="/archive/2020/10/index.html">五 09 十月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>跨域</h3>
-<p><img alt="http" src="img/http.jpeg"></p>
-<h3>sandbox&nbsp;沙箱模式</h3>
-<ul>
-<li>allow-same-orign&nbsp;允许将内容作为普通来源对待，否则会被设为来自一个独立的源</li>
-<li>allow-top-navigation&nbsp;允许包含文档导航内容</li>
-<li>allow-forms&nbsp;允许表单提交</li>
-<li>allow-scripts&nbsp;允许脚本执行</li>
-<li>allow-modals&nbsp;允许模态窗口</li>
-<li>allow-orientation-lock&nbsp;允许锁定父窗口屏幕方向</li>
-<li>allow-pointer-lock&nbsp;允许使用指针锁API</li>
-<li>allow-popups&nbsp;允许弹出窗口</li>
-<li>allow-popups-to-escape-sandbox&nbsp;允许弹出沙箱窗口</li>
-<li>allow-presentation&nbsp;允许控制session</li>
-<li><span class="dquo">&#8220;</span>&#8221;&nbsp;允许上述所有规则，默认</li>
-</ul>
-<p>原文链接：https://blog.csdn …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/frontend.html">Frontend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/mocha.html" rel="bookmark" title="Permalink to Mocha">Mocha</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-08-24T00:00:00+08:00"> 
-				<a href="/archive/2020/ 8/index.html">一 24 八月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>lifecycle.test.js</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">MockAdaper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">();</span>
-
-<span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">(</span><span class="mi">50000</span><span class="p">)</span> <span class="c1">// 设置超时时间</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="c1">// 服务启动失败</span>
-  <span class="p">}</span>
-
-  <span class="nx">global</span><span class="p">.</span><span class="nx">httpMock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MockAdaper</span><span class="p">(</span><span class="nx">axios</span><span class="p">);</span> <span class="c1">// 模拟获取数据</span>
-
-  <span class="c1">// 创建模拟用户</span>
-  <span class="kr">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">userId</span> <span class="o">=</span> <span class="s1">&#39;user1 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/xena.html" rel="bookmark" title="Permalink to XENA"><span class="caps">XENA</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-08-21T00:00:00+08:00"> 
-				<a href="/archive/2020/ 8/index.html">五 21 八月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="p">.</span><span class="n">git</span>
-
-<span class="n">cd</span> <span class="n">getting</span><span class="o">-</span><span class="n">started</span>
-<span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">docker101tutorial</span>
-
-<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">80</span><span class="p">:</span><span class="mi">80</span> <span class="err">\</span> <span class="err">—</span><span class="n">name</span> <span class="n">docker</span><span class="o">-</span><span class="n">tutorial</span> <span class="n">docker101tutorial</span>
-
-<span class="n">docker</span> <span class="n">tag</span> <span class="n">docker101tutorial</span> <span class="n">yogadock …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/analytics.html">Analytics</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga.html">&laquo;</a>
@@ -464,6 +369,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>

@@ -52,6 +52,86 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/dart.html" rel="bookmark" title="Permalink to Dart">Dart</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-24T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">五 24 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>在Dart语言中使用下划线前缀标识符，会强制其变成私有的。</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/flutter.html" rel="bookmark" title="Permalink to Flutter">Flutter</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-20T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">一 20 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同，&nbsp;以确定底层渲染树从一个状态转换到下一个状态所需的最小更改（类似于React/Vue中虚拟DOM的diff算法）。</p>
+<h2>Widget</h2>
+<p>runApp函数接受给定的Widget并使其成为widget树的根，根widget强制覆盖整个屏幕</p>
+<ul>
+<li>无状态的&nbsp;StatelessWidget</li>
+<li>有状态的&nbsp;StatefulWidget</li>
+</ul>
+<p>widget的主要工作是实现一个build函数，用以构建自身。一个widget通常由一些较低级别widget组成。Flutter框架将依次构建这些widget，直到构建到最底层的子widget时，这些最低层的widget通常为RenderObject</p>
+<ul>
+<li>Text</li>
+<li>Row, Column: 基于web …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/flutter-startup.html" rel="bookmark" title="Permalink to Flutter Startup">Flutter&nbsp;Startup</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-20T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">一 20 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>安装Flutter on&nbsp;macOS</h2>
+<ul>
+<li>升级 macOS to Big&nbsp;Sur</li>
+</ul>
+<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS 7.2, and …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/swift-programming-language-basic.html" rel="bookmark" title="Permalink to Swift Programming Language Basic">Swift Programming Language&nbsp;Basic</a>
 		</h2>
 		<div class="post-info">
@@ -286,115 +366,10 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/network-and-multithread.html" rel="bookmark" title="Permalink to Network and Multithread">Network and&nbsp;Multithread</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-03-26T00:00:00+08:00"> 
-				<a href="/archive/2020/ 3/index.html">四 26 三月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>load view -&gt; fetch data(Network) -&gt; save data -&gt; display(Multithread) -&gt;&nbsp;action</p>
-<h2>WebView&nbsp;可以装网页的容器</h2>
-<p>网页中的代码可以和原生应用代码交互</p>
-<p>UIwebview 有内存泄漏的问题，苹果优化做了&nbsp;webkitbweview</p>
-<div class="highlight"><pre><span></span>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span> <span class="p">{</span>
-
-    <span class="kd">var</span> <span class="nv">webView</span><span class="p">:</span> <span class="bp">WKWebView</span><span class="p">!</span>
-
-    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/swift-ui.html" rel="bookmark" title="Permalink to Swift UI">Swift <span class="caps">UI</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-03-20T00:00:00+08:00"> 
-				<a href="/archive/2020/ 3/index.html">五 20 三月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>UIViewController</h2>
-<ol>
-<li>AppDelegate.swift 程序入口&nbsp;(负责逻辑)</li>
-</ol>
-<p>didFinishLauchingOptions第一次打开程序</p>
-<ol>
-<li>SceneDelegate（负责UI）应用的入口和生命周期</li>
-</ol>
-<p>willConnectTo第一加载页面</p>
-<p>sceneWillEnterForeground即将进入前台</p>
-<p>sceneDidBecomeActive进入前台</p>
-<ol>
-<li>ViewController&nbsp;一个页面</li>
-</ol>
-<div class="highlight"><pre><span></span> <span class="k">class</span> <span class="n">ViewController:</span> <span class="n">UIViewController</span>
-</pre></div>
-
-
-<p>UIViewController</p>
-<p>UITabBarController底部tab栏</p>
-<p>UINavigationController数组（栈）路由，有顶层导航栏可以显示页面名字</p>
-<p>UITableViewController&nbsp;list</p>
-<p>UICollectionViewController</p>
-<p>生命周期</p>
-<div class="highlight"><pre><span></span><span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/swift-data-structures.html" rel="bookmark" title="Permalink to Swift Data Structures">Swift Data&nbsp;Structures</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-03-12T00:00:00+08:00"> 
-				<a href="/archive/2020/ 3/index.html">四 12 三月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p><span class="caps">IOS</span>, iPadOS, maxOS,&nbsp;iwatch</p>
-<h1>Data&nbsp;Structures</h1>
-<h2>class类：面向对象，动物类，引用类型reference&nbsp;type</h2>
-<blockquote>
-<p>Examples: ViewController, UIButton,&nbsp;Concentration</p>
-</blockquote>
-<p>传递时只是传递指针just passing pointers to&nbsp;it</p>
-<p>When does it get cleaned up out of the&nbsp;heap …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="/category/ios2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -430,6 +405,15 @@
                         <li>
                           <a href="/category/ios.html" >IOS</a>
                             <ul>
+                                <li>
+                                  <a href="/dart.html">Dart</a>
+                                </li>
+                                <li>
+                                  <a href="/flutter.html">Flutter</a>
+                                </li>
+                                <li>
+                                  <a href="/flutter-startup.html">Flutter&nbsp;Startup</a>
+                                </li>
                                 <li>
                                   <a href="/swift-programming-language-basic.html">Swift Programming Language&nbsp;Basic</a>
                                 </li>
@@ -483,6 +467,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>

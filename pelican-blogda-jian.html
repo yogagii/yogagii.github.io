@@ -91,19 +91,19 @@
 <h2>Reference</h2>
 <p><a href="http://docs.getpelican.com/en/stable/install.html">pelican</a></p>
 <p><a href="https://pypi.org/project/typogrify/">typogrify</a></p>
-<div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pelican</span>
+<div class="highlight"><pre><span></span>pip3 install pelican
 
-<span class="n">echo</span> <span class="err">$</span><span class="n">PATH</span>
-<span class="n">vim</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span>
-<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="ss">&quot;/Users/yoga/Library/Python/3.8/bin:$PATH&quot;</span>
-<span class="k">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span> <span class="o">//</span> <span class="err">使修改的环境变量生效</span>
-<span class="n">which</span> <span class="n">pelican</span>
+<span class="nb">echo</span> <span class="nv">$PATH</span>
+vim ~/.zshrc // .bash_profile
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/Users/yoga/Library/Python/3.8/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">source</span> ~/.zshrc // 使修改的环境变量生效
+which pelican
 
-<span class="n">pip3</span> <span class="n">install</span> <span class="n">typogrify</span>
-<span class="n">pip3</span> <span class="n">install</span> <span class="n">Markdown</span>
+pip3 install typogrify
+pip3 install Markdown
 
-<span class="n">make</span> <span class="n">html</span>
-<span class="n">make</span> <span class="n">serve</span>
+make html
+make serve
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -186,6 +186,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>

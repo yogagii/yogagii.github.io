@@ -42,6 +42,190 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/css.html" rel="bookmark" title="Permalink to CSS"><span class="caps">CSS</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Position</h2>
+<ul>
+<li>static: 默认值，忽略TRBL,&nbsp;z-index</li>
+<li>inherit:&nbsp;继承</li>
+<li>fixed:&nbsp;固定定位，相对于浏览器窗口TRBL</li>
+<li>relative:&nbsp;相对定位，相对于正常位置TRBL</li>
+</ul>
+<p>遵循正常文档流，占有文档空间，父级padding影响，根为root</p>
+<table>
+<thead>
+<tr>
+<th><span class="caps">TRBL</span></th>
+<th>父级</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>无</td>
+<td>上一元素底部/浏览器左上角</td>
+</tr>
+<tr>
+<td>无</td>
+<td>有</td>
+<td>父级左上角</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级有无position</td>
+<td>父级左上角 …</td></tr></tbody></table></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/frontend.html">Frontend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/es6xin-te-xing.html" rel="bookmark" title="Permalink to ES6新特性">ES6新特性</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>1.箭头函数</h2>
+<div class="highlight"><pre><span></span><span class="c1">//es5</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="c1">//es6</span>
+<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>箭头函数不需要 function&nbsp;关键字来创建函数，更适用于那些本来需要匿名函数的地方。</p>
+</li>
+<li>
+<p>函数的this依赖于函数调用（window），箭头函数没有自己的this，arguments，super或new.target。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// function</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/gao-jie-han-shu.html" rel="bookmark" title="Permalink to 高阶函数">高阶函数</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>高阶函数(Higher-order function)：一个函数可以接收另一个函数作为参数。 e.g. map, reduce,&nbsp;filter</p>
+</blockquote>
+<h3>记忆函数</h3>
+<p>记忆化（memoization）是一种构建函数的处理过程，能够记住上次计算结果的函数。当函数计算得到结果时，就将该结果按照参数存储起来，当另外一个调用也使用相同的参数，可以直接返回上次存储的结果而不是再计算一遍。</p>
+<p>像这样避免既重复又复杂的计算可以显著提高性能。对于动画中的计算、搜索不经常变化的数据或任何耗时的数学计算来说，记忆化这种方式是十分有用的</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">memorize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">return</span> <span class="kd">function …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/shi-jian-chu-li-qi.html" rel="bookmark" title="Permalink to 事件处理器">事件处理器</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>EventEmitter是Node.js的内置模块events提供的一个类，它是Node事件流的核心</p>
+<p>https://www.runoob.com/nodejs/nodejs-event.html</p>
+<p>https://nodejs.org/api/events.html#class-eventemitter</p>
+<p>要实现的API有：
+* on(event, listener)：为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数。
+* off(event)： 移除指定事件的某个监听回调
+* trigger(event …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/shu-ju-lei-xing.html" rel="bookmark" title="Permalink to 数据类型">数据类型</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>值类型(基本类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。</p>
+<p>引用数据类型：对象(Object)、数组(Array)、函数(Function)。</p>
+<p><img alt="datatype" src="img/datatype.png"></p>
+<p><em>JavaScript 拥有动态类型</em>,相同的变量可用作不同的类型</p>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">;</span>               <span class="o">//</span> <span class="n">x</span> <span class="err">为</span> <span class="n">undefined</span>
+<span class="n">var</span> <span class="n">x …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/yuan-xing-lian.html" rel="bookmark" title="Permalink to 原型链">原型链</a>
 		</h2>
 		<div class="post-info">
@@ -194,49 +378,11 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
-<li>
-<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
-</li>
-<li>
-<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
-</li>
-</ol>
-<h2>在首次使用Git前需要进行一些简单的配置:</h2>
-<ul>
-<li>设置提交中使用的用户名: </li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
-</pre></div>
-
-
-<ul>
-<li>设置提交中使用的邮件地址 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index8.html">&laquo;</a>
-    Page 9 / 9
+    Page 9 / 10
+        <a href="/index10.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -293,6 +439,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
