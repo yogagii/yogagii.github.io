@@ -62,7 +62,165 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>在Dart语言中使用下划线前缀标识符，会强制其变成私有的。</p>
+        <h2>变量声明</h2>
+<p>虽然 Dart&nbsp;代码是类型安全的，但是由于支持类型推断，大多数变量是不需要显式指定类型的</p>
+<ul>
+<li>var </li>
+</ul>
+<p>Dart&nbsp;本身是一个强类型语言，任何变量都是有确定类型的，变量一旦赋值，类型便会确定，则不能再改变其类型。</p>
+<ul>
+<li>object</li>
+</ul>
+<p>Dart&nbsp;中所有类型都是Object的子类(包括Function和Null)，所以任何类型的数据都可以赋值给Object声明的对象</p>
+<p>Object声明的对象只能使用 Object&nbsp;的属性与方法</p>
+<ul>
+<li>dynamic</li>
+</ul>
+<p>dynamic与Object声明的变量都可以赋值任意对象，且后期可以改变赋值的类型</p>
+<ul>
+<li>final</li>
+</ul>
+<p>一个 final&nbsp;变量只能被设置一次，变量在第一次使用时被初始化，变量类型可以省略</p>
+<ul>
+<li>const</li>
+</ul>
+<p>const&nbsp;变量是一个编译时常量，变量类型可以省略</p>
+<ul>
+<li>空安全</li>
+</ul>
+<p>可空类型要显式（通过在变量后面加一个”!“符号）告诉预处理器它已经不是null了</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="m">8</span><span class="p">;</span> <span class="c1">//默认为不可空，必须在定义时初始化。</span>
+<span class="kt">int</span><span class="o">?</span> <span class="n">j</span><span class="p">;</span> <span class="c1">// 定义为可空类型，对于可空变量，我们在使用前必须判空。</span>
+<span class="n">Function</span><span class="o">?</span> <span class="n">fun</span><span class="p">;</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">j</span><span class="o">!</span> <span class="o">*</span> <span class="m">8</span><span class="p">);</span>
+<span class="n">fun</span><span class="o">?</span><span class="p">.</span><span class="n">call</span><span class="p">()</span> <span class="c1">// 语法糖fun 不为空时则会被调用</span>
+</pre></div>
+
+
+<blockquote>
+<p>在Dart语言中使用下划线前缀标识符，会强制其变成私有的。</p>
+</blockquote>
+<h2>函数</h2>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">test</span><span class="p">(</span><span class="n">CALLBACK</span> <span class="n">cb</span><span class="p">){</span>
+   <span class="n">print</span><span class="p">(</span><span class="n">cb</span><span class="p">());</span> 
+<span class="p">}</span>
+
+<span class="c1">// bool 可省略， 如果没有显式声明返回值类型时会默认当做dynamic处理</span>
+<span class="kt">bool</span> <span class="n">isNoble</span><span class="p">(</span><span class="kt">int</span> <span class="n">atomicNumber</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="k">return</span> <span class="n">_nobleGases</span><span class="p">[</span><span class="n">atomicNumber</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// =&gt;（箭头）语法用于仅包含一条语句的函数</span>
+<span class="kt">bool</span> <span class="n">isNoble</span> <span class="p">(</span><span class="kt">int</span> <span class="n">atomicNumber</span><span class="p">)</span><span class="o">=&gt;</span> <span class="kc">true</span> <span class="p">;</span>
+
+<span class="c1">// 函数作为变量</span>
+<span class="kd">var</span> <span class="n">say</span> <span class="o">=</span> <span class="p">(</span><span class="n">str</span><span class="p">){</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 函数作为参数传递</span>
+<span class="kt">void</span> <span class="n">execute</span><span class="p">(</span><span class="kd">var</span> <span class="n">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">callback</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">execute</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s2">&quot;xxx&quot;</span><span class="p">))</span>
+
+<span class="c1">// 用[]标记为可选的位置参数</span>
+<span class="kt">String</span> <span class="n">say</span><span class="p">(</span><span class="kt">String</span> <span class="n">from</span><span class="p">,</span> <span class="kt">String</span> <span class="n">msg</span><span class="p">,</span> <span class="p">[</span><span class="kt">String</span> <span class="n">device</span><span class="p">])</span> <span class="p">{</span>
+  <span class="c1">// ... </span>
+<span class="p">}</span>
+
+<span class="c1">// 可选的命名参数</span>
+<span class="kt">void</span> <span class="n">enableFlags</span><span class="p">({</span><span class="kt">bool</span> <span class="n">bold</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">hidden</span><span class="p">})</span> <span class="p">{</span>
+  <span class="c1">// ... </span>
+<span class="p">}</span>
+<span class="n">enableFlags</span><span class="p">(</span><span class="nl">bold:</span> <span class="kc">true</span><span class="p">,</span> <span class="nl">hidden:</span> <span class="kc">false</span><span class="p">);</span>
+</pre></div>
+
+
+<h2>异步</h2>
+<h3>1.&nbsp;Future</h3>
+<p>Future与JavaScript中的Promise非常相似，表示一个异步操作的最终完成（或失败）及其结果值的表示。一个Future只会对应一个结果，要么成功，要么失败。</p>
+<div class="highlight"><pre><span></span><span class="c1">// 延时任务</span>
+<span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">2</span><span class="p">),(){</span>
+   <span class="k">return</span> <span class="s2">&quot;hi world!&quot;</span><span class="p">;</span>
+<span class="p">}).</span><span class="n">then</span><span class="p">((</span><span class="n">data</span><span class="p">){</span>
+   <span class="c1">//执行成功会走到这里  </span>
+   <span class="n">print</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">);</span>
+<span class="p">}).</span><span class="n">catchError</span><span class="p">((</span><span class="n">e</span><span class="p">){</span>
+   <span class="c1">//执行失败会走到这里  </span>
+   <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="p">}).</span><span class="n">whenComplete</span><span class="p">((){</span>
+   <span class="c1">//无论成功或失败都会走到这里</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>只有数组中所有Future都执行成功后，才会触发then的成功回调，只要有一个Future执行失败，就会触发错误回调。(Promise.all)</p>
+<div class="highlight"><pre><span></span><span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">([</span>
+  <span class="c1">// 2秒后返回结果  </span>
+  <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">2</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+  <span class="p">}),</span>
+  <span class="c1">// 4秒后返回结果  </span>
+  <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">4</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot; world&quot;</span><span class="p">;</span>
+  <span class="p">})</span>
+<span class="p">])</span>
+</pre></div>
+
+
+<p>回调地狱(Callback Hell):&nbsp;在回调里面套回调</p>
+<p>链式调用: Future 的所有API的返回值仍然是一个Future对象，如果在then&nbsp;中返回的是一个Future的话，该future会执行，执行结束后会触发后面的then回调，这样依次向下，就避免了层层嵌套。</p>
+<div class="highlight"><pre><span></span><span class="n">login</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span><span class="s2">&quot;******&quot;</span><span class="p">).</span><span class="n">then</span><span class="p">((</span><span class="n">id</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">getUserInfo</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="p">}).</span><span class="n">then</span><span class="p">((</span><span class="n">userInfo</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">saveUserInfo</span><span class="p">(</span><span class="n">userInfo</span><span class="p">);</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<p>async用来表示函数是异步的，定义的函数会返回一个Future对象，可以使用 then&nbsp;方法添加回调函数。</p>
+<p>await 后面是一个Future，表示等待该异步任务完成，异步完成后才会往下走；await必须出现在 async&nbsp;函数内部。</p>
+<div class="highlight"><pre><span></span><span class="n">task</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+  <span class="k">try</span><span class="p">{</span>
+    <span class="kd">await</span> <span class="n">saveUserInfo</span><span class="p">(</span><span class="n">userInfo</span><span class="p">);</span>
+    <span class="c1">//执行接下来的操作   </span>
+  <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">){</span>
+    <span class="c1">//错误处理   </span>
+    <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>   
+  <span class="p">}</span>  
+<span class="p">}</span>
+</pre></div>
+
+
+<blockquote>
+<p>无论是在 JavaScript 还是 Dart 中，async/await 都只是一个语法糖，编译器或解释器最终都会将其转化为一个&nbsp;Promise（Future）的调用链。</p>
+</blockquote>
+<h3>2.&nbsp;Stream</h3>
+<p>Stream 也是用于接收异步事件数据，可以接收多个异步操作的结果（成功或失败）。&nbsp;也就是说，在执行异步任务时，可以通过多次触发成功或失败事件来传递结果数据或错误异常。</p>
+<p>Stream&nbsp;常用于会多次读取数据的异步任务场景，如网络内容下载、文件读写等。</p>
+<div class="highlight"><pre><span></span><span class="n">Stream</span><span class="p">.</span><span class="n">fromFutures</span><span class="p">([</span>
+  <span class="c1">// 1秒后返回结果</span>
+  <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">1</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;hello 1&quot;</span><span class="p">;</span>
+  <span class="p">}),</span>
+  <span class="c1">// 抛出一个异常</span>
+  <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">2</span><span class="p">),(){</span>
+    <span class="k">throw</span> <span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">);</span>
+  <span class="p">}),</span>
+  <span class="c1">// 3秒后返回结果</span>
+  <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">3</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;hello 3&quot;</span><span class="p">;</span>
+  <span class="p">})</span>
+<span class="p">]).</span><span class="n">listen</span><span class="p">((</span><span class="n">data</span><span class="p">){</span>
+   <span class="n">print</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">},</span> <span class="nl">onError:</span> <span class="p">(</span><span class="n">e</span><span class="p">){</span>
+   <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+<span class="p">},</span><span class="nl">onDone:</span> <span class="p">(){</span>
+
+<span class="p">});</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>

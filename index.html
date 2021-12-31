@@ -46,8 +46,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-12-24T14:33:00+08:00"> 
-				<a href="/archive/2021/12/index.html">五 24 十二月 2021 </a>
+			<abbr class="date" title="2021-12-31T14:33:00+08:00"> 
+				<a href="/archive/2021/12/index.html">五 31 十二月 2021 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -86,8 +86,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-12-24T14:33:00+08:00"> 
-				<a href="/archive/2021/12/index.html">五 24 十二月 2021 </a>
+			<abbr class="date" title="2021-12-31T14:33:00+08:00"> 
+				<a href="/archive/2021/12/index.html">五 31 十二月 2021 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -128,7 +128,25 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>在Dart语言中使用下划线前缀标识符，会强制其变成私有的。</p></div>
+	<div class="summary"><h2>变量声明</h2>
+<p>虽然 Dart&nbsp;代码是类型安全的，但是由于支持类型推断，大多数变量是不需要显式指定类型的</p>
+<ul>
+<li>var </li>
+</ul>
+<p>Dart&nbsp;本身是一个强类型语言，任何变量都是有确定类型的，变量一旦赋值，类型便会确定，则不能再改变其类型。</p>
+<ul>
+<li>object</li>
+</ul>
+<p>Dart&nbsp;中所有类型都是Object的子类(包括Function和Null)，所以任何类型的数据都可以赋值给Object声明的对象</p>
+<p>Object声明的对象只能使用 Object&nbsp;的属性与方法</p>
+<ul>
+<li>dynamic</li>
+</ul>
+<p>dynamic与Object声明的变量都可以赋值任意对象，且后期可以改变赋值的类型</p>
+<ul>
+<li>final</li>
+</ul>
+<p>一个 final&nbsp;变量只能被设置一次，变量在第一次使用时被初始化，变量类型可以省略 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -178,17 +196,17 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同，&nbsp;以确定底层渲染树从一个状态转换到下一个状态所需的最小更改（类似于React/Vue中虚拟DOM的diff算法）。</p>
+	<div class="summary"><blockquote>
+<p>Flutter&nbsp;中万物皆为Widget。</p>
+</blockquote>
+<p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同，&nbsp;以确定底层渲染树从一个状态转换到下一个状态所需的最小更改（类似于React/Vue中虚拟DOM的diff算法）。</p>
 <h2>Widget</h2>
 <p>runApp函数接受给定的Widget并使其成为widget树的根，根widget强制覆盖整个屏幕</p>
 <ul>
 <li>无状态的&nbsp;StatelessWidget</li>
 <li>有状态的&nbsp;StatefulWidget</li>
 </ul>
-<p>widget的主要工作是实现一个build函数，用以构建自身。一个widget通常由一些较低级别widget组成。Flutter框架将依次构建这些widget，直到构建到最底层的子widget时，这些最低层的widget通常为RenderObject</p>
-<ul>
-<li>Text</li>
-<li>Row, Column: 基于web …</li></ul></div>
+<p>@immutable 代表 Widget 是不可变的，这会限制 Widget&nbsp;中定义的属性（即配置信息 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
