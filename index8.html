@@ -42,6 +42,45 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>绑定未提供的事件</h3>
+<hr>
+<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
+<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><br></p>
+<h3>AJAX加载数据</h3>
+<hr>
+<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
+<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
+<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/google-tag-manager.html" rel="bookmark" title="Permalink to Google Tag Manager">Google Tag&nbsp;Manager</a>
 		</h2>
 		<div class="post-info">
@@ -379,44 +418,6 @@
   <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/chang-yong-nei-zhi-fang-fa.html" rel="bookmark" title="Permalink to 常用内置方法">常用内置方法</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Array</h2>
-<ul>
-<li>slice</li>
-</ul>
-<p>slice()&nbsp;方法可提取字符串/数组的某个部分，并以新的字符串/数组返回被提取的部分。</p>
-<blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<p>start：起始坐标，负数从结尾开数</p>
-<p>end：结尾下标，负数从结尾开数，未指定则到底，end &lt;&nbsp;start无效</p>
-<p>返回值：一个新的字符串</p>
-<ul>
-<li>splice</li>
-</ul>
-<p>从数组中添加或删除元素，返回被删除的元素，会改变原始数组</p>
-<blockquote>
-<p>arrayObject.splice(index,howmany …</p></blockquote></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

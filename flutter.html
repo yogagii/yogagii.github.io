@@ -198,7 +198,9 @@
     <span class="n">Navigator</span><span class="p">.</span><span class="n">push</span><span class="p">(</span> 
       <span class="n">context</span><span class="p">,</span>
       <span class="n">MaterialPageRoute</span><span class="p">(</span><span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">NewRoute</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">NewPage</span><span class="p">(</span>
+          <span class="nl">text:</span> <span class="s1">&#39;params&#39;</span> <span class="c1">// 可传路由参数</span>
+        <span class="p">);</span>
       <span class="p">}),</span>
     <span class="p">);</span>
   <span class="p">},</span>
@@ -207,11 +209,42 @@
 
 
 <h3>命名路由</h3>
-<h3><span class="caps">COLORS</span></h3>
-<p>color使用的是ARGB,&nbsp;前两位表示透明度</p>
-<div class="highlight"><pre><span></span><span class="c1">// RED</span>
-<span class="err">#</span><span class="n">ff0000</span> <span class="c1">// RGB</span>
-<span class="mh">0xffff0000</span> <span class="c1">// ARGB</span>
+<div class="highlight"><pre><span></span><span class="c1">// 注册路由表</span>
+<span class="n">MaterialApp</span><span class="p">(</span>
+  <span class="nl">routes:</span><span class="p">{</span>
+   <span class="s2">&quot;new_page&quot;</span><span class="o">:</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">NewRoute</span><span class="p">(),</span>
+    <span class="p">...</span>
+  <span class="p">}</span> <span class="p">,</span>
+  <span class="nl">home:</span> <span class="n">MyHomePage</span><span class="p">(</span><span class="nl">title:</span> <span class="s1">&#39;Home Page&#39;</span><span class="p">),</span>
+<span class="p">);</span>
+
+<span class="c1">// 通过路由名称来打开新路由</span>
+<span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="n">Navigator</span><span class="p">.</span><span class="n">pushNamed</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;new_page&quot;</span><span class="p">);</span>
+  <span class="n">Navigator</span><span class="p">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pushNamed</span><span class="p">(</span><span class="s2">&quot;new_page&quot;</span><span class="p">,</span> <span class="nl">arguments:</span> <span class="s2">&quot;hi&quot;</span><span class="p">);</span> <span class="c1">// 传参</span>
+<span class="p">},</span>
+</pre></div>
+
+
+<p>路由生成钩子：全局的路由跳转前置处理逻辑</p>
+<p>如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，其它情况则正常打开路由。</p>
+<div class="highlight"><pre><span></span><span class="nl">onGenerateRoute:</span><span class="p">(</span><span class="n">RouteSettings</span> <span class="n">settings</span><span class="p">){</span>
+  <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span><span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">){</span>
+    <span class="kt">String</span> <span class="n">routeName</span> <span class="o">=</span> <span class="n">settings</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<h2>包管理</h2>
+<p>pubspec.yaml</p>
+<div class="highlight"><pre><span></span><span class="nl">dependencies:</span>
+  <span class="nl">english_words:</span> <span class="o">^</span><span class="m">4.0</span><span class="p">.</span><span class="m">0</span> <span class="c1">// Pub仓库</span>
+  <span class="nl">pkg1:</span>
+    <span class="nl">path:</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">pkg1</span> <span class="c1">// 依赖本地包</span>
+  <span class="nl">pkg2:</span>
+    <span class="nl">git:</span>
+      <span class="nl">url:</span> <span class="nl">git:</span><span class="c1">//github.com/xxx/pkg1.git // git仓库</span>
 </pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">

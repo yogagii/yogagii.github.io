@@ -180,6 +180,28 @@ brew -v
 <p>flutter&nbsp;clean</p>
 </li>
 </ul>
+<h2>调试</h2>
+<p>1.web调试</p>
+<p>View -&gt; Command Palette -&gt; Dart: Open&nbsp;DevTools</p>
+<p>2.手机调试</p>
+<p>手机连接电脑</p>
+<p>ios文件夹 -&gt; open in&nbsp;Xcode</p>
+<p>Runner&gt;TARGETS下的Runner里的Signing <span class="amp">&amp;</span>&nbsp;Capabilities：Team登录Apple账号</p>
+<p>build&nbsp;success</p>
+<ul>
+<li>@import显示module not&nbsp;found:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ios
+flutter clean
+flutter pub get
+pod install
+</pre></div>
+
+
+<ul>
+<li>“不受信任的开发者”:</li>
+</ul>
+<p>IPhone: 设置 -&gt; 通用 -&gt;&nbsp;VPN与设备管理：信任开发者</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>

@@ -1,0 +1,573 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/ios.html">IOS</a> ›Flutter&nbsp;Component
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Flutter&nbsp;Component</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2021-12-31T00:00:00+08:00"> 
+            <a href="/archive/2021/12/index.html">五 31 十二月 2021 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/flutter.html">Flutter</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>基础组件</h2>
+<p>文本</p>
+<div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
+  <span class="nl">textAlign:</span> <span class="n">TextAlign</span><span class="p">.</span><span class="n">left</span><span class="p">,</span>
+  <span class="nl">maxLines:</span> <span class="m">1</span><span class="p">,</span>
+  <span class="nl">overflow:</span> <span class="n">TextOverflow</span><span class="p">.</span><span class="n">ellipsis</span><span class="p">,</span>
+  <span class="nl">textScaleFactor:</span> <span class="m">1.5</span><span class="p">,</span>
+  <span class="nl">style:</span> <span class="n">TextStyle</span><span class="p">(</span>
+    <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+    <span class="nl">fontSize:</span> <span class="m">18.0</span><span class="p">,</span>
+    <span class="nl">height:</span> <span class="m">1.2</span><span class="p">,</span>  <span class="c1">// 行高</span>
+    <span class="nl">fontFamily:</span> <span class="s2">&quot;Courier&quot;</span><span class="p">,</span>
+    <span class="nl">background:</span> <span class="n">Paint</span><span class="p">()..</span><span class="n">color</span><span class="o">=</span><span class="n">Colors</span><span class="p">.</span><span class="n">yellow</span><span class="p">,</span>
+    <span class="nl">decoration:</span><span class="n">TextDecoration</span><span class="p">.</span><span class="n">underline</span><span class="p">,</span>
+    <span class="nl">decorationStyle:</span> <span class="n">TextDecorationStyle</span><span class="p">.</span><span class="n">dashed</span>
+  <span class="p">),</span>
+<span class="p">);</span>
+
+<span class="n">Text</span><span class="p">.</span><span class="n">rich</span><span class="p">(</span><span class="n">TextSpan</span><span class="p">(</span>
+  <span class="nl">children:</span> <span class="p">[</span>
+    <span class="n">TextSpan</span><span class="p">(</span>
+      <span class="nl">text:</span> <span class="s2">&quot;Home: &quot;</span>
+    <span class="p">),</span>
+<span class="p">))</span>
+</pre></div>
+
+
+<p>按钮</p>
+<div class="highlight"><pre><span></span><span class="n">ElevatedButton</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+<span class="p">);</span>
+<span class="n">ElevatedButton</span><span class="p">.</span><span class="n">icon</span><span class="p">(</span>
+  <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">send</span><span class="p">),</span>
+  <span class="nl">label:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;发送&quot;</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="n">_onPressed</span><span class="p">,</span>
+<span class="p">),</span>
+
+<span class="n">TextButton</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+<span class="p">)</span>
+
+<span class="n">OutlineButton</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+<span class="p">)</span>
+
+<span class="n">IconButton</span><span class="p">(</span>
+  <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">thumb_up</span><span class="p">),</span>
+  <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>图片</p>
+<div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span>
+  <span class="nl">image:</span> <span class="n">AssetImage</span><span class="p">(</span><span class="s2">&quot;images/avatar.png&quot;</span><span class="p">),</span>
+  <span class="nl">image:</span> <span class="n">NetworkImage</span><span class="p">(</span> <span class="s2">&quot;https://avatars2.githubusercontent.com/u/20411648?s=460&amp;v=4&quot;</span><span class="p">),</span>
+  <span class="nl">width:</span> <span class="m">100.0</span><span class="p">,</span>
+  <span class="nl">fit:</span> <span class="n">BoxFit</span><span class="p">.</span><span class="n">fill</span><span class="p">,</span>
+  <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+  <span class="nl">colorBlendMode:</span> <span class="n">BlendMode</span><span class="p">.</span><span class="n">difference</span><span class="p">,</span> <span class="c1">// 对每一个像素进行颜色混合处理</span>
+  <span class="nl">repeat:</span> <span class="n">ImageRepeat</span><span class="p">.</span><span class="n">repeatY</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<p>单选开关</p>
+<div class="highlight"><pre><span></span><span class="n">Switch</span><span class="p">(</span>
+  <span class="nl">value:</span> <span class="n">_switchSelected</span><span class="p">,</span><span class="c1">//当前状态</span>
+  <span class="nl">onChanged:</span><span class="p">(</span><span class="n">value</span><span class="p">){</span>
+    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
+      <span class="n">_switchSelected</span><span class="o">=</span><span class="n">value</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>复选框</p>
+<div class="highlight"><pre><span></span><span class="n">Checkbox</span><span class="p">(</span>
+  <span class="nl">value:</span> <span class="n">_checkboxSelected</span><span class="p">,</span>
+  <span class="nl">activeColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span> <span class="c1">//选中时的颜色</span>
+  <span class="nl">onChanged:</span><span class="p">(</span><span class="n">value</span><span class="p">){</span>
+    <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
+      <span class="n">_checkboxSelected</span><span class="o">=</span><span class="n">value</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">}</span> <span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>输入框</p>
+<div class="highlight"><pre><span></span><span class="n">TextField</span><span class="p">(</span>
+  <span class="nl">autofocus:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nl">decoration:</span> <span class="n">InputDecoration</span><span class="p">(</span>
+    <span class="nl">labelText:</span> <span class="s2">&quot;用户名&quot;</span><span class="p">,</span>
+    <span class="nl">hintText:</span> <span class="s2">&quot;用户名或邮箱&quot;</span><span class="p">,</span>
+    <span class="nl">prefixIcon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">person</span><span class="p">)</span>
+  <span class="p">),</span>
+<span class="p">),</span>
+</pre></div>
+
+
+<h2>布局类组件</h2>
+<ul>
+<li>非容器类组件基类</li>
+<li>单子组件基类: child用于接收子&nbsp;Widget</li>
+<li>多子组件基类: children用于接收子&nbsp;Widget</li>
+</ul>
+<p>线性布局：Row&nbsp;沿水平方向排列其子widget</p>
+<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
+  <span class="nl">crossAxisAlignment:</span> <span class="n">CrossAxisAlignment</span><span class="p">.</span><span class="n">start</span><span class="p">,</span>  
+  <span class="nl">verticalDirection:</span> <span class="n">VerticalDirection</span><span class="p">.</span><span class="n">up</span><span class="p">,</span>
+  <span class="nl">mainAxisAlignment:</span> <span class="n">MainAxisAlignment</span><span class="p">.</span><span class="n">spaceEvenly</span><span class="p">,</span> <span class="c1">// 将水平方向的的剩余显示空间均分成多份穿插在每一个 child之间</span>
+  <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+    <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;t1&quot;</span><span class="p">),</span>
+    <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;t2&quot;</span><span class="p">),</span>
+  <span class="p">],</span>
+<span class="p">),</span>
+</pre></div>
+
+
+<p>Row默认只有一行，如果超出屏幕不会折行，右边溢出部分报错。</p>
+<p>Column可以在垂直方向排列其子组件</p>
+<p>弹性布局：Expanded 只能作为 Flex&nbsp;的孩子（否则会报错），它可以按比例“扩伸”Flex子组件所占用的空间。</p>
+<div class="highlight"><pre><span></span><span class="n">Flex</span><span class="p">(</span>
+  <span class="nl">direction:</span> <span class="n">Axis</span><span class="p">.</span><span class="n">vertical</span><span class="p">,</span>
+  <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+    <span class="n">Expanded</span><span class="p">(</span>
+      <span class="nl">flex:</span> <span class="m">2</span><span class="p">,</span>
+      <span class="nl">child:</span> <span class="n">Container</span><span class="p">(</span>
+        <span class="nl">height:</span> <span class="m">30.0</span><span class="p">,</span>
+        <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">Spacer</span><span class="p">(</span><span class="nl">flex:</span> <span class="m">1</span><span class="p">),</span> <span class="c1">// 占用指定比例的空间</span>
+    <span class="n">Expanded</span><span class="p">(</span>
+      <span class="nl">flex:</span> <span class="m">1</span><span class="p">,</span>
+      <span class="nl">child:</span> <span class="n">Container</span><span class="p">(</span>
+        <span class="nl">height:</span> <span class="m">30.0</span><span class="p">,</span>
+        <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">green</span><span class="p">,</span>
+      <span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>流式布局：超出屏幕显示范围会自动折行</p>
+<div class="highlight"><pre><span></span><span class="n">Wrap</span><span class="p">(</span>
+   <span class="nl">spacing:</span> <span class="m">8.0</span><span class="p">,</span> <span class="c1">// 主轴(水平)方向间距</span>
+   <span class="nl">runSpacing:</span> <span class="m">4.0</span><span class="p">,</span> <span class="c1">// 纵轴（垂直）方向间距</span>
+   <span class="nl">alignment:</span> <span class="n">WrapAlignment</span><span class="p">.</span><span class="n">center</span><span class="p">,</span> <span class="c1">//沿主轴方向居中</span>
+   <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+     <span class="n">Chip</span><span class="p">(</span>
+       <span class="nl">avatar:</span> <span class="n">CircleAvatar</span><span class="p">(</span><span class="nl">backgroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span> <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)),</span>
+       <span class="nl">label:</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Hamilton&#39;</span><span class="p">),</span>
+     <span class="p">),</span>
+     <span class="p">...</span>
+   <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>层叠布局：Stack允许子组件堆叠，而Positioned用于根据Stack的四个角来确定子组件的位置</p>
+<div class="highlight"><pre><span></span><span class="n">Stack</span><span class="p">(</span>
+  <span class="nl">alignment:</span><span class="n">Alignment</span><span class="p">.</span><span class="n">center</span> <span class="p">,</span> <span class="c1">//指定未定位或部分定位widget的对齐方式</span>
+  <span class="nl">fit:</span> <span class="n">StackFit</span><span class="p">.</span><span class="n">expand</span><span class="p">,</span> <span class="c1">//未定位widget占满Stack整个空间</span>
+  <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
+    <span class="n">Container</span><span class="p">(</span>
+      <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">),</span>
+      <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">Positioned</span><span class="p">(</span>
+      <span class="nl">left:</span> <span class="m">18.0</span><span class="p">,</span>
+      <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;I am Jack&quot;</span><span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>相对定位：Align&nbsp;组件可以调整一个子元素在父元素中的位置</p>
+<div class="highlight"><pre><span></span><span class="n">Align</span><span class="p">(</span>
+  <span class="nl">alignment:</span> <span class="n">Alignment</span><span class="p">.</span><span class="n">topRight</span><span class="p">,</span>
+  <span class="nl">child:</span> <span class="n">FlutterLogo</span><span class="p">(</span>
+    <span class="nl">size:</span> <span class="m">60</span><span class="p">,</span>
+  <span class="p">),</span>
+<span class="p">),</span>
+</pre></div>
+
+
+<p>Center继承自Align(Alignment.center)。</p>
+<div class="highlight"><pre><span></span><span class="n">Center</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;xxx&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>使用 LayoutBuilder&nbsp;来根据设备的尺寸来实现响应式布局。</p>
+<div class="highlight"><pre><span></span><span class="n">LayoutBuilder</span><span class="p">(</span>
+  <span class="nl">builder:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">BoxConstraints</span> <span class="n">constraints</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">constraints</span><span class="p">.</span><span class="n">maxWidth</span> <span class="o">&lt;</span> <span class="m">200</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">...;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">...;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<h2>容器类组件</h2>
+<p>Padding可以给其子节点添加填充（留白）</p>
+<div class="highlight"><pre><span></span><span class="n">Padding</span><span class="p">(</span>
+  <span class="c1">// 分别指定四个方向的补白</span>
+  <span class="nl">padding:</span> <span class="kd">const</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">fromLTRB</span><span class="p">(</span><span class="m">20.0</span><span class="p">,.</span><span class="m">0</span><span class="p">,</span><span class="m">20.0</span><span class="p">,</span><span class="m">20.0</span><span class="p">),</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Your friend&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>尺寸限制类容器：ConstrainedBox用于对子组件添加额外的约束</p>
+<div class="highlight"><pre><span></span><span class="n">ConstrainedBox</span><span class="p">(</span>
+  <span class="nl">constraints:</span> <span class="n">BoxConstraints</span><span class="p">(</span>
+    <span class="nl">minWidth:</span> <span class="kt">double</span><span class="p">.</span><span class="n">infinity</span><span class="p">,</span> <span class="c1">//宽度尽可能大</span>
+    <span class="nl">minHeight:</span> <span class="m">50.0</span> <span class="c1">//最小高度为50像素</span>
+  <span class="p">),</span>
+  <span class="nl">child:</span> <span class="n">Container</span><span class="p">(</span>
+    <span class="nl">height:</span> <span class="m">5.0</span><span class="p">,</span> 
+    <span class="nl">child:</span> <span class="n">redBox</span> <span class="p">,</span>
+  <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">BoxConstraints</span><span class="p">.</span><span class="n">tight</span><span class="p">(</span><span class="n">Size</span> <span class="n">size</span><span class="p">)</span> <span class="c1">// 生成固定宽高</span>
+<span class="n">BoxConstraints</span><span class="p">.</span><span class="n">expand</span><span class="p">()</span> <span class="c1">// 填充尽可能大的容器</span>
+
+<span class="n">SizedBox</span><span class="p">(</span>
+  <span class="nl">width:</span> <span class="m">80.0</span><span class="p">,</span>
+  <span class="nl">height:</span> <span class="m">80.0</span><span class="p">,</span>
+  <span class="nl">child:</span> <span class="n">redBox</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>空间适配FittedBox：子组件适配父组件空间</p>
+<div class="highlight"><pre><span></span><span class="n">FittedBox</span><span class="p">(</span>
+  <span class="nl">fit:</span> <span class="n">BoxFit</span><span class="p">.</span><span class="n">contain</span><span class="p">,</span> <span class="c1">// 按照子组件的比例缩放，尽可能多的占据父组件空间</span>
+  <span class="nl">child:</span> <span class="n">Container</span><span class="p">(...),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>封装单行缩放布局：SingleLineFittedBox</p>
+<div class="highlight"><pre><span></span><span class="n">FittedBox</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">ConstrainedBox</span><span class="p">(</span>
+    <span class="nl">constraints:</span> <span class="n">constraints</span><span class="p">.</span><span class="n">copyWith</span><span class="p">(</span>
+      <span class="nl">minWidth:</span> <span class="n">constraints</span><span class="p">.</span><span class="n">maxWidth</span><span class="p">,</span>
+      <span class="nl">maxWidth:</span> <span class="kt">double</span><span class="p">.</span><span class="n">infinity</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="nl">child:</span> <span class="n">child</span><span class="p">,</span>
+  <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>装饰容器DecoratedBox：背景、边框、渐变</p>
+<div class="highlight"><pre><span></span><span class="n">DecoratedBox</span><span class="p">(</span>
+  <span class="nl">decoration:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
+    <span class="nl">gradient:</span> <span class="n">LinearGradient</span><span class="p">(</span><span class="nl">colors:</span><span class="p">[</span><span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span><span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">.</span><span class="n">shade700</span><span class="p">]),</span> <span class="c1">//背景渐变</span>
+    <span class="nl">borderRadius:</span> <span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">3.0</span><span class="p">),</span> <span class="c1">//3像素圆角</span>
+    <span class="nl">boxShadow:</span> <span class="p">[</span> <span class="c1">//阴影</span>
+      <span class="n">BoxShadow</span><span class="p">(</span>
+        <span class="nl">color:</span><span class="n">Colors</span><span class="p">.</span><span class="n">black54</span><span class="p">,</span>
+        <span class="nl">offset:</span> <span class="n">Offset</span><span class="p">(</span><span class="m">2.0</span><span class="p">,</span><span class="m">2.0</span><span class="p">),</span>
+        <span class="nl">blurRadius:</span> <span class="m">4.0</span>
+      <span class="p">)</span>
+    <span class="p">]</span>
+  <span class="p">),</span>
+<span class="nl">child:</span> <span class="p">...,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>变换&nbsp;Transform</p>
+<div class="highlight"><pre><span></span><span class="n">Transform</span><span class="p">.</span><span class="n">translate</span> <span class="c1">// 平移</span>
+<span class="n">Transform</span><span class="p">.</span><span class="n">rotate</span> <span class="c1">// 旋转</span>
+<span class="n">Transform</span><span class="p">.</span><span class="n">scale</span> <span class="c1">// 缩放</span>
+</pre></div>
+
+
+<p>Transform的变换是应用在绘制阶段，所以无论对子组件应用何种变化，其占用空间的大小和在屏幕上的位置都是固定不变的。</p>
+<p>RotatedBox的变换是在layout阶段，会影响在子组件的位置和大小。</p>
+<p>组合类容器&nbsp;Container具备多种组件的功能</p>
+<div class="highlight"><pre><span></span><span class="n">Container</span><span class="p">(</span>
+  <span class="nl">margin:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20.0</span><span class="p">),</span> <span class="c1">//容器外补白</span>
+  <span class="nl">padding:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20.0</span><span class="p">),</span> <span class="c1">//容器内补白</span>
+  <span class="nl">constraints:</span> <span class="n">BoxConstraints</span><span class="p">.</span><span class="n">tightFor</span><span class="p">(</span><span class="nl">width:</span> <span class="m">200.0</span><span class="p">,</span> <span class="nl">height:</span> <span class="m">150.0</span><span class="p">),</span><span class="c1">//卡片大小</span>
+  <span class="nl">decoration:</span> <span class="n">BoxDecoration</span><span class="p">(...),</span> <span class="c1">//背景装饰</span>
+  <span class="nl">transform:</span> <span class="n">Matrix4</span><span class="p">.</span><span class="n">rotationZ</span><span class="p">(.</span><span class="m">2</span><span class="p">),</span> <span class="c1">//卡片倾斜变换</span>
+  <span class="nl">alignment:</span> <span class="n">Alignment</span><span class="p">.</span><span class="n">center</span><span class="p">,</span> <span class="c1">//卡片内文字居中</span>
+  <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;5.20&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>剪裁&nbsp;Clip</p>
+<div class="highlight"><pre><span></span><span class="n">ClipOval</span><span class="p">(</span><span class="nl">child:</span> <span class="n">avatar</span><span class="p">),</span> <span class="c1">//剪裁为圆形</span>
+<span class="n">ClipRRect</span><span class="p">(</span> <span class="c1">//剪裁为圆角矩形</span>
+  <span class="nl">borderRadius:</span> <span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">5.0</span><span class="p">),</span>
+  <span class="nl">child:</span> <span class="n">avatar</span><span class="p">,</span>
+<span class="p">),</span> 
+<span class="n">ClipRect</span>    <span class="c1">// 溢出部分剪裁</span>
+</pre></div>
+
+
+<p>Scaffold&nbsp;是一个路由页的骨架</p>
+<div class="highlight"><pre><span></span><span class="n">Scaffold</span><span class="p">(</span>
+  <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(),</span> <span class="c1">// 导航栏</span>
+  <span class="nl">drawer:</span> <span class="n">MyDrawer</span><span class="p">(),</span> <span class="c1">// 抽屉</span>
+  <span class="nl">bottomNavigationBar:</span> <span class="n">BottomNavigationBar</span><span class="p">(),</span> <span class="c1">// 底部导航</span>
+  <span class="nl">floatingActionButton:</span> <span class="n">FloatingActionButton</span><span class="p">(),</span>  <span class="c1">//悬浮按钮</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<h2>颜色和主题</h2>
+<p>color 使用的是 <span class="caps">ARGB</span>,&nbsp;前两位表示透明度</p>
+<div class="highlight"><pre><span></span><span class="c1">// RED</span>
+<span class="err">#</span><span class="n">ff0000</span> <span class="c1">// RGB</span>
+<span class="mh">0xffff0000</span> <span class="c1">// ARGB</span>
+</pre></div>
+
+
+<p>primarySwatch是主题颜色的一个&#8221;样本色&#8221;</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/ios.html">IOS</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "flutter-component.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
