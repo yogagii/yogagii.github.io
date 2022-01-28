@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-    <title>Frontend Learning Book</title>
+    <title>Frontend Learning Book - Articles by Yoga</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -34,9 +34,8 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">Javascript</span>: </h4>
+<h2>Articles by Yoga</h2>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/javascript.html">Javascript</a>
                 </section>
 
 
@@ -44,7 +43,7 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/bi-bao.html" rel="bookmark" title="Permalink to 闭包">闭包</a>
+			<a href="/shu-ju-lei-xing.html" rel="bookmark" title="Permalink to 数据类型">数据类型</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -54,23 +53,12 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><blockquote>
-<p>闭包：有权访问另一个函数作用域内变量的函数</p>
-</blockquote>
-<p>C++中函数中的局部变量仅在函数函数执行期间可用，执行完毕不能访问</p>
-<p>JS函数以及创建的词法环境形成闭包，环境包含闭包创建时所能访问的所有局部变量</p>
-<p>闭包有3个特性：
-1. 函数嵌套函数
-2. 函数内部可以引用函数外部的参数和变量
-3.&nbsp;参数和变量不会被垃圾回收机制回收</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">B</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A …</span></pre></div></div>
+	<div class="summary"><p>值类型(基本类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。</p>
+<p>引用数据类型：对象(Object)、数组(Array)、函数(Function)。</p>
+<p><img alt="datatype" src="img/datatype.png"></p>
+<p><em>JavaScript 拥有动态类型</em>,相同的变量可用作不同的类型</p>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">;</span>               <span class="o">//</span> <span class="n">x</span> <span class="err">为</span> <span class="n">undefined</span>
+<span class="n">var</span> <span class="n">x …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -112,7 +100,8 @@
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 1
+            <a href="/author/yoga8.html">&laquo;</a>
+    Page 9 / 9
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >

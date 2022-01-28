@@ -34,9 +34,9 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">Javascript</span>: </h4>
+<h4 class="content-archive">Articles tagged with <span style="color:rgb(0,102,204)">nest</span>: </h4>
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Tag: <a href="tag/javascript.html">Javascript</a>
+<a href="">Blog</a> ››Tag: <a href="tag/nest.html">nest</a>
                 </section>
 
 
@@ -44,68 +44,33 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/bi-bao.html" rel="bookmark" title="Permalink to 闭包">闭包</a>
+			<a href="/nestjs.html" rel="bookmark" title="Permalink to NestJS">NestJS</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			<abbr class="date" title="2022-01-18T00:00:00+08:00"> 
+				<a href="/archive/2022/ 1/index.html">二 18 一月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><blockquote>
-<p>闭包：有权访问另一个函数作用域内变量的函数</p>
-</blockquote>
-<p>C++中函数中的局部变量仅在函数函数执行期间可用，执行完毕不能访问</p>
-<p>JS函数以及创建的词法环境形成闭包，环境包含闭包创建时所能访问的所有局部变量</p>
-<p>闭包有3个特性：
-1. 函数嵌套函数
-2. 函数内部可以引用函数外部的参数和变量
-3.&nbsp;参数和变量不会被垃圾回收机制回收</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">B</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A …</span></pre></div></div>
+	<div class="summary"><h2>Overview</h2>
+<ol>
+<li>Nest深受Angular的影响，借鉴了NG的一些列前端设计思路，特别是其代码结构。让Angular易于开发大型前端的优势也发挥在Node服务器端。</li>
+<li>模块化：高度可测试，可扩展，松散耦合且易于维护</li>
+<li>nestjs直接对接ts类型系统</li>
+<li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
+</ol>
+<h2>Controllers</h2>
+<p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
+<h3>Response</h3>
+<p>返回object or&nbsp;array，自动序列化为JSON</p>
+<p>返回string，number，boolean，只发送值</p>
+<div class="highlight"><pre><span></span><span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/yuan-xing-lian.html" rel="bookmark" title="Permalink to 原型链">原型链</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>原型链：<span class="caps">JS</span> 万物皆对象，对象都有<em>proto </em>属性，<em>proto </em>连起来的链条，最终为&nbsp;null。</p>
-<h2>创建对象</h2>
-<p>1.工厂模式</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
-  <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
-  <span class="k">return</span> <span class="nx">o</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">)</span>
-<span class="nx">person1 …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />

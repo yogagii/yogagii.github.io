@@ -43,6 +43,91 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/apache-spark.html" rel="bookmark" title="Permalink to Apache Spark">Apache&nbsp;Spark</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-01-26T00:00:00+08:00"> 
+				<a href="/archive/2022/ 1/index.html">三 26 一月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Spark原理</h2>
+<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是UC Berkeley 开源的类Hadoop MapReduce的通用并行框架,&nbsp;专门用于大数据量下的迭代式计算。</p>
+<p>Spark 在多次运算的情况下是比较快的。因为 Hadoop 在一次 MapReduce 运算之后，会将数据的运算结果从内存写入到磁盘中，第二次运算时再从磁盘中读取数据，2次运算间有多余 <span class="caps">IO</span> 消耗；Spark&nbsp;则是将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘。 </p>
+<ol>
+<li>提供 Cache 机制来支持需要反复迭代计算或者多次数据共享,减少数据读取的 …</li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/scan-supply-chain-analytics.html" rel="bookmark" title="Permalink to SCAN — Supply Chain ANalytics"><span class="caps">SCAN</span> &#8212; Supply Chain&nbsp;ANalytics</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-01-20T00:00:00+08:00"> 
+				<a href="/archive/2022/ 1/index.html">四 20 一月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">SCAN</span></h2>
+<p><span class="caps">SCAN</span> stands for Supply Chain ANalytics. <span class="caps">SCAN</span> is an analytics program within Janssen Supply Chain. Our aim is to accelerate value delivery by providing analytics as a&nbsp;service. </p>
+<ul>
+<li>Capability …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/project.html">Project</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/nestjs.html" rel="bookmark" title="Permalink to NestJS">NestJS</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-01-18T00:00:00+08:00"> 
+				<a href="/archive/2022/ 1/index.html">二 18 一月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Overview</h2>
+<ol>
+<li>Nest深受Angular的影响，借鉴了NG的一些列前端设计思路，特别是其代码结构。让Angular易于开发大型前端的优势也发挥在Node服务器端。</li>
+<li>模块化：高度可测试，可扩展，松散耦合且易于维护</li>
+<li>nestjs直接对接ts类型系统</li>
+<li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
+</ol>
+<h2>Controllers</h2>
+<p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
+<h3>Response</h3>
+<p>返回object or&nbsp;array，自动序列化为JSON</p>
+<p>返回string，number，boolean，只发送值</p>
+<div class="highlight"><pre><span></span><span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/flutter-component.html" rel="bookmark" title="Permalink to Flutter Component">Flutter&nbsp;Component</a>
 		</h2>
 		<div class="post-info">
@@ -264,121 +349,9 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/li-jie-angular.html" rel="bookmark" title="Permalink to 理解Angular">理解Angular</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-11-29T00:00:00+08:00"> 
-				<a href="/archive/2021/11/index.html">一 29 十一月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>AngularJS</h2>
-<p>Angular 1是Google发布的第一个MVVM框架，以JavaScript文件形式发布的。 (Angular&nbsp;Seed)</p>
-<p>特点：</p>
-<ul>
-<li>实现响应式网页、双向数据绑定的Web应用，模板功能强大丰富</li>
-<li>双向绑定，脏检查，每次数据改变都会检查是否需要重新绑定</li>
-</ul>
-<p><img alt="angularjs" src="img/angularjs.png"></p>
-<h2>Angular</h2>
-<p>Angular2+是一个基于 TypeScript构建的开发平台，是一个比较完善的MVC框架。（Angular&nbsp;Cli）</p>
-<p>angular的核心是组件，react的核心是虚拟DOM</p>
-<p>特点：</p>
-<ul>
-<li>不默认进行脏检查</li>
-<li>在服务器端渲染 <span class="caps">SU</span></li>
-<li>推崇的是 directive 和 controller …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/angular.html">Angular</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/bing-fa-kong-zhi.html" rel="bookmark" title="Permalink to 并发控制">并发控制</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-11-19T00:00:00+08:00"> 
-				<a href="/archive/2021/11/index.html">五 19 十一月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>假设有 6 个待办任务要执行，而我们希望限制同时执行的任务个数，即最多只有 2 个任务能同时执行。当 正在执行任务列表 中的任何 1 个任务完成后，程序会自动从 待办任务列表 中获取新的待办任务并把该任务添加到&nbsp;正在执行任务列表中。</p>
-<h2>async-pool</h2>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">asyncPool</span><span class="p">(</span><span class="nx">poolLimit</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">iteratorFn</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>poolLimit（数字类型）：表示限制的并发数；</p>
-</li>
-<li>
-<p>array（数组类型）：表示任务数组；</p>
-</li>
-<li>
-<p>iteratorFn（函数类型 …</p></li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/di-gui.html" rel="bookmark" title="Permalink to 递归">递归</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-11-19T00:00:00+08:00"> 
-				<a href="/archive/2021/11/index.html">五 19 十一月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>斐波那契数列</h2>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>字符串全排列</h2>
-<p>重新排列一个字符串，使得每个相邻字符都不同，列出所有情况</p>
-<ul>
-<li>枚举采用全排列</li>
-<li>过滤相邻重复，正则表达式var re =&nbsp;/(.)\1+/g;</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// 全排列，result.length …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 8
+    Page 1 / 9
         <a href="/author/yoga2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -436,6 +409,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>

@@ -1,0 +1,406 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›Apache&nbsp;Spark
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Apache&nbsp;Spark</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-01-26T00:00:00+08:00"> 
+            <a href="/archive/2022/ 1/index.html">三 26 一月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Spark原理</h2>
+<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是UC Berkeley 开源的类Hadoop MapReduce的通用并行框架,&nbsp;专门用于大数据量下的迭代式计算。</p>
+<p>Spark 在多次运算的情况下是比较快的。因为 Hadoop 在一次 MapReduce 运算之后，会将数据的运算结果从内存写入到磁盘中，第二次运算时再从磁盘中读取数据，2次运算间有多余 <span class="caps">IO</span> 消耗；Spark&nbsp;则是将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘。 </p>
+<ol>
+<li>提供 Cache 机制来支持需要反复迭代计算或者多次数据共享,减少数据读取的 <span class="caps">IO</span>&nbsp;开销;</li>
+<li>提供了一套支持 <span class="caps">DAG</span> 图的分布式并行计算的编程框架,减少多次计算之间中间结果写到 Hdfs&nbsp;的开销;</li>
+<li>使用多线程池模型减少 Task 启动开稍, shuffle 过程中避免不必要的 sort 操作并减少磁盘 <span class="caps">IO</span>&nbsp;操作。</li>
+</ol>
+<p>Driver负责运行Application的main()函数并且创建SparkContext，根据shuffle类算子来进行stage的划分，将代码分拆为多个stage，并为每个stage创建一批Task，然后将这些Task分配到各个Executor进程中执行。一个stage的所有Task都执行完毕之后，会在各个节点本地的磁盘文件中写入计算中间结果，然后Driver就会调度运行下一个stage。下一个stage的Task的输入数据就是上一个stage输出的中间结果。</p>
+<h3><span class="caps">RDD</span></h3>
+<p>Resilent Distributed Datasets弹性分布式数据集，是 Spark&nbsp;底层的分布式存储的数据结构。数据不只存储在一台机器上，而是分布在多台机器上,实现数据计算的并行化，弹性表明数据丢失时可以进行重建。</p>
+<p><span class="caps">RDD</span> 是一种只读的数据块，当你对一个 <span class="caps">RDD</span> 进行了操作,那么结果将会是一个新的 <span class="caps">RDD</span>，<span class="caps">RDD</span> 里面的数据并不是真实的数据，而是一些元数据信息，记录了该 <span class="caps">RDD</span> 是通过哪些 Transformation 得到的。在计算机中使用 lineage 来表示这种血缘结构，lineage 形成一个有向无环图 <span class="caps">DAG</span>，整个计算过程中将不需要将中间结果落地到 <span class="caps">HDFS</span> 进行容错，某个节点出错，则只需要通过 lineage&nbsp;关系重新计算即可。</p>
+<p>RDD操作函数（operation）:</p>
+<p>类别 | 函数 | 区别
+| - | - | -
+Transformation | map, filter, groupBy, join, union, reduce, sort, partitionBy | 返回值还是RDD，不会马上提交Spark集群运行
+Action | count, collect, take, save, show |&nbsp;返回值不是RDD，会形成DAG提交Spark集群运行并立即返回结果</p>
+<p>Transformation 操作不是马上提交 Spark 集群执行的，在遇到 Transformation 操作时只会记录需要这样的操作，并不会去执行，需要等到有 Action 操作的时候才会真正启动计算过程进行计算。针对每个 Action，Spark 会生成一个 Job，从数据的创建开始，经过 Transformation，结尾是 Action 操作。这些操作对应形成一个有向无环图(<span class="caps">DAG</span>)，形成 <span class="caps">DAG</span>&nbsp;的先决条件是最后的函数操作是一个Action。</p>
+<h3>shuffle</h3>
+<blockquote>
+<p>shuffle 是划分 <span class="caps">DAG</span> 中 stage 的标识，同时影响 Spark 执行速度的关键步骤。shuffle 操作是 spark&nbsp;中最耗时的操作,应尽量避免不必要的shuffle.</p>
+</blockquote>
+<p>shuffle类算子：</p>
+<p>类别 | 函数 | 特点
+| - | - | -
+重分区 | repartition、repartitionAndSortWithinPartitions、coalesce(shuffle=true) | 对所有的分区数据进行随机均匀的打乱，把数据放入下游新的分区内
+聚合 | reduceByKey, groupByKey, aggregateByKey, combineByKey | 所有节点上的相同的key移动到同一个节点上
+集合/表间交互 | join, cogroup, intersection, subtract, subtractByKey, leftOuterJoin | 将相同join key的数据shuffle到同一个节点上
+排序 | sortBy, sortByKey |
+去重 |&nbsp;distinct</p>
+<p>Transformation 函数分为：
+* 窄依赖(narrow dependency)：不发生 shuffle 操作，指子 <span class="caps">RDD</span> 的各个分片(partition)不依赖于其他分片，能够独立计算得到结果
+* 宽依赖(wide dependency)：会发生 shuffle 操作，指子 <span class="caps">RDD</span> 的各个分片会依赖于父RDD 的多个分片，造成父 <span class="caps">RDD</span>&nbsp;的各个分片在集群中重新分片</p>
+<h3>性能优化 -&nbsp;Cache</h3>
+<p>每次对一个RDD执行一个算子操作时，都会重新从源头处计算一遍，计算出那个RDD来，然后再对这个RDD执行你的算子操作。 -》&nbsp;对多次使用的RDD进行持久化。</p>
+<p>如果程序从头到尾只有一个 Action 操作且子 <span class="caps">RDD</span> 只依赖于一个父RDD 的话，就不需要使用 cache 这个机制， <span class="caps">RDD</span> 会在内存中一直从头计算到尾,最后才根据你的 Action 操作返回一个值或者保存到相应的磁盘中。需要 cache 的是当存在多个 Action 操作或者依赖于多个 <span class="caps">RDD</span> 的时候,&nbsp;可以在那之前缓存RDD。</p>
+<p>原文：https://zhuanlan.zhihu.com/p/34436165</p>
+<hr>
+<h2>PySpark</h2>
+<p>PySpark is an interface for Apache Spark in&nbsp;Python.</p>
+<h3>pyspark.sql.SparkSession</h3>
+<ul>
+<li>Create a PySpark&nbsp;DataFrame</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+<span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">()</span>
+</pre></div>
+
+
+<h3>pyspark.sql.DataFrame</h3>
+<ul>
+<li>Viewing&nbsp;Data</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># collect + truncate转字符串</span>
+<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span> <span class="c1"># 全部</span>
+<span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 第一行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 最后一行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+</pre></div>
+
+
+<ul>
+<li>Selecting&nbsp;Data</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 选择列</span>
+<span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 选择行</span>
+</pre></div>
+
+
+<ul>
+<li>Grouping&nbsp;Data</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">avg</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># groupBy后面跟aggregation function: avg, max, min, mean, sum</span>
+
+<span class="k">def</span> <span class="nf">plus_mean</span><span class="p">(</span><span class="n">pandas_df</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">pandas_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="n">pandas_df</span><span class="o">.</span><span class="n">v1</span> <span class="o">-</span> <span class="n">pandas_df</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="c1"># pandas assign: 根据某个列进行计算得到一个新列</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">applyInPandas</span><span class="p">(</span><span class="n">plus_mean</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<ul>
+<li>创建或替换本地临时视图</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;people&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>toPandas</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">dfp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dfp</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>pyspark.sql.GroupedData</h3>
+<ul>
+<li>cogroup</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cogroup</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<h3>pyspark.sql.DataFrameWriter</h3>
+<h3>pyspark.sql.DataFrameReader</h3>
+<ul>
+<li>Getting Data&nbsp;in/out</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;foo.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;foo.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">jdbc</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">table</span><span class="o">=</span> <span class="s1">&#39;Onhand_Inventory&#39;</span><span class="p">,</span><span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Pandas</h2>
+<ul>
+<li>pandas.DataFrame.assign&nbsp;根据某个列进行计算得到一个新列</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">col3</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">col1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>pandas.merge_asof&nbsp;匹配最近的键而不是相等的键</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">asof_join</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>pandas.DataFrame.to_csv&nbsp;导出csv</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+   <span class="n">date</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2012-1-1 12:00:00&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)),</span>
+   <span class="n">country</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;KR&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;JP&#39;</span><span class="p">],</span>
+   <span class="n">code</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">]),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">])</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>pandas.DataFrame.merge</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;lkey&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;rkey&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>pandas.DataFrame.dropna</li>
+</ul>
+<p>Drop the rows where at least one element is&nbsp;missing.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Define in which columns to look for missing values.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;toy&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<ul>
+<li>pandas.DataFrame.astype</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="s1">&#39;int32&#39;</span><span class="p">})</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "apache-spark.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

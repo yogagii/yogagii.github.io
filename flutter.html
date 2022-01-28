@@ -236,6 +236,48 @@
 </pre></div>
 
 
+<h2>事件处理</h2>
+<p>一次完整的事件分为三个阶段：手指按下、手指移动、和手指抬起。</p>
+<p>事件处理流程：</p>
+<ol>
+<li>命中测试：当手指按下时，触发 PointerDownEvent 事件，按照深度优先遍历当前渲染（render object）树，对每一个渲染对象进行“命中测试”（hit test），如果命中测试通过，则该渲染对象会被添加到一个 HitTestResult&nbsp;列表当中。</li>
+<li>事件分发：命中测试完毕后，会遍历 HitTestResult 列表，调用每一个渲染对象的事件处理方法（handleEvent）来处理 PointerDownEvent 事件，该过程称为“事件分发”（event&nbsp;dispatch）。</li>
+<li>事件清理：当手指抬（ PointerUpEvent ）起或事件取消时（PointerCancelEvent），会先对相应的事件进行分发，分发完毕后会清空 HitTestResult&nbsp;列表。</li>
+</ol>
+<p>通过命中测试Hit Test的组件触发事件，事件会从最内部的组件被分发到组件树根的路径上的所有组件，和Web浏览器的事件冒泡机制相似，&nbsp;但是Flutter中没有机制取消或停止“冒泡”过程。</p>
+<div class="highlight"><pre><span></span><span class="n">Listener</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Container</span><span class="p">(...),</span>
+  <span class="nl">onPointerDown:</span> <span class="p">(</span><span class="n">PointerDownEvent</span> <span class="n">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span>
+  <span class="nl">onPointerMove:</span> <span class="p">(</span><span class="n">PointerMoveEvent</span> <span class="n">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span>
+  <span class="nl">onPointerUp:</span> <span class="p">(</span><span class="n">PointerUpEvent</span> <span class="n">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>IgnorePointer和AbsorbPointer，这两个组件都能阻止子树接收指针事件，不同之处在于AbsorbPointer本身会参与命中测试，而IgnorePointer本身不会参与</p>
+<h3>手势识别</h3>
+<div class="highlight"><pre><span></span><span class="n">GestureDetector</span><span class="p">(</span>
+  <span class="nl">child:</span> <span class="n">Container</span><span class="p">(...),</span>
+  <span class="nl">onTap:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//点击</span>
+  <span class="nl">onDoubleTap:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//双击</span>
+  <span class="nl">onLongPress:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//长按</span>
+  <span class="nl">onPanDown:</span> <span class="p">(</span><span class="n">DragDownDetails</span> <span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//手指按下</span>
+  <span class="nl">onPanUpdate:</span> <span class="p">(</span><span class="n">DragUpdateDetails</span> <span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//手指滑动</span>
+  <span class="nl">onPanEnd:</span> <span class="p">(</span><span class="n">DragEndDetails</span> <span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...</span> <span class="c1">//滑动结束</span>
+  <span class="nl">onVerticalDragUpdate:</span> <span class="p">(</span><span class="n">DragUpdateDetails</span> <span class="n">details</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//垂直方向拖动事件</span>
+  <span class="nl">onScaleUpdate:</span> <span class="p">(</span><span class="n">ScaleUpdateDetails</span> <span class="n">details</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">// 缩放</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">TextSpan</span><span class="p">(</span>
+  <span class="nl">text:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="nl">recognizer:</span> <span class="n">_tapGestureRecognizer</span>
+    <span class="p">..</span><span class="n">onTap</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span>
+<span class="p">)</span>
+</pre></div>
+
+
 <h2>包管理</h2>
 <p>pubspec.yaml</p>
 <div class="highlight"><pre><span></span><span class="nl">dependencies:</span>
@@ -327,6 +369,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>

@@ -42,6 +42,118 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/typescript.html" rel="bookmark" title="Permalink to TypeScript">TypeScript</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-01T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">三 01 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>interface <span class="caps">VS</span>&nbsp;type</h2>
+<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>拓展（extends）</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// interface extends interface</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">age</span>: <span class="kt">number</span>
+<span class="p">}</span>
+
+<span class="c1">// interface extends type</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">age …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/angular.html">Angular</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/angularying-yong.html" rel="bookmark" title="Permalink to Angular应用">Angular应用</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-11-29T00:00:00+08:00"> 
+				<a href="/archive/2021/11/index.html">一 29 十一月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>组件&nbsp;Components</h2>
+<p>带有 @Component() 装饰器的 TypeScript&nbsp;类</p>
+<p>@Component() 装饰器:
+* <span class="caps">CSS</span> 选择器 (&#8216;app-&#8216;+组件名称)
+* <span class="caps">HTML</span> 模板
+* 一组可选的 <span class="caps">CSS</span>&nbsp;样式</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-root&#39;</span><span class="p">,</span>
+  <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;./app.component.html …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/angular.html">Angular</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/li-jie-angular.html" rel="bookmark" title="Permalink to 理解Angular">理解Angular</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-11-29T00:00:00+08:00"> 
+				<a href="/archive/2021/11/index.html">一 29 十一月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>AngularJS</h2>
+<p>Angular 1是Google发布的第一个MVVM框架，以JavaScript文件形式发布的。 (Angular&nbsp;Seed)</p>
+<p>特点：</p>
+<ul>
+<li>实现响应式网页、双向数据绑定的Web应用，模板功能强大丰富</li>
+<li>双向绑定，脏检查，每次数据改变都会检查是否需要重新绑定</li>
+</ul>
+<p><img alt="angularjs" src="img/angularjs.png"></p>
+<h2>Angular</h2>
+<p>Angular2+是一个基于 TypeScript构建的开发平台，是一个比较完善的MVC框架。（Angular&nbsp;Cli）</p>
+<p>angular的核心是组件，react的核心是虚拟DOM</p>
+<p>特点：</p>
+<ul>
+<li>不默认进行脏检查</li>
+<li>在服务器端渲染 <span class="caps">SU</span></li>
+<li>推崇的是 directive 和 controller …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/angular.html">Angular</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/bing-fa-kong-zhi.html" rel="bookmark" title="Permalink to 并发控制">并发控制</a>
 		</h2>
 		<div class="post-info">
@@ -256,79 +368,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/amazon-cloudwatch.html" rel="bookmark" title="Permalink to Amazon CloudWatch">Amazon&nbsp;CloudWatch</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
-				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Amazon CloudWatch monitors your Amazon Web Services (<span class="caps">AWS</span>) resources and the applications you run on <span class="caps">AWS</span> in real&nbsp;time.</p>
-<p>End Goal: Keep an application log and a log of <span class="caps">API …</span></p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/blue-green-deployment.html" rel="bookmark" title="Permalink to Blue-Green Deployment">Blue-Green&nbsp;Deployment</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
-				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><blockquote>
-<p>Blue Green deployments is a technique for rapidly and repeatedly releasing changes to software in&nbsp;production.</p>
-</blockquote>
-<ol>
-<li>Go to <span class="caps">EC2</span> instances in <span class="caps">AWS</span> and rename environment (<span class="caps">EC2</span>(s) in which you …</li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/cuo-wu-zhong-shi-he-zhi-shu-tui-bi.html" rel="bookmark" title="Permalink to 错误重试和指数退避">错误重试和指数退避</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-08-19T00:00:00+08:00"> 
-				<a href="/archive/2021/ 8/index.html">四 19 八月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>Introduction</h3>
-<p>网络上的大量组件 (例如 <span class="caps">DNS</span> 服务器、交换机、负载均衡器等)&nbsp;都可能在某个指定请求生命周期中的任一环节出现问题。在联网环境中，处理这些错误回应的常规技术是在客户应用程序中实施重试。此技术可以提高应用程序的可靠性和降低开发人员的操作成本。</p>
-<p>Although Vital backend is a highly available system running on the highly available <span class="caps">AWS</span> infra, there are third-party <span class="caps">API …</span></p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/frontend.html">Frontend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index.html">&laquo;</a>
@@ -390,6 +429,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
