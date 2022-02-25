@@ -43,6 +43,40 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/typeorm.html" rel="bookmark" title="Permalink to TypeORM">TypeORM</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-02-15T00:00:00+08:00"> 
+				<a href="/archive/2022/ 2/index.html">二 15 二月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">ORM</span>（Object Relactional&nbsp;Mapping，对象关系映射）</h2>
+<p>ORM是一种解决面向对象与关系型数据库存在的互不匹配的现象的技术，实现面向对象技术和关系型数据库的一种映射。</p>
+<p>ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射。</p>
+<p>类&#8212;&#8212;&gt;表</p>
+<p>类的属性&#8212;&#8212;&#8212;-&gt;表中的字段</p>
+<p>类的对象&#8212;&#8212;&#8212;-&gt;表中的行</p>
+<h3>ORM框架：</h3>
+<ul>
+<li>
+<p>Sequelize：基于promise的关系型数据库ORM框架，这个库完全采用javascript并且能够用在Node.JS环境中，易于使用。支持关系型数据库（MySQL/<span class="caps">MSSQL</span>/PostgreSQL/SQLite）</p>
+</li>
+<li>
+<p>TypeORM：采用TypeScript编写的基于node.js的ORM框架，支持使用ts或js(<span class="caps">ES5 …</span></p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/apache-spark.html" rel="bookmark" title="Permalink to Apache Spark">Apache&nbsp;Spark</a>
 		</h2>
 		<div class="post-info">
@@ -111,12 +145,15 @@
 <li>nestjs直接对接ts类型系统</li>
 <li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
 </ol>
-<h2>Controllers</h2>
+<h2>Controllers&nbsp;控制器</h2>
 <p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
-<h3>Response</h3>
-<p>返回object or&nbsp;array，自动序列化为JSON</p>
-<p>返回string，number，boolean，只发送值</p>
-<div class="highlight"><pre><span></span><span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res …</span></pre></div></div>
+<blockquote>
+<p>$ nest g controller&nbsp;cats</p>
+</blockquote>
+<p><strong>Request:</strong></p>
+<ul>
+<li>@All() 用于处理所有 <span class="caps">HTTP</span>&nbsp;请求方法的处理程序</li>
+<li>@Get …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -317,38 +354,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/angularying-yong.html" rel="bookmark" title="Permalink to Angular应用">Angular应用</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-11-29T00:00:00+08:00"> 
-				<a href="/archive/2021/11/index.html">一 29 十一月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>组件&nbsp;Components</h2>
-<p>带有 @Component() 装饰器的 TypeScript&nbsp;类</p>
-<p>@Component() 装饰器:
-* <span class="caps">CSS</span> 选择器 (&#8216;app-&#8216;+组件名称)
-* <span class="caps">HTML</span> 模板
-* 一组可选的 <span class="caps">CSS</span>&nbsp;样式</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
-
-<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
-  <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-root&#39;</span><span class="p">,</span>
-  <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;./app.component.html …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/angular.html">Angular</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
     Page 1 / 9
@@ -410,6 +415,7 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -427,7 +433,6 @@
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

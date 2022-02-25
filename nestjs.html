@@ -69,24 +69,247 @@
 <li>nestjs直接对接ts类型系统</li>
 <li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
 </ol>
-<h2>Controllers</h2>
+<h2>Controllers&nbsp;控制器</h2>
 <p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
-<h3>Response</h3>
+<blockquote>
+<p>$ nest g controller&nbsp;cats</p>
+</blockquote>
+<p><strong>Request:</strong></p>
+<ul>
+<li>@All() 用于处理所有 <span class="caps">HTTP</span>&nbsp;请求方法的处理程序</li>
+<li>@Get()</li>
+<li>@Post()</li>
+<li>@Put()</li>
+<li>@Patch()</li>
+<li>@Delete()</li>
+<li>@Options()</li>
+<li>@Header(&#8216;Cache-Control&#8217;, &#8216;none&#8217;)&nbsp;指定自定义响应头</li>
+<li>@Redirect(&#8216;https://nestjs.com&#8217;, 301)&nbsp;重定向</li>
+</ul>
+<p>Param decorators:
+* @Request(), @Req()：@Req() 只是 @Request() 的别名
+* @Param(key?: string)
+* @Body(key?: string)
+* @Query(key?:&nbsp;string)</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Req</span><span class="p">,</span> <span class="nx">Param</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<span class="nx">findOne</span><span class="p">(</span><span class="err">@</span><span class="nx">Param</span><span class="p">()</span> <span class="nx">params</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span> <span class="c1">//@Param(&#39;id&#39;) id</span>
+  <span class="k">return</span> <span class="sb">`This action returns a #</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb"> cat`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">Post</span><span class="p">()</span>
+<span class="nx">async</span> <span class="nx">create</span><span class="p">(</span><span class="err">@</span><span class="nx">Body</span><span class="p">()</span> <span class="nx">createCatDto</span><span class="o">:</span> <span class="nx">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">&#39;This action adds a new cat&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><span class="caps">DTO</span>（数据传输对象）模式。DTO是一个对象，它定义了如何通过网络发送数据。</p>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="kr">class</span> <span class="nx">CreateCatDto</span> <span class="p">{</span>
+  <span class="nx">readonly</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+  <span class="nx">readonly</span> <span class="nx">age</span>: <span class="kt">number</span><span class="p">;</span>
+  <span class="nx">readonly</span> <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Response:</strong></p>
 <p>返回object or&nbsp;array，自动序列化为JSON</p>
 <p>返回string，number，boolean，只发送值</p>
-<div class="highlight"><pre><span></span><span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res</span><span class="p">()</span> <span class="nx">response</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Response</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+
+<span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res</span><span class="p">()</span> <span class="nx">response</span><span class="p">){</span>
   <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">()</span>
 <span class="p">})</span>
 </pre></div>
 
 
-<h3>Request</h3>
 <ul>
-<li>@Request(), @Req()：@Res() 只是 @Response()&nbsp;的别名</li>
-<li>@Param(key?:&nbsp;string)</li>
-<li>@Body(key?:&nbsp;string)</li>
-<li>@Query(key?:&nbsp;string)</li>
+<li>
+<p>@Response()，@Res()必须通过调用 response 对象（res.json(…) 或 res.send(…)）发出某种响应，否则 <span class="caps">HTTP</span>&nbsp;服务器将挂起。</p>
+</li>
+<li>
+<p>@HttpCode() 响应的状态码总是默认为 200，除了 <span class="caps">POST</span> 请求（默认响应状态码为&nbsp;201）</p>
+</li>
 </ul>
+<p>异步</p>
+<div class="highlight"><pre><span></span><span class="nx">async</span> <span class="nx">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Providers&nbsp;提供者</h2>
+<p>Provider 只是一个用 @Injectable()&nbsp;装饰器注释的类。</p>
+<blockquote>
+<p>$ nest g service&nbsp;cats</p>
+</blockquote>
+<p><strong>依赖注入</strong></p>
+<p>Nest 将 catsService 通过创建并返回一个实例来解析&nbsp;CatsService，解析此依赖关系并将其传递给控制器的构造函数，实现数据共享</p>
+<div class="highlight"><pre><span></span><span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">readonly</span> <span class="nx">catsService</span>: <span class="kt">CatsService</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+
+
+<p>Provider 通常具有与应用程序生命周期同步的生命周期（“作用域”）。在启动应用程序时，必须解析每个依赖项，因此必须实例化每个提供程序。同样，当应用程序关闭时，每个 provider&nbsp;都将被销毁。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span> <span class="c1">// 类装饰器：基于构造函数的注入</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">HttpService</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">@Inject</span><span class="p">(</span><span class="s1">&#39;HTTP_OPTIONS&#39;</span><span class="p">)</span> <span class="c1">// 属性装饰器：基于属性的注入</span>
+  <span class="kr">private</span> <span class="nx">readonly</span> <span class="nx">httpClient</span>: <span class="kt">T</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">// app.module.ts</span>
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span> <span class="c1">// 服务的使用者</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span> <span class="c1">// 服务的提供者</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<h2>Modules&nbsp;模块</h2>
+<p>模块是具有 @Module() 装饰器的类。 @Module() 装饰器提供了元数据，Nest&nbsp;用它来组织应用程序结构。</p>
+<p>每个 Nest 应用程序至少有一个模块，即根模块。根模块是 Nest&nbsp;开始安排应用程序树的地方，根模块可能是应用程序中唯一的模块.</p>
+<div class="highlight"><pre><span></span><span class="c1">// app.module.ts</span>
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppController</span><span class="p">,</span> <span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppService</span><span class="p">,</span> <span class="nx">CatsService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</pre></div>
+
+
+<blockquote>
+<p>$ nest g module&nbsp;cats</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="c1">// cats.module.ts</span>
+<span class="c1">// @Global() // 全局模块，不需要在 imports 数组中导入</span>
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+  <span class="c1">// exports: [CatsService], // 每个导入CatsModule的模块都可以访问CatsService，共享相同的CatsService实例</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsModule</span> <span class="p">{}</span>
+
+<span class="c1">// app.module.ts</span>
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</pre></div>
+
+
+<h2>Middleware&nbsp;中间件</h2>
+<p>Nest 中间件等价于 express&nbsp;中间件</p>
+<ul>
+<li>对请求和响应对象进行更改。</li>
+<li>调用堆栈中的下一个中间件函数。</li>
+<li>如果当前的中间件函数没有结束请求-响应周期, 它必须调用 next() 将控制传递给下一个中间件函数。否则,&nbsp;请求将被挂起。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// app.module.ts</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="kr">implements</span> <span class="nx">NestModule</span> <span class="p">{</span>
+  <span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span>: <span class="kt">MiddlewareConsumer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">consumer</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">exclude</span><span class="p">(</span>
+      <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="nx">method</span>: <span class="kt">RequestMethod.GET</span> <span class="p">},</span>
+      <span class="s1">&#39;cats/(.*)&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>forRoutes()&nbsp;可接受一个字符串、多个字符串、对象、一个控制器类甚至多个控制器类(逗号分隔)。</p>
+<div class="highlight"><pre><span></span><span class="c1">// main.ts</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">logger</span><span class="p">);</span> <span class="c1">// 绑定到每个注册路由</span>
+</pre></div>
+
+
+<h2>Exception filters&nbsp;异常过滤器</h2>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">ForbiddenException</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kd">@Get</span><span class="p">()</span>
+<span class="nx">async</span> <span class="nx">findAll() {</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nx">ForbiddenException</span><span class="p">();</span> <span class="c1">// 内置异常</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nx">HttpException</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span> <span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span> <span class="c1">// 基础异常类</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nx">HttpException</span><span class="p">({</span>
+    <span class="nx">status</span>: <span class="kt">HttpStatus.FORBIDDEN</span><span class="p">,</span>  <span class="c1">// 403</span>
+    <span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;This is a custom message&#39;</span><span class="p">,</span>
+  <span class="p">},</span> <span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>绑定过滤器</p>
+<div class="highlight"><pre><span></span><span class="kd">@UseFilters</span><span class="p">(</span><span class="k">new</span> <span class="nx">HttpExceptionFilter</span><span class="p">())</span>  <span class="c1">// 实例</span>
+<span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span> <span class="c1">// 类</span>
+</pre></div>
+
+
+<blockquote>
+<p>尽可能使用类而不是实例。由于 Nest&nbsp;可以轻松地在整个模块中重复使用同一类的实例，因此可以减少内存使用。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="c1">// main.ts</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="k">new</span> <span class="nx">HttpExceptionFilter</span><span class="p">());</span> <span class="c1">// 全局范围的过滤器</span>
+</pre></div>
+
+
+<h2>Task Scheduling&nbsp;定时任务</h2>
+<ul>
+<li>计时工作(cron&nbsp;job)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">@Cron</span><span class="p">(</span><span class="s1">&#39;45 * * * * *&#39;</span><span class="p">)</span> <span class="c1">// 该方法每分钟执行一次，在第 45 秒执行。</span>
+<span class="nx">handleCron() {</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called when the current second is 45&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>* * * * * *
+<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span>
+<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> day of week
+<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> month
+<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> day of month
+<span class="p">|</span> <span class="p">|</span> hour
+<span class="p">|</span> minute
+second <span class="o">(</span>optional<span class="o">)</span>
+</pre></div>
+
+
+<p>stop()-停止一个按调度运行的任务</p>
+<p>start()-重启一个停止的任务</p>
+<p>setTime(time:CronTime)-停止一个任务，为它设置一个新的时间，然后再启动它</p>
+<p>lastDate()-返回一个表示工作最后执行日期的字符串</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">job</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schedulerRegistry</span><span class="p">.</span><span class="nx">getCronJob</span><span class="p">(</span><span class="s1">&#39;notifications&#39;</span><span class="p">);</span>
+
+<span class="nx">job</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">job</span><span class="p">.</span><span class="nx">lastDate</span><span class="p">());</span>
+</pre></div>
+
+
+<ul>
+<li>间隔（Interval）</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">@Interval</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="nx">handleInterval() {</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called every 10 seconds&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>延时任务（Timeout）</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">@Timeout</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+<span class="nx">handleTimeout() {</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called once after 5 seconds&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -169,6 +392,7 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -186,7 +410,6 @@
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

@@ -134,6 +134,7 @@
 
 
 <p>原文链接：https://juejin.im/post/5c2723635188252d1d34dc7d#heading-11</p>
+<hr>
 <h2>装饰器&nbsp;Decorators</h2>
 <p>随着 TypeScript 和 <span class="caps">ES6</span> 里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。&nbsp;装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。</p>
 <p>在命令行或 tsconfig.json 里启用 experimentalDecorators&nbsp;编译器选项：</p>
@@ -238,6 +239,45 @@
   <span class="nx">greet</span><span class="p">(</span><span class="kd">@required</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">}</span>
 </pre></div>
+
+
+<hr>
+<h2>依赖注入</h2>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">class</span> <span class="nx">A</span> <span class="p">{</span>
+  <span class="kr">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">;</span>
+  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类需要修改A类</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// main</span>
+<span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+</pre></div>
+
+
+<p><strong>依赖注入（<span class="caps">DI</span>）</strong>：&nbsp;通过A的构造函数将B的实例注入</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">class</span> <span class="nx">A</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// main</span>
+<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类只需要修改主程序即可</span>
+<span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 将B的实例注入到a中</span>
+</pre></div>
+
+
+<p>解决问题
+1. 通过往构造函数中传入b来创建a，A类不再亲自创建b，而是消费它们，此时最大的好处就是B与A解除了强耦的关系。如果有一天对B进行升级，在创建B的时候需要传入一个参数，这时候不需要修改A类，只需要修改主程序即可
+2. 在new A的时候，可以传入任何类型的b。export class B1 extends B
+3. 实现数据共享。如果是通过在A里new Service的方式，是无法实现数据共享和通信的，因为不同A里的Service不是同一个实例。
+4.&nbsp;测试用例</p>
+<p><strong>控制反转（<span class="caps">IOC</span>）</strong>：类A依赖类B，但A不控制B的创建和销毁，仅使用B，那么B的控制权则交给A之外处理</p>
+<p><strong><span class="caps">IOC</span> Container（容器）</strong>：IOC容器负责管理对象的生命周期、依赖关系等，实现对象的依赖查找以及依赖注入（NestJS&nbsp;运行时系统，Angular框架的依赖注入器）</p>
+<p>链接：https://www.jianshu.com/p/89249a3da84e</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -320,6 +360,7 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -337,7 +378,6 @@
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

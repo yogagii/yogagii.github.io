@@ -42,6 +42,36 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/redux.html" rel="bookmark" title="Permalink to Redux">Redux</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-08-24T00:00:00+08:00"> 
+				<a href="/archive/2019/ 8/index.html">六 24 八月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Redux与其他的Flux实现相比更简单，一个Redux应用中Store是唯一的，这样的限定能够使应用中的数据结果集中化，提高了可控性，同时又通过引入Reducer机制巧妙地解决单一Store的限制问题，达到了与使用多个Store同样的效果。</p>
+<p>Redux主要由Action、Reducer及Store三部分组成。Action用来表达操作，Reducer根据Action更新state。</p>
+<p>Redux vs&nbsp;Flux:</p>
+<ul>
+<li>
+<p>Redux中只有一个全局Store，Flux里则可以有多个Store。Flux在Store里执行更新逻辑，当Store变化的时候通知Controller&nbsp;view。而Redux将各个Store整合成一个完整的Store，更新逻辑由Reducer处理。</p>
+</li>
+<li>
+<p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State …</p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/frontend.html">Frontend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-in-es6.html" rel="bookmark" title="Permalink to React in ES6">React in <span class="caps">ES6</span></a>
 		</h2>
 		<div class="post-info">
@@ -385,36 +415,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>1.&nbsp;虚拟Dom</h3>
-<hr>
-<p>浏览器DOM是由HtmlElement元素组成的树，虚拟DOM是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个DOM树，自动计算与上次虚拟DOM的差异变化，然后针对需要变化的部分进行实际的浏览器DOM更新，从而提高性能。</p>
-<p><em>在文本框中输入任意文本，在禁止文本框，可以发现文本框中原来输入的文本并没有消失，说明React并没有重新渲染input，只是更改了input属性值，这正是react差异对比、局部刷新的特性体现。</em></p>
-<blockquote>
-<p>虚拟DOM-&gt;真实DOM: react-dom <br> 虚拟DOM-&gt;移动APP:&nbsp;react-native</p>
-</blockquote>
-<p>将一棵树形结构转换成另一棵树形结构传统最优算法的复杂度是O(n3)。</p>
-<p>试探法：通过给子级组件设定唯一的键值，React就能够检测出节点插入、移除和替换，并且借助哈希表使节点移动复杂度变为O(n)。键值只需要在兄弟节点中唯一即可 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index7.html">&laquo;</a>
@@ -477,6 +477,7 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -494,7 +495,6 @@
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

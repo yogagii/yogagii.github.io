@@ -1,10 +1,10 @@
 <!--
  * @Author: your name
  * @Date: 2013-11-02 09:09:18
- * @LastEditTime: 2019-12-29 17:31:27
- * @LastEditors: your name
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/category.html
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
  -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -42,79 +42,149 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-<!-- <h4 class="content-archive">Articles in the <span style="color:rgb(0,102,204)">Programming</span> category</h4> -->
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ››Category: <a href="category/programming.html">Programming</a>
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›TypeORM
                 </section>
 
 
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >TypeORM</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-02-15T00:00:00+08:00"> 
+            <a href="/archive/2022/ 2/index.html">二 15 二月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/nest.html">nest</a>
+                <a href="/tag/database.html">database</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2><span class="caps">ORM</span>（Object Relactional&nbsp;Mapping，对象关系映射）</h2>
+<p>ORM是一种解决面向对象与关系型数据库存在的互不匹配的现象的技术，实现面向对象技术和关系型数据库的一种映射。</p>
+<p>ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射。</p>
+<p>类&#8212;&#8212;&gt;表</p>
+<p>类的属性&#8212;&#8212;&#8212;-&gt;表中的字段</p>
+<p>类的对象&#8212;&#8212;&#8212;-&gt;表中的行</p>
+<h3>ORM框架：</h3>
 <ul>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/markdownyu-fa-jie-shao.html" rel="bookmark" title="Permalink to Markdown语法介绍">Markdown语法介绍</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T21:14:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>这篇文章介绍Markdown的语法，包括标题、引用、列表、代码、强调、链接、表格、分割线、图片</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
 <li>
-<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
+<p>Sequelize：基于promise的关系型数据库ORM框架，这个库完全采用javascript并且能够用在Node.JS环境中，易于使用。支持关系型数据库（MySQL/<span class="caps">MSSQL</span>/PostgreSQL/SQLite）</p>
 </li>
 <li>
-<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
+<p>TypeORM：采用TypeScript编写的基于node.js的ORM框架，支持使用ts或js(<span class="caps">ES5</span>,<span class="caps">ES6</span>,<span class="caps">ES7</span>)开发。 支持数据库：mysql <span class="amp">&amp;</span>&nbsp;mariadb、postgresql、sqlite、sqlserver和oracle</p>
 </li>
-</ol>
-<h2>在首次使用Git前需要进行一些简单的配置:</h2>
-<ul>
-<li>设置提交中使用的用户名: </li>
+<li>
+<p>Bookshelf：基于knex的ORM框架</p>
+</li>
+<li>
+<p>Waterline：Sails框架衍生出来的ORM框架</p>
+</li>
+<li>
+<p>Mongoose：仅支持&nbsp;MongoDB</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
+<h2>Nest 集成&nbsp;TypeORM</h2>
+<p>为了与 SQL和 NoSQL 数据库集成，Nest 提供了 @nestjs/typeorm 包。Nest 使用TypeORM是因为它是 TypeScript 中最成熟的对象关系映射器( <span class="caps">ORM</span>&nbsp;)。</p>
+<ul>
+<li>forRoot:&nbsp;createConnection</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+  <span class="nx">host</span>: <span class="kt">config.host</span><span class="p">,</span>
+  <span class="nx">port</span>: <span class="kt">3306</span><span class="p">,</span>
+  <span class="nx">username</span>: <span class="kt">config.username</span><span class="p">,</span>
+  <span class="nx">password</span>: <span class="kt">config.password</span><span class="p">,</span>
+  <span class="nx">database</span>: <span class="kt">config.database</span><span class="p">,</span>
+  <span class="nx">entityPrefix</span>: <span class="kt">options?.entityPrefix</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="nx">entities</span><span class="p">,</span>
+  <span class="nx">synchronize</span>: <span class="kt">config.synchronize</span><span class="p">,</span>
+  <span class="nx">ssl</span>: <span class="kt">config.ssl</span>
+    <span class="o">?</span> <span class="p">{</span>
+        <span class="nx">rejectUnauthorized</span>: <span class="kt">true</span><span class="p">,</span>
+        <span class="nx">ca</span>: <span class="kt">readFileSync</span><span class="p">(</span>
+          <span class="nx">join</span><span class="p">(</span><span class="nx">resolve</span><span class="p">(),</span> <span class="s1">&#39;private/DigiCertGlobalRootCA.crt.pem&#39;</span><span class="p">),</span>
+        <span class="p">),</span>
+      <span class="p">}</span>
+    <span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+  <span class="nx">name</span>: <span class="kt">options?.name</span><span class="p">,</span>
+<span class="p">})</span>
 </pre></div>
 
 
+<p><em>踩坑：</em></p>
+<p>DBeaver配置:</p>
+<p><span class="caps">SSL</span> -&gt; <span class="caps">CA</span> certificate -&gt;&nbsp;选择文件</p>
+<p>驱动属性 -&gt; enabledTLSProtocols:&nbsp;TLSv1,TLSv1.1,TLSv1.2</p>
+<p>(&#8220;<span class="caps">TLS</span> version used does not meet minimal requirements for this&nbsp;server&#8221;)</p>
+<p>(Client with <span class="caps">IP</span> address &#8216;199.65.xxx.xxx&#8217; is not allowed to connect to this MySQL&nbsp;server.)</p>
 <ul>
-<li>设置提交中使用的邮件地址 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
+<li>forFeature: 定义在当前范围中注册哪些存储库。这样，我们就可以使用 @InjectRepository()装饰器将 UsersRepository 注入到 UsersService&nbsp;中</li>
 </ul>
-<p class="paginator">
-            <a href="/category/programming.html">&laquo;</a>
-    Page 2 / 2
-</p>
+<div class="highlight"><pre><span></span><span class="c1">// users.module.ts</span>
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forFeature</span><span class="p">([</span><span class="nx">User</span><span class="p">])],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UsersService</span><span class="p">],</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UsersController</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="c1">// users.service.ts</span>
+<span class="kr">constructor</span><span class="p">(</span>
+  <span class="kd">@InjectRepository</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span>
+  <span class="kr">private</span> <span class="nx">usersRepository</span>: <span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+
+
+<p>装饰器 | description | extr
+| - | - | -
+@Column | 添加表列 | @Column({ length: 100 })
+@PrimaryColumn | 创建主列 | 每个实体必须至少有一个主键列
+@PrimaryGeneratedColumn | 自动生成的列&nbsp;|</p>
+<h3>QueryBuilder</h3>
+<p>使用 QueryBuilder 构建几乎任何复杂性的 <span class="caps">SQL</span>&nbsp;查询</p>
+<div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
+  <span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">leftJoinAndSelect</span><span class="p">(</span><span class="nx">bc_r_hospital</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">,</span> <span class="s1">&#39;user.hospital_id = hp.id&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">select</span><span class="p">(</span>
+    <span class="sb">`</span>
+<span class="sb">    user.id,</span>
+<span class="sb">    user.real_name,</span>
+<span class="sb">    hp.ecode,</span>
+<span class="sb">    hp.ename  // 踩坑：报错信息不会告诉你此处不能有，</span>
+<span class="sb">  `</span><span class="p">,</span>
+  <span class="p">)</span>
+  <span class="p">.</span><span class="nx">getRawMany</span><span class="p">(),</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "typeorm.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--
@@ -154,44 +224,6 @@
                         </li>
                         <li>
                           <a href="/category/programming.html" >Programming</a>
-                            <ul>
-                                <li>
-                                  <a href="/makezong-jie.html">Make总结</a>
-                                </li>
-                                <li>
-                                  <a href="/c4-model-for-visualising-software-architecture.html">C4 model for visualising software&nbsp;architecture</a>
-                                </li>
-                                <li>
-                                  <a href="/technical-debt.html">Technical&nbsp;Debt</a>
-                                </li>
-                                <li>
-                                  <a href="/cicd-pipeline-setup.html"><span class="caps">CI</span>/<span class="caps">CD</span> Pipeline&nbsp;Setup</a>
-                                </li>
-                                <li>
-                                  <a href="/feature-toggle.html">Feature&nbsp;Toggle</a>
-                                </li>
-                                <li>
-                                  <a href="/blue-green-deployment.html">Blue-Green&nbsp;Deployment</a>
-                                </li>
-                                <li>
-                                  <a href="/jenkinsbu-shu.html">Jenkins部署</a>
-                                </li>
-                                <li>
-                                  <a href="/some-concept.html">Some&nbsp;Concept</a>
-                                </li>
-                                <li>
-                                  <a href="/she-ji-mo-shi.html">设计模式</a>
-                                </li>
-                                <li>
-                                  <a href="/pelican-blogda-jian.html">pelican&nbsp;blog搭建</a>
-                                </li>
-                                <li>
-                                  <a href="/markdownyu-fa-jie-shao.html">Markdown语法介绍</a>
-                                </li>
-                                <li>
-                                  <a href="/gitming-ling-zheng-li.html">Git命令整理</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                           <a href="/category/project.html" >Project</a>

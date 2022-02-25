@@ -46,8 +46,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-01-28T14:33:00+08:00"> 
-				<a href="/archive/2022/ 1/index.html">五 28 一月 2022 </a>
+			<abbr class="date" title="2022-02-25T14:33:00+08:00"> 
+				<a href="/archive/2022/ 2/index.html">五 25 二月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -86,8 +86,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-01-28T14:33:00+08:00"> 
-				<a href="/archive/2022/ 1/index.html">五 28 一月 2022 </a>
+			<abbr class="date" title="2022-02-25T14:33:00+08:00"> 
+				<a href="/archive/2022/ 2/index.html">五 25 二月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -111,6 +111,40 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/typeorm.html" rel="bookmark" title="Permalink to TypeORM">TypeORM</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-02-15T00:00:00+08:00"> 
+				<a href="/archive/2022/ 2/index.html">二 15 二月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">ORM</span>（Object Relactional&nbsp;Mapping，对象关系映射）</h2>
+<p>ORM是一种解决面向对象与关系型数据库存在的互不匹配的现象的技术，实现面向对象技术和关系型数据库的一种映射。</p>
+<p>ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射。</p>
+<p>类&#8212;&#8212;&gt;表</p>
+<p>类的属性&#8212;&#8212;&#8212;-&gt;表中的字段</p>
+<p>类的对象&#8212;&#8212;&#8212;-&gt;表中的行</p>
+<h3>ORM框架：</h3>
+<ul>
+<li>
+<p>Sequelize：基于promise的关系型数据库ORM框架，这个库完全采用javascript并且能够用在Node.JS环境中，易于使用。支持关系型数据库（MySQL/<span class="caps">MSSQL</span>/PostgreSQL/SQLite）</p>
+</li>
+<li>
+<p>TypeORM：采用TypeScript编写的基于node.js的ORM框架，支持使用ts或js(<span class="caps">ES5 …</span></p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -186,12 +220,15 @@
 <li>nestjs直接对接ts类型系统</li>
 <li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
 </ol>
-<h2>Controllers</h2>
+<h2>Controllers&nbsp;控制器</h2>
 <p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
-<h3>Response</h3>
-<p>返回object or&nbsp;array，自动序列化为JSON</p>
-<p>返回string，number，boolean，只发送值</p>
-<div class="highlight"><pre><span></span><span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res …</span></pre></div></div>
+<blockquote>
+<p>$ nest g controller&nbsp;cats</p>
+</blockquote>
+<p><strong>Request:</strong></p>
+<ul>
+<li>@All() 用于处理所有 <span class="caps">HTTP</span>&nbsp;请求方法的处理程序</li>
+<li>@Get …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -323,32 +360,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/flutter-startup.html" rel="bookmark" title="Permalink to Flutter Startup">Flutter&nbsp;Startup</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-12-20T00:00:00+08:00"> 
-				<a href="/archive/2021/12/index.html">一 20 十二月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>安装Flutter on&nbsp;macOS</h2>
-<ul>
-<li>升级 macOS to Big&nbsp;Sur</li>
-</ul>
-<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS 7.2, and …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/ios.html">IOS</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
     Page 1 / 10
@@ -410,6 +421,7 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -427,7 +439,6 @@
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>
