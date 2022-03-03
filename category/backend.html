@@ -129,15 +129,7 @@
 <li>nestjs直接对接ts类型系统</li>
 <li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
 </ol>
-<h2>Controllers&nbsp;控制器</h2>
-<p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
-<blockquote>
-<p>$ nest g controller&nbsp;cats</p>
-</blockquote>
-<p><strong>Request:</strong></p>
-<ul>
-<li>@All() 用于处理所有 <span class="caps">HTTP</span>&nbsp;请求方法的处理程序</li>
-<li>@Get …</li></ul></div>
+<p>A nestjs template that contains basic functions (typeorm, task, email, unit test):&nbsp;https://github.com/yogagii/nest_startup …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -331,8 +323,8 @@
 <p>单元测试是检测一小段代码的良好实践，典型的单元测试是测试独立的function，要保证这个测试是单独孤立的。如果你写的测试用了外部的资源，比如网络或者数据库，它就不是一个单元测试。</p>
 <h3>集成测试 Integration&nbsp;Testing</h3>
 <p>集成测试想要测试的是这个系统的各个部分在一起合作的如何－将各个代码块集成在一起。当你需要验证两个不同的系统是否在一起正常的通信和正常运转，比如你的应用程序和数据库是否集成正确，运转正常，这个时候就需要集成测试了。结果是，当验证集成测试结果时，你通过写数据库连接语句检查数据库状态是否正常而顺便做了数据库连接测试。</p>
-<p>https://blog.csdn.net/aajx90520/article/details/101658973</p>
-<p>sails-disk …</p></div>
+<h3>功能测试/端到端测试 Functional testing / <span class="caps">E2E</span> testing / browser&nbsp;testing</h3>
+<p>测试应用程序的全部的完整的功能 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
