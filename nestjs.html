@@ -260,6 +260,55 @@
 </pre></div>
 
 
+<h2>Pipes&nbsp;管道</h2>
+<p>管道有两个类型:</p>
+<ul>
+<li>转换：管道将输入数据转换为所需的数据输出</li>
+<li>验证：对输入数据进行验证，如果验证成功继续传递;&nbsp;验证失败则抛出异常;</li>
+</ul>
+<p>Nest&nbsp;自带八个开箱即用的管道:</p>
+<ul>
+<li>ValidationPipe</li>
+<li>ParseIntPipe</li>
+<li>ParseBoolPipe</li>
+<li>ParseArrayPipe</li>
+<li>ParseUUIDPipe</li>
+<li>DefaultValuePipe</li>
+<li>ParseEnumPipe</li>
+<li>ParseFloatPipe</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">@Post</span><span class="p">()</span>
+<span class="kd">@UsePipes</span><span class="p">(</span><span class="nx">ValidationPipe</span><span class="p">)</span>
+<span class="nx">async</span> <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Guards&nbsp;守卫</h2>
+<p>守卫的责任：授权 &#8212;&nbsp;根据运行时出现的某些条件（例如权限，角色，访问控制列表等）来确定给定的请求是否由路由处理程序处理。</p>
+<p>在 Express 中通常由中间件处理授权、验证身份。中间件不知道调用 next() 函数后会执行哪个处理程序。然而守卫可以访问 ExecutionContext&nbsp;实例，因此确切地知道接下来要执行什么。</p>
+<blockquote>
+<p>守卫在每个中间件之后执行，但在任何拦截器或管道之前执行。</p>
+</blockquote>
+<p>每个守卫必须实现一个canActivate()函数。此函数应该返回一个布尔值，指示是否允许当前请求。</p>
+<div class="highlight"><pre><span></span><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
+<span class="kd">@UseGuards</span><span class="p">(</span><span class="nx">RolesGuard</span><span class="p">)</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsController</span> <span class="p">{</span>
+  <span class="kd">@Post</span><span class="p">()</span>
+  <span class="kd">@Roles</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+  <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Nest提供了通过 @SetMetadata()&nbsp;装饰器将定制元数据附加到路由处理程序的能力。</p>
+<div class="highlight"><pre><span></span><span class="kd">@SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">])</span>
+</pre></div>
+
+
 <h2>Task Scheduling&nbsp;定时任务</h2>
 <ul>
 <li>计时工作(cron&nbsp;job)</li>

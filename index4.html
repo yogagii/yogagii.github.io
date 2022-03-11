@@ -354,11 +354,13 @@
 
 <p>登录&nbsp;mysql</p>
 <div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl-mode-required</span>
 </pre></div>
 
 
 <p>退出&nbsp;mysql</p>
-<div class="highlight"><pre><span></span><span class="k">exit</span>
+<div class="highlight"><pre><span></span><span class="n">exit</span>
 </pre></div>
 
 
@@ -368,22 +370,7 @@
 
 
 <p>查看当前的数据库</p>
-<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">databases</span><span class="p">;</span>
-</pre></div>
-
-
-<p>删除数据库</p>
-<div class="highlight"><pre><span></span><span class="k">drop</span> <span class="k">database</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
-</pre></div>
-
-
-<p>选择数据库</p>
-<div class="highlight"><pre><span></span><span class="n">use</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
-</pre></div>
-
-
-<p>创建数据表</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE …</span></pre></div></div>
+<div class="highlight"><pre><span></span><span class="k">show …</span></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">

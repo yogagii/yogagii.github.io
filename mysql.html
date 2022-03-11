@@ -70,11 +70,13 @@
 
 <p>登录&nbsp;mysql</p>
 <div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl</span>
+<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl-mode-required</span>
 </pre></div>
 
 
 <p>退出&nbsp;mysql</p>
-<div class="highlight"><pre><span></span><span class="k">exit</span>
+<div class="highlight"><pre><span></span><span class="n">exit</span>
 </pre></div>
 
 
@@ -113,6 +115,11 @@
 
 <p>显示当前数据库的表单</p>
 <div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">tables</span>
+</pre></div>
+
+
+<p>显示表结构</p>
+<div class="highlight"><pre><span></span><span class="k">desc</span> <span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span>
 </pre></div>
 
 
