@@ -1,0 +1,528 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›<span class="caps">JAVA</span>&nbsp;Grammer
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">JAVA</span>&nbsp;Grammer</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-04-03T00:00:00+08:00"> 
+            <a href="/archive/2022/ 4/index.html">日 03 四月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/java.html">Java</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>变量</h2>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span> <span class="c1">// 重新赋值不能再重复定义</span>
+</pre></div>
+
+
+<h3>基本类型：</h3>
+<ul>
+<li>整数类型：byte，short，int，long</li>
+<li>浮点数类型：float，double</li>
+<li>字符类型：char</li>
+<li>布尔类型：boolean</li>
+</ul>
+<h3>引用类型：</h3>
+<ul>
+<li>String</li>
+</ul>
+<p>toUpperCase, equals, contains, indexOf, lastIndexOf, startsWith, endsWith, substring, trim, strip, isEmpty, isBlank, replace, replaceAll, split, join, format, formatted,&nbsp;valueOf</p>
+<h3>常量：</h3>
+<ul>
+<li>final</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Color</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">RED</span> <span class="o">=</span> <span class="s">&quot;r&quot;</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">GREEN</span> <span class="o">=</span> <span class="s">&quot;g&quot;</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">color</span> <span class="o">==</span> <span class="n">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+
+
+<h3>枚举类:</h3>
+<ul>
+<li>enum</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Weekday</span> <span class="o">{</span>
+  <span class="n">SUN</span><span class="o">,</span> <span class="n">MON</span><span class="o">,</span> <span class="n">TUE</span><span class="o">,</span> <span class="n">WED</span><span class="o">,</span> <span class="n">THU</span><span class="o">,</span> <span class="n">FRI</span><span class="o">,</span> <span class="n">SAT</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">day</span> <span class="o">==</span> <span class="n">Weekday</span><span class="o">.</span><span class="na">SAT</span> <span class="o">||</span> <span class="n">day</span> <span class="o">==</span> <span class="n">Weekday</span><span class="o">.</span><span class="na">SUN</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// &quot;Work at home!&quot;;</span>
+<span class="o">}</span> 
+</pre></div>
+
+
+<h3>自动推断变量类型：</h3>
+<ul>
+<li>var</li>
+</ul>
+<h3>数组：</h3>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="mi">68</span><span class="o">,</span> <span class="mi">79</span><span class="o">,</span> <span class="mi">91</span><span class="o">,</span> <span class="mi">85</span><span class="o">,</span> <span class="mi">62</span> <span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">68</span><span class="o">,</span> <span class="mi">79</span><span class="o">,</span> <span class="mi">91</span><span class="o">,</span> <span class="mi">85</span><span class="o">,</span> <span class="mi">62</span> <span class="o">};</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;ABC&quot;</span><span class="o">,</span> <span class="s">&quot;XYZ&quot;</span><span class="o">,</span> <span class="s">&quot;zoo&quot;</span> <span class="o">};</span>
+</pre></div>
+
+
+<p>数组所有元素初始化为默认值，整型都是0，浮点型是0.0，布尔型是false；</p>
+<p>数组一旦创建后，大小就不可改变</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">ns</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{}</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">:</span> <span class="n">ns</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+
+
+<ul>
+<li>ArrayList&nbsp;可变长度数组</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="n">ArrayList</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">// 获取到Object，必须强制转型为String</span>
+</pre></div>
+
+
+<hr>
+<h2>泛型</h2>
+<p>使用ArrayList时，如果不定义泛型类型时，泛型类型实际上就是Object，定义泛型类型<String>后，List<T>的泛型接口变为强类型List<String></p>
+<div class="highlight"><pre><span></span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+<span class="n">list2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">first2</span> <span class="o">=</span> <span class="n">list2</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">// 无强制转型</span>
+</pre></div>
+
+
+<p>先在类中标记所有的特定类型，再把特定类型替换为T</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pair</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">K</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="n">T</span> <span class="n">first</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">K</span> <span class="n">last</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="nf">Pair</span><span class="o">(</span><span class="n">T</span> <span class="n">first</span><span class="o">,</span> <span class="n">K</span> <span class="n">last</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">first</span> <span class="o">=</span> <span class="n">first</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">last</span> <span class="o">=</span> <span class="n">last</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="n">T</span> <span class="nf">getFirst</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">first</span><span class="o">;</span> <span class="o">}</span>
+  <span class="kd">public</span> <span class="n">K</span> <span class="nf">getLast</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">last</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">Pair</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pair</span><span class="o">&lt;&gt;(</span><span class="s">&quot;test&quot;</span><span class="o">,</span> <span class="mi">123</span><span class="o">);</span>
+</pre></div>
+
+
+<p>泛型类型<T>不能用于静态方法</p>
+<hr>
+<h2>Collection&nbsp;集合</h2>
+<ul>
+<li>List</li>
+</ul>
+<p>一种有序列表的集合</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">);</span> <span class="c1">// size=1</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">);</span> <span class="c1">// size=2 允许添加重复的元素</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span> <span class="c1">// size=3 允许添加null</span>
+
+<span class="n">String</span> <span class="n">third</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> <span class="c1">// null</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span> <span class="c1">// 不接受null值</span>
+
+<span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">)</span> <span class="c1">// true</span>
+<span class="n">list</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">)</span> <span class="c1">// 0</span>
+</pre></div>
+
+
+<p>遍历List：</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+  <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span> <span class="o">)</span> <span class="o">{</span> <span class="c1">// 迭代器</span>
+  <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>list 转&nbsp;数组：</p>
+<div class="highlight"><pre><span></span><span class="n">Object</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span> <span class="c1">// toArray()方法返回一个Object[]数组，会丢失类型信息</span>
+<span class="n">Integer</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span> <span class="c1">// toArray(T[]) 泛型参数&lt;T&gt;</span>
+<span class="n">Integer</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()]);</span>
+</pre></div>
+
+
+<p>数组 转&nbsp;list：</p>
+<div class="highlight"><pre><span></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span> <span class="o">};</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+</pre></div>
+
+
+<ul>
+<li>Map</li>
+</ul>
+<p>一种通过键值（key-value）查找的映射表集合，key不能重复</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">,</span> <span class="mi">123</span><span class="o">);</span>
+<span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">);</span> <span class="c1">// 123</span>
+</pre></div>
+
+
+<p>遍历Map:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+  <span class="n">Integer</span> <span class="n">value</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&quot; = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+  <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+  <span class="n">Integer</span> <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&quot; = &quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>HashMap不保证顺序，TreeMap有序，如果作为Key的class没有实现Comparable接口，必须在创建TreeMap时同时指定一个自定义排序算法</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">DayOfWeek</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EnumMap</span><span class="o">&lt;&gt;(</span><span class="n">DayOfWeek</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">// EnumMap查找效率非常高</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;&gt;();</span> <span class="c1">// SortedMap保证遍历时以Key的顺序来进行排序</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Person</span> <span class="n">p1</span><span class="o">,</span> <span class="n">Person</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">p1</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+</pre></div>
+
+
+<p>Java默认配置文件以.properties为扩展名，每行以key=value表示</p>
+<ul>
+<li>Set</li>
+</ul>
+<p>一种保证没有重复元素的集合</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span> <span class="c1">// 无序</span>
+<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;abc&quot;</span><span class="o">);</span>
+<span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&quot;xyz&quot;</span><span class="o">);</span>
+<span class="n">set</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&quot;hello&quot;</span><span class="o">);</span>
+<span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+</pre></div>
+
+
+<p>TreeSet有序，实现了SortedSet，添加的元素必须正确实现Comparable接口，如果没有实现Comparable接口，那么创建TreeSet时必须传入一个Comparator对象。</p>
+<div class="highlight"><pre><span></span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">&lt;&gt;();</span>
+</pre></div>
+
+
+<ul>
+<li>Queue</li>
+</ul>
+<p>是实现了一个先进先出（<span class="caps">FIFO</span>：First In First&nbsp;Out）的有序表，List可以在任意位置添加和删除元素，而Queue只有两个操作：</p>
+<p>把元素添加到队列末尾；&nbsp;从队列头部取出元素。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+
+<span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;apple&quot;</span><span class="o">);</span> <span class="c1">// 添加失败时（可能超过了队列的容量），它会抛出异常</span>
+<span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="s">&quot;pear&quot;</span><span class="o">);</span> <span class="c1">// 当添加失败时，不会抛异常，而是返回false</span>
+<span class="n">q</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span> <span class="c1">// apple 空队列调用remove()方法，会抛出异常</span>
+<span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span> <span class="c1">// pear 不会删除，可以反复获取</span>
+<span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span> <span class="c1">// poll 会删除，获取失败时，它不会抛异常，而是返回null</span>
+</pre></div>
+
+
+<p>PriorityQueue&nbsp;“VIP插队”的业务，必须给每个元素定义“优先级”</p>
+<div class="highlight"><pre><span></span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+</pre></div>
+
+
+<ul>
+<li>Deque </li>
+</ul>
+<p>双端队列:&nbsp;两头都进，两头都出</p>
+<table>
+<thead>
+<tr>
+<th>队列</th>
+<th>Queue</th>
+<th>Deque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>添加到队尾</td>
+<td>add / offer</td>
+<td>addLast / offerLast</td>
+</tr>
+<tr>
+<td>取删队首</td>
+<td>remove / poll</td>
+<td>removeFirst / pollFirst</td>
+</tr>
+<tr>
+<td>取队首</td>
+<td>element / peek</td>
+<td>getFirst / peekFirst / peek</td>
+</tr>
+<tr>
+<td>添加到队首</td>
+<td>/</td>
+<td>addFirst / offerFirst / push</td>
+</tr>
+<tr>
+<td>取删队尾</td>
+<td>/</td>
+<td>removeLast / pollLast / pop</td>
+</tr>
+<tr>
+<td>取队尾</td>
+<td>/</td>
+<td>getLast / peekLast</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Deque</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="n">Deque</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+</pre></div>
+
+
+<ul>
+<li>Collections&nbsp;方法</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">);</span> <span class="c1">// 排序</span>
+<span class="n">Collections</span><span class="o">.</span><span class="na">shuffle</span><span class="o">(</span><span class="n">list</span><span class="o">);</span> <span class="c1">// 随机打乱</span>
+<span class="n">Collections</span><span class="o">.</span><span class="na">unmodifiableList</span><span class="o">(</span><span class="n">list</span><span class="o">);</span> <span class="c1">// 把可变集合封装成不可变集合</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "java-grammer.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

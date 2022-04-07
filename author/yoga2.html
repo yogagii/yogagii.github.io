@@ -43,6 +43,107 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/flutter.html" rel="bookmark" title="Permalink to Flutter">Flutter</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-20T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">一 20 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>Flutter&nbsp;中万物皆为Widget。</p>
+</blockquote>
+<p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同，&nbsp;以确定底层渲染树从一个状态转换到下一个状态所需的最小更改（类似于React/Vue中虚拟DOM的diff算法）。</p>
+<h2>Widget</h2>
+<p>runApp函数接受给定的Widget并使其成为widget树的根，根widget强制覆盖整个屏幕</p>
+<ul>
+<li>无状态的&nbsp;StatelessWidget</li>
+<li>有状态的&nbsp;StatefulWidget</li>
+</ul>
+<p>@immutable 代表 Widget 是不可变的，这会限制 Widget&nbsp;中定义的属性（即配置信息 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/flutter-startup.html" rel="bookmark" title="Permalink to Flutter Startup">Flutter&nbsp;Startup</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-20T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">一 20 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>安装Flutter on&nbsp;macOS</h2>
+<ul>
+<li>升级 macOS to Big&nbsp;Sur</li>
+</ul>
+<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS 7.2, and …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/typescript.html" rel="bookmark" title="Permalink to TypeScript">TypeScript</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-01T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">三 01 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>interface <span class="caps">VS</span>&nbsp;type</h2>
+<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>拓展（extends）</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// interface extends interface</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">age</span>: <span class="kt">number</span>
+<span class="p">}</span>
+
+<span class="c1">// interface extends type</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="nx">age …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/angular.html">Angular</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/angularying-yong.html" rel="bookmark" title="Permalink to Angular应用">Angular应用</a>
 		</h2>
 		<div class="post-info">
@@ -264,81 +365,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/blue-green-deployment.html" rel="bookmark" title="Permalink to Blue-Green Deployment">Blue-Green&nbsp;Deployment</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
-				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><blockquote>
-<p>Blue Green deployments is a technique for rapidly and repeatedly releasing changes to software in&nbsp;production.</p>
-</blockquote>
-<ol>
-<li>Go to <span class="caps">EC2</span> instances in <span class="caps">AWS</span> and rename environment (<span class="caps">EC2</span>(s) in which you …</li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/aws-kms.html" rel="bookmark" title="Permalink to AWS KMS"><span class="caps">AWS</span> <span class="caps">KMS</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-08-17T00:00:00+08:00"> 
-				<a href="/archive/2021/ 8/index.html">二 17 八月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p><span class="caps">AWS</span> Key Management Service (<span class="caps">AWS</span> <span class="caps">KMS</span>) 是一个密钥管理服务，可以用来创建和管理您的主密钥，<span class="caps">AWS</span> KMS使用信封加密的方式实现数据的保护。简单来说，信封加密就是用数据密钥对明文数据进行加密，然后再使用其他数据密钥对这个数据密钥进行加密，但是您的最后一个数据密必须以明文的形式存在，以便您对其他的数据密钥进行加密和解密操作。这个最顶层的明文密钥称为主密钥，<span class="caps">AWS</span>&nbsp;KMS可以帮我们安全地存储和管理这个主密钥。</p>
-<h3>Background</h3>
-<p>Set up <span class="caps">AWS</span> <span class="caps">KMS</span> to manage and secure Backend Local&nbsp;Configs …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/ms-graph-api.html" rel="bookmark" title="Permalink to MS Graph API"><span class="caps">MS</span> Graph <span class="caps">API</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-06-04T00:00:00+08:00"> 
-				<a href="/archive/2021/ 6/index.html">五 04 六月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Authentication and&nbsp;Authorization</h2>
-<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
-<ol>
-<li>Register …</li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga.html">&laquo;</a>
@@ -400,6 +426,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>

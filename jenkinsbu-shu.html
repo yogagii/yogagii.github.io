@@ -88,6 +88,59 @@
 
 
 <p><img alt="UMI" src="img/umi1.png"></p>
+<hr>
+<ol>
+<li>安装&nbsp;NodeJS:</li>
+</ol>
+<p>Dashboard -&gt; Manage Jenkins -&gt; Global Tool&nbsp;Configuration</p>
+<p>NodeJS -&gt; <span class="caps">ADD</span> <span class="caps">NODEJS</span>:</p>
+<p>Name: <span class="caps">NODEJS</span></p>
+<p>Version: NodeJS 10.24.0 (服务器上 node&nbsp;&#8212;version)</p>
+<ol>
+<li>安装 Publish over <span class="caps">SSH</span>&nbsp;插件:</li>
+</ol>
+<p>Dashboard -&gt; Manage Jenkins -&gt; Manage Plugins -&gt;&nbsp;Available</p>
+<p>勾选 Publish over <span class="caps">SSH</span></p>
+<p>Dashboard -&gt; Manage Jenkins -&gt; Configure&nbsp;System</p>
+<p>Publish over <span class="caps">SSH</span> -&gt; <span class="caps">SSH</span>&nbsp;Server:</p>
+<p>Name: <span class="caps">JCRD</span>-<span class="caps">DEV</span></p>
+<p>Hostname:&nbsp;10.xxx.xxx.xxx</p>
+<p>Username:&nbsp;user</p>
+<p>Remote Directory:&nbsp;/app</p>
+<p>Advanced: 勾选 Use password authentication, or use a different&nbsp;key</p>
+<p>登录方式三选一：</p>
+<p>Passphrase：user的密码</p>
+<p>Path to&nbsp;key：SSH私钥的文件路径</p>
+<p>Key：私钥 (cat&nbsp;id_rsa)</p>
+<ol>
+<li>新建&nbsp;Job:</li>
+</ol>
+<p>Dashboard -&gt; New Item -&gt; 文件夹 (<span class="caps">JCRD</span>-Deployment)</p>
+<p><span class="caps">JCRD</span>-Deployment -&gt; New Item -&gt; Freestyle project (<span class="caps">DEV</span>-<span class="caps">JCRD</span>-Frontend)</p>
+<p><span class="caps">DEV</span>-<span class="caps">JCRD</span>-Frontend -&gt;&nbsp;configure:</p>
+<p><strong>Source Code&nbsp;Management:</strong> </p>
+<p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.jnj.com/scm/xxx.git</p>
+<p>Credentials:&nbsp;sa-itsus-jbge-devuser</p>
+<p>Branch Specifier (blank for &#8216;any&#8217;):&nbsp;*/dev</p>
+<p><strong>Build&nbsp;Triggers:</strong> </p>
+<p>Poll <span class="caps">SCM</span>: H/3 * <em> * </em>&nbsp;每三分钟轮询一次</p>
+<p><strong>Build&nbsp;Environment:</strong></p>
+<p>Provide Node <span class="amp">&amp;</span> npm bin/ folder to <span class="caps">PATH</span>:</p>
+<p>NodeJS Installation: <span class="caps">NODEJS</span></p>
+<p><strong>Build:</strong></p>
+<p>Execute&nbsp;shell:</p>
+<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">i</span>
+<span class="n">npm</span> <span class="n">run</span> <span class="n">build</span>
+</pre></div>
+
+
+<p><strong>Post-build&nbsp;Actions:</strong></p>
+<p>Send build artifacts over <span class="caps">SSH</span> -&gt; <span class="caps">SSH</span>&nbsp;Server: </p>
+<p>Name: <span class="caps">JCRD</span>-<span class="caps">DEV</span></p>
+<p>Transfers -&gt; Transfer&nbsp;Set</p>
+<p>Source files: dist/js/<em>.js, dist/index.html, dist/img/</em>, dist/fonts/*,&nbsp;dist/favicon.ico</p>
+<p>Remove prefix:&nbsp;dist</p>
+<p>Remote directory:&nbsp;/jcrd-dist</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -169,6 +222,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>

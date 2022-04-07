@@ -42,6 +42,119 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to React 复合组件">React&nbsp;复合组件</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>组件的原则：职责单一，外在体现可复用性，内在体现分装性</p>
+</blockquote>
+<h2>组件嵌套</h2>
+<hr>
+<p>法一：在父组件的render函数中直接渲染子组件</p>
+<p>法二：对于动态的、数量不固定的子组件需要用到this.props.children</p>
+<p><br></p>
+<h2>组件参数传递</h2>
+<hr>
+<ul>
+<li><strong>动态参数传递</strong>：展开属性（参数名称是变量）</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="nx">moreAttr</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="o">/&gt;</span>
+  <span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
+</pre></div>
+
+
+<ul>
+<li><strong>Underscore</strong>：提供_.omit()来过滤属性</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 剩余属性：除checked之外的属性 …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/jsx.html" rel="bookmark" title="Permalink to JSX"><span class="caps">JSX</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>JSX语法转义器会识别嵌入JavaScript代码中的HTML标签，当遇到&#8217;&lt;&#8217;标识符就会启动JSX转移过程，遇到&#8217;{&#8216;标识符就会当作JavaScript代码进行处理。</p>
+<p>引用Babel中负责JSX转义的模块browser.js，并将使用JSX语法描述的js文件类型声明为text/babel</p>
+<h3>1.&nbsp;三元表达式</h3>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">||</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<h3>2.&nbsp;注释</h3>
+<p>{/<em> 当注释作为独立子节点时需要用大括号包裹起来 </em>/}</p>
+<h3>3.&nbsp;展开属性</h3>
+<div class="highlight"><pre><span></span><span class="nx">component</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">foo …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/react-ji-chu.html" rel="bookmark" title="Permalink to React 基础">React&nbsp;基础</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-06T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 06 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>使用React只有两个步骤：一是创建虚拟DOM（多层嵌套），二是渲染到浏览器中。我们要做的就是逐级创建出所需要的虚拟DOM树并响应用户的动作来改变虚拟DOM树的组成。</p>
+</blockquote>
+<h3>1.&nbsp;react.js</h3>
+<hr>
+<p>react.js实现React核心的逻辑，与具体的渲染引擎无关，逐级创建虚拟DOM树</p>
+<ul>
+<li><strong>React.createElement</strong></li>
+</ul>
+<p><em>参数一是html标签或ReactClass对象，参数二是属性，参数三以后是子元素</em></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">className</span><span class="o">:</span><span class="s1">&#39;myClass&#39;</span><span class="p">},</span> <span class="nx">child1</span><span class="p">,</span> <span class="nx">child2</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li><strong>React.<span class="caps">DOM</span></strong>是预先定义好的HTML元素集，相当于预置了第一个参数 …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-te-dian.html" rel="bookmark" title="Permalink to React 特点">React&nbsp;特点</a>
 		</h2>
 		<div class="post-info">
@@ -323,91 +436,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gao-jie-han-shu.html" rel="bookmark" title="Permalink to 高阶函数">高阶函数</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><blockquote>
-<p>高阶函数(Higher-order function)：一个函数可以接收另一个函数作为参数。 e.g. map, reduce,&nbsp;filter</p>
-</blockquote>
-<h3>记忆函数</h3>
-<p>记忆化（memoization）是一种构建函数的处理过程，能够记住上次计算结果的函数。当函数计算得到结果时，就将该结果按照参数存储起来，当另外一个调用也使用相同的参数，可以直接返回上次存储的结果而不是再计算一遍。</p>
-<p>像这样避免既重复又复杂的计算可以显著提高性能。对于动画中的计算、搜索不经常变化的数据或任何耗时的数学计算来说，记忆化这种方式是十分有用的</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">memorize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="k">return</span> <span class="kd">function …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/shi-jian-chu-li-qi.html" rel="bookmark" title="Permalink to 事件处理器">事件处理器</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>EventEmitter是Node.js的内置模块events提供的一个类，它是Node事件流的核心</p>
-<p>https://www.runoob.com/nodejs/nodejs-event.html</p>
-<p>https://nodejs.org/api/events.html#class-eventemitter</p>
-<p>要实现的API有：
-* on(event, listener)：为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数。
-* off(event)： 移除指定事件的某个监听回调
-* trigger(event …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/shu-ju-lei-xing.html" rel="bookmark" title="Permalink to 数据类型">数据类型</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>值类型(基本类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。</p>
-<p>引用数据类型：对象(Object)、数组(Array)、函数(Function)。</p>
-<p><img alt="datatype" src="img/datatype.png"></p>
-<p><em>JavaScript 拥有动态类型</em>,相同的变量可用作不同的类型</p>
-<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">;</span>               <span class="o">//</span> <span class="n">x</span> <span class="err">为</span> <span class="n">undefined</span>
-<span class="n">var</span> <span class="n">x …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index8.html">&laquo;</a>
@@ -469,6 +497,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
