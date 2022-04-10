@@ -42,6 +42,43 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to React 表单">React&nbsp;表单</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
+				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>事件响应</h2>
+<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
+<p><code>&lt;input&gt; -&gt; value / checked</code></p>
+<p><code>&lt;textarea&gt; -&gt; value</code></p>
+<p><code>&lt;option&gt; -&gt; selected</code></p>
+<p><strong>复用</strong>：只写一个事件处理函数且能处理多个事件</p>
+<ol>
+<li>
+<p>bind复用</p>
+<p>事件响应函数通过bind的参数识别事件源</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">)}</span> <span class="o">/&gt;</span>
+  <span class="nx">hangdeChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newState</span><span class="p">[</span><span class="nx">name …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-fu-he-zu-jian.html" rel="bookmark" title="Permalink to React 复合组件">React&nbsp;复合组件</a>
 		</h2>
 		<div class="post-info">
@@ -385,53 +422,6 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/frontend.html">Frontend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/es6xin-te-xing.html" rel="bookmark" title="Permalink to ES6新特性">ES6新特性</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>1.箭头函数</h2>
-<div class="highlight"><pre><span></span><span class="c1">//es5</span>
-<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-
-<span class="p">}</span>
-<span class="c1">//es6</span>
-<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-
-<span class="p">}</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>箭头函数不需要 function&nbsp;关键字来创建函数，更适用于那些本来需要匿名函数的地方。</p>
-</li>
-<li>
-<p>函数的this依赖于函数调用（window），箭头函数没有自己的this，arguments，super或new.target。</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// function</span>
-<span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
 		</abbr>
 	</footer>
 	<hr />

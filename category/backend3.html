@@ -1,8 +1,16 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime: 2019-12-29 17:31:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/category.html
+ -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
-    <title>Frontend Learning Book - Authors</title>
+    <title>Frontend Learning Book</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
@@ -34,15 +42,47 @@
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
-    <h1>Authors on Frontend Learning Book</h1>
-    <ul>
-        <li><a href="/author/riz.html">Riz</a> (3)</li>
-        <li><a href="/author/ron-adarsh.html">Ron, Adarsh</a> (1)</li>
-        <li><a href="/author/yoga.html">Yoga</a> (87)</li>
-        <li><a href="/author/zack-yoga.html">Zack, Yoga</a> (3)</li>
-        <li><a href="/author/zhang-ben-xuan.html">张本轩</a> (5)</li>
-        <li><a href="/author/zhang-ben-xuan-yoga.html">张本轩 & Yoga</a> (1)</li>
-    </ul>
+<!-- <h4 class="content-archive">Articles in the <span style="color:rgb(0,102,204)">Backend</span> category</h4> -->
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ››Category: <a href="category/backend.html">Backend</a>
+                </section>
+
+
+<ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/restful-api.html" rel="bookmark" title="Permalink to RESTful API">RESTful <span class="caps">API</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
+				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p><span class="caps">REST</span>，即Representational State Transfer(表现层状态转化)。它是一种互联网应用程序的API设计理念：URL定位资源，用HTTP动词（<span class="caps">GET</span>,<span class="caps">POST</span>,<span class="caps">DELETE</span>,<span class="caps">DETC</span>）描述操作。</p>
+</blockquote>
+<p>Restful与传统接口对比</p>
+<p>操作 | 传统风格 | RESTful风格
+| - | - | - 
+查询 | /user/query?name=tom <span class="caps">GET</span> | /user?name=tom <span class="caps">GET</span>
+详情 | /user/getInfo …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+</ul>
+<p class="paginator">
+            <a href="/category/backend2.html">&laquo;</a>
+    Page 3 / 3
+</p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
             <!--
@@ -70,6 +110,71 @@
                         </li>
                         <li>
                           <a href="/category/backend.html" >Backend</a>
+                            <ul>
+                                <li>
+                                  <a href="/spring.html">Spring</a>
+                                </li>
+                                <li>
+                                  <a href="/java-object-oriented.html"><span class="caps">JAVA</span> Object&nbsp;Oriented</a>
+                                </li>
+                                <li>
+                                  <a href="/java-grammer.html"><span class="caps">JAVA</span>&nbsp;Grammer</a>
+                                </li>
+                                <li>
+                                  <a href="/java-install.html"><span class="caps">JAVA</span>&nbsp;Install</a>
+                                </li>
+                                <li>
+                                  <a href="/typeorm.html">TypeORM</a>
+                                </li>
+                                <li>
+                                  <a href="/apache-spark.html">Apache&nbsp;Spark</a>
+                                </li>
+                                <li>
+                                  <a href="/nestjs.html">NestJS</a>
+                                </li>
+                                <li>
+                                  <a href="/amazon-cloudwatch.html">Amazon&nbsp;CloudWatch</a>
+                                </li>
+                                <li>
+                                  <a href="/aws-kms.html"><span class="caps">AWS</span> <span class="caps">KMS</span></a>
+                                </li>
+                                <li>
+                                  <a href="/ms-graph-api.html"><span class="caps">MS</span> Graph <span class="caps">API</span></a>
+                                </li>
+                                <li>
+                                  <a href="/local-environment.html">Local&nbsp;Environment</a>
+                                </li>
+                                <li>
+                                  <a href="/token.html">Token</a>
+                                </li>
+                                <li>
+                                  <a href="/eggjs.html">EggJS</a>
+                                </li>
+                                <li>
+                                  <a href="/mocha.html">Mocha</a>
+                                </li>
+                                <li>
+                                  <a href="/nginx.html">Nginx</a>
+                                </li>
+                                <li>
+                                  <a href="/nodejs.html">nodeJS</a>
+                                </li>
+                                <li>
+                                  <a href="/mysql.html">MySQL</a>
+                                </li>
+                                <li>
+                                  <a href="/redis.html">Redis</a>
+                                </li>
+                                <li>
+                                  <a href="/sequelize.html">Sequelize</a>
+                                </li>
+                                <li>
+                                  <a href="/sailsjs.html">SailsJS</a>
+                                </li>
+                                <li>
+                                  <a href="/restful-api.html">RESTful <span class="caps">API</span></a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                           <a href="/category/frontend.html" >Frontend</a>

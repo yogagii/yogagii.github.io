@@ -42,6 +42,53 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/es6xin-te-xing.html" rel="bookmark" title="Permalink to ES6新特性">ES6新特性</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>1.箭头函数</h2>
+<div class="highlight"><pre><span></span><span class="c1">//es5</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="c1">//es6</span>
+<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>箭头函数不需要 function&nbsp;关键字来创建函数，更适用于那些本来需要匿名函数的地方。</p>
+</li>
+<li>
+<p>函数的this依赖于函数调用（window），箭头函数没有自己的this，arguments，super或new.target。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// function</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/gao-jie-han-shu.html" rel="bookmark" title="Permalink to 高阶函数">高阶函数</a>
 		</h2>
 		<div class="post-info">

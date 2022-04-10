@@ -42,6 +42,35 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/restful-api.html" rel="bookmark" title="Permalink to RESTful API">RESTful <span class="caps">API</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-09-21T00:00:00+08:00"> 
+				<a href="/archive/2019/ 9/index.html">六 21 九月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p><span class="caps">REST</span>，即Representational State Transfer(表现层状态转化)。它是一种互联网应用程序的API设计理念：URL定位资源，用HTTP动词（<span class="caps">GET</span>,<span class="caps">POST</span>,<span class="caps">DELETE</span>,<span class="caps">DETC</span>）描述操作。</p>
+</blockquote>
+<p>Restful与传统接口对比</p>
+<p>操作 | 传统风格 | RESTful风格
+| - | - | - 
+查询 | /user/query?name=tom <span class="caps">GET</span> | /user?name=tom <span class="caps">GET</span>
+详情 | /user/getInfo …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/react-admin.html" rel="bookmark" title="Permalink to React-Admin">React-Admin</a>
 		</h2>
 		<div class="post-info">
@@ -348,43 +377,6 @@
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="/category/analytics.html">Analytics</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-biao-dan.html" rel="bookmark" title="Permalink to React 表单">React&nbsp;表单</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-07-13T00:00:00+08:00"> 
-				<a href="/archive/2019/ 7/index.html">六 13 七月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>事件响应</h2>
-<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变化</p>
-<p><code>&lt;input&gt; -&gt; value / checked</code></p>
-<p><code>&lt;textarea&gt; -&gt; value</code></p>
-<p><code>&lt;option&gt; -&gt; selected</code></p>
-<p><strong>复用</strong>：只写一个事件处理函数且能处理多个事件</p>
-<ol>
-<li>
-<p>bind复用</p>
-<p>事件响应函数通过bind的参数识别事件源</p>
-</li>
-</ol>
-<div class="highlight"><pre><span></span>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
-  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">)}</span> <span class="o">/&gt;</span>
-  <span class="nx">hangdeChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">newState</span><span class="p">[</span><span class="nx">name …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
 		</abbr>
 	</footer>
 	<hr />
