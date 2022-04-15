@@ -43,6 +43,52 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/regular-expression.html" rel="bookmark" title="Permalink to Regular Expression">Regular&nbsp;Expression</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2020-12-14T00:00:00+08:00"> 
+				<a href="/archive/2020/12/index.html">一 14 十二月 2020 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><ul>
+<li>
+<p>*：&gt;= 0次。例如，zo 能匹配 &#8220;z&#8221; 以及 &#8220;zoo&#8221;。&nbsp;等价于{0,}。</p>
+</li>
+<li>
+<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不能匹配 &#8220;z&#8221;。+ 等价于&nbsp;{1,}。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 连续重复字符</span>
+<span class="sr">/(.)\1+/g</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>?：0次或1次</p>
+</li>
+<li>
+<p>{n}&nbsp;n次</p>
+</li>
+<li>
+<p>{n,} &gt;=&nbsp;n次</p>
+</li>
+<li>
+<p>\d&nbsp;数字 …</p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/httpzhuang-tai-ma.html" rel="bookmark" title="Permalink to HTTP状态码">HTTP状态码</a>
 		</h2>
 		<div class="post-info">
@@ -350,31 +396,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/sequelize.html" rel="bookmark" title="Permalink to Sequelize">Sequelize</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-07-25T00:00:00+08:00"> 
-				<a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>链接：https://www.jianshu.com/p/4f7353cd5805</p>
-<p>Sequelize 是一款基于 Nodejs 功能强大的异步 <span class="caps">ORM</span> 框架。
-同时支持 PostgreSQL, MySQL, SQLite and <span class="caps">MSSQL</span> 多种数据库，很适合作为 Nodejs&nbsp;后端数据库的存储接口。</p>
-<p><em><span class="caps">ORM</span> 简单的讲就是对 <span class="caps">SQL</span> 查询语句的封装，让我们可以用 <span class="caps">OOP</span> 的方式操作数据库 …</em></p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga3.html">&laquo;</a>
@@ -436,6 +457,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>

@@ -42,6 +42,58 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/css.html" rel="bookmark" title="Permalink to CSS"><span class="caps">CSS</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Position</h2>
+<ul>
+<li>static: 默认值，忽略TRBL,&nbsp;z-index</li>
+<li>inherit:&nbsp;继承</li>
+<li>fixed:&nbsp;固定定位，相对于浏览器窗口TRBL</li>
+<li>relative:&nbsp;相对定位，相对于正常位置TRBL</li>
+</ul>
+<p>遵循正常文档流，占有文档空间，父级padding影响，根为root</p>
+<table>
+<thead>
+<tr>
+<th><span class="caps">TRBL</span></th>
+<th>父级</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>无</td>
+<td>上一元素底部/浏览器左上角</td>
+</tr>
+<tr>
+<td>无</td>
+<td>有</td>
+<td>父级左上角</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级有无position</td>
+<td>父级左上角 …</td></tr></tbody></table></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/frontend.html">Frontend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/es6xin-te-xing.html" rel="bookmark" title="Permalink to ES6新特性">ES6新特性</a>
 		</h2>
 		<div class="post-info">
@@ -326,49 +378,11 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gitming-ling-zheng-li.html" rel="bookmark" title="Permalink to Git命令整理">Git命令整理</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2018-10-14T15:31:00+08:00"> 
-				<a href="/archive/2018/10/index.html">日 14 十月 2018 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ol>
-<li>
-<p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p>
-</li>
-<li>
-<p>与之相对的Git项目有三个不同的工作区的概念:&nbsp;Git仓库、工作目录和暂存区域，之间的关系可以参考Git基础</p>
-</li>
-</ol>
-<h2>在首次使用Git前需要进行一些简单的配置:</h2>
-<ul>
-<li>设置提交中使用的用户名: </li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
-</pre></div>
-
-
-<ul>
-<li>设置提交中使用的邮件地址 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index9.html">&laquo;</a>
-    Page 10 / 10
+    Page 10 / 11
+        <a href="/index11.html">&raquo;</a>
 </p>
         </section><!-- #content -->
         <section id="widgets" class="grid col-300 fit" >
@@ -425,6 +439,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>

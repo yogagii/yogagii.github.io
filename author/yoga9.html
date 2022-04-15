@@ -43,6 +43,44 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/bi-bao.html" rel="bookmark" title="Permalink to 闭包">闭包</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><blockquote>
+<p>闭包：有权访问另一个函数作用域内变量的函数</p>
+</blockquote>
+<p>C++中函数中的局部变量仅在函数函数执行期间可用，执行完毕不能访问</p>
+<p>JS函数以及创建的词法环境形成闭包，环境包含闭包创建时所能访问的所有局部变量</p>
+<p>闭包有3个特性：
+1. 函数嵌套函数
+2. 函数内部可以引用函数外部的参数和变量
+3.&nbsp;参数和变量不会被垃圾回收机制回收</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">B</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A …</span></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/chang-yong-nei-zhi-fang-fa.html" rel="bookmark" title="Permalink to 常用内置方法">常用内置方法</a>
 		</h2>
 		<div class="post-info">
@@ -353,6 +391,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>

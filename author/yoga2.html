@@ -43,6 +43,36 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/dart.html" rel="bookmark" title="Permalink to Dart">Dart</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-12-24T00:00:00+08:00"> 
+				<a href="/archive/2021/12/index.html">五 24 十二月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>单线程模型</h2>
+<p>Dart&nbsp;在单线程中是以消息循环机制来运行的，其中包含两个任务队列</p>
+<ul>
+<li>“微任务队列” microtask&nbsp;queue：（Dart内部）微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡</li>
+<li>“事件队列” event queue：（外部事件任务）<span class="caps">IO</span>、计时器、点击、以及绘制事件</li>
+</ul>
+<p><img alt="flutter" src="img/flutter3.png"></p>
+<p>入口函数 main()&nbsp;执行完后，消息循环机制便启动了。首先会按照先进先出的顺序逐个执行微任务队列中的任务，事件任务执行完毕后程序便会退出，在事件任务执行的过程中也可以插入新的微任务和事件任务</p>
+<p>Flutter中，主线程的执行过程一直在循环 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/ios.html">IOS</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/c4-model-for-visualising-software-architecture.html" rel="bookmark" title="Permalink to C4 model for visualising software architecture">C4 model for visualising software&nbsp;architecture</a>
 		</h2>
 		<div class="post-info">
@@ -341,35 +371,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/timing.html" rel="bookmark" title="Permalink to Timing">Timing</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-10-26T00:00:00+08:00"> 
-				<a href="/archive/2021/10/index.html">二 26 十月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><ul>
-<li>Resource&nbsp;Scheduling</li>
-<li>Queueing: <strong>队列</strong> &#8212;&nbsp;请求排队的时间。浏览器是有线程限制的，发请求也不能所有的请求同时发送，会将请求加入队列中（Chrome的最大并发连接数是6）。如果说同一时间，发起的同一域名的请求超过了6个，这时候就需要排队了。</li>
-<li>Connection&nbsp;Start</li>
-<li>Stalled:  <strong>阻塞</strong> &#8212;&nbsp;浏览器得到要发出这个请求的指令，到请求可以发出的等待时间，一般是代理协商、以及等待可复用的TCP连接释放的时间，不包括DNS查询、建立TCP连接等时间等</li>
-<li>Proxy&nbsp;nengotiation</li>
-<li><span class="caps">DNS</span> Lookup: <strong>DNS查找</strong> &#8212;&nbsp;请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址</li>
-<li>Initial …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/analytics.html">Analytics</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga.html">&laquo;</a>
@@ -431,6 +432,7 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
