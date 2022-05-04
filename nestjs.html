@@ -375,6 +375,72 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <li>app.e2e-spec.ts: 模拟app&nbsp;module，连接测试数据库，验证各路由</li>
 </ul>
 <p>踩坑：需在beforeAll中createTestingModule，beforeEach中import&nbsp;AppModule会导致数据库重复连接（AlreadyHasActiveConnectionError）</p>
+<h2>Event&nbsp;监听事件</h2>
+<p>使用 try catch&nbsp;无法处理异步代码块内出现的异常</p>
+<div class="highlight"><pre><span></span><span class="c1">// 异常捕获成功</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;异常捕获&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 异常捕获失败</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;异常捕获&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>使用event方式来处理异常</p>
+<div class="highlight"><pre><span></span>npm i --save @nestjs/event-emitter
+</pre></div>
+
+
+<p>事件监听</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">OnEvent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs/event-emitter&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">UpdateStatusListener</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">readonly</span> <span class="nx">mdmService</span>: <span class="kt">MdmService</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="kd">@OnEvent</span><span class="p">(</span><span class="s1">&#39;updateStatus.sendFormFailed&#39;</span><span class="p">)</span>
+  <span class="nx">handleOrderCreatedEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;sendFormFailed: &#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UpdateStatusListener</span><span class="p">],</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<p>事件触发</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">EventEmitter2</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs/event-emitter&#39;</span><span class="p">;</span>
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">EmailService</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span>
+    <span class="kr">private</span> <span class="nx">eventEmitter</span>: <span class="kt">EventEmitter2</span><span class="p">,</span>
+  <span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">async</span> <span class="nx">sendEmailCode() {</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">sendMailOptions</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">eventEmitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;updateStatus.sendFormFailed&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">event_id</span>: <span class="kt">courseData.event_id</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>

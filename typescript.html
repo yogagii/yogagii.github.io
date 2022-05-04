@@ -278,6 +278,16 @@
 <p><strong>控制反转（<span class="caps">IOC</span>）</strong>：类A依赖类B，但A不控制B的创建和销毁，仅使用B，那么B的控制权则交给A之外处理</p>
 <p><strong><span class="caps">IOC</span> Container（容器）</strong>：IOC容器负责管理对象的生命周期、依赖关系等，实现对象的依赖查找以及依赖注入（NestJS&nbsp;运行时系统，Angular框架的依赖注入器）</p>
 <p>链接：https://www.jianshu.com/p/89249a3da84e</p>
+<h2>Config</h2>
+<p>踩坑：</p>
+<p>Consider using &#8216;&#8212;resolveJsonModule&#8217; to import module with &#8216;.json&#8217;&nbsp;extension.</p>
+<div class="highlight"><pre><span></span><span class="err">//</span> <span class="err">tsconfig.json</span>
+<span class="p">{</span>
+  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;resolveJsonModule&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
