@@ -91,6 +91,19 @@
 </pre></div>
 
 
+<p>nginx</p>
+<div class="highlight"><pre><span></span><span class="nv">location</span> <span class="o">/</span><span class="nv">php</span><span class="o">/</span> {
+  <span class="nv">rewrite</span> <span class="s2">&quot;</span><span class="s">^/php/(.*)$</span><span class="s2">&quot;</span> <span class="o">/</span><span class="mh">$1</span> <span class="k">break</span><span class="c1">;</span>
+  <span class="nv">proxy_set_header</span> <span class="nv">Host</span> $<span class="nv">host</span><span class="c1">;</span>
+  <span class="nv">proxy_set_header</span> <span class="nv">X</span><span class="o">-</span><span class="nv">Real</span><span class="o">-</span><span class="nv">IP</span> $<span class="nv">remote_addr</span><span class="c1">;</span>
+  <span class="nv">proxy_set_header</span> <span class="nv">X</span><span class="o">-</span><span class="nv">Forwarded</span><span class="o">-</span><span class="k">For</span> $<span class="nv">proxy_add_x_forwarded_for</span><span class="c1">;</span>
+  <span class="nv">proxy_set_header</span> <span class="nv">X</span><span class="o">-</span><span class="nv">Forwarded</span><span class="o">-</span><span class="nv">Proto</span> $<span class="nv">scheme</span><span class="c1">;</span>
+  <span class="nv">proxy_buffering</span> <span class="nv">off</span><span class="c1">;</span>
+  <span class="nv">proxy_pass</span> <span class="nv">http</span>:<span class="o">//</span><span class="mi">10</span>.<span class="mi">216</span>.<span class="mi">104</span>.<span class="mi">80</span>:<span class="mi">4000</span><span class="c1">;</span>
+}
+</pre></div>
+
+
 <h2><span class="caps">XENA</span></h2>
 <p>username: <span class="caps">TST</span>-<span class="caps">ITS</span>-SCMStudent17</p>
 <p>password:&nbsp;Scm$tudent17a</p>
@@ -212,6 +225,7 @@
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/power-bi.html">Power BI</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
