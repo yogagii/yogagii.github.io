@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -55,18 +56,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>Spring</h2>
-<p>Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提供的底层服务包括组件的生命周期管理、配置和组装服务、AOP支持，以及建立在AOP基础上的声明式事务服务等。</p>
-<h3>IoC&nbsp;容器</h3>
-<p>IoC: Inversion of&nbsp;Control控制反转</p>
-<p>https://yogagii.github.io/typescript.html</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookService</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="n">DataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HikariDataSource</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>缺点：
-1 …</p></div>
+<p>Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -89,18 +79,13 @@
 		</div>
 	</header>
 	<div class="summary"><h2>面向对象</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
-  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
+  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="p">;</span>
 
-  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// 没有命名冲突，可以省略this</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">age …</span></pre></div></div>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -123,23 +108,8 @@
 		</div>
 	</header>
 	<div class="summary"><h2>变量</h2>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span> <span class="c1">// 重新赋值不能再重复定义</span>
-</pre></div>
-
-
-<h3>基本类型：</h3>
-<ul>
-<li>整数类型：byte，short，int，long</li>
-<li>浮点数类型：float，double</li>
-<li>字符类型：char</li>
-<li>布尔类型：boolean</li>
-</ul>
-<h3>引用类型：</h3>
-<ul>
-<li>String</li>
-</ul>
-<p>toUpperCase, equals, contains, indexOf, lastIndexOf, startsWith, endsWith …</p></div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">// 重新赋值不能 …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -161,12 +131,10 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="c1">// Hello.java </span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span> <span class="c1">// 类名首字母大写</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Java程序的固定入口方法</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">);</span> <span class="c1">// 输出并换行</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span> <span class="c1">// 不换行</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">arg</span> <span class="o">:</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// java App …</span></pre></div></div>
+	<div class="summary"><div class="highlight"><pre><span></span><code><span class="c1">// Hello.java </span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span> <span class="c1">// 类名首字母大写</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Java程序的固定入口方法</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -208,6 +176,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -235,6 +206,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -243,7 +218,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

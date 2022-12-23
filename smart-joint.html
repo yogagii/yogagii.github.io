@@ -1,0 +1,499 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›Smart&nbsp;Joint
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Smart&nbsp;Joint</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-08-17T00:00:00+08:00"> 
+            <a href="/archive/2022/ 8/index.html">三 17 八月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/deep-learning.html">Deep Learning</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>关键点检测</h2>
+<h3>Step1:&nbsp;Keras模型</h3>
+<p>在Keras中有两种深度学习的模型：序列模型（Sequential）和通用模型（Model）</p>
+<ul>
+<li>Sequential：是实现全连接网络的最好方式。序列模型各层之间是依次顺序的线性关系</li>
+<li>model：通用模型（函数式模型）可以设计非常复杂、任意拓扑结构的神经网络，例如有向无环网络、共享层网络等。相比于序列模型只能依次线性逐层添加，通用模型能够比较灵活地构造网络结构，设定各层级的关系。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span>
+
+<span class="c1"># 通过列表制定网络结构</span>
+<span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+   <span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+
+<span class="c1"># 逐层添加网络结构</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+</code></pre></div>
+
+<ul>
+<li>ResNet-50&nbsp;深度残差网络</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras.applications</span> <span class="kn">import</span> <span class="n">resnet</span>
+<span class="n">base_model</span> <span class="o">=</span><span class="n">resnet</span><span class="o">.</span><span class="n">ResNet50</span><span class="p">(</span><span class="n">include_top</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;imagenet&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">headModel</span> <span class="o">=</span> <span class="n">base_model</span><span class="o">.</span><span class="n">output</span>
+<span class="n">headModel</span> <span class="o">=</span> <span class="n">Flatten</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;flatten&quot;</span><span class="p">)(</span><span class="n">headModel</span><span class="p">)</span>
+<span class="n">headModel</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">headModel</span><span class="p">)</span>
+<span class="n">headModel</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="mf">0.35</span><span class="p">)(</span><span class="n">headModel</span><span class="p">)</span>
+<span class="n">headModel</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">48</span><span class="p">)(</span><span class="n">headModel</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">base_model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">headModel</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">SPP</span> &#8212; (Spatial PyramidPooling 层)&nbsp;金字塔池化</li>
+</ul>
+<p>目前流行的CNN都需要固定size和scale的输入图片；所以基本上都是通过剪裁crop（不完整）和wrap（导致变形）。CNN网络对于固定输入的要求，主要在全连接的分类器层。</p>
+<p>特征提取层可以通过控制子采样比例和filter尺寸来调节，来接受各种scale和size的输入，得到固定的特征输出。</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SpatialPyramidPooling</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+</code></pre></div>
+
+<ul>
+<li>UNet</li>
+</ul>
+<p>U型网络结构，解决图像分割问题，可以从小数据集中训练</p>
+<p>只能正方形图片</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">unet</span><span class="p">(</span><span class="n">input_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>Step2:&nbsp;构造神经网络的layers函数</h3>
+<ul>
+<li>layers.Flatten&nbsp;用来将输入“压平”，即把多维的输入一维化，常用在从卷积层到全连接层的过渡。Flatten不影响batch的大小。</li>
+<li>layers.Dense&nbsp;构建全连接层</li>
+</ul>
+<p>units：int型，表示全连接层的输出维度</p>
+<p>activation：str型，表示激活函数，一般采用的是&#8221;relu&#8221;，其他激活函数见之前的博客中</p>
+<ul>
+<li>layers.Conv2D&nbsp;用来形成卷积层</li>
+<li>layers.Dropout&nbsp;是构建过拟合时采用的丢弃层</li>
+</ul>
+<p>rate：丢弃率，表示每次训练中该层的灭活比，一般值是0~1（1会报错）</p>
+<ul>
+<li>layers.MaxPooling2D&nbsp;是构建采用最大池化方法的池化层</li>
+<li>layers.AveragePooling2D&nbsp;是构建采用平均池化方法的池化层</li>
+<li>layers.Rescaling&nbsp;主要是构建缩放层，进行归一化或者标准化</li>
+</ul>
+<h3>Step3:&nbsp;编译</h3>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="c1"># 优化器</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="c1"># 损失函数</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">])</span> <span class="c1"># 网络评价指标</span>
+</code></pre></div>
+
+<p>loss&nbsp;损失函数：</p>
+<ul>
+<li>回归损失函数</li>
+<li>均方差&nbsp;mean_squared_error</li>
+<li>平均绝对误差&nbsp;mean_absolute_error</li>
+<li>Huber loss&nbsp;huber_loss</li>
+<li>分类损失函数</li>
+<li>交叉熵损失函数&nbsp;categorical_crossentropy</li>
+<li>合页损失&nbsp;hinge</li>
+</ul>
+<p>Metric 评价指标：
+* mae -&gt; history: mean_absolute_error, val_mean_absolute_error
+* acc -&gt; history: val_loss, val_acc, loss,&nbsp;acc</p>
+<h3>Step4:&nbsp;训练</h3>
+<div class="highlight"><pre><span></span><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">epochs</span> <span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span><span class="n">validation_split</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>输入：
+* x 输入的x值
+* y 输入的y标签值
+* batch_size 每次梯度更新的样本数即批量大小，默认为32
+* epochs=1 迭代次数
+* validation_split=0.0,&nbsp;浮点数0-1之间，用作验证集的训练数据的比例</p>
+<p>输出：</p>
+<ul>
+<li>history.epoch&nbsp;训练轮数</li>
+<li>history.history&nbsp;内容是由compile参数的metrics确定</li>
+</ul>
+<p>可视化损失函数：</p>
+<p>history.hostory:
+* loss 训练损失
+* val_loss 验证损失
+* acc 训练准确率
+* val_acc&nbsp;验证准确率</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get training and test loss histories</span>
+<span class="n">training_loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>
+<span class="n">validation_loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create count of the number of epochs</span>
+<span class="n">epoch_count</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">training_loss</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Visualize loss history</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epoch_count</span><span class="p">,</span> <span class="n">training_loss</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epoch_count</span><span class="p">,</span> <span class="n">validation_loss</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Training Loss&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Loss&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div>
+
+<p>一般来说validation loss &gt; training&nbsp;loss</p>
+<p>目标：使validation&nbsp;loss尽可能小</p>
+<ul>
+<li>validation loss &gt;&gt; training loss: overfitting&nbsp;过拟合</li>
+<li>validation loss &lt;&lt; training loss:&nbsp;underfitting</li>
+</ul>
+<p>训练集损失下降 验证集损失下降 ——&gt;&nbsp;网络正在学习（理想状态）</p>
+<p>训练集损失下降 验证集损失不变 ——&gt;&nbsp;网络过拟合（尝试dropout、L2等手段）</p>
+<p>训练集损失不变 验证集损失下降 ——&gt;&nbsp;数据集有问题（检查数据集）</p>
+<p>训练集损失不变 验证集损失不变 ——&gt; 网络遇到学习瓶颈（减小learning rate或batch&nbsp;size）</p>
+<p>训练集损失上升 验证集损失上升 ——&gt;&nbsp;网络结构设计不当、超参设置不当、数据集经过清洗等</p>
+<p>参考：https://zhuanlan.zhihu.com/p/116116585</p>
+<p>保存模型：</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;res_model_1&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Step5:&nbsp;预测</h3>
+<div class="highlight"><pre><span></span><code><span class="n">pre</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>霍夫变换</h2>
+<p>霍夫变换是图像处理中识别几何形状（直线，圆，椭圆）的一种方法，核心思想是把笛卡尔坐标系中的点集映射到霍夫空间（极坐标系）的一个点上</p>
+<div class="highlight"><pre><span></span><code><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;circle.jpg&#39;</span><span class="p">)</span>
+<span class="c1"># 将图像转换为灰度图像</span>
+<span class="n">gray_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="c1"># 高斯滤波降噪</span>
+<span class="n">gaussian_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">gray_img</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># 利用Canny进行边缘检测</span>
+<span class="n">edges_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">gaussian_img</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">apertureSize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># 自动检测圆</span>
+<span class="n">circles1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HoughCircles</span><span class="p">(</span><span class="n">gray_img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOUGH_GRADIENT</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">param1</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">minRadius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">maxRadius</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+<span class="n">circles</span> <span class="o">=</span> <span class="n">circles1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<span class="n">circles</span>
+</code></pre></div>
+
+<h2>边缘检测（模糊度）</h2>
+<p>Laplacian（拉普拉斯）算子是一种二阶导数算子，其具有旋转不变性，可以满足不同方向的图像边缘锐化（边缘检测）的要求。</p>
+<p>blur the&nbsp;picture</p>
+<div class="highlight"><pre><span></span><code><span class="n">blur_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">blur</span><span class="p">(</span><span class="n">gray_img</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span> <span class="c1"># 均值滤波</span>
+<span class="n">median_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">gray_img</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="c1"># 中值滤波</span>
+<span class="n">gaussian_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">gray_img</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># 高斯滤波</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getImageVar</span><span class="p">(</span> <span class="n">image</span> <span class="p">):</span>
+    <span class="n">img2gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="n">imageVar</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Laplacian</span><span class="p">(</span><span class="n">img2gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_64F</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">imageVar</span> <span class="c1"># 图像越清晰越大</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;blur_hip.jpeg&#39;</span><span class="p">)</span>
+<span class="n">getImageVar</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>图像处理</h2>
+<ol>
+<li>读取图像</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">img</span><span class="o">=</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../9000099L.png&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>imread(): 读取图像，返回值 Mat 类型&nbsp;（二维数组）</p>
+<p>flatten():&nbsp;降维，只能适用于numpy对象，即array或者mat，返回一个一维数组</p>
+<p>tolist(): [a, b, &#8230;, f] -&gt; [a, ,b, c, d, e,&nbsp;f]</p>
+<p>str(): list转str [1:-1]&nbsp;去掉首位中括号</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../hip_circle.jpeg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (1978, 1152, 3)  彩色图3通道</span>
+</code></pre></div>
+
+<p>图像剪裁</p>
+<div class="highlight"><pre><span></span><code><span class="n">imgROI</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+
+<ol>
+<li>绘制图像</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 图像大小</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 1行2列第一张</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p>在窗口中显示图像</p>
+<div class="highlight"><pre><span></span><code><span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="n">edges_img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+
+<ol>
+<li>添加文字</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="p">(</span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="p">)),</span> <span class="n">font</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<p>各参数依次是：图片，添加的文字，左上角坐标，字体，字体大小，颜色，字体粗细</p>
+<h2>数据处理</h2>
+<p>os.walk()&nbsp;方法用于通过在目录树中游走输出在目录中的文件名</p>
+<p>json_normalize()&nbsp;将半结构化JSON数据规范化为平面表</p>
+<div class="highlight"><pre><span></span><code><span class="n">label_file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../label_json/9000099L.json&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">jsonData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">label_file</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span>
+    <span class="n">jsonData</span><span class="p">,</span>
+    <span class="n">record_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;shapes&#39;</span><span class="p">],</span> <span class="c1"># 解析嵌套列表</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;imagePath&#39;</span><span class="p">],</span> <span class="c1"># 增加字段</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="s1">&#39;ignore&#39;</span> <span class="c1"># key不存在时忽略系统报错</span>
+    <span class="n">max_level</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># 解析多层数据</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>df2=df1.T&nbsp;转置</p>
+<p>df.loc[[行号], [列号]]&nbsp;获取整行/整列</p>
+<p>df.drop(index=1)&nbsp;删除行</p>
+<p>df.isnull().any()&nbsp;判断哪些列包含缺失值</p>
+<p>df.value_counts()&nbsp;对Series里面每个值进行计数并排序</p>
+<p>Python基本数据类型：</p>
+<p>整型int，浮点型float，字符串str，列表list，字典dict，集合set，元组tuple，布尔值bool</p>
+<div class="highlight"><pre><span></span><code><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;l-p1&quot;</span><span class="p">,</span> <span class="s2">&quot;l-p2&quot;</span> <span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+  <span class="n">col</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span> <span class="c1"># {&#39;l-p1&#39;: [], &#39;l-p2&#39;: [],}</span>
+<span class="p">})</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/project.html">Project</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "smart-joint.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/power-bi.html">Power BI</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

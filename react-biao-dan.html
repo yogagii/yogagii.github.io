@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -75,13 +76,12 @@
 <p>事件响应函数通过bind的参数识别事件源</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
+<div class="highlight"><pre><span></span><code>  <span class="c1">// bind方法为事件响应函数增加一个参数</span>
   <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">)}</span> <span class="o">/&gt;</span>
   <span class="nx">hangdeChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">newState</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">==</span> <span class="s1">&#39;checked&#39;</span> <span class="o">?</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">checked</span> <span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span>
   <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>
@@ -89,23 +89,21 @@
 <p>React中事件响应函数会自动绑定this</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span>    <span class="c1">// 要求所有相关的标签都要统一设置name属性</span>
+<div class="highlight"><pre><span></span><code>    <span class="c1">// 要求所有相关的标签都要统一设置name属性</span>
     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s1">&#39;checked&#39;</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">}</span> <span class="o">/&gt;</span>
     <span class="nx">handleChange</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">newState</span><span class="p">[</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">&#39;checked&#39;</span> <span class="o">?</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">checked</span> <span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>功能受限的组件</strong>：在input中设置value，元素始终保持value的值，即使用户输入也不会改变</p>
 <p><strong>可控组件</strong>：将input中的valve绑定到state</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="o">=</span><span class="s">{this.state.value}</span> <span class="p">/&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="o">=</span><span class="s">{this.state.value}</span> <span class="p">/&gt;</span>
+</code></pre></div>
 
 <p><strong>不可控组件</strong>：</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">inputValue</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">findDOMNode</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">refs</span><span class="p">.</span><span class="nx">input</span><span class="p">).</span><span class="nx">value</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">inputValue</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">findDOMNode</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">refs</span><span class="p">.</span><span class="nx">input</span><span class="p">).</span><span class="nx">value</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -161,6 +159,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -188,6 +189,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -196,7 +201,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

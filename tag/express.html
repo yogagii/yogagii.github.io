@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -54,27 +55,23 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
-</pre></div>
+	<div class="summary"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">express</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+</code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="err">#</span> <span class="p">.</span><span class="nx">babel</span> <span class="nx">es6</span> <span class="p">=&gt;</span> <span class="nx">es5</span> <span class="nx">X</span> 
+<span class="err">#</span> <span class="k">default</span> <span class="p">=&gt;</span> <span class="k">import</span> 
+<span class="k">import</span> <span class="nx">express</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+</code></pre></div>
 
-<div class="highlight"><pre><span></span><span class="err">#</span> <span class="p">.</span><span class="nx">babel</span> <span class="nx">es6</span> <span class="p">=&gt;</span> <span class="nx">es5</span> <span class="nx">X</span> 
-<span class="err">#</span> <span class="k">default</span> <span class="p">=&gt;</span> <span class="kr">import</span> 
-<span class="kr">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="nv">const</span> <span class="nv">Com</span> <span class="o">=</span> <span class="ss">()</span> <span class="o">=&gt;</span> {
-    <span class="k">return</span> <span class="ss">(</span><span class="o">&lt;</span><span class="nv">div</span><span class="o">&gt;&lt;/</span><span class="nv">div</span><span class="o">&gt;</span><span class="ss">)</span>
+<div class="highlight"><pre><span></span><code>const Com = () =&gt; {
+    return (<span class="nt">&lt;div&gt;&lt;/div&gt;</span>)
 } 
 
-<span class="nv">export</span> <span class="nv">default</span> <span class="nv">Com</span><span class="c1">;</span>
-</pre></div>
-
+export default Com;
+</code></pre></div>
 
 <p>正常用Js</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Com</span> <span class="nn">from</span> <span class="s1">&#39;./Com&#39;</span>
-<span class="kn">import</span> <span class="o">*</span> <span class="k">as …</span></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Com</span> <span class="kn">from …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -116,6 +113,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -143,6 +143,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -151,7 +155,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

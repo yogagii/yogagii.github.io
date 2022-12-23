@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -90,11 +91,10 @@
 <h3>实例化阶段</h3>
 <p>1.<strong>getDefaultProps</strong></p>
 <p>设置props的默认值，仅调用一次，属性如果没有通过父组件传入的话，返回对象中的相应的属性将合并到this.props·</p>
-<div class="highlight"><pre><span></span><span class="nx">getDefaultProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+<div class="highlight"><pre><span></span><code><span class="nx">getDefaultProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
     <span class="k">return</span> <span class="p">{</span><span class="nx">dname</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">};</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>2.<strong>getInitialState</strong></p>
 <p>初始化state，仅调用一次，返回的对象会自动合并到this.state上</p>
@@ -107,11 +107,10 @@
 <h3>活动阶段</h3>
 <p>1.<strong>componentWillReceiveProps</strong></p>
 <p>初始化时不调用，是在props传入后渲染之前更新state的最佳时机，旧的props可以通过this.props获取到</p>
-<div class="highlight"><pre><span></span><span class="nx">componentWillReceiveProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentWillReceiveProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">increasing</span><span class="o">:</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">count</span><span class="p">});</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>2.<strong>shouldComponentUpdate</strong></p>
 <p>默认返回true，若确定新的props和state不会更新组件，手动控制组件不更新，返回false，接下来的willUpdate/render/&nbsp;DidUpdate不执行。</p>
@@ -198,7 +197,7 @@
 <p><br></p>
 <h2>其他成员</h2>
 <hr>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">App</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span><span class="err">​</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">App</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span><span class="err">​</span>
    <span class="c1">//用来定义静态方法，可以在组件类上调用:App.staticMethod()</span>
   <span class="nx">statics</span><span class="o">:</span><span class="p">{</span>
     <span class="nx">staticMethod</span><span class="o">:</span><span class="kd">function</span><span class="p">(){}</span>
@@ -209,8 +208,7 @@
   <span class="nx">mixins</span><span class="o">:</span><span class="p">[]</span>
   <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">app</span><span class="o">&lt;</span><span class="err">/h1&gt;}</span>
 <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><br></p>
 <h2>设计原则</h2>
@@ -277,6 +275,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -304,6 +305,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -312,7 +317,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

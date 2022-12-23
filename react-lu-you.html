@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -64,12 +65,12 @@
     </header>
     <div class="post-entry">
         <p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
 <span class="nx">render</span> <span class="p">((</span>
   <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
       <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
-      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/messages/:id&quot;</span> <span class="o">/&gt;</span> <span class="c1">//重定向</span>
+      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="kr">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/messages/:id&quot;</span> <span class="o">/&gt;</span> <span class="c1">//重定向</span>
       <span class="o">&lt;</span><span class="nx">IndexRedirect</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/welcome&quot;</span> <span class="o">/&gt;</span> <span class="c1">//访问跟路由时重定向到子组件</span>
       <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;course&quot;</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;course/:id&quot;</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">course</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//带参数</span>
       <span class="o">&lt;</span><span class="nx">NotFoundRoute</span> <span class="nx">handler</span><span class="o">=</span><span class="p">{</span><span class="nx">NotFound</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//未匹配</span>
@@ -87,8 +88,7 @@
 <span class="c1">//在APP内部加载About组件</span>
 <span class="kd">let</span> <span class="nx">routes</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/about&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">About</span><span class="p">}</span> <span class="o">/&gt;</span>
 <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">routes</span><span class="o">=</span><span class="p">{</span><span class="nx">routes</span><span class="p">}</span> <span class="o">/&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>路由配置</h3>
 <p>默认路由：指定默认情况下加载的子组件。</p>
@@ -105,31 +105,28 @@
 <li>createMemoryHistory:&nbsp;主要用户服务器渲染</li>
 </ul>
 <p>路由回调 Enter/Leave&nbsp;进入/离开该路由时触发</p>
-<div class="highlight"><pre><span></span><span class="c1">//onEnter 实现认证功能</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//onEnter 实现认证功能</span>
 <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/admin&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Admin</span><span class="p">}</span> <span class="nx">onEnter</span><span class="o">=</span><span class="p">{</span><span class="nx">requireAuth</span><span class="p">}</span> <span class="o">/&gt;</span>
 <span class="c1">//onEnter 实现redirect</span>
 <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/admin&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Admin</span><span class="p">}</span> <span class="nx">onEnter</span><span class="o">=</span><span class="p">{</span>
   <span class="p">({</span><span class="nx">params</span><span class="p">},</span> <span class="nx">replace</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">replace</span><span class="p">(</span><span class="sb">`messages/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
 <span class="p">}</span> <span class="o">/&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>路由切换</h3>
 <p>a元素的react的版</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;about&quot;</span> <span class="nx">activeStyle</span><span class="o">=</span><span class="p">{{</span><span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><span class="p">}}</span> <span class="nx">activeClassName</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="nx">About</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;about&quot;</span> <span class="nx">activeStyle</span><span class="o">=</span><span class="p">{{</span><span class="nx">color</span><span class="o">:</span><span class="s1">&#39;red&#39;</span><span class="p">}}</span> <span class="nx">activeClassName</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="nx">About</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+</code></pre></div>
 
 <p>IndexLink:&nbsp;可以对路径进行精确匹配</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">IndexLink</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/IndexLink&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">IndexLink</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/IndexLink&gt;</span>
 <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">onlyActiveOnIndex</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>动态切换</p>
-<div class="highlight"><pre><span></span><span class="nx">browserHistory</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="nx">browserHistory</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -185,6 +182,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -212,6 +212,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -220,7 +224,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

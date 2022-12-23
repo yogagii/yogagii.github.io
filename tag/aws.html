@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -41,6 +42,32 @@
 
 
 <ul>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/aws-s3.html" rel="bookmark" title="Permalink to AWS S3"><span class="caps">AWS</span>&nbsp;S3</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-09-08T00:00:00+08:00"> 
+				<a href="/archive/2022/ 9/index.html">四 08 九月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">AWS</span> <span class="caps">CLI</span></h2>
+<p>https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/welcome-examples.html</p>
+<p>document:&nbsp;https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html</p>
+<h3>安装</h3>
+<p>下 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/cloud.html">Cloud</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
@@ -59,7 +86,7 @@
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
+			<a href="/category/cloud.html">Cloud</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -85,7 +112,7 @@
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
+			<a href="/category/cloud.html">Cloud</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -104,8 +131,7 @@
 		</div>
 	</header>
 	<div class="summary"><h3>Introduction</h3>
-<p>网络上的大量组件 (例如 <span class="caps">DNS</span> 服务器、交换机、负载均衡器等)&nbsp;都可能在某个指定请求生命周期中的任一环节出现问题。在联网环境中，处理这些错误回应的常规技术是在客户应用程序中实施重试。此技术可以提高应用程序的可靠性和降低开发人员的操作成本。</p>
-<p>Although Vital backend is a highly available system running on the highly available <span class="caps">AWS</span> infra, there are third-party <span class="caps">API …</span></p></div>
+<p>网络上的大量组件 (例如 <span class="caps">DNS</span> 服务器、交换机、负载均衡器等)&nbsp;都可能在某个 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -127,13 +153,11 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p><span class="caps">AWS</span> Key Management Service (<span class="caps">AWS</span> <span class="caps">KMS</span>) 是一个密钥管理服务，可以用来创建和管理您的主密钥，<span class="caps">AWS</span> KMS使用信封加密的方式实现数据的保护。简单来说，信封加密就是用数据密钥对明文数据进行加密，然后再使用其他数据密钥对这个数据密钥进行加密，但是您的最后一个数据密必须以明文的形式存在，以便您对其他的数据密钥进行加密和解密操作。这个最顶层的明文密钥称为主密钥，<span class="caps">AWS</span>&nbsp;KMS可以帮我们安全地存储和管理这个主密钥。</p>
-<h3>Background</h3>
-<p>Set up <span class="caps">AWS</span> <span class="caps">KMS</span> to manage and secure Backend Local&nbsp;Configs …</p></div>
+	<div class="summary"><p><span class="caps">AWS</span> Key Management Service (<span class="caps">AWS</span> <span class="caps">KMS</span>) 是一个密钥管理服务，可以用来创建和管理您的主密钥，<span class="caps">AWS …</span></p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
+			<a href="/category/cloud.html">Cloud</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -155,10 +179,9 @@
 <p>Branch Specifier:&nbsp;*/develop</p>
 <p>Build Triggers: 轮询 <span class="caps">SCM</span></p>
 <p>Build:&nbsp;执行shell</p>
-<div class="highlight"><pre><span></span><span class="nv">npm</span> <span class="nv">i</span>
-<span class="nv">npm</span> <span class="nv">install</span> <span class="nv">aws</span><span class="o">-</span><span class="nv">sdk</span> <span class="o">&amp;</span>
-<span class="nv">export</span> <span class="nv">NODE_OPTIONS</span><span class="o">=--</span><span class="nv">max_old_space_size</span><span class="o">=</span><span class="mi">4096</span>
-<span class="nv">npm …</span></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">i</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">aws</span><span class="o">-</span><span class="n">sdk</span> <span class="o">&amp;</span>
+<span class="k">export …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -200,6 +223,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -227,6 +253,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -235,7 +265,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

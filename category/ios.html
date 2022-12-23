@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -64,7 +65,7 @@
 	</header>
 	<div class="summary"><h2>基础组件</h2>
 <p>文本</p>
-<div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
   <span class="nl">textAlign:</span> <span class="n">TextAlign</span><span class="p">.</span><span class="n">left</span><span class="p">,</span>
   <span class="nl">maxLines:</span> <span class="m">1</span><span class="p">,</span>
   <span class="nl">overflow:</span> <span class="n">TextOverflow</span><span class="p">.</span><span class="n">ellipsis</span><span class="p">,</span>
@@ -72,8 +73,7 @@
   <span class="nl">style:</span> <span class="n">TextStyle</span><span class="p">(</span>
     <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
     <span class="nl">fontSize:</span> <span class="m">18.0</span><span class="p">,</span>
-    <span class="nl">height:</span> <span class="m">1.2</span><span class="p">,</span>  <span class="c1">// 行高</span>
-    <span class="nl">fontFamily:</span> <span class="s2">&quot;Courier …</span></pre></div></div>
+    <span class="nl">height:</span> <span class="m">1 …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -96,14 +96,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>单线程模型</h2>
-<p>Dart&nbsp;在单线程中是以消息循环机制来运行的，其中包含两个任务队列</p>
-<ul>
-<li>“微任务队列” microtask&nbsp;queue：（Dart内部）微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡</li>
-<li>“事件队列” event queue：（外部事件任务）<span class="caps">IO</span>、计时器、点击、以及绘制事件</li>
-</ul>
-<p><img alt="flutter" src="img/flutter3.png"></p>
-<p>入口函数 main()&nbsp;执行完后，消息循环机制便启动了。首先会按照先进先出的顺序逐个执行微任务队列中的任务，事件任务执行完毕后程序便会退出，在事件任务执行的过程中也可以插入新的微任务和事件任务</p>
-<p>Flutter中，主线程的执行过程一直在循环 …</p></div>
+<p>Dart&nbsp;在单线程中是以消息循环机制来运行的，其中包含两个任 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -128,14 +121,7 @@
 	<div class="summary"><blockquote>
 <p>Flutter&nbsp;中万物皆为Widget。</p>
 </blockquote>
-<p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同，&nbsp;以确定底层渲染树从一个状态转换到下一个状态所需的最小更改（类似于React/Vue中虚拟DOM的diff算法）。</p>
-<h2>Widget</h2>
-<p>runApp函数接受给定的Widget并使其成为widget树的根，根widget强制覆盖整个屏幕</p>
-<ul>
-<li>无状态的&nbsp;StatelessWidget</li>
-<li>有状态的&nbsp;StatefulWidget</li>
-</ul>
-<p>@immutable 代表 Widget 是不可变的，这会限制 Widget&nbsp;中定义的属性（即配置信息 …</p></div>
+<p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -161,7 +147,7 @@
 <ul>
 <li>升级 macOS to Big&nbsp;Sur</li>
 </ul>
-<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS 7.2, and …</p></div>
+<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -185,19 +171,7 @@
 	</header>
 	<div class="summary"><h1>Properties&nbsp;属性</h1>
 <h2>存储属性 stored&nbsp;propert</h2>
-<p>一个存储属性就是存储在特定类或结构体的实例里的一个常量或变量&#8212;变量存储属性（var），常量存储属性（let）</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span>
-</pre></div>
-
-
-<h2>延迟存储属性</h2>
-<p>是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用lazy来标示一个延迟存储属性。必须将延迟存储属性声明成变量（使用var关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。</p>
-<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">importer</span> <span class="p">=</span> <span class="n">DataImporter</span><span class="p">()</span>
-</pre></div>
-
-
-<h2>计算属性computed&nbsp;property</h2>
-<p>不直接存储值，而是提供一个 getter …</p></div>
+<p>一个存储属性就是存储在特定类或结构体的实例 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -220,14 +194,7 @@
 		</div>
 	</header>
 	<div class="summary"><h1>Access Control&nbsp;访问控制</h1>
-<p>访问控制可以限定你在源文件或模块中访问代码的级别。这个特性可以让我们隐藏功能实现的一些细节，并且可以明确的指定我们提供给其他人的接口中哪些部分是他们可以使用的，哪些是他们看不到的。</p>
-<h2>访问级别</h2>
-<ul>
-<li>
-<p>public (公开, 供外部调用): (for frameworks only) can be used by objects outside my&nbsp;framework</p>
-</li>
-<li>
-<p>internal (默认, 限module内使用): usable by any object in …</p></li></ul></div>
+<p>访问控制可以限定你在源文件或模块中访问代码的级别 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -250,7 +217,7 @@
 		</div>
 	</header>
 	<div class="summary"><h1>UIStackView&nbsp;堆栈视图</h1>
-<p>UIStackView is class in <span class="caps">IOS</span> (like <span class="caps">UI</span> Button and <span class="caps">UI</span> Label). It will take other views and stack them together. It only knows how to stack horizontally or …</p></div>
+<p>UIStackView is class in <span class="caps">IOS</span> (like <span class="caps">UI</span> Button and <span class="caps">UI</span> Label). It will take other views and stack them together. It only knows how to …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -275,12 +242,7 @@
 	<div class="summary"><h2>Key&nbsp;Commands</h2>
 <p>cmd+R&nbsp;运行</p>
 <p>cmd+0&nbsp;打开/关闭左侧文件面板</p>
-<p>cmd+option+0&nbsp;打开/关闭右侧属性面板</p>
-<p>cmd+shift+y&nbsp;打开/关闭底部控制台面板</p>
-<p>cmd+option+enter&nbsp;打开新窗口</p>
-<p>cmd+enter&nbsp;回到一个窗口</p>
-<p>ctrl+i&nbsp;将选中的代码自动缩进</p>
-<p>cmd …</p></div>
+<p>cmd+option+0&nbsp;打开/关闭右侧属性面 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -321,20 +283,7 @@
 <td align="center">VStack</td>
 </tr>
 <tr>
-<td align="center">UIStackView 水平排列时</td>
-<td align="center">HStack</td>
-</tr>
-<tr>
-<td align="center">UIButton</td>
-<td align="center">Button</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">SwiftUI</span>
-
-<span class="kd">struct</span> <span class="nc">ContentView</span><span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
-        <span class="n">Text</span><span class="p">(</span><span class="s">&quot;Hello, World …</span></pre></div></div>
+<td align="center">UIStackView 水 …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -363,14 +312,7 @@
 <p>按住ctrl拖拽进controller的代码</p>
 </li>
 <li>
-<p>点击dashboard上黄色按钮，拖拽到UI，选择函数</p>
-</li>
-</ol>
-<p><img alt="Swift" src="img/swift4.png"></p>
-<p>函数参数（外部名称&nbsp;内部名称：类型）</p>
-<p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
-<div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">flipCard</span><span class="p">(</span><span class="n">withEmoji</span><span class="p">:</span> <span class="err">&#39;👻&#39;</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">sender …</span></pre></div></div>
+<p>点击dashboard上黄色按钮，拖拽到UI …</p></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -411,6 +353,9 @@
                         </li>
                         <li>
                           <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
                         </li>
                         <li>
                           <a href="/category/frontend.html" >Frontend</a>
@@ -484,6 +429,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -492,7 +441,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

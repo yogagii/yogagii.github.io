@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -67,32 +68,31 @@
 <li>用作存 cookie,session: 容量小，提升速度;&nbsp;负载均衡指到其他进程里，</li>
 </ul>
 <p>cookie 的过期时间和 redis&nbsp;保持一致</p>
-<div class="highlight"><pre><span></span><span class="c1">// local.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// local.js</span>
 <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">adapter</span><span class="o">:</span> <span class="s1">&#39;@sailshq/connect-redis&#39;</span><span class="p">,</span>
   <span class="nx">pass</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXXXX&#39;</span><span class="p">,</span>
-  <span class="nx">db</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="nx">db</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
 <span class="p">},</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>清缓存</p>
-<div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">flushCacheWithDomain</span><span class="p">(</span><span class="nx">domain</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">flushCacheWithDomain</span><span class="p">(</span><span class="nx">domain</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">domain</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;need domain.&#39;</span><span class="p">)</span>
+    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;need domain.&#39;</span><span class="p">)</span>
   <span class="p">}</span>
   <span class="kd">function</span> <span class="nx">innerScan</span><span class="p">(</span><span class="nx">cursor</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
       <span class="nx">redisClient</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="nx">cursor</span><span class="p">,</span> <span class="s1">&#39;MATCH&#39;</span><span class="p">,</span> <span class="sb">`*</span><span class="si">${</span><span class="nx">domain</span><span class="si">}</span><span class="sb">*`</span><span class="p">,</span> <span class="s1">&#39;COUNT&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
         <span class="p">}</span>
-        <span class="kr">const</span> <span class="p">[</span><span class="nx">newCursor</span><span class="p">,</span> <span class="nx">keys</span><span class="p">]</span> <span class="o">=</span> <span class="nx">res</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">newCursor</span><span class="p">,</span> <span class="nx">keys</span><span class="p">]</span> <span class="o">=</span> <span class="nx">res</span>
         <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">key</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">key</span><span class="p">)))</span>
           <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">sails</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="sb">`del </span><span class="si">${</span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> keys.`</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">newCursor</span> <span class="o">===</span> <span class="s1">&#39;0&#39;</span> <span class="o">||</span> <span class="nx">newCursor</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-              <span class="nx">resolve</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">newCursor</span> <span class="o">===</span> <span class="s1">&#39;0&#39;</span> <span class="o">||</span> <span class="nx">newCursor</span> <span class="o">===</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">resolve</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
               <span class="nx">resolve</span><span class="p">(</span><span class="nx">innerScan</span><span class="p">(</span><span class="nx">newCursor</span><span class="p">))</span>
             <span class="p">}</span>
@@ -102,72 +102,68 @@
     <span class="p">})</span>
   <span class="p">}</span>
 
-  <span class="nx">await</span> <span class="nx">innerScan</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">innerScan</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>本地启动</h2>
-<div class="highlight"><pre><span></span><span class="nx">brew</span> <span class="nx">services</span> <span class="nx">start</span> <span class="nx">redis</span>
+<div class="highlight"><pre><span></span><code><span class="nx">brew</span> <span class="nx">services</span> <span class="nx">start</span> <span class="nx">redis</span>
 <span class="nx">brew</span> <span class="nx">services</span> <span class="nx">list</span>
 <span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="nx">ping</span>
 <span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="mf">127.0.0.1</span>
 <span class="nx">CONFIG</span> <span class="nx">SET</span> <span class="nx">requirepass</span> <span class="s2">&quot;xxxxxx&quot;</span> <span class="c1">// 同local.js</span>
 <span class="nx">AUTH</span> <span class="s2">&quot;xxxxxx&quot;</span>
-<span class="nx">select</span> <span class="mi">4</span> <span class="c1">// db</span>
+<span class="nx">select</span> <span class="mf">4</span> <span class="c1">// db</span>
 <span class="nx">flushdb</span> <span class="c1">// clear database</span>
 <span class="nx">KEYS</span> <span class="o">*</span> <span class="c1">// get all keys</span>
 <span class="nx">get</span> <span class="nx">sapToken</span> <span class="c1">// get certain key</span>
 <span class="nx">ttl</span> <span class="nx">sapToken</span> <span class="c1">// get expire time</span>
-<span class="nx">PSETEX</span> <span class="nx">sapToken</span> <span class="mi">1500000</span> <span class="s2">&quot;xxx&quot;</span> <span class="c1">// set</span>
+<span class="nx">PSETEX</span> <span class="nx">sapToken</span> <span class="mf">1500000</span> <span class="s2">&quot;xxx&quot;</span> <span class="c1">// set</span>
 <span class="nx">del</span> <span class="nx">sapToken</span> <span class="c1">// delete</span>
 <span class="nx">shutdown</span> <span class="c1">// shutdown</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Redis&nbsp;读写</h2>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="p">{</span> <span class="nx">promisify</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">promisify</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">redisClient</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">redisClient</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">({</span>
   <span class="nx">db</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="p">,</span>
   <span class="nx">password</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">pass</span><span class="p">,</span>
   <span class="nx">port</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
   <span class="nx">host</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
 <span class="p">});</span>
-<span class="kr">const</span> <span class="nx">getRedisAsync</span> <span class="o">=</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">.</span><span class="nx">get</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">getRedisAsync</span> <span class="o">=</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">.</span><span class="nx">get</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">);</span>
 
-<span class="nx">redisClient</span><span class="p">.</span><span class="nx">psetex</span><span class="p">(</span><span class="nx">sapTokenKey</span><span class="p">,</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="nx">val</span><span class="p">);</span>
+<span class="nx">redisClient</span><span class="p">.</span><span class="nx">psetex</span><span class="p">(</span><span class="nx">sapTokenKey</span><span class="p">,</span> <span class="mf">25</span> <span class="o">*</span> <span class="mf">60</span> <span class="o">*</span> <span class="mf">1000</span><span class="p">,</span> <span class="nx">val</span><span class="p">);</span>
 
-<span class="nx">extoken</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">getRedisAsync</span><span class="p">(</span><span class="nx">sapTokenKey</span><span class="p">);</span>
-</pre></div>
-
+<span class="nx">extoken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getRedisAsync</span><span class="p">(</span><span class="nx">sapTokenKey</span><span class="p">);</span>
+</code></pre></div>
 
 <h2>启用 Redis&nbsp;密钥空间通知</h2>
-<div class="highlight"><pre><span></span><span class="nx">CONFIG</span> <span class="nx">SET</span> <span class="nx">notify</span><span class="o">-</span><span class="nx">keyspace</span><span class="o">-</span><span class="nx">events</span> <span class="nx">Ex</span>
+<div class="highlight"><pre><span></span><code><span class="nx">CONFIG</span> <span class="nx">SET</span> <span class="nx">notify</span><span class="o">-</span><span class="nx">keyspace</span><span class="o">-</span><span class="nx">events</span> <span class="nx">Ex</span>
 
 <span class="c1">// client 1</span>
-<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">xxx</span><span class="o">-</span><span class="nx">dev</span><span class="o">-</span><span class="nx">rep</span><span class="o">-</span><span class="nx">group</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">001.</span><span class="nx">ugvuyh</span><span class="mf">.0001</span><span class="p">.</span><span class="nx">use1</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">amazonaws</span><span class="p">.</span><span class="nx">com</span>
-<span class="nx">setex</span> <span class="nx">name</span> <span class="mi">10</span> <span class="nx">yoga</span>
+<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">xxx</span><span class="o">-</span><span class="nx">dev</span><span class="o">-</span><span class="nx">rep</span><span class="o">-</span><span class="nx">group</span><span class="o">-</span><span class="mf">1</span><span class="o">-</span><span class="mo">001</span><span class="p">.</span><span class="nx">ugvuyh</span><span class="mf">.0001</span><span class="p">.</span><span class="nx">use1</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">amazonaws</span><span class="p">.</span><span class="nx">com</span>
+<span class="nx">setex</span> <span class="nx">name</span> <span class="mf">10</span> <span class="nx">yoga</span>
 
 <span class="c1">// client 2</span>
-<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">xxx</span><span class="o">-</span><span class="nx">dev</span><span class="o">-</span><span class="nx">rep</span><span class="o">-</span><span class="nx">group</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">001.</span><span class="nx">ugvuyh</span><span class="mf">.0001</span><span class="p">.</span><span class="nx">use1</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">amazonaws</span><span class="p">.</span><span class="nx">com</span> <span class="o">--</span><span class="nx">csv</span> <span class="nx">psubscribe</span> <span class="s1">&#39;*&#39;</span>
+<span class="nx">redis</span><span class="o">-</span><span class="nx">cli</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">xxx</span><span class="o">-</span><span class="nx">dev</span><span class="o">-</span><span class="nx">rep</span><span class="o">-</span><span class="nx">group</span><span class="o">-</span><span class="mf">1</span><span class="o">-</span><span class="mo">001</span><span class="p">.</span><span class="nx">ugvuyh</span><span class="mf">.0001</span><span class="p">.</span><span class="nx">use1</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">amazonaws</span><span class="p">.</span><span class="nx">com</span> <span class="o">--</span><span class="nx">csv</span> <span class="nx">psubscribe</span> <span class="s1">&#39;*&#39;</span>
 <span class="c1">// Reading messages... (press Ctrl-C to quit)</span>
 <span class="c1">// &quot;psubscribe&quot;,&quot;*&quot;,1</span>
 <span class="c1">// &quot;pmessage&quot;,&quot;*&quot;,&quot;__keyevent@0__:expired&quot;,&quot;name&quot;</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">SubscribeExpired</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">SubscribeExpired</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">({</span>
     <span class="nx">db</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="p">,</span>
     <span class="nx">password</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">pass</span><span class="p">,</span>
     <span class="nx">port</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
     <span class="nx">host</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
   <span class="p">});</span>
-  <span class="kr">const</span> <span class="nx">expiredSubKey</span> <span class="o">=</span> <span class="sb">`__keyevent@</span><span class="si">${</span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="si">}</span><span class="sb">__:expired`</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">expiredSubKey</span> <span class="o">=</span> <span class="sb">`__keyevent@</span><span class="si">${</span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">db</span><span class="si">}</span><span class="sb">__:expired`</span><span class="p">;</span>
   <span class="nx">sub</span><span class="p">.</span><span class="nx">psubscribe</span><span class="p">(</span><span class="nx">expiredSubKey</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pmessage&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pmessage&#39;</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="nx">channel</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
       <span class="p">...</span>
     <span class="p">});</span>
   <span class="p">});</span>
@@ -176,8 +172,7 @@
 <span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_APP_INSTANCE</span> <span class="o">===</span> <span class="s1">&#39;0&#39;</span> <span class="o">||</span> <span class="o">!</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_APP_INSTANCE</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">redisClient</span><span class="p">.</span><span class="nx">send_command</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;notify-keyspace-events&#39;</span><span class="p">,</span> <span class="s1">&#39;Ex&#39;</span><span class="p">],</span> <span class="nx">SubscribeExpired</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>数据类型</h2>
 <h3>list&nbsp;链表</h3>
@@ -253,6 +248,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -280,6 +278,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -288,7 +290,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

@@ -62,7 +62,7 @@
     </header>
     <div class="post-entry">
         <h2>1.箭头函数</h2>
-<div class="highlight"><pre><span></span><span class="c1">//es5</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//es5</span>
 <span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
 <span class="p">}</span>
@@ -70,8 +70,7 @@
 <span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>
@@ -81,27 +80,26 @@
 <p>函数的this依赖于函数调用（window），箭头函数没有自己的this，arguments，super或new.target。</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// function</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// function</span>
 <span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
 
   <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="nx">growUp</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// 回调引用的是`that`变量, 其值是预期的对象.</span>
     <span class="nx">that</span><span class="p">.</span><span class="nx">age</span><span class="o">++</span><span class="p">;</span>
-  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mf">1000</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// arrow function</span>
 <span class="kd">function</span> <span class="nx">Person</span><span class="p">(){</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
 
   <span class="nx">setInterval</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="o">++</span><span class="p">;</span> <span class="c1">// |this| 正确地指向 p 实例</span>
-  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mf">1000</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>通过 call() 或 apply()&nbsp;方法调用箭头函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。</p>
 <ul>
@@ -114,53 +112,49 @@
 </ul>
 <h2>2.剩余参数/不定参数 Rest&nbsp;Parameters</h2>
 <p>剩余参数允许将一个不定数量的参数表示为一个数组</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">theArgs</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">theArgs</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>如果函数的最后一个命名参数以&#8230;为前缀，则它将成为一个由剩余参数组成的真数组，theArgs将收集该函数的第三个参数和所有后续参数</p>
 <p>剩余参数可以被解构f(&#8230;[a, b,&nbsp;c])</p>
 <p>arguments对象不是一个真正的数组，而剩余参数是真正的&nbsp;Array实例</p>
 <p><em>伪数组：1.arguments, 2.getElementsByTagName&nbsp;3.childNodes</em></p>
-<div class="highlight"><pre><span></span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
-<span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
+<span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
+</code></pre></div>
 
 <h2>3.展开运算符/拓展参数 Spread&nbsp;syntax</h2>
 <p>传递数组作为参数</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
-<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">];</span>
 
 <span class="c1">//es5</span>
 <span class="nx">myFunction</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
 <span class="c1">//es6</span>
 <span class="nx">myFunction</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>4.默认参数 Functions&nbsp;Default</h2>
 <p>在没有值或undefined被传入时使用默认形参。</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="k">typeof</span> <span class="nx">num</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">num</span> <span class="o">=</span> <span class="mf">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="ow">typeof</span> <span class="nx">num</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">test</span><span class="p">();</span>          <span class="c1">// 1 &#39;number&#39;</span>
 <span class="nx">test</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// 1 &#39;number&#39;</span>
 <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>        <span class="c1">// &#39;&#39; &#39;string&#39;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>10.Set</h2>
 <p>数组去重</p>
-<div class="highlight"><pre><span></span><span class="c1">// input [false, true, undefined, null, NaN, 0, 1, {}, {}, &#39;a&#39;, &#39;a&#39;, NaN]</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// input [false, true, undefined, null, NaN, 0, 1, {}, {}, &#39;a&#39;, &#39;a&#39;, NaN]</span>
 <span class="c1">// output [false, true, undefined, null, NaN, 0, 1, {}, {}, &#39;a&#39;]</span>
 <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">uniq</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">[...</span><span class="k">new</span> <span class="nx">Set</span><span class="p">(</span><span class="k">this</span><span class="p">)];</span>
+  <span class="k">return</span> <span class="p">[...</span><span class="ow">new</span> <span class="nb">Set</span><span class="p">(</span><span class="k">this</span><span class="p">)];</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -242,10 +236,6 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/nest.html">nest</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -254,7 +244,6 @@
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
-                        <span><a href="/tag/power-bi.html">Power BI</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
@@ -264,6 +253,7 @@
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

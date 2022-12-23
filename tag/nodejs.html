@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -56,12 +57,7 @@
 	</header>
 	<div class="summary"><p>Nginx 比 Apache&nbsp;高并发的原因</p>
 <p>Nginx 负载均衡调度算法&nbsp;负载均衡之轮询算法</p>
-<p>Apache&nbsp;多进程（多线程）</p>
-<p>Nginx&nbsp;单进程（单线程）</p>
-<div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">promise</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1">// 这一轮最后执行</span>
-<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">// 下一轮执行</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1">// 1 3 2 …</span></pre></div></div>
+<p>Apache&nbsp;多进 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -84,18 +80,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>背景</h2>
-<p>销售用企业微信添加客户后，系统自动发送问卷，客户填完问卷后将客户数据与销售人员数据一起发送给后台。</p>
-<h2>总体流程</h2>
-<p><img alt="wx" src="img/wx.png"></p>
-<h1>企微接口</h1>
-<p>nodejs+express</p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;view engine&#39;</span><span class="p">,</span><span class="s1">&#39;ejs&#39;</span><span class="p">);</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen …</span></pre></div></div>
+<p>销售用企业微信添加客户后，系统自动发送问卷，客户填完问卷后将 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -118,12 +103,7 @@
 		</div>
 	</header>
 	<div class="summary"><p>EventEmitter是Node.js的内置模块events提供的一个类，它是Node事件流的核心</p>
-<p>https://www.runoob.com/nodejs/nodejs-event.html</p>
-<p>https://nodejs.org/api/events.html#class-eventemitter</p>
-<p>要实现的API有：
-* on(event, listener)：为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数。
-* off(event)： 移除指定事件的某个监听回调
-* trigger(event …</p></div>
+<p>https://www.runoob.com/nodejs …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -165,6 +145,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -192,6 +175,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -200,7 +187,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

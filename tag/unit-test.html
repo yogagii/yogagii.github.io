@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -55,11 +56,7 @@
 		</div>
 	</header>
 	<div class="summary"><h3>单元测试 Unit&nbsp;Testing</h3>
-<p>单元测试是检测一小段代码的良好实践，典型的单元测试是测试独立的function，要保证这个测试是单独孤立的。如果你写的测试用了外部的资源，比如网络或者数据库，它就不是一个单元测试。</p>
-<h3>集成测试 Integration&nbsp;Testing</h3>
-<p>集成测试想要测试的是这个系统的各个部分在一起合作的如何－将各个代码块集成在一起。当你需要验证两个不同的系统是否在一起正常的通信和正常运转，比如你的应用程序和数据库是否集成正确，运转正常，这个时候就需要集成测试了。结果是，当验证集成测试结果时，你通过写数据库连接语句检查数据库状态是否正常而顺便做了数据库连接测试。</p>
-<h3>功能测试/端到端测试 Functional testing / <span class="caps">E2E</span> testing / browser&nbsp;testing</h3>
-<p>测试应用程序的全部的完整的功能 …</p></div>
+<p>单元测试是检测一小段代码的良好实践，典型的单元测试 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -81,19 +78,18 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="n">umi</span> <span class="n">test</span> <span class="c1">--coverage</span>
-<span class="n">umi</span> <span class="n">test</span> <span class="c1">--watch</span>
-<span class="n">umi</span> <span class="n">test</span> <span class="err">\</span><span class="n">allWorkbooks</span>
-</pre></div>
+	<div class="summary"><div class="highlight"><pre><span></span><code>umi test --coverage
+umi test --watch
+umi test \allWorkbooks
+</code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="c1">// index.test.tsx</span>
+<span class="k">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Index</span> <span class="kr">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
 
-<div class="highlight"><pre><span></span><span class="c1">// index.test.tsx</span>
-<span class="kr">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index …</span></pre></div></div>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -135,6 +131,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -162,6 +161,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -170,7 +173,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

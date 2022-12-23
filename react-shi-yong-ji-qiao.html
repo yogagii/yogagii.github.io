@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -67,14 +68,13 @@
         <h3>绑定未提供的事件</h3>
 <hr>
 <p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><br></p>
 <h3>AJAX加载数据</h3>
@@ -82,7 +82,7 @@
 <p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
 <p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
 <p>1.通过this.isMounted()来检测组件的状态是否已经mounted（ES6已废除）</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">//AJAX</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> 
     <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span> <span class="p">{</span>
@@ -90,34 +90,30 @@
     <span class="p">}</span>
   <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>2.在组件卸载之前取消未完成的请求</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(...);</span>
 <span class="p">}</span>
 <span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><br></p>
 <h3>ref属性</h3>
 <hr>
 <p>ref字符串</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="s2">&quot;theInput&quot;</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="s2">&quot;theInput&quot;</span> <span class="o">/&gt;</span>
 <span class="c1">//获得真实DOM</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">theInput</span><span class="p">.</span><span class="nx">getDOMNode</span><span class="p">().</span><span class="nx">focus</span><span class="p">();</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>ref回调函数(回调函数会在组件被挂载后立刻执行)</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">compInstance</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">theInput</span> <span class="o">=</span> <span class="nx">compInstance</span><span class="p">}</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">compInstance</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">theInput</span> <span class="o">=</span> <span class="nx">compInstance</span><span class="p">}</span><span class="o">&gt;</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">theInput</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-</pre></div>
-
+</code></pre></div>
 
 <blockquote>
 <p>对于stateless&nbsp;function来说，引用不会被加载，因为无状态组件被没有对应的实例</p>
@@ -126,16 +122,15 @@
 <h3>className.js</h3>
 <hr>
 <p>根据isBgRed状态切换不同class项的效果</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">isBgRed</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="nx">isBgRed</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">classString</span> <span class="o">=</span> <span class="s1">&#39;bg-red&#39;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="nx">classString</span> <span class="o">=</span> <span class="s1">&#39;bg-green&#39;</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>className工具</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">classNames</span> <span class="nx">from</span> <span class="s1">&#39;classnames&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">classNames</span> <span class="kr">from</span> <span class="s1">&#39;classnames&#39;</span><span class="p">;</span>
 <span class="nx">classSting</span> <span class="o">=</span> <span class="nx">classNames</span><span class="p">({</span> <span class="s1">&#39;bg-red&#39;</span><span class="o">:</span> <span class="nx">isBgRed</span><span class="p">,</span> <span class="s1">&#39;bg-green&#39;</span><span class="o">:</span> <span class="o">!</span><span class="nx">isBgRed</span> <span class="p">});</span>
 
 <span class="nx">classNames</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;boo&#39;</span><span class="p">);</span> <span class="c1">//&quot;foo boo&quot;</span>
@@ -147,19 +142,18 @@
 
 <span class="c1">//多类名去重</span>
 <span class="kd">var</span> <span class="nx">classNames</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;classnames/dedupe&#39;</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><br></p>
 <h3>Immutable.js</h3>
 <hr>
 <p><strong>持久化数据结构</strong>：对Immutable数据对象的任何修改、添加、删除操作都会返回一个新的Immutable对象，同时原对象不变。</p>
 <p><strong>结构共享</strong>：如果对象树中只有一个节点发生了变化，则只修改受到影响的父节点对它的引用，其他节点与原对象共享，避免深拷贝。</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Immutable</span> <span class="nx">from</span> <span class="s1">&#39;immutable&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">imtArray</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">fromJS</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">}]);</span>
-<span class="kd">var</span> <span class="nx">imtList</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span>
-<span class="kd">var</span> <span class="nx">imtMap</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span> <span class="p">});</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">Immutable</span> <span class="kr">from</span> <span class="s1">&#39;immutable&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">imtArray</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">fromJS</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="p">{</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span> <span class="p">}]);</span>
+<span class="kd">var</span> <span class="nx">imtList</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">]);</span>
+<span class="kd">var</span> <span class="nx">imtMap</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span> <span class="nx">a</span><span class="o">:</span> <span class="mf">1</span> <span class="p">});</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -215,6 +209,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -242,6 +239,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -250,7 +251,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

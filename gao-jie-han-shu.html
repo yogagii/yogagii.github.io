@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -67,18 +68,17 @@
 <h3>记忆函数</h3>
 <p>记忆化（memoization）是一种构建函数的处理过程，能够记住上次计算结果的函数。当函数计算得到结果时，就将该结果按照参数存储起来，当另外一个调用也使用相同的参数，可以直接返回上次存储的结果而不是再计算一遍。</p>
 <p>像这样避免既重复又复杂的计算可以显著提高性能。对于动画中的计算、搜索不经常变化的数据或任何耗时的数学计算来说，记忆化这种方式是十分有用的</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">memorize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">memorize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
   <span class="k">return</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">_args</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">_args</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cache</span><span class="p">[</span><span class="nx">_args</span><span class="p">])</span> <span class="p">{</span>
       <span class="p">(</span><span class="nx">cache</span><span class="p">[</span><span class="nx">_args</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">args</span><span class="p">))</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">cache</span><span class="p">[</span><span class="nx">_args</span><span class="p">];</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>斐波那契数列</h3>
 <blockquote>
@@ -87,41 +87,39 @@
 <ol>
 <li>递归法 O(2<sup>n</sup>)</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mf">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mf">1</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">2</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>递归改良法&nbsp;O(n)</li>
 </ol>
 <p>fibonacci =&nbsp;memorize(fibonacci)</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Array</span><span class="p">();</span>
 <span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mf">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mf">1</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">arr</span><span class="p">[</span><span class="nx">n</span><span class="p">])</span> <span class="p">{</span>
-      <span class="nx">arr</span><span class="p">[</span><span class="nx">n</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+      <span class="nx">arr</span><span class="p">[</span><span class="nx">n</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">2</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">n</span><span class="p">];</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>迭代法&nbsp;O(n)</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">res1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">res2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">res1</span> <span class="o">=</span> <span class="mf">1</span><span class="p">,</span> <span class="nx">res2</span> <span class="o">=</span> <span class="mf">2</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">res2</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">3</span><span class="p">;</span>
   <span class="k">while</span> <span class="p">(</span><span class="nx">i</span><span class="o">&lt;=</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">sum</span> <span class="o">=</span> <span class="nx">res1</span> <span class="o">+</span> <span class="nx">res2</span><span class="p">;</span>
     <span class="nx">res1</span> <span class="o">=</span> <span class="nx">res2</span><span class="p">;</span>
@@ -130,7 +128,7 @@
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -186,6 +184,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -213,6 +214,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -221,7 +226,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

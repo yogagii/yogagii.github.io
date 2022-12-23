@@ -1,0 +1,378 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/javascript.html">Javascript</a> ›<span class="caps">ES6</span>&nbsp;新特性
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">ES6</span>&nbsp;新特性</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2019-01-01T00:00:00+08:00"> 
+            <a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2><span class="caps">ES6</span></h2>
+<h2>1.箭头函数</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//es5</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
+<span class="c1">//es6</span>
+<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{};</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>箭头函数不需要 function&nbsp;关键字来创建函数，更适用于那些本来需要匿名函数的地方。</p>
+</li>
+<li>
+<p>函数的 this 依赖于函数调用（window），箭头函数没有自己的 this，arguments，super 或&nbsp;new.target。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// function</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+
+  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="nx">growUp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 回调引用的是`that`变量, 其值是预期的对象.</span>
+    <span class="nx">that</span><span class="p">.</span><span class="nx">age</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">},</span> <span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// arrow function</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+
+  <span class="nx">setInterval</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="o">++</span><span class="p">;</span> <span class="c1">// |this| 正确地指向 p 实例</span>
+  <span class="p">},</span> <span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>通过 call() 或 apply() 方法调用箭头函数时，只能传递参数（不能绑定&nbsp;this），他们的第一个参数会被忽略。</p>
+<ul>
+<li>
+<p>当函数体只有一个 <code>return</code> 语句时，可以省略 <code>return</code> 关键字和花括号</p>
+</li>
+<li>
+<p>yield&nbsp;关键字通常不能在箭头函数中使用。因此，箭头函数不能用作函数生成器。</p>
+</li>
+</ul>
+<h2>2.剩余参数/不定参数 Rest&nbsp;Parameters</h2>
+<p>剩余参数允许将一个不定数量的参数表示为一个数组</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">theArgs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>如果函数的最后一个命名参数以&#8230;为前缀，则它将成为一个由剩余参数组成的真数组，theArgs&nbsp;将收集该函数的第三个参数和所有后续参数</p>
+<p>剩余参数可以被解构 f(&#8230;[a, b,&nbsp;c])</p>
+<p>arguments 对象不是一个真正的数组，而剩余参数是真正的 Array&nbsp;实例</p>
+<p><em>伪数组：1.arguments, 2.getElementsByTagName&nbsp;3.childNodes</em></p>
+<div class="highlight"><pre><span></span><code><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+<span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+</code></pre></div>
+
+<h2>3.展开运算符/拓展参数 Spread&nbsp;syntax</h2>
+<p>传递数组作为参数</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">)</span> <span class="p">{}</span>
+<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">];</span>
+
+<span class="c1">//es5</span>
+<span class="nx">myFunction</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+<span class="c1">//es6</span>
+<span class="nx">myFunction</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
+</code></pre></div>
+
+<h2>4.默认参数 Functions&nbsp;Default</h2>
+<p>在没有值或 undefined&nbsp;被传入时使用默认形参。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">num</span> <span class="o">=</span> <span class="mf">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="ow">typeof</span> <span class="nx">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">();</span> <span class="c1">// 1 &#39;number&#39;</span>
+<span class="nx">test</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// 1 &#39;number&#39;</span>
+<span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span> <span class="c1">// &#39;&#39; &#39;string&#39;</span>
+</code></pre></div>
+
+<h2>10.Set</h2>
+<p>数组去重</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// input [false, true, undefined, null, NaN, 0, 1, {}, {}, &#39;a&#39;, &#39;a&#39;, NaN]</span>
+<span class="c1">// output [false, true, undefined, null, NaN, 0, 1, {}, {}, &#39;a&#39;]</span>
+<span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">uniq</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[...</span><span class="ow">new</span> <span class="nb">Set</span><span class="p">(</span><span class="k">this</span><span class="p">)];</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<hr>
+<h2><span class="caps">ES2021</span></h2>
+<p>Promise.race()&nbsp;承诺列表中寻找第一个履行或拒绝的承诺；</p>
+<p>Promise.any()&nbsp;是从承诺列表中查找第一个履行的承诺。</p>
+<p>判断是否存在缓存，缓存中有数据直接返回，缓存中无数据 -&gt;&nbsp;从数据库获取。</p>
+<p>缺点：1.&nbsp;缓存数据不更新，2.不能并发</p>
+<p>Promise.race 在cacheGet中reject导致拒绝，无法返回数据库获得数据，Promise.any&nbsp;在cacheGet中reject不影响，会返回数据库数据</p>
+<p>优势：1. 用缓存数据直接相应接口，解决504，同时读取数据库更新缓存，保证接口每次获得最新数据，2.&nbsp;读缓存和度数据库可并发</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">cacheGet</span><span class="p">(</span><span class="nx">key</span>: <span class="kt">any</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">resolve</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="p">[</span><span class="nx">examlist</span><span class="p">,</span> <span class="nx">userlist</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">ExamDto</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span>
+  <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">examsService</span><span class="p">.</span><span class="nx">getBehaviorList</span><span class="p">(),</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;examlist&quot;</span><span class="p">),</span>
+    <span class="p">]),</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">usersService</span><span class="p">.</span><span class="nx">getUserList</span><span class="p">(),</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;userlist&quot;</span><span class="p">),</span>
+    <span class="p">]),</span>
+  <span class="p">]);</span>
+</code></pre></div>
+
+<p>tsconfig.json</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;es2021&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/javascript.html">Javascript</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "es6-xin-te-xing.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/power-bi.html">Power BI</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

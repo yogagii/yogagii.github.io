@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -62,21 +63,7 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>假设有 6 个待办任务要执行，而我们希望限制同时执行的任务个数，即最多只有 2 个任务能同时执行。当 正在执行任务列表 中的任何 1 个任务完成后，程序会自动从 待办任务列表 中获取新的待办任务并把该任务添加到&nbsp;正在执行任务列表中。</p>
-<h2>async-pool</h2>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">asyncPool</span><span class="p">(</span><span class="nx">poolLimit</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">iteratorFn</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>poolLimit（数字类型）：表示限制的并发数；</p>
-</li>
-<li>
-<p>array（数组类型）：表示任务数组；</p>
-</li>
-<li>
-<p>iteratorFn（函数类型 …</p></li></ul></div>
+	<div class="summary"><p>假设有 6 个待办任务要执行，而我们希望限制同时执行的任务个数，即最 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -99,23 +86,17 @@
 		</div>
 	</header>
 	<div class="summary"><h2>斐波那契数列</h2>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mf">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mf">1</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">2</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>字符串全排列</h2>
-<p>重新排列一个字符串，使得每个相邻字符都不同，列出所有情况</p>
-<ul>
-<li>枚举采用全排列</li>
-<li>过滤相邻重复，正则表达式var re =&nbsp;/(.)\1+/g;</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// 全排列，result.length …</span></pre></div></div>
+<p>重新 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -142,26 +123,7 @@
 <p>*：&gt;= 0次。例如，zo 能匹配 &#8220;z&#8221; 以及 &#8220;zoo&#8221;。&nbsp;等价于{0,}。</p>
 </li>
 <li>
-<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不能匹配 &#8220;z&#8221;。+ 等价于&nbsp;{1,}。</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// 连续重复字符</span>
-<span class="sr">/(.)\1+/g</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>?：0次或1次</p>
-</li>
-<li>
-<p>{n}&nbsp;n次</p>
-</li>
-<li>
-<p>{n,} &gt;=&nbsp;n次</p>
-</li>
-<li>
-<p>\d&nbsp;数字 …</p></li></ul></div>
+<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不 …</p></li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -187,12 +149,7 @@
 | - | - | - 
 <span class="caps">1XX</span> | 信息
 <span class="caps">2XX</span> | 成功
-200 | 请求成功 <span class="caps">OK</span> | 服务器已成功处理了请求
-201 | Created | 该请求已成功，并因此创建了一个新的资源。通常源于POST或某些PUT请求
-202 | Accepted | 该请求已被接受进行处理，但是处理尚未完成。最终有可能会被处理也可能不会
-204 | No Content | 服务器成功处理了请求，但响应体中没有任何内容
-<span class="caps">3XX</span> | 重定向
-300 | 多种选择 …</p></div>
+200 | 请求成功 <span class="caps">OK</span> | 服务器已成功处理了请求 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -217,15 +174,7 @@
 	<div class="summary"><p>背景：</p>
 <p>添加按钮，模拟tableau的保存按钮，点击后可保存iframe内的正在编辑的workbook</p>
 <p><img alt="mockKeyboard" src="img/mockKeyboard.jpg"></p>
-<h3>尝试方法一：</h3>
-<p>Tableau文档提供的接口</p>
-<p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
-<h3>尝试方法二：</h3>
-<p>前端模拟tableau保存的流程，点击我们的按钮时，请求五六个tableau的接口，根据返回的数据照着做一个保存的窗口，例如:</p>
-<p>https://prodbitabcrp.juj.com/vizportal/api/web/v1/getDestinationProjects</p>
-<p>困难：跨域问题，无法直接调用tableau的接口</p>
-<h3>尝试方法三：</h3>
-<p>前端做个按钮，点击后向后端发送workbook信息 …</p></div>
+<h3>尝 …</h3></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -251,19 +200,7 @@
 <blockquote>
 <p>防抖：将多次执行变为最后一次执行</p>
 </blockquote>
-<p>当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定时间到来之前，又触发了事件，就重新开始延时。</p>
-<div class="highlight"><pre><span></span><span class="c1">// use.js</span>
-<span class="kd">let</span> <span class="nx">timeout</span><span class="p">;</span>
-<span class="kr">export</span> <span class="kd">function</span> <span class="nx">useDebounce</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span>
-    <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
-    <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="c1">// search …</span></pre></div></div>
+<p>当持续触发事件时，一定时 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -288,20 +225,7 @@
 	<div class="summary"><blockquote>
 <p>闭包：有权访问另一个函数作用域内变量的函数</p>
 </blockquote>
-<p>C++中函数中的局部变量仅在函数函数执行期间可用，执行完毕不能访问</p>
-<p>JS函数以及创建的词法环境形成闭包，环境包含闭包创建时所能访问的所有局部变量</p>
-<p>闭包有3个特性：
-1. 函数嵌套函数
-2. 函数内部可以引用函数外部的参数和变量
-3.&nbsp;参数和变量不会被垃圾回收机制回收</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">B</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A …</span></pre></div></div>
+<p>C++中函数中的局部变量 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -327,19 +251,7 @@
 <ul>
 <li>slice</li>
 </ul>
-<p>slice()&nbsp;方法可提取字符串/数组的某个部分，并以新的字符串/数组返回被提取的部分。</p>
-<blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<p>start：起始坐标，负数从结尾开数</p>
-<p>end：结尾下标，负数从结尾开数，未指定则到底，end &lt;&nbsp;start无效</p>
-<p>返回值：一个新的字符串</p>
-<ul>
-<li>splice</li>
-</ul>
-<p>从数组中添加或删除元素，返回被删除的元素，会改变原始数组</p>
-<blockquote>
-<p>arrayObject.splice(index,howmany …</p></blockquote></div>
+<p>slice()&nbsp;方法可提取字符串/数组的某个部分，并以新的字符串/数组返回被 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -351,7 +263,7 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/es6xin-te-xing.html" rel="bookmark" title="Permalink to ES6新特性">ES6新特性</a>
+			<a href="/es6-xin-te-xing.html" rel="bookmark" title="Permalink to ES6 新特性"><span class="caps">ES6</span>&nbsp;新特性</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
@@ -361,32 +273,17 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>1.箭头函数</h2>
-<div class="highlight"><pre><span></span><span class="c1">//es5</span>
-<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-
-<span class="p">}</span>
+	<div class="summary"><h2><span class="caps">ES6</span></h2>
+<h2>1.箭头函数</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//es5</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
 <span class="c1">//es6</span>
-<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-
-<span class="p">}</span>
-</pre></div>
-
+<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{};</span>
+</code></pre></div>
 
 <ul>
 <li>
-<p>箭头函数不需要 function&nbsp;关键字来创建函数，更适用于那些本来需要匿名函数的地方。</p>
-</li>
-<li>
-<p>函数的this依赖于函数调用（window），箭头函数没有自己的this，arguments，super或new.target。</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// function</span>
-<span class="kd">function</span> <span class="nx">Person</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-  <span class="nx">that</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function …</span></pre></div></div>
+<p>箭头函数不需要 function&nbsp;关键字来创建函数，更 …</p></li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -411,12 +308,7 @@
 	<div class="summary"><blockquote>
 <p>高阶函数(Higher-order function)：一个函数可以接收另一个函数作为参数。 e.g. map, reduce,&nbsp;filter</p>
 </blockquote>
-<h3>记忆函数</h3>
-<p>记忆化（memoization）是一种构建函数的处理过程，能够记住上次计算结果的函数。当函数计算得到结果时，就将该结果按照参数存储起来，当另外一个调用也使用相同的参数，可以直接返回上次存储的结果而不是再计算一遍。</p>
-<p>像这样避免既重复又复杂的计算可以显著提高性能。对于动画中的计算、搜索不经常变化的数据或任何耗时的数学计算来说，记忆化这种方式是十分有用的</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">memorize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="k">return</span> <span class="kd">function …</span></pre></div></div>
+<h3>记忆 …</h3></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -459,6 +351,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -492,7 +387,7 @@
                                   <a href="/chang-yong-nei-zhi-fang-fa.html">常用内置方法</a>
                                 </li>
                                 <li>
-                                  <a href="/es6xin-te-xing.html">ES6新特性</a>
+                                  <a href="/es6-xin-te-xing.html"><span class="caps">ES6</span>&nbsp;新特性</a>
                                 </li>
                                 <li>
                                   <a href="/gao-jie-han-shu.html">高阶函数</a>
@@ -530,6 +425,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -538,7 +437,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

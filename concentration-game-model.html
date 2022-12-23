@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -79,33 +80,30 @@ public <span class="caps">API</span>: all the instanve variables and methods tha
 <li>数组初始化</li>
 </ul>
 <p>Array has an init with no arguments and what it does is it creates an empty&nbsp;array</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]()</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]()</span>
 <span class="kd">var</span> <span class="nv">yourArray</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
 
 <span class="kd">var</span> <span class="nv">cards</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="n">Card</span><span class="p">&gt;()</span>
 <span class="kd">var</span> <span class="nv">cards</span> <span class="p">=</span> <span class="p">[</span><span class="n">Card</span><span class="p">]()</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>类初始化</li>
 </ul>
 <p>Concentration is a class, get a free init with no 
 arguments as long as all of their vars are&nbsp;initialized.</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">game</span><span class="p">:</span> <span class="n">Concentration</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">()</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">game</span><span class="p">:</span> <span class="n">Concentration</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">()</span>
+</code></pre></div>
 
 <ul>
 <li>结构体初始化</li>
 </ul>
 <p>Struct, the free initializer they get, initializes all of their vars, even if they&#8217;re already&nbsp;pre-initialized.</p>
 <p>类没有白送这种可以初始化所有变量的初始化器 </p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">(</span><span class="n">isFaceUp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">isMatched</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">indentifier</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">(</span><span class="n">isFaceUp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">isMatched</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">indentifier</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Card</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Card</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="nb">Int</span>
 
   <span class="kd">init</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
@@ -123,13 +121,12 @@ arguments as long as all of their vars are&nbsp;initialized.</p>
     <span class="kc">self</span><span class="p">.</span><span class="n">identifier</span> <span class="p">=</span> <span class="n">identifier</span> <span class="c1">//通过self区分传入的identifier和Card的identifier</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>循环体</h2>
 <p>for &#8230; in &#8230;
 in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
-<div class="highlight"><pre><span></span><span class="c1">// [0, numberOfPairsOfCards)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// [0, numberOfPairsOfCards)</span>
 <span class="k">for</span> <span class="n">indentifier</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="n">numberOfPairsOfCards</span> <span class="p">{</span>
 
 <span class="p">}</span>
@@ -158,21 +155,19 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
   <span class="kd">let</span> <span class="nv">card</span> <span class="p">=</span> <span class="n">Card</span><span class="p">()</span>
   <span class="n">cards</span> <span class="o">+=</span> <span class="p">[</span><span class="n">card</span><span class="p">,</span> <span class="n">card</span><span class="p">]</span> <span class="c1">// 结构体是值类型，每次使用时复制</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Stride</strong> is a global function that will create a CountableRange from floating point values. The return type of stride is&nbsp;CountableRange.</p>
 <p>按照指定的递进值生成一个序列</p>
 <p>through包含终点值ClosedCountableaRange</p>
 <p>to不包含终点值CountableaRange</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="bp">stride</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">through</span><span class="p">:</span> <span class="mf">15.25</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="bp">stride</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">through</span><span class="p">:</span> <span class="mf">15.25</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">)</span> <span class="p">{</span>
 
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>遍历数组</h3>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">button</span> <span class="k">in</span> <span class="n">cardButtons</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">button</span> <span class="k">in</span> <span class="n">cardButtons</span> <span class="p">{</span>
 
 <span class="p">}</span>
 <span class="c1">// count数组长度</span>
@@ -183,13 +178,12 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
 <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">indices</span> <span class="p">{</span>
 
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>静态方法</h2>
 <p>Static function is a function even though it&#8217;s in the Card class, you can&#8217;t send it to a&nbsp;card</p>
 <p>类内的静态方法不能传递给实例化对象，类似global function, utility&nbsp;function</p>
-<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Card</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Card</span> <span class="p">{</span>
   <span class="c1">// stored with each individual card -- card</span>
   <span class="kd">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="nb">Int</span>
 
@@ -204,22 +198,19 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
     <span class="k">return</span> <span class="n">identifierFactory</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>延迟加载</h2>
 <blockquote>
 <p>Catch22: one depends on another<br />
 &#8220;catch-22&nbsp;situation&#8221;意为本身就有问题、不符合逻辑而难以实现的规则或者进退两难的境地。</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">game</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">(</span><span class="n">numberOfPairsOfCards</span><span class="p">:</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// cardButtons还未初始化</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">game</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">(</span><span class="n">numberOfPairsOfCards</span><span class="p">:</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// cardButtons还未初始化</span>
+</code></pre></div>
 
 <p>property initializers run before &#8216;self&#8217; is&nbsp;available</p>
-<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">game</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">(</span><span class="n">numberOfPairsOfCards</span><span class="p">:</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">game</span> <span class="p">=</span> <span class="n">Concentration</span><span class="p">(</span><span class="n">numberOfPairsOfCards</span><span class="p">:</span> <span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
 
 <p>If you make a var lazy, that means it doesn&#8217;t actually initialize until someone grabs&nbsp;it.使用时才初始化</p>
 <p>所谓延迟加载就是在第一次访问某个属性时，要判断这个属性是否已经被初始化，如果已经初始化则直接返回，若没有初始化则进行初始化。这样可以把这个属性延迟初始化，把它和包含它的对象的初始化分隔开，来达到提升性能的目的。</p>
@@ -229,10 +220,10 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
 <p>伪随机数生成器</p>
 <p>arc4random_uniform is a pseudo-random number generator, and it generates a random number between 0 and upper&nbsp;bound.</p>
 <p>生成[0,&nbsp;上限-1]之间的随机数，上限需为UInt32类型，count为Int类型，UInt32是struct，可用UInt32()初始化函数把Int转化为UInt32，同样Int()可将UInt32转化为Int类型</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nv">randomIndex</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">arc4random_uniform</span><span class="p">(</span><span class="nb">UInt32</span><span class="p">(</span><span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span><span class="p">)))</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -288,6 +279,9 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -315,6 +309,10 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -323,7 +321,6 @@ in后加sequence: array, string, <strong>countable&nbsp;range</strong></p>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

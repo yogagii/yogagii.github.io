@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -63,218 +64,205 @@
     </header>
     <div class="post-entry">
         <h2>面向对象</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
-  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
+  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="p">;</span>
 
-  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// 没有命名冲突，可以省略this</span>
-  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">age</span><span class="p">;</span> <span class="c1">// 没有命名冲突，可以省略this</span>
+  <span class="p">}</span>
 
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// 局部变量优先级更高，就必须加上this</span>
-  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span> <span class="c1">// 局部变量优先级更高，就必须加上this</span>
+  <span class="p">}</span>
 
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHobbies</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">hobbies</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 可变参数相当于数组</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">hobbies</span> <span class="o">=</span> <span class="n">hobbies</span><span class="o">;</span>
-  <span class="o">}</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHobbies2</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="o">)</span> <span class="o">{</span> 
-    <span class="k">this</span><span class="o">.</span><span class="na">hobbies</span> <span class="o">=</span> <span class="n">hobbies</span><span class="o">;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHobbies</span><span class="p">(</span><span class="n">String</span><span class="p">...</span> <span class="n">hobbies</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 可变参数相当于数组</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">hobbies</span> <span class="o">=</span> <span class="n">hobbies</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHobbies2</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="na">hobbies</span> <span class="o">=</span> <span class="n">hobbies</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Person</span> <span class="n">ming</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span> <span class="c1">// 一个类没有定义构造方法，编译器会自动生成一个默认构造方法</span>
-    <span class="n">ming</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">&quot;Xiao Ming&quot;</span><span class="o">;</span> <span class="c1">// 设置name</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Person</span> <span class="n">ming</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span> <span class="c1">// 一个类没有定义构造方法，编译器会自动生成一个默认构造方法</span>
+    <span class="n">ming</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">&quot;Xiao Ming&quot;</span><span class="p">;</span> <span class="c1">// 设置name</span>
 
-    <span class="n">ming</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">12</span><span class="o">);</span> <span class="c1">// 设置age</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ming</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">ming</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+    <span class="n">ming</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span> <span class="c1">// 设置age</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ming</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">ming</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
 
-    <span class="n">g</span><span class="o">.</span><span class="na">setHobbies</span><span class="o">(</span><span class="s">&quot;Singing&quot;</span><span class="o">,</span> <span class="s">&quot;Sleeping&quot;</span><span class="o">,</span> <span class="s">&quot;Eating&quot;</span><span class="o">);</span>
-    <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span> <span class="s">&quot;Singing&quot;</span><span class="o">,</span> <span class="s">&quot;Sleeping&quot;</span><span class="o">,</span> <span class="s">&quot;Eating&quot;</span> <span class="o">};</span>
-    <span class="n">g</span><span class="o">.</span><span class="na">setHobbies2</span><span class="o">(</span><span class="n">hobbies</span><span class="o">);</span> <span class="c1">// 调用方需要先构造String[]</span>
-    <span class="n">hobbies</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">&quot;Dancing&quot;</span><span class="o">;</span> <span class="c1">// 引用类型参数的传递指向的是同一个对象 ming.hobbies[0] = &quot;Dancing&quot;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+    <span class="n">g</span><span class="p">.</span><span class="na">setHobbies</span><span class="p">(</span><span class="s">&quot;Singing&quot;</span><span class="p">,</span> <span class="s">&quot;Sleeping&quot;</span><span class="p">,</span> <span class="s">&quot;Eating&quot;</span><span class="p">);</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="p">{</span> <span class="s">&quot;Singing&quot;</span><span class="p">,</span> <span class="s">&quot;Sleeping&quot;</span><span class="p">,</span> <span class="s">&quot;Eating&quot;</span> <span class="p">};</span>
+    <span class="n">g</span><span class="p">.</span><span class="na">setHobbies2</span><span class="p">(</span><span class="n">hobbies</span><span class="p">);</span> <span class="c1">// 调用方需要先构造String[]</span>
+    <span class="n">hobbies</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">&quot;Dancing&quot;</span><span class="p">;</span> <span class="c1">// 引用类型参数的传递指向的是同一个对象 ming.hobbies[0] = &quot;Dancing&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>构造方法</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Unamed&quot;</span><span class="o">;</span> <span class="c1">// 引用类型的字段默认是null</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="c1">// int类型默认值是0</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Unamed&quot;</span><span class="p">;</span> <span class="c1">// 引用类型的字段默认是null</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// int类型默认值是0</span>
 
-  <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 构造方法的名称就是类名, 构造方法没有返回值，调用构造方法必须用new</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
-  <span class="o">}</span>
+  <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 构造方法的名称就是类名, 构造方法没有返回值，调用构造方法必须用new</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="mi">18</span><span class="o">);</span> <span class="c1">// 调用另一个构造方法Person(String, int)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
+  <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span> <span class="c1">// 调用另一个构造方法Person(String, int)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Xiao Ming&quot;</span><span class="o">,</span> <span class="mi">15</span><span class="o">);</span> <span class="c1">// 自动匹配到构造方法public Person(String, int)</span>
-    <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Xiao Ming&quot;</span><span class="o">);</span> <span class="c1">// 自动匹配到构造方法public Person(String)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">&quot;Xiao Ming&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span> <span class="c1">// 自动匹配到构造方法public Person(String, int)</span>
+    <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">&quot;Xiao Ming&quot;</span><span class="p">);</span> <span class="c1">// 自动匹配到构造方法public Person(String)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>方法重载&nbsp;Overload</h2>
 <p>方法名相同，但各自的参数不同，返回值类型通常都是相同的</p>
 <h2>继承&nbsp;extends</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="kd">protected</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">protected</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="p">;</span>
 
-  <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 子类不会继承任何父类的构造方法</span>
+  <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">,</span> <span class="kt">int</span> <span class="n">score</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 子类不会继承任何父类的构造方法</span>
     <span class="c1">// super(); 如果没有明确地调用父类的构造方法，编译器会自动加一句super();自动调用父类的构造方法，但是Person类并没有无参数的构造方法</span>
-    <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">);</span> <span class="c1">// 任何class的构造方法，第一行语句必须是调用父类的构造方法。</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
-  <span class="o">}</span>
+    <span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span> <span class="c1">// 任何class的构造方法，第一行语句必须是调用父类的构造方法。</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="kd">super</span><span class="o">.</span><span class="na">name</span><span class="o">;</span> <span class="c1">// super关键字表示父类，等于this.name, name</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="kd">super</span><span class="p">.</span><span class="na">name</span><span class="p">;</span> <span class="c1">// super关键字表示父类，等于this.name, name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>一个class只允许继承自一个类，一个类有且仅有一个父类，只有Object特殊没有父类。</p>
 <p>子类无法访问父类的private字段和private方法，用protected修饰的字段可以被子类访问</p>
 <h2>覆写&nbsp;Override</h2>
 <p>子类定义了一个与父类方法签名相同，并且返回值也相同的方法</p>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="p">{</span>
   <span class="nd">@Override</span> <span class="c1">// 加上@Override可以让编译器帮助检查是否进行了正确的覆写</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{}</span>
-<span class="o">}</span>
-</pre></div>
-
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>父类中用final修饰的方法不能被Override</p>
 <h2>多态</h2>
 <p>针对某个类型的方法调用，其真正执行的方法取决于运行时期实际类型的方法。</p>
 <p>多态的特性：运行期才能动态决定调用的子类方法。对某个类型调用某个方法，执行的实际方法可能是某个子类的覆写方法。</p>
 <p>多态的功能：允许添加更多类型的子类实现功能扩展，却不需要修改基于父类的代码。</p>
-<div class="highlight"><pre><span></span><span class="c1">// 三种纳税方式</span>
-<span class="kd">class</span> <span class="nc">Income</span> <span class="o">{</span>
-  <span class="kd">protected</span> <span class="kt">double</span> <span class="n">income</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTax</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">income</span> <span class="o">*</span> <span class="mf">0.1</span><span class="o">;</span> <span class="o">}</span>
-<span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 三种纳税方式</span>
+<span class="kd">class</span> <span class="nc">Income</span> <span class="p">{</span>
+  <span class="kd">protected</span> <span class="kt">double</span> <span class="n">income</span><span class="p">;</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTax</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">income</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kd">class</span> <span class="nc">Salary</span> <span class="kd">extends</span> <span class="n">Income</span> <span class="o">{</span>
+<span class="kd">class</span> <span class="nc">Salary</span> <span class="kd">extends</span> <span class="n">Income</span> <span class="p">{</span>
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTax</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="o">(</span><span class="n">income</span> <span class="o">-</span> <span class="mi">5000</span><span class="o">)</span> <span class="o">*</span> <span class="mf">0.2</span><span class="o">;</span> <span class="o">}</span>
-<span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTax</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">income</span> <span class="o">-</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kd">class</span> <span class="nc">SpecialAllowance</span> <span class="kd">extends</span> <span class="n">Income</span> <span class="o">{</span>
+<span class="kd">class</span> <span class="nc">SpecialAllowance</span> <span class="kd">extends</span> <span class="n">Income</span> <span class="p">{</span>
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTax</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span> <span class="o">}</span>
-<span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTax</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="c1">// totalTax()方法只需要和Income打交道，它完全不需要知道Salary和SpecialAllowance的存在，就可以正确计算出总的税。</span>
-<span class="kd">public</span> <span class="kt">double</span> <span class="nf">totalTax</span><span class="o">(</span><span class="n">Income</span><span class="o">...</span> <span class="n">incomes</span><span class="o">)</span> <span class="o">{</span>
-  <span class="kt">double</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-  <span class="k">for</span> <span class="o">(</span><span class="n">Income</span> <span class="n">income</span><span class="o">:</span> <span class="n">incomes</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">income</span><span class="o">.</span><span class="na">getTax</span><span class="o">();</span>
-  <span class="o">}</span>
-  <span class="k">return</span> <span class="n">total</span><span class="o">;</span>
-<span class="o">}</span>
-</pre></div>
-
+<span class="kd">public</span> <span class="kt">double</span> <span class="nf">totalTax</span><span class="p">(</span><span class="n">Income</span><span class="p">...</span> <span class="n">incomes</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">Income</span> <span class="n">income</span><span class="p">:</span> <span class="n">incomes</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">income</span><span class="p">.</span><span class="na">getTax</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>抽象类</h2>
-<div class="highlight"><pre><span></span><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">();</span> <span class="c1">// 抽象方法</span>
-<span class="o">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">();</span> <span class="c1">// 抽象方法</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>抽象方法：如果父类的方法本身不需要实现任何功能，仅仅是为了定义方法签名，目的是让子类去覆写它。抽象方法本身没有实现任何方法语句，所以方法本身是无法执行的</p>
 <p>抽象类：包含抽象方法的类无法被实例化。必须把类本身也声明为abstract才能编译，抽象类可以强迫子类实现其定义的抽象方法，抽象方法实际上相当于定义了“规范”。</p>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="p">{</span>
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Student.run&quot;</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Student.run&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>面向抽象编程：尽量引用高层类型，避免引用实际子类型的方式。</p>
 <p>上层代码只定义规范，不需要子类就可以实现业务逻辑（正常编译），具体的业务逻辑由不同的子类实现，调用者并不关心。</p>
 <h2>接口</h2>
-<div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kt">int</span> <span class="n">MALE</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// public static final int MALE = 1;</span>
-  <span class="kt">int</span> <span class="n">FEMALE</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">MALE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// public static final int MALE = 1;</span>
+  <span class="kt">int</span> <span class="n">FEMALE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-  <span class="n">String</span> <span class="nf">getName</span><span class="o">();</span> <span class="c1">// public abstract String getName();</span>
-<span class="o">}</span>
-</pre></div>
-
+  <span class="n">String</span> <span class="nf">getName</span><span class="p">();</span> <span class="c1">// public abstract String getName();</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>接口：一个抽象类没有字段，所有方法全部都是抽象方法（方法默认都是public abstract），连字段都不能有（可以有静态字段public static&nbsp;final）</p>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Person</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Person</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
 
-  <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-  <span class="o">}</span>
+  <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+  <span class="p">}</span>
 
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>一个类只能继承自另一个类，不能从多个类继承。但是，一个类可以实现多个interface</p>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Person</span><span class="o">,</span> <span class="n">Hello</span> <span class="o">{}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Person</span><span class="p">,</span> <span class="n">Hello</span> <span class="p">{}</span>
+</code></pre></div>
 
 <p>一个interface可以继承自另一个interface</p>
-<div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Person</span> <span class="kd">extends</span> <span class="n">Hello</span> <span class="o">{}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nc">Person</span> <span class="kd">extends</span> <span class="n">Hello</span> <span class="p">{}</span>
+</code></pre></div>
 
 <p>在接口中，可以定义default方法：当我们需要给接口新增一个方法时，会涉及到修改全部子类。如果新增的是default方法，那么子类就不必全部修改，只需要在需要覆写的地方去覆写新增方法。</p>
-<div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="n">String</span> <span class="nf">getName</span><span class="o">();</span>
-  <span class="k">default</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; run&quot;</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="n">String</span> <span class="nf">getName</span><span class="p">();</span>
+  <span class="k">default</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; run&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>静态字段</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">number</span><span class="o">;</span> <span class="c1">// 定义静态字段number</span>
-<span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">number</span><span class="p">;</span> <span class="c1">// 定义静态字段number</span>
+<span class="p">}</span>
 
-<span class="n">person1</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-<span class="n">person2</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span> <span class="c1">// 各个实例的同名字段互不影响</span>
-<span class="n">person1</span><span class="o">.</span><span class="na">number</span> <span class="o">=</span> <span class="mi">99</span><span class="o">;</span> <span class="c1">// 所有实例都会共享静态字段 person2.number = person1.number = 99</span>
-</pre></div>
-
+<span class="n">person1</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">person2</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 各个实例的同名字段互不影响</span>
+<span class="n">person1</span><span class="p">.</span><span class="na">number</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="c1">// 所有实例都会共享静态字段 person2.number = person1.number = 99</span>
+</code></pre></div>
 
 <p>可以把静态字段理解为描述class本身的字段（非实例字段）Person.number</p>
 <h2>静态方法</h2>
@@ -284,29 +272,27 @@
 <p>Math.random()</p>
 <h2>包&nbsp;package</h2>
 <p>在定义class的时候，我们需要在第一行声明这个class属于哪个包，来解决类名冲突</p>
-<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.jnj.jcrd</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">com.jnj.jcrd</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JcrdApplication</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">JcrdApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JcrdApplication</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">JcrdApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>位于同一个包的类，可以访问包作用域的字段和方法。</p>
 <p>引用其他包的类：</p>
-<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">a</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">a</span><span class="p">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="p">{}</span>
 
-<span class="kn">package</span> <span class="nn">b</span><span class="o">;</span>
+<span class="kn">package</span> <span class="nn">b</span><span class="p">;</span>
 <span class="c1">// 法一：用完整类名</span>
-<span class="n">a</span><span class="o">.</span><span class="na">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">a</span><span class="o">.</span><span class="na">Person</span><span class="o">();</span>
+<span class="n">a</span><span class="p">.</span><span class="na">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">a</span><span class="p">.</span><span class="na">Person</span><span class="p">();</span>
 <span class="c1">// 法二：import</span>
-<span class="kn">import</span> <span class="nn">a.Person</span><span class="o">;</span> <span class="c1">// 或import a.*;</span>
-<span class="n">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
-</pre></div>
-
+<span class="kn">import</span> <span class="nn">a.Person</span><span class="p">;</span> <span class="c1">// 或import a.*;</span>
+<span class="n">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+</code></pre></div>
 
 <p>包作用域是指一个类允许访问同一个package的没有public、private修饰的class，以及没有public、protected、private修饰的字段和方法。</p>
     </div><!-- /.entry-content -->
@@ -364,6 +350,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -391,6 +380,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -399,7 +392,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

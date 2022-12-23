@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -52,36 +53,6 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/microsoft-azure-adminstrator.html" rel="bookmark" title="Permalink to Microsoft Azure Adminstrator">Microsoft Azure&nbsp;Adminstrator</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-13T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">三 13 四月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Azure Active&nbsp;Directory</p>
-<p>用户和组身份：身份验证 +&nbsp;访问授权</p>
-<p>https://portal.azure.com/</p>
-<p>https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Overview</p>
-<p>新建并切换域名：</p>
-<p>Azure Active Directory -&gt; Manage tenants -&gt;&nbsp;create</p>
-<p>创建用户：</p>
-<p>Users -&gt; New&nbsp;User</p>
-<p>User …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
 			<a href="/spring.html" rel="bookmark" title="Permalink to Spring">Spring</a>
 		</h2>
 		<div class="post-info">
@@ -93,18 +64,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>Spring</h2>
-<p>Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提供的底层服务包括组件的生命周期管理、配置和组装服务、AOP支持，以及建立在AOP基础上的声明式事务服务等。</p>
-<h3>IoC&nbsp;容器</h3>
-<p>IoC: Inversion of&nbsp;Control控制反转</p>
-<p>https://yogagii.github.io/typescript.html</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookService</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="n">DataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HikariDataSource</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>缺点：
-1 …</p></div>
+<p>Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -127,18 +87,13 @@
 		</div>
 	</header>
 	<div class="summary"><h2>面向对象</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
-  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
+  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="p">;</span>
 
-  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// 没有命名冲突，可以省略this</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">age …</span></pre></div></div>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -161,23 +116,8 @@
 		</div>
 	</header>
 	<div class="summary"><h2>变量</h2>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span> <span class="c1">// 重新赋值不能再重复定义</span>
-</pre></div>
-
-
-<h3>基本类型：</h3>
-<ul>
-<li>整数类型：byte，short，int，long</li>
-<li>浮点数类型：float，double</li>
-<li>字符类型：char</li>
-<li>布尔类型：boolean</li>
-</ul>
-<h3>引用类型：</h3>
-<ul>
-<li>String</li>
-</ul>
-<p>toUpperCase, equals, contains, indexOf, lastIndexOf, startsWith, endsWith …</p></div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">// 重新赋值不能 …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -199,12 +139,10 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="c1">// Hello.java </span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span> <span class="c1">// 类名首字母大写</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Java程序的固定入口方法</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">);</span> <span class="c1">// 输出并换行</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span> <span class="c1">// 不换行</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">arg</span> <span class="o">:</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// java App …</span></pre></div></div>
+	<div class="summary"><div class="highlight"><pre><span></span><code><span class="c1">// Hello.java </span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span> <span class="c1">// 类名首字母大写</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Java程序的固定入口方法</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -227,18 +165,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2><span class="caps">ORM</span>（Object Relactional&nbsp;Mapping，对象关系映射）</h2>
-<p>ORM是一种解决面向对象与关系型数据库存在的互不匹配的现象的技术，实现面向对象技术和关系型数据库的一种映射。</p>
-<p>ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射。</p>
-<p>类&#8212;&#8212;&gt;表</p>
-<p>类的属性&#8212;&#8212;&#8212;-&gt;表中的字段</p>
-<p>类的对象&#8212;&#8212;&#8212;-&gt;表中的行</p>
-<h3>ORM框架：</h3>
-<ul>
-<li>
-<p>Sequelize：基于promise的关系型数据库ORM框架，这个库完全采用javascript并且能够用在Node.JS环境中，易于使用。支持关系型数据库（MySQL/<span class="caps">MSSQL</span>/PostgreSQL/SQLite）</p>
-</li>
-<li>
-<p>TypeORM：采用TypeScript编写的基于node.js的ORM框架，支持使用ts或js(<span class="caps">ES5 …</span></p></li></ul></div>
+<p>ORM是一种解决面向对象与关系型数据库存在的 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -261,10 +188,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>Spark原理</h2>
-<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是UC Berkeley 开源的类Hadoop MapReduce的通用并行框架,&nbsp;专门用于大数据量下的迭代式计算。</p>
-<p>Spark 在多次运算的情况下是比较快的。因为 Hadoop 在一次 MapReduce 运算之后，会将数据的运算结果从内存写入到磁盘中，第二次运算时再从磁盘中读取数据，2次运算间有多余 <span class="caps">IO</span> 消耗；Spark&nbsp;则是将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘。 </p>
-<ol>
-<li>提供 Cache 机制来支持需要反复迭代计算或者多次数据共享,减少数据读取的 …</li></ol></div>
+<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -288,12 +212,7 @@
 	</header>
 	<div class="summary"><h2>Overview</h2>
 <ol>
-<li>Nest深受Angular的影响，借鉴了NG的一些列前端设计思路，特别是其代码结构。让Angular易于开发大型前端的优势也发挥在Node服务器端。</li>
-<li>模块化：高度可测试，可扩展，松散耦合且易于维护</li>
-<li>nestjs直接对接ts类型系统</li>
-<li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
-</ol>
-<p>A nestjs template that contains basic functions (typeorm, task, email, unit test):&nbsp;https://github.com/yogagii/nest_startup …</p></div>
+<li>Nest深受Angular的影响，借鉴了NG的一些列前端设计思路，特别是其代码结构 …</li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -305,18 +224,29 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/amazon-cloudwatch.html" rel="bookmark" title="Permalink to Amazon CloudWatch">Amazon&nbsp;CloudWatch</a>
+			<a href="/adaptive-card.html" rel="bookmark" title="Permalink to Adaptive Card">Adaptive&nbsp;Card</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-09-03T00:00:00+08:00"> 
-				<a href="/archive/2021/ 9/index.html">五 03 九月 2021 </a>
+			<abbr class="date" title="2021-06-05T00:00:00+08:00"> 
+				<a href="/archive/2021/ 6/index.html">六 05 六月 2021 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>Amazon CloudWatch monitors your Amazon Web Services (<span class="caps">AWS</span>) resources and the applications you run on <span class="caps">AWS</span> in real&nbsp;time.</p>
-<p>End Goal: Keep an application log and a log of <span class="caps">API …</span></p></div>
+	<div class="summary"><h2>Mailer</h2>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@nestjs</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">mailer</span><span class="w"></span>
+</code></pre></div>
+
+<p>email.module.ts</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MailerModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">EjsAdapter</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer/dist/adapters/ejs.adapter&#39;</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span>
+    <span class="nx">MailerModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+      <span class="nx">transport</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;mx …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -328,19 +258,50 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/aws-kms.html" rel="bookmark" title="Permalink to AWS KMS"><span class="caps">AWS</span> <span class="caps">KMS</span></a>
+			<a href="/ms-graph-api.html" rel="bookmark" title="Permalink to MS Graph API"><span class="caps">MS</span> Graph <span class="caps">API</span></a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-08-17T00:00:00+08:00"> 
-				<a href="/archive/2021/ 8/index.html">二 17 八月 2021 </a>
+			<abbr class="date" title="2021-06-04T00:00:00+08:00"> 
+				<a href="/archive/2021/ 6/index.html">五 04 六月 2021 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p><span class="caps">AWS</span> Key Management Service (<span class="caps">AWS</span> <span class="caps">KMS</span>) 是一个密钥管理服务，可以用来创建和管理您的主密钥，<span class="caps">AWS</span> KMS使用信封加密的方式实现数据的保护。简单来说，信封加密就是用数据密钥对明文数据进行加密，然后再使用其他数据密钥对这个数据密钥进行加密，但是您的最后一个数据密必须以明文的形式存在，以便您对其他的数据密钥进行加密和解密操作。这个最顶层的明文密钥称为主密钥，<span class="caps">AWS</span>&nbsp;KMS可以帮我们安全地存储和管理这个主密钥。</p>
-<h3>Background</h3>
-<p>Set up <span class="caps">AWS</span> <span class="caps">KMS</span> to manage and secure Backend Local&nbsp;Configs …</p></div>
+	<div class="summary"><h2>Authentication and&nbsp;Authorization</h2>
+<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
+<ol>
+<li>Register …</li></ol></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/local-environment.html" rel="bookmark" title="Permalink to Local Environment">Local&nbsp;Environment</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-04-13T00:00:00+08:00"> 
+				<a href="/archive/2021/ 4/index.html">二 13 四月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">SSL</span></h2>
+<p>Error: unable to get local issuer&nbsp;certificate:</p>
+<p>法一：</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">apiLoader</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">forceUpdate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">getToken</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s1">&#39;X-SAP-LogonToken&#39;</span><span class="o">:</span> <span class="nx">token …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -351,7 +312,7 @@
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 3
+    Page 1 / 2
         <a href="/category/backend2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -383,9 +344,6 @@
                           <a href="/category/backend.html" >Backend</a>
                             <ul>
                                 <li>
-                                  <a href="/microsoft-azure-adminstrator.html">Microsoft Azure&nbsp;Adminstrator</a>
-                                </li>
-                                <li>
                                   <a href="/spring.html">Spring</a>
                                 </li>
                                 <li>
@@ -405,12 +363,6 @@
                                 </li>
                                 <li>
                                   <a href="/nestjs.html">NestJS</a>
-                                </li>
-                                <li>
-                                  <a href="/amazon-cloudwatch.html">Amazon&nbsp;CloudWatch</a>
-                                </li>
-                                <li>
-                                  <a href="/aws-kms.html"><span class="caps">AWS</span> <span class="caps">KMS</span></a>
                                 </li>
                                 <li>
                                   <a href="/adaptive-card.html">Adaptive&nbsp;Card</a>
@@ -454,6 +406,9 @@
                             </ul>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -481,6 +436,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -489,7 +448,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -157,7 +158,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">Workbook</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Workbook</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">hideTabs</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
@@ -169,8 +170,8 @@
 
   <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">viz</span> <span class="o">&amp;&amp;</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
-    <span class="kr">const</span> <span class="nx">vizContainer</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;vizContainer&#39;</span><span class="p">);</span>
-    <span class="nx">viz</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">vizContainer</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;vizContainer&#39;</span><span class="p">);</span>
+    <span class="nx">viz</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
   <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
 
   <span class="k">return</span> <span class="p">(</span>
@@ -185,9 +186,8 @@
   <span class="p">);</span>
 <span class="p">};</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">Workbook</span><span class="p">;</span>
-</pre></div>
-
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Workbook</span><span class="p">;</span>
+</code></pre></div>
 
 <h2>Viz <span class="caps">API</span>:</h2>
 <table>
@@ -511,25 +511,25 @@
 <tr>
 <td>Filter data</td>
 <td>object</td>
-<td _filters-selection_="'filters-selection'," data: docId: filters_="filters," getWebiViewerArgs_.id="getWebiViewerArgs().id" type:></td>
+<td>{ type: &#8216;filters-selection&#8217;, data: filters, docId: getWebiViewerArgs().id }</td>
 <td>true</td>
 </tr>
 <tr>
 <td>Tab data</td>
 <td>object</td>
-<td _tab-selection_="'tab-selection'," data: docId: getWebiViewerArgs_.id="getWebiViewerArgs().id" tab_="tab," type:></td>
+<td>{ type: &#8216;tab-selection&#8217;, data: tab, docId: getWebiViewerArgs().id }</td>
 <td>true</td>
 </tr>
 <tr>
 <td>Prompt data</td>
 <td>object</td>
-<td _parameter-selection_="'parameter-selection'," data: docId: getWebiViewerArgs_.id="getWebiViewerArgs().id" parameters_="parameters," type:></td>
+<td>{ type: &#8216;parameter-selection&#8217;, data: parameters, docId: getWebiViewerArgs().id }</td>
 <td>true</td>
 </tr>
 <tr>
 <td>Click link event</td>
 <td>object</td>
-<td _document-url_="'document-url'," data: docId: getWebiViewerArgs_.id="getWebiViewerArgs().id" item.href_="item.href," type:></td>
+<td>{ type: &#8216;document-url&#8217;, data: item.href, docId: getWebiViewerArgs().id }</td>
 <td>false</td>
 </tr>
 </tbody>
@@ -601,6 +601,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -628,6 +631,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -636,7 +643,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

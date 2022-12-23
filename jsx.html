@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -66,31 +67,28 @@
         <p>JSX语法转义器会识别嵌入JavaScript代码中的HTML标签，当遇到&#8217;&lt;&#8217;标识符就会启动JSX转移过程，遇到&#8217;{&#8216;标识符就会当作JavaScript代码进行处理。</p>
 <p>引用Babel中负责JSX转义的模块browser.js，并将使用JSX语法描述的js文件类型声明为text/babel</p>
 <h3>1.&nbsp;三元表达式</h3>
-<div class="highlight"><pre><span></span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
 <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="o">||</span><span class="s1">&#39;World&#39;</span><span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>2.&nbsp;注释</h3>
 <p>{/<em> 当注释作为独立子节点时需要用大括号包裹起来 </em>/}</p>
 <h3>3.&nbsp;展开属性</h3>
-<div class="highlight"><pre><span></span><span class="nx">component</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>  <span class="c1">//wrong</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nx">component</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>  <span class="c1">//wrong</span>
+</code></pre></div>
 
 <blockquote>
 <p>初始化props后，props是不可变的，在整个组件的生命周期中都是只读的</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">extendProps</span> <span class="o">=</span> <span class="p">{};</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">extendProps</span> <span class="o">=</span> <span class="p">{};</span>
 <span class="nx">extendProps</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">component</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{</span><span class="err">…</span><span class="nx">extendProps</span><span class="p">}</span> <span class="o">/&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>4.&nbsp;自定义HTML属性</h3>
 <p>在HTML中使用自定义属性，需要给属性名加上data-或aria-前缀</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-dd</span><span class="o">=</span><span class="s">&#39;xxx&#39;</span> <span class="na">aria-dd</span><span class="o">=</span><span class="s">&#39;xxx&#39;</span><span class="p">&gt;</span>content<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-dd</span><span class="o">=</span><span class="s">&#39;xxx&#39;</span> <span class="na">aria-dd</span><span class="o">=</span><span class="s">&#39;xxx&#39;</span><span class="p">&gt;</span>content<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -146,6 +144,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -173,6 +174,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -181,7 +186,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

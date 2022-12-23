@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -52,6 +53,36 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/nextjs.html" rel="bookmark" title="Permalink to Next.js">Next.js</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-08-31T00:00:00+08:00"> 
+				<a href="/archive/2022/ 8/index.html">三 31 八月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>nextjs12.x 集成&nbsp;less</h2>
+<p>1）安装依赖</p>
+<div class="highlight"><pre><span></span><code>npm install next-plugin-antd-less
+npm install classnames
+npm install less-loader
+</code></pre></div>
+
+<p>2）在next.config.js中加配置</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">withAntdLess …</span></code></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/react.html">React</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/jest.html" rel="bookmark" title="Permalink to JEST"><span class="caps">JEST</span></a>
 		</h2>
 		<div class="post-info">
@@ -62,19 +93,18 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="n">umi</span> <span class="n">test</span> <span class="c1">--coverage</span>
-<span class="n">umi</span> <span class="n">test</span> <span class="c1">--watch</span>
-<span class="n">umi</span> <span class="n">test</span> <span class="err">\</span><span class="n">allWorkbooks</span>
-</pre></div>
+	<div class="summary"><div class="highlight"><pre><span></span><code>umi test --coverage
+umi test --watch
+umi test \allWorkbooks
+</code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="c1">// index.test.tsx</span>
+<span class="k">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Index</span> <span class="kr">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
 
-<div class="highlight"><pre><span></span><span class="c1">// index.test.tsx</span>
-<span class="kr">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index …</span></pre></div></div>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -97,8 +127,8 @@
 		</div>
 	</header>
 	<div class="summary"><p>The <Admin> component creates an application with its own state, routing, and controller logic. <Admin> requires only a dataProvider prop, and at least one child <Resource> to&nbsp;work:</p>
-<div class="highlight"><pre><span></span>const App = () =&gt; (
-    <span class="p">&lt;</span><span class="nt">Admin</span> <span class="na">dataProvider</span><span class="o">=</span><span class="s">{simpleRestProvider …</span></pre></div></div>
+<div class="highlight"><pre><span></span><code>const App = () =&gt; (
+    <span class="p">&lt;</span><span class="nt">Admin</span> <span class="na">dataProvider</span><span class="o">=</span><span class="s">{simpleRestProvider …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -138,7 +168,7 @@
 </tr>
 <tr>
 <td>Get several records</td>
-<td ids:_123_456_789_="ids:[123,456,789]"><span class="caps">GET</span> http …</td></tr></tbody></table></div>
+<td><span class="caps">GET</span> http …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -167,7 +197,7 @@
 <li>edit</li>
 <li>show</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">import …</span></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="k">import …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -190,13 +220,12 @@
 		</div>
 	</header>
 	<div class="summary"><h2>Setting&nbsp;Up</h2>
-<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
+<div class="highlight"><pre><span></span><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
 <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
 <span class="nx">cd</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
 <span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">admin</span> <span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span> <span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
 <span class="nx">yarn</span> <span class="nx">start</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Data&nbsp;Provider …</h2></div>
 	<footer>
@@ -223,9 +252,7 @@
 	<div class="summary"><p>React 16.8.0 是第一个支持Hook的版本。React Native 从0.59版本开始支持&nbsp;Hook。</p>
 <h2>Why react hook&nbsp;?</h2>
 <hr>
-<h3>在组件之间复用状态逻辑很难</h3>
-<p>React 没有提供将可复用性行为“附加”到组件的途径（例如，把组件连接到 store）。react的解决方案是render props 和&nbsp;高阶组件。但是这类方案需要重新组织你的组件结构。</p>
-<p>React 需要为共享状态逻辑提供更好的原生途径。使用 Hook …</p></div>
+<h3>在 …</h3></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -248,19 +275,18 @@
 		</div>
 	</header>
 	<div class="summary"><h3>导出</h3>
-<div class="highlight"><pre><span></span><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
   <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
   <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
 <span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>展开运算符</h3>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
   <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
 <span class="p">};</span>
-<span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="nx">attr</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/a&gt; /</span><span class="o">/</span><span class="nx">忽略不存在在a中的属性 …</span></pre></div></div>
+<span class="k">return …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -282,13 +308,7 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器响应请求；而前端路由访问一个新页面的时候仅仅变换了一下路径，没有网络延迟。因此前端路由相较于后端路由，在性能和用户体验上有相当大的提升。</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
-<span class="nx">render</span> <span class="p">((</span>
-  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">APP</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//嵌套</span>
-      <span class="o">&lt;</span><span class="nx">IndexRoute</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="o">/&gt;</span> <span class="c1">//默认</span>
-      <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">from</span><span class="o">=</span><span class="s2">&quot;messages/:id&quot;</span> <span class="nx">to …</span></pre></div></div>
+	<div class="summary"><p>前端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -313,64 +333,7 @@
 	<div class="summary"><h3>按钮组件</h3>
 <ul>
 <li>
-<p>样式：允许使用者自行定义并作为属性传入，若不传需提供默认样式</p>
-</li>
-<li>
-<p>事件：将自定义的事件处理函数作为属性传入，事件触发时该函数被调用</p>
-</li>
-</ul>
-<h3>分页组件</h3>
-<ul>
-<li>
-<p>数据：pageSize, pageNum, pages, offset, total, col_name,&nbsp;direction</p>
-</li>
-<li>
-<p>事件：onFirst首页, onLast尾页 (-&gt; disabled: true), onPrev上一页, OnNext下一页, onFresh刷新,&nbsp;onChange</p>
-</li>
-</ul>
-<h3>树形组件</h3>
-<p>由于树形结构的级数可变，需要用递归的方式才能实现树形组件的定义</p>
-<h3>Modal对话框</h3>
-<p>弹出Modal时在当前页面先覆盖一个遮罩层 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/react.html">React</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/react-shi-yong-ji-qiao.html" rel="bookmark" title="Permalink to React 实用技巧">React&nbsp;实用技巧</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-08-03T00:00:00+08:00"> 
-				<a href="/archive/2019/ 8/index.html">六 03 八月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>绑定未提供的事件</h3>
-<hr>
-<p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><br></p>
-<h3>AJAX加载数据</h3>
-<hr>
-<p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
-<p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
-<p>1.通过this.isMounted()来检测组件的状态是否已经mounted …</p></div>
+<p>样式：允许使用者自行定义并作为属性传入，若不传需提供默认 …</p></li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -413,6 +376,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -430,6 +396,9 @@
                         <li>
                           <a href="/category/react.html" >React</a>
                             <ul>
+                                <li>
+                                  <a href="/nextjs.html">Next.js</a>
+                                </li>
                                 <li>
                                   <a href="/jest.html"><span class="caps">JEST</span></a>
                                 </li>
@@ -490,6 +459,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -498,7 +471,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

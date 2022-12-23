@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -78,17 +79,17 @@
 <li><span class="dquo">&#8220;</span>&#8221;&nbsp;允许上述所有规则，默认</li>
 </ul>
 <p>原文链接：https://blog.csdn.net/asing1elife/article/details/83044752</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;iframe</span>
-  <span class="na">id=</span><span class="s">{`webiContainer${documentId.replace(/\./g,</span> <span class="err">&#39;&#39;)}`}</span>
-  <span class="na">title=</span><span class="s">{webiDetail.name}</span>
-  <span class="na">className=</span><span class="s">{styles.iframeWrapper}</span>
-  <span class="na">src=</span><span class="s">{webiDetail.document_url}</span>
-  <span class="na">width=</span><span class="s">&quot;100%&quot;</span>
-  <span class="na">height=</span><span class="s">&quot;100%&quot;</span>
-  <span class="na">frameBorder=</span><span class="s">&quot;0&quot;</span>
-  <span class="na">sandbox=</span><span class="s">&#39;allow-scripts allow-forms allow-same-origin allow-top-navigation allow-downloads&#39;</span>
-<span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">iframe</span>
+  <span class="n">id</span><span class="o">=</span><span class="p">{</span><span class="err">`</span><span class="n">webiContainer</span><span class="o">$</span><span class="p">{</span><span class="n">documentId</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">/</span>\<span class="o">./</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)}</span><span class="err">`</span><span class="p">}</span>
+  <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">webiDetail</span><span class="o">.</span><span class="n">name</span><span class="p">}</span>
+  <span class="n">className</span><span class="o">=</span><span class="p">{</span><span class="n">styles</span><span class="o">.</span><span class="n">iframeWrapper</span><span class="p">}</span>
+  <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="n">webiDetail</span><span class="o">.</span><span class="n">document_url</span><span class="p">}</span>
+  <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+  <span class="n">height</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+  <span class="n">frameBorder</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+  <span class="n">sandbox</span><span class="o">=</span><span class="s1">&#39;allow-scripts allow-forms allow-same-origin allow-top-navigation allow-downloads&#39;</span>
+<span class="o">/&gt;</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -144,6 +145,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -171,6 +175,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -179,7 +187,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

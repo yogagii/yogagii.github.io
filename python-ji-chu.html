@@ -1,0 +1,418 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Python&nbsp;基础
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Python&nbsp;基础</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-11-22T00:00:00+08:00"> 
+            <a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>List&nbsp;列表</h2>
+<div class="highlight"><pre><span></span><code><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># red</span>
+<span class="n">list1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># blue 反向索引</span>
+<span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># red, green [0, 2)</span>
+</code></pre></div>
+
+<ul>
+<li>更新列表项</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">list1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2001</span> <span class="c1"># 修改</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;newItem&#39;</span><span class="p">)</span> <span class="c1"># append 添加</span>
+<span class="k">del</span> <span class="n">list1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># del 删除</span>
+</code></pre></div>
+
+<ul>
+<li>操作</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># 3 长度</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="c1"># 拼接</span>
+<span class="n">list1</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="c1"># 拼接</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="c1"># 遍历</span>
+
+<span class="nb">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># 最大值</span>
+<span class="nb">min</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># 最小值</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="c1"># 将元组转换为列表</span>
+</code></pre></div>
+
+<ul>
+<li>方法</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">list1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># push</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># 统计某个元素在列表中出现的次数</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># indexof</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span> <span class="c1"># 将对象插入列表</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># 移除列表中的一个元素（默认最后一个元素），并且返回该元素的值</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># 移除列表中某个值的第一个匹配项</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># 反向</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 排序</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1"># 清空</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># 复制</span>
+</code></pre></div>
+
+<h2>String&nbsp;字符串</h2>
+<div class="highlight"><pre><span></span><code><span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;Hello World&#39;</span>
+
+<span class="n">str1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># H</span>
+<span class="n">str1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># d</span>
+<span class="n">str1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># ell [1, 4)</span>
+</code></pre></div>
+
+<ul>
+<li>更新字符串</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">str1</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;Runoob!&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>转义字符</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;line1 </span><span class="se">\</span>
+<span class="s2">  line2&quot;</span><span class="p">)</span> <span class="c1"># \续行符 line1 line2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello </span><span class="se">\b</span><span class="s2"> World!&quot;</span><span class="p">)</span> <span class="c1"># \b 退格 Hello World!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># \n 换行 </span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="c1"># 原始字符串</span>
+
+<span class="n">para_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;python三引号允许一个字符串跨多行，</span>
+<span class="s2">字符串中可以包含换行符、制表符以及其他特殊字符。</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<ul>
+<li>字符串格式化</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%c</td>
+<td>格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>格式化无符号整型</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;我叫 </span><span class="si">%s</span><span class="s2"> 今年 </span><span class="si">%d</span><span class="s2"> 岁!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># 我叫 Yoga 今年 10 岁!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># f-string 字面量格式化字符串 python3.6</span>
+</code></pre></div>
+
+<ul>
+<li>查找</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;H&#39;</span> <span class="ow">in</span> <span class="n">str1</span> <span class="c1"># True</span>
+<span class="s1">&#39;H&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">str1</span> <span class="c1"># False</span>
+
+<span class="n">str1</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">beg</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span> <span class="c1"># sub在 str1 出现的次数</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">beg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span> <span class="c1"># 返回索引值或-1</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">beg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span> <span class="c1"># 从右开始找</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">beg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span> <span class="c1"># sub不存在会报异常</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">beg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span> <span class="c1"># 从右开始找</span>
+</code></pre></div>
+
+<ul>
+<li>替换</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">str2</span> <span class="o">=</span> <span class="n">str1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span> <span class="c1"># old 换成 new，替换不超过 max 次, 返回一个新的字符串，</span>
+
+<span class="n">trantab</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;aeiou&quot;</span><span class="p">,</span> <span class="s2">&quot;12345&quot;</span><span class="p">)</span>   <span class="c1"># 字符串映射表</span>
+<span class="n">str1</span> <span class="o">=</span> <span class="s2">&quot;this is string example....wow!!!&quot;</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">trantab</span><span class="p">)</span> <span class="c1"># 翻译</span>
+</code></pre></div>
+
+<ul>
+<li>操作</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span> <span class="c1"># 长度</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span> <span class="c1"># W</span>
+<span class="nb">min</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span> <span class="c1"># e</span>
+</code></pre></div>
+
+<ul>
+<li>方法</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">str1</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="c1"># 首字母大写</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span> <span class="c1"># 小写</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="c1"># 大写</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># 转小写</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># 转大写</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">wapcase</span><span class="p">()</span> <span class="c1"># 大小写互转</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="c1"># 所有单词首字母大写</span>
+
+<span class="n">str1</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="c1"># 字母或数字</span>
+<span class="n">str1</span><span class="o">.</span>   <span class="n">isalpha</span><span class="p">()</span> <span class="c1"># 字母或中文</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="c1"># 数字 123</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span> <span class="c1"># 数字字符 &quot;123&quot;</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">()</span> <span class="c1"># 十进制字符</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span> <span class="c1"># 空白</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">endwith</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">startwith</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+
+<span class="n">str1</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">string</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="c1"># 拼接 H-E-L-L-O</span>
+
+<span class="n">str1</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span> <span class="c1"># 截掉 空格 或 sub</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span> <span class="c1"># 截掉 右空格 或 sub</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span> <span class="c1"># 截掉 右空格 或 sub</span>
+
+<span class="n">str1</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">)</span> <span class="c1"># 编码</span>
+<span class="nb">bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;strict&quot;</span><span class="p">)</span> <span class="c1"># 解码</span>
+<span class="n">str1</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="n">tabsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># tab 转空格 </span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "python-ji-chu.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/power-bi.html">Power BI</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

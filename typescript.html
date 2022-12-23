@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -63,64 +64,60 @@
     </header>
     <div class="post-entry">
         <h2>interface <span class="caps">VS</span>&nbsp;type</h2>
-<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">Name</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nx">Name</span> <span class="p">{</span>
   <span class="nx">name</span>: <span class="kt">string</span>
 <span class="p">}</span>
 
-<span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="p">{</span>
+<span class="kr">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">name</span>: <span class="kt">string</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>拓展（extends）</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// interface extends interface</span>
-<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// interface extends interface</span>
+<span class="kd">interface</span> <span class="nx">User</span> <span class="k">extends</span> <span class="nx">Name</span> <span class="p">{</span>
   <span class="nx">age</span>: <span class="kt">number</span>
 <span class="p">}</span>
 
 <span class="c1">// interface extends type</span>
-<span class="kr">interface</span> <span class="nx">User</span> <span class="kr">extends</span> <span class="nx">Name</span> <span class="p">{</span>
+<span class="kd">interface</span> <span class="nx">User</span> <span class="k">extends</span> <span class="nx">Name</span> <span class="p">{</span>
   <span class="nx">age</span>: <span class="kt">number</span>
 <span class="p">}</span>
 
 <span class="c1">// type extends type</span>
-<span class="nx">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
+<span class="kr">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
   <span class="nx">age</span>: <span class="kt">number</span>
 <span class="p">}</span>
 <span class="c1">// type extends interface</span>
-<span class="nx">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
+<span class="kr">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
   <span class="nx">age</span>: <span class="kt">number</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>type&nbsp;可以声明基本类型别名，联合类型，元组等类型</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="kt">string</span> <span class="c1">// 基本类型别名</span>
-<span class="nx">type</span> <span class="nx">PetList</span> <span class="o">=</span> <span class="p">[</span><span class="nx">Dog</span><span class="p">,</span> <span class="nx">Pet</span><span class="p">]</span> <span class="c1">// 具体定义数组每个位置的类型</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="kt">string</span> <span class="c1">// 基本类型别名</span>
+<span class="kr">type</span> <span class="nx">PetList</span> <span class="o">=</span> <span class="p">[</span><span class="nx">Dog</span><span class="p">,</span> <span class="nx">Pet</span><span class="p">]</span> <span class="c1">// 具体定义数组每个位置的类型</span>
+</code></pre></div>
 
 <ul>
 <li>type 语句中还可以使用 typeof 获取实例的&nbsp;类型进行赋值</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
-<span class="nx">type</span> <span class="nx">B</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">div</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="kr">type</span> <span class="nx">B</span> <span class="o">=</span> <span class="ow">typeof</span> <span class="nx">div</span>
+</code></pre></div>
 
 <ul>
 <li>interface&nbsp;能够声明合并</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nx">User</span> <span class="p">{</span>
   <span class="nx">name</span>: <span class="kt">string</span>
 <span class="p">}</span>
 
-<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+<span class="kd">interface</span> <span class="nx">User</span> <span class="p">{</span>
   <span class="nx">sex</span>: <span class="kt">string</span>
 <span class="p">}</span>
 
@@ -130,30 +127,28 @@
 <span class="cm"> sex: string </span>
 <span class="cm">}</span>
 <span class="cm">*/</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>原文链接：https://juejin.im/post/5c2723635188252d1d34dc7d#heading-11</p>
 <hr>
 <h2>装饰器&nbsp;Decorators</h2>
 <p>随着 TypeScript 和 <span class="caps">ES6</span> 里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。&nbsp;装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。</p>
 <p>在命令行或 tsconfig.json 里启用 experimentalDecorators&nbsp;编译器选项：</p>
-<div class="highlight"><pre><span></span><span class="err">//</span> <span class="err">tsconfig.json</span>
+<div class="highlight"><pre><span></span><code><span class="err">//</span> <span class="kc">ts</span><span class="err">co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
 <span class="p">{</span>
   <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;es2017&quot;</span><span class="p">,</span>
     <span class="nt">&quot;experimentalDecorators&quot;</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>装饰器是一种特殊类型的声明，它能够被附加到类声明，方法， 访问符，属性或参数上。 装饰器使用 @expression 这种形式，expression&nbsp;求值后必须为一个函数，它会在运行时被调用，被装饰的声明信息做为参数传入</p>
 <ul>
 <li>装饰器工厂</li>
 </ul>
 <p>普通装饰器，无法传参，装饰器工厂,可传参</p>
-<div class="highlight"><pre><span></span><span class="c1">// 定义装饰器工厂</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定义装饰器工厂</span>
 <span class="kd">function</span> <span class="nx">logClass</span><span class="p">(</span><span class="nx">params</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;target：&#39;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
@@ -164,111 +159,102 @@
 <span class="p">}</span>
 
 <span class="kd">@logClass</span><span class="p">(</span><span class="s1">&#39;http:www.baidu.com&#39;</span><span class="p">)</span>
-<span class="kr">class</span> <span class="nx">HttpClient</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nx">HttpClient</span> <span class="p">{</span>
   <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
   <span class="p">}</span>
 
-  <span class="nx">getData() {</span>
+  <span class="nx">getData</span><span class="p">()</span> <span class="p">{</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpClient</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">http</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">HttpClient</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">apiUrl</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>装饰器组合</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// 书写在同一行上</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 书写在同一行上</span>
 <span class="kd">@f</span> <span class="kd">@g</span> <span class="nx">x</span>
 
 <span class="c1">// 书写在多行上</span>
 <span class="kd">@f</span>
 <span class="kd">@g</span>
 <span class="nx">x</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>类装饰器</li>
 </ul>
 <p>类装饰器在类声明之前被声明（紧靠着类声明）。&nbsp;类装饰器应用于类构造函数，可以用来监视，修改或替换类定义。</p>
 <p>类装饰器表达式会在运行时当作函数被调用，类的构造函数作为其唯一的参数。如果类装饰器返回一个值，它会使用提供的构造函数来替换类的声明。</p>
-<div class="highlight"><pre><span></span><span class="kd">@sealed</span>
-<span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">@sealed</span>
+<span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{}</span>
+</code></pre></div>
 
 <ul>
 <li>方法装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
   <span class="kd">@enumerable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-  <span class="nx">greet() {</span><span class="p">}</span>
+  <span class="nx">greet</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>访问器装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Point</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Point</span> <span class="p">{</span>
   <span class="kd">@configurable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-  <span class="nx">get</span> <span class="nx">x() {</span>
+  <span class="nx">get</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_x</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>属性装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
   <span class="kd">@format</span><span class="p">(</span><span class="s1">&#39;Hello, %s&#39;</span><span class="p">)</span>
   <span class="nx">greeting</span>: <span class="kt">string</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>参数装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
   <span class="nx">greet</span><span class="p">(</span><span class="kd">@required</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h2>依赖注入</h2>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
-<span class="kr">class</span> <span class="nx">A</span> <span class="p">{</span>
-  <span class="kr">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">class</span> <span class="nx">A</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">;</span>
   <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类需要修改A类</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类需要修改A类</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// main</span>
-<span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
-</pre></div>
-
+<span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">A</span><span class="p">();</span>
+</code></pre></div>
 
 <p><strong>依赖注入（<span class="caps">DI</span>）</strong>：&nbsp;通过A的构造函数将B的实例注入</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
-<span class="kr">class</span> <span class="nx">A</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">)</span> <span class="p">{</span> 
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">class</span> <span class="nx">A</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">)</span> <span class="p">{</span> 
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// main</span>
-<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类只需要修改主程序即可</span>
-<span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 将B的实例注入到a中</span>
-</pre></div>
-
+<span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类只需要修改主程序即可</span>
+<span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">A</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 将B的实例注入到a中</span>
+</code></pre></div>
 
 <p>解决问题
 1. 通过往构造函数中传入b来创建a，A类不再亲自创建b，而是消费它们，此时最大的好处就是B与A解除了强耦的关系。如果有一天对B进行升级，在创建B的时候需要传入一个参数，这时候不需要修改A类，只需要修改主程序即可
@@ -281,13 +267,16 @@
 <h2>Config</h2>
 <p>踩坑：</p>
 <p>Consider using &#8216;&#8212;resolveJsonModule&#8217; to import module with &#8216;.json&#8217;&nbsp;extension.</p>
-<div class="highlight"><pre><span></span><span class="err">//</span> <span class="err">tsconfig.json</span>
+<div class="highlight"><pre><span></span><code><span class="err">//</span> <span class="kc">ts</span><span class="err">co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
 <span class="p">{</span>
   <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;resolveJsonModule&quot;</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
+
+<hr>
+<p>(type: keyof typeof colorMap) =&gt;&nbsp;colorMap[type]</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -343,6 +332,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -370,6 +362,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -378,7 +374,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

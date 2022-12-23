@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -56,7 +57,7 @@
 	</header>
 	<div class="summary"><h2>基础组件</h2>
 <p>文本</p>
-<div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
   <span class="nl">textAlign:</span> <span class="n">TextAlign</span><span class="p">.</span><span class="n">left</span><span class="p">,</span>
   <span class="nl">maxLines:</span> <span class="m">1</span><span class="p">,</span>
   <span class="nl">overflow:</span> <span class="n">TextOverflow</span><span class="p">.</span><span class="n">ellipsis</span><span class="p">,</span>
@@ -64,8 +65,7 @@
   <span class="nl">style:</span> <span class="n">TextStyle</span><span class="p">(</span>
     <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
     <span class="nl">fontSize:</span> <span class="m">18.0</span><span class="p">,</span>
-    <span class="nl">height:</span> <span class="m">1.2</span><span class="p">,</span>  <span class="c1">// 行高</span>
-    <span class="nl">fontFamily:</span> <span class="s2">&quot;Courier …</span></pre></div></div>
+    <span class="nl">height:</span> <span class="m">1 …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -88,14 +88,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>单线程模型</h2>
-<p>Dart&nbsp;在单线程中是以消息循环机制来运行的，其中包含两个任务队列</p>
-<ul>
-<li>“微任务队列” microtask&nbsp;queue：（Dart内部）微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡</li>
-<li>“事件队列” event queue：（外部事件任务）<span class="caps">IO</span>、计时器、点击、以及绘制事件</li>
-</ul>
-<p><img alt="flutter" src="img/flutter3.png"></p>
-<p>入口函数 main()&nbsp;执行完后，消息循环机制便启动了。首先会按照先进先出的顺序逐个执行微任务队列中的任务，事件任务执行完毕后程序便会退出，在事件任务执行的过程中也可以插入新的微任务和事件任务</p>
-<p>Flutter中，主线程的执行过程一直在循环 …</p></div>
+<p>Dart&nbsp;在单线程中是以消息循环机制来运行的，其中包含两个任 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -120,14 +113,7 @@
 	<div class="summary"><blockquote>
 <p>Flutter&nbsp;中万物皆为Widget。</p>
 </blockquote>
-<p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同，&nbsp;以确定底层渲染树从一个状态转换到下一个状态所需的最小更改（类似于React/Vue中虚拟DOM的diff算法）。</p>
-<h2>Widget</h2>
-<p>runApp函数接受给定的Widget并使其成为widget树的根，根widget强制覆盖整个屏幕</p>
-<ul>
-<li>无状态的&nbsp;StatelessWidget</li>
-<li>有状态的&nbsp;StatefulWidget</li>
-</ul>
-<p>@immutable 代表 Widget 是不可变的，这会限制 Widget&nbsp;中定义的属性（即配置信息 …</p></div>
+<p>Flutter Widget采用现代响应式框架构建，这是从 React 中获得的灵感 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -153,7 +139,7 @@
 <ul>
 <li>升级 macOS to Big&nbsp;Sur</li>
 </ul>
-<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS 7.2, and …</p></div>
+<p>Xcode 12.3 includes Swift 5.3 and SDKs for iOS 14.3, iPadOS14.3, tvOS 14.3, watchOS …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -195,6 +181,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -222,6 +211,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -230,7 +223,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

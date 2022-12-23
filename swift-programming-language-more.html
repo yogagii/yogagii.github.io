@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -92,12 +93,11 @@
 <h1>Assertion&nbsp;断言</h1>
 <p>An assertion is just a function that you call where you assert something to be true. And if it&#8217;s not your program crashes and print out an&nbsp;error.</p>
 <p>通过assert实现断言，assert可以帮助开发者比较容易的发现和定位错误。一个断言断定条件是true，通过声明一个断言来确保某个必要的条件是满足的，以便继续执行接下来的代码。如果条件满足了，那么代码像往常一样执行，如果不满足了，代码就停止执行了，应用也随之停下来了。</p>
-<div class="highlight"><pre><span></span><span class="c1">//第一个参数为判断条件，第二个参数为条件&quot;不满足&quot;时的打印信息。</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//第一个参数为判断条件，第二个参数为条件&quot;不满足&quot;时的打印信息。</span>
 <span class="bp">assert</span><span class="p">(</span><span class="n">cards</span><span class="p">.</span><span class="bp">indices</span><span class="p">.</span><span class="bp">contains</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="s">&quot;Concentration.chooseCard(at: </span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s">): chosen index not in the cards&quot;</span><span class="p">)</span>
 <span class="c1">//如果断言被触发(index&lt;0或index&gt;cards.count)，将会强制结束程序，并打印相关信息：</span>
 <span class="n">assertion</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Concentration</span><span class="p">.</span><span class="n">chooseCard</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">chosen</span> <span class="n">index</span> <span class="n">not</span> <span class="k">in</span> <span class="n">the</span> <span class="n">cards</span><span class="p">:</span> <span class="n">file</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">mac</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">ViewController</span><span class="p">.</span><span class="n">swift</span><span class="p">,</span> <span class="n">line</span> <span class="mi">17</span>
-</pre></div>
-
+</code></pre></div>
 
 <p></br></p>
 <h1>Extensions&nbsp;扩展</h1>
@@ -117,7 +117,7 @@
 <p>Do not abused! The only method and functions you wanna add to string or methods that make string a better class, not make it knows about&nbsp;Concentration.</p>
 </blockquote>
 <p>给Int添加随机数方法</p>
-<div class="highlight"><pre><span></span><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">arc4random</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">if</span> <span class="kc">self</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">Int</span><span class="p">(</span><span class="n">arc4random_uniform</span><span class="p">(</span><span class="nb">UInt32</span><span class="p">(</span><span class="kc">self</span><span class="p">)))</span>
@@ -131,7 +131,7 @@
 
 <span class="kd">let</span> <span class="nv">randomIndex</span> <span class="p">=</span> <span class="mf">5.</span><span class="n">arc4random</span> <span class="c1">// 0 1 2 3 4</span>
 <span class="kd">let</span> <span class="nv">randomIndex</span> <span class="p">=</span> <span class="n">emojiChoices</span><span class="p">.</span><span class="bp">count</span><span class="p">.</span><span class="n">arc4random</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -187,6 +187,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -214,6 +217,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -222,7 +229,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

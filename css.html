@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -124,7 +125,7 @@
 <ol>
 <li>将上一个元素的闭合标签与下一个元素的开始标签写在同一行;&nbsp;或者将两个inline-block元素间加上空白注释；或者不写元素的闭合标签</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>one<span class="p">&lt;/</span><span class="nt">li</span>  
   <span class="p">&gt;&lt;</span><span class="nt">li</span><span class="p">&gt;</span>two<span class="p">&lt;/</span><span class="nt">li</span>  
   <span class="p">&gt;&lt;</span><span class="nt">li</span><span class="p">&gt;</span>three<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -135,27 +136,24 @@
 <span class="c">    --&gt;</span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>two<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span><span class="c">&lt;!--  </span>
 <span class="c">    --&gt;</span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>three<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>父元素设置font-size为0</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
   <span class="k">font-size</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>设置字符间距或单词间距</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="c">/* letter-spacing */</span>
+<div class="highlight"><pre><span></span><code><span class="c">/* letter-spacing */</span>
 <span class="p">.</span><span class="nc">parent</span><span class="p">{</span>
   <span class="k">letter-spacing</span><span class="p">:</span> <span class="mf">-0.5</span><span class="kt">em</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>
@@ -169,18 +167,17 @@
 <ul>
 <li>flex</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
   <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
   <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
   <span class="k">align-items</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>table</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
   <span class="k">display</span><span class="p">:</span> <span class="kc">table</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
@@ -188,29 +185,26 @@
   <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
   <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>//&nbsp;水平居中</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
   <span class="k">width</span><span class="p">:</span> <span class="n">xxpx</span><span class="p">;</span>
   <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>//&nbsp;水平垂直居中</p>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">parent</span> <span class="p">{</span>
   <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">.</span><span class="nc">son</span> <span class="p">{</span>
   <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
   <span class="k">top</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
   <span class="k">left</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-  <span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span> <span class="mi">-50</span><span class="kt">%</span><span class="p">);</span>
+  <span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="nv">-50</span><span class="err">%</span><span class="p">,</span> <span class="nv">-50</span><span class="err">%</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>盒子模型 Box&nbsp;Model</h2>
 <p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：外边距（margin）、边框（border）、内边距（padding）、实际内容（content）四个属性。</p>
@@ -225,15 +219,14 @@
 </ul>
 <p>box-sizing:&nbsp;border-box</p>
 <p>总宽度 = margin + width(border + padding +&nbsp;content)</p>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="nt">向下三角</span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span> <span class="nt">向下三角</span>
 <span class="p">.</span><span class="nc">triangle</span> <span class="p">{</span>
   <span class="k">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">height</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">border</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">transparent</span><span class="p">;</span>
   <span class="k">border-top</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">blue</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>滚动条样式</h2>
 <p>webkit内核的浏览器（谷歌、ie、Safari等）</p>
@@ -259,7 +252,7 @@
 </li>
 </ol>
 <p>https://blog.csdn.net/qq_35355153/article/details/107205254</p>
-<div class="highlight"><pre><span></span><span class="nt">ul</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nt">ul</span> <span class="p">{</span>
   <span class="err">&amp;::</span><span class="kp">-webkit-</span><span class="err">scrollbar</span> <span class="err">{</span>
       <span class="k">width</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
   <span class="p">}</span>
@@ -268,8 +261,7 @@
     <span class="k">border-radius</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="err">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>火狐滚动条不能修改样式</p>
     </div><!-- /.entry-content -->
@@ -327,6 +319,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -354,6 +349,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -362,7 +361,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

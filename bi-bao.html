@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -71,21 +72,20 @@
 1. 函数嵌套函数
 2. 函数内部可以引用函数外部的参数和变量
 3.&nbsp;参数和变量不会被垃圾回收机制回收</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">B</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">A</span><span class="p">();</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">B</span><span class="p">()</span> <span class="c1">// 1</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">B</span><span class="p">()</span> <span class="c1">// 2</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">A</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
   <span class="kd">function</span> <span class="nx">B</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
@@ -95,15 +95,14 @@
 <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">A</span><span class="p">();</span>
 <span class="nx">a</span><span class="p">()</span> <span class="c1">// 1</span>
 <span class="nx">a</span><span class="p">()</span> <span class="c1">// 2</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>n是执行A函数时创建的B函数实例的引用</p>
 <p>B实例仍可访问到n不回收</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">fn</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fn</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mf">3</span>
   <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">++</span><span class="nx">n</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">++</span><span class="nx">num</span><span class="p">);</span>
   <span class="p">}</span>
@@ -111,8 +110,7 @@
 <span class="kd">var</span> <span class="nx">fn1</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">();</span>
 <span class="nx">fn1</span><span class="p">();</span> <span class="c1">// 1 4</span>
 <span class="nx">fn1</span><span class="p">();</span> <span class="c1">// 1 5</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>匿名函数内部引用着fn里的变量num，所以变量num无法被销毁，而变量n是每次被调用时新创建的，所以每次fn1执行完后它就把属于自己的变量连同自己一起销毁，于是乎最后就剩下孤零零的num</p>
 <p>https://blog.csdn.net/weixin_43558749/article/details/90905723</p>
@@ -171,6 +169,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -198,6 +199,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -206,7 +211,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

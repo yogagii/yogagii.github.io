@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -74,73 +75,63 @@
 <ul>
 <li>下载&nbsp;flutter安装包</li>
 </ul>
-<div class="highlight"><pre><span></span>git clone -b master https://github.com/flutter/flutter.git
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git clone -b master https://github.com/flutter/flutter.git
+</code></pre></div>
 
 <ul>
 <li>运行 flutter&nbsp;doctor检查依赖项</li>
 </ul>
-<div class="highlight"><pre><span></span>flutter doctor
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>flutter doctor
+</code></pre></div>
 
 <ul>
 <li>安装 Android&nbsp;sdk</li>
 <li>安装 Android&nbsp;cmdline-tools</li>
 </ul>
-<div class="highlight"><pre><span></span>path/to/sdkmanager --install <span class="s2">&quot;cmdline-tools;latest&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>path/to/sdkmanager --install <span class="s2">&quot;cmdline-tools;latest&quot;</span>
+</code></pre></div>
 
 <ul>
 <li>Android&nbsp;license</li>
 </ul>
-<div class="highlight"><pre><span></span>flutter doctor --android-licenses
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>flutter doctor --android-licenses
+</code></pre></div>
 
 <ul>
 <li>更新&nbsp;Cocoapods</li>
 </ul>
 <p>修改hosts</p>
-<div class="highlight"><pre><span></span>sudo vi /etc/hosts
+<div class="highlight"><pre><span></span><code>sudo vi /etc/hosts
 // <span class="m">199</span>.232.68.133 raw.githubusercontent.com
 // <span class="m">199</span>.232.68.133 user-images.githubusercontent.com
 // <span class="m">199</span>.232.68.133 avatars2.githubusercontent.com
 // <span class="m">199</span>.232.68.133 avatars1.githubusercontent.com
-</pre></div>
-
+</code></pre></div>
 
 <p>安装homebrew</p>
-<div class="highlight"><pre><span></span>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
 brew -v
-</pre></div>
-
+</code></pre></div>
 
 <p>安装Xcode的CommandLineTools工具</p>
-<div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="k">select</span> <span class="c1">--install</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>xcode-select --install
+</code></pre></div>
 
 <p>安装RVM</p>
-<div class="highlight"><pre><span></span>curl -L https://get.rvm.io <span class="p">|</span> bash -s stable
+<div class="highlight"><pre><span></span><code>curl -L https://get.rvm.io <span class="p">|</span> bash -s stable
 <span class="nb">source</span> /Users/jyu36/.rvm/scripts/rvm
-</pre></div>
-
+</code></pre></div>
 
 <p>安装Ruby</p>
-<div class="highlight"><pre><span></span><span class="n">rvm</span> <span class="n">list</span> <span class="n">known</span>
-<span class="n">rvm</span> <span class="n">install</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">ruby</span> <span class="o">-</span><span class="n">v</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>rvm list known
+rvm install 3.0.0
+ruby -v
+</code></pre></div>
 
 <p>安装Cocoapods</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">gem</span> <span class="n">install</span> <span class="o">-</span><span class="n">n</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">bin</span> <span class="n">cocoapods</span>
-<span class="n">pod</span> <span class="c1">--version</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo gem install -n /usr/local/bin cocoapods
+pod --version
+</code></pre></div>
 
 <p><img alt="flutter" src="img/flutter1.jpeg"></p>
 <p>踩坑结束，安装完成</p>
@@ -153,16 +144,14 @@ brew -v
 <li>使用zsh终端，终端启动时~/.bash_profile将不会被加载。oh-my-zsh的配置文件是.zshrc，而默认shell(bash)的配置文件为.bash_profile。</li>
 </ul>
 <p>vi&nbsp;~/.bash_profile</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
 <span class="nb">export</span> <span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/Users/jyu36/flutter/bin:<span class="nv">$PATH</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>vi&nbsp;~/.zshrc</p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bash_profile
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> ~/.bash_profile
+</code></pre></div>
 
 <p>source&nbsp;~/.zshrc</p>
 <h2>Flutter&nbsp;commend</h2>
@@ -191,12 +180,11 @@ brew -v
 <ul>
 <li>@import显示module not&nbsp;found:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> ios
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ios
 flutter clean
 flutter pub get
 pod install
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>“不受信任的开发者”:</li>
@@ -257,6 +245,9 @@ pod install
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -284,6 +275,10 @@ pod install
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -292,7 +287,6 @@ pod install
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

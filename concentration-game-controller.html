@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -75,22 +76,20 @@
 <p><img alt="Swift" src="img/swift4.png"></p>
 <p>函数参数（外部名称&nbsp;内部名称：类型）</p>
 <p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
-<div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">flipCard</span><span class="p">(</span><span class="n">withEmoji</span><span class="p">:</span> <span class="err">&#39;👻&#39;</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">sender</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">flipCard</span><span class="p">(</span><span class="n">withEmoji</span> <span class="n">emoji</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">on</span> <span class="n">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
 
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>按住option点击函数名查看文档</p>
 <p>鼠标放在行号上的圆点可以看到关联的UI</p>
 <p>字符串模板:&nbsp;&#8220;\()&#8221;相当于`${}`，括号内可以放入任何可转化为string的类型</p>
-<div class="highlight"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;flipCard(withEmoji: </span><span class="si">\(</span><span class="n">emoji</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;flipCard(withEmoji: </span><span class="si">\(</span><span class="n">emoji</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>ctrl c, ctrl v可以在界面上复制黏贴一个元素，关联的func也会同样复制，右键点击元素，在Touch Up Inside里看到所有关联的函数，disconnet&nbsp;it</p>
 <h2>强类型语言</h2>
@@ -103,10 +102,9 @@
 <p>直接给变量一个初始值</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">flipCount</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">flipCount</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="kd">var</span> <span class="nv">flipCount</span> <span class="p">=</span> <span class="mi">0</span> <span class="c1">// swift可根据初始值推断出类型</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>按住option点击变量名可查看类型</p>
 <p>connection:</p>
@@ -122,7 +120,7 @@
 </li>
 </ol>
 <p><img alt="Swift" src="img/swift5.png"></p>
-<div class="highlight"><pre><span></span><span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">flipCountLabel</span><span class="p">:</span> <span class="bp">UILabel</span><span class="p">!</span> <span class="c1">//感叹号的变量不必初始化</span>
+<div class="highlight"><pre><span></span><code><span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">flipCountLabel</span><span class="p">:</span> <span class="bp">UILabel</span><span class="p">!</span> <span class="c1">//感叹号的变量不必初始化</span>
 
 <span class="kd">var</span> <span class="nv">flipCount</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
   <span class="c1">// didSet在每次这个变量更新时调用</span>
@@ -130,16 +128,14 @@
     <span class="n">flipCountLabel</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">&quot;Flips: </span><span class="si">\(</span><span class="n">flipCount</span><span class="si">)</span><span class="s">&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><img alt="Swift" src="img/swift6.png"></p>
-<div class="highlight"><pre><span></span><span class="kr">@IBOutlet</span> <span class="kd">var</span> <span class="nv">cardButtons</span><span class="p">:</span> <span class="p">[</span><span class="bp">UIButton</span><span class="p">]</span><span class="o">!</span> 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kr">@IBOutlet</span> <span class="kd">var</span> <span class="nv">cardButtons</span><span class="p">:</span> <span class="p">[</span><span class="bp">UIButton</span><span class="p">]</span><span class="o">!</span> 
+</code></pre></div>
 
 <p>不能直接更改函数名，会让ui找不到关联的函数，按住command点击函数名，rename&nbsp;it，会改变所有引用的名字</p>
-<div class="highlight"><pre><span></span><span class="c1">// var emojiChoices: Array&lt;String&gt; = [&quot;🎃&quot;, &quot;👻&quot;, &quot;🎃&quot;, &quot;👻 &quot;]</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// var emojiChoices: Array&lt;String&gt; = [&quot;🎃&quot;, &quot;👻&quot;, &quot;🎃&quot;, &quot;👻 &quot;]</span>
 <span class="kd">var</span> <span class="nv">emojiChoices</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;🎃&quot;</span><span class="p">,</span> <span class="s">&quot;👻&quot;</span><span class="p">,</span> <span class="s">&quot;🎃&quot;</span><span class="p">,</span> <span class="s">&quot;👻 &quot;</span><span class="p">]</span>
 
 <span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
@@ -157,7 +153,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">of</span> <span class="n">element</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="c1">// 返回值可选，只有两种状态：int/nil</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -213,6 +209,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -240,6 +239,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -248,7 +251,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

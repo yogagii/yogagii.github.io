@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -71,14 +72,13 @@
 </ul>
 <p>链接：https://www.bilibili.com/video/BV19p411Z7rJ?from=search&amp;seid=13206583137553736240</p>
 <h2>安装</h2>
-<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">show</span> <span class="n">sails</span>
-<span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">sails</span><span class="mf">@0.12.14</span> <span class="c1">// @+版本号</span>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">sails</span><span class="w"></span>
+<span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">sails</span><span class="mf">@0.12.14</span><span class="w"> </span><span class="c1">// @+版本号</span>
 
-<span class="n">sails</span> <span class="n">new</span> <span class="n">testProject</span>
-<span class="n">cd</span> <span class="n">testProject</span>
-<span class="n">sails</span> <span class="n">lift</span>
-</pre></div>
-
+<span class="n">sails</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">testProject</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="n">testProject</span><span class="w"></span>
+<span class="n">sails</span><span class="w"> </span><span class="n">lift</span><span class="w"></span>
+</code></pre></div>
 
 <p>http://localhost:1337/</p>
 <blockquote>
@@ -88,12 +88,11 @@
 <p>链接：https://www.zhihu.com/question/62960377/answer/360959520</p>
 <p>在我们开发 sails 应用程序时，如果每一次修改源代码后都要通过【sails lift】命令重新启动服务的话会非常的麻烦，那么通过 nodemon&nbsp;工具的话，我们就可以非常简单地完成自动启动服务。</p>
 <p>http://nodemon.io/</p>
-<div class="highlight"><pre><span></span><span class="ss">&quot;scripts&quot;</span><span class="p">:</span> <span class="err">{</span>
-  <span class="ss">&quot;debug&quot;</span><span class="p">:</span> <span class="ss">&quot;node debug app.js&quot;</span><span class="p">,</span>
-  <span class="ss">&quot;start&quot;</span><span class="p">:</span> <span class="ss">&quot;nodemon app.js&quot;</span>
-<span class="err">}</span><span class="p">,</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>&quot;scripts&quot;: {
+  &quot;debug&quot;: &quot;node debug app.js&quot;,
+  &quot;start&quot;: &quot;nodemon app.js&quot;
+},
+</code></pre></div>
 
 <hr>
 <h2>结构</h2>
@@ -137,13 +136,12 @@ Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一�
 <p>Sails 内的 asset pipeline 是一组能增加工程一致性和效率的 Grunt&nbsp;任务设置。</p>
 <p>包含在 Sails 工程的 Grunt&nbsp;任务:</p>
 <h3>禁用&nbsp;Grunt</h3>
-<div class="highlight"><pre><span></span><span class="err">{</span>
-  <span class="ss">&quot;hooks&quot;</span><span class="p">:</span> <span class="err">{</span>
-    <span class="ss">&quot;grunt&quot;</span><span class="p">:</span> <span class="k">false</span>
-  <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>{
+  &quot;hooks&quot;: {
+    &quot;grunt&quot;: false
+  }
+}
+</code></pre></div>
 
 <hr>
 <h2>设置&nbsp;Configuration</h2>
@@ -158,12 +156,11 @@ Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一�
 <p>改变 local 或 global .sailsrc&nbsp;文档</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nx">sails</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sails&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="nx">sails</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sails&#39;</span><span class="p">);</span>
 <span class="nx">rc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sails/accessible/rc’);</span>
 
 <span class="s1">sails.lift(rc(&#39;</span><span class="nx">sails</span><span class="err">&#39;</span><span class="p">));</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>rc:&nbsp;检索通过环境变量设置的配置</p>
 <p>With the exception of NODE_ENV and <span class="caps">PORT</span>, configuration set via environment variables will not automatically apply to apps started using .lift(), nor will options set in .sailsrc files. If you wish to use those configuration values, you can retrieve them via require(&#8216;sails/accessible/rc&#8217;)(&#8216;sails&#8217;) and pass them in as the first argument to&nbsp;.lift().</p>
@@ -172,13 +169,12 @@ Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一�
 </ul>
 <p>执行时期可通过 sails 全局变数的 sails.config&nbsp;在应用程序使用合并后的设置。</p>
 <p>sails.config 对象的顶层键（例如 sails.config.views）对应在应用程序内特定的设置文档（例如&nbsp;config/views.js）</p>
-<div class="highlight"><pre><span></span><span class="c1">// 新增一个新文档config/foo.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 新增一个新文档config/foo.js</span>
 <span class="c1">// 对象会被合并到 `sails.config.blueprints`</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">blueprints</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">shortcuts</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h2>控制器&nbsp;Controllers</h2>
@@ -186,11 +182,10 @@ Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一�
 <h3>Actions</h3>
 <p>控制器由一组称为 Action 的函数组成, action 可以绑定&nbsp;routes，这样当客户机请求路由时，将执行绑定方法以执行某些业务逻辑并生成响应。</p>
 <p><span class="caps">GET</span> /hello route in your application could be bound to a method&nbsp;like:</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Generating&nbsp;controllers</h3>
 <blockquote>
@@ -201,7 +196,7 @@ Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一�
 <p>文件内部定义了一个 object
 {
 action names: corresponding action methods.&nbsp;}</p>
-<div class="highlight"><pre><span></span><span class="c1">// api/controllers/SayController.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// api/controllers/SayController.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">hi</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Hi there!&#39;</span><span class="p">)</span>
@@ -214,19 +209,17 @@ action names: corresponding action methods.&nbsp;}</p>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;GET /say/hi&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;say/hi&#39;</span> <span class="p">},</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="c1">// api/controllers/say/hi.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">hi</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// api/controllers/say/hi.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">hi</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">()</span> <span class="c1">// 200</span>
 <span class="p">}</span>
 <span class="c1">/// config/routes.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;GET /say/hi&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;say/hi&#39;</span> <span class="p">},</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>There are two main types of routes in&nbsp;Sails:</p>
 <ul>
@@ -237,24 +230,22 @@ action names: corresponding action methods.&nbsp;}</p>
 <li>custom (or&nbsp;&#8220;explicit&#8221;显性的)</li>
 </ul>
 <p>在/config/routes&nbsp;里手动配置</p>
-<div class="highlight"><pre><span></span><span class="c1">// [HTTP method (optionally)] [address]: [target]</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// [HTTP method (optionally)] [address]: [target]</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;get /signup&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">view</span><span class="o">:</span> <span class="s1">&#39;conversion/signup&#39;</span> <span class="p">},</span>
   <span class="s1">&#39;POST /make/a/sandwich&#39;</span><span class="o">:</span> <span class="s1">&#39;SandwichController.makeIt&#39;</span><span class="p">,</span> <span class="c1">// trigger the makeIt() action in api/controllers/SandwichController.js</span>
   <span class="s1">&#39;/logout&#39;</span><span class="o">:</span> <span class="s1">&#39;AuthController.logout&#39;</span><span class="p">,</span> <span class="c1">// bind all request methods</span>
   <span class="s1">&#39;GET /page2&#39;</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">policy</span><span class="o">:</span> <span class="s1">&#39;accessLog&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;page2&#39;</span> <span class="p">}],</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Express</h3>
 <p>req 请求对象, res 响应对象, next&nbsp;应用程序请求</p>
 <p>如果当前的中间件函数没有结束请求 - 响应周期，则必须调用&nbsp;next()以将控制传递给下一个中间件函数。否则，请求将被挂起。</p>
-<div class="highlight"><pre><span></span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">next</span><span class="p">()</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><em>Sails 缺少参数 next，所以 Sails controller actions should always be the last stop in the request chain&#8212;that is, they should always result in either a response or an&nbsp;error.</em></p>
 <h3><span class="dquo">&#8220;</span>Thin&#8221;&nbsp;Controllers</h3>
@@ -274,7 +265,7 @@ action names: corresponding action methods.&nbsp;}</p>
 <li>api/controllers/UserController.js</li>
 <li>api/models/User.js</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nx">attributes</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">attributes</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
   <span class="p">},</span>
@@ -282,8 +273,7 @@ action names: corresponding action methods.&nbsp;}</p>
     <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Blueprint&nbsp;routes</strong></p>
 <p>If you create a User.js model file in your project, then with blueprints enabled you will be able to immediately visit /user/create?name=joe to create a user, and visit /user to see an array of your app&#8217;s&nbsp;users.</p>
@@ -330,51 +320,46 @@ action names: corresponding action methods.&nbsp;}</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><span class="c1">// config/blueprints.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// config/blueprints.js</span>
 <span class="nx">actions</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// expose implicit routes 将控制器里的方法自动映射成URL</span>
 <span class="nx">rest</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// expose RESTful routes 将增删改查全部暴露给用户</span>
 <span class="nx">shortcuts</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// CRUD &quot;shortcut&quot; routes to GET requests</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="c1">// actions没开启时可手动增加路由</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// actions没开启时可手动增加路由</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;GET /foo/go&#39;</span><span class="o">:</span> <span class="s1">&#39;UserController.find&#39;</span><span class="p">,</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Security</h3>
 <p>If <span class="caps">CSRF</span> protection is enabled, you&#8217;ll need to provide or disable a <span class="caps">CSRF</span> token for <span class="caps">POST</span>/<span class="caps">PUT</span>/<span class="caps">DELETE</span> actions, otherwise you will get a 403 Forbidden&nbsp;response.</p>
 <p>When <span class="caps">CSRF</span> protection is enabled in your Sails app, all non-<span class="caps">GET</span> requests to the server must be accompanied by a special &#8220;<span class="caps">CSRF</span> token&#8221;, which can be included as either the &#8216;_csrf&#8217; parameter or the &#8216;X-<span class="caps">CSRF</span>-Token&#8217;&nbsp;header.</p>
-<div class="highlight"><pre><span></span><span class="c1">// config/security.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// config/security.js</span>
 <span class="nx">csrf</span><span class="o">:</span> <span class="kc">false</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h2>回应&nbsp;Responses</h2>
-<div class="highlight"><pre><span></span><span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
    <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">()</span> <span class="c1">// 200</span>
    <span class="nx">res</span><span class="p">.</span><span class="nx">forbidden</span><span class="p">()</span> <span class="c1">// 403</span>
    <span class="nx">res</span><span class="p">.</span><span class="nx">notFound</span><span class="p">()</span> <span class="c1">// 404</span>
    <span class="nx">res</span><span class="p">.</span><span class="nx">serverError</span><span class="p">()</span> <span class="c1">// 500</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>normalized 标准化的&nbsp;(错误代码是一致的)</li>
 <li>abstracted 被分离的&nbsp;(有考虑到生产环境与开发环境的日志记录)</li>
 <li>content-negotiated 内容协商的(<span class="caps">JSON</span>)</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">))</span> <span class="p">{</span>
      <span class="nx">res</span><span class="p">.</span><span class="nx">badRequest</span><span class="p">(</span><span class="s1">&#39;Sorry, you need to tell us the ID of the FOO you want!&#39;</span><span class="p">);</span>
    <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>任何储存在 /api/responses 文件夹的 .js 脚本可通过在控制器内呼叫 res.[responseName] 来执行。例如，可以通过呼叫 res.serverError(errors) 来执行&nbsp;/api/responses/serverError.js</p>
 <h3>默认回应 Default&nbsp;responses</h3>
@@ -390,25 +375,23 @@ action names: corresponding action methods.&nbsp;}</p>
 <hr>
 <h2>部署&nbsp;Deployment</h2>
 <p>所有生产环境设置都储存在&nbsp;config/env/production.js</p>
-<div class="highlight"><pre><span></span><span class="nx">cors</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">cors</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">allRoutes</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//关闭全路由的跨域存取</span>
   <span class="nx">origin</span><span class="o">:</span> <span class="s1">&#39;http://foobar.com,https://owlhoot.com&#39;</span><span class="p">,</span> <span class="c1">//允许存取的域名</span>
   <span class="nx">credentials</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//需要cookies验证</span>
 <span class="p">},</span>
 <span class="nx">csrf</span><span class="o">:</span> <span class="kc">true</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>在生产环境中，使用 forever start app.js &#8212;prod 或 pm2 start app.js -x &#8212; &#8212;prod 启动服务器，这和 sails lift &#8212;prod&nbsp;所做的事相同，但是当服务器崩溃时，它会自动重新启动。</p>
-<div class="highlight"><pre><span></span><span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">development</span> <span class="c1">// dev environment</span>
+<div class="highlight"><pre><span></span><code><span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">development</span> <span class="c1">// dev environment</span>
 <span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">staging</span> <span class="c1">// stage environment</span>
 <span class="nx">pm2</span> <span class="nx">start</span> <span class="nx">ecosystem</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">env</span> <span class="nx">production</span> <span class="c1">// production environment</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="c1">// ecosystem.config.js </span>
-<span class="kr">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;--env&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
-<span class="kr">const</span> <span class="nx">isDev</span> <span class="o">=</span> <span class="nx">env</span> <span class="o">===</span> <span class="s1">&#39;development&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// ecosystem.config.js </span>
+<span class="kd">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;--env&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">isDev</span> <span class="o">=</span> <span class="nx">env</span> <span class="o">===</span> <span class="s1">&#39;development&#39;</span><span class="p">;</span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">apps</span><span class="o">:</span> <span class="p">[{</span>
@@ -419,7 +402,7 @@ action names: corresponding action methods.&nbsp;}</p>
     <span class="nx">watch</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nx">max_memory_restart</span><span class="o">:</span> <span class="s1">&#39;1G&#39;</span><span class="p">,</span>
     <span class="nx">exec_mode</span><span class="o">:</span> <span class="s1">&#39;cluster&#39;</span><span class="p">,</span>
-    <span class="nx">instances</span><span class="o">:</span> <span class="nx">isDev</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">instances</span><span class="o">:</span> <span class="nx">isDev</span> <span class="o">?</span> <span class="mf">1</span> <span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
     <span class="nx">env_development</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">NODE_ENV</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
       <span class="nx">AWS_ACCESS_KEY_ID</span><span class="o">:</span> <span class="s1">&#39;XXXXXXXXXXX&#39;</span><span class="p">,</span>
@@ -437,8 +420,7 @@ action names: corresponding action methods.&nbsp;}</p>
     <span class="p">},</span>
   <span class="p">}],</span>
 <span class="p">};</span>
-</pre></div>
-
+</code></pre></div>
 
 <hr>
 <h2>Views</h2>
@@ -455,41 +437,38 @@ action names: corresponding action methods.&nbsp;}</p>
 <hr>
 <h2>Policies</h2>
 <p>为访问的 <span class="caps">URL</span>&nbsp;绑定存取日志功能。</p>
-<div class="highlight"><pre><span></span><span class="c1">// api/policies/accessLog.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// api/policies/accessLog.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">path</span><span class="p">)</span>
   <span class="k">return</span> <span class="nx">next</span><span class="p">()</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="c1">// config/policies.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// config/policies.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">policies</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;*&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;is-logged-in&#39;</span><span class="p">,</span> <span class="s1">&#39;accesslog&#39;</span><span class="p">],</span> <span class="c1">// 排在前面的先执行</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Cron&nbsp;job</h2>
 <p>调试</p>
-<div class="highlight"><pre><span></span><span class="n">npx</span> <span class="n">sails</span> <span class="k">c</span> <span class="c1">--dontLift</span>
-<span class="n">require</span><span class="p">(</span><span class="s1">&#39;./api/hooks/cron/tasks/sapJob.js&#39;</span><span class="p">)()</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>npx sails c --dontLift
+require(&#39;./api/hooks/cron/tasks/sapJob.js&#39;)()
+</code></pre></div>
 
 <h2>Session</h2>
 <p>Sessions are defined to be a few components that together allow you to store information about a user agent between&nbsp;requests.</p>
 <p>The session store can either be in memory (this is the default Sails session store) or in a database (Sails has built-in support for using Redis for this purpose). Sails builds on top of Connect middleware to manage the session, which includes using a cookie to store a session id (sid) on the user&nbsp;agent.</p>
 <p>When the user agent makes the next request, the Sails.sid stored on the cookie is checked for authenticity. If it matches an existing sid in the session store, the contents of the session store are added as a property on the req dictionary (req.session). We can access properties on req.session (e.g. req.session.userId) or set properties on it (e.g. req.session.userId ==&nbsp;someValue). </p>
-<div class="highlight"><pre><span></span><span class="n">vital</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">xxx</span><span class="p">.</span><span class="n">xxx</span><span class="p">.</span><span class="n">ng</span><span class="p">.</span><span class="n">XXX</span><span class="p">.</span><span class="n">use1</span><span class="p">.</span><span class="k">cache</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="p">:</span><span class="mi">6379</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">keys</span> <span class="o">*</span>
-   <span class="mi">1</span><span class="p">)</span> <span class="ss">&quot;sess:kNilQUaltMEFCsqNUGVmMiwMhaAu_a66&quot;</span>
-   <span class="mi">2</span><span class="p">)</span> <span class="ss">&quot;sess:37913vO-G7vzOSOwpTzOOW47vDK0l2Ue&quot;</span>
-   <span class="mi">3</span><span class="p">)</span> <span class="ss">&quot;sess:yjDcKXARet6tK_Lm1jLSyxNbtykWvFny&quot;</span>
-   <span class="mi">4</span><span class="p">)</span> <span class="ss">&quot;sess:y9diDK3tBbFw9vj7DmoADC30WYkm6zge&quot;</span>
-   <span class="mi">5</span><span class="p">)</span> <span class="ss">&quot;sess:MqTcODSkoF9IYZeu4hUIJYIs_8__PSl4&quot;</span>
-   <span class="mi">6</span><span class="p">)</span> <span class="ss">&quot;sess:GGmQiqJkmgqbBocduu2N6CwKbOoab1uB&quot;</span>
-   <span class="mi">7</span><span class="p">)</span> <span class="ss">&quot;sess:D4HlVxf1SlqjjT6aNlHHt7G617e394FR&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>vital-dev-xxx.xxx.ng.XXX.use1.cache.amazonaws.com:6379[4]&gt; keys *
+   1) &quot;sess:kNilQUaltMEFCsqNUGVmMiwMhaAu_a66&quot;
+   2) &quot;sess:37913vO-G7vzOSOwpTzOOW47vDK0l2Ue&quot;
+   3) &quot;sess:yjDcKXARet6tK_Lm1jLSyxNbtykWvFny&quot;
+   4) &quot;sess:y9diDK3tBbFw9vj7DmoADC30WYkm6zge&quot;
+   5) &quot;sess:MqTcODSkoF9IYZeu4hUIJYIs_8__PSl4&quot;
+   6) &quot;sess:GGmQiqJkmgqbBocduu2N6CwKbOoab1uB&quot;
+   7) &quot;sess:D4HlVxf1SlqjjT6aNlHHt7G617e394FR&quot;
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -545,6 +524,9 @@ action names: corresponding action methods.&nbsp;}</p>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -572,6 +554,10 @@ action names: corresponding action methods.&nbsp;}</p>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -580,7 +566,6 @@ action names: corresponding action methods.&nbsp;}</p>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -46,8 +47,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-07-19T14:33:00+08:00"> 
-				<a href="/archive/2022/ 7/index.html">二 19 七月 2022 </a>
+			<abbr class="date" title="2022-12-23T14:33:00+08:00"> 
+				<a href="/archive/2022/12/index.html">五 23 十二月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -56,21 +57,11 @@
 <h3>hr重构</h3>
 <h4>类dva</h4>
 <h5>redux怎么变成dva的反向</h5>
-<div class="highlight"><pre><span></span><span class="c1">// dva结构</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// dva结构</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">state</span><span class="o">:</span> <span class="p">{},</span>
     <span class="nx">reducers</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="nx">effects</span><span class="o">:</span> <span class="p">{},</span> <span class="c1">//这一层是saga做的</span>
-<span class="p">}</span>
-
-<span class="c1">// redux结构</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span>
-
-<span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">num</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span> 
-<span class="kr">const</span> <span class="nx">reducers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;ADD&#39;</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">return …</span></pre></div></div>
+    <span class="nx">effects</span><span class="o">:</span> <span class="p">{},</span> <span class="c1">//这一层是saga做 …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -86,27 +77,14 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-07-19T14:33:00+08:00"> 
-				<a href="/archive/2022/ 7/index.html">二 19 七月 2022 </a>
+			<abbr class="date" title="2022-12-23T14:33:00+08:00"> 
+				<a href="/archive/2022/12/index.html">五 23 十二月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
 	<div class="summary"><h2>Make</h2>
-<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其他文件名.</p>
-<h3>Make&nbsp;rules</h3>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">target</span><span class="o">&gt;:</span> <span class="o">&lt;</span><span class="nx">prerequisites</span><span class="o">&gt;</span>
-<span class="p">[</span><span class="nx">tab</span><span class="p">]</span>   <span class="o">&lt;</span><span class="nx">command</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>一个目标构成一条规则，即可以是文件名也可以是某个操作的名字．</p>
-<div class="highlight"><pre><span></span><span class="nx">clean</span><span class="o">:</span>
-    <span class="nx">rm</span> <span class="o">*</span><span class="p">.</span><span class="nx">o</span>
-</pre></div>
-
-
-<p>通过调用<code>make clean</code>指令来执行上述程序, 为避免歧义．可以加入<code>.PHONY: clean</code>声明 …</p></div>
+<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -118,27 +96,111 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/linux-fu-wu-qi-pei-zhi.html" rel="bookmark" title="Permalink to Linux 服务器配置">Linux&nbsp;服务器配置</a>
+			<a href="/dayu-supply-chain-data-analytics.html" rel="bookmark" title="Permalink to DAYU — Supply Chain Data Analytics"><span class="caps">DAYU</span> &#8212; Supply Chain Data&nbsp;Analytics</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-21T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">四 21 四月 2022 </a>
+			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
+				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>安装node</h2>
-<ol>
-<li>到 node&nbsp;官网</li>
-</ol>
-<p>http://nodejs.cn/download/</p>
-<p>https://registry.npmmirror.com/binary.html?path=node/ </p>
-<p>去下载一个 linux 可用的 node&nbsp;版本</p>
-<ol>
-<li>传输到服务器 /home/jyu36&nbsp;并解压</li>
-</ol>
-<div class="highlight"><pre><span></span>xz -d node-v14.18.2-linux-x64 …</pre></div></div>
+	<div class="summary"><h3><span class="caps">SCAN</span></h3>
+<p><span class="caps">SCAN</span> stands for Supply Chain ANalytics. <span class="caps">SCAN</span> is an analytics program within Janssen Supply Chain. Our aim is to accelerate value delivery by providing analytics as a&nbsp;service. </p>
+<ul>
+<li>Capability …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/project.html">Project</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/microsoft-azure-data-factory.html" rel="bookmark" title="Permalink to Microsoft Azure Data Factory">Microsoft Azure Data&nbsp;Factory</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
+				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">DAYU</span></h2>
+<h3>申请资源</h3>
+<ul>
+<li><span class="caps">ADF</span> PaaS&nbsp;Service</li>
+<li><span class="caps">IR</span></li>
+<li>Azure <span class="caps">SQL</span>&nbsp;Server</li>
+<li>Key&nbsp;Vault</li>
+<li><span class="caps">AWS</span>&nbsp;S3</li>
+<li>Azure Date Lake&nbsp;Storage</li>
+</ul>
+<h2>Linked&nbsp;Service</h2>
+<h3>1.Amazon&nbsp;S3</h3>
+<p>Authentication type: Access&nbsp;Key</p>
+<p>Access …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/cloud.html">Cloud</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/microsoft-azure-databricks.html" rel="bookmark" title="Permalink to Microsoft Azure Databricks">Microsoft Azure&nbsp;Databricks</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
+				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p><span class="caps">ETL</span>: Extract, Transform and Load&nbsp;数据仓库技术</p>
+<p>databricks是使用Apache&nbsp;Spark™的原始创建者提供的Databricks统一分 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/cloud.html">Cloud</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/python-ji-chu.html" rel="bookmark" title="Permalink to Python 基础">Python&nbsp;基础</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
+				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>List&nbsp;列表</h2>
+<div class="highlight"><pre><span></span><code><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># red</span>
+<span class="n">list1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># blue 反向索引</span>
+<span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># red, green [0, 2)</span>
+</code></pre></div>
+
+<ul>
+<li>更新列表项</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">list1 …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -150,29 +212,29 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/microsoft-azure-adminstrator.html" rel="bookmark" title="Permalink to Microsoft Azure Adminstrator">Microsoft Azure&nbsp;Adminstrator</a>
+			<a href="/proxy.html" rel="bookmark" title="Permalink to Proxy">Proxy</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-13T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">三 13 四月 2022 </a>
+			<abbr class="date" title="2022-11-03T00:00:00+08:00"> 
+				<a href="/archive/2022/11/index.html">四 03 十一月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>Azure Active&nbsp;Directory</p>
-<p>用户和组身份：身份验证 +&nbsp;访问授权</p>
-<p>https://portal.azure.com/</p>
-<p>https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Overview</p>
-<p>新建并切换域名：</p>
-<p>Azure Active Directory -&gt; Manage tenants -&gt;&nbsp;create</p>
-<p>创建用户：</p>
-<p>Users -&gt; New&nbsp;User</p>
-<p>User …</p></div>
+	<div class="summary"><h2><span class="caps">VPN</span></h2>
+<p>cd&nbsp;文件目录</p>
+<p>./v2ray</p>
+<p>SwitchyOmega</p>
+<p>proxy:
+ - 代理协议：<span class="caps">SOCKS5</span>
+ - 代理服务器：127.0.0.1
+ -&nbsp;代理端口：10808</p>
+<p>auto switch …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
+			<a href="/category/programming.html">Programming</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -180,106 +242,29 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/spring.html" rel="bookmark" title="Permalink to Spring">Spring</a>
+			<a href="/tools.html" rel="bookmark" title="Permalink to Tools">Tools</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-09T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">六 09 四月 2022 </a>
+			<abbr class="date" title="2022-11-03T00:00:00+08:00"> 
+				<a href="/archive/2022/11/index.html">四 03 十一月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Spring</h2>
-<p>Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提供的底层服务包括组件的生命周期管理、配置和组装服务、AOP支持，以及建立在AOP基础上的声明式事务服务等。</p>
-<h3>IoC&nbsp;容器</h3>
-<p>IoC: Inversion of&nbsp;Control控制反转</p>
-<p>https://yogagii.github.io/typescript.html</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookService</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="n">DataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HikariDataSource</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>缺点：
-1 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/java-object-oriented.html" rel="bookmark" title="Permalink to JAVA Object Oriented"><span class="caps">JAVA</span> Object&nbsp;Oriented</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-04T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">一 04 四月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>面向对象</h2>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
-  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="o">;</span>
-
-  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
-    <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="c1">// 没有命名冲突，可以省略this</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">age …</span></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/java-grammer.html" rel="bookmark" title="Permalink to JAVA Grammer"><span class="caps">JAVA</span>&nbsp;Grammer</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-03T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">日 03 四月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>变量</h2>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="o">;</span> <span class="c1">// 重新赋值不能再重复定义</span>
-</pre></div>
-
-
-<h3>基本类型：</h3>
+	<div class="summary"><h2><span class="caps">VS</span>&nbsp;Code</h2>
+<p>Extensions:</p>
 <ul>
-<li>整数类型：byte，short，int，long</li>
-<li>浮点数类型：float，double</li>
-<li>字符类型：char</li>
-<li>布尔类型：boolean</li>
-</ul>
-<h3>引用类型：</h3>
-<ul>
-<li>String</li>
-</ul>
-<p>toUpperCase, equals, contains, indexOf, lastIndexOf, startsWith, endsWith …</p></div>
+<li>Prettier - Code&nbsp;formatter</li>
+<li>Beautify css/sass/scss/less: Beautify css, sass and less&nbsp;code</li>
+<li>Excel&nbsp;Viewer</li>
+<li>File <span class="amp">&amp;</span> Folder&nbsp;Icons</li>
+<li>Live&nbsp;Server</li>
+<li><span class="caps">REST</span> Client: allows you to send …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
+			<a href="/category/programming.html">Programming</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -287,26 +272,25 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/java-install.html" rel="bookmark" title="Permalink to JAVA Install"><span class="caps">JAVA</span>&nbsp;Install</a>
+			<a href="/aws-s3.html" rel="bookmark" title="Permalink to AWS S3"><span class="caps">AWS</span>&nbsp;S3</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-03-30T00:00:00+08:00"> 
-				<a href="/archive/2022/ 3/index.html">三 30 三月 2022 </a>
+			<abbr class="date" title="2022-09-08T00:00:00+08:00"> 
+				<a href="/archive/2022/ 9/index.html">四 08 九月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><span class="c1">// Hello.java </span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span> <span class="c1">// 类名首字母大写</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Java程序的固定入口方法</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">);</span> <span class="c1">// 输出并换行</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span> <span class="c1">// 不换行</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">arg</span> <span class="o">:</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// java App …</span></pre></div></div>
+	<div class="summary"><h2><span class="caps">AWS</span> <span class="caps">CLI</span></h2>
+<p>https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/welcome-examples.html</p>
+<p>document:&nbsp;https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html</p>
+<h3>安装</h3>
+<p>下 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
+			<a href="/category/cloud.html">Cloud</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -314,66 +298,36 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/typeorm.html" rel="bookmark" title="Permalink to TypeORM">TypeORM</a>
+			<a href="/nextjs.html" rel="bookmark" title="Permalink to Next.js">Next.js</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-02-15T00:00:00+08:00"> 
-				<a href="/archive/2022/ 2/index.html">二 15 二月 2022 </a>
+			<abbr class="date" title="2022-08-31T00:00:00+08:00"> 
+				<a href="/archive/2022/ 8/index.html">三 31 八月 2022 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2><span class="caps">ORM</span>（Object Relactional&nbsp;Mapping，对象关系映射）</h2>
-<p>ORM是一种解决面向对象与关系型数据库存在的互不匹配的现象的技术，实现面向对象技术和关系型数据库的一种映射。</p>
-<p>ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射。</p>
-<p>类&#8212;&#8212;&gt;表</p>
-<p>类的属性&#8212;&#8212;&#8212;-&gt;表中的字段</p>
-<p>类的对象&#8212;&#8212;&#8212;-&gt;表中的行</p>
-<h3>ORM框架：</h3>
-<ul>
-<li>
-<p>Sequelize：基于promise的关系型数据库ORM框架，这个库完全采用javascript并且能够用在Node.JS环境中，易于使用。支持关系型数据库（MySQL/<span class="caps">MSSQL</span>/PostgreSQL/SQLite）</p>
-</li>
-<li>
-<p>TypeORM：采用TypeScript编写的基于node.js的ORM框架，支持使用ts或js(<span class="caps">ES5 …</span></p></li></ul></div>
+	<div class="summary"><h2>nextjs12.x 集成&nbsp;less</h2>
+<p>1）安装依赖</p>
+<div class="highlight"><pre><span></span><code>npm install next-plugin-antd-less
+npm install classnames
+npm install less-loader
+</code></pre></div>
+
+<p>2）在next.config.js中加配置</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">withAntdLess …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/apache-spark.html" rel="bookmark" title="Permalink to Apache Spark">Apache&nbsp;Spark</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-01-26T00:00:00+08:00"> 
-				<a href="/archive/2022/ 1/index.html">三 26 一月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Spark原理</h2>
-<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是UC Berkeley 开源的类Hadoop MapReduce的通用并行框架,&nbsp;专门用于大数据量下的迭代式计算。</p>
-<p>Spark 在多次运算的情况下是比较快的。因为 Hadoop 在一次 MapReduce 运算之后，会将数据的运算结果从内存写入到磁盘中，第二次运算时再从磁盘中读取数据，2次运算间有多余 <span class="caps">IO</span> 消耗；Spark&nbsp;则是将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘。 </p>
-<ol>
-<li>提供 Cache 机制来支持需要反复迭代计算或者多次数据共享,减少数据读取的 …</li></ol></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
+			<a href="/category/react.html">React</a>
 		</abbr>
 	</footer>
 	<hr />
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 11
+    Page 1 / 12
         <a href="/index2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -405,6 +359,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -432,6 +389,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -440,7 +401,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

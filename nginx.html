@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -63,49 +64,125 @@
     </header>
     <div class="post-entry">
         <p>Nginx就是性能非常好的反向代理服务器，用来做负载均衡。</p>
-<p>查看Ngnix配置</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
+<h3>启动</h3>
+<p>踩坑：Redirecting to /bin/systemctl start nginx.service Failed to start nginx.service: Unit not&nbsp;found.</p>
+<p>在&nbsp;/etc/init.d/下创建名为nginx的启动脚本即可</p>
+<p>设置执行权限：chmod +x&nbsp;/etc/init.d/nginx</p>
+<p>注册成服务：chkconfig -add&nbsp;nginx</p>
+<p>设置开机启动：chkconfig nginx&nbsp;on</p>
+<p>Linux上开机自动启动Nginx: 在/etc/rc.local文件中加一行&nbsp;nginx</p>
+<p>启动：nginx 或 service nginx&nbsp;start</p>
+<p>踩坑：nginx: [error] invalid <span class="caps">PID</span> number “” in&nbsp;“/run/nginx.pid”</p>
+<p>nginx -c /etc/nginx/nginx.conf # 找到 nginx.conf&nbsp;路径</p>
+<p>nginx -s&nbsp;reload</p>
+<h3>查看Ngnix配置</h3>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
 <span class="n">ps</span> <span class="o">-</span><span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">nginx</span>
-<span class="n">cat</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">nginx</span><span class="p">.</span><span class="n">conf</span>
+<span class="n">cat</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="n">conf</span>
 
 <span class="o">//</span> <span class="err">测试</span>
 <span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
 <span class="o">//</span> <span class="err">重启</span>
-<span class="n">service</span> <span class="n">nginx</span> <span class="k">restart</span>
+<span class="n">service</span> <span class="n">nginx</span> <span class="n">restart</span>
 <span class="n">nginx</span> <span class="o">-</span><span class="n">s</span> <span class="n">reload</span>
-</pre></div>
+</code></pre></div>
 
+<h3>nginx.conf</h3>
+<p>后端</p>
+<p>pm2 start npm &#8212;name iqvia-data-3007 &#8212; run&nbsp;start:prod</p>
+<div class="highlight"><pre><span></span><code><span class="nt">location</span> <span class="o">/</span><span class="nt">iqvia</span><span class="o">/</span> <span class="p">{</span>
+    <span class="err">rewrite</span> <span class="err">&quot;^/iqvia/(.*)$&quot;</span> <span class="err">/$1</span> <span class="err">break</span><span class="p">;</span>
+    <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$host</span><span class="p">;</span>
+    <span class="err">proxy_set_header</span> <span class="err">X-Real-IP</span> <span class="err">$remote_addr</span><span class="p">;</span>
+    <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-For</span> <span class="err">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-Proto</span> <span class="err">$scheme</span><span class="p">;</span>
+    <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="mf">.39</span><span class="o">:</span><span class="mi">3007</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<p>nginx.conf</p>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">build</span>
-<span class="n">server</span> <span class="err">{</span>
-    <span class="k">server_name</span> <span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
-    <span class="n">root</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">fpa_share_doc</span><span class="o">/</span><span class="n">dist</span><span class="p">;</span>
-    <span class="k">location</span> <span class="o">/</span> <span class="err">{</span>
-      <span class="n">try_files</span> <span class="err">$</span><span class="n">uri</span> <span class="err">$</span><span class="n">uri</span><span class="o">/</span> <span class="o">/</span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
-    <span class="err">}</span>
-  <span class="err">}</span>
-<span class="o">//</span> <span class="err">单页</span>
-<span class="n">server</span> <span class="err">{</span>
-  <span class="k">server_name</span> <span class="n">project_organization</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
-  <span class="n">root</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">project_organization</span><span class="p">;</span>
-  <span class="k">index</span> <span class="n">dateBar</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
-<span class="err">}</span>
-</pre></div>
+<p>前端&nbsp;build</p>
+<div class="highlight"><pre><span></span><code>server {
+    server_name hr_hackathon.jujadc.com;
+    root /usr/share/nginx/fpa_share_doc/dist;
+    location / {
+      try_files $uri $uri/ /index.html;
+    }
+  }
+</code></pre></div>
 
+<p>指向index</p>
+<p>npm run&nbsp;build:prod</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 0042 (42 -&gt; 39)</span>
+<span class="n">location</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span> <span class="p">{</span>
+    <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="o">$</span><span class="n">host</span><span class="p">;</span>
+    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Real</span><span class="o">-</span><span class="n">IP</span> <span class="o">$</span><span class="n">remote_addr</span><span class="p">;</span>
+    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="o">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
+    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Proto</span> <span class="o">$</span><span class="n">scheme</span><span class="p">;</span>
+    <span class="n">proxy_buffering</span> <span class="n">off</span><span class="p">;</span>
+    <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="mi">39</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1"># 0039 (nginx在42，资源在39)</span>
+<span class="n">location</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span> <span class="p">{</span>
+    <span class="n">alias</span>   <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">iqvia_email</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="p">;</span>
+    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="c1"># 0080 (80资源在本机)</span>
+<span class="n">location</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span> <span class="p">{</span>
+    <span class="n">alias</span>   <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">iqvia_email</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="p">;</span>
+    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+    <span class="n">try_files</span> <span class="o">$</span><span class="n">uri</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>指向端口</p>
+<div class="highlight"><pre><span></span><code><span class="k">next</span> <span class="nv">build</span>
+<span class="k">next</span> <span class="nv">start</span> <span class="o">-</span><span class="nv">p</span> <span class="mi">3008</span>
+<span class="nv">pm2</span> <span class="nv">start</span> <span class="nv">npm</span> <span class="o">--</span><span class="nv">name</span> <span class="nv">carto</span><span class="o">-</span><span class="nv">dashboard</span><span class="o">-</span><span class="mi">3008</span> <span class="o">--</span> <span class="nv">run</span> <span class="nv">start</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// next.config.ts</span>
+<span class="kr">module</span><span class="nx">.exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">basePath</span><span class="o">:</span> <span class="s1">&#39;/carto-dashboard&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nt">location</span> <span class="o">/</span><span class="nt">carto-dashboard</span> <span class="p">{</span>
+  <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$host</span><span class="p">;</span>
+  <span class="err">proxy_set_header</span> <span class="err">X-Real-IP</span> <span class="err">$remote_addr</span><span class="p">;</span>
+  <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-For</span> <span class="err">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+  <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-Proto</span> <span class="err">$scheme</span><span class="p">;</span>
+  <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="mf">.80</span><span class="o">:</span><span class="mi">3008</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>前端&nbsp;单页</p>
+<div class="highlight"><pre><span></span><code>server {
+  server_name project_organization.jujadc.com;
+  root /root/www/project_organization;
+  index dateBar.html;
+}
+</code></pre></div>
+
+<p>静态资源</p>
+<div class="highlight"><pre><span></span><code><span class="n">location</span> <span class="o">/</span><span class="k">static</span> <span class="p">{</span>
+    <span class="n">alias</span>   <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="k">static</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
 <p>Nginx 比 Apache&nbsp;高并发的原因</p>
 <p>Nginx 负载均衡调度算法&nbsp;负载均衡之轮询算法</p>
 <p>Apache&nbsp;多进程（多线程）</p>
 <p>Nginx&nbsp;单进程（单线程）</p>
 <p>web socket需要把http设为1.1&nbsp;只握手一次</p>
-<div class="highlight"><pre><span></span><span class="nx">location</span><span class="p">{</span>
-  <span class="nx">proxy_http_version</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nx">location</span><span class="p">{</span>
+  <span class="nx">proxy_http_version</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span><span class="mf">1</span><span class="p">;</span>
   <span class="nx">proxy_set_header</span> <span class="nx">Upgrade</span> <span class="nx">$http_upgrade</span><span class="p">;</span>
   <span class="nx">proxy_set_header</span> <span class="nx">Connection</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">;</span> <span class="c1">// 升级到最新版本 Status code 101</span>
   <span class="nx">proxy_set_header</span> <span class="nx">Host</span> <span class="nx">$host</span><span class="p">;</span> <span class="c1">// 暴露被反向代理隐藏的host</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -161,6 +238,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -188,6 +268,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -196,7 +280,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

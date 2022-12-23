@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -63,39 +64,37 @@
     </header>
     <div class="post-entry">
         <h2>Setting&nbsp;Up</h2>
-<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
+<div class="highlight"><pre><span></span><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
 <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
 <span class="nx">cd</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
 <span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">admin</span> <span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span> <span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
 <span class="nx">yarn</span> <span class="nx">start</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Data&nbsp;Provider</h2>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span><span class="p">,</span> <span class="nx">ListGuesser</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">jsonServerProvider</span> <span class="nx">from</span> <span class="s2">&quot;ra-data-json-server&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span><span class="p">,</span> <span class="nx">ListGuesser</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">jsonServerProvider</span> <span class="kr">from</span> <span class="s2">&quot;ra-data-json-server&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">dataProvider</span> <span class="o">=</span> <span class="nx">jsonServerProvider</span><span class="p">(</span><span class="s2">&quot;http://jsonplaceholder.typicode.com&quot;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">dataProvider</span> <span class="o">=</span> <span class="nx">jsonServerProvider</span><span class="p">(</span><span class="s2">&quot;http://jsonplaceholder.typicode.com&quot;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">dataProvider</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">ListGuesser</span><span class="p">}</span> <span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
 <span class="p">);</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
-</pre></div>
-
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div>
 
 <p>name=&#8221;users&#8221; informs react-admin to fetch the &#8220;users&#8221; records from the http://jsonplaceholder.typicode.com/users <span class="caps">URL</span>.</p>
 <p>list={ListGuesser} means that react-admin should use the <ListGuesser> component to display the list of&nbsp;posts.</p>
 <h2>Selecting&nbsp;Columns</h2>
 <p>The <ListGuesser> component is not meant to be used in production - it&#8217;s just a way to quicky bootstrap an admin. ListGuesser dumps the code of the list it has guessed to the&nbsp;console:</p>
-<div class="highlight"><pre><span></span><span class="c1">// in src/users.js</span>
-<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">EmailField</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// in src/users.js</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">EmailField</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">UserList</span> <span class="o">=</span> <span class="nx">props</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">UserList</span> <span class="o">=</span> <span class="nx">props</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">List</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Datagrid</span> <span class="nx">rowClick</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">TextField</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;id&quot;</span> <span class="o">/&gt;</span>
@@ -111,71 +110,67 @@
 <span class="p">);</span>
 
 <span class="c1">// in src/App.js</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">UserList</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;./users&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">UserList</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;./users&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">dataProvider</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">UserList</span><span class="p">}</span> <span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Now, the app uses a component that you can customize. React-admin provides more Field components, mapping various data types: number, date, image, <span class="caps">HTML</span>, array, reference,&nbsp;etc.</p>
 <h2>Customizing&nbsp;Styles</h2>
 <p>React-admin relies on material-ui, a set of React components modeled after Google&#8217;s Material Design <span class="caps">UI</span> Guidelines. Material-ui uses <span class="caps">JSS</span>, a <span class="caps">CSS</span>-in-<span class="caps">JS</span> solution, for styling&nbsp;components.</p>
-<div class="highlight"><pre><span></span><span class="c1">// in src/MyUrlField.js</span>
-<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">withStyles</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@material-ui/core/styles&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">LaunchIcon</span> <span class="nx">from</span> <span class="s2">&quot;@material-ui/icons/Launch&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// in src/MyUrlField.js</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">withStyles</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@material-ui/core/styles&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">LaunchIcon</span> <span class="kr">from</span> <span class="s2">&quot;@material-ui/icons/Launch&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">link</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">textDecoration</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span>
   <span class="p">},</span>
   <span class="nx">icon</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">width</span><span class="o">:</span> <span class="s2">&quot;0.5em&quot;</span><span class="p">,</span>
-    <span class="nx">paddingLeft</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="nx">paddingLeft</span><span class="o">:</span> <span class="mf">2</span>
   <span class="p">}</span>
 <span class="p">};</span>
 
-<span class="kr">const</span> <span class="nx">MyUrlField</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">record</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">source</span><span class="p">,</span> <span class="nx">classes</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">MyUrlField</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">record</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">source</span><span class="p">,</span> <span class="nx">classes</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="p">{</span><span class="nx">record</span><span class="p">[</span><span class="nx">source</span><span class="p">]}</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">classes</span><span class="p">.</span><span class="nx">link</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="p">{</span><span class="nx">record</span><span class="p">[</span><span class="nx">source</span><span class="p">]}</span>
     <span class="o">&lt;</span><span class="nx">LaunchIcon</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">classes</span><span class="p">.</span><span class="nx">icon</span><span class="p">}</span> <span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="err">/a&gt;</span>
 <span class="p">);</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">withStyles</span><span class="p">(</span><span class="nx">styles</span><span class="p">)(</span><span class="nx">MyUrlField</span><span class="p">);</span>
-</pre></div>
-
+<span class="k">export</span> <span class="k">default</span> <span class="nx">withStyles</span><span class="p">(</span><span class="nx">styles</span><span class="p">)(</span><span class="nx">MyUrlField</span><span class="p">);</span>
+</code></pre></div>
 
 <p>In <span class="caps">JSS</span>, you define styles as a JavaScript object, using the <span class="caps">JS</span> variants of the <span class="caps">CSS</span> property names (e.g. textDecoration instead of text-decoration). To pass these styles to the component, wrap it inside a call to&nbsp;withStyles(styles).</p>
 <p>高阶组件：</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">compose</span> <span class="nx">from</span> <span class="s2">&quot;recompose/compose&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">withStyles</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@material-ui/core/styles&quot;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">enhance</span> <span class="o">=</span> <span class="nx">compose</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">compose</span> <span class="kr">from</span> <span class="s2">&quot;recompose/compose&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">withStyles</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@material-ui/core/styles&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">enhance</span> <span class="o">=</span> <span class="nx">compose</span><span class="p">(</span>
   <span class="nx">withStyles</span><span class="p">(</span><span class="nx">styles</span><span class="p">),</span>
   <span class="nx">translate</span>
 <span class="p">);</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">enhance</span><span class="p">(</span><span class="nx">MonthlyRevenue</span><span class="p">);</span>
-</pre></div>
-
+<span class="k">export</span> <span class="k">default</span> <span class="nx">enhance</span><span class="p">(</span><span class="nx">MonthlyRevenue</span><span class="p">);</span>
+</code></pre></div>
 
 <h2>Handling&nbsp;Relationships</h2>
 <p>React-admin knows how to take advantage of these foreign keys to fetch references. ReferenceField component alone doesn&#8217;t display anything. It just fetches the reference data, and passes it as a record to its child component (a TextField in our&nbsp;case).</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">ReferenceField</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;userId&quot;</span> <span class="nx">reference</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">ReferenceField</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;userId&quot;</span> <span class="nx">reference</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">TextField</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="o">/&gt;</span>
 <span class="o">&lt;</span><span class="err">/ReferenceField&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Creation and&nbsp;Editing</h2>
 <p>Use the <EditGuesser> to help bootstrap it. Copy the PostEdit code dumped by the guesser in the console to the posts.js file so that you can customize the view. It issues <span class="caps">PUT</span> requests to the <span class="caps">REST</span> <span class="caps">API</span> upon&nbsp;submission.</p>
-<div class="highlight"><pre><span></span><span class="c1">// in src/posts.js</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// in src/posts.js</span>
 <span class="c1">// edit:</span>
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">PostEdit</span> <span class="o">=</span> <span class="nx">props</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostEdit</span> <span class="o">=</span> <span class="nx">props</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">Edit</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">SimpleForm</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">DisabledInput</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;id&quot;</span> <span class="o">/&gt;</span>
@@ -188,7 +183,7 @@
   <span class="o">&lt;</span><span class="err">/Edit&gt;</span>
 <span class="p">);</span>
 <span class="c1">//creat:</span>
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="nx">props</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="nx">props</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">Create</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">SimpleForm</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ReferenceInput</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;userId&quot;</span> <span class="nx">reference</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="o">&gt;</span>
@@ -199,16 +194,15 @@
     <span class="o">&lt;</span><span class="err">/SimpleForm&gt;</span>
   <span class="o">&lt;</span><span class="err">/Create&gt;</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><ReferenceInput> uses these props to fetch the <span class="caps">API</span> for possible references related to the current record. It then passes these possible references to the child component (SelectInput), which is responsible for displaying them (via their name in that case), and letting the user select&nbsp;one.</p>
-<div class="highlight"><pre><span></span><span class="c1">// in src/App.js</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">PostList</span><span class="p">,</span> <span class="nx">PostEdit</span><span class="p">,</span> <span class="nx">PostCreate</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;./posts&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">UserList</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;./users&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// in src/App.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;react-admin&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PostList</span><span class="p">,</span> <span class="nx">PostEdit</span><span class="p">,</span> <span class="nx">PostCreate</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;./posts&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">UserList</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;./users&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">dataProvider</span><span class="p">}</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Resource</span>
       <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span>
@@ -219,8 +213,7 @@
     <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">UserList</span><span class="p">}</span> <span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>React-admin automatically adds a &#8220;create&#8221; button on top of the posts list to give access to the <PostCreate> component. And the creation form works ; it issues a <span class="caps">POST</span> request to the <span class="caps">REST</span> <span class="caps">API</span> upon&nbsp;submission.</p>
 <h2>Undo</h2>
@@ -236,10 +229,10 @@
 </ol>
 <h2>Filter</h2>
 <p>React-admin can use Input components to create a multi-criteria search engine in the list view. First, create a <Filter> component just like you would write a <SimpleForm> component, using input components as children. Then, add it to the list using the filters&nbsp;prop:</p>
-<div class="highlight"><pre><span></span><span class="c1">// in src/posts.js</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Filter</span><span class="p">,</span> <span class="nx">ReferenceInput</span><span class="p">,</span> <span class="nx">SelectInput</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">List</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// in src/posts.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Filter</span><span class="p">,</span> <span class="nx">ReferenceInput</span><span class="p">,</span> <span class="nx">SelectInput</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">List</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">PostFilter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">PostFilter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">Filter</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">TextInput</span> <span class="nx">label</span><span class="o">=</span><span class="s2">&quot;Search&quot;</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;q&quot;</span> <span class="nx">alwaysOn</span> <span class="o">/&gt;</span>
         <span class="o">&lt;</span><span class="nx">ReferenceInput</span> <span class="nx">label</span><span class="o">=</span><span class="s2">&quot;User&quot;</span> <span class="nx">source</span><span class="o">=</span><span class="s2">&quot;userId&quot;</span> <span class="nx">reference</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="nx">allowEmpty</span><span class="o">&gt;</span>
@@ -248,28 +241,27 @@
     <span class="o">&lt;</span><span class="err">/Filter&gt;</span>
 <span class="p">);</span>
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">PostList</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostList</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">List</span> <span class="nx">filters</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">PostFilter</span> <span class="o">/&gt;</span><span class="p">}</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="c1">// ...</span>
     <span class="o">&lt;</span><span class="err">/List&gt;</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>responsive</h2>
 <p>The best compromise would be to use <SimpleList> on small screens, and <Datagrid> on other screens. That&#8217;s where the <Responsive> component comes&nbsp;in:</p>
-<div class="highlight"><pre><span></span><span class="c1">// in src/posts.js</span>
-<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Responsive</span><span class="p">,</span> <span class="nx">SimpleList</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">ReferenceField</span><span class="p">,</span> <span class="nx">EditButton</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// in src/posts.js</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Responsive</span><span class="p">,</span> <span class="nx">SimpleList</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">ReferenceField</span><span class="p">,</span> <span class="nx">EditButton</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">PostList</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostList</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">List</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">Responsive</span>
             <span class="nx">small</span><span class="o">=</span><span class="p">{</span>
                 <span class="o">&lt;</span><span class="nx">SimpleList</span>
                     <span class="nx">primaryText</span><span class="o">=</span><span class="p">{</span><span class="nx">record</span> <span class="p">=&gt;</span> <span class="nx">record</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
                     <span class="nx">secondaryText</span><span class="o">=</span><span class="p">{</span><span class="nx">record</span> <span class="p">=&gt;</span> <span class="sb">`</span><span class="si">${</span><span class="nx">record</span><span class="p">.</span><span class="nx">views</span><span class="si">}</span><span class="sb"> views`</span><span class="p">}</span>
-                    <span class="nx">tertiaryText</span><span class="o">=</span><span class="p">{</span><span class="nx">record</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">published_at</span><span class="p">).</span><span class="nx">toLocaleDateString</span><span class="p">()}</span>
+                    <span class="nx">tertiaryText</span><span class="o">=</span><span class="p">{</span><span class="nx">record</span> <span class="p">=&gt;</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">published_at</span><span class="p">).</span><span class="nx">toLocaleDateString</span><span class="p">()}</span>
                 <span class="o">/&gt;</span>
             <span class="p">}</span>
             <span class="nx">medium</span><span class="o">=</span><span class="p">{</span>
@@ -286,7 +278,7 @@
         <span class="o">/&gt;</span>
     <span class="o">&lt;</span><span class="err">/List&gt;</span>
 <span class="p">);</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -342,6 +334,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -369,6 +364,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -377,7 +376,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

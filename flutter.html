@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -81,16 +82,15 @@
 <li>Container: background, margins,&nbsp;padding&#8230;</li>
 </ul>
 <p>build方法有一个context参数，它是BuildContext类的一个实例，表示当前 widget 在 widget 树中的上下文，每一个 widget 都会对应一个 context 对象（因为每一个 widget 都是 widget&nbsp;树上的一个节点）。</p>
-<div class="highlight"><pre><span></span><span class="nl">body:</span> <span class="n">Container</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="nl">body:</span> <span class="n">Container</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">Builder</span><span class="p">(</span><span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 在 widget 树中向上查找最近的父级`Scaffold`  widget </span>
     <span class="n">Scaffold</span> <span class="n">scaffold</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">findAncestorWidgetOfExactType</span><span class="o">&lt;</span><span class="n">Scaffold</span><span class="o">&gt;</span><span class="p">();</span>
     <span class="c1">// 直接返回 AppBar的title， 此处实际上是Text(&quot;Context测试&quot;)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">scaffold</span><span class="p">.</span><span class="n">appBar</span> <span class="o">as</span> <span class="n">AppBar</span><span class="p">).</span><span class="n">title</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">scaffold</span><span class="p">.</span><span class="n">appBar</span> <span class="k">as</span> <span class="n">AppBar</span><span class="p">).</span><span class="n">title</span><span class="p">;</span>
   <span class="p">}),</span>
 <span class="p">),</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Stateful&nbsp;widget有状态的部件</h2>
 <p>Stateful widget 可以拥有状态，这些状态在 widget 生命周期中是可以变的，而 Stateless widget&nbsp;是不可变的。</p>
@@ -135,7 +135,7 @@
 </ul>
 <h3>在子 widget 树中获取父级 StatefulWidget 的State&nbsp;对象</h3>
 <p>1.通过Context获取：context对象有一个findAncestorStateOfType()方法，该方法可以从当前节点沿着 widget 树向上查找指定类型的 StatefulWidget 对应的 State&nbsp;对象</p>
-<div class="highlight"><pre><span></span> <span class="c1">// 查找父级最近的Scaffold对应的ScaffoldState对象</span>
+<div class="highlight"><pre><span></span><code> <span class="c1">// 查找父级最近的Scaffold对应的ScaffoldState对象</span>
   <span class="n">ScaffoldState</span> <span class="n">_state</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">findAncestorStateOfType</span><span class="o">&lt;</span><span class="n">ScaffoldState</span><span class="o">&gt;</span><span class="p">()</span><span class="o">!</span><span class="p">;</span>
   <span class="c1">// 打开抽屉菜单</span>
   <span class="n">_state</span><span class="p">.</span><span class="n">openDrawer</span><span class="p">();</span>
@@ -144,8 +144,7 @@
   <span class="n">ScaffoldState</span> <span class="n">_state</span><span class="o">=</span><span class="n">Scaffold</span><span class="p">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
   <span class="c1">// 打开抽屉菜单</span>
   <span class="n">_state</span><span class="p">.</span><span class="n">openDrawer</span><span class="p">();</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>2.通过GlobalKey: GlobalKey 是 Flutter 提供的一种在整个 App 中引用 element&nbsp;的机制。</p>
 <ul>
@@ -153,7 +152,7 @@
 <li>globalKey.currentElement: widget&nbsp;对应的element对象</li>
 <li>globalKey.currentState: widget&nbsp;对应的state对象。</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">//定义一个globalKey, 由于GlobalKey要保持全局唯一性，我们使用静态变量存储</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//定义一个globalKey, 由于GlobalKey要保持全局唯一性，我们使用静态变量存储</span>
 <span class="kd">static</span> <span class="n">GlobalKey</span><span class="o">&lt;</span><span class="n">ScaffoldState</span><span class="o">&gt;</span> <span class="n">_globalKey</span><span class="o">=</span> <span class="n">GlobalKey</span><span class="p">();</span>
 <span class="p">...</span>
 <span class="n">Scaffold</span><span class="p">(</span>
@@ -162,8 +161,7 @@
 <span class="p">)</span>
 
 <span class="n">_globalKey</span><span class="p">.</span><span class="n">currentState</span><span class="p">.</span><span class="n">openDrawer</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>状态管理</h2>
 <ul>
@@ -177,12 +175,11 @@
 </li>
 </ul>
 <p>Model变化后会自动通知ChangeNotifierProvider（订阅者），ChangeNotifierProvider内部会重新构建InheritedWidget，而依赖该InheritedWidget的子孙Widget就会更新。</p>
-<div class="highlight"><pre><span></span><span class="n">Builder</span><span class="p">(</span><span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><code><span class="n">Builder</span><span class="p">(</span><span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">){</span>
   <span class="kd">var</span> <span class="n">cart</span><span class="o">=</span><span class="n">ChangeNotifierProvider</span><span class="p">.</span><span class="n">of</span><span class="o">&lt;</span><span class="n">CartModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
   <span class="k">return</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;总价: </span><span class="si">${</span><span class="n">cart</span><span class="p">.</span><span class="n">totalPrice</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
 <span class="p">}),</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>路由</h2>
 <p>MaterialPageRoute 是&nbsp;Material组件库提供的组件，它可以针对不同平台，实现与平台页面切换动画风格一致的路由切换动画：</p>
@@ -190,7 +187,7 @@
 <li>对于&nbsp;Android，新页面从屏幕底部滑动到屏幕顶部；关闭页面时，当前页面从屏幕顶部滑动到屏幕底部后消失。</li>
 <li>对于&nbsp;iOS，新页面从屏幕右侧边缘一直滑动到屏幕左边，关闭页面时，当前页面从屏幕右侧滑出。</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">TextButton</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">TextButton</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;open new route&quot;</span><span class="p">),</span>
   <span class="nl">textColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
   <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{</span>
@@ -205,11 +202,10 @@
     <span class="p">);</span>
   <span class="p">},</span>
 <span class="p">),</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>命名路由</h3>
-<div class="highlight"><pre><span></span><span class="c1">// 注册路由表</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 注册路由表</span>
 <span class="n">MaterialApp</span><span class="p">(</span>
   <span class="nl">routes:</span><span class="p">{</span>
    <span class="s2">&quot;new_page&quot;</span><span class="o">:</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">NewRoute</span><span class="p">(),</span>
@@ -223,18 +219,16 @@
   <span class="n">Navigator</span><span class="p">.</span><span class="n">pushNamed</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;new_page&quot;</span><span class="p">);</span>
   <span class="n">Navigator</span><span class="p">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">pushNamed</span><span class="p">(</span><span class="s2">&quot;new_page&quot;</span><span class="p">,</span> <span class="nl">arguments:</span> <span class="s2">&quot;hi&quot;</span><span class="p">);</span> <span class="c1">// 传参</span>
 <span class="p">},</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>路由生成钩子：全局的路由跳转前置处理逻辑</p>
 <p>如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，其它情况则正常打开路由。</p>
-<div class="highlight"><pre><span></span><span class="nl">onGenerateRoute:</span><span class="p">(</span><span class="n">RouteSettings</span> <span class="n">settings</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><code><span class="nl">onGenerateRoute:</span><span class="p">(</span><span class="n">RouteSettings</span> <span class="n">settings</span><span class="p">){</span>
   <span class="k">return</span> <span class="n">MaterialPageRoute</span><span class="p">(</span><span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">){</span>
     <span class="kt">String</span> <span class="n">routeName</span> <span class="o">=</span> <span class="n">settings</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>事件处理</h2>
 <p>一次完整的事件分为三个阶段：手指按下、手指移动、和手指抬起。</p>
@@ -245,18 +239,17 @@
 <li>事件清理：当手指抬（ PointerUpEvent ）起或事件取消时（PointerCancelEvent），会先对相应的事件进行分发，分发完毕后会清空 HitTestResult&nbsp;列表。</li>
 </ol>
 <p>通过命中测试Hit Test的组件触发事件，事件会从最内部的组件被分发到组件树根的路径上的所有组件，和Web浏览器的事件冒泡机制相似，&nbsp;但是Flutter中没有机制取消或停止“冒泡”过程。</p>
-<div class="highlight"><pre><span></span><span class="n">Listener</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Listener</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">Container</span><span class="p">(...),</span>
   <span class="nl">onPointerDown:</span> <span class="p">(</span><span class="n">PointerDownEvent</span> <span class="n">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span>
   <span class="nl">onPointerMove:</span> <span class="p">(</span><span class="n">PointerMoveEvent</span> <span class="n">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span>
   <span class="nl">onPointerUp:</span> <span class="p">(</span><span class="n">PointerUpEvent</span> <span class="n">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>IgnorePointer和AbsorbPointer，这两个组件都能阻止子树接收指针事件，不同之处在于AbsorbPointer本身会参与命中测试，而IgnorePointer本身不会参与</p>
 <h3>手势识别</h3>
-<div class="highlight"><pre><span></span><span class="n">GestureDetector</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">GestureDetector</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">Container</span><span class="p">(...),</span>
   <span class="nl">onTap:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//点击</span>
   <span class="nl">onDoubleTap:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//双击</span>
@@ -267,27 +260,25 @@
   <span class="nl">onVerticalDragUpdate:</span> <span class="p">(</span><span class="n">DragUpdateDetails</span> <span class="n">details</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">//垂直方向拖动事件</span>
   <span class="nl">onScaleUpdate:</span> <span class="p">(</span><span class="n">ScaleUpdateDetails</span> <span class="n">details</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">...,</span> <span class="c1">// 缩放</span>
 <span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="n">TextSpan</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">TextSpan</span><span class="p">(</span>
   <span class="nl">text:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
   <span class="nl">recognizer:</span> <span class="n">_tapGestureRecognizer</span>
     <span class="p">..</span><span class="n">onTap</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">...,</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>包管理</h2>
 <p>pubspec.yaml</p>
-<div class="highlight"><pre><span></span><span class="nl">dependencies:</span>
+<div class="highlight"><pre><span></span><code><span class="nl">dependencies:</span>
   <span class="nl">english_words:</span> <span class="o">^</span><span class="m">4.0</span><span class="p">.</span><span class="m">0</span> <span class="c1">// Pub仓库</span>
   <span class="nl">pkg1:</span>
     <span class="nl">path:</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">pkg1</span> <span class="c1">// 依赖本地包</span>
   <span class="nl">pkg2:</span>
     <span class="nl">git:</span>
       <span class="nl">url:</span> <span class="nl">git:</span><span class="c1">//github.com/xxx/pkg1.git // git仓库</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -343,6 +334,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -370,6 +364,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -378,7 +376,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

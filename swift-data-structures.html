@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -73,7 +74,7 @@
 <p>java&#8212;garbage collection&nbsp;垃圾收集(track-&gt;mark-&gt;clean)</p>
 <p>swift&#8212;reference counting 引用计数(instantly removes it as soon as no one point to&nbsp;it)</p>
 <p>init在堆内存Heap里引用计数+1,deinit计数-1，容量大，速度慢，计数到0被清理</p>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
   <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
@@ -85,15 +86,14 @@
 <span class="kd">let</span> <span class="nv">teslaB</span> <span class="p">=</span> <span class="n">tesla</span>
 
 <span class="n">tesla</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;A&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Class默认初始化方法:&nbsp;swift只会提供一个默认的空初始化方法。</p>
 <h2>struct结构体：值类型value&nbsp;type，没有继承</h2>
 <p>传递时复制：copy-on-write只有修改时复制</p>
 <p>在栈内存Stack创建，先进后出，进a-&gt;进b-&gt;a+b-&gt;出b-&gt;出a</p>
 <p>栈内存的在function结束就销毁，堆内存的在deinit才销毁</p>
-<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Dog</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Dog</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
   <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
     <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
@@ -107,11 +107,10 @@
 <span class="n">dogA</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;caocao&quot;</span>
 
 <span class="bp">print</span> <span class="n">dogB</span><span class="p">.</span><span class="n">name</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Struct默认初始化方法：1、空初始化方法；2、成员初始化方法</p>
-<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Person</span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Person</span><span class="p">{</span>
     <span class="kd">var</span> <span class="nv">name</span> <span class="p">=</span> <span class="s">&quot;tom&quot;</span>
     <span class="kd">var</span> <span class="nv">age</span> <span class="p">=</span> <span class="mi">1</span>
 
@@ -122,11 +121,10 @@
 
 <span class="kd">let</span> <span class="nv">person1</span> <span class="p">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="s">&quot;JIM&quot;</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="c1">//成员初始化方法</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;person:name=</span><span class="si">\(</span><span class="n">person1</span><span class="p">.</span><span class="n">name</span><span class="si">)</span><span class="s">,age=</span><span class="si">\(</span><span class="n">person1</span><span class="p">.</span><span class="n">age</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>enum枚举</h2>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">ADC</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">ADC</span> <span class="p">{</span>
   <span class="k">case</span> <span class="n">digital</span>
   <span class="k">case</span> <span class="n">edg</span>
   <span class="k">case</span> <span class="n">sap</span>
@@ -139,11 +137,10 @@
 <span class="p">}</span>
 
 <span class="kd">let</span> <span class="nv">digital</span> <span class="p">=</span> <span class="n">ADC</span><span class="p">.</span><span class="n">digital</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Protocal协议</h2>
-<div class="highlight"><pre><span></span><span class="n">protocal</span> <span class="n">Car</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">protocal</span> <span class="n">Car</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
   <span class="kd">var</span> <span class="nv">isElectric</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
 <span class="p">}</span>
@@ -172,18 +169,16 @@
 
 <span class="kd">let</span> <span class="nv">tesla</span> <span class="p">=</span> <span class="n">Tesla</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;tesla&quot;</span><span class="p">,</span> <span class="n">maxSpeed</span><span class="p">:</span> <span class="mf">200.0</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">tesla</span><span class="p">.</span><span class="n">isElectric</span><span class="p">)</span> <span class="c1">//true</span>
-</pre></div>
-
+</code></pre></div>
 
 <p></br></p>
 <h1>keywords&nbsp;关键字</h1>
 <p>inout</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">arrA</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="s">&quot;3&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">arrA</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="s">&quot;3&quot;</span><span class="p">];</span>
 <span class="kd">func</span> <span class="nf">arrRemoveFirst</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="kr">inout</span> <span class="p">[</span><span class="nb">String</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">string</span><span class="p">]</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">[</span><span class="n">arr</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)]</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>public</p>
 <p>func</p>
@@ -257,6 +252,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -284,6 +282,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -292,7 +294,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

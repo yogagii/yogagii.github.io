@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -55,19 +56,18 @@
 		</div>
 	</header>
 	<div class="summary"><h2>Mailer</h2>
-<div class="highlight"><pre><span></span><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@nestjs</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">mailer</span><span class="w"></span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@nestjs</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">mailer</span><span class="w"></span>
+</code></pre></div>
 
 <p>email.module.ts</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">MailerModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">EjsAdapter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@nestjs-modules/mailer/dist/adapters/ejs.adapter&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MailerModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">EjsAdapter</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer/dist/adapters/ejs.adapter&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Module</span><span class="p">({</span>
   <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span>
     <span class="nx">MailerModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
       <span class="nx">transport</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;mx …</span></pre></div></div>
+        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;mx …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -134,6 +134,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -161,6 +164,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -169,7 +176,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

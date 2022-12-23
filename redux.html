@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -73,15 +74,15 @@
 <p>Redux中可以有多个Reducer，每个Reducer维护整体State中的一部分，多个Reducer合并成一个根Reducer，由其负责维护完整的State，当一个Action被发出，Store会调用Dispatch方法向某个特定的Reducer传递该Action，Reducer接收到Action之后执行更新逻辑，并返回一个新的state，根Reducer收集所有State的更新，再返回一个新的完整的State，然后传递给view。</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// get state in effect</span>
-<span class="kr">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">saveLogin</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// get state in effect</span>
+<span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">saveLogin</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
 
 <span class="kd">let</span> <span class="nx">siteConfig</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">sortConfig</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">siteConfig</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">report_type</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">yield</span> <span class="nx">put</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;sortConfig/request&#39;</span> <span class="p">});</span>
   <span class="nx">siteConfig</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">select</span><span class="p">(</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">sortConfig</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -137,6 +138,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -164,6 +168,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -172,7 +180,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

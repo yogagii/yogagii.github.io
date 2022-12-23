@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -98,20 +99,19 @@
 <li>空安全</li>
 </ul>
 <p>可空类型要显式（通过在变量后面加一个”!“符号）告诉预处理器它已经不是null了</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="m">8</span><span class="p">;</span> <span class="c1">//默认为不可空，必须在定义时初始化。</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="m">8</span><span class="p">;</span> <span class="c1">//默认为不可空，必须在定义时初始化。</span>
 <span class="kt">int</span><span class="o">?</span> <span class="n">j</span><span class="p">;</span> <span class="c1">// 定义为可空类型，对于可空变量，我们在使用前必须判空。</span>
-<span class="n">Function</span><span class="o">?</span> <span class="n">fun</span><span class="p">;</span>
+<span class="kt">Function</span><span class="o">?</span> <span class="n">fun</span><span class="p">;</span>
 
 <span class="n">print</span><span class="p">(</span><span class="n">j</span><span class="o">!</span> <span class="o">*</span> <span class="m">8</span><span class="p">);</span>
 <span class="n">fun</span><span class="o">?</span><span class="p">.</span><span class="n">call</span><span class="p">()</span> <span class="c1">// 语法糖fun 不为空时则会被调用</span>
-</pre></div>
-
+</code></pre></div>
 
 <blockquote>
 <p>在Dart语言中使用下划线前缀标识符，会强制其变成私有的。</p>
 </blockquote>
 <h2>函数</h2>
-<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">test</span><span class="p">(</span><span class="n">CALLBACK</span> <span class="n">cb</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">test</span><span class="p">(</span><span class="n">CALLBACK</span> <span class="n">cb</span><span class="p">){</span>
    <span class="n">print</span><span class="p">(</span><span class="n">cb</span><span class="p">());</span> 
 <span class="p">}</span>
 
@@ -144,13 +144,12 @@
   <span class="c1">// ... </span>
 <span class="p">}</span>
 <span class="n">enableFlags</span><span class="p">(</span><span class="nl">bold:</span> <span class="kc">true</span><span class="p">,</span> <span class="nl">hidden:</span> <span class="kc">false</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>异步</h2>
 <h3>1.&nbsp;Future</h3>
 <p>Future与JavaScript中的Promise非常相似，表示一个异步操作的最终完成（或失败）及其结果值的表示。一个Future只会对应一个结果，要么成功，要么失败。</p>
-<div class="highlight"><pre><span></span><span class="c1">// 延时任务</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 延时任务</span>
 <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">2</span><span class="p">),(){</span>
    <span class="k">return</span> <span class="s2">&quot;hi world!&quot;</span><span class="p">;</span>
 <span class="p">}).</span><span class="n">then</span><span class="p">((</span><span class="n">data</span><span class="p">){</span>
@@ -162,11 +161,10 @@
 <span class="p">}).</span><span class="n">whenComplete</span><span class="p">((){</span>
    <span class="c1">//无论成功或失败都会走到这里</span>
 <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>只有数组中所有Future都执行成功后，才会触发then的成功回调，只要有一个Future执行失败，就会触发错误回调。(Promise.all)</p>
-<div class="highlight"><pre><span></span><span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">([</span>
+<div class="highlight"><pre><span></span><code><span class="n">Future</span><span class="p">.</span><span class="n">wait</span><span class="p">([</span>
   <span class="c1">// 2秒后返回结果  </span>
   <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">2</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
@@ -176,22 +174,20 @@
     <span class="k">return</span> <span class="s2">&quot; world&quot;</span><span class="p">;</span>
   <span class="p">})</span>
 <span class="p">])</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>回调地狱(Callback Hell):&nbsp;在回调里面套回调</p>
 <p>链式调用: Future 的所有API的返回值仍然是一个Future对象，如果在then&nbsp;中返回的是一个Future的话，该future会执行，执行结束后会触发后面的then回调，这样依次向下，就避免了层层嵌套。</p>
-<div class="highlight"><pre><span></span><span class="n">login</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span><span class="s2">&quot;******&quot;</span><span class="p">).</span><span class="n">then</span><span class="p">((</span><span class="n">id</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><code><span class="n">login</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span><span class="s2">&quot;******&quot;</span><span class="p">).</span><span class="n">then</span><span class="p">((</span><span class="n">id</span><span class="p">){</span>
     <span class="k">return</span> <span class="n">getUserInfo</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="p">}).</span><span class="n">then</span><span class="p">((</span><span class="n">userInfo</span><span class="p">){</span>
     <span class="k">return</span> <span class="n">saveUserInfo</span><span class="p">(</span><span class="n">userInfo</span><span class="p">);</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>async用来表示函数是异步的，定义的函数会返回一个Future对象，可以使用 then&nbsp;方法添加回调函数。</p>
 <p>await 后面是一个Future，表示等待该异步任务完成，异步完成后才会往下走；await必须出现在 async&nbsp;函数内部。</p>
-<div class="highlight"><pre><span></span><span class="n">task</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">task</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
   <span class="k">try</span><span class="p">{</span>
     <span class="kd">await</span> <span class="n">saveUserInfo</span><span class="p">(</span><span class="n">userInfo</span><span class="p">);</span>
     <span class="c1">//执行接下来的操作   </span>
@@ -200,8 +196,7 @@
     <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>   
   <span class="p">}</span>  
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <blockquote>
 <p>无论是在 JavaScript 还是 Dart 中，async/await 都只是一个语法糖，编译器或解释器最终都会将其转化为一个&nbsp;Promise（Future）的调用链。</p>
@@ -209,7 +204,7 @@
 <h3>2.&nbsp;Stream</h3>
 <p>Stream 也是用于接收异步事件数据，可以接收多个异步操作的结果（成功或失败）。&nbsp;也就是说，在执行异步任务时，可以通过多次触发成功或失败事件来传递结果数据或错误异常。</p>
 <p>Stream&nbsp;常用于会多次读取数据的异步任务场景，如网络内容下载、文件读写等。</p>
-<div class="highlight"><pre><span></span><span class="n">Stream</span><span class="p">.</span><span class="n">fromFutures</span><span class="p">([</span>
+<div class="highlight"><pre><span></span><code><span class="n">Stream</span><span class="p">.</span><span class="n">fromFutures</span><span class="p">([</span>
   <span class="c1">// 1秒后返回结果</span>
   <span class="n">Future</span><span class="p">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="m">1</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s2">&quot;hello 1&quot;</span><span class="p">;</span>
@@ -229,7 +224,7 @@
 <span class="p">},</span><span class="nl">onDone:</span> <span class="p">(){</span>
 
 <span class="p">});</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -285,6 +280,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -312,6 +310,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -320,7 +322,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

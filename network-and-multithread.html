@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -66,7 +67,7 @@
 <h2>WebView&nbsp;可以装网页的容器</h2>
 <p>网页中的代码可以和原生应用代码交互</p>
 <p>UIwebview 有内存泄漏的问题，苹果优化做了&nbsp;webkitbweview</p>
-<div class="highlight"><pre><span></span>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span> <span class="p">{</span>
 
     <span class="kd">var</span> <span class="nv">webView</span><span class="p">:</span> <span class="bp">WKWebView</span><span class="p">!</span>
 
@@ -74,7 +75,7 @@
         <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
 
         <span class="kd">let</span> <span class="nv">webConfig</span> <span class="p">=</span> <span class="bp">WKWebViewConfiguration</span><span class="p">()</span>
-        <span class="n">webView</span> <span class="p">=</span> <span class="bp">WKWebView</span><span class="p">(</span><span class="n">frame</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">view</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">view</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">88</span><span class="p">),</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">webConfig</span><span class="p">)</span>
+        <span class="n">webView</span> <span class="p">=</span> <span class="bp">WKWebView</span><span class="p">(</span><span class="n">frame</span><span class="p">:</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">view</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">view</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">88</span><span class="p">),</span> <span class="n">configuration</span><span class="p">:</span> <span class="n">webConfig</span><span class="p">)</span>
         <span class="n">webView</span><span class="p">.</span><span class="n">uiDelegate</span> <span class="p">=</span> <span class="kc">self</span>
         <span class="n">webView</span><span class="p">.</span><span class="n">navigationDelegate</span> <span class="p">=</span> <span class="kc">self</span>
         <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">webView</span><span class="p">)</span>
@@ -107,8 +108,7 @@
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;💢 </span><span class="si">\(</span><span class="kc">self</span><span class="si">)</span><span class="s"> is deinit!!!&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>网页的 iframe&nbsp;相当于去服务器访问，所以有跨域问题</p>
 <p>手机的 webview&nbsp;都是本手机访问，所以没有跨域问题</p>
@@ -117,7 +117,7 @@
 <p>WebViewController -&gt; WebView -&gt; ScriptMessageHandler -&gt;&nbsp;WebViewController</p>
 <p>弱引用</p>
 <p>WebViewController -&gt; WebView -&gt; ScriptMessageHandler -&gt; WeekHandler &#8230;&gt;弱引用&#8230;&gt;&nbsp;WebViewController</p>
-<div class="highlight"><pre><span></span>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span><span class="p">,</span> <span class="bp">WKScriptMessageHandler</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span><span class="p">,</span> <span class="bp">WKScriptMessageHandler</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">userContentController</span><span class="p">(</span><span class="kc">_</span> <span class="n">userContentController</span><span class="p">:</span> <span class="bp">WKUserContentController</span><span class="p">,</span> <span class="n">didReceive</span> <span class="n">message</span><span class="p">:</span> <span class="bp">WKScriptMessage</span><span class="p">)</span> <span class="p">{</span>
         <span class="o">&lt;</span><span class="p">#</span><span class="n">code</span><span class="p">#</span><span class="o">&gt;</span>
     <span class="p">}</span>
@@ -139,20 +139,18 @@
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;js message: &quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">body</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Multithread</h2>
-<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">New</span><span class="p">:</span> <span class="n">Codable</span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">New</span><span class="p">:</span> <span class="n">Codable</span><span class="p">{</span>
 
 <span class="p">}</span>
 <span class="n">JSONDecode</span><span class="p">();</span> <span class="c1">// 解码返回的数据格式</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>js的json对象（Javascript object&nbsp;notation）swift没有</p>
 <p>字典和结构体二选一</p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">dict</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">:</span> <span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yoga&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Developer&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">dict</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">:</span> <span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Yoga&quot;</span><span class="p">,</span> <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Developer&quot;</span><span class="p">]</span>
 <span class="n">dict</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]</span>
 
 <span class="kd">struct</span> <span class="nc">Developer</span> <span class="p">{</span>
@@ -166,8 +164,7 @@
 
 <span class="kd">let</span> <span class="nv">yoga</span> <span class="p">=</span> <span class="n">Developer</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="s">&quot;Yoga&quot;</span><span class="p">,</span> <span class="s">&quot;Developer&quot;</span><span class="p">);</span>
 <span class="n">yoga</span><span class="p">.</span><span class="n">title</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Alamofire</p>
 <p>Moya</p>
@@ -227,6 +224,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -254,6 +254,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -262,7 +266,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

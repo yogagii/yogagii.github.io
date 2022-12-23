@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -73,71 +74,62 @@
 <ul>
 <li>设置提交中使用的用户名: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global user.name &quot;yourname&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git config --global user.name &quot;yourname&quot;
+</code></pre></div>
 
 <ul>
 <li>设置提交中使用的邮件地址: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--global user.email &quot;youremail@emai.com&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--global user.email &quot;youremail@emai.com&quot;</span>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://user@sourcecode.juj.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://user@sourcecode.juj.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
+</code></pre></div>
 
 <ul>
 <li>你可以使用以下指令检查你的配置: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--list</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git config --list
+</code></pre></div>
 
 <h2>常用指令</h2>
 <ul>
 <li>初始化仓库: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">init</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git init
+</code></pre></div>
 
 <ul>
 <li>跟踪文件(或者添加文件到暂存区): </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">add</span> <span class="n">filename</span>
-<span class="n">git</span> <span class="k">add</span> <span class="p">.</span>  <span class="o">//</span><span class="err">添加所有文件</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git add filename
+git add .  //添加所有文件
+</code></pre></div>
 
 <ul>
 <li>提交文件(将暂存区文件保存到本地): </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">m</span> <span class="ss">&quot;your commit message&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git commit -m &quot;your commit message&quot;
+</code></pre></div>
 
 <ul>
 <li>克隆仓库: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">url</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="c1">--recursive url //下载所有submodule</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git clone url
+git clone --recursive url //下载所有submodule
+</code></pre></div>
 
 <ul>
 <li>查看当前文件处于哪个状态: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git status
+</code></pre></div>
 
 <ul>
 <li>忽略文件: </li>
 </ul>
 <p>修改.gitignore文件，可控制不希望被Git管理的文件</p>
-<div class="highlight"><pre><span></span><span class="o">//</span><span class="w"> </span><span class="n">根目录下</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="n">根目录下</span><span class="w"></span>
 <span class="n">vim</span><span class="w"> </span><span class="p">.</span><span class="n">gitignore_global</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">*~</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="p">.</span><span class="n">DS_Store</span><span class="w"></span>
@@ -148,229 +140,197 @@
 <span class="o">//</span><span class="w"> </span><span class="o">[</span><span class="n">core</span><span class="o">]</span><span class="w"></span>
 <span class="o">//</span><span class="w">  </span><span class="n">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="k">user</span><span class="o">/</span><span class="p">.</span><span class="n">gitignore_global</span><span class="w"></span>
 <span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--list</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>查看文件中具体更新细节: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">diff</span>  <span class="o">//</span> <span class="err">比较工作目录当前文件与暂存区域之间的差异</span>
-<span class="n">git</span> <span class="n">diff</span> <span class="c1">--staged  // 查看已暂存的将要添加到下次提交里的内容</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git diff  // 比较工作目录当前文件与暂存区域之间的差异
+git diff --staged  // 查看已暂存的将要添加到下次提交里的内容
+</code></pre></div>
 
 <ul>
 <li>跳过暂存区域直接提交: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">commit</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">m</span> <span class="ss">&quot;your commit message&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git commit -a -m &quot;your commit message&quot;
+</code></pre></div>
 
 <ul>
 <li>删除本地文件和暂存区文件: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rm</span> <span class="n">filename</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git rm filename
+</code></pre></div>
 
 <ul>
 <li>删除暂存区文件但保留本地文件: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rm</span> <span class="c1">--cached filename</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git rm --cached filename
+</code></pre></div>
 
 <ul>
 <li>查看提交历史: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git log
+</code></pre></div>
 
 <ul>
 <li>重新提交: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">commit</span> <span class="c1">--amend</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git commit --amend
+</code></pre></div>
 
 <ul>
 <li>取消暂存的文件(注意与<code>git rm --cached</code>的区别): </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">reset</span> <span class="n">HEAD</span> <span class="n">filename</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git reset HEAD filename
+</code></pre></div>
 
 <ul>
 <li>撤销对文件的修改: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="c1">-- filename</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git checkout -- filename
+</code></pre></div>
 
 <ul>
 <li>将所有untracked&nbsp;file删除: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clean</span>  <span class="o">-</span><span class="n">f</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git clean  -f
+</code></pre></div>
 
 <ul>
 <li>从远程仓库抓取文件但是不合并: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="k">fetch</span> <span class="p">[</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git fetch [remote-name]
+</code></pre></div>
 
 <ul>
 <li>从远程仓库抓取文件并合并: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div>
 
 <ul>
 <li>推送到远程仓库: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="p">[</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
-
-<ul>
-<li>查看远程仓库: </li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git push [remote-name] [branch-name]
+</code></pre></div>
 
 <ul>
 <li>查看远程仓库: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nv">git</span> <span class="nv">remote</span> <span class="k">show</span> [<span class="nv">remote</span><span class="o">-</span><span class="nv">name</span>]
-</pre></div>
+<div class="highlight"><pre><span></span><code>git remote -v
+</code></pre></div>
 
+<ul>
+<li>查看远程仓库: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nv">git</span> <span class="nv">remote</span> <span class="k">show</span> [<span class="nv">remote</span><span class="o">-</span><span class="nv">name</span>]
+</code></pre></div>
 
 <ul>
 <li>添加远程仓库: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="k">add</span> <span class="o">&lt;</span><span class="n">shortname</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git remote add &lt;shortname&gt; &lt;url&gt;
+</code></pre></div>
 
 <ul>
 <li>远程仓库重命名: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="k">rename</span> <span class="p">[</span><span class="n">original</span><span class="o">-</span><span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="k">new</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git remote rename [original-name] [new-name]
+</code></pre></div>
 
 <ul>
 <li>修改远程仓库：</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="k">set</span><span class="o">-</span><span class="n">url</span> <span class="p">[</span><span class="n">original</span><span class="o">-</span><span class="n">name</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git remote set-url [original-name] &lt;url&gt;
+</code></pre></div>
 
 <ul>
 <li>移除远程仓库: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">rm</span> <span class="p">[</span><span class="n">original</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git remote rm [original-name]
+</code></pre></div>
 
 <h2>分支指令</h2>
 <ul>
 <li>创建分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git branch [branch-name]
+</code></pre></div>
 
 <ul>
 <li>切换分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git checkout [branch-name]
+</code></pre></div>
 
 <ul>
 <li>新建并切换分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="c1">--orphan [branch-name] //创建一个全新分支，分支历史从零开始</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git checkout -b [branch-name]
+git checkout --orphan [branch-name] //创建一个全新分支，分支历史从零开始
+</code></pre></div>
 
 <ul>
 <li>合并到当前分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git merge [branch-name]
+</code></pre></div>
 
 <ul>
 <li>删除分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git branch -d [branch-name]
+</code></pre></div>
 
 <ul>
 <li>重命名分支:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="p">[</span><span class="k">new</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git branch -m [new-branch-name]
+</code></pre></div>
 
 <ul>
 <li>推送分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">[</span><span class="n">remote</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">branch</span><span class="o">]</span><span class="w"></span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">[</span><span class="n">remote</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">branch</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 <ul>
 <li>避免输入密码: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global credential.helper cache</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git config --global credential.helper cache
+</code></pre></div>
 
 <ul>
 <li>跟踪远程分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="c1">--track [remote-name]/[branch-name]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git checkout -b [branch-name] [remote-name]/[branch-name]
+git checkout --track [remote-name]/[branch-name]
+</code></pre></div>
 
 <ul>
 <li>将本地分支与远程分支关联: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="c1">--set-upstream-to=origin/dev</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git branch --set-upstream-to=origin/dev
+</code></pre></div>
 
 <ul>
 <li>修改上游分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git checkout -u [remote-name]/[branch-name]
+</code></pre></div>
 
 <ul>
 <li>查看所有跟踪分支: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git branch -vv
+</code></pre></div>
 
 <ul>
 <li>变基: </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git rebase [branch-name]
+</code></pre></div>
 
 <ul>
 <li>token</li>
@@ -384,218 +344,179 @@
 <ul>
 <li>打tag:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="mi">2019</span><span class="o">-</span><span class="n">R6</span>
-<span class="n">git</span> <span class="n">push</span> <span class="c1">--tag</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git tag 2019-R6
+git push --tag
+</code></pre></div>
 
 <ul>
 <li>拷贝本地文件去服务器:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">scp</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">root</span><span class="mf">@47.100.43</span><span class="p">.</span><span class="nl">xxx</span><span class="p">:</span><span class="o">~/</span><span class="n">deployf</span>
-<span class="n">fpa_share_doc</span> <span class="n">user</span><span class="err">$</span> <span class="n">scp</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">userAvatar</span><span class="p">.</span><span class="n">png</span> <span class="n">root</span><span class="mf">@47.100.43</span><span class="p">.</span><span class="nl">xxx</span><span class="p">:</span><span class="o">~/</span><span class="n">www</span><span class="o">/</span><span class="n">chatbot_hackathon</span><span class="o">/</span><span class="n">img</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">scp</span><span class="w"> </span><span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span><span class="w"> </span><span class="n">root</span><span class="mf">@47.100.43</span><span class="p">.</span><span class="nl">xxx</span><span class="p">:</span><span class="o">~/</span><span class="n">deployf</span><span class="w"></span>
+<span class="n">fpa_share_doc</span><span class="w"> </span><span class="n">user$</span><span class="w"> </span><span class="n">scp</span><span class="w"> </span><span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">userAvatar</span><span class="p">.</span><span class="n">png</span><span class="w"> </span><span class="n">root</span><span class="mf">@47.100.43</span><span class="p">.</span><span class="nl">xxx</span><span class="p">:</span><span class="o">~/</span><span class="n">www</span><span class="o">/</span><span class="n">chatbot_hackathon</span><span class="o">/</span><span class="n">img</span><span class="w"></span>
+</code></pre></div>
 
 <p>Permission&nbsp;denied:</p>
-<div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">777</span> <span class="n">src_path</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>chmod 777 src_path
+</code></pre></div>
 
 <ul>
 <li>配置文件:</li>
 </ul>
 <p>cd&nbsp;/etc/nginx/sites-available</p>
 <p>vim&nbsp;网址</p>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">build</span>
-<span class="n">server</span> <span class="err">{</span>
-    <span class="k">server_name</span> <span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
-    <span class="n">root</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">fpa_share_doc</span><span class="o">/</span><span class="n">dist</span><span class="p">;</span>
-    <span class="k">location</span> <span class="o">/</span> <span class="err">{</span>
-      <span class="n">try_files</span> <span class="err">$</span><span class="n">uri</span> <span class="err">$</span><span class="n">uri</span><span class="o">/</span> <span class="o">/</span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
-    <span class="err">}</span>
-  <span class="err">}</span>
-<span class="o">//</span> <span class="err">单页</span>
-<span class="n">server</span> <span class="err">{</span>
-  <span class="k">server_name</span> <span class="n">project_organization</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
-  <span class="n">root</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">project_organization</span><span class="p">;</span>
-  <span class="k">index</span> <span class="n">dateBar</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
-<span class="err">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>// build
+server {
+    server_name hr_hackathon.jujadc.com;
+    root /usr/share/nginx/fpa_share_doc/dist;
+    location / {
+      try_files $uri $uri/ /index.html;
+    }
+  }
+// 单页
+server {
+  server_name project_organization.jujadc.com;
+  root /root/www/project_organization;
+  index dateBar.html;
+}
+</code></pre></div>
 
 <ul>
 <li>软连接:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">hr_hackathon</span><span class="p">.</span><span class="n">jujadc</span><span class="p">.</span><span class="n">com</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>ln -s /etc/nginx/sites-available/hr_hackathon.jujadc.com /etc/nginx/sites-enabled
+</code></pre></div>
 
 <ul>
 <li>Nginx:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">//</span> <span class="err">测试</span>
-<span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
-<span class="o">//</span> <span class="err">重启</span>
-<span class="n">service</span> <span class="n">nginx</span> <span class="k">restart</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>// 测试
+nginx -t
+// 重启
+nginx
+service nginx restart
+</code></pre></div>
 
 <ul>
 <li>改变文件权限:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">777</span> <span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>chmod 777 ./build.sh
+</code></pre></div>
 
 <ul>
 <li>执行脚本:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
-</pre></div>
-
-
-<h2>netstat</h2>
-<ul>
-<li>查看占用端口号27999的进程</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="o">-</span><span class="n">pan</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">27999</span>
-<span class="o">//</span> <span class="n">tcp6</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="p">:::</span><span class="mi">27999</span>  <span class="p">:::</span><span class="o">*</span>  <span class="k">LISTEN</span>  <span class="mi">15460</span><span class="o">/</span><span class="n">node</span>
-</pre></div>
-
-
-<ul>
-<li>查看指定进程详情</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">15460</span>
-<span class="o">//</span> <span class="n">root</span> <span class="mi">15460</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>  <span class="mi">0</span><span class="p">.</span><span class="mi">2</span> <span class="mi">867324</span> <span class="mi">42508</span> <span class="n">pts</span><span class="o">/</span><span class="mi">5</span> <span class="n">Sl</span><span class="o">+</span> <span class="mi">10</span><span class="p">:</span><span class="mi">14</span> <span class="mi">0</span><span class="p">:</span><span class="mi">00</span> <span class="n">node</span> <span class="k">index</span>
-</pre></div>
-
-
-<ul>
-<li>杀死指定进程</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">kill</span> <span class="mi">15460</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./build.sh
+</code></pre></div>
 
 <h2>PM2进程管理工具</h2>
 <ul>
 <li>启动index.js（node&nbsp;index）并起名:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="k">start</span> <span class="k">index</span><span class="p">.</span><span class="n">js</span> <span class="c1">--name wxAuthorize</span>
-<span class="n">pm2</span> <span class="k">start</span> <span class="n">ecosystem</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">js</span> <span class="c1">--env development</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pm2 start index.js --name wxAuthorize
+pm2 start ecosystem.config.js --env development
+</code></pre></div>
 
 <ul>
 <li>列表 <span class="caps">PM2</span>&nbsp;启动的所有的应用程序:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">list</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pm2 list
+</code></pre></div>
 
 <ul>
 <li>删除指定应用 id&nbsp;0:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="k">delete</span> <span class="mi">0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pm2 delete 0
+</code></pre></div>
 
 <ul>
 <li>停止指定应用:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">stop</span> <span class="mi">0</span>
-<span class="n">pm2</span> <span class="n">stop</span> <span class="n">wxAuthorize</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pm2 stop 0
+pm2 stop wxAuthorize
+</code></pre></div>
 
 <ul>
 <li>重启指定应用:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="k">restart</span> <span class="n">wechat_auth</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pm2 restart wechat_auth
+</code></pre></div>
 
 <ul>
 <li>显示log:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">log</span> <span class="n">wxAuthorize</span>
-<span class="n">pm2</span> <span class="n">log</span> <span class="c1">--out --lines 100</span>
-<span class="n">pm2</span> <span class="n">log</span> <span class="mi">2</span> <span class="err">—</span><span class="n">err</span> <span class="c1">--lines 100</span>
-<span class="n">pm2</span> <span class="n">log</span> <span class="c1">--err --lines 100 | grep Logoff</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pm2 log wxAuthorize
+pm2 log --out --lines 100
+pm2 log 2 —-err --lines 100
+pm2 log --err --lines 100 | grep Logoff
+</code></pre></div>
 
 <ul>
 <li>重新加载指定应用:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">reload</span> <span class="n">wechat_auth</span>
-<span class="n">pm2</span> <span class="n">reload</span> <span class="n">app</span> <span class="c1">--log-date-format &#39;DD-MM HH:mm:ss.SSS&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">pm2</span> <span class="n">reload</span> <span class="n">wechat_auth</span>
+<span class="n">pm2</span> <span class="n">reload</span> <span class="n">app</span> <span class="o">--</span><span class="nb">log</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">format</span> <span class="s1">&#39;DD-MM HH:mm:ss.SSS&#39;</span>
+</code></pre></div>
 
 <ul>
 <li>参数</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">info</span> <span class="n">app</span>
-<span class="n">pm2</span> <span class="n">env</span> <span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>pm2 info app
+pm2 env 0
+</code></pre></div>
 
+<ul>
+<li>保存进程列表以在服务器重新启动后自动重启</li>
+</ul>
+<div class="highlight"><pre><span></span><code>pm2 save
+</code></pre></div>
 
 <h2>less</h2>
 <ul>
 <li>显示CSV的行数:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">cat</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">//</span> <span class="n">wordcount</span> <span class="o">-</span><span class="n">line</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cat data.csv | wc -l // wordcount -line
+</code></pre></div>
 
 <ul>
 <li>高级的cat:</li>
 </ul>
 <p>大写G文件尾，小写g到文件头，小写q退出,&nbsp;/搜索关键字</p>
-<div class="highlight"><pre><span></span><span class="k">less</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>less data.csv
+</code></pre></div>
 
 <ul>
 <li>显示行号</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">less</span> <span class="o">-</span><span class="n">N</span> <span class="k">data</span><span class="p">.</span><span class="n">csv</span> 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>less -N data.csv 
+</code></pre></div>
 
 <h2>Linux</h2>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
 <span class="n">su</span> <span class="n">f1nance</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">fpa_backend</span><span class="o">/</span>
 <span class="n">pm2</span> <span class="n">reload</span> <span class="n">app</span>
 
-<span class="n">vi</span> <span class="n">config</span><span class="o">/</span><span class="k">local</span><span class="p">.</span><span class="n">js</span>
-<span class="n">d</span> <span class="k">G</span> <span class="o">//</span> <span class="err">删除所有行</span>
-</pre></div>
-
+<span class="n">vi</span> <span class="n">config</span><span class="o">/</span><span class="n">local</span><span class="o">.</span><span class="n">js</span>
+<span class="n">d</span> <span class="n">G</span> <span class="o">//</span> <span class="err">删除所有行</span>
+</code></pre></div>
 
 <ul>
 <li>使用scl命令显式启用已安装的包</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nv">scl</span> <span class="nv">enable</span> <span class="nv">rh</span><span class="o">-</span><span class="nv">nodejs10</span> <span class="nv">bash</span>
+<div class="highlight"><pre><span></span><code><span class="nv">scl</span> <span class="nv">enable</span> <span class="nv">rh</span><span class="o">-</span><span class="nv">nodejs10</span> <span class="nv">bash</span>
 <span class="k">exit</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>下载文件</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">amazoncloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">centos</span><span class="o">/</span><span class="n">amd64</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="p">.</span><span class="n">rpm</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>wget https://s3.amazonaws.com/amazoncloudwatch-agent/centos/amd64/latest/amazon-cloudwatch-agent.rpm
+</code></pre></div>
 
 <h2>OpenSSL</h2>
-<div class="highlight"><pre><span></span><span class="nv">openssl</span> <span class="nv">s_client</span> <span class="o">-</span><span class="k">connect</span> <span class="nv">wddfx</span>.<span class="nv">juj</span>.<span class="nv">com</span>:<span class="mi">443</span> <span class="o">//</span> <span class="nv">https</span>默认<span class="mi">443</span>
+<div class="highlight"><pre><span></span><code><span class="nv">openssl</span> <span class="nv">s_client</span> <span class="o">-</span><span class="k">connect</span> <span class="nv">wddfx</span>.<span class="nv">juj</span>.<span class="nv">com</span>:<span class="mi">443</span> <span class="o">//</span> <span class="nv">https</span>默认<span class="mi">443</span>
 <span class="nv">nslookup</span> <span class="mi">10</span>.<span class="mi">47</span>.<span class="mi">227</span>.<span class="nv">xxx</span> <span class="o">//</span> 诊断网络问题
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -651,6 +572,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -678,6 +602,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -686,7 +614,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

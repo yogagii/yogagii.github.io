@@ -1,0 +1,757 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Microsoft Azure&nbsp;Databricks
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Microsoft Azure&nbsp;Databricks</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-11-22T00:00:00+08:00"> 
+            <a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/azure.html">Azure</a>
+                <a href="/tag/etl.html">ETL</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p><span class="caps">ETL</span>: Extract, Transform and Load&nbsp;数据仓库技术</p>
+<p>databricks是使用Apache&nbsp;Spark™的原始创建者提供的Databricks统一分析平台。它集成了Spark环境支持Scala、python、R语言进行开发。</p>
+<p>adb-xxx.azuredatabricks.net</p>
+<p>Workspace -&gt; Users (your own folder) -&gt; 右键import -&gt; .dbc&nbsp;file</p>
+<p>-&gt; Create -&gt; Notebook -&gt; Default language:&nbsp;python</p>
+<p>jobs -&gt; start&nbsp;cluster</p>
+<h3>调用notebook</h3>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">run</span> <span class="o">/</span><span class="n">_POC_QA_SC_DataCenter</span><span class="o">/</span><span class="n">Dayu</span><span class="o">-</span><span class="n">connect</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">datalake</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">dbutils</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;/_POC_QA_SC_DataCenter/Dayu-connect-to-datalake_Func&quot;</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;argument&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">})</span>
+</code></pre></div>
+
+<ul>
+<li>优势：可传参，可调用多个笔记本</li>
+<li>缺点：启动新作业，变量不存在</li>
+</ul>
+<h3>文件操作</h3>
+<ul>
+<li>dbutils</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="s2">&quot;abfss://container@blob.xxx.cn/folder/&quot;</span><span class="p">)</span>
+<span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">rm</span><span class="p">(</span><span class="s2">&quot;abfss://container@blob.xxx.cn/folder/filename&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">mkdirs</span><span class="p">(</span><span class="n">TempPath</span><span class="p">)</span>
+<span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">SapPath</span><span class="o">+</span><span class="n">FileName</span><span class="p">,</span> <span class="n">TempPath</span><span class="p">)</span>
+</code></pre></div>
+
+<p>踩坑：若要跟新表结构，需将存表的文件夹删除</p>
+<ul>
+<li>获取文件名</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span> \
+  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;abfss://container@blob.xxx.cn/folder/filename_*.txt&quot;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;_metadata&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>os</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nf">%sh</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">/</span><span class="w"></span>
+</code></pre></div>
+
+<ul>
+<li>azure-storage-file-datalake</li>
+</ul>
+<div class="highlight"><pre><span></span><code>pip install azure-storage-file-datalake
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">uuid</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">azure.storage.filedatalake</span> <span class="kn">import</span> <span class="n">DataLakeServiceClient</span>
+<span class="kn">from</span> <span class="nn">azure.core._match_conditions</span> <span class="kn">import</span> <span class="n">MatchConditions</span>
+<span class="kn">from</span> <span class="nn">azure.storage.filedatalake._models</span> <span class="kn">import</span> <span class="n">ContentSettings</span>
+
+<span class="k">def</span> <span class="nf">initialize_storage_account</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>  
+        <span class="k">global</span> <span class="n">service_client</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">ClientSecretCredential</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+        <span class="n">service_client</span> <span class="o">=</span> <span class="n">DataLakeServiceClient</span><span class="p">(</span><span class="n">account_url</span><span class="o">=</span><span class="n">account_url</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">list_directory</span><span class="p">(</span><span class="n">container</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;example_folder&quot;</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">container</span><span class="p">)</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">get_paths</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">folder</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create_directory</span><span class="p">(</span><span class="n">container</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;example_folder&quot;</span><span class="p">):</span>
+    <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">container</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">create_directory</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">delete_file</span><span class="p">(</span><span class="n">container</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;example_folder/example.xlsx&quot;</span><span class="p">):</span>
+    <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">container</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">delete_directory</span><span class="p">(</span><span class="n">container</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;example_folder&quot;</span><span class="p">):</span>
+    <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">container</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">delete_directory</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>文件读写</h3>
+<ul>
+<li><span class="caps">CSV</span></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df_csv</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span><span class="s2">&quot;GBK&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;abfss://container@blob.xxx.cn/folder/filename.csv&quot;</span><span class="p">);</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_csv</span><span class="p">)</span>
+<span class="c1"># GBK解决中文乱码</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># CSV不需要header</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target_file</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">TXT</span></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df_txt</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">sourcefile</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_txt</span><span class="o">.</span><span class="n">coalesce</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;s3://&lt;bucket&gt;/&lt;folder&gt;/filename&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>踩坑：coalesce只会确保产生一个文件，任会生成以filename命名的文件夹，文件夹下有以part加数字命名的txt文件(以及_SUCCESS, _committed,&nbsp;_started文件)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 解决txt文件每一行有引号</span>
+<span class="n">df_txt</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target_file</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Excel</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># header必传项, maxRowsInMemory解决文件过大&gt;10mb</span>
+<span class="n">df_excel</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;com.crealytics.spark.excel&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;maxRowsInMemory&quot;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">sourcefile</span><span class="p">);</span>
+</code></pre></div>
+
+<p>csv是通过spark读的，excel是spark底层hadoop读的，libraries里安装com.crealytics:spark-excel</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">openpyxl</span>
+
+<span class="c1"># excel文件得保留header</span>
+<span class="n">df_excel</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target_file</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">JSON</span></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">json</span><span class="p">.</span><span class="o">`</span><span class="n">abfss</span><span class="p">:</span><span class="o">//</span><span class="n">container</span><span class="o">@</span><span class="nb">blob</span><span class="p">.</span><span class="n">xxx</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">filename</span><span class="o">`</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_DateLake</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;abfss://container@blob.xxx.cn/folder/filename.json&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Parquet</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">abfss</span><span class="p">:</span><span class="o">//</span><span class="n">container</span><span class="o">@</span><span class="nb">blob</span><span class="p">.</span><span class="n">xxx</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="n">folder</span><span class="o">/</span><span class="n">filename</span><span class="o">`</span>
+</code></pre></div>
+
+<h3>Delta&nbsp;Table</h3>
+<p><strong><span class="caps">DDL</span></strong>
+*&nbsp;创建SCHEMA</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">SCHEMA</span> <span class="n">example_schema</span>
+<span class="k">LOCATION</span> <span class="s1">&#39;dbfs:/mnt/azrzdbicinmtdpadlsqa/{container}/{example_schema}&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>创建TABLE</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">drop</span> <span class="k">table</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">STG</span><span class="p">.</span><span class="n">TableName</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">STG</span><span class="p">.</span><span class="n">TableName</span> 
+<span class="p">(</span>
+<span class="o">`</span><span class="n">Field1</span><span class="o">`</span> <span class="n">string</span><span class="p">,</span>
+<span class="o">`</span><span class="n">Field2</span><span class="o">`</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="o">`</span><span class="n">InsertTime</span><span class="o">`</span> <span class="k">timestamp</span><span class="p">)</span>
+<span class="k">USING</span> <span class="n">delta</span> 
+<span class="k">LOCATION</span> <span class="ss">&quot;abfss://container@blob.xxx.cn/folder/STG/TableName&quot;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>设置湖地址</p>
+<div class="highlight"><pre><span></span><code><span class="k">set</span> <span class="n">Address</span><span class="o">=</span><span class="n">abfss</span><span class="p">:</span><span class="o">//</span><span class="n">container</span><span class="o">@</span><span class="nb">blob</span><span class="p">.</span><span class="n">xxx</span><span class="p">.</span><span class="n">cn</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">LOCATION</span> <span class="ss">&quot;${hiveconf:Address}/folder/CSTG/TableName&quot;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>已创建SCHEMA后不需要Location</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 加上comment会更好</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="n">example_schema</span><span class="p">.</span><span class="n">example_table</span>
+<span class="p">(</span>
+ <span class="n">col1</span> <span class="n">STRING</span> <span class="k">COMMENT</span> <span class="s1">&#39;col1_comment&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p><strong><span class="caps">DML</span></strong></p>
+<ul>
+<li>Insert Table: <span class="caps">CSV</span>/<span class="caps">EXCEL</span></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">python</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="n">ManuPath</span><span class="o">=</span><span class="s2">&quot;abfss://container@blob.xxx.cn/folder/RawZone/MANU/&quot;</span>
+
+<span class="k">def</span> <span class="nf">sliceErrorMsg</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">FailReaon</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">FailReaon</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FailReaon</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">FailReaon</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">FailReaon</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FailReaon</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">FailReaon</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FailReaon</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">insertTable</span><span class="p">(</span><span class="n">FileName</span><span class="p">,</span> <span class="n">LandingTableName</span><span class="p">,</span> <span class="n">TableColumn</span><span class="p">,</span> <span class="n">ExcelTitle</span><span class="p">,</span> <span class="n">SaveDay</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">Path</span><span class="o">=</span><span class="n">ManuPath</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fileFormat</span> <span class="o">=</span> <span class="s1">&#39;csv&#39;</span> <span class="k">if</span> <span class="s1">&#39;csv&#39;</span> <span class="ow">in</span> <span class="n">FileName</span> <span class="k">else</span> <span class="s1">&#39;com.crealytics.spark.excel&#39;</span><span class="p">;</span>
+        <span class="n">df_DateLake</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fileFormat</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">Path</span><span class="o">+</span><span class="n">FileName</span><span class="p">);</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; insert into STG.TableReadLog select &#39;</span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2">&#39;,current_date(),now(),&#39;Not found </span><span class="si">{</span><span class="n">FileName</span><span class="si">}</span><span class="s2">&#39;,null;&quot;</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df_DateLake</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;df_spark&quot;</span><span class="p">);</span>
+        <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;delete from </span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2"> where InsertTime&lt;date_sub(now(), </span><span class="si">{</span><span class="n">SaveDay</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">);</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;insert into </span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">TableColumn</span><span class="si">}</span><span class="s2">) select </span><span class="si">{</span><span class="n">ExcelTitle</span><span class="si">}</span><span class="s2">,now() InsertTime from df_spark;&quot;</span><span class="p">);</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">FailReaon</span><span class="p">:</span>
+            <span class="n">FailReaon</span><span class="o">=</span><span class="n">sliceErrorMsg</span><span class="p">(</span><span class="n">FailReaon</span><span class="p">);</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">FailReaon</span><span class="p">);</span>
+            <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;insert into STG.TableReadLog select &#39;</span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2">&#39;,current_date(),now(),&#39;</span><span class="si">{</span><span class="n">FailReaon</span><span class="si">}</span><span class="s2">&#39;,null;&quot;</span><span class="p">);</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;insert into STG.TableWriteLog select &#39;</span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2">&#39;,current_date(),now(),null;&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Insert Table: <span class="caps">TXT</span></li>
+</ul>
+<p>法一：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">insertTxT</span><span class="p">(</span><span class="n">FileName</span><span class="p">,</span> <span class="n">LandingTableName</span><span class="p">,</span> <span class="n">TableColumn</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">SaveDay</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">schemalist</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">TableColumn</span><span class="p">:</span> <span class="n">schemalist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">StructField</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">));</span>
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">(</span><span class="n">schemalist</span><span class="p">);</span>
+    <span class="n">selectColumn</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">not_blank</span><span class="p">,</span> <span class="n">TableColumn</span><span class="p">))</span>
+    <span class="n">df_DateLake</span><span class="o">=</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;sep&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">SapPath</span><span class="o">+</span><span class="n">FileName</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">selectColumn</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">header</span><span class="p">:];</span>
+    <span class="n">df_DateLake</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">df_DateLake</span><span class="p">)</span>
+    <span class="n">df_DateLake</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;df_spark&quot;</span><span class="p">);</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">selectColumn</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;,InsertTime&#39;</span><span class="p">;</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;insert into </span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">columns</span><span class="si">}</span><span class="s2">) select *, now() InsertTime from df_spark;&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>法二：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">TempPath</span><span class="o">=</span><span class="s2">&quot;dbfs:/FileStore/Temp&quot;</span>
+<span class="n">TempFile</span><span class="o">=</span><span class="s2">&quot;/dbfs/FileStore/Temp/&quot;</span>
+
+<span class="k">def</span> <span class="nf">insertTxT_Pandas</span><span class="p">(</span><span class="n">FileName</span><span class="p">,</span> <span class="n">LandingTableName</span><span class="p">,</span> <span class="n">TableColumn</span><span class="p">,</span><span class="n">RenameColumn</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">SaveDay</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">rm</span><span class="p">(</span><span class="n">TempPath</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">mkdirs</span><span class="p">(</span><span class="n">TempPath</span><span class="p">)</span>
+    <span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">SapPath</span><span class="o">+</span><span class="n">FileName</span><span class="p">,</span> <span class="n">TempPath</span><span class="p">)</span>
+    <span class="n">df_DateLake</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">TempFile</span><span class="o">+</span><span class="n">FileName</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">RenameColumn</span><span class="p">,</span><span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">skip_blank_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">df_DateLake</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">df_DateLake</span><span class="p">);</span>
+    <span class="n">df_DateLake</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;df_spark&quot;</span><span class="p">);</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">delInsertTime</span><span class="p">(</span><span class="n">TableColumn</span><span class="p">);</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;insert into </span><span class="si">{</span><span class="n">LandingTableName</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">TableColumn</span><span class="si">}</span><span class="s2">) select </span><span class="si">{</span><span class="n">columns</span><span class="si">}</span><span class="s2">, now() InsertTime from df_spark;&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<h3><span class="caps">SQL</span></h3>
+<p>自定义函数</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">FUNCTION</span> <span class="n">ToDouble</span><span class="p">(</span><span class="n">value</span> <span class="n">STRING</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="n">DOUBLE</span> <span class="k">RETURN</span> <span class="n">double</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">trim</span><span class="p">(</span><span class="n">value</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">LandingTable</span> <span class="o">=</span> <span class="s1">&#39;STG.JNJ_Inventory_CN0&#39;</span>
+<span class="n">CSTGTable</span> <span class="o">=</span> <span class="s1">&#39;CSTG.JNJ_Inventory_CN0&#39;</span>
+<span class="n">TableColumn</span><span class="o">=</span><span class="s1">&#39;WhN, GRDate, PutawayStock&#39;</span>
+<span class="n">CleanColumn</span><span class="o">=</span><span class="s2">&quot;WhN, TO_DATE(GRDate,&#39;yyyy/MM/dd&#39;) GRDate, ToDouble(PutawayStock) PutawayStock&quot;</span>
+
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;INSERT INTO </span><span class="si">{</span><span class="n">CSTGTable</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">TableColumn</span><span class="si">}</span><span class="s2">) SELECT </span><span class="si">{</span><span class="n">CleanColumn</span><span class="si">}</span><span class="s2">, now() from </span><span class="si">{</span><span class="n">LandingTable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<h3>Data Lake Storage&nbsp;Gen2</h3>
+<p><span class="caps">SAS</span> Token: 共享访问签名是指向一个或多个存储资源的已签名 <span class="caps">URI</span>。 该 <span class="caps">URI</span> 包括的令牌包含一组特殊查询参数。&nbsp;该令牌指示客户端可以如何访问资源。 </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">connectToDatalake</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.azure.account.auth.type.</span><span class="si">%s</span><span class="s2">.dfs.core.chinacloudapi.cn&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">blob</span><span class="p">),</span> <span class="s2">&quot;SAS&quot;</span><span class="p">)</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.azure.sas.token.provider.type.</span><span class="si">%s</span><span class="s2">.dfs.core.chinacloudapi.cn&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">blob</span><span class="p">),</span> <span class="s2">&quot;org.apache.hadoop.fs.azurebfs.sas.FixedSASTokenProvider&quot;</span><span class="p">)</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.azure.sas.fixed.token.</span><span class="si">%s</span><span class="s2">.dfs.core.chinacloudapi.cn&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">blob</span><span class="p">),</span> <span class="n">token</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">importExcelConfig</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.azure.account.auth.type.</span><span class="si">%s</span><span class="s2">.dfs.core.chinacloudapi.cn&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">blob</span><span class="p">),</span> <span class="s2">&quot;SAS&quot;</span><span class="p">)</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.azure.sas.token.provider.type.</span><span class="si">%s</span><span class="s2">.dfs.core.chinacloudapi.cn&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">blob</span><span class="p">),</span> <span class="s2">&quot;org.apache.hadoop.fs.azurebfs.sas.FixedSASTokenProvider&quot;</span><span class="p">)</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.azure.sas.fixed.token.</span><span class="si">%s</span><span class="s2">.dfs.core.chinacloudapi.cn&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">blob</span><span class="p">),</span> <span class="n">token</span><span class="p">)</span>
+</code></pre></div>
+
+<p>OAuth: 使用 Azure Active Directory (Azure <span class="caps">AD</span>) 应用程序服务主体在 Azure&nbsp;存储帐户中装载数据以进行身份验证。</p>
+<div class="highlight"><pre><span></span><code><span class="n">configs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fs.azure.account.auth.type&quot;</span><span class="p">:</span> <span class="s2">&quot;OAuth&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fs.azure.account.oauth.provider.type&quot;</span><span class="p">:</span> <span class="s2">&quot;org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fs.azure.account.oauth2.client.id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;application-id&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fs.azure.account.oauth2.client.secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;service-credential-key-name&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fs.azure.account.oauth2.client.endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://login.microsoftonline.com/&lt;directory-id&gt;/oauth2/token&quot;</span><span class="p">}</span>
+
+<span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;abfss://&lt;container-name&gt;@&lt;storage-account-name&gt;.dfs.core.windows.net/&quot;</span><span class="p">,</span>
+  <span class="n">mount_point</span> <span class="o">=</span> <span class="s2">&quot;/mnt/&lt;mount-name&gt;&quot;</span><span class="p">,</span>
+  <span class="n">extra_configs</span> <span class="o">=</span> <span class="n">configs</span><span class="p">)</span>
+</code></pre></div>
+
+<h3><span class="caps">AWS</span>&nbsp;S3</h3>
+<div class="highlight"><pre><span></span><code><span class="n">sc</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.s3n.awsAccessKeyId&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;fs.s3n.awsSecretAccessKey&quot;</span><span class="p">,</span><span class="s2">&quot;xxx&quot;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="s2">&quot;s3://&lt;bucketname&gt;/&lt;folder&gt;/&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>ADF不支持用S3作为Sink，只能通过Databricks将数据写入S3</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">boto3</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">boto3.session</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">botocore.exceptions</span> <span class="kn">import</span> <span class="n">ClientError</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">)</span>
+<span class="n">s3_client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">list_object</span><span class="p">(</span><span class="n">bucketName</span><span class="p">):</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">list_objects_v2</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucketName</span><span class="p">)</span>
+    <span class="n">file_desc</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Contents&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_desc</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file_name: </span><span class="si">{}</span><span class="s1">, file_size: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;Key&#39;</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;Size&#39;</span><span class="p">]))</span>
+        <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;Key&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">file_list</span>
+
+<span class="k">def</span> <span class="nf">write_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">bucket</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Body</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span> <span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">delete_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">bucket</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">Key</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span> <span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">bucket</span><span class="p">,</span> <span class="n">source_file</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">copy_object</span><span class="p">(</span><span class="n">Key</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span> <span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span> <span class="n">CopySource</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;Bucket&#39;</span><span class="p">:</span> <span class="n">bucket</span><span class="p">,</span>
+            <span class="s1">&#39;Key&#39;</span><span class="p">:</span> <span class="n">source_file</span>
+        <span class="p">})</span>
+    <span class="k">except</span> <span class="n">ClientError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+
+<span class="k">def</span> <span class="nf">create_csv</span><span class="p">(</span><span class="n">sourcedf</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">target_bucket</span><span class="p">):</span>
+    <span class="n">csv_buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sourcedf</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_buffer</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">csv_buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+    <span class="n">write_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">target_bucket</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+
+<h3><span class="caps">SQL</span> <span class="caps">SERVER</span></h3>
+<ul>
+<li><span class="caps">JDBC</span></li>
+</ul>
+<p>读取数据库</p>
+<div class="highlight"><pre><span></span><code><span class="n">jdbcHostname</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+<span class="n">jdbcPort</span> <span class="o">=</span> <span class="s1">&#39;1433&#39;</span>
+<span class="n">jdbcDatabase</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+<span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;user&quot;</span> <span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+<span class="s2">&quot;password&quot;</span> <span class="p">:</span> <span class="s1">&#39;xxx&#39;</span> <span class="p">}</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;jdbc:sqlserver://</span><span class="si">{0}</span><span class="s2">:</span><span class="si">{1}</span><span class="s2">;database=</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jdbcHostname</span><span class="p">,</span><span class="n">jdbcPort</span><span class="p">,</span><span class="n">jdbcDatabase</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">jdbc</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">table</span><span class="o">=</span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span><span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">config_table</span> <span class="o">=</span> <span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">])</span>
+  <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
+  <span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">config_table</span><span class="p">)</span>
+</code></pre></div>
+
+<p>写入数据库</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
+  <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;TableName&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">False</span><span class="p">),</span>
+  <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;SQLFlag&quot;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">(),</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">False</span><span class="p">),</span>
+<span class="p">])</span>
+
+<span class="n">configList</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;DIM_Calendar&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="n">config_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">configList</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+<span class="n">config_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="n">jdbcURL</span><span class="o">=`</span><span class="n">xxx</span><span class="o">`</span>
+
+<span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">Schema_Name</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="k">Table_Name</span><span class="o">&gt;</span>
+  <span class="k">USING</span> <span class="n">JDBC</span>
+<span class="k">OPTIONS</span> <span class="p">(</span>
+  <span class="n">url</span> <span class="ss">&quot;${hiveconf:jdbcURL}&quot;</span><span class="p">,</span>
+  <span class="n">dbtable</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+  <span class="k">user</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+  <span class="n">password</span> <span class="s1">&#39;xxx&#39;</span>
+<span class="p">)</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df_spark</span>
+</code></pre></div>
+
+<hr>
+<div class="highlight"><pre><span></span><code><span class="c1"># reading the CDL blob storage using scan_read(SCAN package)</span>
+<span class="kn">from</span> <span class="nn">sca_read.loader</span> <span class="kn">import</span> <span class="n">helper</span><span class="p">,</span> <span class="n">getSysttemRelatedTables</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">getSystemRelatedTables</span><span class="p">(</span><span class="n">storageaccount</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="n">container</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/xx/xx/xx&quot;</span><span class="p">,</span> <span class="n">returnType</span><span class="o">=</span><span class="s2">&quot;pandas_dataframe&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sdf_SAP</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;select * from delta.`abfss://xxx@xxx.net`&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">sdf_SAP</span><span class="o">.</span><span class="n">display</span><span class="p">()</span> <span class="c1">## 点击download下载表格</span>
+</code></pre></div>
+
+<p>underscore variables are related to the pipelining process(sap =&gt; L0), don&#8217;t have any content in&nbsp;it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># creation of a tempview / caching the data</span>
+<span class="n">sdf_SAP</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;SAP_AUFK&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">cacheTable</span><span class="p">(</span><span class="s2">&quot;SAP_AUFK&quot;</span><span class="p">)</span>
+<span class="c1"># SAP_AUFK can be called in spark.sql</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdf_SAP</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># access a storage account</span>
+<span class="n">Storage_account</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">Container</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">SAS_Token</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">secrets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">)</span>
+<span class="n">configOption</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">configOption</span><span class="p">,</span> <span class="n">SAS_Token</span><span class="p">)</span>
+<span class="n">fileSystemUrl</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">fileSystemUrl</span><span class="p">)</span> <span class="c1">#list files</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># display tables, paths, levels</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">showAllTables</span><span class="p">():</span>
+  <span class="n">l0Tables</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">L0_PATH</span><span class="p">)</span>
+  <span class="n">dfL0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">l0Tables</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># print schema</span>
+<span class="n">sdf_SAP</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;Record_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;DATE_CREATED&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;Record_ID == &#39;1&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">window</span>
+<span class="c1"># group by</span>
+<span class="n">windowSpec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;Record_ID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;Record_ID&quot;</span><span class="p">)</span>
+<span class="c1"># expansion</span>
+<span class="n">dfExplode</span> <span class="o">=</span> <span class="n">dfForExplode</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;SEQ_NO&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">row_number</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">windowSpec</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pyspark</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># writes the table in sql server and implements the right table schema</span>
+<span class="k">def</span> <span class="nf">scan_pushDfToSQL</span><span class="p">(</span>
+  <span class="n">df</span><span class="p">:</span> <span class="n">pyspark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+  <span class="n">sqlTable</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+  <span class="n">database</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+  <span class="n">sqlserver</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+
+<span class="n">sql_table_name</span> <span class="o">=</span> <span class="s2">&quot;SIDE_DEPARTMENT_PROJECT_tableName_DEV &quot;</span> <span class="c1"># naming conventions</span>
+<span class="n">scan_pushDfToSQL</span><span class="p">(</span><span class="n">df</span> <span class="o">=</span> <span class="n">sdf_order_issues_inves</span><span class="p">,</span> <span class="n">sqlTable</span> <span class="o">=</span> <span class="n">sql_table_name</span><span class="p">,</span> <span class="n">database</span> <span class="o">=</span> <span class="s2">&quot;LEIDEN&quot;</span><span class="p">,</span> <span class="n">modeType</span> <span class="o">=</span> <span class="s2">&quot;overwrite&quot;</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Spark</h3>
+<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境.提供了 java,scala, python,R&nbsp;等语言的调用接口。</p>
+<p>Spark专门用于大数据量下的迭代式计算，将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘,所以多次运算的情况下,Spark&nbsp;是比较快的。</p>
+<ul>
+<li>Spark <span class="caps">SQL</span>: 提供了类 <span class="caps">SQL</span> 的查询,返回 Spark-DataFrame 的数据结构(类似&nbsp;Hive)</li>
+<li>Spark Streaming: 流式计算,主要用于处理线上实时时序数据(类似&nbsp;storm)</li>
+<li>MLlib:&nbsp;提供机器学习的各种模型和调优</li>
+<li>GraphX: 提供基于图的算法,如&nbsp;PageRank</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">Select</span> <span class="n">id</span><span class="p">,</span> <span class="k">result</span> <span class="k">from</span> <span class="n">exams</span> <span class="k">where</span> <span class="k">result</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">order</span> <span class="k">by</span> <span class="k">result</span>
+
+<span class="n">spark</span><span class="p">.</span><span class="k">table</span><span class="p">(</span><span class="ss">&quot;exam&quot;</span><span class="p">).</span><span class="k">select</span><span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">,</span> <span class="ss">&quot;result&quot;</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="ss">&quot;result &gt; 70&quot;</span><span class="p">).</span><span class="n">orderBy</span><span class="p">(</span><span class="ss">&quot;result&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>DataFrame</h3>
+<p>A DataFrame is a distributed collection of data grouped into named&nbsp;columns</p>
+<p>DataFrame是一种表格型数据结构，它含有一组有序的列，每列可以是不同的值。DataFrame的行索引是index，列索引是columns。</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;state&#39;</span><span class="p">:[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span><span class="s1">&#39;Nevada&#39;</span><span class="p">,</span><span class="s1">&#39;Nevada&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:[</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A schema defines the column names and types of a&nbsp;DataFrame</p>
+<p>DataFrame transformations are methods that return a new DataFrame and are lazily&nbsp;evaluated</p>
+<p>DataFrame actions are methods that trigger computation. An action is needed to trigger the execution of any DataFrame&nbsp;transformations</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;result &gt; 70&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "microsoft-azure-databricks.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/power-bi.html">Power BI</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/mysql.html">mysql</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

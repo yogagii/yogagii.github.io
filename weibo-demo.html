@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -90,7 +91,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">SwiftUI</span>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">SwiftUI</span>
 
 <span class="kd">struct</span> <span class="nc">ContentView</span><span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
@@ -103,15 +104,14 @@
         <span class="n">ContentView</span><span class="p">()</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>ContentView 遵循 View 协议，在 SwiftUI 中想要显示任何的视图，都需要遵循 View，通过通过 body&nbsp;属性来返回视图</p>
 <p>body 返回类型 some View。some 是 swift5.1 新增加的一种返回类型，返回 some View 意味着 body 属性将要返回一个遵循 View&nbsp;协议的视图，必须返回一个子视图</p>
 <blockquote>
 <p>只有函数体中是单独表达式，才会自动添加&nbsp;return</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="c1">// Error</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Error</span>
 <span class="c1">// Function declares an opaque return type, but has no return statements in its body from which to infer an underlying type</span>
 <span class="kd">struct</span> <span class="nc">ContentView</span> <span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
@@ -119,8 +119,7 @@
         <span class="n">Text</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Text(&#8220;Hello World&#8221;) 创建一个内容为 Hello World&nbsp;的文本</p>
 <p>ContentView_Previews 是用来在 Xcode&nbsp;中用来预览调试的部分</p>
@@ -170,12 +169,11 @@ SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
   Text(&#8220;关注&#8221;)&nbsp;}</li>
 </ul>
 <h2>样式</h2>
-<div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;用户昵称&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Text</span><span class="p">(</span><span class="s">&quot;用户昵称&quot;</span><span class="p">)</span>
     <span class="p">.</span><span class="n">font</span><span class="p">(</span><span class="n">Font</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="mi">16</span><span class="p">))</span>
     <span class="p">.</span><span class="n">foregroundColor</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">red</span><span class="p">:</span> <span class="mi">242</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="mi">99</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="mi">4</span><span class="o">/</span><span class="mi">255</span><span class="p">))</span>
     <span class="p">.</span><span class="n">lineLimit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>字体</li>
@@ -223,41 +221,37 @@ SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
 <h2>属性</h2>
 <p>let 常量， var&nbsp;可变</p>
 <p>数据类型: String, Bool, Int,&nbsp;[String]</p>
-<div class="highlight"><pre><span></span><span class="kd">struct</span> <span class="nc">Post</span><span class="p">:</span> <span class="n">Codable</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Post</span><span class="p">:</span> <span class="n">Codable</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nv">id</span><span class="p">:</span> <span class="nb">Int</span>
     <span class="kd">let</span> <span class="nv">avatar</span><span class="p">:</span> <span class="nb">String</span>
     <span class="kd">let</span> <span class="nv">vip</span><span class="p">:</span> <span class="nb">Bool</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>计算属性：只读</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">commentCountText</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">commentCountText</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">if</span> <span class="n">commentCount</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;评论&quot;</span> <span class="p">}</span>
     <span class="k">if</span> <span class="n">commentCount</span> <span class="o">&lt;</span> <span class="mi">1000</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;</span><span class="si">\(</span><span class="n">commentCount</span><span class="si">)</span><span class="s">&quot;</span><span class="p">}</span>
     <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="n">format</span><span class="p">:</span> <span class="s">&quot;%.1fk&quot;</span><span class="p">,</span> <span class="nb">Double</span><span class="p">(</span><span class="n">commentCount</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">))</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>typealias Codable = Decodable <span class="amp">&amp;</span> Encodable&nbsp;这两个协议说明了对象能够自己编码和解码自己。</p>
 <h2>方法</h2>
 <ul>
 <li>isEmpty&nbsp;数组是否为空</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">!</span><span class="n">post</span><span class="p">.</span><span class="n">images</span><span class="p">.</span><span class="bp">isEmpty</span> <span class="p">{</span> <span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="o">!</span><span class="n">post</span><span class="p">.</span><span class="n">images</span><span class="p">.</span><span class="bp">isEmpty</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
 
 <ul>
 <li><span class="dquo">&#8220;</span>%.1f&#8221;&nbsp;保留一位小数</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nb">String</span><span class="p">(</span><span class="n">format</span><span class="p">:</span> <span class="s">&quot;%.1fk&quot;</span><span class="p">,</span> <span class="nb">Double</span><span class="p">(</span><span class="n">commentCount</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">))</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">String</span><span class="p">(</span><span class="n">format</span><span class="p">:</span> <span class="s">&quot;%.1fk&quot;</span><span class="p">,</span> <span class="nb">Double</span><span class="p">(</span><span class="n">commentCount</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">))</span>
+</code></pre></div>
 
 <h2>解析本地 json&nbsp;文件</h2>
-<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">loadPostListData</span><span class="p">(</span><span class="kc">_</span> <span class="n">fileName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">PostList</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">loadPostListData</span><span class="p">(</span><span class="kc">_</span> <span class="n">fileName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">PostList</span> <span class="p">{</span>
     <span class="k">guard</span> <span class="kd">let</span> <span class="nv">url</span> <span class="p">=</span> <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">url</span><span class="p">(</span><span class="n">forResource</span><span class="p">:</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">withExtension</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
         <span class="bp">fatalError</span><span class="p">(</span><span class="s">&quot;Can not find </span><span class="si">\(</span><span class="n">fileName</span><span class="si">)</span><span class="s"> in main bundle&quot;</span><span class="p">)</span>
     <span class="p">}</span>
@@ -269,14 +263,13 @@ SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">list</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>通过图片名称加载图片</h2>
-<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Image</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Image</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">Image</span><span class="p">(</span><span class="n">uiImage</span><span class="p">:</span> <span class="bp">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -332,6 +325,9 @@ SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -359,6 +355,10 @@ SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -367,7 +367,6 @@ SwiftUI Previews require macOS 10.15 or&nbsp;later</p>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

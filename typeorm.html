@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -92,8 +93,8 @@
 <ul>
 <li>forRoot:&nbsp;createConnection</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
   <span class="nx">host</span>: <span class="kt">config.host</span><span class="p">,</span>
   <span class="nx">port</span>: <span class="kt">3306</span><span class="p">,</span>
   <span class="nx">username</span>: <span class="kt">config.username</span><span class="p">,</span>
@@ -115,8 +116,7 @@
 <span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;db2&#39;</span> <span class="c1">// 当连接多个db时需要name</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><em>踩坑：</em></p>
 <p>DBeaver配置:</p>
@@ -127,7 +127,7 @@
 <ul>
 <li>forFeature: 定义在当前范围中注册哪些存储库。这样，我们就可以使用 @InjectRepository()装饰器将 UsersRepository 注入到 UsersService&nbsp;中</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">// users.module.ts</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// users.module.ts</span>
 <span class="kd">@Module</span><span class="p">({</span>
   <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forFeature</span><span class="p">([</span><span class="nx">User</span><span class="p">],</span> <span class="s1">&#39;db2&#39;</span><span class="p">)],</span>
   <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UsersService</span><span class="p">],</span>
@@ -137,10 +137,9 @@
 <span class="c1">// users.service.ts</span>
 <span class="kr">constructor</span><span class="p">(</span>
   <span class="kd">@InjectRepository</span><span class="p">(</span><span class="nx">User</span><span class="p">,</span> <span class="s1">&#39;db2&#39;</span><span class="p">)</span>
-  <span class="kr">private</span> <span class="nx">usersRepository</span>: <span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="k">private</span> <span class="nx">usersRepository</span>: <span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">)</span> <span class="p">{}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>创建Entity</h3>
 <p>装饰器 | description | extr
@@ -152,26 +151,35 @@
 @UpdateDateColumn |&nbsp;更新时间</p>
 <h3>QueryBuilder</h3>
 <p>使用 QueryBuilder 构建几乎任何复杂性的 <span class="caps">SQL</span>&nbsp;查询</p>
-<div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
+<div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
   <span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">leftJoinAndSelect</span><span class="p">(</span><span class="nx">bc_r_hospital</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">,</span> <span class="s1">&#39;user.hospital_id = hp.id&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">select</span><span class="p">(</span>
     <span class="sb">`</span>
 <span class="sb">    user.id,</span>
 <span class="sb">    user.real_name,</span>
+<span class="sb">    user.create_time</span>
 <span class="sb">    hp.ecode,</span>
 <span class="sb">    hp.ename  // 踩坑：报错信息不会告诉你此处不能有，</span>
 <span class="sb">  `</span><span class="p">,</span>
   <span class="p">)</span>
-  <span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;user.id IN (:...userIdList)&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">userIdList</span> <span class="p">})</span>
+  <span class="p">.</span><span class="nx">andWhere</span><span class="p">(</span><span class="s1">&#39;user.create_time &gt;= :START_DATE&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">START_DATE</span> <span class="p">})</span>
+  <span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">getRawMany</span><span class="p">(),</span>
-</pre></div>
 
+<span class="c1">// debug</span>
+<span class="kd">const</span> <span class="nx">sql</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
+  <span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+  <span class="p">...</span>
+  <span class="p">.</span><span class="nx">getQuery</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sql</span><span class="p">);</span>
+</code></pre></div>
 
 <h3>多对多关系</h3>
 <p>一个课程有多位讲师</p>
-<div class="highlight"><pre><span></span><span class="c1">// entities/event.ts</span>
-<span class="kr">import</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// entities/event.ts</span>
+<span class="k">import</span> <span class="p">{</span>
   <span class="nx">Column</span><span class="p">,</span>
   <span class="nx">Entity</span><span class="p">,</span>
   <span class="nx">PrimaryColumn</span><span class="p">,</span>
@@ -179,18 +187,18 @@
   <span class="nx">UpdateDateColumn</span><span class="p">,</span>
   <span class="nx">ManyToMany</span><span class="p">,</span>
   <span class="nx">JoinTable</span><span class="p">,</span>
-<span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Doctor</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./doctor&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Doctor</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./doctor&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">Event</span> <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">Event</span> <span class="p">{</span>
   <span class="kd">@PrimaryColumn</span><span class="p">()</span>
   <span class="nx">event_id</span>: <span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@Column</span><span class="p">({</span> <span class="k">default</span><span class="o">:</span> <span class="kc">null</span> <span class="p">})</span> <span class="c1">// 默认值</span>
+  <span class="kd">@Column</span><span class="p">({</span> <span class="nx">default</span>: <span class="kt">null</span> <span class="p">})</span> <span class="c1">// 默认值</span>
   <span class="nx">course_name</span>: <span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToMany</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">Doctor</span><span class="p">,</span> <span class="p">(</span><span class="nx">doctor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">doctor</span><span class="p">.</span><span class="nx">events</span><span class="p">)</span>
+  <span class="kd">@ManyToMany</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">Doctor</span><span class="p">,</span> <span class="p">(</span><span class="nx">doctor</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">doctor</span><span class="p">.</span><span class="nx">events</span><span class="p">)</span>
   <span class="kd">@JoinTable</span><span class="p">()</span> <span class="c1">// 指定这是关系的所有者方</span>
   <span class="nx">doctors</span>: <span class="kt">Doctor</span><span class="p">[];</span>
 
@@ -200,101 +208,96 @@
   <span class="kd">@UpdateDateColumn</span><span class="p">()</span>
   <span class="nx">updatedAt</span>: <span class="kt">Date</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>一个讲师可以上多门课程</p>
-<div class="highlight"><pre><span></span><span class="c1">// entities/doctor.ts</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Event</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./event&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// entities/doctor.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Event</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./event&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">iqvia_doctor</span> <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">iqvia_doctor</span> <span class="p">{</span>
   <span class="kd">@PrimaryColumn</span><span class="p">()</span>
   <span class="nx">doctor_id</span>: <span class="kt">string</span><span class="p">;</span>
 
   <span class="kd">@Column</span><span class="p">()</span>
   <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToMany</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">Event</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span><span class="p">)</span>
+  <span class="kd">@ManyToMany</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">Event</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span><span class="p">)</span>
   <span class="nx">events</span>: <span class="kt">Event</span><span class="p">[];</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>运行后，<span class="caps">ORM</span>&nbsp;将创建Event_doctors_Doctor联结表。</p>
 <p>创建数据</p>
-<div class="highlight"><pre><span></span><span class="nx">doctor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">iqvia_doctor</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="nx">doctor</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_doctor</span><span class="p">();</span>
 <span class="nx">doctor</span><span class="p">.</span><span class="nx">doctor_id</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
 <span class="nx">doctor</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Doctor1&#39;</span><span class="p">;</span>
 <span class="nx">doctorList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">doctor</span><span class="p">);</span>
-<span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">doctorRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">doctor</span><span class="p">);</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">doctorRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">doctor</span><span class="p">);</span>
 
-<span class="nx">event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">iqvia_event</span><span class="p">();</span>
+<span class="nx">event</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_event</span><span class="p">();</span>
 <span class="nx">event</span><span class="p">.</span><span class="nx">event_id</span> <span class="o">=</span> <span class="s1">&#39;588873&#39;</span><span class="p">;</span>
 <span class="nx">event</span><span class="p">.</span><span class="nx">course_name</span> <span class="o">=</span> <span class="s1">&#39;Wound Clousure&#39;</span><span class="p">;</span>
 
 <span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span> <span class="o">=</span> <span class="nx">doctorList</span><span class="p">;</span>
 
-<span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">eventWithDoctor</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;588873&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">eventWithDoctor</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;588873&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">relations</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;doctors&#39;</span><span class="p">],</span>
 <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>一对多关系</h3>
 <p>一个城市有多家医院</p>
-<div class="highlight"><pre><span></span><span class="c1">// entities/city.ts</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Entity</span><span class="p">,</span> <span class="nx">PrimaryColumn</span><span class="p">,</span> <span class="nx">OneToMany</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Hospital</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./hospital&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// entities/city.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Entity</span><span class="p">,</span> <span class="nx">PrimaryColumn</span><span class="p">,</span> <span class="nx">OneToMany</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Hospital</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./hospital&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">City</span> <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">City</span> <span class="p">{</span>
   <span class="kd">@PrimaryColumn</span><span class="p">()</span>
   <span class="nx">city_name</span>: <span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@OneToMany</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">Hospital</span><span class="p">,</span> <span class="p">(</span><span class="nx">hospital</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span><span class="p">)</span>
+  <span class="kd">@OneToMany</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">Hospital</span><span class="p">,</span> <span class="p">(</span><span class="nx">hospital</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span><span class="p">)</span>
   <span class="nx">hospitals</span>: <span class="kt">Hospital</span><span class="p">[];</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>一家医院只能在一个城市</p>
-<div class="highlight"><pre><span></span><span class="c1">// entities/hospital.ts</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Entity</span><span class="p">,</span> <span class="nx">PrimaryColumn</span><span class="p">,</span> <span class="nx">Column</span><span class="p">,</span> <span class="nx">ManyToOne</span><span class="p">,</span> <span class="nx">JoinColumn</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">City</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./city&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// entities/hospital.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Entity</span><span class="p">,</span> <span class="nx">PrimaryColumn</span><span class="p">,</span> <span class="nx">Column</span><span class="p">,</span> <span class="nx">ManyToOne</span><span class="p">,</span> <span class="nx">JoinColumn</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">City</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./city&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">Hospital</span> <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">Hospital</span> <span class="p">{</span>
   <span class="kd">@PrimaryColumn</span><span class="p">()</span>
   <span class="nx">hco_code</span>: <span class="kt">string</span><span class="p">;</span>
 
   <span class="kd">@Column</span><span class="p">()</span>
   <span class="nx">hco_name</span>: <span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToOne</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">City</span><span class="p">,</span> <span class="p">(</span><span class="nx">city</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">city</span><span class="p">.</span><span class="nx">hospitals</span><span class="p">)</span>
+  <span class="kd">@ManyToOne</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">City</span><span class="p">,</span> <span class="p">(</span><span class="nx">city</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">city</span><span class="p">.</span><span class="nx">hospitals</span><span class="p">)</span>
   <span class="kd">@JoinColumn</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;city_name&#39;</span> <span class="p">})</span>
   <span class="nx">city</span>: <span class="kt">City</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>创建数据</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">city</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">iqvia_city</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">city</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_city</span><span class="p">();</span>
 <span class="nx">city</span><span class="p">.</span><span class="nx">city_name</span> <span class="o">=</span> <span class="s1">&#39;枣庄&#39;</span><span class="p">;</span>
-<span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">city</span><span class="p">);</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">city</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">hospital</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">iqvia_hospital</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">hospital</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_hospital</span><span class="p">();</span>
 <span class="nx">hospital</span><span class="p">.</span><span class="nx">hco_code</span> <span class="o">=</span> <span class="s1">&#39;MDMC1&#39;</span><span class="p">;</span>
 <span class="nx">hospital</span><span class="p">.</span><span class="nx">hco_name</span> <span class="o">=</span> <span class="s1">&#39;中山医院&#39;</span><span class="p">;</span>
 <span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span> <span class="o">=</span> <span class="nx">city</span><span class="p">;</span>
-<span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">hospitalRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">hospital</span><span class="p">);</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">hospitalRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">hospital</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">city_list</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;枣庄&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">city_list</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;枣庄&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">relations</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;hospitals&#39;</span><span class="p">],</span>
 <span class="p">});</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -350,6 +353,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -377,6 +383,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -385,7 +395,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

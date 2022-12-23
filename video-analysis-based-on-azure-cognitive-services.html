@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -70,22 +71,22 @@
 <p>https://www.videoindexer.ai/</p>
 <h2>Azure&nbsp;Summarization</h2>
 <p>https://docs.microsoft.com/zh-cn/azure/cognitive-services/language-service/summarization/quickstart?tabs=document-summarization&amp;pivots=programming-language-java</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">TextAnalyticsClient</span><span class="p">,</span> <span class="nx">AzureKeyCredential</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@azure/ai-text-analytics&#39;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextAnalyticsClient</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="k">new</span> <span class="nx">AzureKeyCredential</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">TextAnalyticsClient</span><span class="p">,</span> <span class="nx">AzureKeyCredential</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@azure/ai-text-analytics&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TextAnalyticsClient</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="ow">new</span> <span class="nx">AzureKeyCredential</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
 
-<span class="nx">async</span> <span class="nx">summarization</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">async</span> <span class="nx">summarization</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">extractSummaryActions</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span> <span class="nx">modelVersion</span><span class="o">:</span> <span class="s1">&#39;latest&#39;</span><span class="p">,</span> <span class="nx">orderBy</span><span class="o">:</span> <span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="nx">maxSentenceCount</span><span class="o">:</span> <span class="mi">15</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">modelVersion</span><span class="o">:</span> <span class="s1">&#39;latest&#39;</span><span class="p">,</span> <span class="nx">orderBy</span><span class="o">:</span> <span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="nx">maxSentenceCount</span><span class="o">:</span> <span class="mf">15</span> <span class="p">},</span>
     <span class="p">],</span>
   <span class="p">};</span>
-  <span class="kr">const</span> <span class="nx">poller</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">beginAnalyzeActions</span><span class="p">(</span><span class="nx">documents</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="s1">&#39;en&#39;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">resultPages</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">poller</span><span class="p">.</span><span class="nx">pollUntilDone</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">poller</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">beginAnalyzeActions</span><span class="p">(</span><span class="nx">documents</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="s1">&#39;en&#39;</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">resultPages</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">poller</span><span class="p">.</span><span class="nx">pollUntilDone</span><span class="p">();</span>
 
-  <span class="k">for</span> <span class="nx">await</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">page</span> <span class="k">of</span> <span class="nx">resultPages</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">extractSummaryAction</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">extractSummaryResults</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="k">for</span> <span class="k">await</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">page</span> <span class="k">of</span> <span class="nx">resultPages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">extractSummaryAction</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">extractSummaryResults</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">extractSummaryAction</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">doc</span> <span class="k">of</span> <span class="p">(</span><span class="nx">extractSummaryAction</span> <span class="nx">as</span> <span class="nx">any</span><span class="p">).</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">doc</span> <span class="k">of</span> <span class="p">(</span><span class="nx">extractSummaryAction</span> <span class="kr">as</span> <span class="nx">any</span><span class="p">).</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">doc</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\tSummary:&#39;</span><span class="p">,</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">sentences</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -95,14 +96,13 @@
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Azure&nbsp;Translate</h2>
 <p>https://docs.microsoft.com/zh-cn/azure/cognitive-services/translator/quickstart-translator?tabs=nodejs</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">v4</span> <span class="nx">as</span> <span class="nx">uuidv4</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;uuid&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">v4</span> <span class="kr">as</span> <span class="nx">uuidv4</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;uuid&#39;</span><span class="p">;</span>
 
-<span class="nx">async</span> <span class="nx">translate</span><span class="p">(</span><span class="nx">text</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">lan</span> <span class="o">=</span> <span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="k">async</span> <span class="nx">translate</span><span class="p">(</span><span class="nx">text</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">lan</span> <span class="o">=</span> <span class="s1">&#39;zh&#39;</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">axios</span><span class="p">({</span>
     <span class="nx">baseURL</span><span class="o">:</span> <span class="nx">endpoint</span><span class="p">,</span>
     <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/translate&#39;</span><span class="p">,</span>
@@ -115,7 +115,7 @@
     <span class="p">},</span>
     <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
       <span class="s1">&#39;api-version&#39;</span><span class="o">:</span> <span class="s1">&#39;3.0&#39;</span><span class="p">,</span>
-      <span class="nx">from</span><span class="o">:</span> <span class="nx">lan</span> <span class="o">===</span> <span class="s1">&#39;en&#39;</span> <span class="o">?</span> <span class="s1">&#39;zh&#39;</span> <span class="o">:</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span>
+      <span class="kr">from</span><span class="o">:</span> <span class="nx">lan</span> <span class="o">===</span> <span class="s1">&#39;en&#39;</span> <span class="o">?</span> <span class="s1">&#39;zh&#39;</span> <span class="o">:</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span>
       <span class="nx">to</span><span class="o">:</span> <span class="p">[</span><span class="nx">lan</span><span class="p">],</span>
     <span class="p">},</span>
     <span class="nx">data</span><span class="o">:</span> <span class="p">[</span>
@@ -128,7 +128,7 @@
   <span class="p">})</span>
     <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span>
-        <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">translations</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">translations</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">text</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">d</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">p</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
     <span class="p">})</span>
     <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -136,39 +136,37 @@
       <span class="k">return</span> <span class="s1">&#39;error&#39;</span><span class="p">;</span>
     <span class="p">});</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Azure&nbsp;KeyPhrases</h2>
 <p>https://docs.microsoft.com/zh-cn/azure/cognitive-services/language-service/key-phrase-extraction/quickstart?pivots=programming-language-javascript</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextAnalyticsClient</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="k">new</span> <span class="nx">AzureKeyCredential</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TextAnalyticsClient</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="ow">new</span> <span class="nx">AzureKeyCredential</span><span class="p">(</span><span class="nx">key</span><span class="p">));</span>
 
-<span class="nx">async</span> <span class="nx">keyPhrases</span><span class="p">(</span><span class="nx">text</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">keyPhrasesInput</span> <span class="o">=</span> <span class="p">[</span><span class="nx">text</span><span class="p">];</span>
-  <span class="kr">const</span> <span class="nx">keyPhraseResult</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">extractKeyPhrases</span><span class="p">(</span><span class="nx">keyPhrasesInput</span><span class="p">);</span>
+<span class="k">async</span> <span class="nx">keyPhrases</span><span class="p">(</span><span class="nx">text</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">keyPhrasesInput</span> <span class="o">=</span> <span class="p">[</span><span class="nx">text</span><span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">keyPhraseResult</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">extractKeyPhrases</span><span class="p">(</span><span class="nx">keyPhrasesInput</span><span class="p">);</span>
 
   <span class="nx">keyPhraseResult</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nb">document</span><span class="o">:</span> <span class="nx">ExtractKeyPhrasesSuccessResult</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`ID: </span><span class="si">${</span><span class="nb">document</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="err">\</span><span class="sb">tDocument Key Phrases: </span><span class="si">${</span><span class="nb">document</span><span class="p">.</span><span class="nx">keyPhrases</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\tDocument Key Phrases: </span><span class="si">${</span><span class="nb">document</span><span class="p">.</span><span class="nx">keyPhrases</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>code: &#8216;InvalidDocument&#8217;,
 message: &#8216;A document within the request was too large to be processed. Limit document size to: 5120 text elements. For additional details on the data limitations see&nbsp;https://aka.ms/text-analytics-data-limits&#8217;,</p>
 <h2>Azure&nbsp;SpeechToText</h2>
 <p>https://docs.microsoft.com/zh-cn/azure/cognitive-services/speech-service/get-started-speech-to-text?tabs=terminal&amp;pivots=programming-language-javascript</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">sdk</span> <span class="nx">from</span> <span class="s1">&#39;microsoft-cognitiveservices-speech-sdk&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">sdk</span> <span class="kr">from</span> <span class="s1">&#39;microsoft-cognitiveservices-speech-sdk&#39;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">speechConfig</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">SpeechConfig</span><span class="p">.</span><span class="nx">fromSubscription</span><span class="p">(</span><span class="nx">key3</span><span class="p">,</span> <span class="nx">region2</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">speechConfig</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">SpeechConfig</span><span class="p">.</span><span class="nx">fromSubscription</span><span class="p">(</span><span class="nx">key3</span><span class="p">,</span> <span class="nx">region2</span><span class="p">);</span>
 <span class="nx">speechConfig</span><span class="p">.</span><span class="nx">speechRecognitionLanguage</span> <span class="o">=</span> <span class="s1">&#39;zh-CN&#39;</span><span class="p">;</span>
 
-<span class="nx">async</span> <span class="nx">speechRecognition</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">audioConfig</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">AudioConfig</span><span class="p">.</span><span class="nx">fromWavFileInput</span><span class="p">(</span>
+<span class="k">async</span> <span class="nx">speechRecognition</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">audioConfig</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">AudioConfig</span><span class="p">.</span><span class="nx">fromWavFileInput</span><span class="p">(</span>
     <span class="nx">readFileSync</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/wav/song.wav&#39;</span><span class="p">),</span>
   <span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">speechRecognizer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">SpeechRecognizer</span><span class="p">(</span>
+  <span class="kd">const</span> <span class="nx">speechRecognizer</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">SpeechRecognizer</span><span class="p">(</span>
     <span class="nx">speechConfig</span><span class="p">,</span>
     <span class="nx">audioConfig</span><span class="p">,</span>
   <span class="p">);</span>
@@ -182,24 +180,23 @@ message: &#8216;A document within the request was too large to be processed. Lim
     <span class="nx">speechRecognizer</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
   <span class="p">});</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Azure Speakers&nbsp;Identification</h2>
 <p>https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">recognization</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">conversation</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Conversation</span><span class="p">.</span><span class="nx">createConversationAsync</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">recognization</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">conversation</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">Conversation</span><span class="p">.</span><span class="nx">createConversationAsync</span><span class="p">(</span>
     <span class="nx">speechTranslationConfig</span><span class="p">,</span>
     <span class="s1">&#39;myConversation&#39;</span><span class="p">,</span>
   <span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">audioConfig</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">AudioConfig</span><span class="p">.</span><span class="nx">fromWavFileInput</span><span class="p">(</span>
+  <span class="kd">const</span> <span class="nx">audioConfig</span> <span class="o">=</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">AudioConfig</span><span class="p">.</span><span class="nx">fromWavFileInput</span><span class="p">(</span>
     <span class="nx">readFileSync</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span><span class="si">}</span><span class="sb">/wav/</span><span class="si">${</span><span class="nx">file</span><span class="si">}</span><span class="sb">.wav`</span><span class="p">),</span>
   <span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">transcriber</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">ConversationTranscriber</span><span class="p">(</span><span class="nx">audioConfig</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">transcriber</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">sdk</span><span class="p">.</span><span class="nx">ConversationTranscriber</span><span class="p">(</span><span class="nx">audioConfig</span><span class="p">);</span>
 
   <span class="nx">transcriber</span><span class="p">.</span><span class="nx">joinConversationAsync</span><span class="p">(</span><span class="nx">conversation</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nx">transcriber</span><span class="p">.</span><span class="nx">transcribed</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="p">{</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">speakerId</span><span class="p">,</span> <span class="nx">offset</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">speakerId</span><span class="p">,</span> <span class="nx">offset</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="nx">speakerId</span> <span class="o">&amp;&amp;</span> <span class="nx">speakerId</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;Guest&#39;</span><span class="p">))</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
           <span class="s1">&#39;(transcribed) text: &#39;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">,</span>
@@ -217,71 +214,64 @@ message: &#8216;A document within the request was too large to be processed. Lim
     <span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>FFmpeg &#8212; video to&nbsp;audio</h2>
 <p>1.ffmpeg-nodejs</p>
 <p>https://ffmpeg.org/ffmpeg.html</p>
 <p>https://www.npmjs.com/package/ffmpeg-nodejs</p>
-<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">i</span> <span class="n">cmake</span><span class="o">-</span><span class="n">js</span> <span class="o">-</span><span class="k">g</span>
-<span class="n">brew</span> <span class="n">install</span> <span class="n">cmake</span>
-<span class="n">npm</span> <span class="n">i</span> <span class="n">ffmpeg</span><span class="o">-</span><span class="n">nodejs</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>npm i cmake-js -g
+brew install cmake
+npm i ffmpeg-nodejs
+</code></pre></div>
 
 <p>报错：Policy <span class="caps">CMP0042</span> is not set: MACOSX_RPATH is enabled by&nbsp;default.</p>
-<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="k">cache</span> <span class="n">ls</span> <span class="n">ffmpeg</span><span class="o">-</span><span class="n">nodejs</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>npm cache ls ffmpeg-nodejs
+</code></pre></div>
 
 <p>下载&nbsp;https://registry.npmjs.org/ffmpeg-nodejs/-/ffmpeg-nodejs-0.4.4.tgz</p>
 <p>npm install
 报错：nasm/yasm not found or too old. Use &#8212;disable-x86asm for a crippled&nbsp;build.</p>
 <p>下载&nbsp;https://tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</p>
-<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">yasm</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span>
-<span class="p">.</span><span class="o">/</span><span class="n">configure</span>
-<span class="n">make</span>
-<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
-<span class="n">yasm</span> <span class="c1">--version</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd yasm-1.2.0
+./configure
+make
+sudo make install
+yasm --version
+</code></pre></div>
 
 <p>放弃</p>
 <p>2.symbl-media</p>
 <p>brew install&nbsp;ffmpeg</p>
 <p>https://www.npmjs.com/package/symbl-media</p>
 <p>npm i&nbsp;symbl-media</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">video_addr</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/video/tschina.mp4&#39;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">output_addr</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/wav/tschina.wav&#39;</span><span class="p">;</span>
-<span class="nx">await</span> <span class="nx">transcodeMediaFile</span><span class="p">(</span><span class="nx">video_addr</span><span class="p">,</span> <span class="nx">output_addr</span><span class="p">,</span> <span class="s1">&#39;wav&#39;</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">video_addr</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/video/tschina.mp4&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">output_addr</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/wav/tschina.wav&#39;</span><span class="p">;</span>
+<span class="k">await</span> <span class="nx">transcodeMediaFile</span><span class="p">(</span><span class="nx">video_addr</span><span class="p">,</span> <span class="nx">output_addr</span><span class="p">,</span> <span class="s1">&#39;wav&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>3.ffmpeg-extract-frames</p>
 <p>npm i&nbsp;ffmpeg-extract-frames-quality</p>
-<div class="highlight"><pre><span></span><span class="nx">await</span> <span class="nx">extractFrames</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="nx">extractFrames</span><span class="p">({</span>
   <span class="nx">input</span><span class="o">:</span> <span class="nx">video_addr</span><span class="p">,</span>
   <span class="nx">output</span><span class="o">:</span> <span class="nx">output_img</span><span class="p">,</span>
-  <span class="nx">offsets</span><span class="o">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">650000</span><span class="p">],</span>
+  <span class="nx">offsets</span><span class="o">:</span> <span class="p">[</span><span class="mf">1000</span><span class="p">,</span> <span class="mf">2000</span><span class="p">,</span> <span class="mf">650000</span><span class="p">],</span>
 <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>ffmpeg -i ./video/dm.mp4 -filter:v &#8220;select=&#8217;gt(scene,0.1)&#8217;,showinfo&#8221; -f null -&nbsp;2&gt;&amp;1</p>
 <h2><span class="caps">OCR</span></h2>
-<div class="highlight"><pre><span></span><span class="nv">brew</span> <span class="nv">install</span> <span class="nv">tesseract</span>
+<div class="highlight"><pre><span></span><code><span class="nv">brew</span> <span class="nv">install</span> <span class="nv">tesseract</span>
 <span class="nv">brew</span> <span class="nv">install</span> <span class="nv">tesseract</span><span class="o">-</span><span class="nv">lang</span>
 <span class="nv">tesseract</span> <span class="o">-</span><span class="nv">v</span>
 
 <span class="nv">tesseract</span> <span class="o">/</span><span class="nv">Users</span><span class="o">/</span><span class="nv">jyu36</span><span class="o">/</span><span class="nv">code</span><span class="o">/</span><span class="nv">sharktank</span><span class="o">/</span><span class="k">send</span><span class="o">-</span><span class="nv">pdf</span><span class="o">/</span><span class="nv">img</span><span class="o">/</span><span class="nv">ocr1</span>.<span class="nv">png</span> <span class="o">/</span><span class="nv">Users</span><span class="o">/</span><span class="nv">jyu36</span><span class="o">/</span><span class="nv">code</span><span class="o">/</span><span class="nv">sharktank</span><span class="o">/</span><span class="k">send</span><span class="o">-</span><span class="nv">pdf</span><span class="o">/</span><span class="nv">img</span><span class="o">/</span><span class="nb">result</span> <span class="o">-</span><span class="nv">l</span> <span class="nv">eng</span>
 
 <span class="nv">tesseract</span> <span class="o">/</span><span class="nv">Users</span><span class="o">/</span><span class="nv">jyu36</span><span class="o">/</span><span class="nv">code</span><span class="o">/</span><span class="nv">sharktank</span><span class="o">/</span><span class="k">send</span><span class="o">-</span><span class="nv">pdf</span><span class="o">/</span><span class="nv">img</span><span class="o">/</span><span class="nv">test</span><span class="o">-</span><span class="mi">1</span>.<span class="nv">jpg</span> <span class="o">/</span><span class="nv">Users</span><span class="o">/</span><span class="nv">jyu36</span><span class="o">/</span><span class="nv">code</span><span class="o">/</span><span class="nv">sharktank</span><span class="o">/</span><span class="k">send</span><span class="o">-</span><span class="nv">pdf</span><span class="o">/</span><span class="nv">img</span><span class="o">/</span><span class="nb">result</span> <span class="o">-</span><span class="nv">l</span> <span class="nv">chi_sim</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>npm install&nbsp;node-tesseract-ocr</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">tesseract</span> <span class="nx">from</span> <span class="s1">&#39;node-tesseract-ocr&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">tesseract</span> <span class="kr">from</span> <span class="s1">&#39;node-tesseract-ocr&#39;</span><span class="p">;</span>
 
 <span class="nx">tesseract</span>
   <span class="p">.</span><span class="nx">recognize</span><span class="p">(</span><span class="nx">source_img</span><span class="p">,</span> <span class="p">{</span>
@@ -293,37 +283,35 @@ message: &#8216;A document within the request was too large to be processed. Lim
   <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
   <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>html-pdf</h2>
 <p>npm install &#8212; save html-pdf
 npm install &#8212; save&nbsp;ejs</p>
 <p>踩坑：&#8221;Error&#8221;,&#8221;errorMessage&#8221;:&#8221;write <span class="caps">EPIPE</span>&#8221;</p>
-<div class="highlight"><pre><span></span><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">fontconfig</span> 
-<span class="n">fc</span><span class="o">-</span><span class="n">list</span> 
-<span class="n">fc</span><span class="o">-</span><span class="n">list</span> <span class="p">:</span><span class="n">lang</span><span class="o">-</span><span class="n">zh</span>
-<span class="n">fc</span><span class="o">-</span><span class="n">list</span> <span class="p">:</span><span class="n">lang</span><span class="o">=</span><span class="n">en</span> 
+<div class="highlight"><pre><span></span><code>yum -y install fontconfig 
+fc-list 
+fc-list :lang-zh
+fc-list :lang=en 
 
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">chinese</span>
-<span class="err">下载</span> <span class="err">雅黑字体</span> <span class="n">msyh</span><span class="p">.</span><span class="n">ttf</span>
-<span class="n">mv</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">v</span><span class="o">-</span><span class="n">jyu</span><span class="o">/</span><span class="n">fonts</span><span class="cm">/* /usr/share/fonts/chinese/</span>
-<span class="cm">fc-list :lang-zh</span>
-</pre></div>
-
+mkdir /usr/share/fonts/chinese
+下载 雅黑字体 msyh.ttf
+mv -f /home/v-jyu/fonts/* /usr/share/fonts/chinese/
+fc-list :lang-zh
+</code></pre></div>
 
 <p>attachment/exportData.ts</p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">pdf</span> <span class="nx">from</span> <span class="s1">&#39;html-pdf&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">ejs</span> <span class="nx">from</span> <span class="s1">&#39;ejs&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">pdf</span> <span class="kr">from</span> <span class="s1">&#39;html-pdf&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ejs</span> <span class="kr">from</span> <span class="s1">&#39;ejs&#39;</span><span class="p">;</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">savePDF</span><span class="p">(</span><span class="nx">meetingData</span><span class="p">,</span> <span class="nx">filename</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="k">export</span> <span class="k">default</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">savePDF</span><span class="p">(</span><span class="nx">meetingData</span><span class="p">,</span> <span class="nx">filename</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">html</span><span class="p">;</span>
-    <span class="kr">const</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/email-template/datamail.code.ejs&#39;</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/email-template/datamail.code.ejs&#39;</span><span class="p">;</span>
     <span class="nx">ejs</span><span class="p">.</span><span class="nx">renderFile</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="p">{</span> <span class="nx">meetingData</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
       <span class="nx">html</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
     <span class="p">});</span>
-    <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;Letter&#39;</span> <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;Letter&#39;</span> <span class="p">};</span>
     <span class="nx">pdf</span>
       <span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
       <span class="p">.</span><span class="nx">toFile</span><span class="p">(</span><span class="sb">`pdf/</span><span class="si">${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">.pdf`</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -338,12 +326,11 @@ npm install &#8212; save&nbsp;ejs</p>
     <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
   <span class="p">});</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>emaili.service.tschina</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">outlinefile</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">savePDF</span><span class="p">(</span><span class="nx">meetingData</span><span class="p">,</span> <span class="s1">&#39;courseOutline&#39;</span><span class="p">);</span>
-<span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">outlinefile</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">savePDF</span><span class="p">(</span><span class="nx">meetingData</span><span class="p">,</span> <span class="s1">&#39;courseOutline&#39;</span><span class="p">);</span>
+<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">({</span>
   <span class="nx">to</span><span class="p">,</span>
   <span class="nx">subject</span><span class="p">,</span>
   <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;datamail.code.ejs&#39;</span><span class="p">,</span>
@@ -355,11 +342,10 @@ npm install &#8212; save&nbsp;ejs</p>
     <span class="p">},</span>
   <span class="p">],</span>
 <span class="p">});</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>email-template/datamail.code.ejs</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span><span class="err">&lt;</span>%=locals.meetingData.title%&gt;<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -371,7 +357,7 @@ npm install &#8212; save&nbsp;ejs</p>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -427,6 +413,9 @@ npm install &#8212; save&nbsp;ejs</p>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -454,6 +443,10 @@ npm install &#8212; save&nbsp;ejs</p>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -462,7 +455,6 @@ npm install &#8212; save&nbsp;ejs</p>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -64,12 +65,7 @@
 	</header>
 	<div class="summary"><ul>
 <li>Resource&nbsp;Scheduling</li>
-<li>Queueing: <strong>队列</strong> &#8212;&nbsp;请求排队的时间。浏览器是有线程限制的，发请求也不能所有的请求同时发送，会将请求加入队列中（Chrome的最大并发连接数是6）。如果说同一时间，发起的同一域名的请求超过了6个，这时候就需要排队了。</li>
-<li>Connection&nbsp;Start</li>
-<li>Stalled:  <strong>阻塞</strong> &#8212;&nbsp;浏览器得到要发出这个请求的指令，到请求可以发出的等待时间，一般是代理协商、以及等待可复用的TCP连接释放的时间，不包括DNS查询、建立TCP连接等时间等</li>
-<li>Proxy&nbsp;nengotiation</li>
-<li><span class="caps">DNS</span> Lookup: <strong>DNS查找</strong> &#8212;&nbsp;请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址</li>
-<li>Initial …</li></ul></div>
+<li>Queueing: <strong>队列</strong> &#8212;&nbsp;请求排队的时间。浏览器是有线程限制的，发请求也不能所有 …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -92,14 +88,15 @@
 		</div>
 	</header>
 	<div class="summary"><h2>Docker</h2>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="p">.</span><span class="n">git</span>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/docker/getting-started.git
 
-<span class="n">cd</span> <span class="n">getting</span><span class="o">-</span><span class="n">started</span>
-<span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">docker101tutorial</span>
+cd getting-started
+docker build -t docker101tutorial
 
-<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">80</span><span class="p">:</span><span class="mi">80</span> <span class="err">\</span> <span class="err">—</span><span class="n">name</span> <span class="n">docker</span><span class="o">-</span><span class="n">tutorial</span> <span class="n">docker101tutorial</span>
+docker run -d -p 80:80 \ —name docker-tutorial docker101tutorial
 
-<span class="n">docker</span> <span class="n">tag</span> <span class="n">docker101tutorial …</span></pre></div></div>
+docker tag docker101tutorial yogadock/docker101tutorial
+docker …</code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -124,8 +121,8 @@
 	<div class="summary"><p>结果&nbsp;https://analytics.google.com/</p>
 <p>配置&nbsp;https://tagmanager.google.com</p>
 <h2>安装</h2>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">addGtm</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">gtmscript1</span> <span class="o">=</span> <span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start …</span></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">addGtm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">gtmscript1</span> <span class="o">=</span> <span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -152,11 +149,7 @@
 -&gt; Feature engineering数据工程(高并发concurrency)
 -&gt; modeling建模 
 -&gt; data analysis 
--&gt; data&nbsp;visualization数据可视化</p>
-<h2>热启动</h2>
-<p>User based:&nbsp;根据用户浏览workbook数据聚类，把与用户常看相同一类workbooks的人，也喜欢看的其他workbooks推荐给用户</p>
-<p>COS对象耦合性算法：名词性问题相似度计算，完整的表述是（Coupled Object&nbsp;Similarity，即COS)</p>
-<p>X- 用户， y - 看表的次数 …</p></div>
+-&gt; data&nbsp;visualization数据 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -182,32 +175,7 @@
 <h3>优点：</h3>
 <ol>
 <li>
-<p>通过GTM可以更快测试和发布代码而不需要在站点上硬编码</p>
-</li>
-<li>
-<p>个性化跟踪</p>
-</li>
-<li>
-<p>管理更有效</p>
-</li>
-<li>
-<p>提高网站加载速度，优化了异步加载</p>
-</li>
-</ol>
-<h3>缺点：</h3>
-<p>多一层跳转：先加载GTM容器，再加载其他跟踪代码，如GA</p>
-<h3>账户结构：</h3>
-<p>一个google可以有多个GTM&nbsp;account，</p>
-<p>一个account可以有多个GTM Container&nbsp;Tag，</p>
-<p>每个容器对应一个站点（Tag，Trigger，Variables）</p>
-<h3>Variable变量</h3>
-<p>变量是键值对，其中的值在运行时填充</p>
-<ol>
-<li>
-<p>在触发器中，变量用来定义指定特定触发器应在何时执行的过滤条件（URL变量）</p>
-</li>
-<li>
-<p>在代码中，变量用来捕获动态值 …</p></li></ol></div>
+<p>通过GTM可以更快测试和发布代码而不需要在站点 …</p></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -266,6 +234,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -293,6 +264,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -301,7 +276,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

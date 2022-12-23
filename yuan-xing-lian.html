@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -65,19 +66,18 @@
         <p>原型链：<span class="caps">JS</span> 万物皆对象，对象都有<em>proto </em>属性，<em>proto </em>连起来的链条，最终为&nbsp;null。</p>
 <h2>创建对象</h2>
 <p>1.工厂模式</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Object</span><span class="p">()</span>
   <span class="nx">o</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
   <span class="k">return</span> <span class="nx">o</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">)</span>
-<span class="nx">person1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
-<span class="nx">person1</span> <span class="k">instanceof</span> <span class="nb">Object</span> <span class="c1">// yes</span>
-</pre></div>
-
+<span class="nx">person1</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">==</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+<span class="nx">person1</span> <span class="ow">instanceof</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+</code></pre></div>
 
 <p>2.构造函数模式</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Person首字母大写</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">sayName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -85,20 +85,18 @@
     <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>3.原型模式</p>
-<div class="highlight"><pre><span></span><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="highlight"><pre><span></span><code><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mf">20</span>
 <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="nx">person2</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Person</span> <span class="c1">// yes</span>
-<span class="nx">person2</span> <span class="k">instanceof</span> <span class="nx">Person</span> <span class="c1">// yes</span>
-<span class="nx">person2</span> <span class="k">instanceof</span> <span class="nb">Object</span> <span class="c1">// yes</span>
-</pre></div>
-
+<span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<span class="nx">person2</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nx">Person</span> <span class="c1">// yes</span>
+<span class="nx">person2</span> <span class="ow">instanceof</span> <span class="nx">Person</span> <span class="c1">// yes</span>
+<span class="nx">person2</span> <span class="ow">instanceof</span> <span class="nb">Object</span> <span class="c1">// yes</span>
+</code></pre></div>
 
 <p>A instanceof B 检测 A 是否是 B new&nbsp;出来的实例</p>
 <p>A 的原型链上是否存在 B&nbsp;的原型</p>
@@ -107,33 +105,31 @@
 <p>prototype 是函数才有的属性，<em>proto </em>是每个对象都有的属性</p>
 </blockquote>
 <p><em>proto </em>([[Prototype]])“构造器的原型”: _proto _ ===&nbsp;constructor.prototype</p>
-<div class="highlight"><pre><span></span><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nx">Person</span>
-<span class="nx">person2</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nx">Person</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">==</span> <span class="nx">Person</span>
+<span class="nx">person2</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">==</span> <span class="nx">Person</span>
+</code></pre></div>
 
 <p><img alt="prototype" src="img/prototype.png"></p>
-<div class="highlight"><pre><span></span><span class="nx">person2</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">person2</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span>
   <span class="nx">sayName</span><span class="o">:</span> <span class="nx">ƒ</span> <span class="p">(),</span>
   <span class="nx">__proto__</span><span class="o">:</span> <span class="nb">Object</span>
 <span class="p">}</span>
 <span class="nx">person2</span><span class="p">.</span><span class="nx">__proto__</span><span class="o">:</span> <span class="p">{</span>
-  <span class="nx">age</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nx">age</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
   <span class="nx">sayName</span><span class="o">:</span> <span class="nx">f</span><span class="p">(),</span>
   <span class="nx">__proto__</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
-  <span class="nx">constructor</span><span class="o">:</span> <span class="nx">f</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+  <span class="kr">constructor</span><span class="o">:</span> <span class="nx">f</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>继承</h2>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">Student</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">Student</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">school</span> <span class="o">=</span> <span class="s1">&#39;SJTU&#39;</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">Student</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">)</span> <span class="c1">// 继承，重写原型</span>
+<span class="nx">Student</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Yoga&#39;</span><span class="p">)</span> <span class="c1">// 继承，重写原型</span>
 <span class="nx">Student</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">major</span> <span class="o">=</span> <span class="s1">&#39;design&#39;</span> <span class="c1">// 一定要写在继承之后 person2.major: undefined</span>
-<span class="kd">var</span> <span class="nx">student1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">student1</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Student</span><span class="p">();</span>
 
 <span class="nx">student1</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">school</span><span class="o">:</span> <span class="s1">&#39;SJTU&#39;</span><span class="p">,</span>
@@ -146,61 +142,56 @@
   <span class="nx">__proto__</span><span class="o">:</span> <span class="nb">Object</span>
 <span class="p">}</span>
 <span class="nx">student1</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="o">:</span> <span class="p">{</span>
-  <span class="nx">age</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="nx">age</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
   <span class="nx">sayName</span><span class="o">:</span> <span class="nx">f</span><span class="p">(),</span>
-  <span class="nx">constructor</span><span class="o">:</span> <span class="nx">f</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">),</span>
+  <span class="kr">constructor</span><span class="o">:</span> <span class="nx">f</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">),</span>
   <span class="nx">__proto__</span><span class="o">:</span> <span class="nb">Object</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>返回实例属性</h2>
 <p>查找对象属性时，先查找对象本身是否存在该属性，如果不存在会在原型链上找</p>
 <p>1.Object.keys&nbsp;可枚举，自身属性</p>
-<div class="highlight"><pre><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">person2</span><span class="p">)</span> <span class="c1">// [&#39;name&#39;, &#39;sayName&#39;]</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">person2</span><span class="p">)</span> <span class="c1">// [&#39;name&#39;, &#39;sayName&#39;]</span>
 <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">student1</span><span class="p">)</span> <span class="c1">// [&#39;school&#39;]</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>2.for-in&nbsp;所有可枚举属性，包括原型链</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">person2</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="ow">in</span> <span class="nx">person2</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// 包括原型方法和属性 [&#39;name&#39;, &#39;sayName&#39;, &#39;age&#39;]</span>
   <span class="k">if</span> <span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
     <span class="c1">// 判断是否是自身属性 &#39;name&#39;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">student1</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="ow">in</span> <span class="nx">student1</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// [&#39;school&#39;, &#39;name&#39;, &#39;sayName&#39;, &#39;major&#39;, &#39;age&#39;]</span>
   <span class="k">if</span> <span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
     <span class="c1">// 判断是否是自身属性 &#39;name&#39;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>for in&nbsp;遍历对象的键名</li>
 <li>for of 遍历的是数组元素值，适用遍历数/数组对象/字符串/map/set&nbsp;等拥有迭代器对象的集合.但是不能遍历对象</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">someObject</span><span class="p">))</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">someObject</span><span class="p">))</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nx">someObject</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
 <span class="p">}</span>
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">someObject</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">//遍历map对象时适合用解构</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>3.Object.getOwnPropertyNames&nbsp;自身可/不可枚举属性</p>
-<div class="highlight"><pre><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">getOwnPropertyNames</span><span class="p">(</span><span class="nx">person2</span><span class="p">)</span> <span class="c1">// [&#39;name&#39;, &#39;sayName&#39;]</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Object</span><span class="p">.</span><span class="nx">getOwnPropertyNames</span><span class="p">(</span><span class="nx">person2</span><span class="p">)</span> <span class="c1">// [&#39;name&#39;, &#39;sayName&#39;]</span>
 <span class="nb">Object</span><span class="p">.</span><span class="nx">getOwnPropertyNames</span><span class="p">(</span><span class="nx">student1</span><span class="p">)</span> <span class="c1">// [&#39;school&#39;]</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>可枚举属性是指那些内部 “可枚举 enumerable” 标志设置为 true 的属性。对于通过直接的赋值和属性初始化的属性，该标识值默认为即为 true。但是对于通过 Object.defineProperty 等定义的属性，该标识值默认为&nbsp;false。</p>
 <p>对象的数据属性：</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">person</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">configurable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//能否使用delete、能否需改属性特性、或能否修改访问器属性、，false为不可重新定义，默认值为true</span>
   <span class="nx">enumerable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//对象属性是否可通过for-in循环，flase为不可循环，默认值为true</span>
@@ -216,38 +207,36 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// Yoga</span>
 
 <span class="c1">// enumerable</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="ow">in</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="c1">// undefined</span>
 <span class="p">}</span>
 
 <span class="c1">// configurable</span>
-<span class="k">delete</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span>
+<span class="ow">delete</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// Yoga</span>
 
 <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">person</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">configurable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 不可修改，将抛出错误Cannot redefine property: name</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>对象的访问器属性</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">_year</span><span class="o">:</span> <span class="mi">2004</span><span class="p">,</span> <span class="c1">//属性前面加_，代表属性只能通过对象方法访问</span>
-  <span class="nx">edition</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">_year</span><span class="o">:</span> <span class="mf">2004</span><span class="p">,</span> <span class="c1">//属性前面加_，代表属性只能通过对象方法访问</span>
+  <span class="nx">edition</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">book</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_year</span>
   <span class="p">},</span>
   <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">newValue</span> <span class="o">&gt;</span> <span class="mi">2004</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">newValue</span> <span class="o">&gt;</span> <span class="mf">2004</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">_year</span> <span class="o">=</span> <span class="nx">newValue</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">edition</span> <span class="o">+=</span> <span class="nx">newValue</span> <span class="o">-</span> <span class="mi">2004</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">edition</span> <span class="o">+=</span> <span class="nx">newValue</span> <span class="o">-</span> <span class="mf">2004</span>
     <span class="p">}</span>
   <span class="p">},</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>原文链接：https://blog.csdn.net/qq_17335153/article/details/52584727</p>
     </div><!-- /.entry-content -->
@@ -305,6 +294,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -332,6 +324,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -340,7 +336,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -65,20 +66,18 @@
         <h1>Properties&nbsp;属性</h1>
 <h2>存储属性 stored&nbsp;propert</h2>
 <p>一个存储属性就是存储在特定类或结构体的实例里的一个常量或变量&#8212;变量存储属性（var），常量存储属性（let）</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span>
+</code></pre></div>
 
 <h2>延迟存储属性</h2>
 <p>是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用lazy来标示一个延迟存储属性。必须将延迟存储属性声明成变量（使用var关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。</p>
-<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">importer</span> <span class="p">=</span> <span class="n">DataImporter</span><span class="p">()</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">importer</span> <span class="p">=</span> <span class="n">DataImporter</span><span class="p">()</span>
+</code></pre></div>
 
 <h2>计算属性computed&nbsp;property</h2>
 <p>不直接存储值，而是提供一个 getter 来获取值，一个可选的 setter&nbsp;来间接设置其他属性或变量的值</p>
 <p>The value of a property can be computed rather than&nbsp;stored</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
   <span class="kr">get</span> <span class="p">{</span>
 
   <span class="p">}</span>
@@ -86,11 +85,10 @@
 
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>可以没有set，不设set时property变为read&nbsp;only</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">numberOfPairsOfCards</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">numberOfPairsOfCards</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
   <span class="kr">get</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
   <span class="p">}</span>
@@ -99,8 +97,7 @@
 <span class="kd">var</span> <span class="nv">numberOfPairsOfCards</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">cardButtons</span><span class="p">.</span><span class="bp">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p></br></p>
 <h1>Dictionary&nbsp;字典</h1>
@@ -108,10 +105,9 @@
 <p>Dictionary is a generic type like array, but you specify the type both of the key and the&nbsp;value.</p>
 </blockquote>
 <p>Dictionary是一种散列表，可以通过关键值（key）快速地访问其中的元素（value），key必须是符合Hashable协议的类型，而value可以是任何类型。创建空的Dictionary时，必须声明key和value的类型。</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">emoji</span> <span class="p">=</span> <span class="nb">Dictionary</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">,</span><span class="nb">String</span><span class="p">&gt;()</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">emoji</span> <span class="p">=</span> <span class="nb">Dictionary</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">,</span><span class="nb">String</span><span class="p">&gt;()</span>
 <span class="kd">var</span> <span class="nv">emoji</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">:</span><span class="nb">String</span><span class="p">]()</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Looking something up in the dictionary returns an&nbsp;optional.</p>
 <p></br></p>
@@ -120,7 +116,7 @@
 <p>Tuple is like a mini struct that has no methods or vars, just has values in&nbsp;it.</p>
 </blockquote>
 <p>元组（tuples）把多个值组合成一个复合值。元组内的值可以是任意类型，并不要求是相同类型。</p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">x</span><span class="p">:</span> <span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">x</span><span class="p">:</span> <span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
 <span class="kd">let</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span> <span class="c1">// this names the tuple elements when accessing the tuple</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="c1">// hello</span>
 
@@ -128,32 +124,29 @@
 <span class="kd">let</span> <span class="nv">x</span><span class="p">:</span> <span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">word</span><span class="p">)</span> <span class="c1">// hello</span>
 <span class="kd">let</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span> <span class="c1">// rename</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>use tuples to return multiple values from a function or&nbsp;method</p>
-<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">getSize</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">getSize</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span> <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="n">getSize</span><span class="p">()</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;weight is </span><span class="si">\(</span><span class="n">x</span><span class="p">.</span><span class="n">weight</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// weight is 250</span>
-</pre></div>
-
+</code></pre></div>
 
 <p></br></p>
 <h1>Enum枚举</h1>
 <p>Enums are value types, like&nbsp;struct值类型，传递时复制</p>
 <h2>枚举值</h2>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">Movement</span><span class="p">:</span><span class="nb">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Movement</span><span class="p">:</span><span class="nb">Int</span> <span class="p">{</span>
   <span class="k">case</span> <span class="kr">left</span> <span class="p">=</span> <span class="mi">0</span>
   <span class="k">case</span> <span class="kr">right</span> <span class="p">=</span> <span class="mi">1</span>
   <span class="k">case</span> <span class="n">top</span> <span class="p">=</span> <span class="mi">2</span>
   <span class="k">case</span> <span class="n">bottom</span> <span class="p">=</span> <span class="mi">3</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>支持各种类型: Int, Float, String,&nbsp;Bool</p>
 <h2>嵌套枚举</h2>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">Area</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Area</span> <span class="p">{</span>
   <span class="kd">enum</span> <span class="nc">DongGuan</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">NanCheng</span>
     <span class="k">case</span> <span class="n">DongCheng</span>
@@ -164,12 +157,11 @@
     <span class="k">case</span> <span class="n">CheBei</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>关联值</h2>
 <p>Each case can have associated value.&nbsp;枚举的case可以传值</p>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">FastFoodMenu</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">FastFoodMenu</span> <span class="p">{</span>
   <span class="k">case</span> <span class="n">hamburger</span><span class="p">(</span><span class="n">numberOfPatties</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> 
   <span class="k">case</span> <span class="n">fries</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="n">FryOrderSize</span><span class="p">)</span>
   <span class="k">case</span> <span class="n">drink</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="n">ounce</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span>
@@ -194,12 +186,11 @@
 <span class="k">default</span><span class="p">:</span>
   <span class="p">()</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Enum类似Struct，可以添加方法和属性</p>
 <p>可以添加计算属性，但是不能添加存储属性</p>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">FastFoodMenu</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">FastFoodMenu</span> <span class="p">{</span>
   <span class="k">case</span> <span class="n">hamburger</span>
   <span class="k">case</span> <span class="n">drink</span>
 
@@ -214,41 +205,37 @@
     <span class="c1">// 计算属性，calculate and return caloric value</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>突变方法 mutating&nbsp;method</p>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">FastFoodMenu</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">FastFoodMenu</span> <span class="p">{</span>
   <span class="p">...</span>
   <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">switchToBeingACookie</span><span class="p">()</span> <span class="p">{</span>
     <span class="kc">self</span> <span class="p">=</span> <span class="p">.</span><span class="n">cookie</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p></br></p>
 <h1>Optional&nbsp;可选类型</h1>
-<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">ClassA</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">ClassA</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span><span class="nb">String</span><span class="p">?</span> <span class="c1">//?可能有可能没有 nil &amp;非nil</span>
   <span class="kd">var</span> <span class="nv">grade</span><span class="p">:</span><span class="nb">String</span><span class="p">!</span> <span class="c1">//!初始化时一定要有值</span>
   <span class="kd">var</span> <span class="nv">nameA</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;123&quot;</span> <span class="c1">//默认值</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <blockquote>
 <p>An optional is just an&nbsp;enum</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="nc">Optional</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Optional</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
   <span class="k">case</span> <span class="kr">none</span>
   <span class="k">case</span> <span class="n">some</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nv">hello</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="c1">// var hello: Optional&lt;String&gt; = .none</span>
 <span class="kd">var</span> <span class="nv">hello</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span> <span class="c1">// var hello: Optional&lt;String&gt; = .some(&quot;hello&quot;)</span>
 <span class="kd">var</span> <span class="nv">hello</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span> <span class="c1">// var hello: Optional&lt;String&gt; = .none</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>可选值类型就是一个盒子，这个盒子有两种情况，一种是填充了值，一种是为空，没有填充任何值。当它没有填充值的时候，我们称之为nil。这个可选值变量对有值或无值进行了打包（wrap）操作。</p>
 <p>返回值为optional的函数：
@@ -256,7 +243,7 @@
 * dictionary
 *&nbsp;&#8230;</p>
 <h2>Unwarpping optionals&nbsp;解包</h2>
-<div class="highlight"><pre><span></span><span class="c1">// 法一 Force unwrapping 强制解包</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 法一 Force unwrapping 强制解包</span>
 <span class="kd">var</span> <span class="nv">authorName</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Matt Galloway&quot;</span>
 <span class="kd">var</span> <span class="nv">unwrappedAuthorName</span> <span class="p">=</span> <span class="n">authorName</span><span class="p">!</span> <span class="c1">// 空值会报错</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Author is </span><span class="si">\(</span><span class="n">unwrappedAuthorName</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
@@ -285,7 +272,7 @@
   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;I don&#39;t know the number of sides for </span><span class="si">\(</span><span class="n">shape</span><span class="si">)</span><span class="s">.&quot;</span><span class="p">)</span>
   <span class="k">return</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -341,6 +328,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -368,6 +358,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -376,7 +370,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

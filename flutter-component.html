@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -64,7 +65,7 @@
     <div class="post-entry">
         <h2>基础组件</h2>
 <p>文本</p>
-<div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
   <span class="nl">textAlign:</span> <span class="n">TextAlign</span><span class="p">.</span><span class="n">left</span><span class="p">,</span>
   <span class="nl">maxLines:</span> <span class="m">1</span><span class="p">,</span>
   <span class="nl">overflow:</span> <span class="n">TextOverflow</span><span class="p">.</span><span class="n">ellipsis</span><span class="p">,</span>
@@ -86,11 +87,10 @@
       <span class="nl">text:</span> <span class="s2">&quot;Home: &quot;</span>
     <span class="p">),</span>
 <span class="p">))</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>按钮</p>
-<div class="highlight"><pre><span></span><span class="n">ElevatedButton</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">ElevatedButton</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">),</span>
   <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
 <span class="p">);</span>
@@ -114,11 +114,10 @@
   <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">thumb_up</span><span class="p">),</span>
   <span class="nl">onPressed:</span> <span class="p">()</span> <span class="p">{},</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>图片</p>
-<div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Image</span><span class="p">(</span>
   <span class="nl">image:</span> <span class="n">AssetImage</span><span class="p">(</span><span class="s2">&quot;images/avatar.png&quot;</span><span class="p">),</span>
   <span class="nl">image:</span> <span class="n">NetworkImage</span><span class="p">(</span> <span class="s2">&quot;https://avatars2.githubusercontent.com/u/20411648?s=460&amp;v=4&quot;</span><span class="p">),</span>
   <span class="nl">width:</span> <span class="m">100.0</span><span class="p">,</span>
@@ -127,11 +126,10 @@
   <span class="nl">colorBlendMode:</span> <span class="n">BlendMode</span><span class="p">.</span><span class="n">difference</span><span class="p">,</span> <span class="c1">// 对每一个像素进行颜色混合处理</span>
   <span class="nl">repeat:</span> <span class="n">ImageRepeat</span><span class="p">.</span><span class="n">repeatY</span><span class="p">,</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>单选开关</p>
-<div class="highlight"><pre><span></span><span class="n">Switch</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Switch</span><span class="p">(</span>
   <span class="nl">value:</span> <span class="n">_switchSelected</span><span class="p">,</span><span class="c1">//当前状态</span>
   <span class="nl">onChanged:</span><span class="p">(</span><span class="n">value</span><span class="p">){</span>
     <span class="n">setState</span><span class="p">(()</span> <span class="p">{</span>
@@ -139,11 +137,10 @@
     <span class="p">});</span>
   <span class="p">},</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>复选框</p>
-<div class="highlight"><pre><span></span><span class="n">Checkbox</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Checkbox</span><span class="p">(</span>
   <span class="nl">value:</span> <span class="n">_checkboxSelected</span><span class="p">,</span>
   <span class="nl">activeColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span> <span class="c1">//选中时的颜色</span>
   <span class="nl">onChanged:</span><span class="p">(</span><span class="n">value</span><span class="p">){</span>
@@ -152,11 +149,10 @@
     <span class="p">});</span>
   <span class="p">}</span> <span class="p">,</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>输入框</p>
-<div class="highlight"><pre><span></span><span class="n">TextField</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">TextField</span><span class="p">(</span>
   <span class="nl">autofocus:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nl">decoration:</span> <span class="n">InputDecoration</span><span class="p">(</span>
     <span class="nl">labelText:</span> <span class="s2">&quot;用户名&quot;</span><span class="p">,</span>
@@ -164,8 +160,7 @@
     <span class="nl">prefixIcon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">person</span><span class="p">)</span>
   <span class="p">),</span>
 <span class="p">),</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>布局类组件</h2>
 <ul>
@@ -174,7 +169,7 @@
 <li>多子组件基类: children用于接收子&nbsp;Widget</li>
 </ul>
 <p>线性布局：Row&nbsp;沿水平方向排列其子widget</p>
-<div class="highlight"><pre><span></span><span class="n">Row</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Row</span><span class="p">(</span>
   <span class="nl">crossAxisAlignment:</span> <span class="n">CrossAxisAlignment</span><span class="p">.</span><span class="n">start</span><span class="p">,</span>  
   <span class="nl">verticalDirection:</span> <span class="n">VerticalDirection</span><span class="p">.</span><span class="n">up</span><span class="p">,</span>
   <span class="nl">mainAxisAlignment:</span> <span class="n">MainAxisAlignment</span><span class="p">.</span><span class="n">spaceEvenly</span><span class="p">,</span> <span class="c1">// 将水平方向的的剩余显示空间均分成多份穿插在每一个 child之间</span>
@@ -183,13 +178,12 @@
     <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;t2&quot;</span><span class="p">),</span>
   <span class="p">],</span>
 <span class="p">),</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Row默认只有一行，如果超出屏幕不会折行，右边溢出部分报错。</p>
 <p>Column可以在垂直方向排列其子组件</p>
 <p>弹性布局：Expanded 只能作为 Flex&nbsp;的孩子（否则会报错），它可以按比例“扩伸”Flex子组件所占用的空间。</p>
-<div class="highlight"><pre><span></span><span class="n">Flex</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Flex</span><span class="p">(</span>
   <span class="nl">direction:</span> <span class="n">Axis</span><span class="p">.</span><span class="n">vertical</span><span class="p">,</span>
   <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
     <span class="n">Expanded</span><span class="p">(</span>
@@ -209,11 +203,10 @@
     <span class="p">),</span>
   <span class="p">],</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>流式布局：超出屏幕显示范围会自动折行</p>
-<div class="highlight"><pre><span></span><span class="n">Wrap</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Wrap</span><span class="p">(</span>
    <span class="nl">spacing:</span> <span class="m">8.0</span><span class="p">,</span> <span class="c1">// 主轴(水平)方向间距</span>
    <span class="nl">runSpacing:</span> <span class="m">4.0</span><span class="p">,</span> <span class="c1">// 纵轴（垂直）方向间距</span>
    <span class="nl">alignment:</span> <span class="n">WrapAlignment</span><span class="p">.</span><span class="n">center</span><span class="p">,</span> <span class="c1">//沿主轴方向居中</span>
@@ -225,11 +218,10 @@
      <span class="p">...</span>
    <span class="p">],</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>层叠布局：Stack允许子组件堆叠，而Positioned用于根据Stack的四个角来确定子组件的位置</p>
-<div class="highlight"><pre><span></span><span class="n">Stack</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Stack</span><span class="p">(</span>
   <span class="nl">alignment:</span><span class="n">Alignment</span><span class="p">.</span><span class="n">center</span> <span class="p">,</span> <span class="c1">//指定未定位或部分定位widget的对齐方式</span>
   <span class="nl">fit:</span> <span class="n">StackFit</span><span class="p">.</span><span class="n">expand</span><span class="p">,</span> <span class="c1">//未定位widget占满Stack整个空间</span>
   <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span><span class="p">[</span>
@@ -243,28 +235,25 @@
     <span class="p">),</span>
   <span class="p">],</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>相对定位：Align&nbsp;组件可以调整一个子元素在父元素中的位置</p>
-<div class="highlight"><pre><span></span><span class="n">Align</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Align</span><span class="p">(</span>
   <span class="nl">alignment:</span> <span class="n">Alignment</span><span class="p">.</span><span class="n">topRight</span><span class="p">,</span>
   <span class="nl">child:</span> <span class="n">FlutterLogo</span><span class="p">(</span>
     <span class="nl">size:</span> <span class="m">60</span><span class="p">,</span>
   <span class="p">),</span>
 <span class="p">),</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Center继承自Align(Alignment.center)。</p>
-<div class="highlight"><pre><span></span><span class="n">Center</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Center</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;xxx&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>使用 LayoutBuilder&nbsp;来根据设备的尺寸来实现响应式布局。</p>
-<div class="highlight"><pre><span></span><span class="n">LayoutBuilder</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">LayoutBuilder</span><span class="p">(</span>
   <span class="nl">builder:</span> <span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">BoxConstraints</span> <span class="n">constraints</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">constraints</span><span class="p">.</span><span class="n">maxWidth</span> <span class="o">&lt;</span> <span class="m">200</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="p">...;</span>
@@ -273,21 +262,19 @@
     <span class="p">}</span>
   <span class="p">},</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>容器类组件</h2>
 <p>Padding可以给其子节点添加填充（留白）</p>
-<div class="highlight"><pre><span></span><span class="n">Padding</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Padding</span><span class="p">(</span>
   <span class="c1">// 分别指定四个方向的补白</span>
-  <span class="nl">padding:</span> <span class="kd">const</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">fromLTRB</span><span class="p">(</span><span class="m">20.0</span><span class="p">,.</span><span class="m">0</span><span class="p">,</span><span class="m">20.0</span><span class="p">,</span><span class="m">20.0</span><span class="p">),</span>
+  <span class="nl">padding:</span> <span class="k">const</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">fromLTRB</span><span class="p">(</span><span class="m">20.0</span><span class="p">,.</span><span class="m">0</span><span class="p">,</span><span class="m">20.0</span><span class="p">,</span><span class="m">20.0</span><span class="p">),</span>
   <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Your friend&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>尺寸限制类容器：ConstrainedBox用于对子组件添加额外的约束</p>
-<div class="highlight"><pre><span></span><span class="n">ConstrainedBox</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">ConstrainedBox</span><span class="p">(</span>
   <span class="nl">constraints:</span> <span class="n">BoxConstraints</span><span class="p">(</span>
     <span class="nl">minWidth:</span> <span class="kt">double</span><span class="p">.</span><span class="n">infinity</span><span class="p">,</span> <span class="c1">//宽度尽可能大</span>
     <span class="nl">minHeight:</span> <span class="m">50.0</span> <span class="c1">//最小高度为50像素</span>
@@ -306,19 +293,17 @@
   <span class="nl">height:</span> <span class="m">80.0</span><span class="p">,</span>
   <span class="nl">child:</span> <span class="n">redBox</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>空间适配FittedBox：子组件适配父组件空间</p>
-<div class="highlight"><pre><span></span><span class="n">FittedBox</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">FittedBox</span><span class="p">(</span>
   <span class="nl">fit:</span> <span class="n">BoxFit</span><span class="p">.</span><span class="n">contain</span><span class="p">,</span> <span class="c1">// 按照子组件的比例缩放，尽可能多的占据父组件空间</span>
   <span class="nl">child:</span> <span class="n">Container</span><span class="p">(...),</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>封装单行缩放布局：SingleLineFittedBox</p>
-<div class="highlight"><pre><span></span><span class="n">FittedBox</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">FittedBox</span><span class="p">(</span>
   <span class="nl">child:</span> <span class="n">ConstrainedBox</span><span class="p">(</span>
     <span class="nl">constraints:</span> <span class="n">constraints</span><span class="p">.</span><span class="n">copyWith</span><span class="p">(</span>
       <span class="nl">minWidth:</span> <span class="n">constraints</span><span class="p">.</span><span class="n">maxWidth</span><span class="p">,</span>
@@ -327,11 +312,10 @@
     <span class="nl">child:</span> <span class="n">child</span><span class="p">,</span>
   <span class="p">),</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>装饰容器DecoratedBox：背景、边框、渐变</p>
-<div class="highlight"><pre><span></span><span class="n">DecoratedBox</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">DecoratedBox</span><span class="p">(</span>
   <span class="nl">decoration:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
     <span class="nl">gradient:</span> <span class="n">LinearGradient</span><span class="p">(</span><span class="nl">colors:</span><span class="p">[</span><span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span><span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">.</span><span class="n">shade700</span><span class="p">]),</span> <span class="c1">//背景渐变</span>
     <span class="nl">borderRadius:</span> <span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">3.0</span><span class="p">),</span> <span class="c1">//3像素圆角</span>
@@ -345,20 +329,18 @@
   <span class="p">),</span>
 <span class="nl">child:</span> <span class="p">...,</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>变换&nbsp;Transform</p>
-<div class="highlight"><pre><span></span><span class="n">Transform</span><span class="p">.</span><span class="n">translate</span> <span class="c1">// 平移</span>
+<div class="highlight"><pre><span></span><code><span class="n">Transform</span><span class="p">.</span><span class="n">translate</span> <span class="c1">// 平移</span>
 <span class="n">Transform</span><span class="p">.</span><span class="n">rotate</span> <span class="c1">// 旋转</span>
 <span class="n">Transform</span><span class="p">.</span><span class="n">scale</span> <span class="c1">// 缩放</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Transform的变换是应用在绘制阶段，所以无论对子组件应用何种变化，其占用空间的大小和在屏幕上的位置都是固定不变的。</p>
 <p>RotatedBox的变换是在layout阶段，会影响在子组件的位置和大小。</p>
 <p>组合类容器&nbsp;Container具备多种组件的功能</p>
-<div class="highlight"><pre><span></span><span class="n">Container</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Container</span><span class="p">(</span>
   <span class="nl">margin:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20.0</span><span class="p">),</span> <span class="c1">//容器外补白</span>
   <span class="nl">padding:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20.0</span><span class="p">),</span> <span class="c1">//容器内补白</span>
   <span class="nl">constraints:</span> <span class="n">BoxConstraints</span><span class="p">.</span><span class="n">tightFor</span><span class="p">(</span><span class="nl">width:</span> <span class="m">200.0</span><span class="p">,</span> <span class="nl">height:</span> <span class="m">150.0</span><span class="p">),</span><span class="c1">//卡片大小</span>
@@ -367,36 +349,32 @@
   <span class="nl">alignment:</span> <span class="n">Alignment</span><span class="p">.</span><span class="n">center</span><span class="p">,</span> <span class="c1">//卡片内文字居中</span>
   <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;5.20&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>剪裁&nbsp;Clip</p>
-<div class="highlight"><pre><span></span><span class="n">ClipOval</span><span class="p">(</span><span class="nl">child:</span> <span class="n">avatar</span><span class="p">),</span> <span class="c1">//剪裁为圆形</span>
+<div class="highlight"><pre><span></span><code><span class="n">ClipOval</span><span class="p">(</span><span class="nl">child:</span> <span class="n">avatar</span><span class="p">),</span> <span class="c1">//剪裁为圆形</span>
 <span class="n">ClipRRect</span><span class="p">(</span> <span class="c1">//剪裁为圆角矩形</span>
   <span class="nl">borderRadius:</span> <span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">5.0</span><span class="p">),</span>
   <span class="nl">child:</span> <span class="n">avatar</span><span class="p">,</span>
 <span class="p">),</span> 
 <span class="n">ClipRect</span>    <span class="c1">// 溢出部分剪裁</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Scaffold&nbsp;是一个路由页的骨架</p>
-<div class="highlight"><pre><span></span><span class="n">Scaffold</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">Scaffold</span><span class="p">(</span>
   <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(),</span> <span class="c1">// 导航栏</span>
   <span class="nl">drawer:</span> <span class="n">MyDrawer</span><span class="p">(),</span> <span class="c1">// 抽屉</span>
   <span class="nl">bottomNavigationBar:</span> <span class="n">BottomNavigationBar</span><span class="p">(),</span> <span class="c1">// 底部导航</span>
   <span class="nl">floatingActionButton:</span> <span class="n">FloatingActionButton</span><span class="p">(),</span>  <span class="c1">//悬浮按钮</span>
 <span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>颜色和主题</h2>
 <p>color 使用的是 <span class="caps">ARGB</span>,&nbsp;前两位表示透明度</p>
-<div class="highlight"><pre><span></span><span class="c1">// RED</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// RED</span>
 <span class="err">#</span><span class="n">ff0000</span> <span class="c1">// RGB</span>
 <span class="mh">0xffff0000</span> <span class="c1">// ARGB</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>primarySwatch是主题颜色的一个&#8221;样本色&#8221;</p>
     </div><!-- /.entry-content -->
@@ -454,6 +432,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -481,6 +462,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -489,7 +474,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

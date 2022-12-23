@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -71,10 +72,9 @@
 <ol>
 <li>传输到服务器 /home/jyu36&nbsp;并解压</li>
 </ol>
-<div class="highlight"><pre><span></span>xz -d node-v14.18.2-linux-x64.tar.xz
+<div class="highlight"><pre><span></span><code>xz -d node-v14.18.2-linux-x64.tar.xz
 tar -xvf node-v14.18.2-linux-x64.tar
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>软连接&nbsp;(不确定是否必须)</li>
@@ -84,46 +84,189 @@ ln -s /home/nodejs/node-v14.18.2-linux-x64/bin/node&nbsp;/usr/local/bin</p>
 <ol>
 <li>配置环境变量</li>
 </ol>
-<div class="highlight"><pre><span></span>vi /etc/profile
+<div class="highlight"><pre><span></span><code>vi /etc/profile
 
 <span class="nb">export</span> <span class="nv">NODEJS_HOME</span><span class="o">=</span>/home/v-jyu36/node-v14.18.2-linux-x64
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$NODEJS_HOME</span>/bin
 
 <span class="nb">source</span> /etc/profile
-</pre></div>
-
+</code></pre></div>
 
 <h2>安装git</h2>
-<div class="highlight"><pre><span></span><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">git</span> 
-<span class="n">git</span> <span class="c1">--version</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>yum -y install git 
+git --version
+</code></pre></div>
 
 <h2>安装pm2</h2>
-<div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">pm2</span> <span class="o">-</span><span class="k">g</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>npm install pm2 -g
+</code></pre></div>
 
+<hr>
+<h2>安装Anaconda</h2>
+<div class="highlight"><pre><span></span><code>df -h <span class="c1"># 查看磁盘空间</span>
+du -sh *
 
-<h2>操作</h2>
+<span class="nb">cd</span> /home/v-jyu36/ <span class="c1"># 不要用root安装</span>
+wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh 
+chmod +x Anaconda3-2022.05-Linux-x86_64.sh
+./Anaconda3-2022.05-Linux-x86_64.sh
+rm Anaconda3-2022.05-Linux-x86_64.sh
+
+<span class="c1"># 修改环境变量</span>
+vi ~/.bashrc
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/v-jyu36/anaconda3/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span> 
+<span class="nb">source</span> ~/.bashrc
+which python <span class="c1"># ~/anaconda3/bin/python </span>
+
+<span class="c1"># 安装包</span>
+pip install tensorflow
+</code></pre></div>
+
+<h3>Tmux</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装分屏</span>
+<span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">tmux</span> 
+<span class="n">exit</span> <span class="c1"># 退出root</span>
+
+<span class="n">tmux</span> <span class="n">new</span> <span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">session</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="c1"># 新建会话</span>
+<span class="n">tmux</span> <span class="n">split</span><span class="o">-</span><span class="n">window</span> <span class="c1"># 划分上下两个窗格 ctrl+b &quot;</span>
+<span class="n">tmux</span> <span class="n">split</span><span class="o">-</span><span class="n">window</span> <span class="o">-</span><span class="n">h</span> <span class="c1"># 划分左右两个窗格 ctrl+b %</span>
+<span class="n">tmux</span> <span class="n">select</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">U</span> <span class="c1"># 光标切换窗格 </span>
+<span class="n">ctrl</span><span class="o">+</span><span class="n">b</span> <span class="n">方向键下</span> <span class="c1"># 光标切换窗格 </span>
+<span class="n">ctrl</span><span class="o">+</span><span class="n">b</span> <span class="n">x</span> <span class="c1"># 关闭当前窗格 </span>
+
+<span class="n">ipython</span>
+<span class="o">%</span><span class="n">run</span> <span class="n">YogaModel</span><span class="o">-</span><span class="n">ChopModel</span><span class="o">.</span><span class="n">py</span> 
+
+<span class="n">free</span> <span class="c1"># 查看内存</span>
+<span class="n">top</span> <span class="c1"># 观察cpu、内存使用情况</span>
+<span class="n">top</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">进程id</span><span class="o">&gt;</span>
+<span class="n">htop</span> <span class="c1"># ubuntu: apt install htop</span>
+
+<span class="n">tmux</span> <span class="n">ls</span> <span class="c1"># 查看当前所有的 Tmux 会话</span>
+<span class="n">tmux</span> <span class="n">attach</span> <span class="o">-</span><span class="n">t</span> <span class="mi">0</span> <span class="c1"># 用于重新接入某个已存在的会话</span>
+<span class="n">ctrl</span><span class="o">+</span><span class="n">b</span> <span class="n">d</span> <span class="c1"># 退出</span>
+<span class="n">tmux</span> <span class="n">kill</span><span class="o">-</span><span class="n">session</span> <span class="o">-</span><span class="n">t</span> <span class="mi">0</span> <span class="c1"># 杀死某个会话</span>
+</code></pre></div>
+
+<hr>
+<h2>基本命令</h2>
+<ul>
+<li>显示当前路径</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">pwd</span>
+</code></pre></div>
+
+<ul>
+<li>移动文件：mv+源文件/源目录&nbsp;目标文件/目标目录 </li>
+</ul>
+<div class="highlight"><pre><span></span><code>mv home/v-jyu36/DigiCertGlobalRootCA.crt.pem /var/www/iqvia_data/private
+</code></pre></div>
+
+<ul>
+<li>删除文件或目录</li>
+</ul>
+<div class="highlight"><pre><span></span><code>rm -rf src_path
+</code></pre></div>
+
+<ul>
+<li>修改权限</li>
+</ul>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">777</span> src_path
+</code></pre></div>
+
+<ul>
+<li>显示问价大小</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls -lh
+</code></pre></div>
+
+<ul>
+<li>显示文件数量</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls ./excel -l<span class="p">|</span>grep <span class="s2">&quot;^-&quot;</span><span class="p">|</span> wc -l 
+</code></pre></div>
+
+<ul>
+<li>删除5天前的文件 </li>
+</ul>
+<div class="highlight"><pre><span></span><code>find ./excel -name <span class="s2">&quot;*&quot;</span> -mtime +5 -exec rm -rfv <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div>
+
+<ul>
+<li>查看文件所占空间</li>
+</ul>
+<div class="highlight"><pre><span></span><code>du -sh <span class="c1"># 总和</span>
+du -d <span class="m">1</span> <span class="c1"># 当前目录下所有一级子目录所占空间大小</span>
+df -h /var <span class="c1"># 指定目录挂载磁盘剩余空间</span>
+</code></pre></div>
+
+<p>## netstat&nbsp;网络相关信息</p>
+<ul>
+<li>查看所有占用端口号</li>
+</ul>
+<div class="highlight"><pre><span></span><code>netstat -tunlp
+</code></pre></div>
+
+<ul>
+<li>查看占用端口号27999的进程</li>
+</ul>
+<div class="highlight"><pre><span></span><code>netstat -pan | grep 27999
+// tcp6  0  0  :::27999  :::*  LISTEN  15460/node
+</code></pre></div>
+
+<h2>ps 进程信息 Process&nbsp;Status</h2>
+<ul>
+<li>查看指定进程详情</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ps -aux | grep 15460
+// root 15460  0.0  0.2 867324 42508 pts/5 Sl+ 10:14 0:00 node index
+</code></pre></div>
+
+<ul>
+<li>杀死指定进程</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kill 15460
+</code></pre></div>
+
+<ul>
+<li>检查高 <span class="caps">CPU</span> /&nbsp;内存消耗进程</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ps -eo pid,ppid,user,cmd,%mem,%cpu --sort=-%cpu|head -n 10
+</code></pre></div>
+
+<h2>文本操作</h2>
 <ul>
 <li>删除单行</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">dd</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>dd
+</code></pre></div>
 
 <ul>
 <li>删除全部</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">dG</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>dG
+</code></pre></div>
 
 <ul>
 <li>快速定位</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="err">正则匹配</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>/正则匹配
+</code></pre></div>
+
+<hr>
+<h2>连接</h2>
+<ol>
+<li>硬链接：ln/mount</li>
+</ol>
+<p>硬链接的文件是使用同一个inode结构,每一个硬链接使inode的使用计数加一,删除文件时,使用计数减一,当使用计数为零时,才真正删除文件。</p>
+<p>硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。</p>
+<p>mount：用于挂载Linux系统外的文件。操作的对象是设备</p>
+<p>Ln：操作对象是文件</p>
+<ol>
+<li>软链接：ln&nbsp;-s</li>
+</ol>
+<p>软链接的文件内,不是存的数据,而是存的一个文件的全路径名,使用此链接时,会根据此路径找到目标文件，和windows里到快捷方式一样。</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -179,6 +322,9 @@ ln -s /home/nodejs/node-v14.18.2-linux-x64/bin/node&nbsp;/usr/local/bin</p>
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -206,6 +352,10 @@ ln -s /home/nodejs/node-v14.18.2-linux-x64/bin/node&nbsp;/usr/local/bin</p>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -214,7 +364,6 @@ ln -s /home/nodejs/node-v14.18.2-linux-x64/bin/node&nbsp;/usr/local/bin</p>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

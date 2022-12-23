@@ -37,6 +37,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -87,15 +88,15 @@ If a retry is done on <span class="caps">5XX</span> status code, then the client
 <h2>fetch-retry</h2>
 <p>https://www.npmjs.com/package/fetch-retry</p>
 <p>The default behavior of fetch-retry is to wait a fixed amount of time between attempts, but it is also possible to customize this by passing a function as the retryDelay option. The function is supplied three arguments: attempt (starting at 0), error (in case of a network error), and response. It must return a number indicating the&nbsp;delay.</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">originalFetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;isomorphic-fetch&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">originalFetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;isomorphic-fetch&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fetch-retry&#39;</span><span class="p">)(</span><span class="nx">originalFetch</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">retries</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="nx">retryDelay</span><span class="o">:</span> <span class="mi">800</span>
+    <span class="nx">retries</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+    <span class="nx">retryDelay</span><span class="o">:</span> <span class="mf">800</span>
   <span class="p">});</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">retryDelay</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">attempt</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nx">attempt</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// 1000, 2000, 4000</span>
+      <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span> <span class="nx">attempt</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1000</span><span class="p">;</span> <span class="c1">// 1000, 2000, 4000</span>
     <span class="p">}</span>
   <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
@@ -103,7 +104,7 @@ If a retry is done on <span class="caps">5XX</span> status code, then the client
     <span class="c1">// do something with the result</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
   <span class="p">});</span>
-</pre></div>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -159,6 +160,9 @@ If a retry is done on <span class="caps">5XX</span> status code, then the client
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -186,6 +190,10 @@ If a retry is done on <span class="caps">5XX</span> status code, then the client
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -194,7 +202,6 @@ If a retry is done on <span class="caps">5XX</span> status code, then the client
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

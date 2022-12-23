@@ -29,6 +29,7 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
@@ -56,19 +57,7 @@
 	</header>
 	<div class="summary"><h1>Properties&nbsp;属性</h1>
 <h2>存储属性 stored&nbsp;propert</h2>
-<p>一个存储属性就是存储在特定类或结构体的实例里的一个常量或变量&#8212;变量存储属性（var），常量存储属性（let）</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">foo</span><span class="p">:</span> <span class="nb">Double</span>
-</pre></div>
-
-
-<h2>延迟存储属性</h2>
-<p>是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用lazy来标示一个延迟存储属性。必须将延迟存储属性声明成变量（使用var关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。</p>
-<div class="highlight"><pre><span></span><span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">importer</span> <span class="p">=</span> <span class="n">DataImporter</span><span class="p">()</span>
-</pre></div>
-
-
-<h2>计算属性computed&nbsp;property</h2>
-<p>不直接存储值，而是提供一个 getter …</p></div>
+<p>一个存储属性就是存储在特定类或结构体的实例 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -91,14 +80,7 @@
 		</div>
 	</header>
 	<div class="summary"><h1>Access Control&nbsp;访问控制</h1>
-<p>访问控制可以限定你在源文件或模块中访问代码的级别。这个特性可以让我们隐藏功能实现的一些细节，并且可以明确的指定我们提供给其他人的接口中哪些部分是他们可以使用的，哪些是他们看不到的。</p>
-<h2>访问级别</h2>
-<ul>
-<li>
-<p>public (公开, 供外部调用): (for frameworks only) can be used by objects outside my&nbsp;framework</p>
-</li>
-<li>
-<p>internal (默认, 限module内使用): usable by any object in …</p></li></ul></div>
+<p>访问控制可以限定你在源文件或模块中访问代码的级别 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -121,7 +103,7 @@
 		</div>
 	</header>
 	<div class="summary"><h1>UIStackView&nbsp;堆栈视图</h1>
-<p>UIStackView is class in <span class="caps">IOS</span> (like <span class="caps">UI</span> Button and <span class="caps">UI</span> Label). It will take other views and stack them together. It only knows how to stack horizontally or …</p></div>
+<p>UIStackView is class in <span class="caps">IOS</span> (like <span class="caps">UI</span> Button and <span class="caps">UI</span> Label). It will take other views and stack them together. It only knows how to …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -146,12 +128,7 @@
 	<div class="summary"><h2>Key&nbsp;Commands</h2>
 <p>cmd+R&nbsp;运行</p>
 <p>cmd+0&nbsp;打开/关闭左侧文件面板</p>
-<p>cmd+option+0&nbsp;打开/关闭右侧属性面板</p>
-<p>cmd+shift+y&nbsp;打开/关闭底部控制台面板</p>
-<p>cmd+option+enter&nbsp;打开新窗口</p>
-<p>cmd+enter&nbsp;回到一个窗口</p>
-<p>ctrl+i&nbsp;将选中的代码自动缩进</p>
-<p>cmd …</p></div>
+<p>cmd+option+0&nbsp;打开/关闭右侧属性面 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -192,20 +169,7 @@
 <td align="center">VStack</td>
 </tr>
 <tr>
-<td align="center">UIStackView 水平排列时</td>
-<td align="center">HStack</td>
-</tr>
-<tr>
-<td align="center">UIButton</td>
-<td align="center">Button</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">SwiftUI</span>
-
-<span class="kd">struct</span> <span class="nc">ContentView</span><span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
-        <span class="n">Text</span><span class="p">(</span><span class="s">&quot;Hello, World …</span></pre></div></div>
+<td align="center">UIStackView 水 …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -234,14 +198,7 @@
 <p>按住ctrl拖拽进controller的代码</p>
 </li>
 <li>
-<p>点击dashboard上黄色按钮，拖拽到UI，选择函数</p>
-</li>
-</ol>
-<p><img alt="Swift" src="img/swift4.png"></p>
-<p>函数参数（外部名称&nbsp;内部名称：类型）</p>
-<p>目的是为了调用函数，以及函数内部都能read like&nbsp;English</p>
-<div class="highlight"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">touchCard</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">flipCard</span><span class="p">(</span><span class="n">withEmoji</span><span class="p">:</span> <span class="err">&#39;👻&#39;</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">sender …</span></pre></div></div>
+<p>点击dashboard上黄色按钮，拖拽到UI …</p></li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -293,14 +250,7 @@
 	</header>
 	<div class="summary"><p>load view -&gt; fetch data(Network) -&gt; save data -&gt; display(Multithread) -&gt;&nbsp;action</p>
 <h2>WebView&nbsp;可以装网页的容器</h2>
-<p>网页中的代码可以和原生应用代码交互</p>
-<p>UIwebview 有内存泄漏的问题，苹果优化做了&nbsp;webkitbweview</p>
-<div class="highlight"><pre><span></span>  <span class="kd">class</span> <span class="nc">WebViewController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">WKUIDelegate</span><span class="p">,</span> <span class="bp">WKNavigationDelegate</span> <span class="p">{</span>
-
-    <span class="kd">var</span> <span class="nv">webView</span><span class="p">:</span> <span class="bp">WKWebView</span><span class="p">!</span>
-
-    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad …</span></pre></div></div>
+<p>网页中的代码可以和原生 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -328,25 +278,7 @@
 </ol>
 <p>didFinishLauchingOptions第一次打开程序</p>
 <ol>
-<li>SceneDelegate（负责UI）应用的入口和生命周期</li>
-</ol>
-<p>willConnectTo第一加载页面</p>
-<p>sceneWillEnterForeground即将进入前台</p>
-<p>sceneDidBecomeActive进入前台</p>
-<ol>
-<li>ViewController&nbsp;一个页面</li>
-</ol>
-<div class="highlight"><pre><span></span> <span class="k">class</span> <span class="n">ViewController:</span> <span class="n">UIViewController</span>
-</pre></div>
-
-
-<p>UIViewController</p>
-<p>UITabBarController底部tab栏</p>
-<p>UINavigationController数组（栈）路由，有顶层导航栏可以显示页面名字</p>
-<p>UITableViewController&nbsp;list</p>
-<p>UICollectionViewController</p>
-<p>生命周期</p>
-<div class="highlight"><pre><span></span><span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad …</span></pre></div></div>
+<li>SceneDelegate（负责UI）应用的入口和生 …</li></ol></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -374,8 +306,7 @@
 <blockquote>
 <p>Examples: ViewController, UIButton,&nbsp;Concentration</p>
 </blockquote>
-<p>传递时只是传递指针just passing pointers to&nbsp;it</p>
-<p>When does it get cleaned up out of the&nbsp;heap …</p></div>
+<p>传递时只是 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -417,6 +348,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -444,6 +378,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -452,7 +390,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>

@@ -37,13 +37,14 @@
             <li  class="active"><a href="/category/project.html">Project</a></li>
             <li  class="active"><a href="/category/backend.html">Backend</a></li>
             <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
 
         </ul></nav><!-- /#menu -->
     </header>
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›Amazon&nbsp;CloudWatch
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Amazon&nbsp;CloudWatch
                 </section>
 
 
@@ -68,23 +69,20 @@
 <ul>
 <li>Use the command line to install the CloudWatch agent on an Amazon <span class="caps">EC2</span>&nbsp;instance</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">amazonaws</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">amazoncloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">redhat</span><span class="o">/</span><span class="n">amd64</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="p">.</span><span class="n">rpm</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>wget https://s3.amazonaws.com/amazoncloudwatch-agent/redhat/amd64/latest/amazon-cloudwatch-agent.rpm
+</code></pre></div>
 
 <ul>
 <li>Install the package (Red&nbsp;hat)</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">rpm</span> <span class="o">-</span><span class="n">U</span> <span class="p">.</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="p">.</span><span class="n">rpm</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>rpm -U ./amazon-cloudwatch-agent.rpm
+</code></pre></div>
 
 <ul>
 <li>Start the CloudWatch agent configuration&nbsp;wizard</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">aws</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">wizard</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+</code></pre></div>
 
 <h2>Setup&nbsp;wizard</h2>
 <ul>
@@ -96,9 +94,8 @@
 <li>Add another log stream name:&nbsp;output </li>
 <li>To use the command line to start the CloudWatch agent on a&nbsp;server.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">aws</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">amazon</span><span class="o">-</span><span class="n">cloudwatch</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">ctl</span> <span class="o">-</span><span class="n">a</span> <span class="k">fetch</span><span class="o">-</span><span class="n">config</span> <span class="o">-</span><span class="n">m</span> <span class="n">ec2</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="k">c</span> <span class="n">file</span><span class="p">:</span><span class="n">configuration</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">path</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:configuration-file-path
+</code></pre></div>
 
 <ul>
 <li>Replace configuration-file-path with the path to the agent configuration&nbsp;file.</li>
@@ -160,7 +157,7 @@
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/backend.html">Backend</a>
+            <a href="/category/cloud.html">Cloud</a>
         </abbr>
         <p>
         <span class="meta-prep">Author: </span><span>Yoga</span>
@@ -211,6 +208,9 @@
                           <a href="/category/backend.html" >Backend</a>
                         </li>
                         <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
                           <a href="/category/frontend.html" >Frontend</a>
                         </li>
                         <li>
@@ -238,6 +238,10 @@
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
@@ -246,7 +250,6 @@
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/power-bi.html">Power BI</a></span>
