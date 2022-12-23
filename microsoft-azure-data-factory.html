@@ -92,7 +92,7 @@
 <p>Service principal <span class="caps">ID</span>: <Client ID></p>
 <p>Service principal key:&nbsp;###</p>
 <p>To file path: <container></p>
-<h2>Pipelines</h2>
+<h2>Activities -&nbsp;Move</h2>
 <h3><span class="caps">AWS</span> S3 -&gt; Azure Data Lake&nbsp;Storage</h3>
 <p>Source: 
 * Linked service: DelimitedText
@@ -110,6 +110,9 @@
 * Linked service: Azure <span class="caps">SQL</span>&nbsp;Database</p>
 <p>踩坑: ErrorCode=ParquetNotSupportedTypeGeneric,&#8217;Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Parquet file contained column &#8216;txn&#8217;, which is of a non-primitive, unsupported&nbsp;type.,Source=Microsoft.DataTransfer.Richfile.ParquetTransferPlugin,&#8217;</p>
 <p>加上 <em>.snappy.parquet 而不是 </em>.parquet，_delta_log/里包含checkpoint.parquet&nbsp;files</p>
+<h2>Activities -&nbsp;Iteration</h2>
+<h3>ForEach</h3>
+<p>在sql server中创建config&nbsp;table，遍历所有表执行worker</p>
 <hr>
 <h2><span class="caps">IPRO</span></h2>
 <h3>Sharepoint -&gt; Azure Data Lake&nbsp;Storage</h3>

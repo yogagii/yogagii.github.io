@@ -64,18 +64,24 @@
     </header>
     <div class="post-entry">
         <ul>
-<li>Resource&nbsp;Scheduling</li>
+<li>Resource Scheduling<ul>
 <li>Queueing: <strong>队列</strong> &#8212;&nbsp;请求排队的时间。浏览器是有线程限制的，发请求也不能所有的请求同时发送，会将请求加入队列中（Chrome的最大并发连接数是6）。如果说同一时间，发起的同一域名的请求超过了6个，这时候就需要排队了。</li>
-<li>Connection&nbsp;Start</li>
+</ul>
+</li>
+<li>Connection Start<ul>
 <li>Stalled:  <strong>阻塞</strong> &#8212;&nbsp;浏览器得到要发出这个请求的指令，到请求可以发出的等待时间，一般是代理协商、以及等待可复用的TCP连接释放的时间，不包括DNS查询、建立TCP连接等时间等</li>
 <li>Proxy&nbsp;nengotiation</li>
 <li><span class="caps">DNS</span> Lookup: <strong>DNS查找</strong> &#8212;&nbsp;请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址</li>
 <li>Initial connection: <strong>建立TCP连接</strong> &#8212;&nbsp;客户端从发请求开始到TCP握手结束这一段，包括DNS查询+Proxy时间+TCP握手时间</li>
 <li><span class="caps">SSL</span>: <strong>安全套阶层</strong> &#8212; 加密数据，https&nbsp;是安全套接字层超文本传输协议，就是在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。</li>
-<li>Request/Reponse</li>
+</ul>
+</li>
+<li>Request/Reponse<ul>
 <li>Request sent:  <strong>发送请求</strong> &#8212;&nbsp;请求第一个字节发出前到最后一个字节发出后的时间，也就是上传时间</li>
 <li>Waiting(<span class="caps">TTFB</span>): <strong>首字节时间</strong> &#8212; 请求发出后，到收到响应的第一个字节所花费的时间(Time To First&nbsp;Byte)</li>
 <li>Content Download: <strong>内容下载</strong> &#8212;&nbsp;收到响应的第一个字节，到接受完最后一个字节的时间，就是下载时间</li>
+</ul>
+</li>
 </ul>
 <h2>Stalled优化：</h2>
 <p>浏览器对同一个主机域名的并发连接数有限制，因此如果当前的连接数已经超过上限，那么其余请求就会被阻塞，等待新的可用连接；此外脚本也会阻塞其他组件的下载；</p>
