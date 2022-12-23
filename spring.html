@@ -212,8 +212,8 @@
 </ul>
 <p>法一：</p>
 <div class="highlight"><pre><span></span><code><span class="c">&lt;!--  main/resources/mapper/UserMapper.xml --&gt;</span>
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&quot;com.jnj.jcrd.dao.UserMapper&quot;</span> <span class="nt">&gt;</span>
-  <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&quot;BaseResultMap&quot;</span> <span class="na">type=</span><span class="s">&quot;com.jnj.jcrd.model.User&quot;</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&quot;com.xxx.jcrd.dao.UserMapper&quot;</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&quot;BaseResultMap&quot;</span> <span class="na">type=</span><span class="s">&quot;com.xxx.jcrd.model.User&quot;</span> <span class="nt">&gt;</span>
     <span class="nt">&lt;id</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">property=</span><span class="s">&quot;id&quot;</span> <span class="na">jdbcType=</span><span class="s">&quot;INTEGER&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;result</span> <span class="na">column=</span><span class="s">&quot;wwid&quot;</span> <span class="na">property=</span><span class="s">&quot;wwid&quot;</span> <span class="na">jdbcType=</span><span class="s">&quot;VARCHAR&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;result</span> <span class="na">column=</span><span class="s">&quot;first_name&quot;</span> <span class="na">property=</span><span class="s">&quot;firstName&quot;</span> <span class="na">jdbcType=</span><span class="s">&quot;NVARCHAR&quot;</span> <span class="nt">/&gt;</span>
@@ -227,9 +227,9 @@
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// main/java/.../dao/UserMapper.java</span>
-<span class="kn">package</span> <span class="nn">com.jnj.jcrd.dao</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">com.xxx.jcrd.dao</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">com.jnj.jcrd.model.User</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.xxx.jcrd.model.User</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="p">;</span>
 
 <span class="nd">@Mapper</span>

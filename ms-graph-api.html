@@ -91,7 +91,7 @@
 <span class="p">}</span>
 
 <span class="kd">const</span> <span class="nx">tokenRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-  <span class="s1">&#39;https://login.microsoftonline.com/juj.onmicrosoft.com/oauth2/v2.0/token&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;https://login.microsoftonline.com/xxx.onmicrosoft.com/oauth2/v2.0/token&#39;</span><span class="p">,</span>
   <span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tokenReq</span><span class="p">),</span>
   <span class="p">{</span>
     <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
@@ -172,7 +172,7 @@
       <span class="nx">client_secret</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientSecret</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="kd">const</span> <span class="nx">tokenRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-      <span class="s1">&#39;https://login.microsoftonline.com/juj.onmicrosoft.com/oauth2/v2.0/token&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;https://login.microsoftonline.com/xxx.onmicrosoft.com/oauth2/v2.0/token&#39;</span><span class="p">,</span>
       <span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tokenReq</span><span class="p">),</span>
       <span class="p">{</span>
         <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
@@ -200,7 +200,7 @@
 </thead>
 <tbody>
 <tr>
-<td><span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/juj.sharepoint.com:/teams/#siteName#</td>
+<td><span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/xxx.sharepoint.com:/teams/#siteName#</td>
 <td>siteName: string</td>
 <td>&#8220;sites&#8221;: [ { &#8220;@odata.type&#8221;: &#8220;microsoft.graph.site&#8221;} ]</td>
 </tr>
@@ -309,7 +309,7 @@
 <td>pageUrl</td>
 <td>string</td>
 <td><span class="caps">URL</span> that display item in browser</td>
-<td>https://juj.sharepoint.com/:w:/r/teams/#siteName#/_layouts/15/Doc.aspx?sourcedoc=%7B${item.eTag.slice(1, 37)}%7D&amp;file=${encodeURI(item.fields.LinkFilename)}&amp;action=default&amp;mobileredirect=true</td>
+<td>https://xxx.sharepoint.com/:w:/r/teams/#siteName#/_layouts/15/Doc.aspx?sourcedoc=%7B${item.eTag.slice(1, 37)}%7D&amp;file=${encodeURI(item.fields.LinkFilename)}&amp;action=default&amp;mobileredirect=true</td>
 </tr>
 </tbody>
 </table>

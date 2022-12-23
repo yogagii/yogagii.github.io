@@ -64,7 +64,7 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.juj.com/scm/asx-nbbg/fpa_mobile.git</p>
+        <p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.xxx.com/scm/asx-nbbg/fpa_mobile.git</p>
 <p>Branch Specifier:&nbsp;*/develop</p>
 <p>Build Triggers: 轮询 <span class="caps">SCM</span></p>
 <p>Build:&nbsp;执行shell</p>
@@ -72,14 +72,14 @@
 <span class="n">npm</span> <span class="n">install</span> <span class="n">aws</span><span class="o">-</span><span class="n">sdk</span> <span class="o">&amp;</span>
 <span class="k">export</span> <span class="n">NODE_OPTIONS</span><span class="o">=--</span><span class="n">max_old_space_size</span><span class="o">=</span><span class="mi">4096</span>
 <span class="n">npm</span> <span class="n">run</span> <span class="n">build</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">aws</span> <span class="n">s3</span> <span class="n">rm</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">juj</span><span class="o">-</span><span class="n">fpa</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">mobileFrontend</span><span class="o">/</span><span class="n">m</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">show</span><span class="o">-</span><span class="n">errors</span>
-<span class="n">aws</span> <span class="n">s3</span> <span class="n">cp</span> <span class="n">dist</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">juj</span><span class="o">-</span><span class="n">fpa</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">mobileFrontend</span><span class="o">/</span><span class="n">m</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">--</span><span class="n">sse</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">show</span><span class="o">-</span><span class="n">errors</span>
+<span class="n">aws</span> <span class="n">s3</span> <span class="n">rm</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">xxx</span><span class="o">-</span><span class="n">fpa</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">mobileFrontend</span><span class="o">/</span><span class="n">m</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">show</span><span class="o">-</span><span class="n">errors</span>
+<span class="n">aws</span> <span class="n">s3</span> <span class="n">cp</span> <span class="n">dist</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">xxx</span><span class="o">-</span><span class="n">fpa</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">mobileFrontend</span><span class="o">/</span><span class="n">m</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">--</span><span class="n">sse</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">show</span><span class="o">-</span><span class="n">errors</span>
 </code></pre></div>
 
 <p>Umi配置:</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="nx">define</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s1">&#39;process.env.backendUrl&#39;</span><span class="o">:</span> <span class="s1">&#39;https://api.fpa.juj.com&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;process.env.backendUrl&#39;</span><span class="o">:</span> <span class="s1">&#39;https://api.fpa.xxx.com&#39;</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;/m/index.html#/&#39;</span><span class="p">,</span>
   <span class="nx">publicPath</span><span class="o">:</span> <span class="s1">&#39;/m/&#39;</span><span class="p">,</span>
@@ -118,7 +118,7 @@
 <p><span class="caps">JCRD</span>-Deployment -&gt; New Item -&gt; Freestyle project (<span class="caps">DEV</span>-<span class="caps">JCRD</span>-Frontend)</p>
 <p><span class="caps">DEV</span>-<span class="caps">JCRD</span>-Frontend -&gt;&nbsp;configure:</p>
 <p><strong>Source Code&nbsp;Management:</strong> </p>
-<p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.jnj.com/scm/xxx.git</p>
+<p>Repository <span class="caps">URL</span>:&nbsp;https://sourcecode.xxx.com/scm/xxx.git</p>
 <p>Credentials:&nbsp;sa-itsus-jbge-devuser</p>
 <p>Branch Specifier (blank for &#8216;any&#8217;):&nbsp;*/dev</p>
 <p><strong>Build&nbsp;Triggers:</strong> </p>

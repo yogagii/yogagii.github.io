@@ -110,20 +110,20 @@ docker rm 0bfccc26fcfe
 <span class="nx">docker</span> <span class="nx">volume</span> <span class="nx">create</span> <span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span>
 <span class="nx">docker</span> <span class="nx">volume</span> <span class="nx">inspect</span> <span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span>
 
-<span class="nx">docker</span> <span class="nx">login</span> <span class="nx">juj</span><span class="p">.</span><span class="nx">artifactrepo</span><span class="p">.</span><span class="nx">juj</span><span class="p">.</span><span class="nx">com</span>
+<span class="nx">docker</span> <span class="nx">login</span> <span class="nx">xxx</span><span class="p">.</span><span class="nx">artifactrepo</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">com</span>
 <span class="c1">// username</span>
 <span class="c1">// password</span>
-<span class="nx">docker</span> <span class="nx">pull</span> <span class="nx">juj</span><span class="p">.</span><span class="nx">artifactrepo</span><span class="p">.</span><span class="nx">juj</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">xena</span><span class="o">/</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">toolbox</span>
-<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">itd</span> <span class="o">--</span><span class="nx">name</span><span class="o">=</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">toolbox</span> <span class="o">--</span><span class="nx">mount</span> <span class="nx">source</span><span class="o">=</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span><span class="p">,</span><span class="nx">target</span><span class="o">=</span><span class="err">/root/xena juj.artifactrepo.juj.com/xena/xena-training-toolbox</span>
+<span class="nx">docker</span> <span class="nx">pull</span> <span class="nx">xxx</span><span class="p">.</span><span class="nx">artifactrepo</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">xena</span><span class="o">/</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">toolbox</span>
+<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">itd</span> <span class="o">--</span><span class="nx">name</span><span class="o">=</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">toolbox</span> <span class="o">--</span><span class="nx">mount</span> <span class="nx">source</span><span class="o">=</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span><span class="p">,</span><span class="nx">target</span><span class="o">=</span><span class="err">/root/xena xxx.artifactrepo.xxx.com/xena/xena-training-toolbox</span>
 <span class="nx">Copy</span> <span class="nx">to</span> <span class="nx">clipboard</span>
 
 <span class="c1">// open docker extension screen</span>
 <span class="nx">ll</span>
 <span class="c1">// /root/xena </span>
 <span class="nx">kubectl</span>
-<span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span> <span class="s2">&quot;TST-ITS-SCMStudent#@its.juj.com&quot;</span>
+<span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span> <span class="s2">&quot;TST-ITS-SCMStudent#@its.xxx.com&quot;</span>
 <span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="nx">student</span><span class="err">#</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//sourcecode.juj.com/scm/asx-ncnl/student#.git</span>
+<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//sourcecode.xxx.com/scm/asx-ncnl/student#.git</span>
 </code></pre></div>
 
 <p><span class="caps">JPM</span> Application Development&nbsp;Pipeline</p>

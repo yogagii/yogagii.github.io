@@ -83,7 +83,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="c1">--global user.email &quot;youremail@emai.com&quot;</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://user@sourcecode.juj.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="n">remote</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="ss">&quot;https://user@sourcecode.xxx.com/scm/asx-xxxx/fpa_frontend.git&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <ul>
@@ -366,7 +366,7 @@ git push --tag
 <p>vim&nbsp;网址</p>
 <div class="highlight"><pre><span></span><code>// build
 server {
-    server_name hr_hackathon.jujadc.com;
+    server_name hr_hackathon.xxx.com;
     root /usr/share/nginx/fpa_share_doc/dist;
     location / {
       try_files $uri $uri/ /index.html;
@@ -374,7 +374,7 @@ server {
   }
 // 单页
 server {
-  server_name project_organization.jujadc.com;
+  server_name project_organization.xxx.com;
   root /root/www/project_organization;
   index dateBar.html;
 }
@@ -383,7 +383,7 @@ server {
 <ul>
 <li>软连接:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>ln -s /etc/nginx/sites-available/hr_hackathon.jujadc.com /etc/nginx/sites-enabled
+<div class="highlight"><pre><span></span><code>ln -s /etc/nginx/sites-available/hr_hackathon.xxx.com /etc/nginx/sites-enabled
 </code></pre></div>
 
 <ul>
@@ -514,7 +514,7 @@ pm2 env 0
 </code></pre></div>
 
 <h2>OpenSSL</h2>
-<div class="highlight"><pre><span></span><code><span class="nv">openssl</span> <span class="nv">s_client</span> <span class="o">-</span><span class="k">connect</span> <span class="nv">wddfx</span>.<span class="nv">juj</span>.<span class="nv">com</span>:<span class="mi">443</span> <span class="o">//</span> <span class="nv">https</span>默认<span class="mi">443</span>
+<div class="highlight"><pre><span></span><code><span class="nv">openssl</span> <span class="nv">s_client</span> <span class="o">-</span><span class="k">connect</span> <span class="nv">wddfx</span>.<span class="nv">xxx</span>.<span class="nv">com</span>:<span class="mi">443</span> <span class="o">//</span> <span class="nv">https</span>默认<span class="mi">443</span>
 <span class="nv">nslookup</span> <span class="mi">10</span>.<span class="mi">47</span>.<span class="mi">227</span>.<span class="nv">xxx</span> <span class="o">//</span> 诊断网络问题
 </code></pre></div>
     </div><!-- /.entry-content -->

@@ -70,7 +70,7 @@
 <p>困难：没有找到用于保存尚未创建的workbook的接口，目前已尝试过saveAsync和rememberCustomViewAsync都不行</p>
 <h3>尝试方法二：</h3>
 <p>前端模拟tableau保存的流程，点击我们的按钮时，请求五六个tableau的接口，根据返回的数据照着做一个保存的窗口，例如:</p>
-<p>https://prodbitabcrp.juj.com/vizportal/api/web/v1/getDestinationProjects</p>
+<p>https://prodbitabcrp.xxx.com/vizportal/api/web/v1/getDestinationProjects</p>
 <p>困难：跨域问题，无法直接调用tableau的接口</p>
 <h3>尝试方法三：</h3>
 <p>前端做个按钮，点击后向后端发送workbook信息，让后端调用tableau的接口完成保存</p>

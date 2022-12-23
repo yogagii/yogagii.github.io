@@ -320,8 +320,8 @@
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">FUNCTION</span> <span class="n">ToDouble</span><span class="p">(</span><span class="n">value</span> <span class="n">STRING</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="n">DOUBLE</span> <span class="k">RETURN</span> <span class="n">double</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">replace</span><span class="p">(</span><span class="k">trim</span><span class="p">(</span><span class="n">value</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="n">LandingTable</span> <span class="o">=</span> <span class="s1">&#39;STG.JNJ_Inventory_CN0&#39;</span>
-<span class="n">CSTGTable</span> <span class="o">=</span> <span class="s1">&#39;CSTG.JNJ_Inventory_CN0&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">LandingTable</span> <span class="o">=</span> <span class="s1">&#39;STG.Inventory_CN&#39;</span>
+<span class="n">CSTGTable</span> <span class="o">=</span> <span class="s1">&#39;CSTG.Inventory_CN&#39;</span>
 <span class="n">TableColumn</span><span class="o">=</span><span class="s1">&#39;WhN, GRDate, PutawayStock&#39;</span>
 <span class="n">CleanColumn</span><span class="o">=</span><span class="s2">&quot;WhN, TO_DATE(GRDate,&#39;yyyy/MM/dd&#39;) GRDate, ToDouble(PutawayStock) PutawayStock&quot;</span>
 
