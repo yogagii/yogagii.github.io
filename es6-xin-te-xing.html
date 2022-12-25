@@ -153,47 +153,6 @@
   <span class="k">return</span> <span class="p">[...</span><span class="ow">new</span> <span class="nb">Set</span><span class="p">(</span><span class="k">this</span><span class="p">)];</span>
 <span class="p">};</span>
 </code></pre></div>
-
-<hr>
-<h2><span class="caps">ES2021</span></h2>
-<p>Promise.race()&nbsp;承诺列表中寻找第一个履行或拒绝的承诺；</p>
-<p>Promise.any()&nbsp;是从承诺列表中查找第一个履行的承诺。</p>
-<p>判断是否存在缓存，缓存中有数据直接返回，缓存中无数据 -&gt;&nbsp;从数据库获取。</p>
-<p>缺点：1.&nbsp;缓存数据不更新，2.不能并发</p>
-<p>Promise.race 在cacheGet中reject导致拒绝，无法返回数据库获得数据，Promise.any&nbsp;在cacheGet中reject不影响，会返回数据库数据</p>
-<p>优势：1. 用缓存数据直接相应接口，解决504，同时读取数据库更新缓存，保证接口每次获得最新数据，2.&nbsp;读缓存和度数据库可并发</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">cacheGet</span><span class="p">(</span><span class="nx">key</span>: <span class="kt">any</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">resolve</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="p">[</span><span class="nx">examlist</span><span class="p">,</span> <span class="nx">userlist</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">ExamDto</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span>
-  <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
-    <span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">examsService</span><span class="p">.</span><span class="nx">getBehaviorList</span><span class="p">(),</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;examlist&quot;</span><span class="p">),</span>
-    <span class="p">]),</span>
-    <span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">usersService</span><span class="p">.</span><span class="nx">getUserList</span><span class="p">(),</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;userlist&quot;</span><span class="p">),</span>
-    <span class="p">]),</span>
-  <span class="p">]);</span>
-</code></pre></div>
-
-<p>tsconfig.json</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;es2021&quot;</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -278,13 +237,14 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
-                        <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
@@ -293,7 +253,6 @@
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
-                        <span><a href="/tag/power-bi.html">Power BI</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>

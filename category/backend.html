@@ -224,40 +224,6 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/adaptive-card.html" rel="bookmark" title="Permalink to Adaptive Card">Adaptive&nbsp;Card</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2021-06-05T00:00:00+08:00"> 
-				<a href="/archive/2021/ 6/index.html">六 05 六月 2021 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Mailer</h2>
-<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@nestjs</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">mailer</span><span class="w"></span>
-</code></pre></div>
-
-<p>email.module.ts</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MailerModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">EjsAdapter</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer/dist/adapters/ejs.adapter&#39;</span><span class="p">;</span>
-
-<span class="err">@</span><span class="nx">Module</span><span class="p">({</span>
-  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span>
-    <span class="nx">MailerModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
-      <span class="nx">transport</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;mx …</span></code></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
 			<a href="/ms-graph-api.html" rel="bookmark" title="Permalink to MS Graph API"><span class="caps">MS</span> Graph <span class="caps">API</span></a>
 		</h2>
 		<div class="post-info">
@@ -302,6 +268,48 @@
       <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
           <span class="s1">&#39;X-SAP-LogonToken&#39;</span><span class="o">:</span> <span class="nx">token …</span></code></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/token.html" rel="bookmark" title="Permalink to Token">Token</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-04-13T00:00:00+08:00"> 
+				<a href="/archive/2021/ 4/index.html">二 13 四月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th><span class="caps">SI</span>. No.</th>
+<th>Description</th>
+<th><span class="caps">REST</span> <span class="caps">API</span></th>
+<th>Http Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Logon using username and password</td>
+<td>http://host:<port>/biprws/vx/logon/long</td>
+<td><span class="caps">GET</span>,<span class="caps">POST</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Logoff (token must be in Header)</td>
+<td>http …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -363,9 +371,6 @@
                                 </li>
                                 <li>
                                   <a href="/nestjs.html">NestJS</a>
-                                </li>
-                                <li>
-                                  <a href="/adaptive-card.html">Adaptive&nbsp;Card</a>
                                 </li>
                                 <li>
                                   <a href="/ms-graph-api.html"><span class="caps">MS</span> Graph <span class="caps">API</span></a>
@@ -435,13 +440,14 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
-                        <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
@@ -450,7 +456,6 @@
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
-                        <span><a href="/tag/power-bi.html">Power BI</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>

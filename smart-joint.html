@@ -64,6 +64,7 @@
     </header>
     <div class="post-entry">
         <h2>关键点检测</h2>
+<h2>Keras</h2>
 <h3>Step1:&nbsp;Keras模型</h3>
 <p>在Keras中有两种深度学习的模型：序列模型（Sequential）和通用模型（Model）</p>
 <ul>
@@ -212,6 +213,19 @@
 <div class="highlight"><pre><span></span><code><span class="n">pre</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 </code></pre></div>
 
+<h2>Pytorch</h2>
+<ul>
+<li>UniPost</li>
+</ul>
+<p>罗切斯特大学，人体姿势估计模型，以ResNet为主干</p>
+<p>分层的概率图：24个点+背景层=共25层</p>
+<p><strong>用重参数技巧优化Soft-Argmax：</strong></p>
+<p>直接对坐标值进行监督，模型还能预测概率图，性能强过单纯用全连接层回归坐标值，适用于小尺寸、低算力。</p>
+<p><strong>LabelSmoothing：</strong></p>
+<p>标注是有误差的，人工标注的结果应该是围绕着真实位置，以某种概率进行分布的（正态分布的形状）。Soft-Argmax其实相当于对人工标注进行了一次软化，让我们的人工标注不那么强硬和自信，从学习one-hot变成了学习一种概率分布。</p>
+<p><strong>自适应的权重：</strong></p>
+<p>一个“好”的概率分布形状，应当是“单峰且尖锐的”，换句话说，概率分布最高值点应当正好在GroundTruth附近。而“不好”的概率分布形状各异，根据这个形状我们就可以判断模型对于自己输出的“自信程度”，GFLv2由此学习出一个自适应的权重来指导模型的分类表征，是非常高效且合理的。</p>
+<p>https://zhuanlan.zhihu.com/p/468208003</p>
 <h2>霍夫变换</h2>
 <p>霍夫变换是图像处理中识别几何形状（直线，圆，椭圆）的一种方法，核心思想是把笛卡尔坐标系中的点集映射到霍夫空间（极坐标系）的一个点上</p>
 <div class="highlight"><pre><span></span><code><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;circle.jpg&#39;</span><span class="p">)</span>
@@ -244,10 +258,31 @@
 <span class="n">getImageVar</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </code></pre></div>
 
+<h2>假体匹配：最优解</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">Bounds</span><span class="p">,</span> <span class="n">minimize</span><span class="p">,</span> <span class="n">NonlinearConstraint</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">Bounds</span><span class="p">([</span><span class="nb">range</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">constraint1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">...</span>
+<span class="n">nonlinear_constraint1</span> <span class="o">=</span> <span class="n">NonlinearConstraint</span><span class="p">(</span><span class="n">constraint1</span><span class="p">,</span> <span class="p">[</span><span class="nb">range</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">constraint2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">...</span>   
+<span class="n">nonlinear_constraint2</span> <span class="o">=</span> <span class="n">NonlinearConstraint</span><span class="p">(</span><span class="n">constraint2</span><span class="p">,</span> <span class="p">[</span><span class="nb">range</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">...</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="p">[</span><span class="nb">range</span><span class="p">],</span> <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">nonlinear_constraint1</span><span class="p">,</span> <span class="n">nonlinear_constraint2</span><span class="p">],</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
+</code></pre></div>
+
+<p>GroundTruth&nbsp;人工标记点带入，与专家手工结果比较 </p>
+<p>AI的目标是为了使预测向groundTruth靠近，允许+-2个size的误差，人工标记的结果是天花板，理论上应该与专家手工结果一致</p>
 <h2>图像处理</h2>
 <ol>
 <li>读取图像</li>
 </ol>
+<p>在数学规划模型中，minimize提供的方法能够解决无/有（线性、非线性）约束的多个决策变量目标函数的最优化问题</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">img</span><span class="o">=</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../9000099L.png&#39;</span><span class="p">)</span>
@@ -403,13 +438,14 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
-                        <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
@@ -418,7 +454,6 @@
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
-                        <span><a href="/tag/power-bi.html">Power BI</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>

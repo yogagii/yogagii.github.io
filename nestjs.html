@@ -420,6 +420,72 @@ second <span class="o">(</span>optional<span class="o">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<h2>Authentication&nbsp;身份验证</h2>
+<p>Passport是 node.js 身份验证库，Passport&nbsp;执行步骤：</p>
+<ol>
+<li>验证用户的credentials (username/password, <span class="caps">JSON</span> Web Token (<span class="caps">JWT</span>), or identity&nbsp;token</li>
+<li>给经过身份验证的状态签发token（<span class="caps">JWT</span>），或创建一个 Express&nbsp;会话</li>
+<li>将经过身份验证的用户的信息附加到请求对象以便进一步使用</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">JwtService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/jwt&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">CipherService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;../common/cipher&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">jwtConstants</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./constants&#39;</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AuthService</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span>
+    <span class="kr">private</span> <span class="nx">readonly</span> <span class="nx">jwtService</span><span class="o">:</span> <span class="nx">JwtService</span><span class="p">,</span>
+    <span class="kr">private</span> <span class="nx">cipherService</span><span class="o">:</span> <span class="nx">CipherService</span><span class="p">,</span>
+  <span class="p">)</span> <span class="p">{}</span>
+
+  <span class="k">async</span> <span class="nx">validateUser</span><span class="p">(</span><span class="nx">username</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">pass</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span>
+      <span class="nx">username</span> <span class="o">===</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADMIN_USERNAME</span> <span class="o">&amp;&amp;</span>
+      <span class="nx">pass</span> <span class="o">===</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADMIN_PASSWORD</span>
+    <span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="nx">username</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">};</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">login</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;login: &#39;</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">sub</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">cipherService</span><span class="p">.</span><span class="nx">encryptAES128ECB</span><span class="p">(</span>
+        <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+        <span class="nx">jwtConstants</span><span class="p">.</span><span class="nx">cipherKey</span><span class="p">,</span>
+      <span class="p">),</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">access_token</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">jwtService</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Node.js提供了一个内置的crypto模块可用于加密和解密字符串</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createCipheriv</span><span class="p">,</span> <span class="nx">createDecipheriv</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;crypto&#39;</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">CipherService</span> <span class="p">{</span>
+  <span class="nx">encryptAES128ECB</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">key</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cipher</span> <span class="o">=</span> <span class="nx">createCipheriv</span><span class="p">(</span><span class="s1">&#39;aes-128-ecb&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+    <span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">encrypted</span> <span class="o">=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">encrypted</span> <span class="o">+</span> <span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">decryptAES128ECB</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">key</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cipher</span> <span class="o">=</span> <span class="nx">createDecipheriv</span><span class="p">(</span><span class="s1">&#39;aes-128-ecb&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+    <span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">receivedPlaintext</span> <span class="o">=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">receivedPlaintext</span> <span class="o">+</span> <span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -504,13 +570,14 @@ second <span class="o">(</span>optional<span class="o">)</span>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
-                        <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/nest.html">nest</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
@@ -519,7 +586,6 @@ second <span class="o">(</span>optional<span class="o">)</span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
-                        <span><a href="/tag/power-bi.html">Power BI</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
                         <span><a href="/tag/token.html">Token</a></span>
