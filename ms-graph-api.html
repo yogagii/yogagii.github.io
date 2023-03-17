@@ -44,7 +44,7 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›<span class="caps">MS</span> Graph <span class="caps">API</span>
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›<span class="caps">MS</span> Graph <span class="caps">API</span>
                 </section>
 
 
@@ -208,116 +208,99 @@
 </table>
 <h3>Get document&nbsp;lists</h3>
 <p>Get the collection of lists for a&nbsp;site.</p>
-<table>
-<thead>
-<tr>
-<th><span class="caps">API</span></th>
-<th>params</th>
-<th>response</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/#site-id#/lists</td>
-<td>docSiteId: string</td>
-<td>&#8220;lists&#8221;: [ { &#8220;@odata.type&#8221;: &#8220;microsoft.graph.list&#8221; }]</td>
-</tr>
-</tbody>
-</table>
+<p><span class="caps">API</span> | params | response<br>
+| - | - | -
+<span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/#site-id#/lists | docSiteId: string | &#8220;lists&#8221;: [ { &#8220;@odata.type&#8221;: &#8220;microsoft.graph.list&#8221;&nbsp;}]</p>
 <h3>Get document from each&nbsp;list</h3>
 <p>Returns the metadata for an item in a&nbsp;list.</p>
-<table>
-<thead>
-<tr>
-<th><span class="caps">API</span></th>
-<th>params</th>
-<th>response</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/#site-id#/lists/#list-id#/items/</td>
-<td>docSiteId: string, list.id: string, expand: fields(select)</td>
-<td>&#8220;items&#8221;: [ { &#8220;@odata.type&#8221;: &#8220;microsoft.graph.baseItem&#8221; }]</td>
-</tr>
-</tbody>
-</table>
+<p><span class="caps">API</span> | params | response<br>
+| - | - | -
+<span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/#site-id#/lists/#list-id#/items/ | docSiteId: string, list.id: string, expand: fields(select) | &#8220;items&#8221;: [ { &#8220;@odata.type&#8221;: &#8220;microsoft.graph.baseItem&#8221;&nbsp;}]</p>
 <p>microsoft.graph.baseItem:</p>
-<table>
-<thead>
-<tr>
-<th>Property name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>The unique identifier of the item. Read-only.</td>
-</tr>
-<tr>
-<td>createdBy</td>
-<td>identitySet</td>
-<td>Identity of the creator of this item. Read-only.</td>
-</tr>
-<tr>
-<td>createdDateTime</td>
-<td>DateTimeOffset</td>
-<td>The date and time the item was created. Read-only.</td>
-</tr>
-<tr>
-<td>eTag</td>
-<td>string</td>
-<td>ETag for the item. Read-only.</td>
-</tr>
-<tr>
-<td>lastModifiedBy</td>
-<td>identitySet</td>
-<td>Identity of the last modifier of this item. Read-only.</td>
-</tr>
-<tr>
-<td>lastModifiedDateTime</td>
-<td>DateTimeOffset</td>
-<td>The date and time the item was last modified. Read-only.</td>
-</tr>
-<tr>
-<td>parentReference</td>
-<td>itemReference</td>
-<td>Parent information, if the item has a parent. Read-write.</td>
-</tr>
-<tr>
-<td>webUrl</td>
-<td>string (url)</td>
-<td><span class="caps">URL</span> that displays the item in the browser. Read-only.</td>
-</tr>
-</tbody>
-</table>
+<p>Property name | Type | Description
+| - | - | -
+id | string | The unique identifier of the item. Read-only.
+createdBy | identitySet | Identity of the creator of this item. Read-only.
+createdDateTime | DateTimeOffset | The date and time the item was created. Read-only.
+eTag | string | ETag for the item. Read-only.
+lastModifiedBy | identitySet | Identity of the last modifier of this item. Read-only.
+lastModifiedDateTime | DateTimeOffset | The date and time the item was last modified. Read-only.
+parentReference | itemReference | Parent information, if the item has a parent. Read-write.
+webUrl | string (url) | <span class="caps">URL</span> that displays the item in the browser.&nbsp;Read-only.</p>
 <p>additional&nbsp;item:</p>
-<table>
-<thead>
-<tr>
-<th>Property name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pageUrl</td>
-<td>string</td>
-<td><span class="caps">URL</span> that display item in browser</td>
-<td>https://xxx.sharepoint.com/:w:/r/teams/#siteName#/_layouts/15/Doc.aspx?sourcedoc=%7B${item.eTag.slice(1, 37)}%7D&amp;file=${encodeURI(item.fields.LinkFilename)}&amp;action=default&amp;mobileredirect=true</td>
-</tr>
-</tbody>
-</table>
+<p>Property name | Type | Description | Value
+| - | - | - | -
+pageUrl | string | <span class="caps">URL</span> that display item in browser | https://xxx.sharepoint.com/:w:/r/teams/#siteName#/_layouts/15/Doc.aspx?sourcedoc=%7B${item.eTag.slice(1,&nbsp;37)}%7D&amp;file=${encodeURI(item.fields.LinkFilename)}&amp;action=default&amp;mobileredirect=true</p>
+<hr>
+<h2>Sharepoint <span class="caps">API</span></h2>
+<p>Step1. 在 portal.azure.com 新建app (App registrations) 并生成client&nbsp;secret</p>
+<p>Step2. 在 teams 里 create a team, Apps -&gt; Sharepoint -&gt; Copy&nbsp;link</p>
+<p>Step3. Grant permission to your app go to&nbsp;https://[YourSharePointCollectionURL]/_layouts/15/appinv.aspx</p>
+<p><img alt="sharepoint api" src="img/sharepointapi1.png"></p>
+<h3>Authentication&nbsp;Token</h3>
+<p><strong><span class="caps">POST</span></strong>&nbsp;https://accounts.accesscontrol.windows.net/{{tenantId}}/tokens/OAuth/2/</p>
+<p>Headers: Content-Type =&nbsp;application/x-www-form-urlencoded</p>
+<p>Body:</p>
+<p>Key | Value
+| - | -
+client_id | {{clientId}}@{{tenantId}}
+resource | 00000003-0000-0ff1-ce00-000000000000/jnj.sharepoint.com@{{tenantId}}
+client_secret | {{secret_value}}
+grant_type |&nbsp;client_credentials</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">json</span>
+
+<span class="n">token_url</span> <span class="o">=</span> <span class="s1">&#39;https://accounts.accesscontrol.windows.net/</span><span class="si">%s</span><span class="s1">/tokens/OAuth/2/&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">tenantId</span><span class="p">)</span>
+
+<span class="n">auth_config</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;grant_type&#39;</span><span class="p">:</span> <span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">@</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">clientId</span><span class="p">,</span> <span class="n">tenantId</span><span class="p">),</span>
+    <span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="n">clientSecret</span><span class="p">,</span>
+    <span class="s1">&#39;resource&#39;</span><span class="p">:</span> <span class="s1">&#39;00000003-0000-0ff1-ce00-000000000000/xxx.sharepoint.com@</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">tenantId</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">token_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">auth_config</span><span class="p">)</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<h3>Get List by&nbsp;title</h3>
+<p><strong><span class="caps">GET</span></strong> https://[YourSharePointCollectionURL]/_api/web/lists/GetByTitle(&#8216;[list&nbsp;name]&#8217;)/items</p>
+<p>Headers: Authorization = Bearer&nbsp;{{token}}</p>
+<h3>Get Files by&nbsp;folder</h3>
+<p><strong><span class="caps">GET</span></strong> https://[YourSharePointCollectionURL]/_api/web/GetFolderByServerRelativeUrl(&#8216;Shared&nbsp;Documents/General&#8217;)/Files</p>
+<p>Headers: Authorization = Bearer&nbsp;{{token}}</p>
+<h3>Get List by&nbsp;title</h3>
+<p><strong><span class="caps">GET</span></strong> https://[YourSharePointCollectionURL]/_api/web/GetFileByServerRelativeUrl(&#8216;/teams/{{sitename}}/Shared&nbsp;Documents/General/{{filename}}&#8217;)/$value</p>
+<p>Headers: Authorization = Bearer&nbsp;{{token}}</p>
+<h3>Create&nbsp;File</h3>
+<p><strong><span class="caps">POST</span></strong> https://[YourSharePointCollectionURL]/_api/web/GetFolderByServerRelativeUrl(&#8216;/teams/{{sitename}}/Shared Documents/General&#8217;)/Files/Add(url=&#8217;[FileName]&#8217;,&nbsp;overwrite=true)</p>
+<p>Headers: Authorization = Bearer&nbsp;{{token}}</p>
+<p>Body:&nbsp;binary</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">requests.structures</span> <span class="kn">import</span> <span class="n">CaseInsensitiveDict</span>
+
+<span class="n">sourcedf</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;select * from &lt;TableName&gt;&quot;</span><span class="p">);</span>
+
+<span class="n">csv_buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sourcedf</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_buffer</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf_8_sig&quot;</span><span class="p">)</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">csv_buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+
+<span class="n">send_url</span> <span class="o">=</span> <span class="s2">&quot;https://[YourSharePointCollectionURL]/_api/web/GetFolderByServerRelativeUrl(&#39;/teams/{{sitename}}/Shared Documents/General&#39;)/Files/Add(url=&#39;[FileName]&#39;, overwrite=true)&quot;</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="n">CaseInsensitiveDict</span><span class="p">()</span>
+<span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bearer </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">send_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+
+<p>https://www.c-sharpcorner.com/article/how-to-test-sharepoint-online-rest-apis-using-postman-tool/</p>
+<p>https://learn.microsoft.com/zh-cn/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-rest-endpoints</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/backend.html">Backend</a>
+            <a href="/category/cloud.html">Cloud</a>
         </abbr>
         <p>
         <span class="meta-prep">Author: </span><span>Yoga</span>
@@ -397,15 +380,17 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -421,7 +406,6 @@
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

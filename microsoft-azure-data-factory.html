@@ -87,16 +87,30 @@
 <p>Authentication type: System Assigned Managed&nbsp;Identy</p>
 <p>赋予的是创建者的个人权限</p>
 <p>Authentication type: Service&nbsp;Principal</p>
-<p><span class="caps">URL</span>: https://<accountname>.dfs.core.chinacloudapi.cn</p>
-<p>Tenant: <Tenant ID></p>
-<p>Service principal <span class="caps">ID</span>: <Client ID></p>
+<p><span class="caps">URL</span>:&nbsp;https://[accountname].dfs.core.chinacloudapi.cn</p>
+<p>Tenant: [Tenant <span class="caps">ID</span>]</p>
+<p>Service principal <span class="caps">ID</span>: [Client <span class="caps">ID</span>]</p>
 <p>Service principal key:&nbsp;###</p>
-<p>To file path: <container></p>
-<h2>Activities -&nbsp;Move</h2>
+<p>Azure cloud type: Azure China 踩坑：选Data Factory&#8217;s cloud&nbsp;type会导致删文件失败</p>
+<p>Test connection: To file path: [container] SP如果只到container的权限to linked&nbsp;services是不通的</p>
+<h3>4.Sharepoint</h3>
+<p><em>踩坑：ADF不能连接跨 tenant 的 Sharepoint，Global 的 Sharepoint 和 <span class="caps">IC</span> 的 <span class="caps">ADF</span>&nbsp;肯定不通</em></p>
+<p>解决方式：</p>
+<ol>
+<li>申请VM，在VM上安装Azure Storage Explorer,&nbsp;用Filetransfer直接入湖</li>
+<li>将手工数据放在S3，用ADF copydata&nbsp;从S3入湖</li>
+<li>将手动数据放在Sharepoint, 用ADF 调 Sharepoint <span class="caps">API</span> 入湖 (Graph <span class="caps">API</span>: Not&nbsp;Granted)</li>
+</ol>
+<p>Sharepoint <span class="caps">API</span> 见&nbsp;https://yogagii.github.io/ms-graph-api.html</p>
+<hr>
+<h2>Activities</h2>
+<h2>Move <span class="amp">&amp;</span>&nbsp;transform</h2>
+<h3>&gt;&gt;&gt; Copy&nbsp;data</h3>
 <h3><span class="caps">AWS</span> S3 -&gt; Azure Data Lake&nbsp;Storage</h3>
 <p>Source: 
 * Linked service: DelimitedText
-* File Path: <bucketname>/RowZone/<span class="caps">MANU</span>&nbsp;踩坑：多层路径写在一起，自己用/分开</p>
+* File Path: [bucketname]/RowZone/<span class="caps">MANU</span> 踩坑：多层路径写在一起，自己用/分开
+* Recursively:&nbsp;勾选的话当文件夹为空会报错</p>
 <p>Sink:
 * Linked service:&nbsp;DelimitedText</p>
 <p>踩坑: s3中不能有.DS_Store,&nbsp;~$MATERIAL_MASTER.xlsx这种隐藏文件</p>
@@ -104,15 +118,152 @@
 <p>Source: 
 * Linked service: Parquet
 * File Path type: Wildcard file path
-(Wildcard paths: <container>/<filepath>/*.snappy.parquet)
+(Wildcard paths: [container]/[filepath]/*.snappy.parquet)
 * Recursively:&nbsp;true</p>
 <p>Sink:
-* Linked service: Azure <span class="caps">SQL</span>&nbsp;Database</p>
-<p>踩坑: ErrorCode=ParquetNotSupportedTypeGeneric,&#8217;Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Parquet file contained column &#8216;txn&#8217;, which is of a non-primitive, unsupported&nbsp;type.,Source=Microsoft.DataTransfer.Richfile.ParquetTransferPlugin,&#8217;</p>
+* Linked service: Azure <span class="caps">SQL</span> Database (Table: @dataset().SQLTableName)
+* Write behavior: Insert
+* Bulk insert table lock: Yes
+* Table option: Auto create table
+* Pre-copy script: @{concat(&#8216;drop table if exists &#8216;,item().TableName)}&nbsp;更新失败不会回滚</p>
+<p><em>踩坑: ErrorCode=ParquetNotSupportedTypeGeneric,&#8217;Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Parquet file contained column &#8216;txn&#8217;, which is of a non-primitive, unsupported&nbsp;type.,Source=Microsoft.DataTransfer.Richfile.ParquetTransferPlugin,&#8217;</em></p>
 <p>加上 <em>.snappy.parquet 而不是 </em>.parquet，_delta_log/里包含checkpoint.parquet&nbsp;files</p>
-<h2>Activities -&nbsp;Iteration</h2>
-<h3>ForEach</h3>
+<p><em>踩坑：若原表是 delta table，数据源用 parquet 会导致数据中留下全部历史数据，link service 需选&nbsp;AzureDatebricksDeltaLake</em></p>
+<h3>Rest Resource&nbsp;-&gt;</h3>
+<p>Source:
+* Linked Service: <span class="caps">REST</span>
+* Dataset properties: v_url = concat(variables(&#8216;v_url&#8217;), item(), concat(&#8216;?agentId=&#8217;,pipeline().parameters.v_agentId,&#8217;&amp;agentName=&#8217;,pipeline().parameters.v_agentName),&#8217;&amp;stockDate=&#8217;,formatDateTime(adddays(addhours(utcnow(),8),-1),&#8217;yyyy-<span class="caps">MM</span>-dd&#8217;))</p>
+<p><em>踩坑：默认UTC时间，需addhours(utcnow(),8)转成北京时间</em></p>
+<h3><span class="caps">HTTP</span> -&gt; Azure Data Lake&nbsp;Storage</h3>
+<p>用 <span class="caps">HTTP</span> 调取 Sharepoint&nbsp;接口，将sharepoint文件入湖</p>
+<p>Source:
+* Linked Service: <span class="caps">HTTP</span>
+* format: Binary
+* Base <span class="caps">URL</span>: @{concat(&#8216;https://xxx.sharepoint.com/teams/XXXTeam/_api/web/GetFileByServerRelativeUrl(&#8221;/teams/XXXTeam/Shared Documents/General/&#8217;,linkedService().filename,&#8221;&#8217;)/$value&#8217;)
+}
+* Request method: <span class="caps">GET</span>
+* Additional headers: Authorization: @{concat(&#8216;Bearer &#8216;,&nbsp;activity(&#8216;getToken&#8217;).output.access_token)}</p>
+<p>Sink:
+* Linked Service: Azure Data Lake Storage Gen2
+* format:&nbsp;Binary</p>
+<p>用Binary可以保留原始文件格式，亲测csv，excel，pdf，png均能成功</p>
+<h2>General</h2>
+<h3>&gt;&gt;&gt;&nbsp;Web</h3>
+<p>Get Token
+* <span class="caps">URL</span>: https://xxx/oauth2/token
+* Method: <span class="caps">POST</span>
+* Body: grant_type=client_credentials&amp;client_id=xxx&amp;client_secret=xxx
+* Headers: Content-Type&nbsp;application/x-www-form-urlencoded</p>
+<h3>&gt;&gt;&gt;&nbsp;Lookup</h3>
+<ul>
+<li>Source dataset: Azure <span class="caps">SQL</span>&nbsp;Database</li>
+<li>Dataset properties: SQLTableName =&nbsp;[Table_Name]</li>
+<li>Use query:&nbsp;Query</li>
+<li>Query: @concat(&#8216;<span class="caps">SELECT</span> * <span class="caps">FROM</span> [Table_Name] where&nbsp;JobFlag=&#8217;,pipeline().parameters.v_jobflag)</li>
+<li>First row only: False&nbsp;(默认勾选)</li>
+</ul>
+<p>当query中原本就有&#8217;时需要两个&#8217;</p>
+<p>@concat(&#8216;select Batchrunid, ActivityCode=(stuff((select &#8221;,&#8221; + ActivityCode from ActivityLogs where Batchrunid=a.Batchrunid and ActivityStatus=&#8221;Failed&#8221; for xml path(&#8221;&#8221;) ),1,1,&#8221;&#8221;)) from ActivityLogs a <span class="caps">WHERE</span> a.BatchRunId=&#8221;&#8217;,pipeline().parameters.BatchRunID,&#8221;&#8217; group by&nbsp;Batchrunid&#8217;)</p>
+<h3>&gt;&gt;&gt; Stored&nbsp;procedure</h3>
+<p>提前在sql&nbsp;server创建好存储过程</p>
+<ul>
+<li>Linked Service: Azure <span class="caps">SQL</span>&nbsp;Database</li>
+<li>Stored procedure name:&nbsp;[Procedure_Name]</li>
+<li>Stored procedure&nbsp;parameters</li>
+</ul>
+<h2>Iteration <span class="amp">&amp;</span>&nbsp;conditionals</h2>
+<h3>&gt;&gt;&gt;&nbsp;ForEach</h3>
 <p>在sql server中创建config&nbsp;table，遍历所有表执行worker</p>
+<ul>
+<li>Items:&nbsp;@activity(&#8216;LookupConfigTable&#8217;).output.value</li>
+</ul>
+<p><em>踩坑：ForEach 中调用 notebook 报错：java.lang.Exception: Unable to start python kernel for ReplId-6ab47-72d45-cb368-d, kernel exited with exit code 1. Another app is currently holding the xtables lock. Perhaps you want to use the -w&nbsp;option?</em></p>
+<ul>
+<li>Sequential:&nbsp;勾选后顺序执行</li>
+</ul>
+<h2>Databricks</h2>
+<h3>&gt;&gt;&gt;&nbsp;Notebook</h3>
+<ul>
+<li>Notebook&nbsp;path</li>
+<li>Base parameters: 设置传入参数 &#8220;argument1&#8221;:&nbsp;&#8220;value&#8221;</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">dbutils</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;argument1&quot;</span><span class="p">)</span> <span class="c1"># value</span>
+</code></pre></div>
+
+<p><em>踩坑：<span class="caps">ADF</span> 调用notebook 报错：java.lang.Exception: Unable to start python kernel for ReplId-xxx, kernel exited with exit code 1. Another app is currently holding the xtables lock. Perhaps you want to use the -w&nbsp;option?</em></p>
+<p>解决方案：
+1. 多个grandpa错开时间执行
+2. 在ForEach 上Settings里勾选 Sequential 顺序执行，不并发
+3. 调用 Notebook 时加上retry次数，Notebook 里需加上delete语句防止数据重复
+4. Notebook&nbsp;执行IPTABLES配置（未验证）</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">sh</span>
+<span class="n">IPTABLES</span><span class="o">=</span><span class="s2">&quot;/sbin/iptables&quot;</span>
+<span class="n">IPTABLES_WAIT</span><span class="o">=</span><span class="s2">&quot;-w 20&quot;</span>
+</code></pre></div>
+
+<ol>
+<li>微软建议：Cluster增加配置 &#8220;spark.databricks.python.defaultPythonRepl&nbsp;pythonshell&#8221; </li>
+</ol>
+<hr>
+<h2>向 Microsoft Teams&nbsp;发送通知</h2>
+<p>https://learn.microsoft.com/zh-cn/azure/data-factory/how-to-send-notifications-to-teams?tabs=data-factory</p>
+<h3>Incoming&nbsp;Webhook</h3>
+<p>Microsoft Teams -&gt; Apps -&gt; Incoming Webhook -&gt; Add a team -&gt; Set up a connector -&gt; 保存 Webhook <span class="caps">URL</span> </p>
+<h3>&gt;&gt;&gt; Set&nbsp;variable</h3>
+<ul>
+<li>Name:&nbsp;MsgCard</li>
+<li>Value: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MessageCard&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@context&quot;</span><span class="p">:</span> <span class="s2">&quot;http://schema.org/extensions&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;themeColor&quot;</span><span class="p">:</span> <span class="s2">&quot;0076D7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;ADF Pipeline Fail Alert message​​​​&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sections&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;activityTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;@{concat(&#39;【&#39;,pipeline().parameters.Status,&#39;】【&#39;,pipeline().globalParameters.Environment,&#39;】 &#39;,pipeline().parameters.GrandpaName,&#39; has executed &#39;,pipeline().parameters.Status)}​​​​&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;facts&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Environment:&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().globalParameters.Environment}&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Data Factory name:&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().DataFactory}&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Grandpa name:&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().parameters.GrandpaName}&quot;</span>
+                <span class="p">},</span>                  
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Batch RunID:&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().parameters.BatchRunID}&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;markdown&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;potentialAction&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenUri&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;View pipeline run&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;targets&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;os&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;@{concat(&#39;https://adf.azure.cn/monitoring/pipelineruns/&#39;,pipeline().parameters.BatchRunID,&#39;?factory=/subscriptions/&#39;,pipeline().globalParameters.ADFSubscription,&#39;/resourceGroups/&#39;,pipeline().globalParameters.ADFResourceGroup,&#39;/providers/Microsoft.DataFactory/factories/&#39;,pipeline().DataFactory)}&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>&gt;&gt;&gt;&nbsp;Web</h3>
+<ul>
+<li><span class="caps">URL</span>:&nbsp;@pipeline().globalParameters.TeamsWebhookUrl</li>
+<li>Method: <span class="caps">POST</span></li>
+<li>Body:&nbsp;@json(variables(&#8216;MsgCard&#8217;))</li>
+</ul>
 <hr>
 <h2><span class="caps">IPRO</span></h2>
 <h3>Sharepoint -&gt; Azure Data Lake&nbsp;Storage</h3>
@@ -219,15 +370,17 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -243,7 +396,6 @@
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

@@ -1,0 +1,532 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Azure Machine Learning&nbsp;Service
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Azure Machine Learning&nbsp;Service</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-01-20T00:00:00+08:00"> 
+            <a href="/archive/2023/ 1/index.html">五 20 一月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/azure.html">Azure</a>
+                <a href="/tag/ml.html">ML</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Azure Machine Learning&nbsp;Service</h2>
+<p>Azure Machine Learning Service: Combination of Azure cloud services and Python <span class="caps">SDK</span>.</p>
+<p>Create environment -&gt; Prepare data -&gt; Build models -&gt; Train models -&gt; Test models -&gt; Manage models -&gt; Track experiments -&gt; Deploy&nbsp;models</p>
+<h3>Azure <span class="caps">ML</span>&nbsp;Studio</h3>
+<ul>
+<li>Web portal in Azure Machine&nbsp;Learning</li>
+<li>Low-code and no-code options for project&nbsp;authoring</li>
+<li>Authoring tools: Notebooks, AutoML and&nbsp;Designer.</li>
+<li>Set of SDKs and cloud services to scale, monitor, and deploy <span class="caps">ML</span>&nbsp;models.</li>
+</ul>
+<p>Three ways to machine learning projects in studio:
+* Azure Machine Learning designer 
+* Automated Machine Learning <span class="caps">UI</span> 
+*&nbsp;Notebooks</p>
+<p>按代码量排序：
+1. Automated <span class="caps">ML</span> 里配置自动化模型
+2. Designer 里创建pipeline，拖拉拽step，用 Execute Python Script 嵌入代码 (见 aml2: <span class="caps">AML</span> Designer)
+3. Notebooks 里用 PythonScriptStep 创建pipeline (见 aml1: <span class="caps">AML</span> Pipelines )
+4. Notebooks 里纯代码创建模型 (见 aml3: <span class="caps">AML</span>&nbsp;Notebook)</p>
+<h3>Compute&nbsp;Target</h3>
+<p>Attached to your Azure Machine Learning Workspace. Can be used to run pipelines and host deployed models as real-time endpoints or pipeline&nbsp;endpoints.</p>
+<ul>
+<li>Azure Machine Learning Compute:&nbsp;Training</li>
+<li>Azure Kubernetes Service:&nbsp;Deployment</li>
+</ul>
+<p>Compute Target | Automated <span class="caps">ML</span> | <span class="caps">AML</span> Pipelines | <span class="caps">AML</span> Designer
+| - | - | - | - |
+Local Computer | Yes |  | 
+<span class="caps">AML</span> compute cluster | Yes | Yes | Yes
+<span class="caps">AML</span> compute instance | Yes (through <span class="caps">SDK</span>) | Yes
+Remote <span class="caps">VM</span> | Yes (<span class="caps">SDK</span> local mode only) | Yes
+Azure Databricks | Yes |&nbsp;Yes</p>
+<h3>优势</h3>
+<ul>
+<li>支持开源算法：Scikit-learn, TensorFlow, <span class="caps">CNTK</span>,&nbsp;PyTorch</li>
+<li>Automated 数据处理，Automated 算法选择，Automated&nbsp;超参数选择</li>
+<li>Pipeline：串联step（数据准备/模型训练测试/模型部署），rerunnning指定step，不同step不同执行环境，创建可复用模板</li>
+<li>集成 <span class="caps">VS</span>&nbsp;Code</li>
+<li>部署模型 in <span class="caps">ONNX</span>&nbsp;format</li>
+</ul>
+<p><em><span class="caps">ONNX</span> (Open Neural Network Exchange) 的本质只是一套开放的 <span class="caps">ML</span> 模型标准，模型文件存储的只是网络的拓扑结构和权重，<span class="caps">ONNX</span>&nbsp;的目的在于提供一个跨框架的模型中间表达框架，用于模型转换和部署</em></p>
+<h3>Build, Train and Deploy a&nbsp;Model步骤：</h3>
+<ol>
+<li>create Azure subscription -&gt; resouce group -&gt;&nbsp;workspace</li>
+<li>import data -&gt; prepare and clean&nbsp;data</li>
+<li>train model -&gt; test and tune model -&gt; register&nbsp;model</li>
+<li>compute target -&gt; scoring file -&gt; environment config file -&gt; inference&nbsp;config </li>
+<li>deploy model -&gt; test model (web&nbsp;service)</li>
+</ol>
+<hr>
+<h2>Workspace</h2>
+<p>创建 Workspace：
+* Workspace name
+* Azure subscription <span class="caps">ID</span>
+* Resource group name
+*&nbsp;Location</p>
+<p>每个Workspace配备：
+* Key Vault
+* Container Registry
+* Storage Account
+* Application&nbsp;Insights</p>
+<p>Load&nbsp;Workspace</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.core.workspace</span> <span class="kn">import</span> <span class="n">Workspace</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">write_config</span><span class="p">()</span> <span class="c1"># save workspace config file</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span> <span class="c1"># load an existing workspace</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;myworkspace&quot;</span><span class="p">,</span> <span class="n">subscription_id</span><span class="o">=</span><span class="s1">&#39;&lt;subscription_id&gt;&#39;</span><span class="p">,</span> <span class="n">resource_group</span><span class="o">=</span><span class="s1">&#39;myresourcegroup&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<h2>Build and Train a&nbsp;Model</h2>
+<h3>Import&nbsp;Data</h3>
+<ul>
+<li><span class="caps">AML</span> Datasets (recommended): A reference to the data and its location together with a copy of its&nbsp;metadata</li>
+<li>Import Data Module: online data sources / data store / <span class="caps">HTTP</span> <span class="caps">URL</span></li>
+</ul>
+<h3>Prepare and Clean&nbsp;Data</h3>
+<p>Transformation functions:
+* drop
+* dropna
+* rename
+* concat
+* transpose
+* replace
+* fillna
+*&nbsp;sum </p>
+<h3>Train&nbsp;Model</h3>
+<p>split&nbsp;data</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</code></pre></div>
+
+<p>Automatic featurization&nbsp;自动特征化:</p>
+<ul>
+<li>Generate more features – aka feature engineering&nbsp;生成更多特征 </li>
+<li>Impute missing values&nbsp;插补缺少的值</li>
+<li>Transform – numeric to categorical&nbsp;转换</li>
+<li>Encode – one-hot encoding and one-hot hash encoding&nbsp;编码</li>
+<li>Drop features that have high cardinality or no variance&nbsp;删除高基数或者无差异的特征</li>
+<li>Cluster distance&nbsp;群集距离</li>
+<li>Word embeddings&nbsp;单词嵌入，文档特征矢量</li>
+</ul>
+<p>https://learn.microsoft.com/zh-cn/azure/machine-learning/how-to-configure-auto-features</p>
+<p>Steps to use Automated <span class="caps">ML</span>:
+1. Determine problem type：Classification,Regression,TimeSeriesforecasting
+2. Decide between using Python <span class="caps">SDK</span> or the studio web experience
+3. Determine the source and format of training data
+4. Configure compute target for model training: Local computer, Azure <span class="caps">ML</span> Computes, Azure Databricks, remote VMs
+5. Configure AutoML parameters
+6. Submit the run
+7. Examine the&nbsp;outcome</p>
+<h3>Save&nbsp;Model</h3>
+<p>Model 保存为 pickle 文件（.pkl）
+* Can be loaded later for predictions
+* Is the serialized version of the model.
+* Provides an efficient way to save model and transfer over the network. 
+* Can be loaded and un-serialized using the load() method.
+* Can be used to load the model for further&nbsp;actions.</p>
+<h3>Register&nbsp;Model</h3>
+<p>Model registeration allows you to store and version the model. A registered model can be downloaded and&nbsp;deployed.</p>
+<p>Compute Target:
+* <span class="caps">AKS</span>: Real-time High-Scale Production
+* <span class="caps">AML</span> Compute: Batch prediction from <span class="caps">AML</span> Pipelines
+* <span class="caps">ACI</span>: Quick testing
+* AZure IoT Edge: IoT
+* <span class="caps">FPGA</span>:&nbsp;Web</p>
+<hr>
+<h2>Deploy a Trained&nbsp;Model</h2>
+<h3>Scoring File&nbsp;(.py)</h3>
+<p>two functions in score.py:
+* init() 加载模型
+* run(input_data)&nbsp;预测数据</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># score.py</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="kn">import</span> <span class="n">joblib</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="o">&lt;</span><span class="n">algorithm_name</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">azureml.core.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
+  <span class="k">global</span> <span class="n">model</span>
+  <span class="n">model_path</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">get_model_path</span> <span class="p">(</span><span class="s1">&#39;&lt;pkl_file_name&gt;&#39;</span><span class="p">)</span>
+  <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">raw_data</span><span class="p">):</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>Environment Configuration File&nbsp;(.yml)</h3>
+<ul>
+<li>Defines the conda environment for the model. (conda-dependency&nbsp;file)</li>
+<li>Used to make sure all model dependencies are included in the container&nbsp;image. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.core.conda_dependencies</span> <span class="kn">import</span> <span class="n">CondaDependencies</span>
+<span class="n">env1</span> <span class="o">=</span> <span class="n">CondaDependencies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">conda_packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;scikit-learn&#39;</span><span class="p">])</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;&lt;yml_file_name&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">env1</span><span class="o">.</span><span class="n">serialize_to_string</span><span class="p">())</span>
+</code></pre></div>
+
+<h3>inference&nbsp;configuration</h3>
+<p>describes how to set up the web-service containing your&nbsp;model.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.core.model</span> <span class="kn">import</span> <span class="n">InferenceConfig</span>
+<span class="n">inference_config</span> <span class="o">=</span> <span class="n">InferenceConfig</span><span class="p">(</span><span class="n">runtime</span><span class="o">=</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">entry_script</span><span class="o">=</span><span class="s2">&quot;score.py&quot;</span><span class="p">,</span>
+<span class="n">conda_file</span><span class="o">=</span><span class="s2">&quot;&lt;yml_file_name&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Deploy to Compute&nbsp;Target</h3>
+<div class="highlight"><pre><span></span><code><span class="n">service</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span> <span class="n">workspace</span><span class="o">=</span><span class="n">ws</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&lt;service_name&gt;&#39;</span><span class="p">,</span> <span class="n">deployment_config</span><span class="o">=</span><span class="n">aciconfig</span><span class="p">,</span> <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="n">model</span><span class="p">],</span>
+<span class="n">inference_config</span> <span class="o">=</span> <span class="n">inference_config</span> <span class="p">)</span>
+</code></pre></div>
+
+<h3>Consume Deployed&nbsp;Model</h3>
+<p>A web service is created if image is deployed to <span class="caps">ACI</span>/<span class="caps">AKS</span>/<span class="caps">FPGA</span></p>
+<p>Deploying as web service creates a <span class="caps">REST</span> <span class="caps">API</span>. Can use <span class="caps">HTTP</span> to send requests and receive&nbsp;responses</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">test_input</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:[[</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="o">...</span><span class="p">]]})</span> 
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_data</span> <span class="o">=</span> <span class="n">test_input</span><span class="p">)</span> <span class="n">Print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Monitor</h3>
+<p>Azure monitor is a full stack monitoring service in&nbsp;Azure.</p>
+<ul>
+<li>Metrics：可以添加 Model Deploy Failed 到&nbsp;dashboard</li>
+<li>Alert：Alert rule: Model Deploy Failed 发送邮件到选择的 action&nbsp;group</li>
+</ul>
+<hr>
+<h2><span class="caps">AML</span>&nbsp;Pipelines</h2>
+<p>1.Install <span class="caps">AML</span> <span class="caps">SDK</span> -&gt; create&nbsp;workspace</p>
+<p>2.Set up data&nbsp;store </p>
+<p>workspaceblobstore (default) /&nbsp;workspacefilestore</p>
+<div class="highlight"><pre><span></span><code><span class="n">datastore</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_default_datastore</span> <span class="c1"># SDK v1</span>
+<span class="n">default_store</span> <span class="o">=</span> <span class="n">ml_client</span><span class="o">.</span><span class="n">datastores</span><span class="o">.</span><span class="n">get_default</span><span class="p">()</span> <span class="c1"># SDK v2</span>
+</code></pre></div>
+
+<p>3.Upload data to&nbsp;storage</p>
+<p>4.Create Data Reference&nbsp;object</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.data.data_reference</span> <span class="kn">import</span> <span class="n">DataReference</span>
+<span class="n">stored_data</span> <span class="o">=</span> <span class="n">DataReference</span><span class="p">(</span>
+  <span class="n">datastore</span> <span class="o">=</span> <span class="n">MyDefault_Store</span><span class="p">,</span>
+  <span class="n">data_reference_name</span> <span class="o">=</span> <span class="s2">&quot;FlightDelay_dataset&quot;</span><span class="p">,</span> <span class="n">path_on_datastore</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;FlightDelay/part-00000&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>5.run configuration (pip package dependencies / <span class="caps">SDK</span>&nbsp;version)</p>
+<p>6.Create PipelineData&nbsp;object</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.pipeline.core</span> <span class="kn">import</span> <span class="n">PipelineData</span>
+<span class="n">normalized_data</span> <span class="o">=</span> <span class="n">PipelineData</span><span class="p">(</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;normalized_flight_delay_data&quot;</span><span class="p">,</span>
+  <span class="n">data_store</span> <span class="o">=</span> <span class="n">default_store</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>7.Construct pipeline&nbsp;steps</p>
+<p>need to define: 
+* input / output
+* compute target / run configuration
+* other required&nbsp;parameters</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataCleaningStep</span> <span class="o">=</span> <span class="n">PythonScriptStep</span><span class="p">(</span>
+  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Clean Data&quot;</span><span class="p">,</span> 
+  <span class="n">script_name</span><span class="o">=</span><span class="s2">&quot;cleanse_datasets.py&quot;</span><span class="p">,</span>
+  <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="o">&lt;</span><span class="n">script_inputs</span><span class="o">&gt;</span><span class="p">],</span> 
+  <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="o">&lt;</span><span class="n">DataReference_or_PipelineData</span><span class="o">&gt;</span><span class="p">],</span> 
+  <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">cleansed_data</span><span class="p">],</span>
+  <span class="n">compute_target</span><span class="o">=</span><span class="n">MyAml_Compute_Target</span><span class="p">,</span> <span class="n">runconfig</span><span class="o">=</span><span class="n">MyAml_Run_Config</span><span class="p">,</span> <span class="n">source_directory</span><span class="o">=&lt;</span><span class="n">path_to_Python_script</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="n">allow_reuse</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>8.Build&nbsp;pipeline</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.pipeline.core</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="n">PPLines_Steps</span> <span class="o">=</span> <span class="p">[</span><span class="n">CleaningStep</span><span class="p">,</span> <span class="n">NormalizingStep</span><span class="p">]</span> <span class="c1"># 定义step顺序</span>
+<span class="n">MyPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">ws</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">PPLines_Steps</span><span class="p">)</span>
+</code></pre></div>
+
+<p>9.Submit&nbsp;pipeline</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.core</span> <span class="kn">import</span> <span class="n">Experiment</span>
+<span class="n">PPLine_Run</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="s2">&quot;exp_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">MyPipeline</span><span class="p">,</span><span class="n">regenerate_outputs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>10.View&nbsp;progress</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.widgets</span> <span class="kn">import</span> <span class="n">RunDetails</span>
+<span class="n">RunDetails</span><span class="p">(</span><span class="n">PPLine_Run</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">PPLine_Run</span><span class="o">.</span><span class="n">wait_for_completion</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># get step output</span>
+<span class="k">def</span> <span class="nf">fetch_df</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">output_name</span><span class="p">):</span>
+    <span class="n">output_data</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">get_output_data</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>    
+    <span class="n">download_path</span> <span class="o">=</span> <span class="s1">&#39;./outputs/&#39;</span> <span class="o">+</span> <span class="n">output_name</span>
+    <span class="c1"># download to local</span>
+    <span class="n">output_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_path</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_path</span> <span class="o">=</span> <span class="n">get_download_path</span><span class="p">(</span><span class="n">download_path</span><span class="p">,</span> <span class="n">output_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/processed.parquet&#39;</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">df_path</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">fetch_df</span><span class="p">(</span><span class="n">split_step</span><span class="p">,</span> <span class="n">output_split_test</span><span class="o">.</span><span class="n">name</span><span class="p">)[[</span><span class="s1">&#39;cost&#39;</span><span class="p">]]</span>
+</code></pre></div>
+
+<hr>
+<h2>MLOps</h2>
+<blockquote>
+<p>Train Model -&gt; Package Model -&gt; Validate Model -&gt; Deploy Model -&gt; Monitor Model -&gt; Retrain&nbsp;Model</p>
+</blockquote>
+<p>模型衰退(Model Decay)&nbsp;历史的模型效果并不能保证未来的模型效果</p>
+<p>7 Principles of MLOps
+* Version control code, data, and experimentation outputs
+* Use multiple environment
+* Manage infrastructure and configurations-as-code
+* Track and manage machine learning experiments
+* Test code, validate data integrity, model quality
+* Machine learning continuous integration and delivery
+* Monitor services, models, and&nbsp;data</p>
+<p>MLOPs solution Architecture
+<img alt="aml" src="img/aml2.png"></p>
+<hr>
+<h2>Azure Event&nbsp;Grid</h2>
+<p><span class="caps">AML</span>&nbsp;events:</p>
+<ul>
+<li>Run&nbsp;completion</li>
+<li>Model&nbsp;registration</li>
+<li>Model&nbsp;deployment</li>
+<li>Data drift&nbsp;detection</li>
+<li>Run status&nbsp;change</li>
+</ul>
+<p>Use&nbsp;cases:</p>
+<ul>
+<li>Send emails on run&nbsp;completion</li>
+<li>Use an azure function after a model is&nbsp;registered</li>
+<li>Trigger an <span class="caps">ML</span> pipeline when drift is&nbsp;detected</li>
+</ul>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "azure-machine-learning-service.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

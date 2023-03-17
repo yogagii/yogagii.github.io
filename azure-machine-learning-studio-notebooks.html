@@ -1,0 +1,505 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Azure Machine Learning Studio -&nbsp;Notebooks
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Azure Machine Learning Studio -&nbsp;Notebooks</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-01-19T00:00:00+08:00"> 
+            <a href="/archive/2023/ 1/index.html">四 19 一月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/azure.html">Azure</a>
+                <a href="/tag/ml.html">ML</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>Import all the required libraries and&nbsp;formatting.</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">pylab</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">6</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+</code></pre></div>
+
+<h3>Load&nbsp;Workspace</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.core</span> <span class="kn">import</span> <span class="n">Workspace</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;myworkspace&quot;</span><span class="p">,</span> <span class="n">subscription_id</span><span class="o">=</span><span class="s1">&#39;&lt;subscription_id&gt;&#39;</span><span class="p">,</span> <span class="n">resource_group</span><span class="o">=</span><span class="s1">&#39;myresourcegroup&#39;</span><span class="p">)</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">get_details</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>Load data to&nbsp;Workspace</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ds</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;data_name&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>读取csv</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_or_buffer</span> <span class="o">=</span> <span class="s1">&#39;./test.csv&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Upload data to&nbsp;container</h3>
+<div class="highlight"><pre><span></span><code><span class="n">default_store</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_default_datastore</span><span class="p">()</span> 
+<span class="n">greenTaxiData</span><span class="o">=</span><span class="s1">&#39;csvdata/green/part-00000&#39;</span>
+
+<span class="n">default_store</span><span class="o">.</span><span class="n">upload_files</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">greenTaxiData</span><span class="p">],</span> 
+    <span class="n">target_path</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> 
+    <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+    <span class="n">show_progress</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h3>Show&nbsp;data</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># 显示前5行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span> <span class="c1"># 表字段和类型</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> <span class="c1"># summary statistics: count, mean, std, min, max</span>
+<span class="n">combined_df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="c1"># 转置</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="c1"># min</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># max</span>
+</code></pre></div>
+
+<h3>数据清洗</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 过滤空行</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">latlong_filtered_df1</span> <span class="o">=</span> <span class="n">combined_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;field1&quot;</span><span class="p">,</span> <span class="s2">&quot;field2&quot;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;any&quot;</span><span class="p">)</span>
+
+<span class="c1"># 重命名字段</span>
+<span class="n">green_df2</span> <span class="o">=</span> <span class="n">green_df1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="s2">&quot;field1&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">:</span> <span class="s2">&quot;field2&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># 保留有用字段</span>
+<span class="n">useful_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">]</span>
+<span class="n">green_df</span> <span class="o">=</span> <span class="n">green_df_raw</span><span class="p">[</span><span class="n">useful_columns</span><span class="p">]</span>
+<span class="n">green_df</span> <span class="o">=</span> <span class="n">green_df_raw</span><span class="p">[</span><span class="n">green_df_raw</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">green_df_raw</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">useful_columns</span><span class="p">)]]</span>
+
+<span class="c1"># Union两张表</span>
+<span class="n">combined_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">green_df</span><span class="p">,</span> <span class="n">yellow_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 查找有空值的列</span>
+<span class="n">combined_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtered_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># 过滤行</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;pickup_longitude&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mf">73.72</span><span class="p">)</span> 
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">filtered_df1</span><span class="p">[</span><span class="s1">&#39;pickup_longitude&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mf">74.09</span><span class="p">)</span>  
+<span class="p">]</span>
+
+<span class="c1"># 替换，填充</span>
+<span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;store_forward&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;store_forward&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+<span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;store_forward&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;store_forward&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="c1"># 删除列</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;pickup_second&#39;</span><span class="p">,</span> <span class="s1">&#39;dropoff_second&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>数据格式转换</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 数值类型</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.00&quot;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="c1"># 日期类型</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;pickup_datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pickup_datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">)</span>
+
+<span class="c1"># 拆分date和time 8/12/2013 10:06</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickupday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickuptime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofweek</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_minute&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">minute</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_second&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pickup_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">second</span>
+</code></pre></div>
+
+<h3>导出csv</h3>
+<div class="highlight"><pre><span></span><code><span class="n">final_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;final_df.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Split&nbsp;data</h3>
+<div class="highlight"><pre><span></span><code><span class="n">features_df</span> <span class="o">=</span> <span class="n">final_df</span><span class="p">[[</span><span class="s1">&#39;pickup_weekday&#39;</span><span class="p">,</span><span class="s1">&#39;pickup_hour&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;passengers&#39;</span><span class="p">,</span> <span class="s1">&#39;vendor&#39;</span><span class="p">]]</span> <span class="c1"># 特征</span>
+<span class="n">label_df</span> <span class="o">=</span> <span class="n">final_df</span><span class="p">[</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="c1"># 标签</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">feature_train</span><span class="p">,</span> <span class="n">feature_test</span><span class="p">,</span> <span class="n">label_train</span><span class="p">,</span> <span class="n">label_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features_df</span><span class="p">,</span> <span class="n">label_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">223</span><span class="p">)</span>
+<span class="c1"># flatten y_train to 1d array</span>
+<span class="n">label_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>auto-train&nbsp;自动化训练</h3>
+<p>Used the automated machine learning to find the best run and the best fitted&nbsp;model</p>
+<div class="highlight"><pre><span></span><code><span class="n">automl_settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;iteration_timeout_minutes&quot;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;iterations&quot;</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span> 
+    <span class="s2">&quot;primary_metric&quot;</span> <span class="p">:</span> <span class="s1">&#39;spearman_correlation&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;featurization&quot;</span> <span class="p">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> 
+    <span class="s2">&quot;verbosity&quot;</span> <span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> 
+    <span class="s2">&quot;n_cross_validations&quot;</span><span class="p">:</span> 
+<span class="p">}</span>
+
+<span class="kn">from</span> <span class="nn">azureml.train.automl</span> <span class="kn">import</span> <span class="n">AutoMLConfig</span>
+
+<span class="c1"># local compute</span>
+<span class="n">automated_ml_config</span> <span class="o">=</span> <span class="n">AutoMLConfig</span><span class="p">(</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="s1">&#39;regression&#39;</span><span class="p">,</span>
+    <span class="n">debug_log</span> <span class="o">=</span> <span class="s1">&#39;automated_ml_errors.log&#39;</span><span class="p">,</span>
+    <span class="n">blocked_models</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;XGBoostRegressor&#39;</span><span class="p">],</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">feature_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">label_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">automl_settings</span>
+<span class="p">)</span>
+
+<span class="c1"># Run the experiment locally</span>
+<span class="kn">from</span> <span class="nn">azureml.core.experiment</span> <span class="kn">import</span> <span class="n">Experiment</span>
+
+<span class="n">experiment</span><span class="o">=</span><span class="n">Experiment</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;myAutoMLRegressionExp2&#39;</span><span class="p">)</span>
+<span class="n">local_run</span> <span class="o">=</span> <span class="n">experiment</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">automated_ml_config</span><span class="p">,</span> <span class="n">show_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>比较不同算法结果</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.widgets</span> <span class="kn">import</span> <span class="n">RunDetails</span>
+<span class="n">RunDetails</span><span class="p">(</span><span class="n">local_run</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 法一：View the run details in Job -&gt; Models</span>
+<span class="c1"># 法二：View the results in local run variable</span>
+<span class="n">children</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">local_run</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span>
+<span class="n">metricslist</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">get_properties</span><span class="p">()</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">run</span><span class="o">.</span><span class="n">get_metrics</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">float</span><span class="p">)}</span>
+    <span class="n">metricslist</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;iteration&#39;</span><span class="p">])]</span> <span class="o">=</span> <span class="n">metrics</span>
+
+<span class="n">rundata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metricslist</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 按index横向排序</span>
+<span class="n">rundata</span>
+
+<span class="c1"># 选取效果最好的模型</span>
+<span class="n">best_run</span><span class="p">,</span> <span class="n">fitted_model</span> <span class="o">=</span> <span class="n">local_run</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_run</span><span class="p">)</span> <span class="c1">#Print Run ID, Type and Status</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">)</span> <span class="c1">#Print Pipeline</span>
+<span class="c1"># 根目录下自动生成 model.pkl</span>
+</code></pre></div>
+
+<h3>Train&nbsp;Model</h3>
+<p>自定义模型</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">ElasticNet</span>
+<span class="kn">from</span> <span class="nn">azureml.core</span> <span class="kn">import</span> <span class="n">run</span>
+
+<span class="n">regr</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">feature_train</span><span class="p">,</span> <span class="n">label_train</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;ElasticNet int </span><span class="si">%.2f</span><span class="s2"> coefs </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="nb">print</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+
+<span class="n">yhat_train</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feature_train</span><span class="p">)</span>
+<span class="n">yhat_test</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feature_test</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Score&nbsp;Model</h3>
+<div class="highlight"><pre><span></span><code><span class="n">label_predict</span> <span class="o">=</span> <span class="n">fitted_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feature_test</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Evaluate&nbsp;Model</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">label_actual</span><span class="p">,</span> <span class="n">label_predict</span><span class="p">))</span>
+<span class="n">rmse</span>
+</code></pre></div>
+
+<h3>Save&nbsp;Model</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">,</span> <span class="s1">&#39;automl_model.pkl&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Deploy&nbsp;Model</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">azureml.core.model</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="c1"># register a model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;nyc_taxifare_elasticnet_model.pkl&quot;</span><span class="p">,</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;nyc_taxifare_elasticnet_mdl&quot;</span><span class="p">,</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;area&#39;</span> <span class="p">:</span> <span class="s2">&quot;cost&quot;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="p">:</span> <span class="s2">&quot;regression&quot;</span><span class="p">},</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Regression model&quot;</span><span class="p">,</span>
+    <span class="n">workspace</span> <span class="o">=</span> <span class="n">ws</span>
+<span class="p">)</span>
+
+<span class="c1"># List models registered in the workspace</span>
+<span class="n">model_list</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="n">ws</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Scoring&nbsp;File</p>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="n">score</span><span class="o">.</span><span class="n">py</span> <span class="c1"># 创建文件</span>
+
+<span class="o">...</span>
+</code></pre></div>
+
+<p>environment configuration (yml)&nbsp;file</p>
+<div class="highlight"><pre><span></span><code><span class="n">MyModelEnv</span> <span class="o">=</span> <span class="n">CondaDependencies</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">conda_packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;scikit-learn&#39;</span><span class="p">])</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;nyc_taxifare_model_env.yml&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">MyModelEnv</span><span class="o">.</span><span class="n">serialize_to_string</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">aciconfig</span> <span class="o">=</span> <span class="n">AciWebservice</span><span class="o">.</span><span class="n">deploy_configuration</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">inference_config</span> <span class="o">=</span> <span class="n">InferenceConfig</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">service</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">service</span><span class="o">.</span><span class="n">wait_for_deployment</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Test&nbsp;Webservice</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">test_input2</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]]})</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span><span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">scoring_uri</span><span class="p">,</span> <span class="n">test_input2</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "azure-machine-learning-studio-notebooks.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

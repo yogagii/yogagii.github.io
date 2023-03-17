@@ -345,6 +345,20 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<h2>跨域</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">bootstrap</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">cors</span>: <span class="kt">process.env.ENABLE_CORS</span> <span class="o">===</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">enableCors</span><span class="p">({</span>
+    <span class="nx">origin</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;http://localhost:3008&#39;</span><span class="p">],</span>
+  <span class="p">});</span>
+  <span class="k">await</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3007</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">bootstrap</span><span class="p">();</span>
+</code></pre></div>
+
 <h2>Test&nbsp;测试</h2>
 <p>Nest&nbsp;提供Jest和SuperTest开箱即用的集成。</p>
 <p>https://github.com/yogagii/bst_data</p>
@@ -570,15 +584,17 @@ second <span class="o">(</span>optional<span class="o">)</span>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -594,7 +610,6 @@ second <span class="o">(</span>optional<span class="o">)</span>
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

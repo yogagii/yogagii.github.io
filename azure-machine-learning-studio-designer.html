@@ -1,0 +1,371 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Azure Machine Learning Studio -&nbsp;Designer
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Azure Machine Learning Studio -&nbsp;Designer</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-01-19T00:00:00+08:00"> 
+            <a href="/archive/2023/ 1/index.html">四 19 一月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/azure.html">Azure</a>
+                <a href="/tag/ml.html">ML</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Component</h2>
+<h3>Select Columns in Datasets&nbsp;在数据集中选择列</h3>
+<ul>
+<li>select columns: Column names / Column&nbsp;types</li>
+</ul>
+<h3>Split Data&nbsp;拆分数据</h3>
+<ul>
+<li>Fraction of rows in the first dataset:&nbsp;0.5-0.75</li>
+<li>Random seed&nbsp;随机数生成器的种子</li>
+</ul>
+<p>每颗种子能够生长为一组固定顺序的随机数序列，其通常和random.random()搭配使用以生成一个随机数。如果使用相同的x值，则每次生成的随即数序列都相同；对于同一x值，若多次执行random.seed(x)，将按照固定的序列顺序从头开始生成随机数。</p>
+<h3>Join Data&nbsp;联接数据</h3>
+<ul>
+<li>Match case: True&nbsp;大小写</li>
+<li>Join type: Inner&nbsp;join</li>
+<li>Keep right key columns in joined table:&nbsp;False</li>
+</ul>
+<h3>Preprocess Text&nbsp;文本预处理</h3>
+<ul>
+<li>Text column to clean:&nbsp;需要处理的字段</li>
+<li>Remove special characters: True&nbsp;去除名字中*</li>
+</ul>
+<h3>Edit Metadata&nbsp;编辑元数据</h3>
+<ul>
+<li>Data type: 更改数据集的值和数据类型 String -&gt;&nbsp;Integer/Double</li>
+<li>Categorical:&nbsp;将布尔值或数字列视为分类值。</li>
+<li>Fields:&nbsp;将列标记为特征或标签。</li>
+<li>New column names:&nbsp;重命名列</li>
+</ul>
+<h3>Apply <span class="caps">SQL</span> Transformation 应用 <span class="caps">SQL</span>&nbsp;转换</h3>
+<ul>
+<li><span class="caps">SQL</span> query&nbsp;script:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">update</span> <span class="n">t1</span> <span class="k">set</span> <span class="n">Player</span> <span class="o">=</span> <span class="n">PreprocessedPlayer</span><span class="p">;</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">t1</span> <span class="k">where</span> <span class="n">Rank</span><span class="o">&lt;&gt;</span><span class="ss">&quot;Rk&quot;</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>Clip Values&nbsp;剪切值</h3>
+<p>排除异常值后，预览数据Visualizations更符合正则分布</p>
+<ul>
+<li>Set of thresholds: ClipPeaksAndSubpeaks&nbsp;同时指定上下限值</li>
+<li>Threshold:&nbsp;Constant</li>
+<li>Constant value for upper threshold 阈值上限（仅当选择了 ClipPeaks&nbsp;时显示）</li>
+<li>Constant value for lower threshold 阈值下限（仅当选择了 ClipSubPeaks&nbsp;时显示）</li>
+<li>Subsitute value for peaks 峰值替换值,&nbsp;替换大于上限的值</li>
+<li>Subsitute value for subpeaks&nbsp;子峰值替换值，替换小于下限的值</li>
+<li>Overwrite flag: Ture&nbsp;覆盖原始列</li>
+<li>Add indicator columns: False&nbsp;生成一个新列来指示是否向该行中的数据应用了指定的剪切操作</li>
+</ul>
+<h3>Remove Duplicate Rows&nbsp;删除重复行</h3>
+<ul>
+<li>Key column selection filter expression: two rows are considered duplicates of each other only if they have the same values in these&nbsp;columns.</li>
+<li>Retain first duplicate row:&nbsp;True</li>
+</ul>
+<h3>Clean Missing Data&nbsp;清理缺失数据</h3>
+<ul>
+<li>Cleaning mode: Remove entire row / Replace with&nbsp;mean</li>
+</ul>
+<h3>Normalize Data&nbsp;规范化数据</h3>
+<ul>
+<li>Transformation method: ZScore 总体标准偏差 / MinMax [0, 1] / Logistic / LogNormal 对数范围 /&nbsp;TanH</li>
+<li>Use 0 for constant columns when checked:&nbsp;True</li>
+</ul>
+<h3>Train Model&nbsp;训练模型</h3>
+<p>左侧输入未训练的模型，右侧输入训练数据集。</p>
+<ul>
+<li>Label&nbsp;column：标签列</li>
+</ul>
+<h3>Score Model&nbsp;评分模型</h3>
+<ul>
+<li>对于分类模型，分数模型输出类的预测值，以及预测值的概率。</li>
+<li>对于回归模型，评分模型仅生成预测数值。</li>
+</ul>
+<p>评分的一个常见用途是在预测 Web&nbsp;服务中返回输出</p>
+<h3>Evaluate Model&nbsp;评估模型</h3>
+<p>“评估模型”返回的指标 Metrics&nbsp;取决于评估的模型类型：</p>
+<ul>
+<li>分类模型：Accuracy, Precision, Recall, F1 score, <span class="caps">AUC</span></li>
+<li>回归模型: <span class="caps">MAE</span>, <span class="caps">RMSE</span>, <span class="caps">RAE</span>, <span class="caps">RSE</span>,&nbsp;R2</li>
+<li>聚类分析模型: Average/Maximal Distance to Other/Cluster Center, Number of Points, Combined&nbsp;Evaluation</li>
+</ul>
+<p>右侧添加另一个Score Model，可以在相同数据上轻松比较两个不同模型的结果。 两个输入算法应为同一算法类型。&nbsp;也可以使用不同的参数对相同数据运行两次，然后比较两次运行的评分。</p>
+<h3>Web Service&nbsp;Input/Output</h3>
+<p>在job中生成Real-time inference&nbsp;pipeline</p>
+<ul>
+<li>Web Service Input 作为 Score Model
+的输入，Web Service Output 连接 Score Model&nbsp;的输出</li>
+</ul>
+<p>Batch inference piplie&nbsp;批量预测管道，对大型数据集持续评分</p>
+<p>https://learn.microsoft.com/en-us/azure/machine-learning/how-to-run-batch-predictions-designer</p>
+<p>Deploy 后出现在 &#8220;endpoints&#8221; section，等待deployment state 变为&#8221;healthy&#8221;，&#8221;Test&#8221; 里点&nbsp;&#8220;test&#8221;</p>
+<p>Postman:</p>
+<ul>
+<li>Headers: <ul>
+<li>Content-Type:&nbsp;application/json</li>
+<li>Authorization: Bearer <api_key></li>
+</ul>
+</li>
+<li>Body (raw): { &#8220;inputs&#8221;: { &#8220;input1&#8221;: [&#8230;] }&nbsp;}</li>
+</ul>
+<h3>Model</h3>
+<ul>
+<li>Linear Regression&nbsp;线性回归</li>
+<li>Neural Network Regression&nbsp;神经网络回归</li>
+<li>Boosted Decistion Tree Regression&nbsp;提升决策树回归</li>
+<li>Decision Forest Regression&nbsp;决策林回归</li>
+<li>Poisson Regression&nbsp;泊松回归</li>
+<li>Two-Class Decision Forest&nbsp;双类决策林</li>
+<li>Two-Class Boosted Decision Tree module&nbsp;双类提升决策树</li>
+</ul>
+<h2>Datasets</h2>
+<p>Create dataset From local&nbsp;files</p>
+<ul>
+<li>Data type: Tabular&nbsp;表格</li>
+<li>Data source: From local&nbsp;files</li>
+<li>Storage type: Azure Blob&nbsp;Storage</li>
+<li>File format: Delimited&nbsp;带分隔符文件</li>
+<li>Delimiter:&nbsp;Comma</li>
+<li>Encoding: <span class="caps">UTF</span>-8</li>
+<li>Column headers: All files have same&nbsp;headers</li>
+</ul>
+<p><img alt="aml" src="img/aml1.png"></p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "azure-machine-learning-studio-designer.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

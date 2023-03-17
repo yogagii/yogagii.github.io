@@ -143,7 +143,8 @@
 <ul>
 <li>回归损失函数<ul>
 <li>均方差&nbsp;mean_squared_error</li>
-<li>平均绝对误差&nbsp;mean_absolute_error</li>
+<li>均方根误差 Root Mean Squared Error&nbsp;(rmse)</li>
+<li>平均绝对误差 mean_absolute_error&nbsp;(mae)</li>
 <li>Huber loss&nbsp;huber_loss</li>
 </ul>
 </li>
@@ -213,6 +214,14 @@
 <div class="highlight"><pre><span></span><code><span class="n">pre</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 </code></pre></div>
 
+<p>数据分为：
+* 训练集 80%
+* 测试集 20%
+* 验证集 (带小球) -&gt;&nbsp;计算像素误差率</p>
+<p>标志点配准误差 <span class="caps">FRE</span>:&nbsp;配准后相应基准点之间的均方根距离</p>
+<blockquote>
+<p>sqrt(((x1-x2)/a)^2 +&nbsp;((y1-y2)/b)^2)</p>
+</blockquote>
 <h2>Pytorch</h2>
 <ul>
 <li>UniPost</li>
@@ -438,15 +447,17 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -462,7 +473,6 @@
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

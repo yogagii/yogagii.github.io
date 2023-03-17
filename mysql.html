@@ -58,8 +58,7 @@
             <a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
-                <a href="/tag/mysql.html">mysql</a>
-                <a href="/tag/database.html">database</a>
+                <a href="/tag/sql.html">sql</a>
         <!-- TOBE COMMENTS -->
     </div>
     </header>
@@ -255,6 +254,91 @@
 <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">A</span><span class="p">,</span> <span class="n">customer</span> <span class="k">where</span> <span class="n">customer</span><span class="p">.</span><span class="n">userid</span> <span class="o">=</span> <span class="k">user</span><span class="p">.</span><span class="n">id</span>
 </code></pre></div>
 
+<h3>存储过程(Stored Procedure)：一组为了完成特定功能的SQL&nbsp;语句</h3>
+<ul>
+<li>当对数据库进行复杂操作时，可将此复杂操作用存储过程封装起来与数据库提供的事务处理结合一起使用</li>
+<li>存储过程只在创造时进行编译，以后每次执行存储过程都不需再重新编译，而一般SQL语句每执行一次就编译一次,所以使用存储过程可提高数据库执行速度，效率要比T-SQL语句高</li>
+<li>存储过程有助于减少应用程序和数据库服务器之间的流量，因为应用程序不必发送多个冗长的 <span class="caps">SQL</span>&nbsp;语句，而只用发送存储过程的名称和参数</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 创建过程 --</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">DELIMITER</span> <span class="o">//</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">procedure</span> <span class="n">mypro</span><span class="p">(</span><span class="k">in</span> <span class="n">a</span> <span class="nb">int</span><span class="p">,</span> <span class="k">in</span> <span class="n">b</span> <span class="nb">int</span><span class="p">,</span> <span class="k">out</span> <span class="k">sum</span> <span class="nb">int</span><span class="p">)</span>
+     <span class="o">&gt;</span> <span class="k">begin</span>
+     <span class="o">&gt;</span> <span class="k">set</span> <span class="k">sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="c1">-- 这个封号不能漏 --</span>
+     <span class="o">&gt;</span> <span class="k">end</span> <span class="o">//</span>
+
+<span class="c1">-- 调用过程 -- call 用来调用过程，@s 是用来接收过程输出参数的变量。</span>
+<span class="k">call</span> <span class="n">mypro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">@</span><span class="n">s</span><span class="p">);</span>
+<span class="c1">-- 输出结果 --</span>
+<span class="k">select</span> <span class="o">@</span><span class="n">s</span><span class="p">;</span>
+</code></pre></div>
+
+<p>踩坑：服务器处理 <span class="caps">SQL</span> 语句默认是以分号作为语句结束标志的。然而在创建存储过程时，存储过程体可能包含有多条 <span class="caps">SQL</span> 语句，服务器在处理时会以遇到的第一个分号作为整个程序的结束符。通常使用 <span class="caps">DELIMITER</span>&nbsp;命令将结束命令修改为其他字符，创建完成后再改回来。</p>
+<div class="highlight"><pre><span></span><code><span class="n">mysql</span> <span class="o">&gt;</span> <span class="k">DELIMITER</span> <span class="p">;</span>
+</code></pre></div>
+
+<p>流程控制语句</p>
+<ul>
+<li>if</li>
+<li>case</li>
+<li>while</li>
+<li>repeat</li>
+<li>loop</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">create</span> <span class="k">procedure</span> <span class="n">mypro2</span><span class="p">(</span><span class="k">in</span> <span class="n">num</span> <span class="nb">int</span><span class="p">)</span>
+<span class="k">begin</span>
+<span class="k">if</span> <span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span> <span class="k">then</span> <span class="c1">-- 条件开始</span>
+<span class="k">select</span> <span class="s1">&#39;负数&#39;</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="n">num</span><span class="o">=</span><span class="mi">0</span> <span class="k">then</span>
+<span class="k">select</span> <span class="s1">&#39;不是正数也不是负数&#39;</span><span class="p">;</span>
+<span class="k">else</span>
+<span class="k">select</span> <span class="s1">&#39;正数&#39;</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">if</span><span class="p">;</span><span class="c1">-- 条件结束</span>
+<span class="k">end</span><span class="p">;</span>
+
+<span class="c1">-- 调用过程</span>
+<span class="k">call</span> <span class="n">mypro2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+
+<p>存储过程管理</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 显示存储过程</span>
+<span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">STATUS</span><span class="p">;</span>
+<span class="c1">-- 显示特定数据库的存储过程，代码如下所示</span>
+<span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">status</span> <span class="k">where</span> <span class="n">db</span> <span class="o">=</span> <span class="s1">&#39;schooldb&#39;</span><span class="p">;</span>
+<span class="c1">-- ：显示特定模式的存储过程，要求显示名称中包含“my”的存储过程，代码如下所示</span>
+<span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">status</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%my%&#39;</span><span class="p">;</span>
+<span class="c1">-- 显示存储过程源码</span>
+<span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">mypro1</span><span class="p">;</span>
+<span class="c1">-- 删除存储过程</span>
+<span class="k">drop</span> <span class="k">PROCEDURE</span> <span class="n">mypro1</span><span class="p">;</span>
+</code></pre></div>
+
+<p>原文链接：https://blog.csdn.net/scj0725/article/details/114625180</p>
+<p>Procedure | Function
+| - | -
+作为PL/SQL语句执行 | 作为一个表达式执行
+在 <span class="caps">COMMAND</span> 命令窗口中，使用 <span class="caps">EXECUTE</span> 命令执行过程 | 借用 select 语句来执行
+不可在 <span class="caps">DDL</span> 和 <span class="caps">SELECT</span> 语句中调用过程 | 可在 <span class="caps">DDL</span> 和 <span class="caps">SELECT</span> 语句中调用函数
+在头部不能包含RETURN语句 | 在头部必须包含RETURN语句
+可以通过output参数返回值，可返回多个值 | 必须返回一个single值
+可以有一个不包括值的返回语句 |&nbsp;必须至少包含一个RETURN语句</p>
+<h3>事务&nbsp;Transaction</h3>
+<p>事务就是由单独单元的一个或多个sql语句组成，在这个单元中，每个sql语句都是相互依赖的。</p>
+<p>事务是一个整体，里面的内容要么都执行成功，要么都不成功。不可能存在部分执行成功而部分执行不成功的情况。如果某条sql语句一旦执行失败或者产生错误，那么整个单元将会回滚(返回最初状态)到事务开始之前的状态。</p>
+<p>事务的四个特性(<span class="caps">ACID</span>):
+* 原子性（Atomicity）：指事务是一个不可分割的最小工作单位，事务中的操作只有都发生和都不发生两种情况
+* 一致性（Consistency）：事务必须使数据库从一个一致状态变换到另外一个一致状态，不存在中间状态。
+* 隔离性（Isolation）：多个事务之间相互隔离的，并发执行的各个事务之间不能互相干扰。
+*&nbsp;持久性（Durability）：一个事务一旦提交成功，它对数据库中数据的改变将是永久性的，接下来的其他操作或故障不应对其有任何影响。</p>
+<div class="highlight"><pre><span></span><code><span class="k">start</span> <span class="k">transaction</span><span class="p">;</span> <span class="c1">-- 开始事务</span>
+<span class="c1">-- do something</span>
+<span class="k">commit</span><span class="p">;</span> <span class="c1">-- 提交事务</span>
+</code></pre></div>
+
+<blockquote>
+<p>事务 <span class="caps">VS</span>&nbsp;存储过程：存储过程中可以有事务，事务中也可以有多个存储过程；存储过程方便了功能块的进行，事务保证了功能执行的完整性；事务是保存在项目里的，存储过程是保存在数据库里的。</p>
+</blockquote>
+<hr>
 <p>2020.9.10</p>
 <p>查询缓存：缓存相同查询语句的结果</p>
 <div class="highlight"><pre><span></span><code><span class="k">SHOW</span> <span class="nv">ENGINES</span>
@@ -408,15 +492,17 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -432,7 +518,6 @@
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

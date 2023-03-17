@@ -250,8 +250,16 @@ yasm --version
 <span class="k">await</span> <span class="nx">transcodeMediaFile</span><span class="p">(</span><span class="nx">video_addr</span><span class="p">,</span> <span class="nx">output_addr</span><span class="p">,</span> <span class="s1">&#39;wav&#39;</span><span class="p">)</span>
 </code></pre></div>
 
+<div class="highlight"><pre><span></span><code>ffmpeg -i input.mp4 output.avi
+</code></pre></div>
+
 <p>3.ffmpeg-extract-frames</p>
 <p>npm i&nbsp;ffmpeg-extract-frames-quality</p>
+<p>返回关键帧时间点</p>
+<div class="highlight"><pre><span></span><code>ffmpeg -i ./video/dm.mp4 -filter:v <span class="s2">&quot;select=&#39;gt(scene,0.1)&#39;,showinfo&quot;</span> -f null - <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+
+<p>返回截图</p>
 <div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="nx">extractFrames</span><span class="p">({</span>
   <span class="nx">input</span><span class="o">:</span> <span class="nx">video_addr</span><span class="p">,</span>
   <span class="nx">output</span><span class="o">:</span> <span class="nx">output_img</span><span class="p">,</span>
@@ -259,7 +267,6 @@ yasm --version
 <span class="p">});</span>
 </code></pre></div>
 
-<p>ffmpeg -i ./video/dm.mp4 -filter:v &#8220;select=&#8217;gt(scene,0.1)&#8217;,showinfo&#8221; -f null -&nbsp;2&gt;&amp;1</p>
 <h2><span class="caps">OCR</span></h2>
 <div class="highlight"><pre><span></span><code><span class="nv">brew</span> <span class="nv">install</span> <span class="nv">tesseract</span>
 <span class="nv">brew</span> <span class="nv">install</span> <span class="nv">tesseract</span><span class="o">-</span><span class="nv">lang</span>
@@ -442,15 +449,17 @@ fc-list :lang-zh
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -466,7 +475,6 @@ fc-list :lang-zh
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

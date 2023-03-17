@@ -123,7 +123,11 @@ aws s3 ls s3://&lt;bucketname&gt;/&lt;foldername&gt;/
 <p>新建task.sh脚本</p>
 <div class="highlight"><pre><span></span><code>vi task.sh
 
+<span class="nv">folder</span><span class="o">=</span><span class="k">$(</span>date +%Y-%m-%d<span class="k">)</span>
+<span class="nb">echo</span> <span class="nv">$folder</span>
+aws s3 cp ~/Desktop/manu s3://&lt;bucketname&gt;/<span class="nv">$folder</span>/ --recursive
 aws s3 cp ./teacher.xlsx s3://&lt;bucketname&gt;
+aws s3 rm s3://&lt;bucketname&gt;/<span class="nv">$folder</span>/.DS_Store
 aws s3 ls s3://&lt;bucketname&gt;
 
 chmod <span class="m">755</span> task.sh
@@ -158,6 +162,11 @@ crontab -r <span class="c1"># 删除定时任务</span>
 <span class="k">pause</span>
 </code></pre></div>
 
+<div class="highlight"><pre><span></span><code>reg add <span class="s2">&quot;HKEY_CURRENT_USER\Control Panel\International&quot;</span> /v sShortDate /t REG_SZ /d yyyy/MM/dd /f
+<span class="k">set</span> <span class="nv">folder</span><span class="p">=</span><span class="nv">%date:~0,4%</span>-<span class="nv">%date:~5,2%</span>-<span class="nv">%date:~8,2%</span>
+aws s3 cp C:\Users\<span class="p">&lt;</span>folder<span class="p">&gt;</span>\ s3://<span class="p">&lt;</span>bucketname<span class="p">&gt;</span>/<span class="nv">%folder%</span>/ --recursive --profile dayu
+</code></pre></div>
+
 <p>修改文件后缀 .txt -&gt;&nbsp;.bat</p>
 <p>双击试运行</p>
 <ol>
@@ -168,6 +177,7 @@ crontab -r <span class="c1"># 删除定时任务</span>
 <p>触发器：一次&nbsp;选择开始时间</p>
 <p>操作：选中脚本位置</p>
 <p>条件：只有在计算机使用交流电源时才启动任务（取消勾选）</p>
+<p>查看任务运行记录：任务计划程序 -&gt; 显示所有正在运行的任务 -&gt;&nbsp;任务状态</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -252,15 +262,17 @@ crontab -r <span class="c1"># 删除定时任务</span>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -276,7 +288,6 @@ crontab -r <span class="c1"># 删除定时任务</span>
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

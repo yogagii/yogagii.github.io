@@ -1,0 +1,520 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›Machine&nbsp;Learning
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Machine&nbsp;Learning</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-01-18T00:00:00+08:00"> 
+            <a href="/archive/2023/ 1/index.html">三 18 一月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/ml.html">ML</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>Data</h3>
+<ul>
+<li>Observations&nbsp;(数据行)</li>
+<li>Features&nbsp;(数据列)</li>
+<li>Training data set 训练集&nbsp;80%</li>
+<li>Testing data set 测试集&nbsp;20%</li>
+<li>Validation data set&nbsp;验证集</li>
+</ul>
+<h3>Machine Learning&nbsp;分类</h3>
+<p>按照模型训练方式：
+* Supervised learning 监督学习: 从输入 -&gt; 输出 学习统计规律 （分类，回归）
+* Unsupervised learning 无监督学习：没有标注数据（聚类，降维/主成分分析，异常检测）
+* Semi-Supervised learning 半监督学习（生成模型）
+* Reinforcement learning 强化学习：累积奖励的最大化（AlphaGo）
+* Deep learning&nbsp;深度学习（生成对抗网络）</p>
+<h3><span class="caps">ML</span> Learning&nbsp;Algorithms</h3>
+<ul>
+<li>Regression 回归&nbsp;（预测）</li>
+<li>Classification&nbsp;分类</li>
+<li>Clustering&nbsp;聚类</li>
+<li>Anomaly Detection&nbsp;异常检测</li>
+<li>Reinforcement Learning&nbsp;强化学习</li>
+</ul>
+<h2>Regression&nbsp;回归</h2>
+<p>continuous numerical predicition&nbsp;数值预测：气温，销量，房价</p>
+<p>算法 | 特点
+| - | - |
+Linear Regression 线性回归 | 训练时间短、线性模型
+Bayesian Linear Regression 贝叶斯线性回归 | 线性模型，训练数据量较少
+Poisson Regression 泊松回归 |  预测事件次数
+Fast Forest Quantile Regression 快速森林分位数回归 | 预测分布
+Neural Network Regression 神经网络回归 | 精准度高、训练时间较长
+Decision Forest Regression 决策森林回归 | 精准度高、训练时间短
+Boosted Decision Tree Regression 提升决策树回归 |&nbsp;精确度高、训练时间短、内存占用较大</p>
+<p>评估指标 Metrics | desc
+| - | - |
+平均绝对误差 (<span class="caps">MAE</span>) | 预测值与真实值之间的平均绝对误差
+均方根误差 (<span class="caps">RMSE</span>) | 模型在预测中会产生多大的误差，对于较大的误差权重较高
+决定系数 (R2) |&nbsp;0&lt;=R2&lt;=1，1说明模型无错误</p>
+<h2>Classification&nbsp;分类</h2>
+<p>通过已有数据集（训练集）的学习，得到一个目标函数f（模型），把每个属性集x映射到目标属性y（类），且y必须是离散的（若y为连续的，则属于回归算法）。</p>
+<p>Binary Classification 二分类 / Multi-Class Classification&nbsp;多分类</p>
+<p>算法 | 特点
+| - | - |
+Logistic Regression 逻辑回归 | 训练时间短、线性模型
+Support Vector Machines (<span class="caps">SVM</span>) 支持向量机 | 线性模型，under 100 features
+Decision Forest 决策森林 | 精准度高，训练时间短
+Boosted Decision Trees 提升决策树 | 精准度高，训练时间短
+Neural Networks 神经网络 |&nbsp;精准度高、训练时间较长</p>
+<p>混淆矩阵 | Actual Positives | Actual Negatives
+| - | - | - |
+Predicted Postives | <span class="caps">TP</span> | <span class="caps">FP</span>
+Predicted Negatives | <span class="caps">FN</span> | <span class="caps">TN</span></p>
+<p>Performance Metrics 性能评估 | Desc | Formula | 场景
+| - | - | - | - |
+Accuracy 准确率 | 所有样本中预测正确的样本占比 | (<span class="caps">TP</span>+<span class="caps">TN</span>)/(<span class="caps">TP</span>+<span class="caps">TN</span>+<span class="caps">FP</span>+<span class="caps">FN</span>) | 数据类别不均衡时不靠谱
+Precision 精准率/查准率 | 在所有被预测为正的样本中实际为正的样本的概率 | <span class="caps">TP</span>/(<span class="caps">TP</span>+<span class="caps">FP</span>) | 预测升的股票里真的升了有多少
+Recall/Sensitivity 召回率/查全率 | 在实际为正的样本中被预测为正样本的概率 | <span class="caps">TP</span>/(<span class="caps">TP</span>+<span class="caps">FN</span>) |&nbsp;真的患病的病人中里预测正确的人</p>
+<h2>Time Series Analysis&nbsp;时间序列分析</h2>
+<p>一个时间序列 (表示为 Y = a + bX)&nbsp;是一个在时间上具有相同间隔值的有序序列</p>
+<p>目标：
+1. 历史数据识别和建模 Identify patterns in the past
+2. 预测未来的值 Forecast future&nbsp;values</p>
+<p>Component | Desc
+| - | - |
+Level | Average value
+Trend 趋势 | 指在时间序列中的长期移动，上升/降低的趋势
+Seasonality 季节性变动 | 周期性波动（短期）
+Cyclical component 周期性变动 | 不是固定的波动（长期 &gt; 1年）
+Random Noise 随机变动 |&nbsp;噪声</p>
+<p>四种变动与指标数值最终变动的关系:</p>
+<ul>
+<li>加法模型&nbsp;Additive</li>
+</ul>
+<p>f(t)=Trend+Cycles+Seasonality+Noise</p>
+<ul>
+<li>乘法模型&nbsp;Multiplicative</li>
+</ul>
+<p>f(t)=Trend<em>Cycles</em>Seasonality*Noise</p>
+<p>如果随着时间的推移，序列的季节波动越来越大，则反映各种变动之间的关系发生变化，建议使用乘积模型；反之，如果时间序列图的波动保持恒定，则可以使用叠加模型。</p>
+<p>Stationarity 平稳时间序列：&nbsp;一个时间序列，如果均值没有系统的变化（无趋势）、方差没有系统变化，且严格消除了周期性变化，就称之是平稳的。</p>
+<blockquote>
+<p>To apply a time series model, it is important for the Time series to be stationary. This means that the mean and variance should constant over time. </br>
+Use the Rolling statistics and the Dickey-Fuller test to check the&nbsp;stationarity</p>
+</blockquote>
+<p>检测是否平稳</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<span class="k">def</span> <span class="nf">test_stationarity</span><span class="p">(</span><span class="n">timeseries</span><span class="p">):</span>
+    <span class="c1">#Determing rolling statistics</span>
+    <span class="n">rolmean</span> <span class="o">=</span> <span class="n">timeseries</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">rolstd</span> <span class="o">=</span> <span class="n">timeseries</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Use a log transformation to do a data transformation in the hope to reduce trend and make our data&nbsp;stationary.</p>
+<p>转为平稳序列</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># use rolling average to removed the trend</span>
+<span class="n">moving_avg</span> <span class="o">=</span> <span class="n">ts_log</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ts_log_moving_avg_diff</span> <span class="o">=</span> <span class="n">ts_log</span> <span class="o">-</span> <span class="n">moving_avg</span>
+<span class="n">ts_log_moving_avg_diff</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_stationarity</span><span class="p">(</span><span class="n">ts_log_moving_avg_diff</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># remove both the trend and seasonality</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">ts_log</span><span class="p">)</span>
+
+<span class="n">trend</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">trend</span>
+<span class="n">seasonal</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">seasonal</span>
+<span class="n">residual</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">resid</span>
+
+<span class="n">ts_log_decompose</span> <span class="o">=</span> <span class="n">residual</span>
+<span class="n">ts_log_decompose</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_stationarity</span><span class="p">(</span><span class="n">ts_log_decompose</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Autocorrelation&nbsp;自相关：函数和自己的相似性</p>
+<p>Autocorrelation Function (<span class="caps">ACF</span>)&nbsp;自相关函数：关于自变量延迟(lag)的一个函数，描述了时间序列中不同时间间隔之间的值的相关性</p>
+<p>时间序列的模型解析法：</p>
+<ul>
+<li>Auto-Regressive model (<span class="caps">AR</span>)&nbsp;自回归模型：利用前期数值与后期数值的相关关系（自相关），建立包含前期数值和后期数值的回归方程，白噪声为时间序列数值的随机波动，这些随机波动的总和会等于0</li>
+<li>Moving Average model (<span class="caps">MA</span>)&nbsp;滑动平均模型：某个时间点的指标数值等于白噪声序列的加权和</li>
+<li>Auto-Regressive Moving Average model (<span class="caps">ARMA</span>)&nbsp;自回归滑动平均模型：自回归过程负责量化当前数据与前期数据之间的关系，移动平均过程负责解决随机变动项的求解问题</li>
+<li>Auto-Regressive Integrated Moving Average model (<span class="caps">ARIMA</span>) 差分自回归移动平均模型<blockquote>
+<p>p&#8212;代表预测模型中采用的时序数据本身的滞后数(lags) ,<span class="caps">AR</span>/Auto-Regressive项 </br>
+d&#8212;代表时序数据需要进行几阶差分化，才是稳定的(differencing)，Integrated项 </br>
+q&#8212;代表预测模型中采用的预测误差的滞后数(lags)，<span class="caps">MA</span>/Moving&nbsp;Average项</p>
+</blockquote>
+</li>
+<li>Exponential Smoothing&nbsp;Model：前4项用于分析平稳时间序列，ARIMA通过差分可以用于处理非平稳时间序列</li>
+</ul>
+<p>http://t.zoukankan.com/xinbaby829-p-7905873.html</p>
+<p>To know the values for p and q, we can use the Auto correlation Function (<span class="caps">ACF</span>) technique and the Partial auto correlation (<span class="caps">PACF</span>)&nbsp;technique.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ACF and PACF plots:</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">acf</span><span class="p">,</span> <span class="n">pacf</span>
+
+<span class="n">lag_acf</span> <span class="o">=</span> <span class="n">acf</span><span class="p">(</span><span class="n">ts_log_diff</span><span class="p">,</span> <span class="n">nlags</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">lag_pacf</span> <span class="o">=</span> <span class="n">pacf</span><span class="p">(</span><span class="n">ts_log_diff</span><span class="p">,</span> <span class="n">nlags</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">)</span>
+
+<span class="c1"># ARIMA</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">ts_log</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  
+<span class="n">pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;1974-01-01&#39;</span><span class="p">),</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Clustering&nbsp;聚类</h2>
+<p>聚类是一种无监督学习。聚类不需要标签，只要我们自己选择一个指标（如样本之间的距离）把数据集分割成不同的类或者簇，使类内元素的相似性尽可能的大，类间元素的相似性尽可能小，通过这样来对相似的数据进行归簇，从而达到聚类的效果。</p>
+<p>K-means&nbsp;聚类算法：</p>
+<ol>
+<li>随机选取K个中心点</li>
+<li>遍历数据集里面的每个点，看距离哪个中心点最近就分为哪一类，遍历完一共K类</li>
+<li>把属于一类的点取平均值，得到的平均值作为新的中心点</li>
+<li>然后不断重复步骤2，3，直到达到结束条件（当中心点不再变动或变动很小，当达到最大迭代次数）为止。</li>
+</ol>
+<p>缺点：
+* k值未知，需要人为设定
+* 对于初始化中心点特别敏感，不同的初始化，结果可能不一样
+* 容易受到噪声的影响，可能收敛于局部最小值，同时数据量大时收敛速度较慢
+* 不太适合离散的数据，样本类别不均衡的数据的聚类
+*&nbsp;要求这些簇的模型必须是圆形</p>
+<p>Model Performance：
+* <span class="caps">PCA</span> Graph (Principal component analysis 主成分分析）
+* 混淆矩阵 (labels are&nbsp;known)</p>
+<p>Metrics:
+* Number of Points
+* Average Distance to Cluster Center
+* Average Distance to Other Center
+* Maximal Distance to Cluster&nbsp;Center</p>
+<hr>
+<h2>Variables</h2>
+<p>Variables are attributes/characteristics of an&nbsp;object</p>
+<p>Two methods to describe a variable:
+* Summary/descriptive statistics
+    * Quantitatively describe features of a data set 数量
+    * Mean 平均数，median 中位数，mode 众数，min，max，variance方差，standard deviation标准差，Quartiles 四分位数，unique values 唯一值，missing values 缺失值 
+* Visualization
+    * Qualitatively describe features of data sets
+    * Histograms 直方图, box plots, scatter&nbsp;plot.</p>
+<h3>Bi-variate Analysis&nbsp;双变量分析</h3>
+<p>双变量分析，是为了找出两个变量之间的关系。</p>
+<p>变量可以有多种组合分析:
+* Two continuous variables 连续型之间
+* Two categories variables分类型之间
+* One continuous variable and one categories variable&nbsp;分类变量和连续变量。</p>
+<h2>数据清理 Data&nbsp;Cleaning</h2>
+<h3>Unwanted&nbsp;Rows</h3>
+<ul>
+<li>Duplicate&nbsp;rows</li>
+<li>Irrelevant&nbsp;rows</li>
+</ul>
+<h3>Missing values&nbsp;缺失值</h3>
+<p>Types:</p>
+<ul>
+<li>Missing completely at random (<span class="caps">MCAR</span>)&nbsp;完全随机缺失：缺失数据发生的概率与任何值无关</li>
+<li>Missing at random (<span class="caps">MAR</span>)&nbsp;随机缺失：缺失数据发生的概率与其他变量有关，与本身无关（体重缺失与性别有关）</li>
+<li>Missing Not at Random (<span class="caps">MNAR</span>)&nbsp;非随机缺失：缺失数据发生的概率与本身有关（学历缺失往往是学历最低的群体）</li>
+</ul>
+<p>Treat:</p>
+<ul>
+<li>Deletion&nbsp;丢弃观察值/丢弃特征</li>
+<li>Imputation 填充缺失数据（mean, median, mode, prediction&nbsp;models）</li>
+</ul>
+<h3>Outliers&nbsp;异常值</h3>
+<p>检测单变量异常值(univariate&nbsp;outlier）：</p>
+<ul>
+<li>Box Plots and&nbsp;histogrames</li>
+<li><span class="caps">IQR</span></li>
+</ul>
+<p>Peak Values: N &gt; Q3 + (1.5xIQR)
+SubPeak Values: N &lt; Q1 -&nbsp;(1.5xIQR)</p>
+<p>Component in <span class="caps">AML</span>：Clip&nbsp;Values</p>
+<p>Replace clipped Values with&nbsp;the</p>
+<ul>
+<li>specified threshold&nbsp;value</li>
+<li>Mean</li>
+<li>Median</li>
+<li>Missing / empty&nbsp;value</li>
+</ul>
+<h2>Feature Engineering&nbsp;特征工程</h2>
+<blockquote>
+<p>原始数据 -&gt; 特征 -&gt; 建模 -&gt;&nbsp;知识</p>
+</blockquote>
+<p>特征工程处在原始数据和特征之间。将数据转换为能更好的表示业务逻辑的特征，从而提高机器学习的性能。</p>
+<p>特征：是原始数据的数值表达方式，是机器学习算法模型可以直接使用的表达方式。</p>
+<ul>
+<li>
+<p>One-Hot-Encoding&nbsp;独热编码：将具有k个可能取值的分类特征编码为k-1个特征（都等于零表示最后一个可能取值）AML默认使用One-Hot-Encoding</p>
+</li>
+<li>
+<p>Binning 特征分箱：将数据集中单个连续输入特征变换为一个分类特征，用于表示数据点所在的箱子 bins = [1,3,6,9,12] labels=[&#8216;Winter&#8217;, &#8216;Spring&#8217;, &#8216;Summer&#8217;,&nbsp;&#8216;Fail&#8217;]</p>
+</li>
+<li>
+<p>Logarithmic Scale 特征缩放：数据标准化，将很大范围的数据限定在指定范围内，使数据分布变的更加的平滑&nbsp;（min-max缩放/归一化/对数变换np.log10）</p>
+</li>
+<li>
+<p>Feature Hashing 特征哈希：将一个数据点转换成一个向量，将所有的原始数据转换成指定范围内的散列值（<span class="caps">NLP</span>）</p>
+</li>
+</ul>
+<h2>Model Improvement&nbsp;Principles</h2>
+<p>泛化能力就是说已经得到的拟合函数对于新来的样本的适应性</p>
+<p>泛化能力 | 表现 | 偏差 | 方差
+| - | - | - | - |
+Overfit models 过拟合 | 在训练数据上表现良好，在未知数据上表现差 | low bias | high variance
+Underfit models 欠拟合 | 在训练数据和未知数据上表现都很差 | high bias | low&nbsp;variance</p>
+<p>对Bias和Variance进行平衡（tradeoff）</p>
+<blockquote>
+<p>Model with the right fit has a balance between bias and&nbsp;variance</p>
+</blockquote>
+<h3>Model Improvement&nbsp;Methods</h3>
+<ul>
+<li>Feature Selection&nbsp;选择合适的参数维度</li>
+<li>Regularization 正则化，减少某些特征的影响<ul>
+<li>L1 Regularization&nbsp;减小不重要的特征系数</li>
+<li>L2 Regularization&nbsp;收缩参数</li>
+</ul>
+</li>
+<li>Parameter Sweeping<ul>
+<li>Sweep entire grid&nbsp;对所有可能的参数值组合进行迭代的网格搜索</li>
+<li>Random sweep&nbsp;对一系列参数值进行随机搜索</li>
+</ul>
+</li>
+<li>Cross Validation 交叉验证：将原始数据进行分组（训练集/测试集），Divides data into multiple folds, Measures performance metrics in each&nbsp;fold</li>
+</ul>
+<h2>Data Science Life&nbsp;Cycle</h2>
+<p>Define Business Objectives -&gt; Import Data -&gt; Initial Data Analysis -&gt; Clean Data -&gt; Create Model -&gt; Optimize Model -&gt; Evaluate Model -&gt; Deploy&nbsp;Model</p>
+<hr>
+<p>机器学习模型中一般有两类参数：</p>
+<ul>
+<li>模型参数（Parameter）：模型本身的参数，需要从数据中学习和估计得到，比如，线性回归直线的加权系数（斜率）及其偏差项（截距）都是模型参数。</li>
+<li>超参数（Hyperparameter）：机器学习算法中的调优参数（tuning&nbsp;parameters），需要人为设定，比如，正则化系数λ，决策树模型中树的深度。</li>
+</ul>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/analytics.html">Analytics</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "machine-learning.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

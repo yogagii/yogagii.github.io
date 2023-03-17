@@ -1,0 +1,408 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›<span class="caps">GPT</span>
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">GPT</span></h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-02-20T00:00:00+08:00"> 
+            <a href="/archive/2023/ 2/index.html">一 20 二月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/ml.html">ML</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>版本 | 发布时间 | 训练方案 | 参数量 | 模型
+| - | - | - | - | - |
+<span class="caps">GPT</span>(<span class="caps">GPT</span>-1) | 2018 年 6 月 | 无监督学习 | 1.17 亿 |
+<span class="caps">GPT</span>-2 | 2019 年 2 月 | 多任务学习 | 15 亿 |
+<span class="caps">GPT</span>-3 | 2020 年 5 月 | 海量参数 | 1,750 亿 | text-curie-001, text-babbage-001, text-ada-001, davinci
+ChatGPT(<span class="caps">GPT</span>-3.5) | 2022 年 12 月 | 针对对话场景优化 | 1,750 亿 | text-davinci-003, text-davinci-002, gpt-3.5-turbo
+<span class="caps">GPT</span>-4 | 未发布 | 万亿参数 | 100万亿&nbsp;|</p>
+<p>https://blog.csdn.net/hekaiyou/article/details/128303729</p>
+<h3>模型使用</h3>
+<p>https://platform.openai.com/docs/api-reference/models</p>
+<p>基础模型 | Desc | Use cases
+| - | - | -
+davinci 达芬奇 | Most capable <span class="caps">GPT</span>-3 model. Most powerful | 文本摘要
+curie 居里 | Very capable, but faster and lower cost than Davinci. | 翻译，分类，文本情感分类
+babbage 巴贝奇 | Capable of straightforward tasks, very fast, and lower cost. | 语义搜索semantic search
+ada | The fastest model in the <span class="caps">GPT</span>-3 series, and lowest cost. |&nbsp;分类，地址提取，关键词</p>
+<p>从上往下：模型越小，能力越差，价钱越低，响应速度越快</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">chat</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Completion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-davinci-003&quot;</span><span class="p">,</span>
+      <span class="n">prompt</span><span class="o">=</span> <span class="n">prompt</span><span class="p">,</span>
+      <span class="n">temperature</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2500</span><span class="p">,</span>
+      <span class="n">top_p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+      <span class="n">frequency_penalty</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+      <span class="n">presence_penalty</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+      <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot; Human:&quot;</span><span class="p">,</span> <span class="s2">&quot; AI:&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;choices&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">answer</span>
+  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;broken&quot;</span>
+</code></pre></div>
+
+<ul>
+<li>model: 要使用的模型的 <span class="caps">ID</span>，Ada / Babbage / Curie /&nbsp;Davinci</li>
+<li>prompt:&nbsp;生成结果的提示文本，即你想要得到的内容描述</li>
+<li>max_tokens: （16）生成结果时的最大 tokens&nbsp;数，不能超过模型的上下文长度</li>
+<li>temperature:&nbsp;（1）控制结果的随机性，0.0为固定结果</li>
+<li>suffix:&nbsp;（null）completion后缀</li>
+<li>top_p：（1）和temperature二选一，具有top_p概率质量的标记的结果</li>
+<li>n：（1）每个prompt生成的completion数量</li>
+<li>stream：（false）是否回流部分进度</li>
+<li>logprobs：（null）api返回最可能token数量</li>
+<li>echo：（false）返回completion +&nbsp;prompt</li>
+<li>stop：（null）遇到停止生成token</li>
+<li>presence_penalty：（0）根据现有出现惩罚来降低重复</li>
+<li>frequency_penalty：（0）根据现有频率惩罚来降低重复</li>
+<li>best_of：（1）产生最佳completion个数</li>
+<li>logic_bias：（null）指定token在completion中出现的概率</li>
+<li>user：终端用户唯一标识符</li>
+</ul>
+<h3>模型训练</h3>
+<p>数据集准备：原文 – 摘要&nbsp;（几百个）</p>
+<p>基础模型：4选1，可不断迭代</p>
+<ul>
+<li>training_file：上传的训练数据文件ID。</li>
+<li>validation_file：验证数据的上传文件的ID。</li>
+<li>model：（curie）基础模型</li>
+<li>n_epochs：（4）训练模型的epoch数</li>
+<li>batch_size：（null）批大小是用于训练单个向前和向后传递的训练示例的数量，默认训练集&nbsp;0.2%</li>
+<li>learning_rate_multiplier：（null）用于训练的学习率乘数。</li>
+<li>prompt_loss_weight：（0.01）The weight to use for loss on the prompt&nbsp;tokens. </li>
+<li>compute_classification_metrics：（false）If set, we calculate classification-specific metrics such as accuracy and F-1 score using the validation set at the end of every&nbsp;epoch.  </li>
+<li>classification_n_classes：（null）分类任务的类数量</li>
+<li>classification_positive_class：（null）二元分类中的正类</li>
+<li>classification_betas：（null）F-beta&nbsp;scores</li>
+<li>suffix：（null）模型名后缀</li>
+</ul>
+<p>可训练判别器模型，当提问范围超出数据集，回答&#8221;No sufficient context for answering the&nbsp;question&#8221;</p>
+<p>When the question was not generated on the context, the model will be prompted to answer &#8220;No sufficient context for answering the question&#8221;. We will also train a discriminator model, which predicts whether the question can be answered based on the context or&nbsp;not.</p>
+<h3>计价</h3>
+<p>1000 tokens(750 words) $0.02 (prompt+completion&nbsp;提问+回答总字数)</p>
+<p>模型 | 基础模型 使用 |训练模型 | 训练后使用
+| - | - | - | -
+text-davinci-003 | $0.02 | $0.03 | $0.12
+text-curie-001 | $0.002 | $0.003 | $0.012
+text-babbage-001 | $0.0005 | $0.0006 | $0.012
+text-ada-001 | $0.0004 | $0.0004 |&nbsp;$0.0016</p>
+<p>视频时长 | 原文字数 | 耗时 | 基本模型费用 | 训练模型费用
+| - | - | - | - | -
+1小时 | 20000 中文字符 | 5-10min | (20000+10000)x2 / 1000x0.02 =$1.2 | 20000<em>2/1000</em>0.12 =$4.8&nbsp;(不包括训练产生费用)</p>
+<p><em>基本模型费用 =(prompt+completition)&nbsp;*$0.02</em></p>
+<p><em>训练模型费用 =训练数据量<em>$0.03 + prompt</em>$0.12</em></p>
+<h3>Speech to&nbsp;text</h3>
+<p>Whisper is a general-purpose speech recognition model. The Whisper v2-large model is currently available through <span class="caps">API</span> with the whisper-1 model&nbsp;name.</p>
+<ul>
+<li>Transcription</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">openai</span>
+<span class="n">audio_file</span><span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/path/to/file/audio.mp3&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">transcript</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Audio</span><span class="o">.</span><span class="n">transcribe</span><span class="p">(</span><span class="s2">&quot;whisper-1&quot;</span><span class="p">,</span> <span class="n">audio_file</span><span class="p">)</span>
+</code></pre></div>
+
+<p>限制： 25 <span class="caps">MB</span>，mp3, mp4, mpeg, mpga, m4a, wav, and&nbsp;webm.</p>
+<ul>
+<li>Translation</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">transcript</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Audio</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;whisper-1&quot;</span><span class="p">,</span> <span class="n">audio_file</span><span class="p">)</span>
+</code></pre></div>
+
+<p>只支持翻译成英语</p>
+<p>https://platform.openai.com/docs/guides/speech-to-text</p>
+<div class="highlight"><pre><span></span><code>pip install -U openai-whisper
+
+whisper japanese.wav --language Japanese
+</code></pre></div>
+
+<p>https://github.com/openai/whisper#available-models-and-languages</p>
+<hr>
+<h2>Azure&nbsp;OpenAI</h2>
+<h3>使用场景</h3>
+<ul>
+<li>Content Generation<ul>
+<li>Automatically generate responses to customer&nbsp;inquries</li>
+<li>Generate personalised <span class="caps">UI</span> for your&nbsp;website</li>
+</ul>
+</li>
+<li>Sumarization<ul>
+<li>Summary of customer support conversation&nbsp;logs</li>
+<li>Subject Matter Exper Document Summarization (financial reporting / analyst&nbsp;articles)</li>
+<li>Social Media trends&nbsp;summarization</li>
+</ul>
+</li>
+<li>Code generation<ul>
+<li>Convert natural language to <span class="caps">SQL</span> for telemetry&nbsp;data</li>
+<li>Convert natural languate to Query proprietary data&nbsp;models</li>
+<li>code&nbsp;documentation</li>
+</ul>
+</li>
+<li>Semantic Search<ul>
+<li>Search reviews for a specific product /&nbsp;service</li>
+<li>information discovery and knowledge&nbsp;mining</li>
+</ul>
+</li>
+</ul>
+<p>\ | OpenAI | Azure OpenAI
+| - | - | -
+版本 | <span class="caps">GPT3</span>.5 | <span class="caps">GPT3</span>.0 (<span class="caps">DALL</span>·E preview / ChatGPT comming soon)
+Rate limit | <span class="caps">TPM</span> (tokens per minute) API调用限制，对企业级大用户量，一分钟头几秒用完TPM，后面几秒无TPM可用 | 
+Data safety | customer-to-OpenAI requests and responses are encrypted | 符合企业安全性&nbsp;合规性</p>
+<h3>Document Process&nbsp;Automation:</h3>
+<p>Documents (<span class="caps">PDF</span>) -&gt; Azure Form Recognizer -&gt; Azure Cognitive Search -&gt; Azure OpenAI Service -&gt; Cosmos <span class="caps">DB</span> -&gt; Web Application /&nbsp;PowerBI</p>
+<h3>Contact Center&nbsp;Analytics</h3>
+<p>Telephony Server -&gt; Azure Storage (Audio Files) -&gt; Speech-to-Text -&gt; Azure OpenAI Service -&gt; PowerBI Insights (conversion trends&amp; insights) / <span class="caps">CRM</span> (detailed call history incl. summaries, call&nbsp;reasons)</p>
+<h3>OpenAI&nbsp;Fine-tuning</h3>
+<p>Azure OpenAI Studio -&gt; Create customized model -&gt; Upload training data -&gt; Import validation&nbsp;data</p>
+<p>不是数据集越多越好，训练越多反而影响了原本模型效果</p>
+<p>对于企业内部应用：
+通过 Hyperparams: Top base prompt&nbsp;最高指示：拒绝回答无关问题</p>
+<hr>
+<h2><span class="caps">DALL</span>·E 2&nbsp;图像生成</h2>
+<ul>
+<li>Generate an infinite number of images with simple text&nbsp;prompts</li>
+<li>Accelerate designs or inspire creative&nbsp;decision</li>
+<li>Build capability into enterprise applications through APls and&nbsp;SDKs</li>
+</ul>
+<p>Microsoft Designer:&nbsp;https://designer.microsoft.com</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/analytics.html">Analytics</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "gpt.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

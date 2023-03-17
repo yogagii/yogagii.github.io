@@ -127,6 +127,23 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
 <blockquote>
 <p>雪花模型：连接多，冗余低，性能低 <br/>星型模型：连接少，冗余高，性能高</p>
 </blockquote>
+<h2>Azure Blob&nbsp;Storage</h2>
+<p>Azure Blob Storage 是 Microsoft 提供的适用于云的对象存储解决方案。 Blob&nbsp;存储最适合存储巨量的非结构化数据。</p>
+<p>Azure Data Lake Storage Gen2 在 Blob 存储的基础上构建，提供了分层文件系统以及 Blob&nbsp;存储的优势，并通过以下方式增强了性能、管理和安全性：</p>
+<ul>
+<li>分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。</li>
+<li>管理更为容易，可以通过目录和子目录来组织和操作文件。</li>
+<li>可以在目录或单个文件上定义 <span class="caps">POSIX</span>&nbsp;权限。</li>
+</ul>
+<p>Azure storage offers different access&nbsp;tiers:</p>
+<ul>
+<li>Hot tier:&nbsp;适用于存储经常访问或修改的数据的联机层。存储成本最高，但访问成本最低。</li>
+<li>Cool tier: 适用于存储不经常访问或修改的数据的联机层。至少存储 30&nbsp;天。存储成本较低，访问成本较高。</li>
+<li>Archive tier: 适用于存储极少访问且延迟要求不严格的数据的脱机层。应至少存储 180&nbsp;天。</li>
+</ul>
+<p>Lifecycle management&nbsp;policy:</p>
+<p>Azure 存储生命周期管理可提供基于规则的策略，用于将 blob&nbsp;数据转移到最适合的访问层，或在数据生命周期结束时使数据过期。</p>
+<p>Storage account -&gt; Lifecycle management -&gt; Add a&nbsp;rule</p>
 <h2>Data&nbsp;Modeling</h2>
 <ul>
 <li><span class="caps">DCL</span> (Data Control Language): 数据控制语句，用于控制访问级别，grant /&nbsp;deny</li>
@@ -138,13 +155,39 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
 <li><span class="caps">DML</span> (Data Manipulation Language): 数据处理语句，添加、删除、更新和查询数据库记录 insert / delete / update /&nbsp;select</li>
 </ul>
 <h2>Data&nbsp;Factory</h2>
-<p>作业编排</p>
+<h3>作业编排</h3>
 <ul>
 <li>第一层&nbsp;GrandParent：最高级别，触发业务流程，按业务分组</li>
 <li>第二层&nbsp;Parent：次高级别，支持和管理子活动的并行执行</li>
 <li>第三层&nbsp;Child：配合Parent的功能层，获取在父级别需要执行的对象，然后进行执行任务，若存在依赖检查依赖状态</li>
 <li>第四层&nbsp;Worker：实现具体抽取、转换、加载的任务层，该层根据实际的需要进行设计和开发，并用作并行调度</li>
 </ul>
+<h3>日志输出</h3>
+<div class="highlight"><pre><span></span><code><span class="k">create</span> <span class="k">procedure</span> <span class="n">dayu_ActivityStart</span> 
+<span class="o">@</span><span class="n">BatchRunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">PipelineCode</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">RunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">ActivityCode</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">as</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span> <span class="k">with</span> <span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span> <span class="p">(</span><span class="n">BatchRunId</span><span class="p">,</span> <span class="n">RunId</span><span class="p">,</span> <span class="n">PipelineCode</span><span class="p">,</span> <span class="n">ActivityCode</span><span class="p">,</span> <span class="n">StartTime</span><span class="p">)</span> 
+<span class="k">VALUES</span> <span class="p">(</span><span class="o">@</span><span class="n">BatchRunId</span><span class="p">,</span> <span class="o">@</span><span class="n">RunId</span><span class="p">,</span> <span class="o">@</span><span class="n">PipelineCode</span><span class="p">,</span> <span class="o">@</span><span class="n">ActivityCode</span><span class="p">,</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">getUTCdate</span><span class="p">()))</span>
+
+<span class="k">exec</span> <span class="n">dayu_ActivityStart</span> <span class="s1">&#39;test01&#39;</span><span class="p">,</span> <span class="s1">&#39;ActivityName&#39;</span><span class="p">,</span> <span class="s1">&#39;test03&#39;</span><span class="p">,</span> <span class="s1">&#39;DIM_Table&#39;</span>
+
+<span class="k">create</span> <span class="k">procedure</span> <span class="n">dayu_ActivityLog</span> 
+<span class="o">@</span><span class="n">BatchRunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">RunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="k">Result</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">ActivityOutput</span> <span class="nb">varchar</span><span class="p">(</span><span class="k">max</span><span class="p">)</span>
+<span class="k">as</span>
+<span class="k">update</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span> <span class="k">with</span> <span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span>
+<span class="k">set</span> <span class="n">EndTime</span> <span class="o">=</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">getUTCdate</span><span class="p">()),</span> <span class="n">ActivityStatus</span> <span class="o">=</span> <span class="o">@</span><span class="k">Result</span><span class="p">,</span> <span class="n">ActivityOutput</span> <span class="o">=</span> <span class="o">@</span><span class="n">ActivityOutput</span>
+<span class="k">where</span> <span class="n">BatchRunId</span> <span class="o">=</span> <span class="o">@</span><span class="n">BatchRunId</span> <span class="k">and</span> <span class="n">RunId</span> <span class="o">=</span> <span class="o">@</span><span class="n">RunId</span>
+
+<span class="k">exec</span> <span class="n">dayu_ActivityLog</span> <span class="s1">&#39;test01&#39;</span><span class="p">,</span><span class="s1">&#39;test03&#39;</span><span class="p">,</span> <span class="s1">&#39;Success&#39;</span><span class="p">,</span> <span class="s1">&#39;exec Success&#39;</span>
+</code></pre></div>
+
+<p>ActivityOutput(Success):&nbsp;@string(activity(&#8216;xxx&#8217;).output)</p>
+<p>ActivityOutput(Failed):&nbsp;@activity(&#8216;xxx&#8217;).output.errors[0].Message</p>
+<h2><span class="caps">SQL</span>&nbsp;Server</h2>
+<p>将 <span class="caps">DIM</span>/<span class="caps">DM</span> 层数据导入 <span class="caps">SQL</span> Server 供 Power <span class="caps">BI</span>&nbsp;消费可降低成本。</p>
+<p>A low cost option would be to create an Azure Synapse Analytics workspace and use a serverless <span class="caps">SQL</span> pool to query the delta content. A serverless pool exposes itself as an Azure <span class="caps">SQL</span> <span class="caps">DB</span>. Since this is a serverless instance there is no provisioning costs. You&#8217;d only pay for the consumption (e.g. the actual&nbsp;query).</p>
+<p>若要直接读取 Delta table 需要 Set Up the <span class="caps">API</span> Server，会使用到 databricks 的cluster&nbsp;计算资源，成本更高。</p>
+<p>https://www.cdata.com/kb/tech/databricks-odata-nodejs.rst</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -229,15 +272,17 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
                         <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/etl.html">ETL</a></span>
                         <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
-                        <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
@@ -253,7 +298,6 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                         <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
-                        <span><a href="/tag/mysql.html">mysql</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
                         <span><a href="/tag/wechat.html">wechat</a></span>
                         <span><a href="/tag/jmeter.html">Jmeter</a></span>

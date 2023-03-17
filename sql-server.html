@@ -1,0 +1,475 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›<span class="caps">SQL</span>&nbsp;Server
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">SQL</span>&nbsp;Server</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-02-07T00:00:00+08:00"> 
+            <a href="/archive/2023/ 2/index.html">二 07 二月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/sql.html">sql</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>系统表&nbsp;sysobjects</h3>
+<ul>
+<li>获取系统表 sysobjects:&nbsp;在数据库内创建的每个对象（约束、默认值、日志、规则、存储过程等）在表中占一行。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="n">objects</span> 
+</code></pre></div>
+
+<ul>
+<li>获取表结构 syscolumns:&nbsp;每个表和视图中的每列在表中占一行，存储过程中的每个参数在表中也占一行。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="n">columns</span> <span class="c1">--- 用object_id过滤</span>
+</code></pre></div>
+
+<ul>
+<li>获取存储过程: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">a</span><span class="p">.[</span><span class="k">type</span><span class="p">],</span><span class="n">b</span><span class="p">.[</span><span class="n">definition</span><span class="p">]</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="n">all_objects</span> <span class="n">a</span><span class="p">,</span><span class="n">sys</span><span class="p">.</span><span class="n">sql_modules</span> <span class="n">b</span>
+<span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">is_ms_shipped</span><span class="o">=</span><span class="mi">0</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">object_id</span> <span class="k">and</span> <span class="n">a</span><span class="p">.[</span><span class="k">type</span><span class="p">]</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span><span class="s1">&#39;V&#39;</span><span class="p">,</span><span class="s1">&#39;AF&#39;</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">a</span><span class="p">.[</span><span class="n">name</span><span class="p">]</span> <span class="k">asc</span>
+</code></pre></div>
+
+<h3>锁</h3>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span> <span class="n">NOLOCK</span> <span class="c1">-- 无锁, 只能用于select，可能读取到未完成事务</span>
+
+<span class="k">WITH</span> <span class="n">HOLDLOCK</span> <span class="c1">-- 保持锁</span>
+
+<span class="k">WITH</span> <span class="n">UPDLOCK</span> <span class="c1">-- 更新锁</span>
+
+<span class="k">WITH</span> <span class="n">TABLOCKX</span> <span class="c1">-- 强制使用独占表级锁，这个锁在事务期间阻止任何其他事务使用这个表</span>
+</code></pre></div>
+
+<p><span class="caps">INSERT</span>、 <span class="caps">UPDATE</span> 或DELETE 命令时，<span class="caps">SQL</span> Server&nbsp;会自动使用独占锁。</p>
+<p>更新锁(<span class="caps">UPDLOCK</span>)优点：</p>
+<ul>
+<li>允许读取数据（不阻塞其它事务）并在以后更新数据，同时确保自从上次读取数据后数据没有被更改。</li>
+<li>当我们用UPDLOCK来读取记录时可以对取到的记录加上更新锁，从而加上锁的记录在其它的线程中是不能更改的只能等本线程的事务结束后才能更改</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">Qty</span> <span class="k">FROM</span> <span class="n">myTable</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span> <span class="k">WHERE</span> <span class="n">Id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Procedure&nbsp;存储过程</h3>
+<div class="highlight"><pre><span></span><code><span class="k">create</span> <span class="k">procedure</span> <span class="n">Proc_Student</span>
+<span class="o">@</span><span class="n">Proc_Son</span> <span class="nb">int</span>
+<span class="k">as</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">Student</span> <span class="k">where</span> <span class="n">Sno</span> <span class="o">=</span> <span class="o">@</span><span class="n">Proc_Son</span>
+
+<span class="k">exec</span> <span class="n">Proc_Stu</span>
+</code></pre></div>
+
+<h3>局部变量</h3>
+<ul>
+<li>全局变量是由系统定义的，在整个SQL&nbsp;Server实例内都能访问到的变量，以@@作为第一个字符，用户只能访问，不可以赋值</li>
+<li>*局部变量由用户定义，生命周期只在一个批处理有效，局部变量以@作为第一个字符，由用户自己定义和赋值</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">DECLARE</span> <span class="o">@</span><span class="n">i</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">SET</span> <span class="o">@</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">PRINT</span> <span class="o">@</span><span class="n">i</span>
+</code></pre></div>
+
+<h3>for xml path&nbsp;多行合并</h3>
+<p>将查询结果集以XML形式展现，将多行的结果，展示在同一行。PATH模式：通过简单的XPath语法来允许用户自定义嵌套的XML结构、元素、属性值。</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="n">name</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">FOR</span> <span class="n">xml</span> <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> 
+</code></pre></div>
+
+<p><span class="caps">SQL</span> <span class="caps">SERVER</span> 分组group&nbsp;by之后，字符串合并在一起，逗号隔开</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span>
+  <span class="n">Batchrunid</span><span class="p">,</span>
+  <span class="n">ActivityCode</span><span class="o">=</span><span class="p">(</span><span class="n">stuff</span><span class="p">((</span><span class="k">select</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">ActivityCode</span> <span class="k">from</span> <span class="n">ActivityLogs</span> <span class="k">where</span> <span class="n">Batchrunid</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">Batchrunid</span> <span class="k">and</span> <span class="n">ActivityStatus</span><span class="o">=</span><span class="s1">&#39;Failed&#39;</span> <span class="k">for</span> <span class="n">xml</span> <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span> 
+<span class="k">from</span> <span class="n">ActivityLogs</span> <span class="n">a</span> 
+<span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">ActivityStatus</span><span class="o">=</span><span class="s1">&#39;Failed&#39;</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">BatchRunId</span><span class="o">=</span><span class="s1">&#39;pipeline().parameters.BatchRunID&#39;</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">Batchrunid</span>
+</code></pre></div>
+
+<h3>聚合函数</h3>
+<ul>
+<li><span class="caps">SUM</span></li>
+<li><span class="caps">COUNT</span></li>
+<li><span class="caps">AVG</span></li>
+<li><span class="caps">MAX</span></li>
+<li><span class="caps">MIN</span>&nbsp;字符串排序</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span> <span class="n">ListPrice</span> <span class="k">AS</span> <span class="p">(</span>
+  <span class="k">select</span>
+    <span class="n">MaterialCode</span><span class="p">,</span>
+    <span class="n">CONCAT</span><span class="p">(</span>
+      <span class="n">SalesOrg</span><span class="p">,</span>
+      <span class="s1">&#39;-&#39;</span><span class="p">,</span>
+      <span class="n">Currency</span><span class="p">,</span>
+      <span class="s1">&#39;-&#39;</span><span class="p">,</span>
+      <span class="n">ValuePricingUOM</span>
+    <span class="p">)</span> <span class="n">XH</span>
+  <span class="k">FROM</span> <span class="n">ListPrice</span>
+<span class="p">),</span>
+<span class="k">SELECT</span>
+  <span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">)</span> <span class="n">XH</span><span class="p">,</span>
+  <span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">SalesOrg</span><span class="p">,</span>
+  <span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Currency</span><span class="p">,</span>
+  <span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">ValuePricingUOM</span>
+<span class="k">FROM</span>
+  <span class="n">ListPrice</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+  <span class="n">MaterialCode</span>
+</code></pre></div>
+
+<h3><span class="caps">CASE</span>&nbsp;条件</h3>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+  <span class="k">CASE</span>
+    <span class="k">WHEN</span> <span class="n">Currency</span> <span class="o">=</span> <span class="s1">&#39;CNY&#39;</span> <span class="k">THEN</span> <span class="n">ValuePricingUOM</span>
+    <span class="k">ELSE</span> <span class="n">ExchangeRate</span> <span class="o">*</span> <span class="n">ValuePricingUOM</span>
+  <span class="k">END</span> <span class="n">PriceCNY</span><span class="p">,</span>
+<span class="k">FROM</span>
+  <span class="n">ListPrice</span>
+</code></pre></div>
+
+<h3>date&nbsp;日期</h3>
+<ul>
+<li>current_date</li>
+<li>current_timestamp</li>
+<li>now</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">current_date</span><span class="p">();</span> <span class="c1">-- 2023-02-24</span>
+<span class="k">select</span> <span class="k">current_timestamp</span><span class="p">();</span> <span class="c1">-- 2023-02-24T06:43:26.124+0000</span>
+<span class="k">select</span> <span class="n">now</span><span class="p">();</span> <span class="c1">-- 2023-02-24T06:43:37.100+0000</span>
+
+<span class="k">select</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span> <span class="c1">-- 2022-03-17</span>
+<span class="k">select</span> <span class="k">timestamp</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span> <span class="c1">-- 2022-03-17T00:00:00.000+0000</span>
+</code></pre></div>
+
+<ul>
+<li>dateadd</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">current_date</span><span class="p">()</span><span class="o">-</span><span class="n">weekday</span><span class="p">(</span><span class="k">current_date</span><span class="p">())</span><span class="o">-</span><span class="mi">7</span><span class="p">;</span> <span class="c1">-- 上周一</span>
+<span class="k">select</span> <span class="k">year</span><span class="p">(</span><span class="k">current_date</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="k">month</span><span class="p">(</span><span class="k">current_date</span><span class="p">());</span> <span class="c1">-- 202302</span>
+
+<span class="k">select</span> <span class="n">DATEADD</span><span class="p">(</span><span class="k">month</span><span class="p">,</span><span class="o">-</span><span class="mi">24</span><span class="p">,</span><span class="k">CURRENT_DATE</span><span class="p">())</span> <span class="c1">-- 2年前的今天</span>
+</code></pre></div>
+
+<ul>
+<li>date_format</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">--- utc +8小时</span>
+<span class="k">select</span> <span class="n">date_format</span><span class="p">(</span><span class="n">dateadd</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="k">current_timestamp</span><span class="p">()),</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="c1">-- 2023</span>
+<span class="k">select</span> <span class="n">date_format</span><span class="p">(</span><span class="n">dateadd</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="k">current_timestamp</span><span class="p">()),</span><span class="s1">&#39;yMM&#39;</span><span class="p">)</span> <span class="c1">-- 202302</span>
+</code></pre></div>
+
+<h3>字符串操作</h3>
+<ul>
+<li>substring&nbsp;字符串截取</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">substring</span><span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;02月&#39;</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">-- 02</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">STUFF</span> (source_string, start, length, change_string)&nbsp;字符串替换</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">stuff</span><span class="p">(</span><span class="s1">&#39;02月&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">-- 2月</span>
+</code></pre></div>
+
+<ul>
+<li>concat 字符串拼接,&nbsp;忽略NULL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="k">NUll</span><span class="p">,</span> <span class="s1">&#39;HaHa&#39;</span><span class="p">)</span> <span class="c1">-- &#39;HaHa&#39;</span>
+<span class="k">select</span> <span class="k">NULL</span><span class="o">+</span><span class="s1">&#39;HaHa&#39;</span> <span class="c1">-- NULL</span>
+</code></pre></div>
+
+<ul>
+<li>CONCAT_WS(separator,input_string1,input_string2) 用分隔符拼接多个字符串,&nbsp;忽略NULL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="k">NUll</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1">-- &#39;A,B&#39;</span>
+<span class="k">select</span> <span class="n">concat_ws</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">collect_set</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span> <span class="n">totalname</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">TRIM</span>&nbsp;删除前后空格</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">TRIM</span><span class="p">(</span><span class="s1">&#39; A &#39;</span><span class="p">)</span> <span class="c1">-- &#39;A&#39;</span>
+</code></pre></div>
+
+<h3>运算符</h3>
+<ul>
+<li>&lt;&gt;不等于，不包含null的情况</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ActivityStatus = &#39;Success&#39; | &#39;Failed&#39; | null</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">ActivityLogs</span> <span class="k">where</span> <span class="n">ActivityStatus</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;Success&#39;</span> <span class="k">or</span> <span class="n">ActivityStatus</span> <span class="k">is</span> <span class="k">null</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">ISNULL</span>(p1, p2)&nbsp;p1为null返回p2，否则返回p1</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">isnull</span><span class="p">(</span><span class="n">TableName</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">Remark</span> <span class="c1">-- 解决其中一个字段为空的情况，等效于concat</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">IN</span>&nbsp;(一般比OR操作符清单执行更快)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1002</span><span class="p">);</span> <span class="c1">-- id=1001 or id=1002</span>
+</code></pre></div>
+
+<h3>集合操作</h3>
+<ul>
+<li><span class="caps">UNION</span> (<span class="caps">DISTINCT</span>)：并集 (去重&nbsp;大小写敏感)</li>
+<li><span class="caps">UNION</span> <span class="caps">ALL</span>：并集</li>
+</ul>
+<p>query1 <span class="caps">UNION</span> (<span class="caps">ALL</span>)&nbsp;query2</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">union</span> <span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="c1">-- a</span>
+<span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">union</span> <span class="k">select</span> <span class="s1">&#39;b&#39;</span> <span class="n">A</span> <span class="c1">-- a, b</span>
+
+<span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">union</span> <span class="k">all</span> <span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="c1">-- a, a</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">INTERSECT</span> (<span class="caps">DISTINCT</span>)：交集 (去重&nbsp;大小写敏感)</li>
+<li><span class="caps">INTERSECT</span> <span class="caps">ALL</span>：交集</li>
+</ul>
+<p>query1 <span class="caps">INTERSECT</span>&nbsp;query2</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">intersect</span> <span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="c1">-- a</span>
+<span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">intersect</span> <span class="k">select</span> <span class="s1">&#39;b&#39;</span> <span class="n">A</span> <span class="c1">-- null</span>
+</code></pre></div>
+
+<h3><span class="caps">WHERE</span> <span class="caps">VS</span> <span class="caps">HAVING</span></h3>
+<ul>
+<li>Where 是一个约束声明，使用Where来约束来之数据库的数据，Where是在结果返回之前起作用的，作用在group&nbsp;by子句和having子句之前，Where中不能使用聚合函数。</li>
+<li>Having&nbsp;是一个过滤声明，是在查询返回结果集以后对查询结果进行的过滤操作，在聚合后对组记录进行筛选，在Having中可以使用聚合函数。</li>
+</ul>
+<p>查找重复行</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">RepNum</span><span class="p">,</span> <span class="n">MaterialCode</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span> <span class="k">group</span> <span class="k">by</span> <span class="n">MaterialCode</span> <span class="k">Having</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "sql-server.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/nest.html">Nest</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/docker.html">Docker</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/proxy.html">proxy</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>
