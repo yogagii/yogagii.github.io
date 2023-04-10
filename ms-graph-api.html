@@ -63,132 +63,7 @@
     </div>
     </header>
     <div class="post-entry">
-        <h2>Authentication and&nbsp;Authorization</h2>
-<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
-<ol>
-<li>Register your app with Azure <span class="caps">AD</span>.</li>
-<li>Get&nbsp;authorization.</li>
-<li>Get an access&nbsp;token.</li>
-<li>Call Microsoft Graph with the access&nbsp;token.</li>
-<li>Use a refresh token to get a new access&nbsp;token.</li>
-</ol>
-<p>To configure an app to use the OAuth 2.0 authorization code grant flow, you&#8217;ll need to save the following values when registering the&nbsp;app:</p>
-<ol>
-<li>The Application (client) <span class="caps">ID</span> assigned by the app registration&nbsp;portal.</li>
-<li>A Client (application)&nbsp;Secret</li>
-<li>A Redirect <span class="caps">URI</span> (or reply <span class="caps">URL</span>) for your app to receive responses from Azure <span class="caps">AD</span>.</li>
-</ol>
-<p>The first step to getting an access token for OAuth 2.0 flow is to redirect the user to the Microsoft identity platform /authorize endpoint. Azure <span class="caps">AD</span> will sign the user in and ensure their consent for the permissions your app requests. In the authorization code grant flow, after consent is obtained, Azure <span class="caps">AD</span> will return an authorization_code to your app that it can use at the Microsoft identity platform /token endpoint for an access&nbsp;token.</p>
-<h3>grant_type:&nbsp;authorization_code</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// callback.js</span>
-<span class="kd">const</span> <span class="nx">tokenReq</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">client_id</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientId</span><span class="p">,</span>
-  <span class="nx">scope</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">scope</span><span class="p">,</span>
-  <span class="nx">code</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span>
-  <span class="nx">redirect_uri</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">redirectUri</span><span class="p">,</span>
-  <span class="nx">grant_type</span><span class="o">:</span> <span class="s1">&#39;authorization_code&#39;</span><span class="p">,</span>
-  <span class="nx">client_secret</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientSecret</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">tokenRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-  <span class="s1">&#39;https://login.microsoftonline.com/xxx.onmicrosoft.com/oauth2/v2.0/token&#39;</span><span class="p">,</span>
-  <span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tokenReq</span><span class="p">),</span>
-  <span class="p">{</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">}</span>
-<span class="p">)</span>
-
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadAccessToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">refresh_token</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expires_in</span> <span class="o">*</span> <span class="mf">1000</span>
-
-<span class="kd">const</span> <span class="nx">infoRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://graph.microsoft.com/v1.0/me/&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">Authorization</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">$select</span><span class="o">:</span> <span class="nx">fields</span><span class="p">.</span><span class="nx">join</span><span class="p">(),</span>
-  <span class="p">},</span>
-<span class="p">})</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1">// isLoggedIn.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">isLoggedIn</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">proceed</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">uid</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">proceed</span><span class="p">()</span>
-  <span class="p">}</span>
-
-  <span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">client_id</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientId</span><span class="p">,</span>
-    <span class="nx">response_type</span><span class="o">:</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span>
-    <span class="nx">redirect_uri</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">redirectUri</span><span class="p">,</span>
-    <span class="nx">response_mode</span><span class="o">:</span> <span class="s1">&#39;query&#39;</span><span class="p">,</span>
-    <span class="nx">scope</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">scope</span><span class="p">,</span>
-    <span class="nx">state</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">referer</span><span class="p">,</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
-    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Unauthorized&#39;</span><span class="p">,</span>
-    <span class="nx">sso_url</span><span class="o">:</span> <span class="sb">`https://login.microsoftonline.com/#########/oauth2/v2.0/authorize?</span><span class="si">${</span><span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
-      <span class="nx">params</span>
-    <span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-  <span class="p">})</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h3>grant_type:&nbsp;client_credentials</h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">tokenEndpoint</span> <span class="o">=</span> <span class="s1">&#39;https://login.microsoftonline.com/#########/oauth2/v2.0/token&#39;</span>
-
-<span class="kd">const</span> <span class="nx">tokenReq</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">client_id</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientId</span><span class="p">,</span>
-  <span class="nx">scope</span><span class="o">:</span> <span class="s1">&#39;https://graph.microsoft.com/.default&#39;</span><span class="p">,</span>
-  <span class="nx">client_secret</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientSecret</span><span class="p">,</span>
-  <span class="nx">grant_type</span><span class="o">:</span> <span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">retriveToken</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">tokenRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">tokenEndpoint</span><span class="p">,</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tokenReq</span><span class="p">),</span> <span class="p">{</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">})</span>
-  <span class="nx">token</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span>
-  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">retriveToken</span><span class="p">,</span> <span class="mf">3300</span> <span class="o">*</span> <span class="mf">1000</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h3>grant_type:&nbsp;refresh_token</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// azureTokenRefresher.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">isLoggedIn</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span> <span class="o">&amp;&amp;</span> <span class="ow">typeof</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">===</span> <span class="s1">&#39;number&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">&lt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="mf">300000</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Refresh the AD access token if it expires in 300s</span>
-    <span class="kd">const</span> <span class="nx">tokenReq</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">client_id</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientId</span><span class="p">,</span>
-      <span class="nx">scope</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">scope</span><span class="p">,</span>
-      <span class="nx">refresh_token</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadRefreshToken</span><span class="p">,</span>
-      <span class="nx">redirect_uri</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">redirectUri</span><span class="p">,</span>
-      <span class="nx">grant_type</span><span class="o">:</span> <span class="s1">&#39;refresh_token&#39;</span><span class="p">,</span>
-      <span class="nx">client_secret</span><span class="o">:</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">azureAD</span><span class="p">.</span><span class="nx">clientSecret</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="kd">const</span> <span class="nx">tokenRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-      <span class="s1">&#39;https://login.microsoftonline.com/xxx.onmicrosoft.com/oauth2/v2.0/token&#39;</span><span class="p">,</span>
-      <span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tokenReq</span><span class="p">),</span>
-      <span class="p">{</span>
-        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">}</span>
-    <span class="p">)</span>
-
-    <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadAccessToken</span> <span class="o">=</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span>
-    <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">aadExpiresAt</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nx">tokenRes</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expires_in</span> <span class="o">*</span> <span class="mf">1000</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">next</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2>SharePoint</h2>
+        <h2>SharePoint</h2>
 <h3>Get&nbsp;docSiteId</h3>
 <table>
 <thead>
@@ -380,9 +255,9 @@ grant_type |&nbsp;client_credentials</p>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>

@@ -149,6 +149,46 @@
 @PrimaryGeneratedColumn | 自动生成的列 |
 @CreateDateColumn | 创建时间
 @UpdateDateColumn |&nbsp;更新时间</p>
+<p>复合主键：拼合多列作为主键</p>
+<div class="highlight"><pre><span></span><code><span class="kd">@Entity</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">FooBar</span> <span class="p">{</span>
+  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
+  <span class="k">public</span> <span class="nx">fooid?</span>: <span class="kt">number</span><span class="p">;</span>
+
+  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
+  <span class="k">public</span> <span class="nx">barid?</span>: <span class="kt">number</span><span class="p">;</span>
+
+  <span class="kd">@ManyToOne</span><span class="p">(</span><span class="kr">type</span> <span class="p">=&gt;</span> <span class="nx">Foo</span><span class="p">,</span> <span class="nx">foo</span> <span class="p">=&gt;</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">fooBars</span><span class="p">)</span>
+  <span class="kd">@JoinColumn</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;fooid&quot;</span><span class="p">})</span>
+  <span class="k">public</span> <span class="nx">foo</span>: <span class="kt">Foo</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="kd">@ManyToOne</span><span class="p">(</span><span class="kr">type</span> <span class="p">=&gt;</span> <span class="nx">Bar</span><span class="p">,</span> <span class="nx">bar</span> <span class="p">=&gt;</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">fooBars</span><span class="p">)</span>
+  <span class="kd">@JoinColumn</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;barid&quot;</span><span class="p">})</span>
+  <span class="k">public</span> <span class="nx">bar</span>: <span class="kt">Bar</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Repository</h3>
+<div class="highlight"><pre><span></span><code><span class="nx">userRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+  <span class="nx">select</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
+  <span class="nx">join</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">alias</span><span class="o">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+    <span class="nx">leftJoinAndSelect</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">photo</span><span class="o">:</span> <span class="s2">&quot;user.photos&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">where</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s2">&quot;Timber&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s2">&quot;Stan&quot;</span> <span class="p">}]</span> <span class="c1">// or</span>
+  <span class="nx">order</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;ASC&quot;</span><span class="p">,</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;DESC&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">skip</span>: <span class="kt">5</span><span class="p">,</span>
+  <span class="nx">take</span>: <span class="kt">10</span><span class="p">,</span>
+  <span class="nx">cache</span>: <span class="kt">true</span> <span class="c1">// 缓存</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><em>踩坑： 每个 entity 必须有 primaryColumn，当 primary 重复时，find 主键重复的行只会返回一遍，QueryBuilder&nbsp;会全部返回</em></p>
 <h3>QueryBuilder</h3>
 <p>使用 QueryBuilder 构建几乎任何复杂性的 <span class="caps">SQL</span>&nbsp;查询</p>
 <div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
@@ -382,9 +422,9 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>

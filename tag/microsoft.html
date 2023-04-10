@@ -89,10 +89,25 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Authentication and&nbsp;Authorization</h2>
-<p>The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Microsoft identity platform endpoint&nbsp;are:</p>
-<ol>
-<li>Register …</li></ol></div>
+	<div class="summary"><h2>SharePoint</h2>
+<h3>Get&nbsp;docSiteId</h3>
+<table>
+<thead>
+<tr>
+<th><span class="caps">API</span></th>
+<th>params</th>
+<th>response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="caps">GET</span> https://graph.microsoft.com/v1.0/sites/xxx.sharepoint.com:/teams/#siteName#</td>
+<td>siteName: string</td>
+<td>&#8220;sites&#8221;: [ { &#8220;@odata.type&#8221;: &#8220;microsoft.graph.site&#8221;} ]</td>
+</tr>
+</tbody>
+</table>
+<h3>Get document&nbsp;lists …</h3></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -163,9 +178,9 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>

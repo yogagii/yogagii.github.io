@@ -75,6 +75,31 @@
 $ nest new project-name
 </code></pre></div>
 
+<h2>Structure</h2>
+<div class="highlight"><pre><span></span><code>my-project
+  │── src
+  │   │── common
+  │   │  │── decorators
+  │   │  │── pipe
+  │   │  └── utils
+  │   │── custom
+  │   │  │── dto
+  │   │  │── entities
+  │   │  │── custom.controller.ts
+  │   │  │── custom.service.ts
+  │   │  │── custom.module.ts
+  │   │  │── custom.controller.spec.ts
+  │   │  └── custom.service.spec.ts
+  │   │── app.module.ts
+  │   └── main.ts
+  │── nest-cli.json
+  │── package.json
+  │── tslint.json
+  │── test
+  │   │── app.e2e-spec.ts
+  └── tsconfig.json
+</code></pre></div>
+
 <h2>Controllers&nbsp;控制器</h2>
 <p>控制器的目的是接收应用的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
 <blockquote>
@@ -200,6 +225,7 @@ $ nest new project-name
 <span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
 </code></pre></div>
 
+<p><img alt="nestjs" src="img/nest1.png"></p>
 <h2>Middleware&nbsp;中间件</h2>
 <p>Nest 中间件等价于 express&nbsp;中间件</p>
 <ul>
@@ -295,6 +321,23 @@ $ nest new project-name
 
 <p>Nest提供了通过 @SetMetadata()&nbsp;装饰器将定制元数据附加到路由处理程序的能力。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">@SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<h2>Interceptor&nbsp;拦截器</h2>
+<p>拦截器是使用 @Injectable() 装饰器注解的类。拦截器应该实现 NestInterceptor&nbsp;接口。</p>
+<p>功能：在函数执行之前/之后绑定额外的逻辑；转换从函数返回的结果；转换从函数抛出的异常</p>
+<ul>
+<li>在接口相应前后记录时间</li>
+<li>包装返回的数据</li>
+<li>缓存拦截器</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">TransformInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="k">implements</span> <span class="nx">NestInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">({</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">code</span>: <span class="kt">200</span><span class="p">,</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;请求成功&#39;</span><span class="p">,</span> <span class="p">})));</span> <span class="c1">// After</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <h2>Task Scheduling&nbsp;定时任务</h2>
@@ -479,6 +522,28 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<p>Passport <span class="caps">JWT</span></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ExtractJwt</span><span class="p">,</span> <span class="nx">Strategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;passport-jwt&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PassportStrategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/passport&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">jwtConstants</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./constants&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">JwtStrategy</span> <span class="k">extends</span> <span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">({</span>
+      <span class="nx">jwtFromRequest</span>: <span class="kt">ExtractJwt.fromAuthHeaderAsBearerToken</span><span class="p">(),</span>
+      <span class="nx">ignoreExpiration</span>: <span class="kt">false</span><span class="p">,</span>
+      <span class="nx">secretOrKey</span>: <span class="kt">jwtConstants.secret</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">validate</span><span class="p">(</span><span class="nx">payload</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">userId</span>: <span class="kt">payload.sub</span><span class="p">,</span> <span class="nx">username</span>: <span class="kt">payload.username</span> <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Node.js提供了一个内置的crypto模块可用于加密和解密字符串</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">createCipheriv</span><span class="p">,</span> <span class="nx">createDecipheriv</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;crypto&#39;</span><span class="p">;</span>
@@ -497,6 +562,38 @@ second <span class="o">(</span>optional<span class="o">)</span>
     <span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
     <span class="kd">const</span> <span class="nx">receivedPlaintext</span> <span class="o">=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">receivedPlaintext</span> <span class="o">+</span> <span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>自定义JwtStrategy</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">PassportStrategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/passport&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Strategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;passport&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">CustomStrategy</span> <span class="k">extends</span> <span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">,</span> <span class="s1">&#39;custom&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 自定义Strategy名字</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+<p>aadAuthGuard</p>
+<p>https://www.npmjs.com/package/passport-azure-ad</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">OIDCStrategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;passport-azure-ad&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AADStrategy</span> <span class="k">extends</span> <span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">OIDCStrategy</span><span class="p">,</span> <span class="s1">&#39;aad&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span>
+      <span class="p">{</span>
+        <span class="nx">identityMetadata</span><span class="o">:</span> <span class="s1">&#39;https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration&#39;</span><span class="p">,</span>
+        <span class="nx">clientID</span><span class="o">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+        <span class="nx">clientSecret</span><span class="o">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+        <span class="nx">responseType</span><span class="o">:</span> <span class="s1">&#39;id_token&#39;</span><span class="p">,</span>
+        <span class="nx">responseMode</span><span class="o">:</span> <span class="s1">&#39;form_post&#39;</span><span class="p">,</span>
+        <span class="nx">redirectUrl</span><span class="o">:</span> <span class="s1">&#39;xxx/callback&#39;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">(</span><span class="nx">iss</span><span class="p">,</span> <span class="nx">sub</span><span class="p">,</span> <span class="nx">profile</span><span class="p">,</span> <span class="nx">accessToken</span><span class="p">,</span> <span class="nx">refreshToken</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="p">},</span>
+    <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -584,9 +681,9 @@ second <span class="o">(</span>optional<span class="o">)</span>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>

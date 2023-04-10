@@ -189,6 +189,7 @@
 
 <span class="k">select</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span> <span class="c1">-- 2022-03-17</span>
 <span class="k">select</span> <span class="k">timestamp</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span> <span class="c1">-- 2022-03-17T00:00:00.000+0000</span>
+<span class="k">select</span> <span class="k">timestamp</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span> <span class="c1">-- insertDate=&#39;20230410&#39;  2023-04-10T00:00:00.000+0000</span>
 </code></pre></div>
 
 <ul>
@@ -290,6 +291,15 @@
 <p>查找重复行</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">RepNum</span><span class="p">,</span> <span class="n">MaterialCode</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span> <span class="k">group</span> <span class="k">by</span> <span class="n">MaterialCode</span> <span class="k">Having</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
+
+<h3><span class="caps">ORDER</span> <span class="caps">BY</span></h3>
+<div class="highlight"><pre><span></span><code><span class="k">order</span> <span class="k">by</span> <span class="n">qty</span> <span class="c1">-- 会逐位比较数字 100 &lt; 20 &lt; 30 </span>
+
+<span class="c1">-- 解决方式</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">qty</span><span class="o">*</span><span class="mi">1</span>
+<span class="k">order</span> <span class="k">by</span> <span class="nb">int</span><span class="p">(</span><span class="n">qty</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">len</span><span class="p">(</span><span class="n">qty</span><span class="p">)</span> <span class="k">desc</span> <span class="c1">-- 可以同时找出正负最大的数</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -374,9 +384,9 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>

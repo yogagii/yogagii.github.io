@@ -44,6 +44,78 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/local-environment.html" rel="bookmark" title="Permalink to Local Environment">Local&nbsp;Environment</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-04-13T00:00:00+08:00"> 
+				<a href="/archive/2021/ 4/index.html">二 13 四月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">SSL</span></h2>
+<p>Error: unable to get local issuer&nbsp;certificate:</p>
+<p>法一：</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">apiLoader</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">forceUpdate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">getToken</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s1">&#39;X-SAP-LogonToken&#39;</span><span class="o">:</span> <span class="nx">token …</span></code></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/token.html" rel="bookmark" title="Permalink to Token">Token</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2021-04-13T00:00:00+08:00"> 
+				<a href="/archive/2021/ 4/index.html">二 13 四月 2021 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th><span class="caps">SI</span>. No.</th>
+<th>Description</th>
+<th><span class="caps">REST</span> <span class="caps">API</span></th>
+<th>Http Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Logon using username and password</td>
+<td>http://host:<port>/biprws/vx/logon/long</td>
+<td><span class="caps">GET</span>,<span class="caps">POST</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Logoff (token must be in Header)</td>
+<td>http …</td></tr></tbody></table></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/eggjs.html" rel="bookmark" title="Permalink to EggJS">EggJS</a>
 		</h2>
 		<div class="post-info">
@@ -254,71 +326,10 @@ umi test \allWorkbooks
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/nodejs.html" rel="bookmark" title="Permalink to nodeJS">nodeJS</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-08-03T00:00:00+08:00"> 
-				<a href="/archive/2020/ 8/index.html">一 03 八月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Nginx 比 Apache&nbsp;高并发的原因</p>
-<p>Nginx 负载均衡调度算法&nbsp;负载均衡之轮询算法</p>
-<p>Apache&nbsp;多进 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/mysql.html" rel="bookmark" title="Permalink to MySQL">MySQL</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2020-07-25T00:00:00+08:00"> 
-				<a href="/archive/2020/ 7/index.html">六 25 七月 2020 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>安装&nbsp;mysql</p>
-<div class="highlight"><pre><span></span><code>brew install mysql
-</code></pre></div>
-
-<p>登录&nbsp;mysql</p>
-<div class="highlight"><pre><span></span><code><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
-<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl</span>
-<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl-mode-required</span>
-</code></pre></div>
-
-<p>退出&nbsp;mysql</p>
-<div class="highlight"><pre><span></span><code><span class="n">exit</span>
-</code></pre></div>
-
-<ul>
-<li><span class="caps">DDL</span>&nbsp;数据 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/author/yoga5.html">&laquo;</a>
-    Page 6 / 11
+    Page 6 / 12
         <a href="/author/yoga7.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -379,9 +390,9 @@ umi test \allWorkbooks
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>

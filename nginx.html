@@ -76,15 +76,25 @@
 <p>nginx -c /etc/nginx/nginx.conf # 找到 nginx.conf&nbsp;路径</p>
 <p>nginx -s&nbsp;reload</p>
 <h3>查看Ngnix配置</h3>
-<div class="highlight"><pre><span></span><code><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
-<span class="n">ps</span> <span class="o">-</span><span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">nginx</span>
-<span class="n">cat</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="n">conf</span>
+<div class="highlight"><pre><span></span><code>sudo su -
+ps -aux <span class="p">|</span> grep nginx
+<span class="c1"># root xxx 0.0  0.0 xxx xxx ? Ss Mar19 0:00 nginx: master process /usr/sbin/nginx</span>
 
-<span class="o">//</span> <span class="err">测试</span>
-<span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
-<span class="o">//</span> <span class="err">重启</span>
-<span class="n">service</span> <span class="n">nginx</span> <span class="n">restart</span>
-<span class="n">nginx</span> <span class="o">-</span><span class="n">s</span> <span class="n">reload</span>
+/usr/sbin/nginx -t
+<span class="c1"># nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span>
+
+cat /etc/nginx/nginx.conf
+<span class="c1"># include /etc/nginx/default.d/*.conf;</span>
+<span class="c1"># include /etc/nginx/default.d/*.conf;</span>
+
+cat /etc/nginx/conf.d/swift.conf
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 测试</span>
+nginx -t
+<span class="c1"># 重启</span>
+service nginx restart
+nginx -s reload
 </code></pre></div>
 
 <h3>nginx.conf</h3>
@@ -136,9 +146,9 @@
 </code></pre></div>
 
 <p>指向端口</p>
-<div class="highlight"><pre><span></span><code><span class="k">next</span> <span class="nv">build</span>
-<span class="k">next</span> <span class="nv">start</span> <span class="o">-</span><span class="nv">p</span> <span class="mi">3008</span>
-<span class="nv">pm2</span> <span class="nv">start</span> <span class="nv">npm</span> <span class="o">--</span><span class="nv">name</span> <span class="nv">carto</span><span class="o">-</span><span class="nv">dashboard</span><span class="o">-</span><span class="mi">3008</span> <span class="o">--</span> <span class="nv">run</span> <span class="nv">start</span>
+<div class="highlight"><pre><span></span><code>next build
+next start -p <span class="m">3008</span>
+pm2 start npm --name carto-dashboard-3008 -- run start
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// next.config.ts</span>
@@ -267,9 +277,9 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
                         <span><a href="/tag/sql.html">sql</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
