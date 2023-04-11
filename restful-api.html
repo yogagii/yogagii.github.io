@@ -67,13 +67,42 @@
 <p><span class="caps">REST</span>，即Representational State Transfer(表现层状态转化)。它是一种互联网应用程序的API设计理念：URL定位资源，用HTTP动词（<span class="caps">GET</span>,<span class="caps">POST</span>,<span class="caps">DELETE</span>,<span class="caps">DETC</span>）描述操作。</p>
 </blockquote>
 <p>Restful与传统接口对比</p>
-<p>操作 | 传统风格 | RESTful风格
-| - | - | - 
-查询 | /user/query?name=tom <span class="caps">GET</span> | /user?name=tom <span class="caps">GET</span>
-详情 | /user/getInfo?id=1 <span class="caps">GET</span> | /user/1 <span class="caps">GET</span>
-创建 | /user/create?name=tom <span class="caps">POST</span> | /user <span class="caps">POST</span>
-修改 | /user/update?id=1&amp;name=jquery <span class="caps">POST</span> | /user/1 <span class="caps">PUT</span>
-删除 | /user/delete?id=1 <span class="caps">GET</span> | /user/1 <span class="caps">DELETE</span></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>传统风格</th>
+<th>RESTful风格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查询</td>
+<td>/user/query?name=tom <span class="caps">GET</span></td>
+<td>/user?name=tom <span class="caps">GET</span></td>
+</tr>
+<tr>
+<td>详情</td>
+<td>/user/getInfo?id=1 <span class="caps">GET</span></td>
+<td>/user/1 <span class="caps">GET</span></td>
+</tr>
+<tr>
+<td>创建</td>
+<td>/user/create?name=tom <span class="caps">POST</span></td>
+<td>/user <span class="caps">POST</span></td>
+</tr>
+<tr>
+<td>修改</td>
+<td>/user/update?id=1&amp;name=jquery <span class="caps">POST</span></td>
+<td>/user/1 <span class="caps">PUT</span></td>
+</tr>
+<tr>
+<td>删除</td>
+<td>/user/delete?id=1 <span class="caps">GET</span></td>
+<td>/user/1 <span class="caps">DELETE</span></td>
+</tr>
+</tbody>
+</table>
 <p>Resultful特点:</p>
 <p>1.使用URL描述资源</p>
 <p>2.使用HTTP方法描述行为。使用HTTP状态码来表示不同的结果</p>

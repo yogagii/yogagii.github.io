@@ -201,14 +201,54 @@ return (
 </code></pre></div>
 
 <p>Required&nbsp;Property:</p>
-<p>Property | Type | Required | Description
-| - | - | - | - |
-height | number | y | list height
-width | number | y | list width
-rowCount | number | y | list length
-rowHeight | number or func | y | row height
-rowRenderer | func | y | item content
-overscanRowCount | number | n |&nbsp;可视区域前后预渲染行数，默认10</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td>number</td>
+<td>y</td>
+<td>list height</td>
+</tr>
+<tr>
+<td>width</td>
+<td>number</td>
+<td>y</td>
+<td>list width</td>
+</tr>
+<tr>
+<td>rowCount</td>
+<td>number</td>
+<td>y</td>
+<td>list length</td>
+</tr>
+<tr>
+<td>rowHeight</td>
+<td>number or func</td>
+<td>y</td>
+<td>row height</td>
+</tr>
+<tr>
+<td>rowRenderer</td>
+<td>func</td>
+<td>y</td>
+<td>item content</td>
+</tr>
+<tr>
+<td>overscanRowCount</td>
+<td>number</td>
+<td>n</td>
+<td>可视区域前后预渲染行数，默认10</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="p">{</span> <span class="n">AutoSizer</span><span class="p">,</span> <span class="n">List</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;react-virtualized&#39;</span>
 
 <span class="k">return</span> <span class="p">(</span>
@@ -245,11 +285,36 @@ overscanRowCount | number | n |&nbsp;可视区域前后预渲染行数，默认1
 </code></pre></div>
 
 <p>Property:</p>
-<p>Property | Type | Required | Description
-| - | - | - | - |
-data | readonly D[] | n | data list
-itemContent | ItemContent<D> | n | Set the callback to specify the contents of the item.
-totalCount | number | n | If data is set, the total count will be inferred from the length of the&nbsp;array.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>readonly D[]</td>
+<td>n</td>
+<td>data list</td>
+</tr>
+<tr>
+<td>itemContent</td>
+<td>ItemContent<D></td>
+<td>n</td>
+<td>Set the callback to specify the contents of the item.</td>
+</tr>
+<tr>
+<td>totalCount</td>
+<td>number</td>
+<td>n</td>
+<td>If data is set, the total count will be inferred from the length of the array.</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="p">{</span> <span class="n">Virtuoso</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;react-virtuoso&#39;</span>
 
 <span class="k">return</span> <span class="p">(</span>

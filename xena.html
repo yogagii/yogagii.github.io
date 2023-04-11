@@ -82,9 +82,24 @@ docker push yogadock/docker101tutorial
 docker ps
 </code></pre></div>
 
-<p><span class="caps">CONTAINER</span> <span class="caps">ID</span> | <span class="caps">IMAGE</span> | <span class="caps">PORTS</span> | <span class="caps">NAMES</span>
-| - | - | - | -
-0bfccc26fcfe | phpmyadmin | 0.0.0.0:4000 -&gt; 80/tcp |&nbsp;myadmin</p>
+<table>
+<thead>
+<tr>
+<th><span class="caps">CONTAINER</span> <span class="caps">ID</span></th>
+<th><span class="caps">IMAGE</span></th>
+<th><span class="caps">PORTS</span></th>
+<th><span class="caps">NAMES</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0bfccc26fcfe</td>
+<td>phpmyadmin</td>
+<td>0.0.0.0:4000 -&gt; 80/tcp</td>
+<td>myadmin</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code>docker stop 0bfccc26fcfe
 docker rm 0bfccc26fcfe
 </code></pre></div>

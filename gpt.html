@@ -63,22 +63,88 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>版本 | 发布时间 | 训练方案 | 参数量 | 模型
-| - | - | - | - | - |
-<span class="caps">GPT</span>(<span class="caps">GPT</span>-1) | 2018 年 6 月 | 无监督学习 | 1.17 亿 |
-<span class="caps">GPT</span>-2 | 2019 年 2 月 | 多任务学习 | 15 亿 |
-<span class="caps">GPT</span>-3 | 2020 年 5 月 | 海量参数 | 1,750 亿 | text-curie-001, text-babbage-001, text-ada-001, davinci
-ChatGPT(<span class="caps">GPT</span>-3.5) | 2022 年 12 月 | 针对对话场景优化 | 1,750 亿 | text-davinci-003, text-davinci-002, gpt-3.5-turbo
-<span class="caps">GPT</span>-4 | 未发布 | 万亿参数 | 100万亿&nbsp;|</p>
+        <table>
+<thead>
+<tr>
+<th>版本</th>
+<th>发布时间</th>
+<th>训练方案</th>
+<th>参数量</th>
+<th>模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="caps">GPT</span>(<span class="caps">GPT</span>-1)</td>
+<td>2018 年 6 月</td>
+<td>无监督学习</td>
+<td>1.17 亿</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="caps">GPT</span>-2</td>
+<td>2019 年 2 月</td>
+<td>多任务学习</td>
+<td>15 亿</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="caps">GPT</span>-3</td>
+<td>2020 年 5 月</td>
+<td>海量参数</td>
+<td>1,750 亿</td>
+<td>text-curie-001, text-babbage-001, text-ada-001, davinci</td>
+</tr>
+<tr>
+<td>ChatGPT(<span class="caps">GPT</span>-3.5)</td>
+<td>2022 年 12 月</td>
+<td>针对对话场景优化</td>
+<td>1,750 亿</td>
+<td>text-davinci-003, text-davinci-002, gpt-3.5-turbo</td>
+</tr>
+<tr>
+<td><span class="caps">GPT</span>-4</td>
+<td>未发布</td>
+<td>万亿参数</td>
+<td>100万亿</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>https://blog.csdn.net/hekaiyou/article/details/128303729</p>
 <h3>模型使用</h3>
 <p>https://platform.openai.com/docs/api-reference/models</p>
-<p>基础模型 | Desc | Use cases
-| - | - | -
-davinci 达芬奇 | Most capable <span class="caps">GPT</span>-3 model. Most powerful | 文本摘要
-curie 居里 | Very capable, but faster and lower cost than Davinci. | 翻译，分类，文本情感分类
-babbage 巴贝奇 | Capable of straightforward tasks, very fast, and lower cost. | 语义搜索semantic search
-ada | The fastest model in the <span class="caps">GPT</span>-3 series, and lowest cost. |&nbsp;分类，地址提取，关键词</p>
+<table>
+<thead>
+<tr>
+<th>基础模型</th>
+<th>Desc</th>
+<th>Use cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>davinci 达芬奇</td>
+<td>Most capable <span class="caps">GPT</span>-3 model. Most powerful</td>
+<td>文本摘要</td>
+</tr>
+<tr>
+<td>curie 居里</td>
+<td>Very capable, but faster and lower cost than Davinci.</td>
+<td>翻译，分类，文本情感分类</td>
+</tr>
+<tr>
+<td>babbage 巴贝奇</td>
+<td>Capable of straightforward tasks, very fast, and lower cost.</td>
+<td>语义搜索semantic search</td>
+</tr>
+<tr>
+<td>ada</td>
+<td>The fastest model in the <span class="caps">GPT</span>-3 series, and lowest cost.</td>
+<td>分类，地址提取，关键词</td>
+</tr>
+</tbody>
+</table>
 <p>从上往下：模型越小，能力越差，价钱越低，响应速度越快</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">chat</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
   <span class="k">try</span><span class="p">:</span>
@@ -138,15 +204,62 @@ ada | The fastest model in the <span class="caps">GPT</span>-3 series, and lowes
 <p>When the question was not generated on the context, the model will be prompted to answer &#8220;No sufficient context for answering the question&#8221;. We will also train a discriminator model, which predicts whether the question can be answered based on the context or&nbsp;not.</p>
 <h3>计价</h3>
 <p>1000 tokens(750 words) $0.02 (prompt+completion&nbsp;提问+回答总字数)</p>
-<p>模型 | 基础模型 使用 |训练模型 | 训练后使用
-| - | - | - | -
-text-davinci-003 | $0.02 | $0.03 | $0.12
-text-curie-001 | $0.002 | $0.003 | $0.012
-text-babbage-001 | $0.0005 | $0.0006 | $0.012
-text-ada-001 | $0.0004 | $0.0004 |&nbsp;$0.0016</p>
-<p>视频时长 | 原文字数 | 耗时 | 基本模型费用 | 训练模型费用
-| - | - | - | - | -
-1小时 | 20000 中文字符 | 5-10min | (20000+10000)x2 / 1000x0.02 =$1.2 | 20000<em>2/1000</em>0.12 =$4.8&nbsp;(不包括训练产生费用)</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>基础模型 使用</th>
+<th>训练模型</th>
+<th>训练后使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text-davinci-003</td>
+<td>$0.02</td>
+<td>$0.03</td>
+<td>$0.12</td>
+</tr>
+<tr>
+<td>text-curie-001</td>
+<td>$0.002</td>
+<td>$0.003</td>
+<td>$0.012</td>
+</tr>
+<tr>
+<td>text-babbage-001</td>
+<td>$0.0005</td>
+<td>$0.0006</td>
+<td>$0.012</td>
+</tr>
+<tr>
+<td>text-ada-001</td>
+<td>$0.0004</td>
+<td>$0.0004</td>
+<td>$0.0016</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>视频时长</th>
+<th>原文字数</th>
+<th>耗时</th>
+<th>基本模型费用</th>
+<th>训练模型费用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1小时</td>
+<td>20000 中文字符</td>
+<td>5-10min</td>
+<td>(20000+10000)x2 / 1000x0.02 =$1.2</td>
+<td>20000<em>2/1000</em>0.12 =$4.8 (不包括训练产生费用)</td>
+</tr>
+</tbody>
+</table>
 <p><em>基本模型费用 =(prompt+completition)&nbsp;*$0.02</em></p>
 <p><em>训练模型费用 =训练数据量<em>$0.03 + prompt</em>$0.12</em></p>
 <h3>Speech to&nbsp;text</h3>
@@ -201,11 +314,32 @@ whisper japanese.wav --language Japanese
 </ul>
 </li>
 </ul>
-<p>\ | OpenAI | Azure OpenAI
-| - | - | -
-版本 | <span class="caps">GPT3</span>.5 | <span class="caps">GPT3</span>.0 (<span class="caps">DALL</span>·E preview / ChatGPT comming soon)
-Rate limit | <span class="caps">TPM</span> (tokens per minute) API调用限制，对企业级大用户量，一分钟头几秒用完TPM，后面几秒无TPM可用 | 
-Data safety | customer-to-OpenAI requests and responses are encrypted | 符合企业安全性&nbsp;合规性</p>
+<table>
+<thead>
+<tr>
+<th>\</th>
+<th>OpenAI</th>
+<th>Azure OpenAI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>版本</td>
+<td><span class="caps">GPT3</span>.5</td>
+<td><span class="caps">GPT3</span>.0 (<span class="caps">DALL</span>·E preview / ChatGPT comming soon)</td>
+</tr>
+<tr>
+<td>Rate limit</td>
+<td><span class="caps">TPM</span> (tokens per minute) API调用限制，对企业级大用户量，一分钟头几秒用完TPM，后面几秒无TPM可用</td>
+<td></td>
+</tr>
+<tr>
+<td>Data safety</td>
+<td>customer-to-OpenAI requests and responses are encrypted</td>
+<td>符合企业安全性 合规性</td>
+</tr>
+</tbody>
+</table>
 <h3>Document Process&nbsp;Automation:</h3>
 <p>Documents (<span class="caps">PDF</span>) -&gt; Azure Form Recognizer -&gt; Azure Cognitive Search -&gt; Azure OpenAI Service -&gt; Cosmos <span class="caps">DB</span> -&gt; Web Application /&nbsp;PowerBI</p>
 <h3>Contact Center&nbsp;Analytics</h3>

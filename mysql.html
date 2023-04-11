@@ -314,14 +314,40 @@
 </code></pre></div>
 
 <p>原文链接：https://blog.csdn.net/scj0725/article/details/114625180</p>
-<p>Procedure | Function
-| - | -
-作为PL/SQL语句执行 | 作为一个表达式执行
-在 <span class="caps">COMMAND</span> 命令窗口中，使用 <span class="caps">EXECUTE</span> 命令执行过程 | 借用 select 语句来执行
-不可在 <span class="caps">DDL</span> 和 <span class="caps">SELECT</span> 语句中调用过程 | 可在 <span class="caps">DDL</span> 和 <span class="caps">SELECT</span> 语句中调用函数
-在头部不能包含RETURN语句 | 在头部必须包含RETURN语句
-可以通过output参数返回值，可返回多个值 | 必须返回一个single值
-可以有一个不包括值的返回语句 |&nbsp;必须至少包含一个RETURN语句</p>
+<table>
+<thead>
+<tr>
+<th>Procedure</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作为PL/SQL语句执行</td>
+<td>作为一个表达式执行</td>
+</tr>
+<tr>
+<td>在 <span class="caps">COMMAND</span> 命令窗口中，使用 <span class="caps">EXECUTE</span> 命令执行过程</td>
+<td>借用 select 语句来执行</td>
+</tr>
+<tr>
+<td>不可在 <span class="caps">DDL</span> 和 <span class="caps">SELECT</span> 语句中调用过程</td>
+<td>可在 <span class="caps">DDL</span> 和 <span class="caps">SELECT</span> 语句中调用函数</td>
+</tr>
+<tr>
+<td>在头部不能包含RETURN语句</td>
+<td>在头部必须包含RETURN语句</td>
+</tr>
+<tr>
+<td>可以通过output参数返回值，可返回多个值</td>
+<td>必须返回一个single值</td>
+</tr>
+<tr>
+<td>可以有一个不包括值的返回语句</td>
+<td>必须至少包含一个RETURN语句</td>
+</tr>
+</tbody>
+</table>
 <h3>事务&nbsp;Transaction</h3>
 <p>事务就是由单独单元的一个或多个sql语句组成，在这个单元中，每个sql语句都是相互依赖的。</p>
 <p>事务是一个整体，里面的内容要么都执行成功，要么都不成功。不可能存在部分执行成功而部分执行不成功的情况。如果某条sql语句一旦执行失败或者产生错误，那么整个单元将会回滚(返回最初状态)到事务开始之前的状态。</p>

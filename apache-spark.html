@@ -75,23 +75,69 @@
 <p>Resilent Distributed Datasets弹性分布式数据集，是 Spark&nbsp;底层的分布式存储的数据结构。数据不只存储在一台机器上，而是分布在多台机器上,实现数据计算的并行化，弹性表明数据丢失时可以进行重建。</p>
 <p><span class="caps">RDD</span> 是一种只读的数据块，当你对一个 <span class="caps">RDD</span> 进行了操作,那么结果将会是一个新的 <span class="caps">RDD</span>，<span class="caps">RDD</span> 里面的数据并不是真实的数据，而是一些元数据信息，记录了该 <span class="caps">RDD</span> 是通过哪些 Transformation 得到的。在计算机中使用 lineage 来表示这种血缘结构，lineage 形成一个有向无环图 <span class="caps">DAG</span>，整个计算过程中将不需要将中间结果落地到 <span class="caps">HDFS</span> 进行容错，某个节点出错，则只需要通过 lineage&nbsp;关系重新计算即可。</p>
 <p>RDD操作函数（operation）:</p>
-<p>类别 | 函数 | 区别
-| - | - | -
-Transformation | map, filter, groupBy, join, union, reduce, sort, partitionBy | 返回值还是RDD，不会马上提交Spark集群运行
-Action | count, collect, take, save, show |&nbsp;返回值不是RDD，会形成DAG提交Spark集群运行并立即返回结果</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>函数</th>
+<th>区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transformation</td>
+<td>map, filter, groupBy, join, union, reduce, sort, partitionBy</td>
+<td>返回值还是RDD，不会马上提交Spark集群运行</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>count, collect, take, save, show</td>
+<td>返回值不是RDD，会形成DAG提交Spark集群运行并立即返回结果</td>
+</tr>
+</tbody>
+</table>
 <p>Transformation 操作不是马上提交 Spark 集群执行的，在遇到 Transformation 操作时只会记录需要这样的操作，并不会去执行，需要等到有 Action 操作的时候才会真正启动计算过程进行计算。针对每个 Action，Spark 会生成一个 Job，从数据的创建开始，经过 Transformation，结尾是 Action 操作。这些操作对应形成一个有向无环图(<span class="caps">DAG</span>)，形成 <span class="caps">DAG</span>&nbsp;的先决条件是最后的函数操作是一个Action。</p>
 <h3>shuffle</h3>
 <blockquote>
 <p>shuffle 是划分 <span class="caps">DAG</span> 中 stage 的标识，同时影响 Spark 执行速度的关键步骤。shuffle 操作是 spark&nbsp;中最耗时的操作,应尽量避免不必要的shuffle.</p>
 </blockquote>
 <p>shuffle类算子：</p>
-<p>类别 | 函数 | 特点
-| - | - | -
-重分区 | repartition、repartitionAndSortWithinPartitions、coalesce(shuffle=true) | 对所有的分区数据进行随机均匀的打乱，把数据放入下游新的分区内
-聚合 | reduceByKey, groupByKey, aggregateByKey, combineByKey | 所有节点上的相同的key移动到同一个节点上
-集合/表间交互 | join, cogroup, intersection, subtract, subtractByKey, leftOuterJoin | 将相同join key的数据shuffle到同一个节点上
-排序 | sortBy, sortByKey |
-去重 |&nbsp;distinct</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>函数</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>重分区</td>
+<td>repartition、repartitionAndSortWithinPartitions、coalesce(shuffle=true)</td>
+<td>对所有的分区数据进行随机均匀的打乱，把数据放入下游新的分区内</td>
+</tr>
+<tr>
+<td>聚合</td>
+<td>reduceByKey, groupByKey, aggregateByKey, combineByKey</td>
+<td>所有节点上的相同的key移动到同一个节点上</td>
+</tr>
+<tr>
+<td>集合/表间交互</td>
+<td>join, cogroup, intersection, subtract, subtractByKey, leftOuterJoin</td>
+<td>将相同join key的数据shuffle到同一个节点上</td>
+</tr>
+<tr>
+<td>排序</td>
+<td>sortBy, sortByKey</td>
+<td></td>
+</tr>
+<tr>
+<td>去重</td>
+<td>distinct</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>Transformation 函数分为：
 * 窄依赖(narrow dependency)：不发生 shuffle 操作，指子 <span class="caps">RDD</span> 的各个分片(partition)不依赖于其他分片，能够独立计算得到结果
 * 宽依赖(wide dependency)：会发生 shuffle 操作，指子 <span class="caps">RDD</span> 的各个分片会依赖于父RDD 的多个分片，造成父 <span class="caps">RDD</span>&nbsp;的各个分片在集群中重新分片</p>

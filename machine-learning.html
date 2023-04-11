@@ -72,12 +72,14 @@
 <li>Validation data set&nbsp;验证集</li>
 </ul>
 <h3>Machine Learning&nbsp;分类</h3>
-<p>按照模型训练方式：
-* Supervised learning 监督学习: 从输入 -&gt; 输出 学习统计规律 （分类，回归）
-* Unsupervised learning 无监督学习：没有标注数据（聚类，降维/主成分分析，异常检测）
-* Semi-Supervised learning 半监督学习（生成模型）
-* Reinforcement learning 强化学习：累积奖励的最大化（AlphaGo）
-* Deep learning&nbsp;深度学习（生成对抗网络）</p>
+<p>按照模型训练方式：</p>
+<ul>
+<li>Supervised learning 监督学习: 从输入 -&gt; 输出 学习统计规律&nbsp;（分类，回归）</li>
+<li>Unsupervised learning&nbsp;无监督学习：没有标注数据（聚类，降维/主成分分析，异常检测）</li>
+<li>Semi-Supervised learning&nbsp;半监督学习（生成模型）</li>
+<li>Reinforcement learning&nbsp;强化学习：累积奖励的最大化（AlphaGo）</li>
+<li>Deep learning&nbsp;深度学习（生成对抗网络）</li>
+</ul>
 <h3><span class="caps">ML</span> Learning&nbsp;Algorithms</h3>
 <ul>
 <li>Regression 回归&nbsp;（预测）</li>
@@ -88,51 +90,185 @@
 </ul>
 <h2>Regression&nbsp;回归</h2>
 <p>continuous numerical predicition&nbsp;数值预测：气温，销量，房价</p>
-<p>算法 | 特点
-| - | - |
-Linear Regression 线性回归 | 训练时间短、线性模型
-Bayesian Linear Regression 贝叶斯线性回归 | 线性模型，训练数据量较少
-Poisson Regression 泊松回归 |  预测事件次数
-Fast Forest Quantile Regression 快速森林分位数回归 | 预测分布
-Neural Network Regression 神经网络回归 | 精准度高、训练时间较长
-Decision Forest Regression 决策森林回归 | 精准度高、训练时间短
-Boosted Decision Tree Regression 提升决策树回归 |&nbsp;精确度高、训练时间短、内存占用较大</p>
-<p>评估指标 Metrics | desc
-| - | - |
-平均绝对误差 (<span class="caps">MAE</span>) | 预测值与真实值之间的平均绝对误差
-均方根误差 (<span class="caps">RMSE</span>) | 模型在预测中会产生多大的误差，对于较大的误差权重较高
-决定系数 (R2) |&nbsp;0&lt;=R2&lt;=1，1说明模型无错误</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear Regression 线性回归</td>
+<td>训练时间短、线性模型</td>
+</tr>
+<tr>
+<td>Bayesian Linear Regression 贝叶斯线性回归</td>
+<td>线性模型，训练数据量较少</td>
+</tr>
+<tr>
+<td>Poisson Regression 泊松回归</td>
+<td>预测事件次数</td>
+</tr>
+<tr>
+<td>Fast Forest Quantile Regression 快速森林分位数回归</td>
+<td>预测分布</td>
+</tr>
+<tr>
+<td>Neural Network Regression 神经网络回归</td>
+<td>精准度高、训练时间较长</td>
+</tr>
+<tr>
+<td>Decision Forest Regression 决策森林回归</td>
+<td>精准度高、训练时间短</td>
+</tr>
+<tr>
+<td>Boosted Decision Tree Regression 提升决策树回归</td>
+<td>精确度高、训练时间短、内存占用较大</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>评估指标 Metrics</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平均绝对误差 (<span class="caps">MAE</span>)</td>
+<td>预测值与真实值之间的平均绝对误差</td>
+</tr>
+<tr>
+<td>均方根误差 (<span class="caps">RMSE</span>)</td>
+<td>模型在预测中会产生多大的误差，对于较大的误差权重较高</td>
+</tr>
+<tr>
+<td>决定系数 (R2)</td>
+<td>0&lt;=R2&lt;=1，1说明模型无错误</td>
+</tr>
+</tbody>
+</table>
 <h2>Classification&nbsp;分类</h2>
 <p>通过已有数据集（训练集）的学习，得到一个目标函数f（模型），把每个属性集x映射到目标属性y（类），且y必须是离散的（若y为连续的，则属于回归算法）。</p>
 <p>Binary Classification 二分类 / Multi-Class Classification&nbsp;多分类</p>
-<p>算法 | 特点
-| - | - |
-Logistic Regression 逻辑回归 | 训练时间短、线性模型
-Support Vector Machines (<span class="caps">SVM</span>) 支持向量机 | 线性模型，under 100 features
-Decision Forest 决策森林 | 精准度高，训练时间短
-Boosted Decision Trees 提升决策树 | 精准度高，训练时间短
-Neural Networks 神经网络 |&nbsp;精准度高、训练时间较长</p>
-<p>混淆矩阵 | Actual Positives | Actual Negatives
-| - | - | - |
-Predicted Postives | <span class="caps">TP</span> | <span class="caps">FP</span>
-Predicted Negatives | <span class="caps">FN</span> | <span class="caps">TN</span></p>
-<p>Performance Metrics 性能评估 | Desc | Formula | 场景
-| - | - | - | - |
-Accuracy 准确率 | 所有样本中预测正确的样本占比 | (<span class="caps">TP</span>+<span class="caps">TN</span>)/(<span class="caps">TP</span>+<span class="caps">TN</span>+<span class="caps">FP</span>+<span class="caps">FN</span>) | 数据类别不均衡时不靠谱
-Precision 精准率/查准率 | 在所有被预测为正的样本中实际为正的样本的概率 | <span class="caps">TP</span>/(<span class="caps">TP</span>+<span class="caps">FP</span>) | 预测升的股票里真的升了有多少
-Recall/Sensitivity 召回率/查全率 | 在实际为正的样本中被预测为正样本的概率 | <span class="caps">TP</span>/(<span class="caps">TP</span>+<span class="caps">FN</span>) |&nbsp;真的患病的病人中里预测正确的人</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistic Regression 逻辑回归</td>
+<td>训练时间短、线性模型</td>
+</tr>
+<tr>
+<td>Support Vector Machines (<span class="caps">SVM</span>) 支持向量机</td>
+<td>线性模型，under 100 features</td>
+</tr>
+<tr>
+<td>Decision Forest 决策森林</td>
+<td>精准度高，训练时间短</td>
+</tr>
+<tr>
+<td>Boosted Decision Trees 提升决策树</td>
+<td>精准度高，训练时间短</td>
+</tr>
+<tr>
+<td>Neural Networks 神经网络</td>
+<td>精准度高、训练时间较长</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>混淆矩阵</th>
+<th>Actual Positives</th>
+<th>Actual Negatives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicted Postives</td>
+<td><span class="caps">TP</span></td>
+<td><span class="caps">FP</span></td>
+</tr>
+<tr>
+<td>Predicted Negatives</td>
+<td><span class="caps">FN</span></td>
+<td><span class="caps">TN</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Performance Metrics 性能评估</th>
+<th>Desc</th>
+<th>Formula</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy 准确率</td>
+<td>所有样本中预测正确的样本占比</td>
+<td>(<span class="caps">TP</span>+<span class="caps">TN</span>)/(<span class="caps">TP</span>+<span class="caps">TN</span>+<span class="caps">FP</span>+<span class="caps">FN</span>)</td>
+<td>数据类别不均衡时不靠谱</td>
+</tr>
+<tr>
+<td>Precision 精准率/查准率</td>
+<td>在所有被预测为正的样本中实际为正的样本的概率</td>
+<td><span class="caps">TP</span>/(<span class="caps">TP</span>+<span class="caps">FP</span>)</td>
+<td>预测升的股票里真的升了有多少</td>
+</tr>
+<tr>
+<td>Recall/Sensitivity 召回率/查全率</td>
+<td>在实际为正的样本中被预测为正样本的概率</td>
+<td><span class="caps">TP</span>/(<span class="caps">TP</span>+<span class="caps">FN</span>)</td>
+<td>真的患病的病人中里预测正确的人</td>
+</tr>
+</tbody>
+</table>
 <h2>Time Series Analysis&nbsp;时间序列分析</h2>
 <p>一个时间序列 (表示为 Y = a + bX)&nbsp;是一个在时间上具有相同间隔值的有序序列</p>
 <p>目标：
 1. 历史数据识别和建模 Identify patterns in the past
 2. 预测未来的值 Forecast future&nbsp;values</p>
-<p>Component | Desc
-| - | - |
-Level | Average value
-Trend 趋势 | 指在时间序列中的长期移动，上升/降低的趋势
-Seasonality 季节性变动 | 周期性波动（短期）
-Cyclical component 周期性变动 | 不是固定的波动（长期 &gt; 1年）
-Random Noise 随机变动 |&nbsp;噪声</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level</td>
+<td>Average value</td>
+</tr>
+<tr>
+<td>Trend 趋势</td>
+<td>指在时间序列中的长期移动，上升/降低的趋势</td>
+</tr>
+<tr>
+<td>Seasonality 季节性变动</td>
+<td>周期性波动（短期）</td>
+</tr>
+<tr>
+<td>Cyclical component 周期性变动</td>
+<td>不是固定的波动（长期 &gt; 1年）</td>
+</tr>
+<tr>
+<td>Random Noise 随机变动</td>
+<td>噪声</td>
+</tr>
+</tbody>
+</table>
 <p>四种变动与指标数值最终变动的关系:</p>
 <ul>
 <li>加法模型&nbsp;Additive</li>
@@ -304,10 +440,30 @@ SubPeak Values: N &lt; Q1 -&nbsp;(1.5xIQR)</p>
 </ul>
 <h2>Model Improvement&nbsp;Principles</h2>
 <p>泛化能力就是说已经得到的拟合函数对于新来的样本的适应性</p>
-<p>泛化能力 | 表现 | 偏差 | 方差
-| - | - | - | - |
-Overfit models 过拟合 | 在训练数据上表现良好，在未知数据上表现差 | low bias | high variance
-Underfit models 欠拟合 | 在训练数据和未知数据上表现都很差 | high bias | low&nbsp;variance</p>
+<table>
+<thead>
+<tr>
+<th>泛化能力</th>
+<th>表现</th>
+<th>偏差</th>
+<th>方差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overfit models 过拟合</td>
+<td>在训练数据上表现良好，在未知数据上表现差</td>
+<td>low bias</td>
+<td>high variance</td>
+</tr>
+<tr>
+<td>Underfit models 欠拟合</td>
+<td>在训练数据和未知数据上表现都很差</td>
+<td>high bias</td>
+<td>low variance</td>
+</tr>
+</tbody>
+</table>
 <p>对Bias和Variance进行平衡（tradeoff）</p>
 <blockquote>
 <p>Model with the right fit has a balance between bias and&nbsp;variance</p>

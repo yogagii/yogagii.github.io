@@ -89,13 +89,48 @@
 <li>Azure Machine Learning Compute:&nbsp;Training</li>
 <li>Azure Kubernetes Service:&nbsp;Deployment</li>
 </ul>
-<p>Compute Target | Automated <span class="caps">ML</span> | <span class="caps">AML</span> Pipelines | <span class="caps">AML</span> Designer
-| - | - | - | - |
-Local Computer | Yes |  | 
-<span class="caps">AML</span> compute cluster | Yes | Yes | Yes
-<span class="caps">AML</span> compute instance | Yes (through <span class="caps">SDK</span>) | Yes
-Remote <span class="caps">VM</span> | Yes (<span class="caps">SDK</span> local mode only) | Yes
-Azure Databricks | Yes |&nbsp;Yes</p>
+<table>
+<thead>
+<tr>
+<th>Compute Target</th>
+<th>Automated <span class="caps">ML</span></th>
+<th><span class="caps">AML</span> Pipelines</th>
+<th><span class="caps">AML</span> Designer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local Computer</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span class="caps">AML</span> compute cluster</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><span class="caps">AML</span> compute instance</td>
+<td>Yes (through <span class="caps">SDK</span>)</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Remote <span class="caps">VM</span></td>
+<td>Yes (<span class="caps">SDK</span> local mode only)</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Azure Databricks</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3>优势</h3>
 <ul>
 <li>支持开源算法：Scikit-learn, TensorFlow, <span class="caps">CNTK</span>,&nbsp;PyTorch</li>

@@ -544,11 +544,28 @@
 <li>INFORMATION_SCHEMA </li>
 </ul>
 <p>The INFORMATION_SCHEMA is a <span class="caps">SQL</span> standard based schema, provided in every catalog created on Unity&nbsp;Catalog.</p>
-<p>Table | Desc
-| - | -
-<span class="caps">CATALOGS</span> | Describes catalogs.
-<span class="caps">TABLES</span> | Describes tables and views defined within the catalog.
-<span class="caps">COLUMNS</span> | Describes columns of tables and views in the&nbsp;catalog.</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="caps">CATALOGS</span></td>
+<td>Describes catalogs.</td>
+</tr>
+<tr>
+<td><span class="caps">TABLES</span></td>
+<td>Describes tables and views defined within the catalog.</td>
+</tr>
+<tr>
+<td><span class="caps">COLUMNS</span></td>
+<td>Describes columns of tables and views in the catalog.</td>
+</tr>
+</tbody>
+</table>
 <p>https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-information-schema</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">table_owner</span> <span class="k">FROM</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span> <span class="k">WHERE</span> <span class="n">table_schema</span> <span class="o">=</span> <span class="s1">&#39;information_schema&#39;</span> <span class="k">AND</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;columns&#39;</span><span class="p">;</span>
 

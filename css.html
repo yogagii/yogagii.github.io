@@ -106,18 +106,72 @@
 <li>absolute:&nbsp;绝对定位，相对于除static以外第一个父元素TRBL</li>
 </ul>
 <p>脱离文档流，不占文档空间，父级padding不影响，根为html</p>
-<p><span class="caps">TRBL</span> | 父级 | 定位
-| - | - | -
-无 |  | 默认auto, 变回relative
-有 | 父级无position | 找上级直到html
-有 | 父级有position |&nbsp;父级左上角，无论padding</p>
+<table>
+<thead>
+<tr>
+<th><span class="caps">TRBL</span></th>
+<th>父级</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+<td>默认auto, 变回relative</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级无position</td>
+<td>找上级直到html</td>
+</tr>
+<tr>
+<td>有</td>
+<td>父级有position</td>
+<td>父级左上角，无论padding</td>
+</tr>
+</tbody>
+</table>
 <h2>Display</h2>
 <p>display: inherit, none, block, inline, inline-block,table,&nbsp;table-cell</p>
-<p>元素 | 宽高 | margin | padding | 换行排列 | example
-| - | - | - | - | - | -
-块状元素 | y | y | y | y (从上至下) | div, p, nav, ul, li , header, footer, aside
-行内块状元素 | y | y | y | n (从左到右) |
-行内元素 | n | 左右 | y | n (从左到右) | span, a, b, i, strong, em, img, input,&nbsp;select</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>宽高</th>
+<th>margin</th>
+<th>padding</th>
+<th>换行排列</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>块状元素</td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+<td>y (从上至下)</td>
+<td>div, p, nav, ul, li , header, footer, aside</td>
+</tr>
+<tr>
+<td>行内块状元素</td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+<td>n (从左到右)</td>
+<td></td>
+</tr>
+<tr>
+<td>行内元素</td>
+<td>n</td>
+<td>左右</td>
+<td>y</td>
+<td>n (从左到右)</td>
+<td>span, a, b, i, strong, em, img, input, select</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>inline-block</li>
 </ul>

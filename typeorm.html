@@ -142,13 +142,42 @@
 </code></pre></div>
 
 <h3>创建Entity</h3>
-<p>装饰器 | description | extr
-| - | - | -
-@Column | 添加表列 | @Column({ length: 100 })
-@PrimaryColumn | 创建主列 | 每个实体必须至少有一个主键列
-@PrimaryGeneratedColumn | 自动生成的列 |
-@CreateDateColumn | 创建时间
-@UpdateDateColumn |&nbsp;更新时间</p>
+<table>
+<thead>
+<tr>
+<th>装饰器</th>
+<th>description</th>
+<th>extr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Column</td>
+<td>添加表列</td>
+<td>@Column({ length: 100 })</td>
+</tr>
+<tr>
+<td>@PrimaryColumn</td>
+<td>创建主列</td>
+<td>每个实体必须至少有一个主键列</td>
+</tr>
+<tr>
+<td>@PrimaryGeneratedColumn</td>
+<td>自动生成的列</td>
+<td></td>
+</tr>
+<tr>
+<td>@CreateDateColumn</td>
+<td>创建时间</td>
+<td></td>
+</tr>
+<tr>
+<td>@UpdateDateColumn</td>
+<td>更新时间</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>复合主键：拼合多列作为主键</p>
 <div class="highlight"><pre><span></span><code><span class="kd">@Entity</span><span class="p">()</span>
 <span class="k">export</span> <span class="kd">class</span> <span class="nx">FooBar</span> <span class="p">{</span>

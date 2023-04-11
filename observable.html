@@ -71,10 +71,6 @@
 </thead>
 <tbody>
 <tr>
-<td>/</td>
-<td>promise解决了嵌套地狱的问题</td>
-</tr>
-<tr>
 <td>陈述式，直至subscription才会触发</td>
 <td>promise创建之后立即执行</td>
 </tr>
@@ -99,32 +95,135 @@
 <td>promise一定是异步的</td>
 </tr>
 <tr>
-<td>subscribe(), map(), pipe()</td>
+<td>rxjs: subscribe(), map(), pipe()</td>
 <td>then()</td>
 </tr>
 </tbody>
 </table>
-<h3>Observable&nbsp;可观察对象</h3>
+<ul>
+<li>Observable&nbsp;创建的异步任务，可以被处理，而且是延时加载的，封装了大量的方法供我们使用以处理复杂的异步任务。</li>
+<li>promise&nbsp;解决嵌套地狱，解决大量的异步回调所造成的难以调试问题</li>
+</ul>
+<h2>Observable&nbsp;可观察对象</h2>
 <p>一个可观察对象(Observable)，观察者(Observer)订阅(Subscribe)它，当数据就绪时，之前定义的机制就会分发数据给一直处于等待状态的观察者哨兵。</p>
+<p><em>用户输入框查询:</em>
+1. 防抖。繁触发搜索，一来浪费服务器资源，二来影响客户端的响应。
+2. 防止触发两次。输入的文本没有变化，就不应该重新搜索。
+3.&nbsp;处理返回顺序。服务器的异步返回的顺序是无法保证的。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// WikipediaService</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">URLSearchParams</span><span class="p">,</span> <span class="nx">Jsonp</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@angular/http&#39;</span><span class="p">;</span>
+
+<span class="nx">search</span> <span class="p">(</span><span class="nx">term</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">()</span>
+  <span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;opensearch&#39;</span><span class="p">);</span>
+  <span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="nx">term</span><span class="p">);</span>
+  <span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;format&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">jsonp</span>             
+ <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">search</span> <span class="p">})</span>              
+ <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()[</span><span class="mf">1</span><span class="p">]);</span> <span class="c1">// 处理返回顺序：对于原先的Response类型的结果，转换成实际的搜索结果的列表，即利用Observable的特性去丢弃上一个未及时返回的结果</span>
+<span class="p">}</span>
+
+<span class="c1">// AppComponent</span>
+<span class="nx">term</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">FormControl</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">term</span><span class="p">.</span><span class="nx">valueChanges</span> <span class="c1">// Observable&lt;string&gt;对象</span>
+  <span class="p">.</span><span class="nx">debounceTime</span><span class="p">(</span><span class="mf">400</span><span class="p">)</span> <span class="c1">// 防抖：触发延时是400毫秒</span>
+  <span class="p">.</span><span class="nx">distinctUntilChanged</span><span class="p">()</span> <span class="c1">// 输入不一致才会触发订阅</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">term</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">wikipediaService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">items</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">items</span><span class="p">));</span>  
+</code></pre></div>
+
+<h3>可管道 Operator: 可以加入到 pipe&nbsp;链式操作的操作符</h3>
+<p>filter, mergeMap,&nbsp;forkJoin </p>
+<div class="highlight"><pre><span></span><code>observable.pipe(
+  operator1(),
+  operator2(),
+  operator3(),
+)
+</code></pre></div>
+
+<p>operator1 将接收 observable，对其执行操作并发出 observable。 从 operator1 发出的 observable 被传递给 operator2&nbsp;作为输入</p>
+<h3>创建型 Operator：创建新 Observable&nbsp;的独立函数</h3>
+<p>create, of,&nbsp;from</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="k">of</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="k">of</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">);</span> <span class="c1">// 依次发出提供的任意数量的值</span>
+<span class="kd">const</span> <span class="nx">subscribe</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">val</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">));</span>
+</code></pre></div>
+
+<h3>RxJS</h3>
+<ul>
+<li>map: 对源 observable&nbsp;的每个值应用投射函数</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+  <span class="nx">catchError</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="ow">new</span> <span class="nx">HttpException</span><span class="p">(</span><span class="sb">`position请求错误`</span><span class="p">,</span> <span class="mf">400</span><span class="p">);</span>
+  <span class="p">}),</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>forkJoin: promise.all&nbsp;并发请求接口并返回</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">res1</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res1&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="p">);</span>
+<span class="kd">const</span> <span class="nx">res2</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res2&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="p">);</span>
+<span class="k">return</span> <span class="nx">forkJoin</span><span class="p">([</span><span class="nx">res1</span><span class="p">,</span> <span class="nx">res2</span><span class="p">]).</span><span class="nx">pipe</span><span class="p">(</span>
+  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}),</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>mergeMap&nbsp;有顺序依赖的多个请求</li>
+</ul>
 <h2>Promise</h2>
 <p>promise是在es6标准中的一种用于解决异步编程的解决方案，由于在语言级别上，不同于Java、Python等多线程语言，js是单线程的，所以在node.js中大量使用了异步编程的技术，这样做是为了避免同步阻塞。</p>
 <p>Promise对象代表一个异步操作，有三种状态：
 * pending（进行中）
 * fulfilled（已成功）
 *&nbsp;rejected（已失败）</p>
-<p>promise的状态只有两种改变情况，且仅改变一次：由pending转变为resolved，由pending转变为rejected，任何其他操作都无法改变这个状态</p>
+<p>promise的状态只有两种改变情况，且仅改变一次，任何其他操作都无法改变这个状态：
+* 由pending转变为resolved
+*&nbsp;由pending转变为rejected</p>
 <p>await的一个Promise对象失败或者返回reject，那么整个async程序都会终止，除非使用try…catch捕捉</p>
+<h2>宏任务 <span class="caps">VS</span>&nbsp;微任务</h2>
 <p>宏任务macrotask：&nbsp;可每次执行栈执行的代码就是一个宏任务，整体script就是第一个宏任务。</p>
 <ul>
 <li>主代码块</li>
 <li>setTimeout</li>
 <li>setInterval</li>
+<li><span class="caps">AJAX</span></li>
 </ul>
 <p>微任务microtask：在当前task执行结束后立即执行的任务。
-* Promise
+* Promise.then catch finally
 *&nbsp;process.nextTick</p>
-<p>对于某个宏任务，如果其中有微任务和宏任务，则分别加到对应的队列中，然后该宏任务中所有的微任务执行完毕再执行宏任务队列中的下一个宏任务。</p>
-<p>在node中，会先将所有宏任务中的的同步任务执行完毕，宏任务中所有的微任务执行完毕再执行宏任务队列中的下一个宏任务。</p>
+<p>当异步事件执行完毕后，会将异步的回调加入对应的任务队列中，任务队列分为宏任务和微任务。</p>
+<p>微任务和宏任务同时存在则优选执行微任务。&nbsp;依次执行微任务队列，微队列清空之后，执行宏任务，当宏任务执行过程中再次遇到微任务，则将微任务再次放如微任务队列，如此往复循环，直到所有队列为空</p>
+<div class="highlight"><pre><span></span><code><span class="nx">setTimeout</span><span class="p">(()=&gt;{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()=&gt;{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+    <span class="nx">setTimeout</span><span class="p">(()=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="c1">// 1 2 3 4 5</span>
+</code></pre></div>
+
+<p>宏任务: setTimeout1, console -&gt; 1,&nbsp;Promise.resolve()</p>
+<p>微任务: .then -&gt;&nbsp;2</p>
+<p>宏任务: setTimeout1 -&gt; 3,&nbsp;setTimeout2</p>
+<p>微任务: .then -&gt;&nbsp;4</p>
+<p>宏任务: setTimeout2 -&gt;&nbsp;5</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
