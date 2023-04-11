@@ -62,17 +62,49 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>Observable | Promise
-| - | - |
-/ | promise解决了嵌套地狱的问题
-陈述式，直至subscription才会触发 | promise创建之后立即执行
-支持多值甚至是数据流 | 只能提供单个值
-能够在执行前或执行中被取消 dispose | 不可以取消
-多次调用 retry 能够触发多次异步操作 | promise只可以被执行一次，重复调用，promise内部直接返回之前的状态
-/ | 可使用async,await让多个promise进行同步
-根据内部操作去判别使用异步还是同步 | promise一定是异步的
-subscribe(), map(), pipe() |&nbsp;then()</p>
-<h3>Observable&nbsp;可观察对象，</h3>
+        <table>
+<thead>
+<tr>
+<th>Observable</th>
+<th>Promise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>promise解决了嵌套地狱的问题</td>
+</tr>
+<tr>
+<td>陈述式，直至subscription才会触发</td>
+<td>promise创建之后立即执行</td>
+</tr>
+<tr>
+<td>支持多值甚至是数据流</td>
+<td>只能提供单个值</td>
+</tr>
+<tr>
+<td>能够在执行前或执行中被取消 dispose</td>
+<td>不可以取消</td>
+</tr>
+<tr>
+<td>多次调用 retry 能够触发多次异步操作</td>
+<td>promise只可以被执行一次，重复调用，promise内部直接返回之前的状态</td>
+</tr>
+<tr>
+<td>/</td>
+<td>可使用async,await让多个promise进行同步</td>
+</tr>
+<tr>
+<td>根据内部操作去判别使用异步还是同步</td>
+<td>promise一定是异步的</td>
+</tr>
+<tr>
+<td>subscribe(), map(), pipe()</td>
+<td>then()</td>
+</tr>
+</tbody>
+</table>
+<h3>Observable&nbsp;可观察对象</h3>
 <p>一个可观察对象(Observable)，观察者(Observer)订阅(Subscribe)它，当数据就绪时，之前定义的机制就会分发数据给一直处于等待状态的观察者哨兵。</p>
 <h2>Promise</h2>
 <p>promise是在es6标准中的一种用于解决异步编程的解决方案，由于在语言级别上，不同于Java、Python等多线程语言，js是单线程的，所以在node.js中大量使用了异步编程的技术，这样做是为了避免同步阻塞。</p>
