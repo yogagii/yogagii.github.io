@@ -371,7 +371,11 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <p>Note(不可重复) -&gt; 90 days -&gt; 勾选：repo -&gt; Generate token -&gt; copy&nbsp;token</p>
 <p>git config &#8212;global credential.helper&nbsp;store</p>
 <p>git push origin&nbsp;master</p>
-<p>-&gt; paste&nbsp;token</p>
+<p>-&gt; paste token&nbsp;粘贴到输入密码的位置</p>
+<p>把token直接添加远程仓库链接中，可以避免同一个仓库每次提交代码都要输入token</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git
+</code></pre></div>
+
 <h2>部署</h2>
 <ul>
 <li>打tag:</li>
