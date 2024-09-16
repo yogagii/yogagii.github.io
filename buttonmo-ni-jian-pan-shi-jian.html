@@ -83,25 +83,25 @@
 <thead>
 <tr>
 <th>sCommand</th>
-<th align="center"><span class="caps">IE6</span></th>
-<th align="center"><span class="caps">IE7</span></th>
-<th align="center"><span class="caps">IE8</span></th>
-<th align="center">Firefox</th>
-<th align="center">Chrome</th>
-<th align="center">Safari</th>
-<th align="center">Opera</th>
+<th style="text-align: center;"><span class="caps">IE6</span></th>
+<th style="text-align: center;"><span class="caps">IE7</span></th>
+<th style="text-align: center;"><span class="caps">IE8</span></th>
+<th style="text-align: center;">Firefox</th>
+<th style="text-align: center;">Chrome</th>
+<th style="text-align: center;">Safari</th>
+<th style="text-align: center;">Opera</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>saveAs</td>
-<td align="center">Y</td>
-<td align="center">Y</td>
-<td align="center">Y</td>
-<td align="center">N</td>
-<td align="center">N</td>
-<td align="center">N</td>
-<td align="center">N</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">N</td>
 </tr>
 </tbody>
 </table>
@@ -110,24 +110,24 @@
 <ol>
 <li>jQuery.Event(&#8220;keydown&#8221;);</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">);</span>
 <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">=</span><span class="mf">83</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">=</span><span class="mf">83</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-  <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">==</span><span class="mf">83</span><span class="o">&amp;&amp;</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">){</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">&quot;saveAs&quot;</span><span class="p">);</span>
-    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;按下了ctrl+S`````&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">==</span><span class="mf">83</span><span class="o">&amp;&amp;</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">){</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">&quot;saveAs&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;按下了ctrl+S`````&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <ol>
 <li>createEvent(&#8216;KeyboardEvent&#8217;)</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">ev</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;KeyboardEvent&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">ev</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;KeyboardEvent&#39;</span><span class="p">)</span>
 <span class="nx">ev</span><span class="p">.</span><span class="nx">initKeyboardEvent</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="nb">window</span><span class="p">,</span><span class="mf">83</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="kc">false</span><span class="p">,</span><span class="kc">false</span><span class="p">,</span><span class="kc">false</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
 </code></pre></div>
@@ -135,27 +135,27 @@
 <ol>
 <li>createEventObject()</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">eventObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEventObject</span><span class="p">()</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">initEvent</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">eventObj</span><span class="p">.</span><span class="nx">initEvent</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">eventObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createEventObject</span><span class="p">()</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">initEvent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">eventObj</span><span class="p">.</span><span class="nx">initEvent</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="nx">eventObj</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">=</span> <span class="nx">keyCode</span>
-<span class="nx">eventObj</span><span class="p">.</span><span class="nx">which</span> <span class="o">=</span> <span class="nx">keyCode</span>
-<span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span> <span class="o">?</span> <span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span> <span class="o">:</span> <span class="nx">el</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;onkeydown&#39;</span><span class="p">,</span> <span class="nx">eventObj</span><span class="p">)</span>
+<span class="nx">eventObj</span><span class="p">.</span><span class="nx">keyCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">keyCode</span>
+<span class="nx">eventObj</span><span class="p">.</span><span class="nx">which</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">keyCode</span>
+<span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">eventObj</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">el</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;onkeydown&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">eventObj</span><span class="p">)</span>
 </code></pre></div>
 
 <p>困难：试了三种都失败了，首先是初始化的时候keycode赋值无效，即使用Object.defineProperty强行修改keycode，也无法触发原生事件，因为isTrusted值为false</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">oEvent</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;KeyboardEvent&#39;</span><span class="p">);</span>
-<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">oEvent</span><span class="p">,</span> <span class="s1">&#39;keyCode&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">get</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">keyCodeVal</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">});</span> 
-<span class="nx">oEvent</span><span class="p">.</span><span class="nx">initKeyboardEvent</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">oEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="s1">&#39;KeyboardEvent&#39;</span><span class="p">);</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">oEvent</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;keyCode&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">keyCodeVal</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span><span class="w"> </span>
+<span class="nx">oEvent</span><span class="p">.</span><span class="nx">initKeyboardEvent</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">defaultView</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
 
 <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 <span class="p">});</span>
 <span class="c1">// Event {</span>
 <span class="c1">//   isTrusted: false</span>
@@ -271,21 +271,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -294,7 +296,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -303,7 +304,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -323,7 +323,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

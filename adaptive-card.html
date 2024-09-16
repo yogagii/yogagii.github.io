@@ -64,86 +64,86 @@
     </header>
     <div class="post-entry">
         <h2>Mailer</h2>
-<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@nestjs</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">mailer</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@nestjs</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">mailer</span>
 </code></pre></div>
 
 <p>email.module.ts</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MailerModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">EjsAdapter</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer/dist/adapters/ejs.adapter&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MailerModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">EjsAdapter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs-modules/mailer/dist/adapters/ejs.adapter&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Module</span><span class="p">({</span>
-  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span>
-    <span class="nx">MailerModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
-      <span class="nx">transport</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;mx.xxx.xxx.com&#39;</span><span class="p">,</span> <span class="c1">// 需要在服务器上申请防火墙</span>
-        <span class="nx">port</span><span class="o">:</span> <span class="mf">25</span><span class="p">,</span>
-        <span class="nx">ignoreTLS</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 踩坑：TLSSocket.SMTPConnection._onSocketTimeout</span>
-        <span class="nx">secure</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="nx">preview</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
-        <span class="kr">from</span><span class="o">:</span> <span class="s1">&#39;&quot;Test&quot; &lt;test@xxx.com&gt;&#39;</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="nx">template</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">dir</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/email-template&#39;</span><span class="p">,</span>
-        <span class="nx">adapter</span><span class="o">:</span> <span class="ow">new</span> <span class="nx">EjsAdapter</span><span class="p">(),</span>
-        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">strict</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">},</span>
-    <span class="p">}),</span>
-  <span class="p">],</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">MailerModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">transport</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mx.xxx.xxx.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 需要在服务器上申请防火墙</span>
+<span class="w">        </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">ignoreTLS</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// 踩坑：TLSSocket.SMTPConnection._onSocketTimeout</span>
+<span class="w">        </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">preview</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">defaults</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&quot;Test&quot; &lt;test@xxx.com&gt;&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/email-template&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">adapter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EjsAdapter</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">strict</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">],</span>
 <span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">EmailModule</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">EmailModule</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <p>email.service.ts</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MailerService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ACData</span> <span class="kr">from</span> <span class="s1">&#39;adaptivecards-templating&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">approvalCard</span> <span class="kr">from</span> <span class="s1">&#39;./template/template.json&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">responseCard</span> <span class="kr">from</span> <span class="s1">&#39;./template/response.json&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">data</span> <span class="kr">from</span> <span class="s1">&#39;./template/data.json&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MailerService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs-modules/mailer&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">ACData</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;adaptivecards-templating&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">approvalCard</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./template/template.json&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">responseCard</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./template/response.json&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./template/data.json&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">EmailService</span> <span class="p">{</span>
-  <span class="nx">renderTemplate</span><span class="p">(</span><span class="nx">courseData</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">tempCard</span> <span class="o">=</span>
-      <span class="nx">courseData</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">Status</span><span class="p">.</span><span class="nx">Created</span> <span class="o">?</span> <span class="nx">approvalCard</span> <span class="o">:</span> <span class="nx">responseCard</span><span class="p">;</span>
-    <span class="kd">const</span> <span class="nx">template</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ACData</span><span class="p">.</span><span class="nx">Template</span><span class="p">(</span><span class="nx">tempCard</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">cardData</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="p">...</span><span class="nx">data</span><span class="p">,</span>
-    <span class="p">};</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">EmailService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">renderTemplate</span><span class="p">(</span><span class="nx">courseData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">tempCard</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="nx">courseData</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">Status</span><span class="p">.</span><span class="nx">Created</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">approvalCard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">responseCard</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ACData</span><span class="p">.</span><span class="nx">Template</span><span class="p">(</span><span class="nx">tempCard</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cardData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
 
-    <span class="kd">const</span> <span class="nx">card</span> <span class="o">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">expand</span><span class="p">({</span>
-      <span class="nx">$root</span><span class="o">:</span> <span class="nx">cardData</span><span class="p">,</span>
-    <span class="p">});</span>
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="nx">card</span><span class="p">,</span>
-      <span class="nx">cardData</span>
-    <span class="p">};</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">expand</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">$root</span><span class="o">:</span><span class="w"> </span><span class="nx">cardData</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">card</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">cardData</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="k">async</span> <span class="nx">sendEmailCode</span><span class="p">(</span><span class="nx">courseData</span><span class="o">:</span> <span class="nx">mdmEventDto</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">card</span><span class="p">,</span> <span class="nx">cardData</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderTemplate</span><span class="p">(</span><span class="nx">courseData</span><span class="p">);</span>
-    <span class="k">try</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">sendMailOptions</span><span class="o">:</span> <span class="nx">SendMailOptions</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">to</span><span class="o">:</span> <span class="nx">courseData</span><span class="p">.</span><span class="nx">user_email</span><span class="p">,</span>
-        <span class="kr">from</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADDRESSER_MAIL</span><span class="p">,</span>
-        <span class="nx">cc</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SEND_MAIL</span><span class="p">,</span>
-        <span class="nx">subject</span><span class="o">:</span> <span class="s1">&#39;APPLY COURSE&#39;</span><span class="p">,</span>
-        <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;template.code.ejs&#39;</span><span class="p">,</span>
-        <span class="nx">context</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">card</span><span class="p">,</span>
-          <span class="nx">cardData</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">};</span>
-      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">sendMailOptions</span><span class="p">);</span>
-      <span class="k">return</span> <span class="p">{</span> <span class="nx">code</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;发送成功&#39;</span> <span class="p">};</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;发送邮件出错:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
-      <span class="k">return</span> <span class="p">{</span> <span class="nx">error</span> <span class="p">};</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">sendEmailCode</span><span class="p">(</span><span class="nx">courseData</span><span class="o">:</span><span class="w"> </span><span class="nx">mdmEventDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">card</span><span class="p">,</span><span class="w"> </span><span class="nx">cardData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">renderTemplate</span><span class="p">(</span><span class="nx">courseData</span><span class="p">);</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">sendMailOptions</span><span class="o">:</span><span class="w"> </span><span class="nx">SendMailOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nx">courseData</span><span class="p">.</span><span class="nx">user_email</span><span class="p">,</span>
+<span class="w">        </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADDRESSER_MAIL</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">cc</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SEND_MAIL</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">subject</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;APPLY COURSE&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;template.code.ejs&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">card</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">cardData</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">sendMailOptions</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;发送成功&#39;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;发送邮件出错:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -153,8 +153,8 @@
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/adaptivecard+json&quot;</span><span class="p">&gt;</span>
-      <span class="o">&lt;%-</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">locals</span><span class="p">.</span><span class="nx">card</span><span class="p">)</span> <span class="o">%&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="o">&lt;%-</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">locals</span><span class="p">.</span><span class="nx">card</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>课程名称：<span class="err">&lt;</span>%- locals.cardData.course_name %&gt;<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -164,75 +164,86 @@
 
 <p>email/template/template.json</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;hideOriginalBody&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;originator&quot;</span><span class="p">:</span> <span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="err">//</span> <span class="err">ge</span><span class="kc">nerate</span> <span class="err">i</span><span class="kc">n</span> <span class="err">h</span><span class="kc">tt</span><span class="err">ps</span><span class="p">:</span><span class="err">//ou</span><span class="kc">tl</span><span class="err">ook.o</span><span class="kc">ff</span><span class="err">ice.com/co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">ors/oam/publish</span>
-  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;verticalContentAlignment&quot;</span><span class="p">:</span> <span class="s2">&quot;Center&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;horizontalAlignment&quot;</span><span class="p">:</span> <span class="s2">&quot;Left&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;Large&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;开班申请&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;isSubtle&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;separator&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;spacing&quot;</span><span class="p">:</span> <span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Container&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;Bolder&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;班级基本信息&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FactSet&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;spacing&quot;</span><span class="p">:</span> <span class="s2">&quot;Large&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;facts&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-              <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;课程名称&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;**${course_name}**&quot;</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-              <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;科室信息&quot;</span><span class="p">,</span>
-              <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;${department_name}&quot;</span>
-            <span class="p">},</span>
-          <span class="p">]</span>
-        <span class="p">}</span>
-      <span class="p">]</span>
-    <span class="p">},</span>
-  <span class="p">],</span>
-  <span class="nt">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Action.OpenUrl&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;完善信息&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;${form_url}&quot;</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="nt">&quot;autoInvokeAction&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://xxx.jjmc.cn/iqvia/mdm/updateCard&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;{ \&quot;id\&quot;: ${event_id} }&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Action.Http&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span> <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="w">  </span><span class="nt">&quot;hideOriginalBody&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;originator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// generate in https://outlook.office.com/connectors/oam/publish</span>
+<span class="w">  </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;verticalContentAlignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Center&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;horizontalAlignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Left&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Large&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;开班申请&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;isSubtle&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;separator&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Container&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bolder&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;班级基本信息&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FactSet&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Large&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;facts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;课程名称&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;**${course_name}**&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;科室信息&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${department_name}&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action.OpenUrl&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;完善信息&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${form_url}&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;autoInvokeAction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://xxx.jjmc.cn/iqvia/mdm/updateCard&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{ \&quot;id\&quot;: ${event_id} }&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action.Http&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>email/template/data.json</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;event_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;course_name&quot;</span><span class="p">:</span> <span class="s2">&quot;暂无课程名称&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;event_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;暂无课程名称&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p><img alt="adaptivecard" src="img/adaptivecard.jpg"></p>
+<p>踩坑：Outlook windows 客户端样式错乱，网页版样式正常，<span class="caps">MAC</span>&nbsp;样式正常</p>
+<p>Outlook windows 客户端&nbsp;页面渲染模式为文本渲染，类似于Word：</p>
+<ol>
+<li>不能使用布局属性，包括flex、float、absolute、relative等布局，浮动属性&nbsp;ul,li,dl,dd标签不能用</li>
+<li>HTML结构搭建使用table表格编写</li>
+<li>css不能用外部样式，不能用内联样式表，样式必须写在行内，否则不生效</li>
+</ol>
+<p>https://blog.51cto.com/u_15155081/2720389</p>
+<p>解决：https://documentation.mjml.io/#inside-node-js
+ mjml&nbsp;写模板，用mjml2html转成html</p>
+<p>GrapeJS：export <span class="caps">MJML</span>&nbsp;邮件中的HTML</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -317,21 +328,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -340,7 +353,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -349,7 +361,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -369,7 +380,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

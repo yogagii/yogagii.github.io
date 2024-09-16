@@ -67,10 +67,14 @@
 <div class="highlight"><pre><span></span><code>brew install mysql
 </code></pre></div>
 
+<p>启动&nbsp;mysql</p>
+<div class="highlight"><pre><span></span><code>service mysqld start
+</code></pre></div>
+
 <p>登录&nbsp;mysql</p>
-<div class="highlight"><pre><span></span><code><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
-<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl</span>
-<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="c1">--ssl-mode-required</span>
+<div class="highlight"><pre><span></span><code><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span>
+<span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--ssl</span>
+<span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="c1">--ssl-mode-required</span>
 </code></pre></div>
 
 <p>退出&nbsp;mysql</p>
@@ -82,97 +86,138 @@
 <li><span class="caps">DML</span>&nbsp;数据操作语言（可以回滚）：insert，update，delete，select</li>
 </ul>
 <p>创建数据库</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 
 <p>查看当前的数据库</p>
-<div class="highlight"><pre><span></span><code><span class="k">show</span> <span class="n">databases</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">show</span><span class="w"> </span><span class="n">databases</span><span class="p">;</span>
+</code></pre></div>
+
+<p>创建数据库</p>
+<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 
 <p>删除数据库</p>
-<div class="highlight"><pre><span></span><code><span class="k">drop</span> <span class="k">database</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 
 <p>选择数据库</p>
-<div class="highlight"><pre><span></span><code><span class="n">use</span> <span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">use</span><span class="w"> </span><span class="o">&lt;</span><span class="err">数据库名</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>创建新用户</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;tester&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;123&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="n">GRANTS</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;tester&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;tester&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
+<span class="n">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span>
+</code></pre></div>
+
+<p>删除用户</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;tester&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>检查端口号</p>
+<div class="highlight"><pre><span></span><code><span class="k">show</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;port&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 默认 3306</span>
 </code></pre></div>
 
 <p>导入表sql</p>
-<div class="highlight"><pre><span></span><code><span class="k">source</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">yoga</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">xxx</span><span class="p">.</span><span class="k">sql</span>
+<div class="highlight"><pre><span></span><code><span class="k">source</span><span class="w"> </span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">yoga</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">xxx</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></div>
+
+<p>导出表</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- need FILE privilege: GRANT FILE ON *.* TO &#39;username&#39;@&#39;hostname&#39;;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">INTO</span><span class="w"> </span><span class="n">OUTFILE</span><span class="w"> </span><span class="s1">&#39;/path/to/your/outputfile.csv&#39;</span>
+<span class="n">FIELDS</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;,&#39;</span>
+<span class="n">ENCLOSED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span>
+<span class="n">LINES</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--tab<span class="o">=</span>/path/to/your/directory<span class="w"> </span>your_database<span class="w"> </span>your_table_name
+mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--no-data<span class="w"> </span>database<span class="w"> </span>table_name<span class="w"> </span>&gt;<span class="w"> </span>/path/to/your/outputfile.sql
 </code></pre></div>
 
 <p>创建数据表</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="p">(</span><span class="k">column_name</span> <span class="n">column_type</span><span class="p">);</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">runoob_tbl</span><span class="p">(</span>
-   <span class="o">-&gt;</span> <span class="n">runoob_id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-   <span class="o">-&gt;</span> <span class="n">runoob_title</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-   <span class="o">-&gt;</span> <span class="n">runoob_author</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-   <span class="o">-&gt;</span> <span class="n">submission_date</span> <span class="nb">DATE</span><span class="p">,</span>
-   <span class="o">-&gt;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span> <span class="n">runoob_id</span> <span class="p">)</span>
-   <span class="o">-&gt;</span> <span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="k">column_name</span><span class="w"> </span><span class="n">column_type</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">runoob_tbl</span><span class="p">(</span>
+<span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">runoob_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">runoob_title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">runoob_author</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">submission_date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">runoob_id</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
 <span class="c1">-- ENGINE 设置存储引擎，CHARSET 设置编码。</span>
 </code></pre></div>
 
 <p>显示当前数据库的表单</p>
-<div class="highlight"><pre><span></span><code><span class="k">show</span> <span class="n">tables</span>
+<div class="highlight"><pre><span></span><code><span class="k">show</span><span class="w"> </span><span class="n">tables</span>
 </code></pre></div>
 
 <p>显示表结构</p>
-<div class="highlight"><pre><span></span><code><span class="k">desc</span> <span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="k">desc</span><span class="w"> </span><span class="o">&lt;</span><span class="err">表名</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<p>显示表字段</p>
+<div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="n">COLUMNS</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</code></pre></div>
+
+<p>显示建表语句</p>
+<div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
 </code></pre></div>
 
 <p>删除数据表</p>
-<div class="highlight"><pre><span></span><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span> <span class="c1">--将删除表的结构被依赖的约束(constrain)，触发器(trigger)，索引(index)</span>
-<span class="k">truncate</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span> <span class="c1">--只删除数据不删除表的结构</span>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w"> </span><span class="c1">--将删除表的结构被依赖的约束(constrain)，触发器(trigger)，索引(index)</span>
+<span class="k">truncate</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w"> </span><span class="c1">--只删除数据不删除表的结构</span>
 </code></pre></div>
 
 <p>插入数据</p>
-<div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table_name</span> <span class="p">(</span> <span class="n">field1</span><span class="p">,</span> <span class="n">field2</span><span class="p">,...</span><span class="n">fieldN</span> <span class="p">)</span>
-                       <span class="k">VALUES</span>
-                       <span class="p">(</span> <span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,...</span><span class="n">valueN</span> <span class="p">);</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">runoob_tbl</span>
-    <span class="o">-&gt;</span> <span class="p">(</span><span class="n">runoob_title</span><span class="p">,</span> <span class="n">runoob_author</span><span class="p">,</span> <span class="n">submission_date</span><span class="p">)</span>
-    <span class="o">-&gt;</span> <span class="k">VALUES</span>
-    <span class="o">-&gt;</span> <span class="p">(</span><span class="ss">&quot;学习 PHP&quot;</span><span class="p">,</span> <span class="ss">&quot;菜鸟教程&quot;</span><span class="p">,</span> <span class="n">NOW</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">field1</span><span class="p">,</span><span class="w"> </span><span class="n">field2</span><span class="p">,...</span><span class="n">fieldN</span><span class="w"> </span><span class="p">)</span>
+<span class="w">                       </span><span class="k">VALUES</span>
+<span class="w">                       </span><span class="p">(</span><span class="w"> </span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">value2</span><span class="p">,...</span><span class="n">valueN</span><span class="w"> </span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">runoob_tbl</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">runoob_title</span><span class="p">,</span><span class="w"> </span><span class="n">runoob_author</span><span class="p">,</span><span class="w"> </span><span class="n">submission_date</span><span class="p">)</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;学习 PHP&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;菜鸟教程&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">());</span>
 </code></pre></div>
 
 <p>查询数据</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="k">column_name</span><span class="p">,</span><span class="k">column_name</span>
-<span class="k">FROM</span> <span class="k">table_name</span>
-<span class="p">[</span><span class="k">WHERE</span> <span class="n">Clause</span><span class="p">]</span>
-<span class="p">[</span><span class="k">LIMIT</span> <span class="n">N</span><span class="p">][</span> <span class="k">OFFSET</span> <span class="n">M</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">column_name</span><span class="p">,</span><span class="k">column_name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">Clause</span><span class="p">]</span>
+<span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="n">N</span><span class="p">][</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="n">M</span><span class="p">]</span>
 <span class="c1">-- LIMIT 返回的记录数</span>
 <span class="c1">-- OFFSET 开始查询的数据偏移量, 默认为0</span>
 </code></pre></div>
 
 <p>mssql不支持limit，mysql支持</p>
 <p>更新表</p>
-<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">CustomViews</span><span class="o">`</span> <span class="k">ADD</span> <span class="o">`</span><span class="n">prompts</span><span class="o">`</span> <span class="n">JSON</span><span class="p">;</span>
-<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">fpa</span><span class="p">.</span><span class="n">CustomViews</span> <span class="k">DROP</span> <span class="k">COLUMN</span> <span class="n">prompts</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">CustomViews</span><span class="o">`</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="o">`</span><span class="n">prompts</span><span class="o">`</span><span class="w"> </span><span class="n">JSON</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">CustomViews</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">prompts</span><span class="p">;</span>
 </code></pre></div>
 
 <p>更新数据</p>
-<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span> <span class="k">table_name</span> <span class="k">SET</span> <span class="n">field1</span><span class="o">=</span><span class="k">new</span><span class="o">-</span><span class="n">value1</span><span class="p">,</span> <span class="n">field2</span><span class="o">=</span><span class="k">new</span><span class="o">-</span><span class="n">value2</span>
-<span class="p">[</span><span class="k">WHERE</span> <span class="n">Clause</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">field1</span><span class="o">=</span><span class="k">new</span><span class="o">-</span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">field2</span><span class="o">=</span><span class="k">new</span><span class="o">-</span><span class="n">value2</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">Clause</span><span class="p">]</span>
 </code></pre></div>
 
 <p><span class="caps">DELETE</span>&nbsp;语句</p>
-<div class="highlight"><pre><span></span><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">table_name</span> <span class="p">[</span><span class="k">WHERE</span> <span class="n">Clause</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">Clause</span><span class="p">]</span>
 </code></pre></div>
 
-<p><span class="caps">LIKE</span> 子句 (string has&nbsp;somevalue)</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">field1</span><span class="p">,</span> <span class="n">field2</span><span class="p">,...</span><span class="n">fieldN</span>
-<span class="k">FROM</span> <span class="k">table_name</span>
-<span class="k">WHERE</span> <span class="n">field1</span> <span class="k">LIKE</span> <span class="n">condition1</span> <span class="p">[</span><span class="k">AND</span> <span class="p">[</span><span class="k">OR</span><span class="p">]]</span> <span class="n">filed2</span> <span class="o">=</span> <span class="s1">&#39;somevalue&#39;</span>
+<p><span class="caps">LIKE</span> 子句 (string has somevalue) / <span class="caps">ILIKE</span>&nbsp;不区分大小写</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">field1</span><span class="p">,</span><span class="w"> </span><span class="n">field2</span><span class="p">,...</span><span class="n">fieldN</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">field1</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="p">[</span><span class="k">AND</span><span class="w"> </span><span class="p">[</span><span class="k">OR</span><span class="p">]]</span><span class="w"> </span><span class="n">filed2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;somevalue&#39;</span>
 
 <span class="c1">-- runoob_tbl 表中获取 runoob_author 字段中以 COM 为结尾</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">runoob_tbl</span>  <span class="k">WHERE</span> <span class="n">runoob_author</span> <span class="k">LIKE</span> <span class="s1">&#39;%COM&#39;</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">runoob_tbl</span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">runoob_author</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%COM&#39;</span><span class="p">;</span>
 </code></pre></div>
 
 <p><span class="caps">LEFT</span> <span class="caps">JOIN</span> </p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">project_id</span> <span class="k">FROM</span> <span class="p">(</span>
-  <span class="n">bc_wr_user_exam</span> <span class="k">as</span> <span class="n">e</span>
-  <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">bc_r_user_task</span> <span class="k">as</span> <span class="n">t</span> <span class="k">on</span> <span class="n">t</span><span class="p">.</span><span class="n">project_id</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">project_id</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">project_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">bc_wr_user_exam</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span>
+<span class="w">  </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bc_r_user_task</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">project_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">project_id</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -180,78 +225,82 @@
 <p><span class="caps">RIGHT</span> <span class="caps">JOIN</span>&nbsp;右连接：右表全部保留，左表关联不上的用null表示。</p>
 <p><span class="caps">INNER</span> <span class="caps">JOIN</span>&nbsp;内连接：两表关联，保留两表中交集的记录。</p>
 <p>左表独有：两表关联，查询左表独有的数据。</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">t1</span> <span class="k">left</span> <span class="k">join</span> <span class="n">t2</span> <span class="k">on</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span> <span class="k">where</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span> <span class="k">is</span> <span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 
 <p>右表独有：两表关联，查询右表独有的数据</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">t1</span> <span class="k">right</span> <span class="k">join</span> <span class="n">t2</span> <span class="k">on</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">id</span> <span class="k">where</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="k">is</span> <span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 
 <p><span class="caps">FULL</span> <span class="caps">JOIN</span> 全连接：两表关联，查询它们的所有记录。MySQl 不支持 <span class="caps">FULL</span> <span class="caps">JOIN</span>，通过UNION来实现：</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">a</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">b</span> <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> 
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="w"> </span>
 <span class="k">UNION</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">a</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">b</span> <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
 </code></pre></div>
 
 <p><span class="caps">UNION</span> 操作符 (new&nbsp;set)</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 排除重复</span>
-<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">Websites</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Websites</span>
 <span class="k">UNION</span>
-<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">apps</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">country</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">apps</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">country</span><span class="p">;</span>
 
 <span class="c1">-- 保留重复</span>
-<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">Websites</span>
-<span class="k">UNION</span> <span class="k">ALL</span>
-<span class="k">SELECT</span> <span class="n">country</span> <span class="k">FROM</span> <span class="n">apps</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">country</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Websites</span>
+<span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">apps</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">country</span><span class="p">;</span>
 </code></pre></div>
 
 <p>排序</p>
-<div class="highlight"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">runoob_tbl</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">submission_date</span> <span class="k">ASC</span><span class="p">;</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">runoob_tbl</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">submission_date</span> <span class="k">DESC</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">runoob_tbl</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">submission_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">runoob_tbl</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">submission_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 
 <p>分组</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="k">column_name</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="k">column_name</span><span class="p">)</span>
-<span class="k">FROM</span> <span class="k">table_name</span>
-<span class="k">WHERE</span> <span class="k">column_name</span> <span class="k">operator</span> <span class="n">value</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">column_name</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">column_name</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="k">column_name</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="n">value</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="p">;</span>
 
 <span class="c1">-- 在分组统计数据基础上再进行相同的统计（SUM,AVG,COUNT…）</span>
-<span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">singin</span><span class="p">)</span> <span class="k">as</span> <span class="n">singin_count</span> <span class="k">FROM</span>  <span class="n">employee_tbl</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">name</span> <span class="k">WITH</span> <span class="k">ROLLUP</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">singin</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">singin_count</span><span class="w"> </span><span class="k">FROM</span><span class="w">  </span><span class="n">employee_tbl</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">ROLLUP</span><span class="p">;</span>
 </code></pre></div>
 
 <p>正则表达式</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 查找name字段中以&#39;st&#39;为开头的所有数据</span>
-<span class="k">SELECT</span> <span class="n">name</span> <span class="k">FROM</span> <span class="n">person_tbl</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="n">REGEXP</span> <span class="s1">&#39;^st&#39;</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">person_tbl</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^st&#39;</span><span class="p">;</span>
 </code></pre></div>
 
 <p>展开数组</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">EXPLODE</span><span class="p">(</span><span class="k">DATA</span><span class="p">)</span> <span class="k">data</span> <span class="k">FROM</span> <span class="k">table_name</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">EXPLODE</span><span class="p">(</span><span class="k">DATA</span><span class="p">)</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+</code></pre></div>
+
+<p>返回参数中的第一个非空表达式</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">CnName</span><span class="p">,</span><span class="w"> </span><span class="n">EnName</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table_name</span>
 </code></pre></div>
 
 <p>自定义变量</p>
-<div class="highlight"><pre><span></span><code><span class="k">set</span> <span class="o">@</span><span class="k">key</span><span class="o">=</span><span class="n">value</span>
-<span class="k">set</span> <span class="o">@</span><span class="k">key</span><span class="p">:</span><span class="o">=</span><span class="n">value</span>
-<span class="k">select</span> <span class="o">@</span><span class="k">key</span><span class="p">:</span><span class="o">=</span><span class="n">value</span>
+<div class="highlight"><pre><span></span><code><span class="k">set</span><span class="w"> </span><span class="o">@</span><span class="k">key</span><span class="o">=</span><span class="n">value</span>
+<span class="k">set</span><span class="w"> </span><span class="o">@</span><span class="k">key</span><span class="p">:</span><span class="o">=</span><span class="n">value</span>
+<span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="k">key</span><span class="p">:</span><span class="o">=</span><span class="n">value</span>
 </code></pre></div>
 
 <p>自定义函数</p>
-<div class="highlight"><pre><span></span><code><span class="k">Create</span> <span class="k">function</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数</span><span class="p">)</span>
-<span class="k">Returns</span> <span class="err">返回值数据类型</span>
+<div class="highlight"><pre><span></span><code><span class="k">Create</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="err">函数名</span><span class="p">(</span><span class="err">参数</span><span class="p">)</span>
+<span class="k">Returns</span><span class="w"> </span><span class="err">返回值数据类型</span>
 <span class="k">as</span>
 <span class="k">begin</span>
-<span class="k">SQL</span> <span class="err">语句</span><span class="p">(</span><span class="err">必须有</span><span class="n">return变量或值</span><span class="p">)</span>
+<span class="k">SQL</span><span class="w"> </span><span class="err">语句</span><span class="p">(</span><span class="err">必须有</span><span class="n">return变量或值</span><span class="p">)</span>
 <span class="k">End</span>
 </code></pre></div>
 
 <p>子查询部分(subquery&nbsp;factoring)：将需要频繁执行的SQL片段加个别名放到全局中</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">A</span> <span class="k">as</span> <span class="p">(</span>
-  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span>
+<div class="highlight"><pre><span></span><code><span class="k">with</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span>
 <span class="p">)</span>
 
-<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">A</span><span class="p">,</span> <span class="n">customer</span> <span class="k">where</span> <span class="n">customer</span><span class="p">.</span><span class="n">userid</span> <span class="o">=</span> <span class="k">user</span><span class="p">.</span><span class="n">id</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">customer</span><span class="p">.</span><span class="n">userid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">id</span>
 </code></pre></div>
 
 <h3>存储过程(Stored Procedure)：一组为了完成特定功能的SQL&nbsp;语句</h3>
@@ -261,20 +310,20 @@
 <li>存储过程有助于减少应用程序和数据库服务器之间的流量，因为应用程序不必发送多个冗长的 <span class="caps">SQL</span>&nbsp;语句，而只用发送存储过程的名称和参数</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 创建过程 --</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">DELIMITER</span> <span class="o">//</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">procedure</span> <span class="n">mypro</span><span class="p">(</span><span class="k">in</span> <span class="n">a</span> <span class="nb">int</span><span class="p">,</span> <span class="k">in</span> <span class="n">b</span> <span class="nb">int</span><span class="p">,</span> <span class="k">out</span> <span class="k">sum</span> <span class="nb">int</span><span class="p">)</span>
-     <span class="o">&gt;</span> <span class="k">begin</span>
-     <span class="o">&gt;</span> <span class="k">set</span> <span class="k">sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="c1">-- 这个封号不能漏 --</span>
-     <span class="o">&gt;</span> <span class="k">end</span> <span class="o">//</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">mypro</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">sum</span><span class="w"> </span><span class="nb">int</span><span class="p">)</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 这个封号不能漏 --</span>
+<span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="o">//</span>
 
 <span class="c1">-- 调用过程 -- call 用来调用过程，@s 是用来接收过程输出参数的变量。</span>
-<span class="k">call</span> <span class="n">mypro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">@</span><span class="n">s</span><span class="p">);</span>
+<span class="k">call</span><span class="w"> </span><span class="n">mypro</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">@</span><span class="n">s</span><span class="p">);</span>
 <span class="c1">-- 输出结果 --</span>
-<span class="k">select</span> <span class="o">@</span><span class="n">s</span><span class="p">;</span>
+<span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">s</span><span class="p">;</span>
 </code></pre></div>
 
 <p>踩坑：服务器处理 <span class="caps">SQL</span> 语句默认是以分号作为语句结束标志的。然而在创建存储过程时，存储过程体可能包含有多条 <span class="caps">SQL</span> 语句，服务器在处理时会以遇到的第一个分号作为整个程序的结束符。通常使用 <span class="caps">DELIMITER</span>&nbsp;命令将结束命令修改为其他字符，创建完成后再改回来。</p>
-<div class="highlight"><pre><span></span><code><span class="n">mysql</span> <span class="o">&gt;</span> <span class="k">DELIMITER</span> <span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">mysql</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 
 <p>流程控制语句</p>
@@ -285,32 +334,32 @@
 <li>repeat</li>
 <li>loop</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">create</span> <span class="k">procedure</span> <span class="n">mypro2</span><span class="p">(</span><span class="k">in</span> <span class="n">num</span> <span class="nb">int</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">mypro2</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="nb">int</span><span class="p">)</span>
 <span class="k">begin</span>
-<span class="k">if</span> <span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span> <span class="k">then</span> <span class="c1">-- 条件开始</span>
-<span class="k">select</span> <span class="s1">&#39;负数&#39;</span><span class="p">;</span>
-<span class="n">elseif</span> <span class="n">num</span><span class="o">=</span><span class="mi">0</span> <span class="k">then</span>
-<span class="k">select</span> <span class="s1">&#39;不是正数也不是负数&#39;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="n">num</span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c1">-- 条件开始</span>
+<span class="k">select</span><span class="w"> </span><span class="s1">&#39;负数&#39;</span><span class="p">;</span>
+<span class="n">elseif</span><span class="w"> </span><span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">then</span>
+<span class="k">select</span><span class="w"> </span><span class="s1">&#39;不是正数也不是负数&#39;</span><span class="p">;</span>
 <span class="k">else</span>
-<span class="k">select</span> <span class="s1">&#39;正数&#39;</span><span class="p">;</span>
-<span class="k">end</span> <span class="k">if</span><span class="p">;</span><span class="c1">-- 条件结束</span>
+<span class="k">select</span><span class="w"> </span><span class="s1">&#39;正数&#39;</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="c1">-- 条件结束</span>
 <span class="k">end</span><span class="p">;</span>
 
 <span class="c1">-- 调用过程</span>
-<span class="k">call</span> <span class="n">mypro2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">call</span><span class="w"> </span><span class="n">mypro2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 </code></pre></div>
 
 <p>存储过程管理</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 显示存储过程</span>
-<span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">STATUS</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">STATUS</span><span class="p">;</span>
 <span class="c1">-- 显示特定数据库的存储过程，代码如下所示</span>
-<span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">status</span> <span class="k">where</span> <span class="n">db</span> <span class="o">=</span> <span class="s1">&#39;schooldb&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;schooldb&#39;</span><span class="p">;</span>
 <span class="c1">-- ：显示特定模式的存储过程，要求显示名称中包含“my”的存储过程，代码如下所示</span>
-<span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">status</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%my%&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%my%&#39;</span><span class="p">;</span>
 <span class="c1">-- 显示存储过程源码</span>
-<span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">mypro1</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">mypro1</span><span class="p">;</span>
 <span class="c1">-- 删除存储过程</span>
-<span class="k">drop</span> <span class="k">PROCEDURE</span> <span class="n">mypro1</span><span class="p">;</span>
+<span class="k">drop</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">mypro1</span><span class="p">;</span>
 </code></pre></div>
 
 <p>原文链接：https://blog.csdn.net/scj0725/article/details/114625180</p>
@@ -356,9 +405,9 @@
 * 一致性（Consistency）：事务必须使数据库从一个一致状态变换到另外一个一致状态，不存在中间状态。
 * 隔离性（Isolation）：多个事务之间相互隔离的，并发执行的各个事务之间不能互相干扰。
 *&nbsp;持久性（Durability）：一个事务一旦提交成功，它对数据库中数据的改变将是永久性的，接下来的其他操作或故障不应对其有任何影响。</p>
-<div class="highlight"><pre><span></span><code><span class="k">start</span> <span class="k">transaction</span><span class="p">;</span> <span class="c1">-- 开始事务</span>
+<div class="highlight"><pre><span></span><code><span class="k">start</span><span class="w"> </span><span class="k">transaction</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 开始事务</span>
 <span class="c1">-- do something</span>
-<span class="k">commit</span><span class="p">;</span> <span class="c1">-- 提交事务</span>
+<span class="k">commit</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 提交事务</span>
 </code></pre></div>
 
 <blockquote>
@@ -367,7 +416,7 @@
 <hr>
 <p>2020.9.10</p>
 <p>查询缓存：缓存相同查询语句的结果</p>
-<div class="highlight"><pre><span></span><code><span class="k">SHOW</span> <span class="nv">ENGINES</span>
+<div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="nv">ENGINES</span>
 </code></pre></div>
 
 <p>Mysql&nbsp;常用存储引擎：</p>
@@ -380,9 +429,9 @@
 <li>utf8 (utf8mb3 一个字符最多三个字节，emoji 是 4&nbsp;字节编码)</li>
 <li>utf8mb4&nbsp;(完整)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="n">character_set_client</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span> <span class="c1">-- 数据库接收到的</span>
-<span class="k">SET</span> <span class="n">character_set_connection</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span> <span class="c1">-- 当前连接</span>
-<span class="k">SET</span> <span class="n">character_set_results</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span> <span class="c1">-- 返回给客户端的</span>
+<div class="highlight"><pre><span></span><code><span class="k">SET</span><span class="w"> </span><span class="n">character_set_client</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span><span class="w"> </span><span class="c1">-- 数据库接收到的</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">character_set_connection</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span><span class="w"> </span><span class="c1">-- 当前连接</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">character_set_results</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span><span class="w"> </span><span class="c1">-- 返回给客户端的</span>
 </code></pre></div>
 
 <h2>B+树</h2>
@@ -390,22 +439,22 @@
 <p>一级索引里存的是完整记录，二级索引只存了部分字段</p>
 <p>对两个字段做联合索引时，只存了这两个字段和主键</p>
 <p>回表：根据主键索引 id 查询很快，能拿到完整数据，根据二级索引 name 查询只能拿到 name 和&nbsp;id</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;aaa&#39;</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="o">=</span> <span class="s1">&#39;aaa%&#39;</span> <span class="c1">-- 模糊匹配: 以aaa开头的字符串</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">test</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;aaa&#39;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">test</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;aaa%&#39;</span><span class="w"> </span><span class="c1">-- 模糊匹配: 以aaa开头的字符串</span>
 </code></pre></div>
 
 <p>联合索引：最左匹配原则</p>
 <p>idx_a_b_c</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> <span class="k">AND</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;yyy&#39;</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> <span class="k">AND</span> <span class="k">c</span> <span class="o">=</span> <span class="s1">&#39;yyy&#39;</span> <span class="c1">-- 用不到联合索引</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">test</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span> <span class="k">OR</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;yyy&#39;</span> <span class="c1">-- a和b两个索引都用不到</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">test</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;yyy&#39;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">test</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;yyy&#39;</span><span class="w"> </span><span class="c1">-- 用不到联合索引</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">test</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;yyy&#39;</span><span class="w"> </span><span class="c1">-- a和b两个索引都用不到</span>
 </code></pre></div>
 
 <p>范围索引</p>
 <p>联表查询</p>
-<div class="highlight"><pre><span></span><code><span class="n">const</span> <span class="n">query</span> <span class="o">=</span> <span class="err">{</span>
-  <span class="k">order</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;updatedAt&#39;</span><span class="p">,</span> <span class="s1">&#39;createdAt&#39;</span><span class="p">]],</span>
-  <span class="n">include</span><span class="p">:</span> <span class="p">[</span><span class="k">user</span><span class="p">]</span> <span class="c1">-- 必须有外键才能联表查询 foreignKey: &#39;user&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">const</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+<span class="w">  </span><span class="k">order</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;updatedAt&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;createdAt&#39;</span><span class="p">]],</span>
+<span class="w">  </span><span class="n">include</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="k">user</span><span class="p">]</span><span class="w"> </span><span class="c1">-- 必须有外键才能联表查询 foreignKey: &#39;user&#39;</span>
 <span class="err">}</span>
 </code></pre></div>
 
@@ -416,23 +465,23 @@
 <li>分表和分库&nbsp;（根据功能模块，把有业务关联的数据分库）</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">-- set announcement unread</span>
-<span class="k">UPDATE</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Notifications</span><span class="o">`</span> <span class="k">SET</span> <span class="n">isUnread</span><span class="o">=</span><span class="mi">1</span> <span class="k">WHERE</span> <span class="k">USER</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span> <span class="k">AND</span> <span class="k">TYPE</span><span class="o">=</span><span class="s1">&#39;comment&#39;</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Notifications</span><span class="o">`</span> <span class="k">WHERE</span> <span class="k">USER</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span> <span class="k">AND</span> <span class="k">TYPE</span><span class="o">=</span><span class="s1">&#39;comment&#39;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Notifications</span><span class="o">`</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">isUnread</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">USER</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">TYPE</span><span class="o">=</span><span class="s1">&#39;comment&#39;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Notifications</span><span class="o">`</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">USER</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">TYPE</span><span class="o">=</span><span class="s1">&#39;comment&#39;</span>
 
 <span class="c1">-- add sap permission</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span> <span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="k">USER</span><span class="p">,</span> <span class="k">TYPE</span><span class="p">,</span> <span class="n">createdAt</span><span class="p">,</span> <span class="n">updatedAt</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;SAP&#39;</span><span class="p">,</span> <span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span><span class="p">,</span> <span class="s1">&#39;GENERAL&#39;</span><span class="p">,</span> <span class="n">NOW</span><span class="p">(),</span> <span class="n">NOW</span><span class="p">())</span>
-<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span> <span class="k">AND</span> <span class="n">resource</span><span class="o">=</span><span class="s1">&#39;SAP&#39;</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="n">resource</span><span class="p">,</span><span class="w"> </span><span class="k">USER</span><span class="p">,</span><span class="w"> </span><span class="k">TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">createdAt</span><span class="p">,</span><span class="w"> </span><span class="n">updatedAt</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;SAP&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;GENERAL&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">NOW</span><span class="p">())</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">user</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">resource</span><span class="o">=</span><span class="s1">&#39;SAP&#39;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">Permissions</span><span class="o">`</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">user</span><span class="o">=</span><span class="s1">&#39;9ca53fc1-5644-4bf4-bc6e-d598218c8af2&#39;</span>
 
 <span class="c1">-- select external resource</span>
-<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="k">count</span><span class="o">`</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">ExternalResources</span><span class="o">`</span> <span class="k">AS</span> <span class="o">`</span><span class="n">ExternalResource</span><span class="o">`</span> <span class="k">WHERE</span> <span class="p">(</span><span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="k">position</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;PVP&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="k">role</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;IT&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="n">region</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;AP&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="n">sector</span><span class="o">`</span><span class="p">,</span> <span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;ALLSECTORS&#39;</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="k">count</span><span class="o">`</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">ExternalResources</span><span class="o">`</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">ExternalResource</span><span class="o">`</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="k">position</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;PVP&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="k">role</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;IT&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="n">region</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;AP&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">JSON_CONTAINS</span><span class="p">(</span><span class="o">`</span><span class="n">sector</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="n">JSON_ARRAY</span><span class="p">(</span><span class="s1">&#39;ALLSECTORS&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
 <span class="c1">-- update</span>
-<span class="k">UPDATE</span> <span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">ViewsCountRecords</span><span class="o">`</span> <span class="k">SET</span> <span class="k">TYPE</span> <span class="o">=</span> <span class="s1">&#39;SAP&#39;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="o">`</span><span class="n">ViewsCountRecords</span><span class="o">`</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SAP&#39;</span>
 
 <span class="c1">-- delete user</span>
-<span class="k">delete</span> <span class="k">from</span> <span class="n">fpa</span><span class="p">.</span><span class="n">users</span> <span class="k">where</span> <span class="n">userId</span><span class="o">=</span><span class="ss">&quot;wfang9&quot;</span>
-<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">fpa</span><span class="p">.</span><span class="n">Permissions</span> <span class="k">WHERE</span> <span class="o">`</span><span class="k">user</span><span class="o">`=</span><span class="s1">&#39;c8a5d877-2a18-4bff-8070-b5a4d5d033a3&#39;</span>
+<span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">users</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">userId</span><span class="o">=</span><span class="ss">&quot;wfang9&quot;</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fpa</span><span class="p">.</span><span class="n">Permissions</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">`</span><span class="k">user</span><span class="o">`=</span><span class="s1">&#39;c8a5d877-2a18-4bff-8070-b5a4d5d033a3&#39;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -518,21 +567,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -541,7 +592,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -550,7 +600,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -570,7 +619,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

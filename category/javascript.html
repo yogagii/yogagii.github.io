@@ -53,6 +53,29 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/exceljs.html" rel="bookmark" title="Permalink to ExcelJS">ExcelJS</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-07-26T00:00:00+08:00"> 
+				<a href="/archive/2023/ 7/index.html">三 26 七月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>ExcelJS 是一个 Node.js 模块，可用来读写和操作 <span class="caps">XLSX</span> 和 <span class="caps">JSON</span>&nbsp;电子表格数据和样式。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">ExcelJS …</span></code></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/javascript.html">Javascript</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/observable.html" rel="bookmark" title="Permalink to Observable">Observable</a>
 		</h2>
 		<div class="post-info">
@@ -76,7 +99,11 @@
 <td>promise创建之后立即执行</td>
 </tr>
 <tr>
-<td>支持多值甚至是数据 …</td></tr></tbody></table></div>
+<td>支持多值甚至是数据流</td>
+<td>只能提供单个值</td>
+</tr>
+<tr>
+<td>能够在执 …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -121,12 +148,12 @@
 		</div>
 	</header>
 	<div class="summary"><h2>斐波那契数列</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mf">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mf">1</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">2</span><span class="p">)</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mf">2</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -158,7 +185,7 @@
 <p>*：&gt;= 0次。例如，zo 能匹配 &#8220;z&#8221; 以及 &#8220;zoo&#8221;。&nbsp;等价于{0,}。</p>
 </li>
 <li>
-<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不 …</p></li></ul></div>
+<p>+：&gt;= 1次。例如，&#8217;zo+&#8217; 能匹配 &#8220;zo&#8221; 以及 &#8220;zoo&#8221;，但不能匹 …</p></li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -227,7 +254,9 @@
 	<div class="summary"><p>背景：</p>
 <p>添加按钮，模拟tableau的保存按钮，点击后可保存iframe内的正在编辑的workbook</p>
 <p><img alt="mockKeyboard" src="img/mockKeyboard.jpg"></p>
-<h3>尝 …</h3></div>
+<h3>尝试方法一：</h3>
+<p>Tableau文档提供的接口</p>
+<p>困难：没有找到用于 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -313,38 +342,6 @@
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/es6-xin-te-xing.html" rel="bookmark" title="Permalink to ES6 新特性"><span class="caps">ES6</span>&nbsp;新特性</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2019-01-01T00:00:00+08:00"> 
-				<a href="/archive/2019/ 1/index.html">二 01 一月 2019 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2><span class="caps">ES6</span></h2>
-<h2>1.箭头函数</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">//es5</span>
-<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
-<span class="c1">//es6</span>
-<span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{};</span>
-</code></pre></div>
-
-<ul>
-<li>
-<p>箭头函数不需要 function&nbsp;关键字来创建函数，更 …</p></li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
     Page 1 / 2
@@ -390,6 +387,9 @@
                         <li>
                           <a href="/category/javascript.html" >Javascript</a>
                             <ul>
+                                <li>
+                                  <a href="/exceljs.html">ExcelJS</a>
+                                </li>
                                 <li>
                                   <a href="/observable.html">Observable</a>
                                 </li>
@@ -455,21 +455,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -478,7 +480,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -487,7 +488,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -507,7 +507,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

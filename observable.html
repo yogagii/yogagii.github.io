@@ -106,89 +106,257 @@
 </ul>
 <h2>Observable&nbsp;可观察对象</h2>
 <p>一个可观察对象(Observable)，观察者(Observer)订阅(Subscribe)它，当数据就绪时，之前定义的机制就会分发数据给一直处于等待状态的观察者哨兵。</p>
-<p><em>用户输入框查询:</em>
-1. 防抖。繁触发搜索，一来浪费服务器资源，二来影响客户端的响应。
-2. 防止触发两次。输入的文本没有变化，就不应该重新搜索。
-3.&nbsp;处理返回顺序。服务器的异步返回的顺序是无法保证的。</p>
+<p><em>用户输入框查询:</em></p>
+<ol>
+<li>防抖。繁触发搜索，一来浪费服务器资源，二来影响客户端的响应。</li>
+<li>防止触发两次。输入的文本没有变化，就不应该重新搜索。</li>
+<li>处理返回顺序。服务器的异步返回的顺序是无法保证的。</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="c1">// WikipediaService</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">URLSearchParams</span><span class="p">,</span> <span class="nx">Jsonp</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@angular/http&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">URLSearchParams</span><span class="p">,</span><span class="w"> </span><span class="nx">Jsonp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/http&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromEvent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
 
-<span class="nx">search</span> <span class="p">(</span><span class="nx">term</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">()</span>
-  <span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;opensearch&#39;</span><span class="p">);</span>
-  <span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="nx">term</span><span class="p">);</span>
-  <span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;format&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">jsonp</span>             
- <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">search</span> <span class="p">})</span>              
- <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()[</span><span class="mf">1</span><span class="p">]);</span> <span class="c1">// 处理返回顺序：对于原先的Response类型的结果，转换成实际的搜索结果的列表，即利用Observable的特性去丢弃上一个未及时返回的结果</span>
+<span class="nx">search</span><span class="w"> </span><span class="p">(</span><span class="nx">term</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URLSearchParams</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;opensearch&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">term</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">search</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;format&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;json&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">jsonp</span><span class="w">             </span>
+<span class="w"> </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">search</span><span class="w"> </span><span class="p">})</span><span class="w">              </span>
+<span class="w"> </span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()[</span><span class="mf">1</span><span class="p">]);</span><span class="w"> </span><span class="c1">// 处理返回顺序：对于原先的Response类型的结果，转换成实际的搜索结果的列表，即利用Observable的特性去丢弃上一个未及时返回的结果</span>
 <span class="p">}</span>
 
 <span class="c1">// AppComponent</span>
-<span class="nx">term</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">FormControl</span><span class="p">();</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">term</span><span class="p">.</span><span class="nx">valueChanges</span> <span class="c1">// Observable&lt;string&gt;对象</span>
-  <span class="p">.</span><span class="nx">debounceTime</span><span class="p">(</span><span class="mf">400</span><span class="p">)</span> <span class="c1">// 防抖：触发延时是400毫秒</span>
-  <span class="p">.</span><span class="nx">distinctUntilChanged</span><span class="p">()</span> <span class="c1">// 输入不一致才会触发订阅</span>
-  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">term</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">wikipediaService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">items</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">items</span><span class="p">));</span>  
+<span class="kd">var</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#text&#39;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">inputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;keyup&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 为dom元素绑定&#39;keyup&#39;事件, 返回Observable&lt;string&gt;对象</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">debounceTime</span><span class="p">(</span><span class="mf">400</span><span class="p">)</span><span class="w"> </span><span class="c1">// 防抖：触发延时是400毫秒</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 取值</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">distinctUntilChanged</span><span class="p">()</span><span class="w"> </span><span class="c1">// 输入不一致才会触发订阅</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">term</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">wikipediaService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">items</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">));</span><span class="w">  </span>
+</code></pre></div>
+
+<h2>RxJS 响应式扩展 Reactive&nbsp;extensions</h2>
+<p>ReactiveX来自微软，它是一种针对异步数据流的编程。简单来说，它将一切数据，包括HTTP请求，DOM事件或者普通数据等包装成流的形式，然后用强大丰富的操作符对流进行处理</p>
+<h3>创建型 Operator：创建新 Observable&nbsp;的独立函数</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>of(…args)</td>
+<td>可以将普通数据转为可观察序列</td>
+</tr>
+<tr>
+<td>fromPromise(promise)</td>
+<td>将Promise转化为Observable</td>
+</tr>
+<tr>
+<td>fromEvent(elment, eventName)</td>
+<td>从DOM事件创建序列</td>
+</tr>
+<tr>
+<td>ajax(url)</td>
+<td>AjaxRequest</td>
+</tr>
+<tr>
+<td>create(subscribe)</td>
+<td>一般用于只提供了回调函数的某些功能或者库</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">of</span><span class="p">,</span><span class="nx">fromPromise</span><span class="p">,</span><span class="nx">fromEvent</span><span class="p">,</span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ajax</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/ajax&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">of</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// 依次发出提供的任意数量的值</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">val</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">));</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromPromise</span><span class="p">(</span><span class="nx">somePromise</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise转为Observable</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">promise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">someObservable</span><span class="p">.</span><span class="nx">toPromise</span><span class="p">();</span><span class="w"> </span><span class="c1">// Observable转为Promise，已弃用</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;my-element&#39;</span><span class="p">)</span><span class="o">!</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">mouseMoves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fromEvent</span><span class="o">&lt;</span><span class="nx">MouseEvent</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">apiData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ajax</span><span class="p">(</span><span class="s1">&#39;/api/data&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// http</span>
+
+<span class="nx">Observable</span><span class="p">.</span><span class="nx">create</span><span class="p">((</span><span class="nx">observer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{})</span>
+</code></pre></div>
+
+<h3>subscribe&nbsp;订阅</h3>
+<p>用于激活可观察的并监听发射的值，ob作为Observable序列必须被“订阅”才能够触发操作</p>
+<p>完整的包含下面3个函数的对象被称为observer（观察者），表示的是对序列结果的处理方式</p>
+<ul>
+<li>next:&nbsp;表示数据正常流动，没有出现异常；</li>
+<li>error:&nbsp;表示流中出错，可能是运行出错，http报错等等；</li>
+<li>complete:&nbsp;表示流结束，不再发射新的数据</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">ob</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">d</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">),</span><span class="w"> </span><span class="c1">// 可以有多个next（表示多次发射数据），直到complete或者error</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">complete</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;end of the stream&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 在一个流的生命周期中，error和complete只会触发其中一个</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<h3>pipe&nbsp;链式调用</h3>
+<p>pipe方法用于链接可观察的运算符</p>
+<p>pipe函数使用闭包返回函数，函数里使用reduce方法把前一个操作的结果作为后一个操作的输入值。</p>
+<p>operator1 将接收 observable，对其执行操作并发出 observable。 从 operator1 发出的 observable 被传递给 operator2&nbsp;作为输入</p>
+<div class="highlight"><pre><span></span><code><span class="nx">observable</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">operator1</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">operator2</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">operator3</span><span class="p">(),</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <h3>可管道 Operator: 可以加入到 pipe&nbsp;链式操作的操作符</h3>
-<p>filter, mergeMap,&nbsp;forkJoin </p>
-<div class="highlight"><pre><span></span><code>observable.pipe(
-  operator1(),
-  operator2(),
-  operator3(),
-)
-</code></pre></div>
-
-<p>operator1 将接收 observable，对其执行操作并发出 observable。 从 operator1 发出的 observable 被传递给 operator2&nbsp;作为输入</p>
-<h3>创建型 Operator：创建新 Observable&nbsp;的独立函数</h3>
-<p>create, of,&nbsp;from</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="k">of</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="k">of</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">);</span> <span class="c1">// 依次发出提供的任意数量的值</span>
-<span class="kd">const</span> <span class="nx">subscribe</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">val</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">));</span>
-</code></pre></div>
-
-<h3>RxJS</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组合</td>
+<td>combineLatest, concat, merge, startWith, withLatestFrom, zip</td>
+</tr>
+<tr>
+<td>过滤</td>
+<td>filter, take, debounce, debounceTime, distinctUntilChanged</td>
+</tr>
+<tr>
+<td>转换</td>
+<td>map, concatMap, mergeMap, scan, switchMap</td>
+</tr>
+<tr>
+<td>工具</td>
+<td>tap</td>
+</tr>
+<tr>
+<td>multicasting 多播</td>
+<td>share</td>
+</tr>
+<tr>
+<td>错误处理</td>
+<td>catchError, retry</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>map: 对源 observable&nbsp;的每个值应用投射函数</li>
+<li>
+<p>tap：可以理解为窥探，只看不改，返回与源Observable相同的Observable</p>
+</li>
+<li>
+<p>map: 对源 observable&nbsp;的每个值应用投射函数</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
-  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
-  <span class="nx">catchError</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="ow">new</span> <span class="nx">HttpException</span><span class="p">(</span><span class="sb">`position请求错误`</span><span class="p">,</span> <span class="mf">400</span><span class="p">);</span>
-  <span class="p">}),</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newOb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ob</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tap</span><span class="p">(</span><span class="nx">num</span><span class="p">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)),</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">(</span><span class="nx">num</span><span class="p">=&gt;</span><span class="s1">&#39;hello:&#39;</span><span class="o">+</span><span class="nx">num</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="nx">newOb</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">data</span><span class="p">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+</code></pre></div>
+
+<p>先执行管道里的tap和map操作，再把map操作的输出，作为输入去执行subscribe里指定的回调。</p>
+<ul>
+<li>catchError:&nbsp;err流入catch后，catch必须返回一个新的Observable。被catch后的错误流将不会进入observer的error函数</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">r</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span><span class="w"> </span><span class="c1">// 需返回promise, 不能直接返回error</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span><span class="sb">`position请求错误`</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span><span class="w"> </span><span class="c1">// return 和 throw 二选一</span>
+<span class="w">  </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 
 <ul>
-<li>forkJoin: promise.all&nbsp;并发请求接口并返回</li>
+<li>take:&nbsp;表示只取源发射的前n个数据，取完第n个后关闭源的发射</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">res1</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res1&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
-  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//ob作为源会每隔1000ms发射一个递增的数据，即0 -&gt; 1 -&gt; 2</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ob</span><span class="o">=</span><span class="w"> </span><span class="nx">interval</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="nx">ob</span><span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">));</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>filter:&nbsp;过滤掉出符合条件的数据</p>
+</li>
+<li>
+<p>forkJoin: promise.all&nbsp;并发请求接口并返回</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res1&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
 <span class="p">);</span>
-<span class="kd">const</span> <span class="nx">res2</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res2&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
-  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res2&#39;</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
 <span class="p">);</span>
-<span class="k">return</span> <span class="nx">forkJoin</span><span class="p">([</span><span class="nx">res1</span><span class="p">,</span> <span class="nx">res2</span><span class="p">]).</span><span class="nx">pipe</span><span class="p">(</span>
-  <span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="p">...</span>
-  <span class="p">}),</span>
+<span class="k">return</span><span class="w"> </span><span class="nx">forkJoin</span><span class="p">([</span><span class="nx">res1</span><span class="p">,</span><span class="w"> </span><span class="nx">res2</span><span class="p">]).</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 
 <ul>
 <li>mergeMap&nbsp;有顺序依赖的多个请求</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res1&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">mergeMap</span><span class="p">(</span><span class="nx">res1</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/res2&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">(</span><span class="nx">res2</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">  </span><span class="p">)</span>
+</code></pre></div>
+
+<h3>await</h3>
+<ul>
+<li>lastValueFrom / firstValueFrom 取代&nbsp;toPromise</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">lastValueFrom</span><span class="p">(</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">AuthService</span><span class="p">.</span><span class="nx">requestUrl</span><span class="p">,</span><span class="w"> </span><span class="nx">requestData</span><span class="p">,</span><span class="w"> </span><span class="nx">AuthService</span><span class="p">.</span><span class="nx">requestConfig</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="kt">AxiosResponse</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">catchError</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">UNAUTHORIZED</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p>https://blog.csdn.net/qq_34035425/article/details/120598759</p>
+<hr>
 <h2>Promise</h2>
 <p>promise是在es6标准中的一种用于解决异步编程的解决方案，由于在语言级别上，不同于Java、Python等多线程语言，js是单线程的，所以在node.js中大量使用了异步编程的技术，这样做是为了避免同步阻塞。</p>
-<p>Promise对象代表一个异步操作，有三种状态：
-* pending（进行中）
-* fulfilled（已成功）
-*&nbsp;rejected（已失败）</p>
-<p>promise的状态只有两种改变情况，且仅改变一次，任何其他操作都无法改变这个状态：
-* 由pending转变为resolved
-*&nbsp;由pending转变为rejected</p>
+<p>Promise对象代表一个异步操作，有三种状态：</p>
+<ul>
+<li>pending（进行中）</li>
+<li>fulfilled（已成功）</li>
+<li>rejected（已失败）</li>
+</ul>
+<p>promise的状态只有两种改变情况，且仅改变一次，任何其他操作都无法改变这个状态：</p>
+<ul>
+<li>由pending转变为resolved</li>
+<li>由pending转变为rejected</li>
+</ul>
 <p>await的一个Promise对象失败或者返回reject，那么整个async程序都会终止，除非使用try…catch捕捉</p>
 <h2>宏任务 <span class="caps">VS</span>&nbsp;微任务</h2>
 <p>宏任务macrotask：&nbsp;可每次执行栈执行的代码就是一个宏任务，整体script就是第一个宏任务。</p>
@@ -198,23 +366,25 @@
 <li>setInterval</li>
 <li><span class="caps">AJAX</span></li>
 </ul>
-<p>微任务microtask：在当前task执行结束后立即执行的任务。
-* Promise.then catch finally
-*&nbsp;process.nextTick</p>
+<p>微任务microtask：在当前task执行结束后立即执行的任务。</p>
+<ul>
+<li>Promise.then catch&nbsp;finally</li>
+<li>process.nextTick</li>
+</ul>
 <p>当异步事件执行完毕后，会将异步的回调加入对应的任务队列中，任务队列分为宏任务和微任务。</p>
 <p>微任务和宏任务同时存在则优选执行微任务。&nbsp;依次执行微任务队列，微队列清空之后，执行宏任务，当宏任务执行过程中再次遇到微任务，则将微任务再次放如微任务队列，如此往复循环，直到所有队列为空</p>
 <div class="highlight"><pre><span></span><code><span class="nx">setTimeout</span><span class="p">(()=&gt;{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
-    <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()=&gt;{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
-    <span class="p">})</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()=&gt;{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
 <span class="p">})</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
 <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()=&gt;{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
-    <span class="nx">setTimeout</span><span class="p">(()=&gt;{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
-    <span class="p">})</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()=&gt;{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
 <span class="p">})</span>
 <span class="c1">// 1 2 3 4 5</span>
 </code></pre></div>
@@ -308,21 +478,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -331,7 +503,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -340,7 +511,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -360,7 +530,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

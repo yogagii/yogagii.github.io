@@ -74,14 +74,14 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
 <h2>Credential&nbsp;part</h2>
 <p>credential config 为指定data&nbsp;structure的json</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;AWS&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;accessKeyId&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;secretAccessKey&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;azureAD&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;AWS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;accessKeyId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;secretAccessKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;azureAD&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -97,60 +97,60 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
 <img alt="kms" src="img/kms1.png"></p>
 <p>Decrypt&nbsp;function:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// api/helpers/get-config.js</span>
-<span class="kd">const</span> <span class="nx">AWS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;aws-sdk&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">AWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;aws-sdk&#39;</span><span class="p">);</span>
 
-<span class="nx">AWS</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span> <span class="nx">region</span><span class="o">:</span> <span class="s1">&#39;us-east-1&#39;</span> <span class="p">});</span>
+<span class="nx">AWS</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">region</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;us-east-1&#39;</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
-  <span class="nx">friendlyName</span><span class="o">:</span> <span class="s1">&#39;Get KMS config&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">friendlyName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Get KMS config&#39;</span><span class="p">,</span>
 
-  <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
 
-  <span class="nx">inputs</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">key</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-      <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;The key of the config&#39;</span><span class="p">,</span>
-      <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;The key of the config&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">exits</span><span class="o">:</span> <span class="p">{</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">exits</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="k">async</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">inputs</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">key</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">inputs</span><span class="p">;</span>
-    <span class="kd">const</span> <span class="nx">kms</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">AWS</span><span class="p">.</span><span class="nx">KMS</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">&#39;test&#39;</span> <span class="o">||</span> <span class="o">!</span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">kms</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="s1">&#39;datastores&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">datastores</span><span class="p">.</span><span class="k">default</span><span class="p">;</span>
-      <span class="p">}</span>
-      <span class="k">return</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="kd">const</span> <span class="nx">functionName</span> <span class="o">=</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">kms</span><span class="p">.</span><span class="nx">AWS_LAMBDA_FUNCTION_NAME</span><span class="p">;</span>
-    <span class="kd">const</span> <span class="nx">encrypted</span> <span class="o">=</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">kms</span><span class="p">.</span><span class="nx">SECRET_CONFIG</span><span class="p">;</span>
-    <span class="k">try</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">CiphertextBlob</span><span class="o">:</span> <span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">),</span>
-        <span class="nx">EncryptionContext</span><span class="o">:</span> <span class="p">{</span> <span class="nx">LambdaFunctionName</span><span class="o">:</span> <span class="nx">functionName</span> <span class="p">},</span>
-      <span class="p">};</span>
-      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">kms</span><span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span><span class="nx">req</span><span class="p">).</span><span class="nx">promise</span><span class="p">();</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">Plaintext</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">Plaintext</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">temp</span><span class="p">)[</span><span class="nx">key</span><span class="p">];</span>
-      <span class="p">}</span>
-      <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Secret Decrypt fail&#39;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">sails</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Decrypt error:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">fn</span><span class="p">(</span><span class="nx">inputs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inputs</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">kms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AWS</span><span class="p">.</span><span class="nx">KMS</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">kms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;datastores&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">datastores</span><span class="p">.</span><span class="k">default</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">functionName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">kms</span><span class="p">.</span><span class="nx">AWS_LAMBDA_FUNCTION_NAME</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sails</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">custom</span><span class="p">.</span><span class="nx">kms</span><span class="p">.</span><span class="nx">SECRET_CONFIG</span><span class="p">;</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">CiphertextBlob</span><span class="o">:</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;base64&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">EncryptionContext</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LambdaFunctionName</span><span class="o">:</span><span class="w"> </span><span class="nx">functionName</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">kms</span><span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span><span class="nx">req</span><span class="p">).</span><span class="nx">promise</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">Plaintext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">Plaintext</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">temp</span><span class="p">)[</span><span class="nx">key</span><span class="p">];</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Secret Decrypt fail&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">sails</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Decrypt error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
 
 <span class="p">};</span>
 </code></pre></div>
 
 <p>Usage of decrypted&nbsp;config:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">decryptedConfig</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">sails</span><span class="p">.</span><span class="nx">helpers</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">decryptedConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">sails</span><span class="p">.</span><span class="nx">helpers</span><span class="p">.</span><span class="nx">getConfig</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
 </code></pre></div>
 
 <h2>Env&nbsp;part</h2>
@@ -176,85 +176,85 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">datastores</span><span class="o">:</span> <span class="p">{</span>
-    <span class="k">default</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">adapter</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">port</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
-      <span class="nx">database</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">datastores</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">adapter</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">models</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">migrate</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">models</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">migrate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">blueprints</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">shortcuts</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">,</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">blueprints</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">shortcuts</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">security</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">cors</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">allowOrigins</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">],</span>
-      <span class="nx">allowRequestHeaders</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">security</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">allowOrigins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">allowRequestHeaders</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">db</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
-    <span class="nx">port</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
-    <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="nx">cookie</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">maxAge</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">session</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">db</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">sockets</span><span class="o">:</span> <span class="p">{},</span>
+<span class="w">  </span><span class="nx">sockets</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
 
-  <span class="nx">log</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">level</span><span class="o">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">log</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">http</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">cache</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
-    <span class="nx">trustProxy</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">http</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">trustProxy</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">port</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
 
-  <span class="nx">ssl</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">disableCertificateValidation</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">,</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">ssl</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">disableCertificateValidation</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 
-  <span class="nx">custom</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">AWS</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">bucket</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">cdn</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">azureAD</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">redirectUri</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">tableau</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">endpoint</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">contentUrl</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">sap</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">endpoint</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">injectFolder</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">serviceNow</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">endpoint</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">kb</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">frontHost</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="nx">kms</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">AWS_LAMBDA_FUNCTION_NAME</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="nx">SECRET_CONFIG</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">custom</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">AWS</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">bucket</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">cdn</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">azureAD</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">redirectUri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">tableau</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">baseUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">contentUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">sap</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">injectFolder</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">serviceNow</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">kb</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">frontHost</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">kms</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">AWS_LAMBDA_FUNCTION_NAME</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">SECRET_CONFIG</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -341,21 +341,23 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -364,7 +366,6 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -373,7 +374,6 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -393,7 +393,6 @@ Automate deployment of credentials into <span class="caps">EC2</span>&nbsp;insta
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

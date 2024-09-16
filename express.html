@@ -63,108 +63,108 @@
     </div>
     </header>
     <div class="post-entry">
-        <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">express</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+        <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="err">#</span> <span class="p">.</span><span class="nx">babel</span> <span class="nx">es6</span> <span class="p">=&gt;</span> <span class="nx">es5</span> <span class="nx">X</span> 
-<span class="err">#</span> <span class="k">default</span> <span class="p">=&gt;</span> <span class="k">import</span> 
-<span class="k">import</span> <span class="nx">express</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="nx">babel</span><span class="w"> </span><span class="nx">es6</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">es5</span><span class="w"> </span><span class="nx">X</span><span class="w"> </span>
+<span class="err">#</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="w"> </span>
+<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>const Com = () =&gt; {
-    return (<span class="nt">&lt;div&gt;&lt;/div&gt;</span>)
-} 
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Com</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;)</span>
+<span class="p">}</span><span class="w"> </span>
 
-export default Com;
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Com</span><span class="p">;</span>
 </code></pre></div>
 
 <p>正常用Js</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Com</span> <span class="kn">from</span> <span class="s1">&#39;./Com&#39;</span>
-<span class="kn">import</span> <span class="o">*</span> <span class="k">as</span> <span class="n">React</span> <span class="kn">from</span> <span class="s1">&#39;react&#39;</span>
-<span class="n">default</span> <span class="o">=&gt;</span> <span class="n">X</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Com</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./Com&#39;</span>
+<span class="kn">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">React</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
+<span class="n">default</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">X</span>
 </code></pre></div>
 
 <p>但使用Ts拿不到，因为Ts的协议更加规范</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">express</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">bodyParser</span> <span class="kr">from</span> <span class="s1">&#39;body-parser&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">request</span> <span class="kr">from</span> <span class="s1">&#39;request&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">bodyParser</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;body-parser&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;request&#39;</span><span class="p">;</span>
 
 <span class="c1">// dont modify this entry file</span>
 <span class="c1">// when you need to add middleware, please add it to manager/middleware.ts</span>
 
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
 
 <span class="c1">// Use body parser middleware to handle post body data</span>
 <span class="c1">//app.use(bodyParser);</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span>: <span class="kt">express.Response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-  <span class="c1">// </span>
-  <span class="nx">request</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">qRes</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">qRes</span><span class="p">);</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">qRes</span><span class="p">);</span>
-  <span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">express.Response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// </span>
+<span class="w">  </span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">qRes</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">qRes</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">qRes</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 
 <span class="c1">// slot for the shell to create</span>
 <span class="c1">// req request content</span>
 <span class="c1">// res response action</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/req&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/req&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">retMsg</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;hello world&#39;</span> <span class="p">};</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">retMsg</span><span class="p">));</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">retMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;hello world&#39;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">retMsg</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="c1">// start</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">8811</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Open the server&#39;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">8811</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Open the server&#39;</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;express-example&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;ts-node-dev index&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;prod&quot;</span><span class="p">:</span> <span class="s2">&quot;ts-node index&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;create&quot;</span><span class="p">:</span> <span class="s2">&quot;ts-node ./bin/create&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;@types/express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.3&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@types/node&quot;</span><span class="p">:</span> <span class="s2">&quot;^13.9.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;body-parser&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.19.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;chalk&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.0.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cookie-parser&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.4&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;moment&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.24.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;multer&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.88.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ts-node&quot;</span><span class="p">:</span> <span class="s2">&quot;^8.6.2&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;eslint&quot;</span><span class="p">:</span> <span class="s2">&quot;^5.4.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;eslint-config-umi&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;eslint-plugin-flowtype&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.50.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;eslint-plugin-import&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.14.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;eslint-plugin-jsx-a11y&quot;</span><span class="p">:</span> <span class="s2">&quot;^5.1.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;eslint-plugin-react&quot;</span><span class="p">:</span> <span class="s2">&quot;^7.11.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nodemon&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.0.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;prettier&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.19.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ts-node-dev&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.0.0-pre.44&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;typescript&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.8.3&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;lint-staged&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;*.{js,jsx}&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;eslint --fix&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;git add&quot;</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;express-example&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts-node-dev index&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts-node index&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;create&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts-node ./bin/create&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@types/express&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.17.3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@types/node&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^13.9.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body-parser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.19.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;chalk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cookie-parser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.4.4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;express&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.17.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;moment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.24.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;multer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.4.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.88.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ts-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^8.6.2&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;eslint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.4.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eslint-config-umi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.4.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eslint-plugin-flowtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.50.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eslint-plugin-import&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.14.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eslint-plugin-jsx-a11y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.1.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eslint-plugin-react&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.11.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nodemon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.0.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prettier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.19.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ts-node-dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.0.0-pre.44&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;typescript&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.8.3&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;lint-staged&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;*.{js,jsx}&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;eslint --fix&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;git add&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -253,21 +253,23 @@ export default Com;
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -276,7 +278,6 @@ export default Com;
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -285,7 +286,6 @@ export default Com;
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -305,7 +305,6 @@ export default Com;
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

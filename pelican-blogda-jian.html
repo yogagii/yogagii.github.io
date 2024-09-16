@@ -71,16 +71,16 @@
 </ol>
 <h2>Usage</h2>
 <p>blog&nbsp;metadata</p>
-<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">title</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
-<span class="n">Modified</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
-<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
-<span class="n">Slug</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="n">post</span>
-<span class="n">Authors</span><span class="o">:</span> <span class="n">Alexis</span> <span class="n">Metaireau</span><span class="o">,</span> <span class="n">Conan</span> <span class="n">Doyle</span>
-<span class="n">Summary</span><span class="o">:</span> <span class="n">Short</span> <span class="n">version</span> <span class="k">for</span> <span class="n">index</span> <span class="n">and</span> <span class="n">feeds</span>
+<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span><span class="w"> </span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span><span class="w"> </span><span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Modified</span><span class="o">:</span><span class="w"> </span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span><span class="w"> </span><span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span><span class="w"> </span><span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span><span class="w"> </span><span class="n">pelican</span><span class="o">,</span><span class="w"> </span><span class="n">publishing</span>
+<span class="n">Slug</span><span class="o">:</span><span class="w"> </span><span class="n">my</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Authors</span><span class="o">:</span><span class="w"> </span><span class="n">Alexis</span><span class="w"> </span><span class="n">Metaireau</span><span class="o">,</span><span class="w"> </span><span class="n">Conan</span><span class="w"> </span><span class="n">Doyle</span>
+<span class="n">Summary</span><span class="o">:</span><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">feeds</span>
 
-<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+<span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">blog</span><span class="w"> </span><span class="n">post</span><span class="o">.</span>
 </code></pre></div>
 
 <ul>
@@ -91,19 +91,19 @@
 <h2>Reference</h2>
 <p><a href="http://docs.getpelican.com/en/stable/install.html">pelican</a></p>
 <p><a href="https://pypi.org/project/typogrify/">typogrify</a></p>
-<div class="highlight"><pre><span></span><code>pip3 install pelican
+<div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>pelican
 
-<span class="nb">echo</span> <span class="nv">$PATH</span>
-vim ~/.zshrc // .bash_profile
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/Users/yoga/Library/Python/3.8/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">source</span> ~/.zshrc // 使修改的环境变量生效
-which pelican
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$PATH</span>
+vim<span class="w"> </span>~/.zshrc<span class="w"> </span>//<span class="w"> </span>.bash_profile
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/Users/yoga/Library/Python/3.8/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">source</span><span class="w"> </span>~/.zshrc<span class="w"> </span>//<span class="w"> </span>使修改的环境变量生效
+which<span class="w"> </span>pelican
 
-pip3 install typogrify
-pip3 install Markdown
+pip3<span class="w"> </span>install<span class="w"> </span>typogrify
+pip3<span class="w"> </span>install<span class="w"> </span>Markdown
 
-make html
-make serve
+make<span class="w"> </span>html
+make<span class="w"> </span>serve
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -189,21 +189,23 @@ make serve
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -212,7 +214,6 @@ make serve
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -221,7 +222,6 @@ make serve
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -241,7 +241,6 @@ make serve
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

@@ -72,28 +72,28 @@
 <p>https://blog.csdn.net/aajx90520/article/details/101658973</p>
 <p>sails-disk still is a database: so it&#8217;s prone to &#8220;corruption from outside&#8221; during the course of tests. On top of that this makes testing actually slow. It&#8217;s not really a unit test if the entire app has to be started first, with sails lift. Unit tests should not spin up server or hit&nbsp;databases</p>
 <p>lifecycle.test.js</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">MockAdaper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">MockAdaper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">();</span>
 
-<span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">(</span><span class="mf">50000</span><span class="p">)</span> <span class="c1">// 设置超时时间</span>
+<span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">(</span><span class="mf">50000</span><span class="p">)</span><span class="w"> </span><span class="c1">// 设置超时时间</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="c1">// 服务启动失败</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="c1">// 服务启动失败</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="nb">global</span><span class="p">.</span><span class="nx">httpMock</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">MockAdaper</span><span class="p">(</span><span class="nx">axios</span><span class="p">);</span> <span class="c1">// 模拟获取数据</span>
+<span class="w">  </span><span class="nb">global</span><span class="p">.</span><span class="nx">httpMock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MockAdaper</span><span class="p">(</span><span class="nx">axios</span><span class="p">);</span><span class="w"> </span><span class="c1">// 模拟获取数据</span>
 
-  <span class="c1">// 创建模拟用户</span>
-  <span class="kd">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">userId</span> <span class="o">=</span> <span class="s1">&#39;user1&#39;</span>
-  <span class="p">}</span>
-  <span class="k">await</span> <span class="nx">User</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">user1</span><span class="p">);</span>
-  <span class="c1">// ORM自带功能：模拟数据库，内存里的数据库</span>
-  <span class="c1">// new Sequelize(&#39;sqlite::memory&#39;)</span>
+<span class="w">  </span><span class="c1">// 创建模拟用户</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;user1&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">user1</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// ORM自带功能：模拟数据库，内存里的数据库</span>
+<span class="w">  </span><span class="c1">// new Sequelize(&#39;sqlite::memory&#39;)</span>
 <span class="p">}</span>
 
 <span class="nx">after</span><span class="p">(){</span>
-  <span class="nx">sails</span><span class="p">.</span><span class="nx">lower</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="c1">//停止服务</span>
+<span class="w">  </span><span class="nx">sails</span><span class="p">.</span><span class="nx">lower</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="c1">//停止服务</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -108,72 +108,72 @@
 </code></pre></div>
 
 <p>autocomplete.test.js</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">supertest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supertest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">)</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;search.autocomplete&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;#autocomplete()&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;responds with json&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">supertest</span><span class="p">(</span><span class="nx">sails</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">app</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/search/autocomplete?deviceMobile=false&amp;q=detail&#39;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Cookie&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">authedUserCookie</span><span class="p">])</span>
-        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="sr">/json/</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">200</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">expect</span><span class="p">(({</span> <span class="nx">body</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">sap</span> <span class="o">||</span> <span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">workbooks</span> <span class="o">||</span> <span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">trainings</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;format error.&#39;</span><span class="p">)</span>
-          <span class="p">}</span>
-        <span class="p">})</span>
-        <span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span>
-    <span class="p">})</span>
-  <span class="p">})</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;search.autocomplete&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;#autocomplete()&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;responds with json&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">supertest</span><span class="p">(</span><span class="nx">sails</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">app</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/search/autocomplete?deviceMobile=false&amp;q=detail&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Cookie&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authedUserCookie</span><span class="p">])</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span><span class="w"> </span><span class="sr">/json/</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">200</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(({</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">sap</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">workbooks</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">trainings</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;format error.&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>sinon</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">supertest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">sinon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supertest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sinon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">);</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;external-resource.list&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">before</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">ExternalResource</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-      <span class="nx">user</span><span class="o">:</span> <span class="nb">global</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-      <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;resource1&#39;</span><span class="p">,</span>
-      <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;https://www.baidu.com&#39;</span><span class="p">,</span>
-      <span class="nx">attachment</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;sitePublicFiles/public/jsonconfig/6faf8565-ceb9-4cd8-a3c7-6f4bcf465aa4/u%3D3720661285%2C1522818110%26fm%3D26%26gp%3D0.jpg&#39;</span><span class="p">,</span>
-        <span class="nx">moved</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;u=3720661285,1522818110&amp;fm=26&amp;gp=0.jpg&#39;</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span>
-      <span class="nx">role</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;COE&#39;</span><span class="p">],</span>
-      <span class="nx">position</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;PVP&#39;</span><span class="p">],</span>
-      <span class="nx">region</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;AP&#39;</span><span class="p">],</span>
-      <span class="nx">sector</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;CONS&#39;</span><span class="p">],</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;external-resource.list&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">before</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">ExternalResource</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;resource1&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">link</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://www.baidu.com&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">attachment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;sitePublicFiles/public/jsonconfig/6faf8565-ceb9-4cd8-a3c7-6f4bcf465aa4/u%3D3720661285%2C1522818110%26fm%3D26%26gp%3D0.jpg&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">moved</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;u=3720661285,1522818110&amp;fm=26&amp;gp=0.jpg&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;description&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;COE&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;PVP&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">region</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;AP&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">sector</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;CONS&#39;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
 
-  <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;#list()&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;responds with json&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">sails</span><span class="p">.</span><span class="nx">helpers</span><span class="p">,</span> <span class="s1">&#39;arrayContains&#39;</span><span class="p">).</span><span class="nx">returns</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-      <span class="nx">supertest</span><span class="p">(</span><span class="nx">sails</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">app</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/external-resource/list&#39;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Cookie&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">authedUserCookie</span><span class="p">])</span>
-        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="sr">/json/</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">200</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">expect</span><span class="p">(({</span> <span class="nx">body</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span> <span class="o">||</span> <span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">pagination</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;format error.&#39;</span><span class="p">);</span>
-          <span class="p">}</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">tags</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;return data without tags&#39;</span><span class="p">);</span>
-          <span class="p">}</span>
-          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">tags</span><span class="p">.</span><span class="nx">region</span> <span class="o">||</span> <span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">tags</span><span class="p">.</span><span class="nx">sector</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;missing tags&#39;</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">})</span>
-        <span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;#list()&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;responds with json&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">sails</span><span class="p">.</span><span class="nx">helpers</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;arrayContains&#39;</span><span class="p">).</span><span class="nx">returns</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">supertest</span><span class="p">(</span><span class="nx">sails</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">app</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/external-resource/list&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Cookie&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authedUserCookie</span><span class="p">])</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span><span class="w"> </span><span class="sr">/json/</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">200</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(({</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">pagination</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;format error.&#39;</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">tags</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;return data without tags&#39;</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">tags</span><span class="p">.</span><span class="nx">region</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">tags</span><span class="p">.</span><span class="nx">sector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;missing tags&#39;</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -260,21 +260,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -283,7 +285,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -292,7 +293,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -312,7 +312,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

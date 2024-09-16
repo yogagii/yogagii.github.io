@@ -1,0 +1,349 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›<span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-11-08T00:00:00+08:00"> 
+            <a href="/archive/2023/11/index.html">三 08 十一月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Business&nbsp;Value</h2>
+<p>The Ultimate Supply Chain Planning&nbsp;Experience</p>
+<p><span class="caps">SWIFT</span> = Scenario and What If analysis enabled Flexibility and Transparency in Supply&nbsp;Chain</p>
+<p>Our Goal is to create capabilities for Global and Regional Planners that predict and analyze the changing needs and disruptions in <span class="caps">SC</span> by improving end to end visibility and responsiveness from source to customer for MedTech <span class="caps">SC</span> in the <span class="caps">ASPAC</span> region.&nbsp;​ </p>
+<p>Project <span class="caps">SWIFT</span> is focused on delivering a <span class="caps">MVP</span> solution for a Digital Twin Control Tower for the Endo-mech business from Manufacturing / Distribution Center to the&nbsp;Distributors.</p>
+<p>The pilot seeks to provide end-to-end visibility of products within the supply chain through creation of a network digital twin, scenario planning capabilities and timely responsiveness to help better predict and assess changing needs and supply chain disruptions, escalate decision making and improve&nbsp;resiliency.</p>
+<h2>Network Lead&nbsp;Time</h2>
+<p>A graphical network view shows digital representations of supply chain networks. Tabular view to show the lead time by&nbsp;Lane.</p>
+<p>lead time一般指前置时间。&nbsp;前置时间是指从受订到出货所间隔的时间，通常以天数或小时计算。前置时间的减少会使生产商和零售商平均库存水平得到减少。</p>
+<p>Shipments which were supposed to arrive (<span class="caps">GR</span> date is null) in current date (Shipment <span class="caps">ETA</span>). 
+Planned Shipments (Shipment <span class="caps">ETA</span>) is calculated using <span class="caps">GI</span> date + transport Lead time from gdm transport for particular <span class="caps">SKU</span> in the&nbsp;lane. </p>
+<p>https://yogagii.github.io/neo4j.html</p>
+<h2>User Generated&nbsp;Event</h2>
+<p><strong>Event Type</strong>:</p>
+<ul>
+<li>Demand: Model changes to demand&nbsp;需求变化</li>
+<li>Supply: Model changes to inventory levels&nbsp;库存变化</li>
+</ul>
+<p><strong><span class="caps">SS</span> Level:</strong> Average safety stock level for event&nbsp;timeline</p>
+<p><strong>Loss Sale Value</strong>: Estimated sum of loss from sales that cannot be carried out- ex. customer moves to a&nbsp;competitor</p>
+<p><strong>Cost</strong>: Estimated sum of cost to carry out&nbsp;solution</p>
+<p><strong><span class="caps">BO</span>&nbsp;Value</strong></p>
+<ul>
+<li>Start <span class="caps">BO</span> value: the <span class="caps">BO</span> value of each <span class="caps">SKU</span>, site, in the start week of the&nbsp;event.</li>
+<li>End <span class="caps">BO</span> value: the <span class="caps">BO</span> value of each <span class="caps">SKU</span>, site, in the end week of the&nbsp;event.</li>
+<li><span class="caps">POST</span> <span class="caps">BO</span> value: inventory of the end week + (end week demand - adjust demand of end week). display the negative value is <span class="caps">BO</span> value and 0 if it is&nbsp;positive.</li>
+<li><span class="caps">BO</span> Change: (<span class="caps">POST</span> <span class="caps">BO</span> - End <span class="caps">BO</span>) / End <span class="caps">BO</span> *&nbsp;100</li>
+<li>Safety Stock % by week: new_cal_inventory / safety_stock *&nbsp;100;</li>
+</ul>
+<p><strong>Event&nbsp;Forecast</strong></p>
+<ul>
+<li>Scenario 1: If previous week (W-1) inventory is Initial&nbsp;Inventory</li>
+<li>Scenario 2: If previous week (W-1) inventory is not Initial Inventory and is future&nbsp;bucket</li>
+<li>Scenario 3: If previous week (W-1) inventory is not Initial Inventory and is <span class="caps">NOT</span> future&nbsp;bucket</li>
+</ul>
+<p>Need to calculate event forecast week by&nbsp;week!</p>
+<h2>Modeled&nbsp;Solution</h2>
+<p><strong>Solution&nbsp;Type:</strong></p>
+<ol>
+<li>Standard Node to Node Transfer: uses the standard transportation mode in system suggested&nbsp;lane</li>
+<li>Expedited Node to Node Transfer: uses a faster alternative transportation mode in system suggested&nbsp;lane</li>
+<li>Mod&nbsp;Substitution</li>
+<li>Alternative Code Substitution: Alternate Code Substitution adjusts what % of demand can be replaced with an alternative <span class="caps">SKU</span> of the planner&#8217;s&nbsp;choice</li>
+</ol>
+<p><strong>Periods:</strong> </p>
+<p>periods just correspond to time periods (of length 1 week) in the planning horizon, starting with the current week which is period&nbsp;1</p>
+<ul>
+<li>transfer_period - this is the week number where the suggested transfer will take place relative to the current week (period&nbsp;1)</li>
+<li>transfer_week - This is the week-year combination date where the transfer will take&nbsp;place</li>
+<li>transfer_lt - the number of periods (i.e. weeks) it will take for the transfer to arrive at the destination&nbsp;node</li>
+<li>arrival_period - the period (week) where the transferred inventory will arrive at the destination node and actually change the inventory values at the&nbsp;destination</li>
+</ul>
+<p>transfer_period + transfer_lt =&nbsp;arrival_period</p>
+<p><strong>Databricks&nbsp;Job:</strong></p>
+<ol>
+<li>Scenario Planning for existing&nbsp;event</li>
+<li>Scenario Planning for user generated&nbsp;event</li>
+<li>Solution Forecast with applied&nbsp;transfer</li>
+</ol>
+<p>Remodel: Display Alert and Action when solutions modeled are past a time threshold where solution may no longer be&nbsp;accurate</p>
+<p>https://yogagii.github.io/databricks-api.html</p>
+<p><strong><span class="caps">BO</span>&nbsp;Value:</strong></p>
+<ul>
+<li><strong>Pre-Model <span class="caps">BO</span></strong> is calculated in the <span class="caps">UI</span> from user-generated event forecast. Pre-Model <span class="caps">BO</span> only needs to be updated if the solution is re-modelled or&nbsp;adjusted.</li>
+<li><strong>Post-Model <span class="caps">BO</span></strong> from <span class="caps">DS</span><ul>
+<li>for each transfer (if I were to apply one&nbsp;transfer)</li>
+<li>for each solution (if I were to apply <span class="caps">ALL</span> transfers in standard/expetited <span class="caps">N2N</span>&nbsp;Transfer)</li>
+</ul>
+</li>
+</ul>
+<h2>Email&nbsp;Notification</h2>
+<ol>
+<li>User share user generated&nbsp;event</li>
+<li>User share model&nbsp;solution</li>
+<li>Solution ready&nbsp;notification</li>
+<li>Solution forecast ready&nbsp;notification</li>
+<li>Feedback&nbsp;required</li>
+<li>Review <span class="caps">SKU</span>&nbsp;notification</li>
+<li>Weekly Activity Report&nbsp;Summary</li>
+</ol>
+<h2>User&nbsp;Preference</h2>
+<ol>
+<li>Content&nbsp;Preference</li>
+<li>Threshold Preference (Default / Custom <span class="caps">SKU</span>)
+  These custom preferences will determine the colour coding on the <span class="caps">PSI</span> table. Depending on the alert timeframe set by the user, the colour coding will be reflected as needed. customizable by different user id, custom threshold always has more priority compared to&nbsp;default</li>
+<li>Email&nbsp;Preference</li>
+</ol>
+<h2>Web&nbsp;Analytics</h2>
+<ul>
+<li>Google&nbsp;Analytics</li>
+<li>Microsoft&nbsp;Clarity</li>
+</ul>
+<h2><span class="caps">CICD</span></h2>
+<p>https://yogagii.github.io/cicd-pipeline.html</p>
+<h2><span class="caps">UI</span> Shared&nbsp;Component</h2>
+<p><span class="caps">UI</span> developer&nbsp;workflow:</p>
+<ol>
+<li>Check if the common repo already has a component that fits with the user&nbsp;story</li>
+<li>If nothing exists, they should add it, <span class="caps">PR</span>&nbsp;it</li>
+<li>Then in the reliability hub (<span class="caps">RH</span>) repo, import that shared component from the shared repo (once published in&nbsp;artifactory)</li>
+<li>If they want to alter an existing shared component, there should be a conversation with the Lead Developers on all squads, to ensure not to make a breaking change that affects another&nbsp;project</li>
+<li>If for some reason the story has something that shouldn&#8217;t be added to the shared lib, then add it directly into the <span class="caps">RH</span> repo (however this should be&nbsp;rare).</li>
+</ol>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/project.html">Project</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "swift-supply-chain-data-modeling.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

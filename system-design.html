@@ -1,0 +1,377 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›System&nbsp;Design
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >System&nbsp;Design</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2024-06-14T00:00:00+08:00"> 
+            <a href="/archive/2024/ 6/index.html">五 14 六月 2024 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/architecture.html">Architecture</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#step-2-review-the-scalability-article</p>
+<h2>High&nbsp;Scalability</h2>
+<p>Website scaling helps handle growing traffic and user demands while maintaining peak&nbsp;performance.</p>
+<p>Website scaling is the process of improving your website’s capacity to accommodate more traffic, data, and user demands&nbsp;effectively. </p>
+<p>高可扩展性（High&nbsp;Scalability）是网站开发中至关重要的一个方面，它涉及设计和优化技术，以确保网站能够处理不断增长的用户数量和数据量，同时保持高性能。</p>
+<ul>
+<li>Horizontal scaling: adding more servers or nodes to a system to distribute your website’s&nbsp;load</li>
+<li>Vertical scaling: improve a single server’s resources — like processor speed, <span class="caps">RAM</span>, or&nbsp;storage</li>
+</ul>
+<p>Ways to expand to high&nbsp;scalability:</p>
+<ol>
+<li>Clone-able <span class="amp">&amp;</span>&nbsp;Copy-able</li>
+<li>
+<p>Stateless user：&nbsp;无状态用户概念意味着服务器在处理每个客户端请求时，不保留任何关于该用户会话的信息。每个请求都包含所有必要的上下文信息，以供服务器理解并正确处理请求。这种设计方式有助于提高系统的扩展性。</p>
+</li>
+<li>
+<p>Deployment consistent：部署一致性指的是在更新或扩展应用程序时，确保所有实例在同一时间内运行相同版本的代码和配置。这防止版本冲突和潜在的不兼容问题，提高系统的稳定性和可预测性。发布策略：灰度发布，&nbsp;滚动发布，停机发布</p>
+</li>
+<li>
+<p>Load balancing 负载均衡：负载均衡通过将请求分配给多个服务器来分散负载，从而提高网站的响应速度和可靠性。(<span class="caps">NGINX</span> and <span class="caps">AWS</span> Elastic Load&nbsp;Balancing)</p>
+</li>
+<li>
+<p>Caching&nbsp;缓存：缓存是提高性能的重要手段。前端可以使用浏览器缓存和CDN，后端可以采用多层次的缓存技术，比如反向代理缓存和数据库缓存。</p>
+<p>Caching stores data in a temporary storage location, or cache, for faster&nbsp;retrieval.</p>
+<p>CDNs (a form of horizontal scaling) store copies of your website and blog content on servers in various geographic regions. When users request content, the nearest <span class="caps">CDN</span> server responds, quickly delivering content while minimizing&nbsp;latency.</p>
+<p>Cache what? <span class="caps">SQL</span> query <span class="amp">&amp;</span>&nbsp;result?</p>
+</li>
+<li>
+<p>Database optimization&nbsp;数据库优化</p>
+</li>
+<li>
+<p>improve data retrieval speeds: indexing, query optimization, and strategic scaling, data&nbsp;partitions</p>
+</li>
+<li>使用高效的数据库查询和架构：Denormalization&nbsp;大宽表</li>
+<li>
+<p>NoSQL：考虑使用NoSQL数据库来处理大量的非结构化数据</p>
+</li>
+<li>
+<p>异步处理：对于长时间运行的任务，可采用异步处理机制，例如消息队列系统（如Kafka），以避免阻塞主要的应用线程。</p>
+</li>
+<li>
+<p>Web服务器：&nbsp;在处理HTTP请求时，异步I/O可以使服务器同时处理更多的请求，从而提高处理效率。</p>
+</li>
+<li>后台任务处理：&nbsp;使用任务队列处理后台工作（如图像处理、数据分析），使前端请求可以迅速返回，从而提升系统响应速度。</li>
+<li>
+<p>消息驱动架构：&nbsp;通过消息队列实现微服务之间的异步通信，从而减少服务之间的直接依赖和同步调用。</p>
+</li>
+<li>
+<p>Microservices architecture&nbsp;分布式系统：采用分布式架构，将不同的功能模块拆分并分布在多个服务器上。比如使用微服务架构，将单一应用程序拆分为多个小的、独立部署的服务。</p>
+<p>A microservices architecture divides your website into smaller, autonomous sections that communicate through application programming interfaces (APIs). This horizontal scaling method allows you to scale individual applications rather than the entire system to make development and updates more agile.
+Tools like Docker manage containerized site segments, while <span class="caps">API</span> gateways such as Amazon Web Services and Kong streamline communication between these&nbsp;microservices.</p>
+</li>
+<li>
+<p>独立扩展：&nbsp;微服务架构允许独立地扩展每个服务。比如，如果某个服务的负载增加，可以单独扩展这个服务的实例数量，而不需要扩展整个系统。</p>
+</li>
+<li>灵活的资源分配：&nbsp;通过独立部署和扩展服务，可以实现更灵活的资源分配。各个服务可以根据实际需求动态分配计算资源，避免资源浪费。</li>
+<li>故障隔离：&nbsp;微服务架构有助于隔离故障。如果某个服务出现问题，只会影响到该服务的功能，不会导致整个系统的崩溃。这种隔离性可以提高系统的可靠性，并使得问题的修复和排查更加方便。</li>
+<li>持续交付与部署：&nbsp;由于微服务是独立部署的，团队可以更加频繁地进行微服务的发布和更新，从而实现持续交付和快速响应市场需求。这种敏捷性对于支持业务快速增长和扩展具有重要作用。</li>
+<li>负载均衡和容错：&nbsp;微服务架构可以结合现代的容器编排平台（如Kubernetes）和服务发现机制，实现在多个实例间的负载均衡和自动容错，进一步提升系统的扩展性和可靠性。</li>
+</ol>
+<p>https://webflow.com/blog/website-scaling</p>
+<p>https://www.geeksforgeeks.org/what-is-scalability-and-how-to-achieve-it-learn-system-design/</p>
+<p>https://www.prepbytes.com/blog/system-design/how-to-achieve-scalability-in-system-design/</p>
+<p>https://www.designgurus.io/blog/grokking-system-design-scalability</p>
+<h2>Microservices&nbsp;微服务</h2>
+<p>微服务就是将一个大型项目的各个业务代码, 拆分成多个互不干扰的小项目&nbsp;而这些小项目专心完成自己的功能,而且可以调用别的小项目的方法,从而完成整体功能</p>
+<p>每个被拆分的子系统需要拥有独立的设计，开发，部署，上线能力</p>
+<p><img alt="microservice" src="img/microservice1.jpg"></p>
+<h3>Microservice <span class="caps">VS</span> <span class="caps">SPA</span></h3>
+<p><strong>Microservice</strong></p>
+<p>优点：</p>
+<ul>
+<li>高可用性：通过负载均衡、水平扩展等技术，确保系统在高负载和突发流量时仍能稳定运行。</li>
+<li>灵活的资源管理：结合云计算和容器化技术，动态调整资源分配，优化成本和性能。</li>
+<li>模块化架构：通过微服务和分布式系统，提升系统的可维护性和扩展性。</li>
+</ul>
+<p>缺点：
+* 复杂性增加：高扩展性的设计需要更多的架构和运维考虑，使得系统的实现和管理变得更复杂。
+*&nbsp;调试和监控难度提升：高扩展性的实现则需要强大的运维和分布式系统管理经验。分布式系统调试和故障排除更具挑战，需要先进的监控和日志管理工具。</p>
+<p>适用：
+* 应用需要处理大量的并发用户和数据请求（如电商平台、金融交易系统），高扩展性至关重要。
+*&nbsp;项目需要快速迭代和扩展，微服务架构和高扩展性设计可以更好地适应业务变化。</p>
+<p><strong><span class="caps">SPA</span></strong>: 单页应用（Single Page Application）&nbsp;通过动态加载内容更新页面的Web应用，通常不需要刷新整个页面。这种架构使得用户体验更加流畅，有较快的响应速度</p>
+<p>优点：</p>
+<ul>
+<li>快速响应：加载一次页面后，只需更新特定部分内容，减少页面刷新时间，提升用户体验。</li>
+<li>丰富的用户交互：使用前端框架（如React、Vue.js、Angular）构建复杂且互动性强的用户界面。</li>
+<li>减少带宽使用：只传输必要的数据，减少带宽消耗。</li>
+</ul>
+<p>缺点：
+* 初次加载时间较长：由于需要加载大量的JavaScript代码，初次加载时间可能较长。
+* SEO优化困难：SPA对搜索引擎优化（<span class="caps">SEO</span>）不友好，需要特殊处理（如使用服务器端渲染SSR）。
+*&nbsp;复杂的状态管理：状态管理的复杂性增加，需要额外工具（如Redux、Vuex）辅助。</p>
+<p>适用：
+* 应用需要提供丰富的用户交互体验，如在线协作工具、社交平台、或复杂的网页应用（如CRM和ERP系统）
+*&nbsp;团队资源有限或项目周期较短，选择简单易行的架构和技术更实际</p>
+<h3>Microservice&nbsp;特点</h3>
+<ul>
+<li>模块化和独立部署：&nbsp;每个服务都是一个独立的模块，可以独立开发、测试、部署和扩展。如果某个服务需要更新或扩展，可以单独进行，而不影响整个系统。</li>
+<li>按业务功能划分：&nbsp;微服务通常按照业务功能划分，每个服务负责一个特定的业务域。这种划分方法使得团队可以专注于特定的业务需求，提高开发效率和质量。</li>
+<li>独立的数据存储：&nbsp;每个微服务通常有自己的数据库或数据存储方式，这意味着服务间的数据是隔离的，并且可以选择最适合的存储解决方案。</li>
+<li>技术多样性：&nbsp;由于服务是独立的，团队可以为每个服务选择最合适的技术栈和编程语言，而不需要统一整个系统的技术。</li>
+<li>轻量级通信： 微服务之间通过轻量级的通信机制（如HTTP RESTful&nbsp;API或消息队列）进行交互，这保证了系统的松耦合性。</li>
+</ul>
+<blockquote>
+<p>网关 = 路由器（基础） +&nbsp;过滤器（可选）</p>
+</blockquote>
+<p>API网关：
+* 鉴权、限流          (vs 区分 hystrix 熔断限流器)
+* 更细粒度的服务代理      (vs nginx 路径代理)
+* 单个API接口注册      (vs 区分 nacos / eureka&nbsp;注册中心)</p>
+<blockquote>
+<p>去中心化&nbsp;(独立的服务管理、数据管理，强终端轻管道)</p>
+</blockquote>
+<p>注册中心：
+* 子系统多，人工维护管理路由地址配置难度大；
+* 依赖关系复杂的时候，记不清启动顺序，可自动画出上下游关系图；
+* 根据用量、响应速度指标动态调整，方便扩容；
+*&nbsp;高可用，避免单点故障(每个服务可以用多个实例)。</p>
+<p>缺点：
+1. 很多相同业务逻辑的重复代码。
+2. 接口调用关系杂乱。
+3. 单个应用越改越大，边界模糊，功能归属混乱。
+4. 数据库表结构被多个应用依赖，难以重构和优化。
+5. 数据库出现性能瓶颈。数据分析跑起来的时候，性能急剧下降。
+6. 开发、测试、部署、维护愈发困难。改个小功能，也需要整个应用一起发布。
+7.&nbsp;甩锅现象：关于一些公用的功能应该建设在哪个应用？</p>
+<p><img alt="microservice" src="img/microservice2.png"></p>
+<p>下一代： Service Mesh
+可管理、可观测，裁剪技术栈深度，回归单体架构中基于 Spring Boot&nbsp;的开发模式</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "system-design.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

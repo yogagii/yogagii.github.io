@@ -72,8 +72,8 @@
 <li>JWT头：一个描述JWT元数据的JSON对象</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;HS256&quot;</span><span class="p">,</span> <span class="err">//</span> <span class="err">签名使用的算法，默认为HMAC</span> <span class="err">SHA</span><span class="mi">256</span>
-  <span class="nt">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span> <span class="err">//</span> <span class="err">令牌的类型</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HS256&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 签名使用的算法，默认为HMAC SHA256</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span><span class="w"> </span><span class="c1">// 令牌的类型</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -106,7 +106,7 @@
 <li>Body</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="w">  </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -115,7 +115,7 @@
 <li>Body</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxx.xxxx.xxxx&quot;</span>
+<span class="w">  </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxx.xxxx.xxxx&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -128,7 +128,7 @@
 <li>Headers</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer &lt;token&gt;&quot;</span>
+<span class="w">  </span><span class="nt">&quot;Authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bearer &lt;token&gt;&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -140,7 +140,7 @@
 <li>Body</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">[{</span>
-  <span class="err">...</span>
+<span class="w">  </span><span class="err">...</span>
 <span class="p">}]</span>
 </code></pre></div>
 
@@ -151,48 +151,48 @@
 <p>缺点：1.&nbsp;缓存数据不更新，2.不能并发</p>
 <p>Promise.race 在cacheGet中reject导致拒绝，无法返回数据库获得数据，Promise.any&nbsp;在cacheGet中reject不影响，会返回数据库数据</p>
 <p>优势：1. 用缓存数据直接相应接口，解决504，同时读取数据库更新缓存，保证接口每次获得最新数据，2.&nbsp;读缓存和度数据库可并发</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">cacheGet</span><span class="p">(</span><span class="nx">key</span>: <span class="kt">any</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">resolve</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="nx">cacheGet</span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">resolve</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="p">[</span><span class="nx">examlist</span><span class="p">,</span> <span class="nx">userlist</span><span class="p">]</span><span class="o">:</span> <span class="p">[</span><span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">ExamDto</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span>
-  <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
-    <span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">examsService</span><span class="p">.</span><span class="nx">getBehaviorList</span><span class="p">(),</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;examlist&quot;</span><span class="p">),</span>
-    <span class="p">]),</span>
-    <span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">usersService</span><span class="p">.</span><span class="nx">getUserList</span><span class="p">(),</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;userlist&quot;</span><span class="p">),</span>
-    <span class="p">]),</span>
-  <span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">examlist</span><span class="p">,</span><span class="w"> </span><span class="nx">userlist</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">ExamDto</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="o">&gt;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">examsService</span><span class="p">.</span><span class="nx">getBehaviorList</span><span class="p">(),</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;examlist&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">]),</span>
+<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">usersService</span><span class="p">.</span><span class="nx">getUserList</span><span class="p">(),</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheService</span><span class="p">.</span><span class="nx">cacheGet</span><span class="p">(</span><span class="s2">&quot;userlist&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">]),</span>
+<span class="w">  </span><span class="p">]);</span>
 </code></pre></div>
 
 <p>tsconfig.json</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;es2021&quot;</span><span class="p">,</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es2021&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>TypeORM</h2>
 <p>https://yogagii.github.io/typeorm.html</p>
 <p>join&nbsp;table时间复杂度太高，接口容易超时</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">joinKey</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">item</span>: <span class="kt">T</span><span class="p">,</span> <span class="nx">fields</span>: <span class="kt">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">[])</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">fields</span>
-    <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">it</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">item</span><span class="p">[</span><span class="nx">it</span><span class="p">];</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">joinKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="kt">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">fields</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">it</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">item</span><span class="p">[</span><span class="nx">it</span><span class="p">];</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="cm">/**</span>
@@ -202,123 +202,123 @@
 <span class="cm"> * @param options</span>
 <span class="cm"> * @returns</span>
 <span class="cm"> */</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">createMap</span> <span class="o">=</span> <span class="o">&lt;</span>
-  <span class="nx">T</span> <span class="k">extends</span> <span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">any</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="nx">R</span> <span class="k">extends</span> <span class="p">{</span> <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;one&#39;</span> <span class="o">|</span> <span class="s1">&#39;many&#39;</span> <span class="p">}</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">,</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">createMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span>
+<span class="w">  </span><span class="nx">T</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">any</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">R</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;one&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;many&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">,</span>
 <span class="o">&gt;</span><span class="p">(</span>
-  <span class="nx">list</span>: <span class="kt">T</span><span class="p">[],</span>
-  <span class="nx">field</span>: <span class="kt">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">|</span> <span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">[],</span>
-  <span class="nx">options?</span>: <span class="kt">R</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">CreateMapReturn</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">R</span><span class="o">&gt;</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">map</span>: <span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">T</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="w">  </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">[],</span>
+<span class="w">  </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="kt">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">[],</span>
+<span class="w">  </span><span class="nx">options?</span><span class="o">:</span><span class="w"> </span><span class="kt">R</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">CreateMapReturn</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">R</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">T</span><span class="p">[]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
 
-  <span class="nx">list</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">field</span><span class="p">)</span>
-      <span class="o">?</span> <span class="nx">joinKey</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">field</span><span class="p">)</span>
-      <span class="o">:</span> <span class="nx">item</span><span class="p">[</span><span class="nx">field</span> <span class="kr">as</span> <span class="kt">string</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="o">?</span><span class="p">.</span><span class="kr">type</span> <span class="o">===</span> <span class="s1">&#39;many&#39;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">])</span> <span class="p">{</span>
-        <span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
-      <span class="p">}</span>
-      <span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span> <span class="o">=</span> <span class="nx">item</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="nx">list</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">field</span><span class="p">)</span>
+<span class="w">      </span><span class="o">?</span><span class="w"> </span><span class="nx">joinKey</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">field</span><span class="p">)</span>
+<span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="nx">item</span><span class="p">[</span><span class="nx">field</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">options</span><span class="o">?</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;many&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">item</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
 
-  <span class="k">return</span> <span class="nx">map</span> <span class="kr">as</span> <span class="nx">CreateMapReturn</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">R</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">CreateMapReturn</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">R</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 
 <h2>Export <span class="caps">EXCEL</span></h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">writeFileSync</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;fs&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">json2xls</span> <span class="kr">from</span> <span class="s1">&#39;json2xls&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">writeFileSync</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fs&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">json2xls</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;json2xls&#39;</span><span class="p">;</span>
 
-<span class="kd">interface</span> <span class="nx">Option</span> <span class="p">{</span>
-  <span class="nx">path</span>: <span class="kt">string</span><span class="p">;</span>
-  <span class="nx">filename</span>: <span class="kt">string</span><span class="p">;</span>
-  <span class="nx">data</span>: <span class="kt">Array</span><span class="o">&lt;</span><span class="nx">object</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="nx">object</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">saveExcel</span><span class="p">(</span><span class="nx">option</span>: <span class="kt">Option</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">path</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">option</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">xls</span> <span class="o">=</span> <span class="nx">json2xls</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="nx">writeFileSync</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">path</span><span class="si">}${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">xls</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">);</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saveExcel</span><span class="p">(</span><span class="nx">option</span><span class="o">:</span><span class="w"> </span><span class="kt">Option</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">filename</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">option</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">xls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">json2xls</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">writeFileSync</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">path</span><span class="si">}${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">xls</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;binary&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>邮件发送成功后删除源文件</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">existsSync</span><span class="p">,</span> <span class="nx">rmSync</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;fs&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">existsSync</span><span class="p">,</span><span class="w"> </span><span class="nx">rmSync</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fs&#39;</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">existsSync</span><span class="p">(</span><span class="nx">filepath</span><span class="p">))</span> <span class="p">{</span>
-  <span class="nx">rmSync</span><span class="p">(</span><span class="nx">filepath</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">existsSync</span><span class="p">(</span><span class="nx">filepath</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">rmSync</span><span class="p">(</span><span class="nx">filepath</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>Export <span class="caps">CSV</span></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">jsonToCSV</span> <span class="o">=</span> <span class="p">(</span><span class="nx">data</span>: <span class="kt">ExcelDataType</span><span class="p">[])</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-  <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">table</span>: <span class="kt">ExcelDataType</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">str</span> <span class="o">+=</span> <span class="nx">table</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">;</span>
-    <span class="nx">str</span> <span class="o">+=</span> <span class="nx">table</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">;</span>
-    <span class="nx">table</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">str</span> <span class="o">+=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">row</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">;</span>
-    <span class="p">});</span>
-    <span class="nx">str</span> <span class="o">+=</span> <span class="s2">&quot;\n&quot;</span><span class="p">;</span>
-  <span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">jsonToCSV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">ExcelDataType</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">table</span><span class="o">:</span><span class="w"> </span><span class="kt">ExcelDataType</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">str</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">table</span><span class="p">.</span><span class="nx">title</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">str</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">table</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">table</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">str</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">row</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">str</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
 
-  <span class="k">return</span> <span class="sb">`data:text/csv;charset=utf-8,\ufeff</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`data:text/csv;charset=utf-8,\ufeff</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">{jsonToCSV(data)}</span> <span class="na">download=</span><span class="s">&quot;FILENAME.csv&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Button&gt;</span>Export CSV<span class="nt">&lt;/Button&gt;</span>
-<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="na">href</span><span class="o">=</span><span class="p">{</span><span class="nx">jsonToCSV</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="w"> </span><span class="na">download</span><span class="o">=</span><span class="s">&quot;FILENAME.csv&quot;</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">&lt;</span><span class="nt">Button</span><span class="p">&gt;</span><span class="nx">Export</span><span class="w"> </span><span class="nx">CSV</span><span class="p">&lt;/</span><span class="nt">Button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <h2>Export <span class="caps">PDF</span></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">onrendered</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">canvas</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">contentWidth</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">contentHeight</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">onrendered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">canvas</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">contentWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">contentHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
 
-  <span class="kd">var</span> <span class="nx">pageHeight</span> <span class="o">=</span> <span class="p">(</span><span class="nx">contentWidth</span> <span class="o">/</span> <span class="mf">592.28</span><span class="p">)</span> <span class="o">*</span> <span class="mf">841.89</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">leftHeight</span> <span class="o">=</span> <span class="nx">contentHeight</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">position</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">imgWidth</span> <span class="o">=</span> <span class="mf">595.28</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">imgHeight</span> <span class="o">=</span> <span class="p">(</span><span class="mf">592.28</span> <span class="o">/</span> <span class="nx">contentWidth</span><span class="p">)</span> <span class="o">*</span> <span class="nx">contentHeight</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">pageHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">contentWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">592.28</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">841.89</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">leftHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contentHeight</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">imgWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">595.28</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">imgHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">592.28</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">contentWidth</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">contentHeight</span><span class="p">;</span>
 
-  <span class="kd">var</span> <span class="nx">pageData</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">pageData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">jsPDF</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="s2">&quot;./jspdf.debug&quot;</span><span class="p">)).</span><span class="k">default</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">pdf</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">jsPDF</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;pt&quot;</span><span class="p">,</span> <span class="s2">&quot;a4&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">jsPDF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s2">&quot;./jspdf.debug&quot;</span><span class="p">)).</span><span class="k">default</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">pdf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">jsPDF</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;a4&quot;</span><span class="p">);</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">leftHeight</span> <span class="o">&lt;</span> <span class="nx">pageHeight</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">pdf</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">pageData</span><span class="p">,</span> <span class="s2">&quot;JPEG&quot;</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">imgWidth</span><span class="p">,</span> <span class="nx">imgHeight</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">leftHeight</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">pdf</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">pageData</span><span class="p">,</span> <span class="s2">&quot;JPEG&quot;</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">position</span><span class="p">,</span> <span class="nx">imgWidth</span><span class="p">,</span> <span class="nx">imgHeight</span><span class="p">);</span>
-      <span class="nx">leftHeight</span> <span class="o">-=</span> <span class="nx">pageHeight</span><span class="p">;</span>
-      <span class="nx">position</span> <span class="o">-=</span> <span class="mf">841.89</span><span class="p">;</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">leftHeight</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">pdf</span><span class="p">.</span><span class="nx">addPage</span><span class="p">();</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="nx">pdf</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;FILENAME.pdf&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">leftHeight</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">pageHeight</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pdf</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">pageData</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;JPEG&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">imgWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">imgHeight</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">leftHeight</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">pdf</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">pageData</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;JPEG&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">position</span><span class="p">,</span><span class="w"> </span><span class="nx">imgWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">imgHeight</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">leftHeight</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="nx">pageHeight</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">position</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mf">841.89</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">leftHeight</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">pdf</span><span class="p">.</span><span class="nx">addPage</span><span class="p">();</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">pdf</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;FILENAME.pdf&quot;</span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">html2canvas</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="s2">&quot;./html2canvas&quot;</span><span class="p">)).</span><span class="k">default</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">);</span>
-  <span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">fontFeatureSettings</span> <span class="o">=</span> <span class="s1">&#39;&quot;liga&quot; 0&#39;</span><span class="p">;</span>
-  <span class="nx">html2canvas</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">allowTaint</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">scale</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
-    <span class="nx">height</span><span class="o">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">,</span>
-    <span class="nx">width</span><span class="o">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">scrollWidth</span><span class="p">,</span>
-    <span class="nx">background</span><span class="o">:</span> <span class="s2">&quot;rgb(242, 245, 249)&quot;</span><span class="p">,</span>
-    <span class="nx">onrendered</span><span class="p">,</span>
-  <span class="p">});</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">html2canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s2">&quot;./html2canvas&quot;</span><span class="p">)).</span><span class="k">default</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">fontFeatureSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&quot;liga&quot; 0&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">html2canvas</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">allowTaint</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="nx">target</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="nx">target</span><span class="p">.</span><span class="nx">scrollWidth</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rgb(242, 245, 249)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">onrendered</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -412,21 +412,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -435,7 +437,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -444,7 +445,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -464,7 +464,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

@@ -158,35 +158,35 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Workbook</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">hideTabs</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;:showShareOptions&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s1">&#39;:linktarget&#39;</span><span class="o">:</span> <span class="s1">&#39;_self&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;:render&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
-  <span class="p">};</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Workbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">hideTabs</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;:showShareOptions&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;:linktarget&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;_self&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;:render&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">viz</span> <span class="o">&amp;&amp;</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
-    <span class="kd">const</span> <span class="nx">vizContainer</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;vizContainer&#39;</span><span class="p">);</span>
-    <span class="nx">viz</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
-  <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">viz</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">viz</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">vizContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;vizContainer&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">viz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">option</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
 
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainerWrapper</span><span class="p">}</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">div</span>
-        <span class="nx">id</span><span class="o">=</span><span class="s1">&#39;vizContainer&#39;</span>
-        <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">iframeContent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
-        <span class="p">}}</span>
-      <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/div&gt;</span>
-  <span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainerWrapper</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">=</span><span class="s1">&#39;vizContainer&#39;</span>
+<span class="w">        </span><span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">iframeContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">node</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}}</span>
+<span class="w">      </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="nx">Workbook</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Workbook</span><span class="p">;</span>
 </code></pre></div>
 
 <h2>Viz <span class="caps">API</span>:</h2>
@@ -630,21 +630,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -653,7 +655,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -662,7 +663,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -682,7 +682,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

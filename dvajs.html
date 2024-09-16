@@ -54,8 +54,8 @@
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2023-04-12T14:33:00+08:00"> 
-            <a href="/archive/2023/ 4/index.html">三 12 四月 2023 </a>
+        <abbr class="date" title="2024-09-16T14:33:00+08:00"> 
+            <a href="/archive/2024/ 9/index.html">一 16 九月 2024 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
                 <a href="/tag/dva.html">DVA</a>
@@ -68,60 +68,60 @@
 <h4>类dva</h4>
 <h5>redux怎么变成dva的反向</h5>
 <div class="highlight"><pre><span></span><code><span class="c1">// dva结构</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-    <span class="nx">state</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="nx">reducers</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="nx">effects</span><span class="o">:</span> <span class="p">{},</span> <span class="c1">//这一层是saga做的</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nx">reducers</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nx">effects</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">//这一层是saga做的</span>
 <span class="p">}</span>
 
 <span class="c1">// redux结构</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;redux&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createStore</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;redux&#39;</span>
 
-<span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">num</span><span class="o">:</span> <span class="mf">1</span> <span class="p">};</span> 
-<span class="kd">const</span> <span class="nx">reducers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">};</span><span class="w"> </span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reducers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;ADD&#39;</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">return</span> <span class="p">{</span>
-            <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
-            <span class="nx">num</span><span class="o">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">num</span>
-         <span class="p">}</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;ADD&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="nx">action</span><span class="p">.</span><span class="nx">num</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="p">...</span><span class="nx">state</span>
-    <span class="p">}</span>
-    <span class="c1">//state.num = 3</span>
-    <span class="c1">//return state</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">state</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//state.num = 3</span>
+<span class="w">    </span><span class="c1">//return state</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducers</span><span class="p">,</span> <span class="nx">state</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createStore</span><span class="p">(</span><span class="nx">reducers</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">);</span>
 
 <span class="c1">// 应用</span>
-<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;ADD&#39;</span><span class="p">,</span> <span class="nx">num</span><span class="o">:</span> <span class="mf">0</span><span class="p">});</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ADD&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">});</span>
 
 <span class="c1">// 包装</span>
-<span class="kd">const</span> <span class="nx">CustomContextProvider</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useReducer</span><span class="p">(</span><span class="nx">reducers</span><span class="p">,</span> <span class="nx">initState</span><span class="p">);</span>
-  <span class="c1">// return &lt;Context.Provider value={{ state, dispatch }}&gt;{children}&lt;/Context.Provider&gt;;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">CustomContextProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">dispatch</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useReducer</span><span class="p">(</span><span class="nx">reducers</span><span class="p">,</span><span class="w"> </span><span class="nx">initState</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// return &lt;Context.Provider value={{ state, dispatch }}&gt;{children}&lt;/Context.Provider&gt;;</span>
 <span class="p">};</span>
 
 <span class="c1">//我们写Dva的时候用的肯定不止一个model  </span>
 <span class="c1">//多个Store的核心概念是 有多少个model， store.state就有多少个model </span>
 
-<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">model</span>
-<span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">model</span>
-<span class="kd">const</span> <span class="nx">announcement</span> <span class="o">=</span> <span class="nx">model</span>
-<span class="kd">const</span> <span class="nx">comment</span> <span class="o">=</span> <span class="nx">model</span>
-<span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">user</span><span class="p">,</span>
-    <span class="nx">message</span><span class="p">,</span>
-    <span class="nx">announcement</span><span class="p">,</span>
-    <span class="nx">comment</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">announcement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span>
+<span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">user</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">announcement</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">comment</span>
 <span class="p">}</span>
 
 <span class="c1">// 默认比较</span>
-<span class="kd">var</span> <span class="nx">refEquality</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">refEquality</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">refEquality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">refEquality</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 
@@ -134,79 +134,81 @@
 </ol>
 <p>浅比较 ShadowEquals 
 dispatch触发&nbsp;reducer</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
-        <span class="p">...</span><span class="nx">action</span><span class="p">[</span><span class="s1">&#39;modelName&#39;</span><span class="p">]</span><span class="o">:</span> <span class="p">{</span><span class="nx">newData</span><span class="o">:</span> <span class="p">{}}</span>
-    <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">action</span><span class="p">[</span><span class="s1">&#39;modelName&#39;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">newData</span><span class="o">:</span><span class="w"> </span><span class="p">{}}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// 理解上面的代码，我只需要user的情况下， ...state里面的announcement还是原来的announcement</span>
 </code></pre></div>
 
 <p>关于浅比较</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">hasOwn</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">hasOwn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">is</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">!==</span> <span class="mf">0</span> <span class="o">||</span> <span class="nx">y</span> <span class="o">!==</span> <span class="mf">0</span> <span class="o">||</span> <span class="mf">1</span> <span class="o">/</span> <span class="nx">x</span> <span class="o">===</span> <span class="mf">1</span> <span class="o">/</span> <span class="nx">y</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">!==</span> <span class="nx">x</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span> <span class="o">!==</span> <span class="nx">y</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">is</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">shallowEqual</span><span class="p">(</span><span class="nx">objA</span><span class="p">,</span> <span class="nx">objB</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">is</span><span class="p">(</span><span class="nx">objA</span><span class="p">,</span> <span class="nx">objB</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">shallowEqual</span><span class="p">(</span><span class="nx">objA</span><span class="p">,</span><span class="w"> </span><span class="nx">objB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">is</span><span class="p">(</span><span class="nx">objA</span><span class="p">,</span><span class="w"> </span><span class="nx">objB</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="ow">typeof</span> <span class="nx">objA</span> <span class="o">!==</span> <span class="s1">&#39;object&#39;</span> <span class="o">||</span> <span class="nx">objA</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">||</span> <span class="ow">typeof</span> <span class="nx">objB</span> <span class="o">!==</span> <span class="s1">&#39;object&#39;</span> <span class="o">||</span> <span class="nx">objB</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">objA</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;object&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">objA</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">objB</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;object&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">objB</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="kd">var</span> <span class="nx">keysA</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">objA</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">keysB</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">objB</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">keysA</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="nx">keysB</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">keysA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">objA</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">keysB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">objB</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">keysA</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">keysB</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">keysA</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">hasOwn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">objB</span><span class="p">,</span> <span class="nx">keysA</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nx">is</span><span class="p">(</span><span class="nx">objA</span><span class="p">[</span><span class="nx">keysA</span><span class="p">[</span><span class="nx">i</span><span class="p">]],</span> <span class="nx">objB</span><span class="p">[</span><span class="nx">keysA</span><span class="p">[</span><span class="nx">i</span><span class="p">]]))</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">keysA</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">hasOwn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">objB</span><span class="p">,</span><span class="w"> </span><span class="nx">keysA</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">is</span><span class="p">(</span><span class="nx">objA</span><span class="p">[</span><span class="nx">keysA</span><span class="p">[</span><span class="nx">i</span><span class="p">]],</span><span class="w"> </span><span class="nx">objB</span><span class="p">[</span><span class="nx">keysA</span><span class="p">[</span><span class="nx">i</span><span class="p">]]))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Context</span> <span class="o">=</span> <span class="nx">createContext</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createContext</span><span class="p">();</span>
 <span class="c1">// Context.Provider =&gt; 指定在子组件可以调用里面的state</span>
 <span class="c1">// Content.Consumer =&gt; 在这个指定Provider组件下都可以调用里面state </span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">Context</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">dispatch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">Context</span><span class="p">);</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nx">dva的概念就是把</span> <span class="nx">state</span> <span class="nx">并入到</span> <span class="nx">rootState</span> 
+<div class="highlight"><pre><span></span><code><span class="nx">dva的概念就是把</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="nx">并入到</span><span class="w"> </span><span class="nx">rootState</span><span class="w"> </span>
 <span class="nx">dispatch</span>
 
-<span class="kd">const</span> <span class="nx">reducers</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">modelName</span><span class="p">,</span> <span class="nx">reducerName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="nx">reducersPool</span><span class="p">[</span><span class="nx">modelName</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reducers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">modelName</span><span class="p">,</span><span class="w"> </span><span class="nx">reducerName</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reducersPool</span><span class="p">[</span><span class="nx">modelName</span><span class="p">];</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="sb">`can&#39;t find the model [</span><span class="si">${</span><span class="nx">modelName</span><span class="si">}</span><span class="sb">]`</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`can&#39;t find the model [</span><span class="si">${</span><span class="nx">modelName</span><span class="si">}</span><span class="sb">]`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">reducer</span> <span class="o">=</span> <span class="nx">model</span><span class="p">[</span><span class="nx">reducerName</span><span class="p">];</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">reducer</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="sb">`can&#39;t find the model [</span><span class="si">${</span><span class="nx">modelName</span><span class="si">}</span><span class="sb">] reducer [</span><span class="si">${</span><span class="nx">reducerName</span><span class="si">}</span><span class="sb">]`</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span><span class="p">[</span><span class="nx">reducerName</span><span class="p">];</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">reducer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`can&#39;t find the model [</span><span class="si">${</span><span class="nx">modelName</span><span class="si">}</span><span class="sb">] reducer [</span><span class="si">${</span><span class="nx">reducerName</span><span class="si">}</span><span class="sb">]`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">newState</span> <span class="o">=</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">[</span><span class="nx">modelName</span><span class="p">],</span> <span class="p">{</span> <span class="p">...</span><span class="nx">action</span> <span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">newState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">[</span><span class="nx">modelName</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">action</span><span class="w"> </span><span class="p">});</span>
 
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
-    <span class="p">[</span><span class="nx">modelName</span><span class="p">]</span><span class="o">:</span> <span class="nx">newState</span><span class="p">,</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">modelName</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">newState</span><span class="p">,</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
 
-<h3>极限性能记录</h3>
+<blockquote>
+<p>setState object/arr类型的变量，若state没有更新，考虑是因为浅拷贝&nbsp;指针地址不变，尝试setState(&#8230;data)</p>
+</blockquote>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -291,21 +293,23 @@ dispatch触发&nbsp;reducer</p>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -314,7 +318,6 @@ dispatch触发&nbsp;reducer</p>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -323,7 +326,6 @@ dispatch触发&nbsp;reducer</p>
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -343,7 +345,6 @@ dispatch触发&nbsp;reducer</p>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

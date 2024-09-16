@@ -77,17 +77,17 @@
 <ul>
 <li><strong>动态参数传递</strong>：展开属性（参数名称是变量）</li>
 </ul>
-<div class="highlight"><pre><span></span><code>  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="nx">moreAttr</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="o">/&gt;</span>
-  <span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Component</span><span class="w"> </span><span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span><span class="w"> </span><span class="nx">moreAttr</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="c1">// 后面的参数会覆盖this.props中的moreAttr</span>
 </code></pre></div>
 
 <ul>
 <li><strong>Underscore</strong>：提供_.omit()来过滤属性</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// 剩余属性：除checked之外的属性</span>
-<span class="kd">var</span> <span class="p">{</span><span class="nx">checked</span><span class="p">,</span> <span class="p">...</span><span class="nx">other</span><span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="p">{</span><span class="nx">checked</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">other</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
 <span class="c1">// 过滤属性</span>
-<span class="kd">var</span> <span class="nx">other</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">omit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">);</span> 
+<span class="kd">var</span><span class="w"> </span><span class="nx">other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_</span><span class="p">.</span><span class="nx">omit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checked&#39;</span><span class="p">);</span><span class="w"> </span>
 </code></pre></div>
 
 <ul>
@@ -96,30 +96,30 @@
 <p>组件树中上层组件的任意层级的下级组件都能获得上层组件的数据</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>  <span class="kd">var</span> <span class="nx">Button</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
-      <span class="c1">// 下级组件必须指定context的数据类型</span>
-      <span class="nx">contextTypes</span><span class="o">:</span><span class="p">{</span> 
-        <span class="nx">color</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span>
-      <span class="p">}</span>
-      <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span>
-          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">background</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">color</span><span class="p">]}</span> <span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
-        <span class="p">);</span>
-      <span class="p">}</span>
-  <span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">Button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
+<span class="w">      </span><span class="c1">// 下级组件必须指定context的数据类型</span>
+<span class="w">      </span><span class="nx">contextTypes</span><span class="o">:</span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="nx">render</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">color</span><span class="p">]}</span><span class="w"> </span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">})</span>
 
-  <span class="kd">var</span> <span class="nx">Message</span> <span class="o">=</span> <span class="p">...</span> <span class="o">&lt;</span><span class="nx">Button</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">Message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Button</span><span class="o">&gt;</span>
 
-  <span class="kd">var</span> <span class="nx">MessageList</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-      <span class="c1">// 上级组件必须要声明属性</span>
-      <span class="nx">childContextTypes</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">color</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span>
-      <span class="p">}</span>
-      <span class="c1">// 上级组件必须声明回调函数</span>
-      <span class="nx">getChildContext</span><span class="o">:</span> <span class="nx">funtion</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">{</span><span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">};</span>       
-      <span class="p">}</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">MessageList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="w">      </span><span class="c1">// 上级组件必须要声明属性</span>
+<span class="w">      </span><span class="nx">childContextTypes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="c1">// 上级组件必须声明回调函数</span>
+<span class="w">      </span><span class="nx">getChildContext</span><span class="o">:</span><span class="w"> </span><span class="nx">funtion</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;purple&#39;</span><span class="p">};</span><span class="w">       </span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
 </code></pre></div>
 
 <p><br></p>
@@ -127,40 +127,40 @@
 <hr>
 <h3>子组件向父组件传递信息：</h3>
 <p>1.<strong>事件回调机制</strong>：父级组件在props中增加一个回调函数，子级组件在恰当时机调用回调函数通知父组件</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">Child</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onChildClicked</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="p">);</span>  
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">Parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">render</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Child</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onChildClicked</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
-<span class="kd">var</span> <span class="nx">Child</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-  <span class="nx">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onClick</span><span class="p">(</span> <span class="p">);</span>
-  <span class="p">},</span>
-  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">Child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">handleClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onClick</span><span class="p">(</span><span class="w"> </span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">render</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <p>2.<strong>公开组件功能</strong>：子组件对外提供公开方法，公开的方法被调用后返回相应的数据，父组件通过ref属性获得子组件实例的引用</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">Child</span> <span class="o">=</span> <span class="nx">react</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
-  <span class="nx">animate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="c1">// 本组件公开的方法</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">Child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">react</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">animate</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// 本组件公开的方法</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
-<span class="kd">var</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">react</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
-  <span class="nx">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">items0</span><span class="p">.</span><span class="nx">animate</span><span class="p">();</span>
-  <span class="p">}</span>
-  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">Child</span><span class="p">.</span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">i</span><span class="p">)}</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;item&#39;</span><span class="o">+</span><span class="nx">i</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="p">)</span>
-  <span class="p">}</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">Parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">react</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">handleClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">items0</span><span class="p">.</span><span class="nx">animate</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">render</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Child</span><span class="p">.</span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)}</span><span class="w"> </span><span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;item&#39;</span><span class="o">+</span><span class="nx">i</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 
@@ -170,19 +170,19 @@
 <h3>mixins</h3>
 <p>mixins：复用代码（输出日志，定时器更新界面），混入组件，使其能为多个组件所用</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 定时器需创建（ComponentWillMount）和销毁（ComponentWillUmount）</span>
-<span class="kd">var</span> <span class="nx">SetIntervalMixin</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">componentWillMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">intervals</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="p">},</span>
-  <span class="nx">setInterval</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">intervals</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">setInterval</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nx">arguments</span><span class="p">));</span>
-  <span class="p">},</span>
-  <span class="nx">componentWillUnmount</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">intervals</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">clearInterval</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">SetIntervalMixin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">componentWillMount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">intervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">setInterval</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">intervals</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">setInterval</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nx">arguments</span><span class="p">));</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">componentWillUnmount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">intervals</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">clearInterval</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">};</span>
-<span class="kd">var</span> <span class="nx">TickTock</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
-  <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">SetIntervalMixin</span><span class="p">],</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">TickTock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">creatClass</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">mixins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">SetIntervalMixin</span><span class="p">],</span>
 <span class="p">});</span>
 </code></pre></div>
 
@@ -193,17 +193,17 @@
 <h2>高阶组件</h2>
 <hr>
 <p>高阶组件：对现有组件的动态包装（redux:&nbsp;connect）</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">hoc</span><span class="p">(</span><span class="nx">Comp</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="kd">class</span> <span class="nx">NewComponent</span> <span class="k">extends</span> <span class="nx">Component</span><span class="p">{</span>
-    <span class="nx">extendFunc</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">//新增功能</span>
-    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">Comp</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="o">/&gt;</span>
-      <span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">hoc</span><span class="p">(</span><span class="nx">Comp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">NewComponent</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">extendFunc</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">//新增功能</span>
+<span class="w">    </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">Comp</span><span class="w"> </span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">const</span> <span class="nx">NewComponent</span> <span class="o">=</span> <span class="nx">hoc</span><span class="p">(</span><span class="nx">Comp</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">NewComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hoc</span><span class="p">(</span><span class="nx">Comp</span><span class="p">);</span>
 </code></pre></div>
 
 <p>将数据展现封装为一个组件，再通过高阶组件附加数据请求。</p>
@@ -291,21 +291,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -314,7 +316,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -323,7 +324,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -343,7 +343,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

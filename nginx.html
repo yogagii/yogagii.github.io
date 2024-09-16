@@ -63,7 +63,29 @@
     </div>
     </header>
     <div class="post-entry">
-        <p>Nginx就是性能非常好的反向代理服务器，用来做负载均衡。</p>
+        <h3>反向代理</h3>
+<p>正向代理代理的对象是客户端，反向代理代理的对象是服务端。
+反向代理隐藏了真实的服务端，当我们请求 www.baidu.com 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，www.baidu.com&nbsp;就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。</p>
+<p>Nginx就是性能非常好的反向代理服务器，用来做负载均衡。</p>
+<blockquote>
+<p>正向代理隐藏真实客户端，反向代理隐藏真实服务端</p>
+</blockquote>
+<p>反向代理的实现
+1. 需要有一个负载均衡设备来分发用户请求，将用户请求分发到空闲的服务器上
+2. 服务器返回自己的服务到负载均衡设备
+3.&nbsp;负载均衡将服务器的服务返回用户</p>
+<p>以上的潜台词是：用户和负载均衡设备直接通信，也意味着用户做服务器域名解析时，解析得到的IP其实是负载均衡的IP，而不是服务器的IP，这样有一个好处是，当新加入/移走服务器时，仅仅需要修改负载均衡的服务器列表，而不会影响现有的服务。</p>
+<p>链接：https://www.zhihu.com/question/24723688/answer/160252724</p>
+<h3>安装</h3>
+<p>下载  <a href="https://nginx.org/download/nginx-1.14.2.tar.gz">https://nginx.org/download/nginx-1.14.2.tar.gz</a> </p>
+<p>上传nginx-1.14.2.tar.gz到目标服务器</p>
+<p>tar -zxf ***.tar.gz&nbsp;解压缩</p>
+<p>确认gcc是否安装，若否先yum -y install gcc  gcc-c++&nbsp;kernel-devel</p>
+<p>安装完成后进入nginx目录 ./configure&nbsp;&#8212;with-http_ssl_module</p>
+<p>make &amp;&amp; make&nbsp;install</p>
+<p>安装成功，&nbsp;进入/usr/local/nginx/sbin/</p>
+<p>执行./nginx启动</p>
+<p>软连接 ln -s /usr/local/nginx/sbin/nginx&nbsp;/usr/sbin/nginx</p>
 <h3>启动</h3>
 <p>踩坑：Redirecting to /bin/systemctl start nginx.service Failed to start nginx.service: Unit not&nbsp;found.</p>
 <p>在&nbsp;/etc/init.d/下创建名为nginx的启动脚本即可</p>
@@ -71,42 +93,43 @@
 <p>注册成服务：chkconfig -add&nbsp;nginx</p>
 <p>设置开机启动：chkconfig nginx&nbsp;on</p>
 <p>Linux上开机自动启动Nginx: 在/etc/rc.local文件中加一行&nbsp;nginx</p>
+<p>检查 nginx 运行状态：service nginx&nbsp;status</p>
 <p>启动：nginx 或 service nginx&nbsp;start</p>
 <p>踩坑：nginx: [error] invalid <span class="caps">PID</span> number “” in&nbsp;“/run/nginx.pid”</p>
 <p>nginx -c /etc/nginx/nginx.conf # 找到 nginx.conf&nbsp;路径</p>
 <p>nginx -s&nbsp;reload</p>
 <h3>查看Ngnix配置</h3>
-<div class="highlight"><pre><span></span><code>sudo su -
-ps -aux <span class="p">|</span> grep nginx
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+ps<span class="w"> </span>-aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nginx
 <span class="c1"># root xxx 0.0  0.0 xxx xxx ? Ss Mar19 0:00 nginx: master process /usr/sbin/nginx</span>
 
-/usr/sbin/nginx -t
+/usr/sbin/nginx<span class="w"> </span>-t
 <span class="c1"># nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span>
 
-cat /etc/nginx/nginx.conf
+cat<span class="w"> </span>/etc/nginx/nginx.conf
 <span class="c1"># include /etc/nginx/default.d/*.conf;</span>
 <span class="c1"># include /etc/nginx/default.d/*.conf;</span>
 
-cat /etc/nginx/conf.d/swift.conf
+cat<span class="w"> </span>/etc/nginx/conf.d/swift.conf
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 测试</span>
-nginx -t
+nginx<span class="w"> </span>-t
 <span class="c1"># 重启</span>
-service nginx restart
-nginx -s reload
+service<span class="w"> </span>nginx<span class="w"> </span>restart
+nginx<span class="w"> </span>-s<span class="w"> </span>reload
 </code></pre></div>
 
 <h3>nginx.conf</h3>
 <p>后端</p>
 <p>pm2 start npm &#8212;name iqvia-data-3007 &#8212; run&nbsp;start:prod</p>
-<div class="highlight"><pre><span></span><code><span class="nt">location</span> <span class="o">/</span><span class="nt">iqvia</span><span class="o">/</span> <span class="p">{</span>
-    <span class="err">rewrite</span> <span class="err">&quot;^/iqvia/(.*)$&quot;</span> <span class="err">/$1</span> <span class="err">break</span><span class="p">;</span>
-    <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$host</span><span class="p">;</span>
-    <span class="err">proxy_set_header</span> <span class="err">X-Real-IP</span> <span class="err">$remote_addr</span><span class="p">;</span>
-    <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-For</span> <span class="err">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-    <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-Proto</span> <span class="err">$scheme</span><span class="p">;</span>
-    <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="mf">.39</span><span class="o">:</span><span class="mi">3007</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nx">location</span><span class="w"> </span><span class="o">/</span><span class="nx">iqvia</span><span class="o">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">rewrite</span><span class="w"> </span><span class="s">&quot;^/iqvia/(.*)$&quot;</span><span class="w"> </span><span class="o">/</span><span class="err">$</span><span class="mi">1</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">Host</span><span class="w"> </span><span class="err">$</span><span class="nx">host</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Real</span><span class="o">-</span><span class="nx">IP</span><span class="w"> </span><span class="err">$</span><span class="nx">remote_addr</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="nx">For</span><span class="w"> </span><span class="err">$</span><span class="nx">proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="nx">Proto</span><span class="w"> </span><span class="err">$</span><span class="nx">scheme</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">proxy_pass</span><span class="w"> </span><span class="nx">http</span><span class="p">:</span><span class="c1">//xx.xx.xx.39:3007;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -123,46 +146,46 @@ nginx -s reload
 <p>指向index</p>
 <p>npm run&nbsp;build:prod</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 0042 (42 -&gt; 39)</span>
-<span class="n">location</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span> <span class="p">{</span>
-    <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="o">$</span><span class="n">host</span><span class="p">;</span>
-    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Real</span><span class="o">-</span><span class="n">IP</span> <span class="o">$</span><span class="n">remote_addr</span><span class="p">;</span>
-    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="o">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
-    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Proto</span> <span class="o">$</span><span class="n">scheme</span><span class="p">;</span>
-    <span class="n">proxy_buffering</span> <span class="n">off</span><span class="p">;</span>
-    <span class="n">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="mi">39</span><span class="p">;</span>
+<span class="n">location</span><span class="w"> </span><span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">proxy_set_header</span><span class="w"> </span><span class="n">Host</span><span class="w"> </span><span class="o">$</span><span class="n">host</span><span class="p">;</span>
+<span class="w">    </span><span class="n">proxy_set_header</span><span class="w"> </span><span class="n">X</span><span class="o">-</span><span class="n">Real</span><span class="o">-</span><span class="n">IP</span><span class="w"> </span><span class="o">$</span><span class="n">remote_addr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">proxy_set_header</span><span class="w"> </span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span><span class="w"> </span><span class="o">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">    </span><span class="n">proxy_set_header</span><span class="w"> </span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Proto</span><span class="w"> </span><span class="o">$</span><span class="n">scheme</span><span class="p">;</span>
+<span class="w">    </span><span class="n">proxy_buffering</span><span class="w"> </span><span class="n">off</span><span class="p">;</span>
+<span class="w">    </span><span class="n">proxy_pass</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="mi">39</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1"># 0039 (nginx在42，资源在39)</span>
-<span class="n">location</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span> <span class="p">{</span>
-    <span class="n">alias</span>   <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">iqvia_email</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="p">;</span>
-    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+<span class="n">location</span><span class="w"> </span><span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">alias</span><span class="w">   </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">iqvia_email</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="p">;</span>
+<span class="w">    </span><span class="n">index</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1"># 0080 (80资源在本机)</span>
-<span class="n">location</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span> <span class="p">{</span>
-    <span class="n">alias</span>   <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">iqvia_email</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="p">;</span>
-    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
-    <span class="n">try_files</span> <span class="o">$</span><span class="n">uri</span> <span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+<span class="n">location</span><span class="w"> </span><span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">alias</span><span class="w">   </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">iqvia_email</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="p">;</span>
+<span class="w">    </span><span class="n">index</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+<span class="w">    </span><span class="n">try_files</span><span class="w"> </span><span class="o">$</span><span class="n">uri</span><span class="w"> </span><span class="o">/</span><span class="n">iqvia</span><span class="o">-</span><span class="n">email</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>指向端口</p>
-<div class="highlight"><pre><span></span><code>next build
-next start -p <span class="m">3008</span>
-pm2 start npm --name carto-dashboard-3008 -- run start
+<div class="highlight"><pre><span></span><code>next<span class="w"> </span>build
+next<span class="w"> </span>start<span class="w"> </span>-p<span class="w"> </span><span class="m">3008</span>
+pm2<span class="w"> </span>start<span class="w"> </span>npm<span class="w"> </span>--name<span class="w"> </span>carto-dashboard-3008<span class="w"> </span>--<span class="w"> </span>run<span class="w"> </span>start
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// next.config.ts</span>
-<span class="kr">module</span><span class="nx">.exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">basePath</span><span class="o">:</span> <span class="s1">&#39;/carto-dashboard&#39;</span><span class="p">,</span>
+<span class="kr">module</span><span class="nx">.exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">basePath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/carto-dashboard&#39;</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nt">location</span> <span class="o">/</span><span class="nt">carto-dashboard</span> <span class="p">{</span>
-  <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$host</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">X-Real-IP</span> <span class="err">$remote_addr</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-For</span> <span class="err">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-Proto</span> <span class="err">$scheme</span><span class="p">;</span>
-  <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="o">.</span><span class="n">xx</span><span class="mf">.80</span><span class="o">:</span><span class="mi">3008</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nx">location</span><span class="w"> </span><span class="o">/</span><span class="nx">carto</span><span class="o">-</span><span class="nx">dashboard</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">Host</span><span class="w"> </span><span class="err">$</span><span class="nx">host</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Real</span><span class="o">-</span><span class="nx">IP</span><span class="w"> </span><span class="err">$</span><span class="nx">remote_addr</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="nx">For</span><span class="w"> </span><span class="err">$</span><span class="nx">proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="nx">Proto</span><span class="w"> </span><span class="err">$</span><span class="nx">scheme</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_pass</span><span class="w"> </span><span class="nx">http</span><span class="p">:</span><span class="c1">//xx.xx.xx.80:3008;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -175,22 +198,54 @@ pm2 start npm --name carto-dashboard-3008 -- run start
 </code></pre></div>
 
 <p>静态资源</p>
-<div class="highlight"><pre><span></span><code><span class="n">location</span> <span class="o">/</span><span class="k">static</span> <span class="p">{</span>
-    <span class="n">alias</span>   <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">location</span><span class="w"> </span><span class="o">/</span><span class="k">static</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">alias</span><span class="w">   </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="k">static</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<hr>
-<p>Nginx 比 Apache&nbsp;高并发的原因</p>
-<p>Nginx 负载均衡调度算法&nbsp;负载均衡之轮询算法</p>
-<p>Apache&nbsp;多进程（多线程）</p>
-<p>Nginx&nbsp;单进程（单线程）</p>
-<p>web socket需要把http设为1.1&nbsp;只握手一次</p>
-<div class="highlight"><pre><span></span><code><span class="nx">location</span><span class="p">{</span>
-  <span class="nx">proxy_http_version</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span><span class="mf">1</span><span class="p">;</span>
-  <span class="nx">proxy_set_header</span> <span class="nx">Upgrade</span> <span class="nx">$http_upgrade</span><span class="p">;</span>
-  <span class="nx">proxy_set_header</span> <span class="nx">Connection</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">;</span> <span class="c1">// 升级到最新版本 Status code 101</span>
-  <span class="nx">proxy_set_header</span> <span class="nx">Host</span> <span class="nx">$host</span><span class="p">;</span> <span class="c1">// 暴露被反向代理隐藏的host</span>
+<h3><span class="caps">SSL</span>&nbsp;证书</h3>
+<p><em>踩坑：Nginx&nbsp;配置完后，只能打开http开头的域名，因为缺少SSL证书</em></p>
+<p><span class="caps">HTTP</span>&nbsp;协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息</p>
+<p><span class="caps">HTTPS</span> 经由 <span class="caps">HTTP</span> 进行通信，但利用 <span class="caps">SSL</span>/<span class="caps">TLS</span> 来加密数据包。<span class="caps">HTTPS</span>&nbsp;开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。</p>
+<p>在nginx的conf目录下新建一个cert目录，并将两个证书文件上传到cert目录下</p>
+<div class="highlight"><pre><span></span><code>listen<span class="w"> </span><span class="m">443</span><span class="w"> </span>ssl<span class="p">;</span><span class="w"> </span><span class="c1"># managed by Certbot</span>
+ssl_certificate<span class="w"> </span><span class="s2">&quot;/etc/letsencrypt/live/xxx.cer&quot;</span><span class="p">;</span>
+ssl_certificate_key<span class="w"> </span><span class="s2">&quot;/etc/letsencrypt/live/xxx.key&quot;</span><span class="p">;</span>
+ssl_session_cache<span class="w"> </span>shared:SSL:1m<span class="p">;</span>
+ssl_session_timeout<span class="w">  </span>10m<span class="p">;</span>
+ssl_ciphers<span class="w"> </span><span class="nv">PROFILE</span><span class="o">=</span>SYSTEM<span class="p">;</span>
+ssl_prefer_server_ciphers<span class="w"> </span>on<span class="p">;</span>
+</code></pre></div>
+
+<p><em>踩坑：[emerg] the &#8220;ssl&#8221; parameter requires ngx_http_ssl_module. Nginx 缺少 http_ssl_module&nbsp;模块</em></p>
+<p>切换到源码包：cd&nbsp;/home/usr/nginx-1.14.2/</p>
+<p>./configure&nbsp;&#8212;with-http_ssl_module</p>
+<p>make (不要make&nbsp;install，否则会覆盖安装)</p>
+<p>备份原有已安装好的nginx：cp /usr/local/nginx/sbin/nginx&nbsp;/usr/local/nginx/sbin/nginx.bak</p>
+<p>停止nginx运行：nginx -s&nbsp;stop</p>
+<p>将刚刚编译好的nginx覆盖掉原有的nginx：cp ./objs/nginx&nbsp;/usr/local/nginx/sbin/nginx</p>
+<p>启动nginx：nginx</p>
+<p>nginx -V&nbsp;查看是否已成功加入</p>
+<div class="highlight"><pre><span></span><code><span class="nt">___</span>
+
+<span class="nt">Nginx</span><span class="w"> </span><span class="nt">比</span><span class="w"> </span><span class="nt">Apache</span><span class="w"> </span><span class="nt">高并发的原因</span>
+
+<span class="nt">Nginx</span><span class="w"> </span><span class="nt">负载均衡调度算法</span>
+<span class="nt">负载均衡之轮询算法</span>
+
+<span class="nt">Apache</span><span class="w"> </span><span class="nt">多进程</span><span class="err">（</span><span class="nt">多线程</span><span class="err">）</span>
+
+<span class="nt">Nginx</span><span class="w"> </span><span class="nt">单进程</span><span class="err">（</span><span class="nt">单线程</span><span class="err">）</span>
+
+<span class="nt">web</span><span class="w"> </span><span class="nt">socket需要把http设为1</span><span class="p">.</span><span class="nc">1</span>
+<span class="nt">只握手一次</span>
+
+<span class="err">```</span><span class="nt">js</span>
+<span class="nt">location</span><span class="p">{</span>
+<span class="w">  </span><span class="n">proxy_http_version</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="err">proxy_set_header</span><span class="w"> </span><span class="err">Upgrade</span><span class="w"> </span><span class="err">$http_upgrade</span><span class="p">;</span>
+<span class="w">  </span><span class="err">proxy_set_header</span><span class="w"> </span><span class="err">Connection</span><span class="w"> </span><span class="err">&quot;upgrade&quot;</span><span class="p">;</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">升级到最新版本</span><span class="w"> </span><span class="err">Status</span><span class="w"> </span><span class="err">code</span><span class="w"> </span><span class="err">101</span>
+<span class="w">  </span><span class="err">proxy_set_header</span><span class="w"> </span><span class="err">Host</span><span class="w"> </span><span class="err">$host</span><span class="p">;</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">暴露被反向代理隐藏的host</span>
 <span class="p">}</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -277,21 +332,23 @@ pm2 start npm --name carto-dashboard-3008 -- run start
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -300,7 +357,6 @@ pm2 start npm --name carto-dashboard-3008 -- run start
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -309,7 +365,6 @@ pm2 start npm --name carto-dashboard-3008 -- run start
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -329,7 +384,6 @@ pm2 start npm --name carto-dashboard-3008 -- run start
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

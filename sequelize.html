@@ -73,31 +73,31 @@
 </code></pre></div>
 
 <h2>建立连接</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Sequelize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
 
 <span class="c1">// 方法1:单独传递参数</span>
-<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-  <span class="nx">dialect</span><span class="o">:</span> <span class="cm">/* &#39;mysql&#39; | &#39;mariadb&#39; | &#39;postgres&#39; | &#39;mssql&#39; 之一 */</span>
-  <span class="nx">operatorsAliases</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">dialectOptions</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">charset</span><span class="o">:</span> <span class="s2">&quot;utf8mb4&quot;</span><span class="p">,</span>
-        <span class="nx">collate</span><span class="o">:</span> <span class="s2">&quot;utf8mb4_unicode_ci&quot;</span><span class="p">,</span>
-        <span class="nx">supportBigNumbers</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">bigNumberStrings</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sequelize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Sequelize</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">dialect</span><span class="o">:</span><span class="w"> </span><span class="cm">/* &#39;mysql&#39; | &#39;mariadb&#39; | &#39;postgres&#39; | &#39;mssql&#39; 之一 */</span>
+<span class="w">  </span><span class="nx">operatorsAliases</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">dialectOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">charset</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;utf8mb4&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">collate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;utf8mb4_unicode_ci&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">supportBigNumbers</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">bigNumberStrings</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
 
-    <span class="nx">pool</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">max</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
-        <span class="nx">min</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-        <span class="nx">acquire</span><span class="o">:</span> <span class="mf">30000</span><span class="p">,</span>
-        <span class="nx">idle</span><span class="o">:</span> <span class="mf">10000</span>
-    <span class="p">},</span>
-    <span class="nx">timezone</span><span class="o">:</span> <span class="s1">&#39;+08:00&#39;</span> <span class="c1">//东八时区</span>
+<span class="w">    </span><span class="nx">pool</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">30000</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">idle</span><span class="o">:</span><span class="w"> </span><span class="mf">10000</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">timezone</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;+08:00&#39;</span><span class="w"> </span><span class="c1">//东八时区</span>
 <span class="p">});</span>
 
 <span class="c1">// 方法2: 传递连接 URI</span>
-<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="s1">&#39;postgres://user:pass@example.com:5432/dbname&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sequelize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Sequelize</span><span class="p">(</span><span class="s1">&#39;postgres://user:pass@example.com:5432/dbname&#39;</span><span class="p">);</span>
 </code></pre></div>
 
 <ul>
@@ -115,13 +115,13 @@
 </ul>
 <p>验证是否连接成功</p>
 <div class="highlight"><pre><span></span><code><span class="nx">sequelize</span>
-  <span class="p">.</span><span class="nx">authenticate</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Success.&quot;</span><span class="p">);</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">authenticate</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Success.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 </code></pre></div>
 
 <p>关闭连接</p>
@@ -130,91 +130,91 @@
 
 <h2>表建模</h2>
 <p>模型是一个扩展 Sequelize.Model&nbsp;的类</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span><span class="p">;</span>
-<span class="kd">class</span> <span class="nx">User</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span><span class="p">;</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Model</span><span class="w"> </span><span class="p">{}</span>
 <span class="nx">User</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span>
-  <span class="p">{</span>
-    <span class="c1">// 属性</span>
-    <span class="nx">firstName</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">type</span><span class="o">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
-      <span class="nx">allowNull</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="nx">lastName</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">type</span><span class="o">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
-      <span class="c1">// allowNull 默认为 true</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="nx">sequelize</span><span class="p">,</span>
-    <span class="nx">modelName</span><span class="o">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
-    <span class="c1">// 参数</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 属性</span>
+<span class="w">    </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">allowNull</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// allowNull 默认为 true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sequelize</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">modelName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 参数</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">);</span>
 </code></pre></div>
 
 <p>Sequelize 在数据库中期望一个名为 users 的表,其中包含 firstName 和 lastName 字段.&nbsp;默认情况下,表名自动复数。</p>
 <p>Sequelize&nbsp;还默认为每个模型定义了字段id(主键),createdAt和updatedAt。</p>
 <h2>更新表结构</h2>
-<div class="highlight"><pre><span></span><code><span class="nv">npx</span> <span class="nv">sails</span> <span class="nv">c</span> <span class="o">--</span><span class="nv">dontLift</span>
-<span class="o">//</span> 更新表
+<div class="highlight"><pre><span></span><code><span class="nv">npx</span><span class="w"> </span><span class="nv">sails</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="o">--</span><span class="nv">dontLift</span>
+<span class="o">//</span><span class="w"> </span>更新表
 <span class="nv">ExternalResource</span>.<span class="nv">sync</span><span class="ss">(</span>{<span class="nv">alter</span>:<span class="nv">true</span>}<span class="ss">)</span>.<span class="k">then</span><span class="ss">(</span><span class="nv">console</span>.<span class="nv">log</span><span class="ss">)</span>.<span class="nv">catch</span><span class="ss">(</span><span class="nv">console</span>.<span class="nv">error</span><span class="ss">)</span>
-<span class="o">//</span> 新建表
+<span class="o">//</span><span class="w"> </span>新建表
 <span class="nv">SummitTrainingContent</span>.<span class="nv">sync</span><span class="ss">()</span>.<span class="k">then</span><span class="ss">(</span><span class="nv">console</span>.<span class="nv">log</span><span class="ss">)</span>.<span class="nv">catch</span><span class="ss">(</span><span class="nv">console</span>.<span class="nv">error</span><span class="ss">)</span>
 </code></pre></div>
 
 <h2>表关联</h2>
 <p>收藏夹表&nbsp;(源)</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// api/hooks/sequelize/models/Collection.js</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Model</span><span class="p">,</span><span class="w"> </span><span class="nx">DataTypes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
 
-<span class="kd">class</span> <span class="nx">Collection</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Collection</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Model</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 <span class="nx">Collection</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
-    <span class="nx">primaryKey</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">autoIncrement</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">name</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
-    <span class="nx">allowNull</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">isDeleted</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">BOOLEAN</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">},</span> <span class="p">{</span>
-  <span class="nx">sequelize</span><span class="p">,</span>
-  <span class="nx">timestamps</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">primaryKey</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">autoIncrement</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">allowNull</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">isDeleted</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">DataTypes</span><span class="p">.</span><span class="nx">BOOLEAN</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sequelize</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">timestamps</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="p">});</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Collection</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Collection</span><span class="p">;</span>
 </code></pre></div>
 
 <p>收藏夹中report表&nbsp;(目标)</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// api/hooks/sequelize/models/CollectionReportMapping.js</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Model</span><span class="p">,</span><span class="w"> </span><span class="nx">DataTypes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
 
-<span class="kd">class</span> <span class="nx">CollectionReportMapping</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">CollectionReportMapping</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Model</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 <span class="nx">CollectionReportMapping</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
-    <span class="nx">primaryKey</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">autoIncrement</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">reportId</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
-    <span class="nx">allowNull</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">},</span> <span class="p">{</span>
-  <span class="nx">sequelize</span><span class="p">,</span>
-  <span class="nx">timestamps</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">primaryKey</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">autoIncrement</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">reportId</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">allowNull</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sequelize</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">timestamps</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="p">});</span>
 
-<span class="kd">const</span> <span class="nx">Collection</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./Collection&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./Collection&#39;</span><span class="p">);</span>
 
 <span class="nx">CollectionReportMapping</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">Collection</span><span class="p">);</span>
 <span class="nx">Collection</span><span class="p">.</span><span class="nx">hasMany</span><span class="p">(</span><span class="nx">CollectionReportMapping</span><span class="p">);</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">CollectionReportMapping</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CollectionReportMapping</span><span class="p">;</span>
 </code></pre></div>
 
 <blockquote>
@@ -224,37 +224,37 @@
 <p>collection 自动获得 createCollectionReportMapping、setCollectionReportMapping 和 getCollectionReportMapping&nbsp;方法。</p>
 <p>为收藏夹中创建新report</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// api/hooks/cron/tasks/collectionReportMigration.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">collectionReportMigration</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">originalCollections</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Collection</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
-    <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">isDeleted</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">});</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">collectionReportMigration</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">originalCollections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Collection</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">isDeleted</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
 
-  <span class="nx">originalCollections</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">collection</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">collection</span><span class="p">.</span><span class="nx">reports</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">report</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">await</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">createCollectionReportMapping</span><span class="p">({</span>
-        <span class="nx">reportId</span><span class="o">:</span> <span class="nx">report</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="nx">originalCollections</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">collection</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">collection</span><span class="p">.</span><span class="nx">reports</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">report</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">createCollectionReportMapping</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">reportId</span><span class="o">:</span><span class="w"> </span><span class="nx">report</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
 
 <p>查找所有收藏夹并列出其中的report，include是sequelize实现连表查询的一个语法</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// api/controllers/collection/list.js</span>
-<span class="kd">const</span> <span class="nx">collectiondata</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Collection</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
-  <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">isDeleted</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">include</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">model</span><span class="o">:</span> <span class="nx">CollectionReportMapping</span><span class="p">,</span>
-    <span class="nx">attributes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;reportId&#39;</span><span class="p">],</span>
-  <span class="p">},</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">collectiondata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Collection</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">isDeleted</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">include</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="nx">CollectionReportMapping</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;reportId&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">reportId</span> <span class="k">FROM</span> <span class="n">Collections</span> <span class="k">as</span> <span class="k">c</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">CollectionReportMappings</span> <span class="k">as</span> <span class="n">r</span> <span class="k">on</span> <span class="n">r</span><span class="p">.</span><span class="n">collectionId</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">reportId</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Collections</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">CollectionReportMappings</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">collectionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -340,21 +340,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -363,7 +365,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -372,7 +373,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -392,7 +392,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

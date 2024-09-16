@@ -58,7 +58,7 @@
 	<div class="summary"><p>React 16.8.0 是第一个支持Hook的版本。React Native 从0.59版本开始支持&nbsp;Hook。</p>
 <h2>Why react hook&nbsp;?</h2>
 <hr>
-<h3>在 …</h3></div>
+<h3>在组件之间复用状态逻 …</h3></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -82,15 +82,15 @@
 	</header>
 	<div class="summary"><h3>导出</h3>
 <div class="highlight"><pre><span></span><code><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
-  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
-<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">href</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;data.csv&#39;</span>
+<span class="p">},</span><span class="w"> </span><span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
 </code></pre></div>
 
 <h3>展开运算符</h3>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
-  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">href</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
 <span class="p">};</span>
 <span class="k">return …</span></code></pre></div></div>
 	<footer>
@@ -164,8 +164,18 @@
 	<div class="summary"><h3>绑定未提供的事件</h3>
 <hr>
 <p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize …</span></code></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><br></p>
+<h3>AJAX加载数据</h3>
+<hr>
+<p>最好在componentDidMount函数中加载数据，加 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -188,7 +198,7 @@
 		</div>
 	</header>
 	<div class="summary"><h2>事件响应</h2>
-<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监 …</p></div>
+<p>表单组件（包括所有HTML原生组件）可以通过设置onChange(&nbsp;)回调函数来监听组件变 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -237,7 +247,8 @@
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>JSX语法转义器会识别嵌入JavaScript代码中的HTML标签，当遇到&#8217;&lt;&#8217;标识符就会启动JSX …</p></div>
+	<div class="summary"><p>JSX语法转义器会识别嵌入JavaScript代码中的HTML标签，当遇到&#8217;&lt;&#8217;标识符就会启动JSX转移过程，遇到&#8217;{&#8216;标识符就会当作JavaScript代码进行处理。</p>
+<p>引用Babel中负责JSX转义的模块browser.js，并将使用 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -260,7 +271,7 @@
 		</div>
 	</header>
 	<div class="summary"><blockquote>
-<p>使用React只有两个步骤：一是创建虚拟DOM（多层嵌套），二是渲染到浏览器中。我 …</p></blockquote></div>
+<p>使用React只有两个步骤：一是创建虚拟DOM（多层嵌套），二是渲染到浏览器中。我们要做的就是 …</p></blockquote></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -284,7 +295,7 @@
 	</header>
 	<div class="summary"><h3>1.&nbsp;虚拟Dom</h3>
 <hr>
-<p>浏览器DOM是由HtmlElement元素组成的树，虚拟DOM是有ReactNode节点元素组成的 …</p></div>
+<p>浏览器DOM是由HtmlElement元素组成的树，虚拟DOM是有ReactNode节点元素组成的树。每次数据变化React都会扫描整个DOM树，自动计算与上次虚拟DOM的差异变化，然后 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -356,21 +367,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -379,7 +392,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -388,7 +400,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -408,7 +419,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

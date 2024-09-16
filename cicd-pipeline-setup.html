@@ -90,24 +90,24 @@
 <li><span class="quo">&#8216;</span>_scm_jenkins/jenkins.yaml&#8217;.</li>
 </ol>
 <p>This file is required to trigger pipeline build for <span class="caps">CI</span>/<span class="caps">CD</span>&nbsp;.</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://jenkins.eat.xxx.com/project-name/</span>
-  <span class="nt">buildFrom</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stage</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">preprod</span>
-  <span class="nt">jobs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">jobStyle</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">multi-branch-pipeline</span>
-      <span class="nt">jobName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-frontend</span>
-      <span class="nt">jobCredentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sourcecode-bitbucket</span>
-      <span class="nt">includeBranches</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">feature/*</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bugfix/*</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hotfix/*</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stage</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">preprod</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://jenkins.eat.xxx.com/project-name/</span>
+<span class="w">  </span><span class="nt">buildFrom</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preprod</span>
+<span class="w">  </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">jobStyle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-branch-pipeline</span>
+<span class="w">      </span><span class="nt">jobName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vital-frontend</span>
+<span class="w">      </span><span class="nt">jobCredentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sourcecode-bitbucket</span>
+<span class="w">      </span><span class="nt">includeBranches</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">feature/*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bugfix/*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotfix/*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preprod</span>
 </code></pre></div>
 
 <ol>
@@ -115,27 +115,27 @@
 </ol>
 <p>This file is to trigger the pipeline&nbsp;automatically. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Specify which service to subscribe to. This should not be changed</span>
-<span class="p p-Indicator">-</span> <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">eat-jenkins</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eat-jenkins</span>
 <span class="c1"># This is the environemt of automation_piplines not environment of application or Jenkins</span>
-<span class="nt">environment</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Production</span>
-<span class="nt">teamKey</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tavc</span>
-<span class="nt">jenkinsType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Production</span>
+<span class="nt">teamKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tavc</span>
+<span class="nt">jenkinsType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 </code></pre></div>
 
 <ol>
 <li><span class="quo">&#8216;</span>environment-mapping.yaml&#8217;</li>
 </ol>
 <p>This file is required to determine which branch related to which environment and used as an put for pipeline creation. The file looks like as&nbsp;below.</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;(feature|bugfix|hotfix)/.*&quot;</span>
-  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;PREDEV&quot;</span>
-<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;develop&quot;</span>
-  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;DEV&quot;</span>
-<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;stage&quot;</span>
-  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;STAGE&quot;</span>
-<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;preprod&quot;</span>
-  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;PREPROD&quot;</span>
-<span class="p p-Indicator">-</span> <span class="nt">branchNamePattern</span><span class="p">:</span> <span class="s">&quot;master&quot;</span>
-  <span class="nt">environment</span><span class="p">:</span> <span class="s">&quot;PROD&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(feature|bugfix|hotfix)/.*&quot;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PREDEV&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;develop&quot;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DEV&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stage&quot;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;STAGE&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;preprod&quot;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PREPROD&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;master&quot;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PROD&quot;</span>
 </code></pre></div>
 
 <table>
@@ -281,24 +281,24 @@
 <li><span class="quo">&#8216;</span>manifest-sources.yaml&#8217;</li>
 </ol>
 <p>This file defines how many type of manifest file are the project using. There is a two type of manifest are available, common and environment specific. This file is used as an argument during pipeline creation in the&nbsp;jenkinsfile.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span>
 <span class="nt">sources</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">common</span>
-    <span class="nt">location</span><span class="p">:</span>
-      <span class="nt">locationType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
-      <span class="nt">file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
-    <span class="nt">manifest</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">simple</span>
-      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">common</span>
-      <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">environment</span>
-    <span class="nt">location</span><span class="p">:</span>
-      <span class="nt">locationType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
-      <span class="nt">file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
-    <span class="nt">manifest</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">by-environment</span>
-      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">environments</span>
-      <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">locationType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">      </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+<span class="w">    </span><span class="nt">manifest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">locationType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">      </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+<span class="w">    </span><span class="nt">manifest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">by-environment</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environments</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 
 <ol>
@@ -306,118 +306,118 @@
 </ol>
 <p>This file holds the configuration related to your file. It has majorly two parts. One is common, Other is Environment&nbsp;type.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">common</span><span class="p">:</span>
-  <span class="nt">pipelineType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node</span>
-  <span class="nt">debug</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">npm</span><span class="p">:</span>
-    <span class="nt">dockerImage</span><span class="p">:</span> <span class="s">&#39;xxx.artifactrepo.xxx.com/jpm/node:14&#39;</span>
-  <span class="nt">artifactory</span><span class="p">:</span>
-    <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tafn-npm</span>
-  <span class="nt">customSetup</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
-    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/install.groovy</span>
-  <span class="nt">unitTest</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
-    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/unitTest.groovy</span>
-  <span class="nt">lint</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">buildAnalysis</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">dependencyAnalysis</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">staticAnalysis</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sonar</span>
-    <span class="nt">directory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
-    <span class="nt">shortLivedAnalysis</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">shortLivedBuildResults</span><span class="p">:</span>
-      <span class="nt">IGNORE</span><span class="p">:</span>
-        <span class="nt">BLOCKER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">CRITICAL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">MAJOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">MINOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">INFO</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">longLivedAnalysis</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">longLivedBuildResults</span><span class="p">:</span>
-      <span class="nt">IGNORE</span><span class="p">:</span>
-        <span class="nt">BLOCKER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">CRITICAL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">MAJOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">MINOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">INFO</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">QUALITY_GATE</span><span class="p">:</span>
-        <span class="nt">ERROR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SUCCESS</span>
-        <span class="nt">WARN</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SUCCESS</span>
-  <span class="nt">release</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">package</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zip</span>
-    <span class="nt">dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
-    <span class="nt">include</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dist/**</span>
-    <span class="nt">versionPackageName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">versionFileUpdates</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;node-package&#39;</span>
-  <span class="nt">publish</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifactory-upload</span>
-  <span class="nt">versionCalculation</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
-    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/version-calculation.groovy</span>
-    <span class="nt">confirmVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">resolveArtifacts</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifactory</span>
-    <span class="nt">artifactPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tafn-npm</span>
-  <span class="nt">deploy</span><span class="p">:</span>
-    <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">multi</span>
-    <span class="nt">parallel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">stages</span><span class="p">:</span>
-      <span class="nt">s3Upload</span><span class="p">:</span>
-        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">script</span>
-        <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/s3Upload.groovy</span>
+<span class="w">  </span><span class="nt">pipelineType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node</span>
+<span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">npm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dockerImage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;xxx.artifactrepo.xxx.com/jpm/node:14&#39;</span>
+<span class="w">  </span><span class="nt">artifactory</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tafn-npm</span>
+<span class="w">  </span><span class="nt">customSetup</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/install.groovy</span>
+<span class="w">  </span><span class="nt">unitTest</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/unitTest.groovy</span>
+<span class="w">  </span><span class="nt">lint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">buildAnalysis</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">dependencyAnalysis</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">staticAnalysis</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonar</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">    </span><span class="nt">shortLivedAnalysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">shortLivedBuildResults</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">IGNORE</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">BLOCKER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">CRITICAL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">MAJOR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">MINOR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">INFO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">longLivedAnalysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">longLivedBuildResults</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">IGNORE</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">BLOCKER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">CRITICAL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">MAJOR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">MINOR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">INFO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">QUALITY_GATE</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ERROR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUCCESS</span>
+<span class="w">        </span><span class="nt">WARN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUCCESS</span>
+<span class="w">  </span><span class="nt">release</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">package</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip</span>
+<span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">    </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dist/**</span>
+<span class="w">    </span><span class="nt">versionPackageName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">versionFileUpdates</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;node-package&#39;</span>
+<span class="w">  </span><span class="nt">publish</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">artifactory-upload</span>
+<span class="w">  </span><span class="nt">versionCalculation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/version-calculation.groovy</span>
+<span class="w">    </span><span class="nt">confirmVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">resolveArtifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">artifactory</span>
+<span class="w">    </span><span class="nt">artifactPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tafn-npm</span>
+<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi</span>
+<span class="w">    </span><span class="nt">parallel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">stages</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">s3Upload</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">        </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project/_scm_jenkins/s3Upload.groovy</span>
 <span class="nt">environments</span><span class="p">:</span>
-  <span class="nt">PREDEV</span><span class="p">:</span>
-    <span class="nt">customSetup</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">unitTest</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">DEV</span><span class="p">:</span>
-    <span class="nt">customSetup</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">unitTest</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">staticAnalysis</span><span class="p">:</span>
-      <span class="nt">longLivedAnalysis</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">release</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
-      <span class="nt">updateChangelog</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-      <span class="nt">merge</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-      <span class="nt">confirmVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-      <span class="nt">subDirectory</span><span class="p">:</span> <span class="s">&#39;&#39;</span>
-      <span class="nt">branchToRelease</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
-      <span class="nt">releaseDestination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">develop</span>
-    <span class="nt">package</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend</span>
-    <span class="nt">publish</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">filePattern</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend-*.zip</span>
-    <span class="nt">versionCalculation</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">resolveArtifacts</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">artifactPattern</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend-${version}.zip</span>
-    <span class="nt">deploy</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">stages</span><span class="p">:</span>
-        <span class="nt">s3Upload</span><span class="p">:</span>
-          <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">PREDEV</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">customSetup</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">unitTest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">DEV</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">customSetup</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">unitTest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">staticAnalysis</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">longLivedAnalysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">release</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="w">      </span><span class="nt">updateChangelog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">merge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">confirmVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">subDirectory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">branchToRelease</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">      </span><span class="nt">releaseDestination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">    </span><span class="nt">package</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend</span>
+<span class="w">    </span><span class="nt">publish</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">filePattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend-*.zip</span>
+<span class="w">    </span><span class="nt">versionCalculation</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">resolveArtifacts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">artifactPattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vital-dev-frontend-${version}.zip</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">stages</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">s3Upload</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 
 <ol>
@@ -444,73 +444,73 @@
 <li><span class="quo">&#8216;</span>_scm_jenkins/s3Upload.groovy&#8217;</li>
 </ol>
 <p>This is the files responsible for uploading your artifact to S3 in <span class="caps">AWS</span>. This file contain S3 credential to upload artifact into S3.The file should looks as&nbsp;below.</p>
-<div class="highlight"><pre><span></span><code><span class="kt">def</span> <span class="nf">run</span><span class="o">(</span><span class="n">jobManifest</span><span class="o">)</span> <span class="o">{</span>
-  <span class="kt">def</span> <span class="n">jobVars</span> <span class="o">=</span> <span class="n">jobManifest</span><span class="o">.</span><span class="na">getJobVars</span><span class="o">()</span>
-  <span class="n">ensure</span><span class="o">.</span><span class="na">insideDockerContainer</span><span class="o">(</span><span class="s1">&#39;xxx.artifactrepo.xxx.com/jpm/awscli&#39;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">dir</span><span class="o">(</span><span class="s1">&#39;project&#39;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Started inside Dir&quot;</span><span class="o">)</span>
-      <span class="n">deleteDir</span><span class="o">()</span>
-      <span class="n">unstash</span> <span class="n">jobVars</span><span class="o">.</span><span class="na">projectStash</span>
-      <span class="n">jobVars</span><span class="o">.</span><span class="na">packageStashes</span><span class="o">.</span><span class="na">each</span><span class="o">({</span> <span class="n">stashName</span> <span class="o">-&gt;</span>
-          <span class="n">unstash</span> <span class="nl">name:</span> <span class="n">stashName</span>
-      <span class="o">})</span>
-      <span class="kt">def</span> <span class="n">environment</span> <span class="o">=</span> <span class="n">jobVars</span><span class="o">?.</span><span class="na">jpmEnvironment</span>
-      <span class="kt">def</span> <span class="n">awsRegion</span> <span class="o">=</span> <span class="s2">&quot;us-east-1&quot;</span>
-      <span class="kt">def</span> <span class="n">version</span> <span class="o">=</span> <span class="n">jobVars</span><span class="o">?.</span><span class="na">calculatedVersion</span>
-      <span class="kt">def</span> <span class="n">packageName</span><span class="o">=</span><span class="s2">&quot;my-vital-front-end-${version}.zip&quot;</span>
-      <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;PackageName inside Dir&quot;</span><span class="o">+</span><span class="n">packageName</span><span class="o">)</span>
-      <span class="n">withEnv</span><span class="o">([</span><span class="s2">&quot;AWS_DEFAULT_REGION=${awsRegion}&quot;</span><span class="o">])</span> <span class="o">{</span>
-        <span class="n">withCredentials</span><span class="o">(...)</span> <span class="o">{</span>
-          <span class="kt">def</span> <span class="n">keyNotExists</span> <span class="o">=</span> <span class="n">sh</span><span class="o">(</span>
-            <span class="nl">script:</span> <span class="s2">&quot;aws s3 ls s3://vital-preprod-site-asset/frontend/${packageName}&quot;</span><span class="o">,</span>
-            <span class="nl">returnStatus:</span> <span class="kc">true</span>
-          <span class="o">)</span>
-          <span class="k">if</span> <span class="o">(</span><span class="n">keyNotExists</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">sh</span> <span class="s2">&quot;aws s3 cp ./dist/${packageName} s3://vital-preprod-site-asset/frontend/ --sse&quot;</span>
-              <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;S3 upload Done&quot;</span><span class="o">)</span>
-          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Package already exists in the bucket&quot;</span><span class="o">)</span>
-          <span class="o">}</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">def</span><span class="w"> </span><span class="nf">run</span><span class="o">(</span><span class="n">jobManifest</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="kt">def</span><span class="w"> </span><span class="n">jobVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jobManifest</span><span class="o">.</span><span class="na">getJobVars</span><span class="o">()</span>
+<span class="w">  </span><span class="n">ensure</span><span class="o">.</span><span class="na">insideDockerContainer</span><span class="o">(</span><span class="s1">&#39;xxx.artifactrepo.xxx.com/jpm/awscli&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">dir</span><span class="o">(</span><span class="s1">&#39;project&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Started inside Dir&quot;</span><span class="o">)</span>
+<span class="w">      </span><span class="n">deleteDir</span><span class="o">()</span>
+<span class="w">      </span><span class="n">unstash</span><span class="w"> </span><span class="n">jobVars</span><span class="o">.</span><span class="na">projectStash</span>
+<span class="w">      </span><span class="n">jobVars</span><span class="o">.</span><span class="na">packageStashes</span><span class="o">.</span><span class="na">each</span><span class="o">({</span><span class="w"> </span><span class="n">stashName</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">          </span><span class="n">unstash</span><span class="w"> </span><span class="nl">name:</span><span class="w"> </span><span class="n">stashName</span>
+<span class="w">      </span><span class="o">})</span>
+<span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jobVars</span><span class="o">?.</span><span class="na">jpmEnvironment</span>
+<span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">awsRegion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jobVars</span><span class="o">?.</span><span class="na">calculatedVersion</span>
+<span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">packageName</span><span class="o">=</span><span class="s2">&quot;my-vital-front-end-${version}.zip&quot;</span>
+<span class="w">      </span><span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;PackageName inside Dir&quot;</span><span class="o">+</span><span class="n">packageName</span><span class="o">)</span>
+<span class="w">      </span><span class="n">withEnv</span><span class="o">([</span><span class="s2">&quot;AWS_DEFAULT_REGION=${awsRegion}&quot;</span><span class="o">])</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="n">withCredentials</span><span class="o">(...)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">          </span><span class="kt">def</span><span class="w"> </span><span class="n">keyNotExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sh</span><span class="o">(</span>
+<span class="w">            </span><span class="nl">script:</span><span class="w"> </span><span class="s2">&quot;aws s3 ls s3://vital-preprod-site-asset/frontend/${packageName}&quot;</span><span class="o">,</span>
+<span class="w">            </span><span class="nl">returnStatus:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">          </span><span class="o">)</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="n">keyNotExists</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="n">sh</span><span class="w"> </span><span class="s2">&quot;aws s3 cp ./dist/${packageName} s3://vital-preprod-site-asset/frontend/ --sse&quot;</span>
+<span class="w">              </span><span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;S3 upload Done&quot;</span><span class="o">)</span>
+<span class="w">          </span><span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Package already exists in the bucket&quot;</span><span class="o">)</span>
+<span class="w">          </span><span class="o">}</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 
-<span class="kt">def</span> <span class="nf">expectsManifest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="kc">true</span>
+<span class="kt">def</span><span class="w"> </span><span class="nf">expectsManifest</span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span>
 <span class="o">}</span>
 
-<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+<span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">;</span>
 </code></pre></div>
 
 <ol>
 <li><span class="quo">&#8216;</span>_scm_jenkins/install.groovy&#8217;</li>
 </ol>
 <p>This is where all the prerequisite builds&nbsp;happen. </p>
-<div class="highlight"><pre><span></span><code><span class="kt">def</span> <span class="nf">run</span><span class="o">(</span><span class="n">jobManifest</span><span class="o">)</span> <span class="o">{</span>
-  <span class="kt">def</span> <span class="n">jobVars</span> <span class="o">=</span> <span class="n">jobManifest</span><span class="o">.</span><span class="na">getJobVars</span><span class="o">()</span>
-  <span class="n">ensure</span><span class="o">.</span><span class="na">insideDockerContainer</span><span class="o">(</span><span class="s1">&#39;xxx.artifactrepo.xxx.com/jpm/node:14&#39;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">dir</span><span class="o">(</span><span class="s1">&#39;project&#39;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="kt">def</span> <span class="n">jpmEnvironment</span> <span class="o">=</span> <span class="n">jobVars</span><span class="o">?.</span><span class="na">jpmEnvironment</span>
-      <span class="kt">def</span> <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;dev&quot;</span>
-      <span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;JPM Environment: &quot;</span> <span class="o">+</span> <span class="n">jpmEnvironment</span><span class="o">)</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">jpmEnvironment</span> <span class="o">==</span> <span class="s2">&quot;STAGE&quot;</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;stage&quot;</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">jpmEnvironment</span> <span class="o">==</span> <span class="s2">&quot;PREPROD&quot;</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;preprod&quot;</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">jpmEnvironment</span> <span class="o">==</span> <span class="s2">&quot;PROD&quot;</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">branchEnv</span> <span class="o">=</span> <span class="s2">&quot;prod&quot;</span>
-      <span class="o">}</span> 
-      <span class="n">sh</span> <span class="s2">&quot;yarn&quot;</span>
-      <span class="n">sh</span> <span class="s2">&quot;yarn build-${branchEnv}&quot;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">def</span><span class="w"> </span><span class="nf">run</span><span class="o">(</span><span class="n">jobManifest</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="kt">def</span><span class="w"> </span><span class="n">jobVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jobManifest</span><span class="o">.</span><span class="na">getJobVars</span><span class="o">()</span>
+<span class="w">  </span><span class="n">ensure</span><span class="o">.</span><span class="na">insideDockerContainer</span><span class="o">(</span><span class="s1">&#39;xxx.artifactrepo.xxx.com/jpm/node:14&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">dir</span><span class="o">(</span><span class="s1">&#39;project&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">jpmEnvironment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jobVars</span><span class="o">?.</span><span class="na">jpmEnvironment</span>
+<span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">branchEnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span>
+<span class="w">      </span><span class="n">pPrint</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;JPM Environment: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">jpmEnvironment</span><span class="o">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="n">jpmEnvironment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;STAGE&quot;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="n">branchEnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;stage&quot;</span>
+<span class="w">      </span><span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="n">jpmEnvironment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;PREPROD&quot;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="n">branchEnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;preprod&quot;</span>
+<span class="w">      </span><span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="n">jpmEnvironment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;PROD&quot;</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="n">branchEnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prod&quot;</span>
+<span class="w">      </span><span class="o">}</span><span class="w"> </span>
+<span class="w">      </span><span class="n">sh</span><span class="w"> </span><span class="s2">&quot;yarn&quot;</span>
+<span class="w">      </span><span class="n">sh</span><span class="w"> </span><span class="s2">&quot;yarn build-${branchEnv}&quot;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
-<span class="kt">def</span> <span class="nf">expectsManifest</span><span class="o">()</span> <span class="o">{</span>
-  <span class="k">return</span> <span class="kc">true</span>
+<span class="kt">def</span><span class="w"> </span><span class="nf">expectsManifest</span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span>
 <span class="o">}</span>
-<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+<span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -596,21 +596,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -619,7 +621,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -628,7 +629,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -648,7 +648,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

@@ -1,0 +1,685 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Docker
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Docker</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2022-05-04T00:00:00+08:00"> 
+            <a href="/archive/2022/ 5/index.html">三 04 五月 2022 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>Docker的三个基本概念:</p>
+<ul>
+<li>Image&nbsp;镜像</li>
+<li>Container&nbsp;容器</li>
+<li>Repository&nbsp;仓库</li>
+</ul>
+<p>在第一次部署项目的时候把项目等环境直接放进docker里面，下次要迁移项目到另一台服务器上时，把docker镜像上传到docker仓库上，再另一台服务器直接拉取。</p>
+<p>Image是类，Container是镜像的可运行实例，类只有一个，但可以new出千千万万个实例对象。可以使用DockerAPI或CLI创建、启动、停止、移动或删除容器。</p>
+<h2>安装&nbsp;Docker</h2>
+<ul>
+<li><span class="caps">MAC</span></li>
+</ul>
+<p>Get the&nbsp;app</p>
+<p>安装&nbsp;homebrew: </p>
+<div class="highlight"><pre><span></span><code>/bin/zsh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<ol>
+<li>
+<p>Docker&nbsp;Desktop</p>
+<p>安装&nbsp;docker:</p>
+<p><code>bash
+brew install --cask --appdir=/Applications docker</code>
+打开蓝色小鲸鱼APP：Docker</p>
+<p><code>bash
+docker --version</code></p>
+</li>
+<li>
+<p>Rancher&nbsp;Desktop</p>
+<p>https://docs.rancherdesktop.io/getting-started/installation/</p>
+<p><em>踩坑：mysql  启动失败 cp_mysql-1  | chown: changing ownership of &#8216;/var/lib/mysql/&#8217;: Permission denied</em>&nbsp;https://github.com/rancher-sandbox/rancher-desktop/issues/1209</p>
+<p>Include the following content in /override.yaml:
+<code>shell
+cd ~/Library/Application\ Support/rancher-desktop/lima/_config
+vi override.yaml</code>
+<code>yaml
+mountType: 9p
+mounts:
+  - location: "~"9p:
+      securityModel: mapped-xattr
+      cache: "mmap"</code></p>
+</li>
+<li>
+<p><span class="caps">LINUX</span></p>
+</li>
+</ol>
+<p>yum install -y yum-utils device-mapper-persistent-data&nbsp;lvm2</p>
+<p>yum-config-manager &#8212;add-repo&nbsp;https://download.docker.com/linux/centos/docker-ce.repo</p>
+<p>yum install -y docker-ce docker-ce-cli <a href="http://containerd.io/">containerd.io</a></p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>start<span class="w"> </span>docker<span class="w"> </span>--add-host<span class="o">=</span>host.docker.internal:host-gateway
+
+systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+
+<span class="c1"># 检查docker服务是否开启自动重启,返回’enabled‘则为已开启</span>
+systemctl<span class="w"> </span>is-enabled<span class="w"> </span>docker.service
+
+<span class="c1"># 若返回’disabled‘，则需要设置为enabled，设置命令</span>
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker.service
+
+docker<span class="w"> </span>-v
+</code></pre></div>
+
+<hr>
+<p>添加&nbsp;Dockerfile</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/docker/getting-started.git
+
+<span class="nb">cd</span><span class="w"> </span>getting-started/app
+vi<span class="w"> </span>Dockerfile
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c"># syntax=docker/dockerfile:1</span>
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:18-alpine</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>yarn<span class="w"> </span>install<span class="w"> </span>--production
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;src/index.js&quot;</span><span class="p">]</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">RUN</span>:&nbsp;在容器中运行指令的命令。</li>
+<li><span class="caps">CMD</span>: 启动容器时运行指定的命令，Dockerfile 中可以有多个 <span class="caps">CMD</span> 指令，但只有最后一个生效，如果 docker run 后面指定有参数，该参数将会替换 <span class="caps">CMD</span>&nbsp;的参数。</li>
+</ul>
+<p>创建镜像</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>getting-started<span class="w"> </span>.
+</code></pre></div>
+
+<ul>
+<li>-t&nbsp;镜像名</li>
+<li>. Dockerfile&nbsp;路径 </li>
+</ul>
+<p>列出镜像</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>image<span class="w"> </span>ls
+</code></pre></div>
+
+<p>删除镜像</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rmi<span class="w"> </span>&lt;image-id&gt;
+</code></pre></div>
+
+<p>创建容器</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-dp<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>getting-started
+</code></pre></div>
+
+<ul>
+<li>-d “detached” mode (in the&nbsp;background)</li>
+<li>-p port mapping &#8216;host’s port 3000&#8217;:&#8217;container’s port&nbsp;3000&#8217;</li>
+</ul>
+<p>列出容器</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span><span class="c1"># 运行中的容器</span>
+docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w"> </span>
+docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span>-f<span class="w"> </span><span class="nv">name</span><span class="o">=</span>swift_server<span class="w"> </span><span class="c1"># -q 只显示id -f 过滤</span>
+</code></pre></div>
+
+<p>停止容器</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>&lt;the-container-id&gt;
+</code></pre></div>
+
+<p>重启容器</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>start<span class="w"> </span>&lt;the-container-id&gt;<span class="w"> </span><span class="c1"># 包含容器文件系统挂载的操作</span>
+docker<span class="w"> </span>restart<span class="w"> </span>&lt;the-container-id&gt;<span class="w"> </span><span class="c1"># 不包含容器文件系统的卸载与挂载操作</span>
+docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>mycontainer<span class="w"> </span>--restart<span class="o">=</span>always<span class="w"> </span>image_name<span class="w"> </span><span class="c1"># 自动重启</span>
+</code></pre></div>
+
+<p><em>更新.env文件后得删除容器重建，docker&nbsp;restart/start无用</em></p>
+<p>删除容器</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>&lt;the-container-id&gt;
+</code></pre></div>
+
+<ul>
+<li>-f&nbsp;不用先停止，强制删除容器</li>
+</ul>
+<p>上传镜像到 Docker&nbsp;Hub</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span>yogadock
+docker<span class="w"> </span>image<span class="w"> </span>ls
+
+<span class="c1"># docker tag SOURCE_IMAGE[:TAG] USER-NAME/TARGET_IMAGE[:TAG]</span>
+docker<span class="w"> </span>tag<span class="w"> </span>getting-started<span class="w"> </span>yogadock/getting-started
+docker<span class="w"> </span>push<span class="w"> </span>yogadock/getting-started
+</code></pre></div>
+
+<ul>
+<li>不指定tag默认latest</li>
+</ul>
+<p>在虚机上运行新实例</p>
+<p>Play with Docker:&nbsp;https://labs.play-with-docker.com/</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-dp<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>yogadock/getting-started
+</code></pre></div>
+
+<p>查看日志</p>
+<p>默认的日志路径：/var/lib/docker/containers/<span class="caps">ID</span>/<span class="caps">ID</span>-json.log</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>&lt;container-id&gt;<span class="w"> </span>-f
+docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;container-id&gt;<span class="w"> </span>--tail<span class="o">=</span><span class="m">300</span>
+</code></pre></div>
+
+<ul>
+<li>-f, &#8212;follow&nbsp;实时输出日志，最后一行为当前时间戳的日志</li>
+<li>&#8212;tail&nbsp;限制行数</li>
+</ul>
+<p>显示容器根目录</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;container-id&gt;<span class="w"> </span>ls
+</code></pre></div>
+
+<p>插件</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>plugin<span class="w"> </span>ls
+docker<span class="w"> </span>plugin<span class="w"> </span>stop<span class="w"> </span>&lt;plugin-id&gt;
+</code></pre></div>
+
+<p><em>docker: Error response from daemon: authorization denied by plugin openpolicyagent/opa-docker-authz-v2:0.4: request rejected by administrative&nbsp;policy.</em></p>
+<p>配置</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>info
+docker<span class="w"> </span>info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Dir
+du<span class="w"> </span>-hs<span class="w"> </span>/var/lib/docker/
+df<span class="w"> </span>-h<span class="w"> </span>/var/lib/docker/
+
+docker<span class="w"> </span>system<span class="w"> </span>df<span class="w"> </span><span class="c1"># 占用的空间</span>
+docker<span class="w"> </span>system<span class="w"> </span>prune<span class="w"> </span><span class="c1"># 清理没用的空间</span>
+</code></pre></div>
+
+<p><em>踩坑：
+Job for docker.service failed because the control process exited with error&nbsp;code</em></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/etc/docker/<span class="w"> </span><span class="c1"># 进入docker目录</span>
+cp<span class="w"> </span>daemon.json<span class="w"> </span>daemon_backup.json
+mv<span class="w"> </span>daemon.json<span class="w"> </span>daemon.conf<span class="w"> </span><span class="c1"># 修改daemon的类型</span>
+systemctl<span class="w"> </span>restart<span class="w"> </span>docker<span class="w"> </span><span class="c1"># 重启docker</span>
+</code></pre></div>
+
+<h3>volume mount&nbsp;数据卷</h3>
+<p>容器是镜像的实例化。数据如果都在容器中，一旦容器删除，数据就会丢失。</p>
+<p>数据卷技术可将容器产生的数据同步到本地，容器之间也可以共享，从而实现容器数据的持久化。</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span><span class="c1"># 查看Volumes</span>
+docker<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>todo-db<span class="w"> </span><span class="c1"># 查看某个volumn</span>
+docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span>todo-db<span class="w"> </span><span class="c1"># 删除一个 Volume</span>
+docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>todo-db<span class="w"> </span><span class="c1"># 创建一个Volume</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-dp<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,src<span class="o">=</span>todo-db,target<span class="o">=</span>/etc/todos<span class="w"> </span>getting-started
+</code></pre></div>
+
+<h3>bind&nbsp;mount</h3>
+<p>将宿主机中的文件、目录mount到容器上。其上的数据可以被宿主机读写，可以被mount它的所有容器读写。</p>
+<p>bind mount the current directory from the host into the /app directory in the&nbsp;container</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-dp<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span>/app<span class="w"> </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>,target<span class="o">=</span>/app<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>node:18-alpine<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;yarn install &amp;&amp; yarn run dev&quot;</span>
+</code></pre></div>
+
+<ul>
+<li>-w sets the “working directory” or the current directory that the command will run&nbsp;from</li>
+</ul>
+<p>nodemon&nbsp;是一种工具，可在检测到目录中的文件更改时动重新启动应用程序</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// package.json</span>
+<span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nodemon src/index.js&quot;</span>
+<span class="p">},</span>
+</code></pre></div>
+
+<h3>network</h3>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>todo-app
+docker<span class="w"> </span>network<span class="w"> </span>ls
+docker<span class="w"> </span>network<span class="w"> </span>rm<span class="w"> </span>todo-app
+</code></pre></div>
+
+<p>Start a MySQL container and attach it to the&nbsp;network.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="w"> </span>todo-app<span class="w"> </span>--network-alias<span class="w"> </span>mysql<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>todo-mysql-data:/var/lib/mysql<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>secret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">MYSQL_DATABASE</span><span class="o">=</span>todos<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>mysql:8.0
+</code></pre></div>
+
+<p>connect to the&nbsp;database</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;mysql-container-id&gt;<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+
+<span class="c1"># 等价于</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;mysql-container-id&gt;<span class="w"> </span>bin/bash<span class="w"> </span>
+mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+</code></pre></div>
+
+<p>Connect app to&nbsp;MySQL</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-dp<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span>/app<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/app&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="w"> </span>todo-app<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">MYSQL_HOST</span><span class="o">=</span>mysql<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">MYSQL_USER</span><span class="o">=</span>root<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>secret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">MYSQL_DB</span><span class="o">=</span>todos<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>node:18-alpine<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;yarn install &amp;&amp; yarn run dev&quot;</span>
+</code></pre></div>
+
+<p>删除network, database,&nbsp;todo-app都不会使数据丢失</p>
+<h3>Docker&nbsp;Compose</h3>
+<p>Docker Compose is a tool that was developed to help define and share multi-container applications. With Compose, we can create a <span class="caps">YAML</span> file to define the services and with a single command, can spin everything up or tear it all&nbsp;down.</p>
+<p>管理多个容器的，定义启动顺序的，合理编排，方便管理</p>
+<p>docker-compose.yml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node:18-alpine</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./:/app</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
+<span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">      </span><span class="nt">MYSQL_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">todos</span>
+
+<span class="w">  </span><span class="nt">mysql</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.0</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">todo-mysql-data:/var/lib/mysql</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">todos</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">todo-mysql-data</span><span class="p">:</span>
+</code></pre></div>
+
+<p>By default, Docker Compose automatically creates a network specifically for the application stack (which is why we didn’t define one in the compose&nbsp;file).</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span><span class="c1"># 默认不会删除volume</span>
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>--volumes
+</code></pre></div>
+
+<h2>.dockerignore</h2>
+<p>In this case, the node_modules folder should be omitted in the second <span class="caps">COPY</span> step because otherwise, it would possibly overwrite files which were created by the command in the <span class="caps">RUN</span>&nbsp;step. </p>
+<div class="highlight"><pre><span></span><code>node_modules
+</code></pre></div>
+
+<hr>
+<h2>Docker&nbsp;安装phpmyadmin</h2>
+<p>https://hub.docker.com/_/phpmyadmin</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>myadmin<span class="w"> </span>-d<span class="w"> </span>-e<span class="w"> </span><span class="nv">PMA_ARBITRARY</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>-p<span class="w"> </span><span class="m">4000</span>:80<span class="w"> </span>phpmyadmin
+
+docker<span class="w"> </span>ps
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th><span class="caps">CONTAINER</span> <span class="caps">ID</span></th>
+<th><span class="caps">IMAGE</span></th>
+<th><span class="caps">PORTS</span></th>
+<th><span class="caps">NAMES</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0bfccc26fcfe</td>
+<td>phpmyadmin</td>
+<td>0.0.0.0:4000 -&gt; 80/tcp</td>
+<td>myadmin</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>docker stop 0bfccc26fcfe
+docker rm 0bfccc26fcfe
+</code></pre></div>
+
+<p>nginx</p>
+<div class="highlight"><pre><span></span><code><span class="nx">location</span><span class="w"> </span><span class="o">/</span><span class="nx">php</span><span class="o">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">rewrite</span><span class="w"> </span><span class="s">&quot;^/php/(.*)$&quot;</span><span class="w"> </span><span class="o">/</span><span class="err">$</span><span class="mi">1</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">Host</span><span class="w"> </span><span class="err">$</span><span class="nx">host</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Real</span><span class="o">-</span><span class="nx">IP</span><span class="w"> </span><span class="err">$</span><span class="nx">remote_addr</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="nx">For</span><span class="w"> </span><span class="err">$</span><span class="nx">proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_set_header</span><span class="w"> </span><span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="nx">Proto</span><span class="w"> </span><span class="err">$</span><span class="nx">scheme</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_buffering</span><span class="w"> </span><span class="nx">off</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">proxy_pass</span><span class="w"> </span><span class="nx">http</span><span class="p">:</span><span class="c1">//10.216.104.80:4000;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr>
+<h2>NestJs</h2>
+<p>使用 Docker&nbsp;将NestJs应用容器化</p>
+<p>根目录下添加Dockerfile和docker-compose.yml</p>
+<ul>
+<li>Dockerfile：负责导入 Docker&nbsp;镜像，将它们分为development和production环境，复制我们所有的文件并安装npm依赖项</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Dockerfile</span>
+<span class="nx">FROM</span><span class="w"> </span><span class="nx">node</span><span class="o">:</span><span class="kt">latest</span><span class="w"> </span><span class="c1">// 创建新镜像，使用公共存储库中提供的官方Node.js镜像，并指定版本</span>
+
+<span class="nx">WORKDIR</span><span class="w"> </span><span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">app</span><span class="o">/</span><span class="w"> </span><span class="c1">// Docker 执行的每个命令(在RUN语句中定义)都将在指定的上下文中执行</span>
+
+<span class="nx">COPY</span><span class="w"> </span><span class="kr">package</span><span class="p">.</span><span class="nx">json</span><span class="w"> </span><span class="p">.</span><span class="o">/</span>
+<span class="nx">COPY</span><span class="w"> </span><span class="kr">package</span><span class="o">-</span><span class="nx">lock</span><span class="p">.</span><span class="nx">json</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="w"> </span><span class="c1">// 锁定版本</span>
+<span class="nx">RUN</span><span class="w"> </span><span class="nx">npm</span><span class="w"> </span><span class="nx">install</span>
+
+<span class="nx">COPY</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="w"> </span><span class="p">.</span><span class="o">/</span>
+
+<span class="nx">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<ul>
+<li>docker-compose.yml：负责定义我们的容器、应用程序其他服务所需的图像、存储卷、环境变量等</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// docker/docker-compose.yml</span>
+<span class="nx">version</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;3.5&#39;</span>
+
+<span class="nx">services</span><span class="o">:</span>
+<span class="w">  </span><span class="kt">pro_server_container</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="kt">.</span><span class="o">/</span>
+<span class="w">    </span><span class="nx">env_file</span><span class="o">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="p">.</span><span class="nx">env</span><span class="w"> </span><span class="c1">// 环境变量</span>
+<span class="w">    </span><span class="nx">environment</span><span class="o">:</span>
+<span class="w">      </span><span class="kt">DATABASE_UI_HOST</span><span class="o">:</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">docker</span><span class="p">.</span><span class="nx">internal</span><span class="w"> </span><span class="c1">// 替换localhost</span>
+<span class="w">    </span><span class="nx">ports</span><span class="o">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="nx">3000</span><span class="o">:</span><span class="kt">3000</span>
+<span class="w">    </span><span class="nx">container_name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;pro_server_container&#39;</span>
+<span class="w">    </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="kt">npm</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">start</span><span class="o">:</span><span class="kt">qa</span>
+<span class="w">    </span><span class="nx">volumes</span><span class="o">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="nx">dist</span><span class="o">:</span><span class="err">/usr/src/app/dist</span>
+</code></pre></div>
+
+<p>host.docker.internal&nbsp;是mac和windows的参数，linux环境需在起container时增加&#8212;add-host=host.docker.internal:host-gateway</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-dp<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--env-file<span class="w"> </span>.env<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DATABASE_UI_HOST</span><span class="o">=</span>host.docker.internal<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add-host<span class="o">=</span>host.docker.internal:host-gateway<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>xxx-docker.xxx.xxx.com/imagename:dev
+</code></pre></div>
+
+<p><em>console.log(process.env.DATABASE_UI_HOST) //&nbsp;host.docker.internal</em></p>
+<ul>
+<li>package.json node dist/main 改用nodemon&nbsp;执行</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;start:qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nodemon dist/main&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start:prod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NODE_ENV=production nodemon dist/main&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodemon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.0.20&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>运行 docker compose up&nbsp;-d</p>
+<p>取代了pm2 start —watch&nbsp;意味着不用装node</p>
+<hr>
+<h2>Watchtower</h2>
+<p>Watchtower 是一个可以实现自动化更新 Docker 基础镜像与容器的实用工具。它监视正在运行的容器以及相关的镜像，当检测到 reg­istry&nbsp;中的镜像与本地的镜像有差异时，它会拉取最新镜像并使用最初部署时相同的参数重新启动相应的容器。</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>watchtower<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>containrrr/watchtower<span class="w"> </span>-c
+</code></pre></div>
+
+<ul>
+<li>-s 默认每 5 分钟执行一次 &#8220;0 2 * * *&nbsp;*&#8221;</li>
+<li>-c&nbsp;自动清除旧镜像</li>
+</ul>
+<p>If pulling images from private Docker registries, supply registry authentication credentials with the environment variables REPO_USER and REPO_PASS or by mounting the host&#8217;s docker config file into the&nbsp;container </p>
+<p>vi $<span class="caps">HOME</span>/.docker/config.json</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;auths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;&lt;docker_image_name&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;USERNAME&gt;:&lt;PASSWORD&gt; (converted to base 64)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;credsStore&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;desktop&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>watchtower<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.docker/config.json:/config.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>containrrr/watchtower<span class="w"> </span>-c<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--interval<span class="w"> </span><span class="m">300</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "docker.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

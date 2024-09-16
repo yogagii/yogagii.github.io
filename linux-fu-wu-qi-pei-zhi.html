@@ -70,64 +70,63 @@
 <p>https://registry.npmmirror.com/binary.html?path=node/ </p>
 <p>去下载一个 linux 可用的 node&nbsp;版本</p>
 <ol>
-<li>传输到服务器 /home/jyu36&nbsp;并解压</li>
+<li>传输到服务器 /home/jyu&nbsp;并解压</li>
 </ol>
-<div class="highlight"><pre><span></span><code>xz -d node-v14.18.2-linux-x64.tar.xz
-tar -xvf node-v14.18.2-linux-x64.tar
+<p>scp ~/Desktop/node-v18.16.0-linux-x64.tar.xz&nbsp;jyu@xx.xx.xx.xx:~</p>
+<div class="highlight"><pre><span></span><code>xz<span class="w"> </span>-d<span class="w"> </span>node-v14.18.2-linux-x64.tar.xz
+tar<span class="w"> </span>-xvf<span class="w"> </span>node-v14.18.2-linux-x64.tar
 </code></pre></div>
 
 <ol>
-<li>软连接&nbsp;(不确定是否必须)</li>
+<li>软连接&nbsp;(步骤3,4二选一)</li>
 </ol>
-<p>ln -s /home/nodejs/node-v14.18.2-linux-x64/bin/npm /usr/local/bin
-ln -s /home/nodejs/node-v14.18.2-linux-x64/bin/node&nbsp;/usr/local/bin</p>
+<div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v14.18.2-linux-x64/bin/npm<span class="w"> </span>/usr/local/bin
+ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v14.18.2-linux-x64/bin/node<span class="w"> </span>/usr/local/bin
+</code></pre></div>
+
 <ol>
 <li>配置环境变量</li>
 </ol>
-<div class="highlight"><pre><span></span><code>vi /etc/profile
+<p>env 查看环境变量 <span class="caps">PATH</span>=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</p>
+<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/profile
 
-<span class="nb">export</span> <span class="nv">NODEJS_HOME</span><span class="o">=</span>/home/v-jyu36/node-v14.18.2-linux-x64
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$NODEJS_HOME</span>/bin
+<span class="nb">export</span><span class="w"> </span><span class="nv">NODEJS_HOME</span><span class="o">=</span>/home/jyu/node-v14.18.2-linux-x64
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$NODEJS_HOME</span>/bin
 
-<span class="nb">source</span> /etc/profile
+<span class="nb">source</span><span class="w"> </span>/etc/profile
 </code></pre></div>
 
 <h2>更新node</h2>
 <p>node&nbsp;-v</p>
-<div class="highlight"><pre><span></span><code>sudo su -
-npm cache clean -f
-npm install -g n
-n stable
-</code></pre></div>
-
+<p><code>bash
+  sudo su -
+  npm cache clean -f
+  npm install -g n
+  n stable</code></p>
 <h2>安装git</h2>
-<div class="highlight"><pre><span></span><code>yum -y install git 
-git --version
-</code></pre></div>
-
+<p><code>yum -y install git 
+  git --version</code></p>
 <h2>安装pm2</h2>
-<div class="highlight"><pre><span></span><code>npm install pm2 -g
-</code></pre></div>
-
+<p><code>npm install pm2 -g</code></p>
 <hr>
 <h2>安装Anaconda</h2>
-<div class="highlight"><pre><span></span><code>df -h <span class="c1"># 查看磁盘空间</span>
-du -sh *
+<div class="highlight"><pre><span></span><code>df<span class="w"> </span>-h<span class="w"> </span><span class="c1"># 查看磁盘空间</span>
+du<span class="w"> </span>-sh<span class="w"> </span>*
 
-<span class="nb">cd</span> /home/v-jyu36/ <span class="c1"># 不要用root安装</span>
-wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh 
-chmod +x Anaconda3-2022.05-Linux-x86_64.sh
+<span class="nb">cd</span><span class="w"> </span>/home/v-jyu/<span class="w"> </span><span class="c1"># 不要用root安装</span>
+wget<span class="w"> </span>https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh<span class="w"> </span>
+chmod<span class="w"> </span>+x<span class="w"> </span>Anaconda3-2022.05-Linux-x86_64.sh
 ./Anaconda3-2022.05-Linux-x86_64.sh
-rm Anaconda3-2022.05-Linux-x86_64.sh
+rm<span class="w"> </span>Anaconda3-2022.05-Linux-x86_64.sh
 
 <span class="c1"># 修改环境变量</span>
-vi ~/.bashrc
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/v-jyu36/anaconda3/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span> 
-<span class="nb">source</span> ~/.bashrc
-which python <span class="c1"># ~/anaconda3/bin/python </span>
+vi<span class="w"> </span>~/.bashrc
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/v-jyu/anaconda3/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span><span class="w"> </span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+which<span class="w"> </span>python<span class="w"> </span><span class="c1"># ~/anaconda3/bin/python </span>
 
 <span class="c1"># 安装包</span>
-pip install tensorflow
+pip<span class="w"> </span>install<span class="w"> </span>tensorflow
 </code></pre></div>
 
 <h3>Tmux</h3>
@@ -160,121 +159,258 @@ pip install tensorflow
 <hr>
 <h2>基本命令</h2>
 <ul>
-<li>显示当前路径</li>
+<li>
+<p>显示当前路径
+  <code>bash
+  pwd</code></p>
+</li>
+<li>
+<p>移动文件：mv+源文件/源目录 目标文件/目标目录 
+  <code>bash
+  mv home/v-jyu/DigiCertGlobalRootCA.crt.pem /var/www/iqvia_data/private</code></p>
+</li>
+<li>
+<p>删除文件或目录
+  <code>bash
+  rm -rf src_path</code></p>
+</li>
+<li>
+<p>修改权限</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nb">pwd</span>
-</code></pre></div>
-
+<p><code>[ugoa...][[+-=][rwxX]...][,...]</code></p>
 <ul>
-<li>移动文件：mv+源文件/源目录&nbsp;目标文件/目标目录 </li>
+<li>文件权限分三级：文件拥有者u（user）、群组g（group）、其他o（other）</li>
+<li>+表示增加权限、- 表示取消权限、=&nbsp;表示唯一设定权限</li>
+<li>r (4) 表示可读取，w (2) 表示可写入，x (1)&nbsp;表示可执行</li>
 </ul>
-<div class="highlight"><pre><span></span><code>mv home/v-jyu36/DigiCertGlobalRootCA.crt.pem /var/www/iqvia_data/private
-</code></pre></div>
-
+<p><code>bash
+  chmod +x mydir # 为系统上的所有用户添加可执行权限
+  chmod 777 src_path # rwx 777 三位数字分别代表 u、g、o (4+2+1=7)</code></p>
 <ul>
-<li>删除文件或目录</li>
+<li>
+<p>显示问价大小
+  <code>bash
+  ls -lh</code></p>
+</li>
+<li>
+<p>显示文件数量
+  <code>bash
+  ls ./excel -l|grep "^-"| wc -l</code></p>
+</li>
+<li>
+<p>删除5天前的文件 
+  <code>bash
+  find ./excel -name "*" -mtime +5 -exec rm -rfv {} \;</code></p>
+</li>
+<li>
+<p>查看文件所占空间
+  <code>bash
+  du -sh # 总和
+  du -d 1 # 当前目录下所有一级子目录所占空间大小
+  df -h /var # 指定目录挂载磁盘剩余空间</code></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code>rm -rf src_path
-</code></pre></div>
-
-<ul>
-<li>修改权限</li>
-</ul>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">777</span> src_path
-</code></pre></div>
-
-<ul>
-<li>显示问价大小</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ls -lh
-</code></pre></div>
-
-<ul>
-<li>显示文件数量</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ls ./excel -l<span class="p">|</span>grep <span class="s2">&quot;^-&quot;</span><span class="p">|</span> wc -l 
-</code></pre></div>
-
-<ul>
-<li>删除5天前的文件 </li>
-</ul>
-<div class="highlight"><pre><span></span><code>find ./excel -name <span class="s2">&quot;*&quot;</span> -mtime +5 -exec rm -rfv <span class="o">{}</span> <span class="se">\;</span>
-</code></pre></div>
-
-<ul>
-<li>查看文件所占空间</li>
-</ul>
-<div class="highlight"><pre><span></span><code>du -sh <span class="c1"># 总和</span>
-du -d <span class="m">1</span> <span class="c1"># 当前目录下所有一级子目录所占空间大小</span>
-df -h /var <span class="c1"># 指定目录挂载磁盘剩余空间</span>
-</code></pre></div>
-
 <p>## netstat&nbsp;网络相关信息</p>
 <ul>
-<li>查看所有占用端口号</li>
+<li>
+<p>查看所有占用端口号
+  <code>netstat -tunlp</code></p>
+</li>
+<li>
+<p>查看占用端口号27999的进程
+  <code>netstat -pan | grep 27999
+  // tcp6  0  0  :::27999  :::*  LISTEN  15460/node</code></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code>netstat -tunlp
-</code></pre></div>
-
-<ul>
-<li>查看占用端口号27999的进程</li>
-</ul>
-<div class="highlight"><pre><span></span><code>netstat -pan | grep 27999
-// tcp6  0  0  :::27999  :::*  LISTEN  15460/node
-</code></pre></div>
-
 <h2>ps 进程信息 Process&nbsp;Status</h2>
 <ul>
-<li>查看指定进程详情</li>
+<li>查看指定进程详情
+  <code>ps -aux | grep 15460
+  // root 15460  0.0  0.2 867324 42508 pts/5 Sl+ 10:14 0:00 node index</code></li>
+<li>
+<p>杀死指定进程
+  <code>kill 15460</code></p>
+</li>
+<li>
+<p>检查高 <span class="caps">CPU</span> / 内存消耗进程
+  <code>ps -eo pid,ppid,user,cmd,%mem,%cpu --sort=-%cpu|head -n 10</code></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code>ps -aux | grep 15460
-// root 15460  0.0  0.2 867324 42508 pts/5 Sl+ 10:14 0:00 node index
-</code></pre></div>
-
-<ul>
-<li>杀死指定进程</li>
-</ul>
-<div class="highlight"><pre><span></span><code>kill 15460
-</code></pre></div>
-
-<ul>
-<li>检查高 <span class="caps">CPU</span> /&nbsp;内存消耗进程</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ps -eo pid,ppid,user,cmd,%mem,%cpu --sort=-%cpu|head -n 10
-</code></pre></div>
-
 <h2>文本操作</h2>
 <ul>
-<li>删除单行</li>
+<li>定位首行</li>
 </ul>
-<div class="highlight"><pre><span></span><code>dd
-</code></pre></div>
-
+<p><code>gg</code></p>
 <ul>
-<li>删除全部</li>
+<li>定位尾行</li>
 </ul>
-<div class="highlight"><pre><span></span><code>dG
-</code></pre></div>
-
+<p><code>G</code></p>
 <ul>
-<li>快速定位</li>
+<li>
+<p>删除单行
+  <code>dd</code></p>
+</li>
+<li>
+<p>删除全部
+  <code>dG</code></p>
+</li>
+<li>
+<p>快速定位
+  <code>/正则匹配</code></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code>/正则匹配
-</code></pre></div>
-
 <hr>
 <h2>连接</h2>
 <ol>
-<li>硬链接：ln/mount</li>
-</ol>
+<li>
+<p>硬链接：ln/mount</p>
 <p>硬链接的文件是使用同一个inode结构,每一个硬链接使inode的使用计数加一,删除文件时,使用计数减一,当使用计数为零时,才真正删除文件。</p>
 <p>硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。</p>
 <p>mount：用于挂载Linux系统外的文件。操作的对象是设备</p>
 <p>Ln：操作对象是文件</p>
-<ol>
-<li>软链接：ln&nbsp;-s</li>
-</ol>
+</li>
+<li>
+<p>软链接：ln&nbsp;-s</p>
 <p>软链接的文件内,不是存的数据,而是存的一个文件的全路径名,使用此链接时,会根据此路径找到目标文件，和windows里到快捷方式一样。</p>
+</li>
+</ol>
+<p>&#8212;</p>
+<h2>开机启动</h2>
+<ul>
+<li>列出所有启动项命令，开启的和未开启的。开启的会绿色显示为enabled。
+  <code>bash
+  systemctl list-unit-files
+  systemctl list-unit-files | grep enabled</code></li>
+<li>
+<p>查看某个.service服务的状态信息 
+  <code>bash
+  systemctl status mysqld.service
+  systemctl status nginx
+  service nginx status</code></p>
+</li>
+<li>
+<p>查看某个服务是否设置开机启动
+  <code>bash
+  systemctl is-enabled mysqld.service
+  systemctl is-enabled docker.service
+  systemctl is-enabled nginx.service</code></p>
+</li>
+<li>
+<p>启用和禁用服务开机启动
+  <code>bash
+  systemctl enable mysqld.service
+  systemctl enable docker.service
+  systemctl enable nginx.service 
+  systemctl disable mysqld.service
+  chkconfig nginx on</code></p>
+</li>
+<li>
+<p>启动、停止、重启一个服务
+  <code>bash
+  systemctl start mysqld.service
+  systemctl stop mysqld.service
+  systemctl restart mysqld.service
+  service nginx start</code></p>
+</li>
+<li>
+<p>Review System Logs
+  <code>bash
+  journalctl -xe</code></p>
+</li>
+</ul>
+<p><em>踩坑：Unit nginx.service not&nbsp;found.</em></p>
+<p>vim&nbsp;/lib/systemd/system/nginx.service</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>The<span class="w"> </span>nginx<span class="w"> </span>HTTP<span class="w"> </span>and<span class="w"> </span>reverse<span class="w"> </span>proxy<span class="w"> </span>server
+<span class="nv">After</span><span class="o">=</span>network.target<span class="w"> </span>remote-fs.target<span class="w"> </span>nss-lookup.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>forking
+<span class="nv">PIDFile</span><span class="o">=</span>/run/nginx.pid
+<span class="c1"># Nginx will fail to start if /run/nginx.pid already exists but has the wrong</span>
+<span class="c1"># SELinux context. This might happen when running `nginx -t` from the cmdline.</span>
+<span class="c1"># https://bugzilla.redhat.com/show_bug.cgi?id=1268621</span>
+<span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/rm<span class="w"> </span>-f<span class="w"> </span>/run/nginx.pid
+<span class="nv">ExecStartPre</span><span class="o">=</span>/usr/sbin/nginx<span class="w"> </span>-t<span class="w"> </span><span class="c1"># 换成nginx安装路径</span>
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/sbin/nginx<span class="w"> </span><span class="c1"># 换成nginx安装路径</span>
+<span class="nv">ExecReload</span><span class="o">=</span>/bin/kill<span class="w"> </span>-s<span class="w"> </span>HUP<span class="w"> </span><span class="nv">$MAINPID</span>
+<span class="nv">KillSignal</span><span class="o">=</span>SIGQUIT
+<span class="nv">TimeoutStopSec</span><span class="o">=</span><span class="m">5</span>
+<span class="nv">KillMode</span><span class="o">=</span>mixed
+<span class="nv">PrivateTmp</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx.service<span class="w"> </span>
+</code></pre></div>
+
+<p><em>踩坑：nginx.service: Can&#8217;t open <span class="caps">PID</span> file /run/nginx.pid (yet?) after start: No such file or&nbsp;directory.</em></p>
+<p>In the Nginx configuration file, ensure that the path specified for the <span class="caps">PID</span> file matches the actual location of the file. The directive in the nginx.conf file should be similar to pid&nbsp;/run/nginx.pid;</p>
+<hr>
+<h2>定时任务</h2>
+<ol>
+<li>
+<p>创建执行脚本</p>
+</li>
+<li>
+<p>检查Docker container运行状态&nbsp;check_docker_container.sh</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># 设置容器名和接收通知的邮箱</span>
+<span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">&quot;your_container_name&quot;</span>
+<span class="nv">EMAIL_RECIPIENT</span><span class="o">=</span><span class="s2">&quot;receiver@example.com&quot;</span>
+
+<span class="c1"># 检查容器状态</span>
+<span class="nv">container_status</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;name=</span><span class="nv">$CONTAINER_NAME</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="c1"># 如果容器不在运行列表中，发送邮件通知</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$container_status</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;容器 </span><span class="nv">$CONTAINER_NAME</span><span class="s2"> 已停止运行。&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;容器停止通知&quot;</span><span class="w"> </span><span class="nv">$EMAIL_RECIPIENT</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<ul>
+<li>health-check api 检查接口状态&nbsp;health_check.sh</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Define variables</span>
+<span class="nv">API_URL</span><span class="o">=</span><span class="s2">&quot;https://xxx.com/api/hello&quot;</span>
+<span class="nv">EMAIL</span><span class="o">=</span><span class="s2">&quot;receiver@example.com&quot;</span>
+<span class="nv">SUBJECT</span><span class="o">=</span><span class="s2">&quot;Health Check Alert&quot;</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="s2">&quot;The Health Check API did not return a 200 response code.&quot;</span>
+
+<span class="c1"># Make the API call</span>
+<span class="nv">HTTP_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>--write-out<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span><span class="w"> </span>--silent<span class="w"> </span>--output<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$API_URL</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="c1"># Check if the response code is not 200</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HTTP_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BODY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SUBJECT</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<ol>
+<li>确保给这个脚本可执行权限</li>
+</ol>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>check_docker_container.sh
+</code></pre></div>
+
+<ol>
+<li>设置定时任务</li>
+</ol>
+<div class="highlight"><pre><span></span><code>crontab<span class="w"> </span>-e<span class="w"> </span><span class="c1"># Open your crontab file for editing</span>
+crontab<span class="w"> </span>-l<span class="w"> </span><span class="c1"># verify that your cron job is set up correctly,</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/path/to/check_docker_container.sh<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="c1"># every minute</span>
+<span class="m">0</span>,30<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/var/www/health_check.sh<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="c1"># every half an hour</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -359,21 +495,23 @@ df -h /var <span class="c1"># 指定目录挂载磁盘剩余空间</span>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -382,7 +520,6 @@ df -h /var <span class="c1"># 指定目录挂载磁盘剩余空间</span>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -391,7 +528,6 @@ df -h /var <span class="c1"># 指定目录挂载磁盘剩余空间</span>
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -411,7 +547,6 @@ df -h /var <span class="c1"># 指定目录挂载磁盘剩余空间</span>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

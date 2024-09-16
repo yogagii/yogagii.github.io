@@ -1,0 +1,447 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›<span class="caps">NEO4J</span>
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">NEO4J</span></h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-04-28T00:00:00+08:00"> 
+            <a href="/archive/2023/ 4/index.html">五 28 四月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/database.html">database</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Neo4j&nbsp;Desktop</h2>
+<p>https://neo4j.com/download/</p>
+<h2>图数据库</h2>
+<p>Neo4j是一个高性能的,NOSQL图形数据库，它将结构化数据存储在网络上而不是表中。</p>
+<p>图是一组节点和连接这些节点的关系。&nbsp;在Neo4j中，节点和关系都可以包含属性。</p>
+<ul>
+<li>节点&nbsp;Node</li>
+<li>关系 Relationship<ul>
+<li>一个关系连接两个节点，必须有一个开始节点和结束节点。</li>
+<li>关系具有方向：单向和双向。</li>
+<li>关系可以将节点组织成任意的结构</li>
+</ul>
+</li>
+<li>
+<p>属性</p>
+<ul>
+<li>节点和关系都可以设置自己的属性。</li>
+<li>属性是用于表示数据的键值对。</li>
+<li>属性值是要么是原始值，要么是原始值类型的一个数组。</li>
+</ul>
+</li>
+<li>
+<p>遍历&nbsp;Traversal</p>
+<ul>
+<li>进行数据库查询：通过一种算法，从一些开始节点开始查询与其关联的节点</li>
+</ul>
+</li>
+<li>
+<p>路径</p>
+<ul>
+<li>路径由至少一个节点，通过各种关系连接组成</li>
+<li>经常是作为一个查询或者遍历的结果。</li>
+</ul>
+</li>
+</ul>
+<p>为节点和关系建立索引：通过某一给定的属性值找到节点或者关系。</p>
+<h2><span class="caps">CQL</span></h2>
+<ul>
+<li><span class="caps">CREATE</span>&nbsp;创建节点、关系、标签</li>
+</ul>
+<p>创建一个没有属性的节点</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="n">node</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">label</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="c1">--节点名:标签名，可有多个标签名</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="p">(</span><span class="n">emp</span><span class="p">:</span><span class="n">Employee</span><span class="p">)</span>
+</code></pre></div>
+
+<p>创建具有属性的节点</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">node</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">label</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="err">{</span><span class="w">     </span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">Property1</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">Property1</span><span class="o">-</span><span class="n">Value</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">........</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">Propertyn</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">Propertyn</span><span class="o">-</span><span class="n">Value</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="err">}</span>
+<span class="p">)</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="p">(</span><span class="n">emp</span><span class="p">:</span><span class="n">Employee</span><span class="err">{</span><span class="n">id</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span><span class="n">name</span><span class="p">:</span><span class="ss">&quot;Lokesh&quot;</span><span class="err">}</span><span class="p">)</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="p">(:</span><span class="n">Person</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;Tester&#39;</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="mi">10</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+</code></pre></div>
+
+<p>单个标签到关系</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="n">node1</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">label1</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-</span>
+<span class="w">    </span><span class="p">[</span><span class="o">&lt;</span><span class="n">relationship</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">relationship</span><span class="o">-</span><span class="n">label</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">node2</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">label2</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="p">:</span><span class="n">Profile1</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">r1</span><span class="p">:</span><span class="n">LIKES</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">p2</span><span class="p">:</span><span class="n">Profile2</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">MATCH</span>&nbsp;获取节点，关系和属性的数据</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="n">Person</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;Tester&#39;</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="mi">10</span><span class="w"> </span><span class="err">}</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">n</span>
+
+<span class="c1">-- where</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Tester&quot;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p</span>
+
+<span class="c1">-- 返回部分属性</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">dept</span><span class="p">:</span><span class="w"> </span><span class="n">Dept</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="p">,</span><span class="n">dept</span><span class="p">.</span><span class="n">dname</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">WHERE</span></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Abc&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Xyz&#39;</span>
+
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">cust</span><span class="p">:</span><span class="n">Customer</span><span class="p">),(</span><span class="n">cc</span><span class="p">:</span><span class="n">CreditCard</span><span class="p">)</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">cust</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;1001&quot;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">cc</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;5001&quot;</span><span class="w"> </span>
+<span class="k">CREATE</span><span class="w"> </span><span class="p">(</span><span class="n">cust</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">DO_SHOPPING_WITH</span><span class="err">{</span><span class="n">shopdate</span><span class="p">:</span><span class="ss">&quot;12/12/2014&quot;</span><span class="p">,</span><span class="n">price</span><span class="p">:</span><span class="mi">55000</span><span class="err">}</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">cc</span><span class="p">)</span><span class="w"> </span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">r</span>
+</code></pre></div>
+
+<p><em>Warning: 
+This query builds a cartesian product between disconnected&nbsp;patterns.</em></p>
+<p><em>笛卡尔积警告: 时间复杂度为(number of Foo nodes) x (number of Bar&nbsp;nodes)</em></p>
+<p>created the index: uses a <span class="caps">WITH</span> clause to force the first <span class="caps">MATCH</span> clause to execute first, avoiding the cartesian&nbsp;product.</p>
+<ul>
+<li><span class="caps">DELETE</span>&nbsp;删除节点、关系</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">node</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">-- 用逗号分隔节点名</span>
+
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Employee</span><span class="p">)</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="n">e</span>
+
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">cc</span><span class="p">:</span><span class="w"> </span><span class="n">CreditCard</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">rel</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="k">c</span><span class="p">:</span><span class="n">Customer</span><span class="p">)</span><span class="w"> </span>
+<span class="k">DELETE</span><span class="w"> </span><span class="n">cc</span><span class="p">,</span><span class="k">c</span><span class="p">,</span><span class="n">rel</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">REMOVE</span>&nbsp;删除属性、标签</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">REMOVE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">property</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span>
+
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">book</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="mi">122</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="n">REMOVE</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">price</span><span class="w"> </span><span class="c1">-- 删除属性</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">book</span>
+
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="w"> </span>
+<span class="n">REMOVE</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="n">Picture</span><span class="w"> </span><span class="c1">-- 删除标签</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">SET</span>&nbsp;添加、更新属性</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">book</span><span class="p">:</span><span class="n">Book</span><span class="p">)</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;superstar&#39;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">book</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">ORDER</span> <span class="caps">BY</span>&nbsp;排序</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">&lt;</span><span class="n">property</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="c1">-- 默认升序ASC</span>
+
+<span class="k">match</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">:</span><span class="n">Customer</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">DESC</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">UNION</span>&nbsp;合并</li>
+</ul>
+<hr>
+<h2>Nestjs</h2>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>neo4j-driver<span class="w"> </span>nest-neo4j
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// app.module.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Neo4jModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;nest-neo4j&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">Neo4jModule</span><span class="p">.</span><span class="nx">forRootAsync</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">ConfigModule</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">scheme</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;neo4j&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xxx.xxx.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 踩坑：不要带neo4j://</span>
+<span class="w">        </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">7687</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_N4_USERNAME</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_N4_PASSWORD</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_N4_DATABASE</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">disableLosslessIntegers</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppController</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppService</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+
+<p><em>disableLosslessIntegers：Integer常量池&#8212;low,high限定范围。Enabling this option can result in a loss of precision and incorrect numeric values being returned if the database contains integer numbers outside of the range [Number.MIN_SAFE_INTEGER,&nbsp;Number.MAX_SAFE_INTEGER].</em></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Neo4jService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;nest-neo4j/dist&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">SupplyLaneService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">neo4jService</span><span class="o">:</span><span class="w"> </span><span class="kt">Neo4jService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">neo4jService</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">read</span><span class="p">(</span>
+<span class="w">        </span><span class="sb">`</span>
+<span class="sb">          match (src:xx) -[r:xx]-&gt;(dst:xx) return src,r,dst</span>
+<span class="sb">        `</span><span class="p">,</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">record</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">src</span><span class="o">:</span><span class="w"> </span><span class="kt">record.get</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">).</span><span class="nx">properties</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">dst</span><span class="o">:</span><span class="w"> </span><span class="kt">record.get</span><span class="p">(</span><span class="s1">&#39;dst&#39;</span><span class="p">).</span><span class="nx">properties</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">lt</span><span class="o">:</span><span class="w"> </span><span class="kt">record.get</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">).</span><span class="nx">properties</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "neo4j.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

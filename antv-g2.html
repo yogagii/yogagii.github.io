@@ -64,191 +64,191 @@
     </header>
     <div class="post-entry">
         <p>G2&nbsp;主要用于制作基于网页的可视化</p>
-<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@antv</span><span class="o">/</span><span class="n">g2</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@antv</span><span class="o">/</span><span class="n">g2</span>
 </code></pre></div>
 
 <h2>React+G2&nbsp;Template</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RefObject</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Chart</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@antv/g2&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Router</span> <span class="kr">from</span> <span class="s2">&quot;next/router&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">refreshing</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@/utils/common&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">RefObject</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useRef</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Chart</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@antv/g2&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next/router&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">refreshing</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/utils/common&quot;</span><span class="p">;</span>
 
-<span class="kd">let</span> <span class="nx">storeChart</span><span class="o">:</span> <span class="nx">Chart</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">storeData</span><span class="o">:</span> <span class="nx">LearningBarData</span><span class="p">[];</span>
-<span class="kd">const</span> <span class="nx">useCreateChart</span> <span class="o">=</span>
-  <span class="p">(</span><span class="nx">ref</span><span class="o">:</span> <span class="nx">RefObject</span><span class="o">&lt;</span><span class="nx">HTMLDivElement</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">LearningBarData</span><span class="p">[])</span> <span class="p">=&gt;</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">chart</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">storeChart</span> <span class="o">||</span> <span class="nx">storeChart</span><span class="p">.</span><span class="nx">destroyed</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">chart</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Chart</span><span class="p">({</span>
-        <span class="nx">container</span><span class="o">:</span> <span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="o">!</span><span class="p">,</span>
-        <span class="nx">autoFit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">height</span><span class="o">:</span> <span class="mf">250</span><span class="p">,</span>
-        <span class="nx">padding</span><span class="o">:</span> <span class="p">[</span><span class="mf">20</span><span class="p">,</span> <span class="mf">30</span><span class="p">,</span> <span class="mf">50</span><span class="p">,</span> <span class="mf">40</span><span class="p">],</span>
-      <span class="p">});</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">storeChart</span><span class="o">:</span><span class="w"> </span><span class="nx">Chart</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">storeData</span><span class="o">:</span><span class="w"> </span><span class="nx">LearningBarData</span><span class="p">[];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">useCreateChart</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">ref</span><span class="o">:</span><span class="w"> </span><span class="nx">RefObject</span><span class="o">&lt;</span><span class="nx">HTMLDivElement</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">LearningBarData</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">chart</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">storeChart</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">storeChart</span><span class="p">.</span><span class="nx">destroyed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">chart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Chart</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="o">!</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">autoFit</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">],</span>
+<span class="w">      </span><span class="p">});</span>
 
-      <span class="nx">chart</span><span class="p">.</span><span class="nx">scale</span><span class="p">(...);</span>
-      <span class="nx">chart</span><span class="p">.</span><span class="nx">axis</span><span class="p">(...);</span>
-      <span class="nx">chart</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">(...);</span>
-      <span class="nx">chart</span>
-        <span class="p">.</span><span class="nx">line</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="s2">&quot;region*average&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">chart</span><span class="p">.</span><span class="nx">scale</span><span class="p">(...);</span>
+<span class="w">      </span><span class="nx">chart</span><span class="p">.</span><span class="nx">axis</span><span class="p">(...);</span>
+<span class="w">      </span><span class="nx">chart</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">(...);</span>
+<span class="w">      </span><span class="nx">chart</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">line</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="s2">&quot;region*average&quot;</span><span class="p">)</span>
 
-      <span class="nx">chart</span><span class="p">.</span><span class="nx">interaction</span><span class="p">(</span><span class="s2">&quot;active-region&quot;</span><span class="p">);</span>
-      <span class="nx">storeChart</span> <span class="o">=</span> <span class="nx">chart</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">chart</span> <span class="o">=</span> <span class="nx">storeChart</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">      </span><span class="nx">chart</span><span class="p">.</span><span class="nx">interaction</span><span class="p">(</span><span class="s2">&quot;active-region&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">storeChart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">chart</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">chart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storeChart</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="nx">chart</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="nx">chart</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
-  <span class="p">};</span>
+<span class="w">    </span><span class="nx">chart</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">chart</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+<span class="w">  </span><span class="p">};</span>
 
-<span class="kd">const</span> <span class="nx">LearningBar</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">data</span> <span class="p">}</span><span class="o">:</span> <span class="nx">LearningBarProps</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">ref</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">HTMLDivElement</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">createChart</span> <span class="o">=</span> <span class="nx">useCreateChart</span><span class="p">(</span><span class="nx">ref</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">LearningBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">LearningBarProps</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">HTMLDivElement</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">createChart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCreateChart</span><span class="p">(</span><span class="nx">ref</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
 
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span> <span class="o">&amp;&amp;</span> <span class="nx">refreshing</span><span class="p">(</span><span class="nx">storeData</span><span class="p">,</span> <span class="nx">data</span><span class="p">))</span> <span class="nx">createChart</span><span class="p">();</span>
-  <span class="p">},</span> <span class="p">[</span><span class="nx">ref</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">createChart</span><span class="p">]);</span>
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">refreshing</span><span class="p">(</span><span class="nx">storeData</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">))</span><span class="w"> </span><span class="nx">createChart</span><span class="p">();</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">ref</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">createChart</span><span class="p">]);</span>
 
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">Router</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">!==</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">storeChart</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
-        <span class="nx">storeData</span> <span class="o">=</span> <span class="p">[];</span>
-      <span class="p">}</span>
-    <span class="p">};</span>
-  <span class="p">},</span> <span class="p">[]);</span>
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">Router</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">storeChart</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">storeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
 
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">Card</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">学习进度及平均学习时长</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">ref</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/Card&gt;</span>
-  <span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Card</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">学习进度及平均学习时长</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">ref</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/Card&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="nx">LearningBar</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">LearningBar</span><span class="p">;</span>
 </code></pre></div>
 
 <p>判断是否需要刷新数据</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">refreshing</span> <span class="o">=</span> <span class="p">(</span><span class="nx">oldData</span>: <span class="kt">any</span><span class="p">,</span> <span class="nx">newData</span>: <span class="kt">any</span><span class="p">[])</span> <span class="p">=&gt;</span>
-  <span class="p">(</span><span class="nx">newData</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="p">(</span><span class="o">!!</span><span class="nx">oldData</span> <span class="o">&amp;&amp;</span> <span class="nx">oldData</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">length</span><span class="p">))</span> <span class="o">&amp;&amp;</span>
-  <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">oldData</span><span class="p">)</span> <span class="o">!==</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newData</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">refreshing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">oldData</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span><span class="w"> </span><span class="nx">newData</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">newData</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="o">!!</span><span class="nx">oldData</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">oldData</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">newData</span><span class="p">.</span><span class="nx">length</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">oldData</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newData</span><span class="p">);</span>
 </code></pre></div>
 
 <ul>
 <li>Tooltip</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nx">chart</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">({</span>
-  <span class="nx">customItems</span><span class="o">:</span> <span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="p">=&gt;</span>
-    <span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">r</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
-      <span class="p">...</span><span class="nx">r</span><span class="p">,</span>
-      <span class="nx">value</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">value</span><span class="si">}${</span><span class="nx">r</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="s2">&quot;average&quot;</span> <span class="o">?</span> <span class="s2">&quot;mins&quot;</span> <span class="o">:</span> <span class="s2">&quot;%&quot;</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-    <span class="p">})),</span>
+<span class="w">  </span><span class="nx">customItems</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">items</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">    </span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">r</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">r</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">value</span><span class="si">}${</span><span class="nx">r</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;average&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;mins&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;%&quot;</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})),</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <ul>
 <li>Color</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nx">chart</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nx">color1</span><span class="p">,</span> <span class="nx">color2</span><span class="p">,</span> <span class="nx">color3</span><span class="p">])</span> <span class="c1">// color arr</span>
+<div class="highlight"><pre><span></span><code><span class="nx">chart</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">color1</span><span class="p">,</span><span class="w"> </span><span class="nx">color2</span><span class="p">,</span><span class="w"> </span><span class="nx">color3</span><span class="p">])</span><span class="w"> </span><span class="c1">// color arr</span>
 
-<span class="nx">chart</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">type</span><span class="o">:</span> <span class="nx">keyof</span> <span class="ow">typeof</span> <span class="nx">colorMap</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">colorMap</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">color</span><span class="p">)</span> <span class="c1">// color map</span>
+<span class="nx">chart</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">keyof</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">colorMap</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">colorMap</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">color</span><span class="p">)</span><span class="w"> </span><span class="c1">// color map</span>
 
-<span class="nx">chart</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="sb">`l(90) 0:</span><span class="si">${</span><span class="nx">color1</span><span class="si">}</span><span class="sb"> 1:</span><span class="si">${</span><span class="nx">color2</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span> <span class="c1">// 渐变</span>
+<span class="nx">chart</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="sb">`l(90) 0:</span><span class="si">${</span><span class="nx">color1</span><span class="si">}</span><span class="sb"> 1:</span><span class="si">${</span><span class="nx">color2</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"> </span><span class="c1">// 渐变</span>
 </code></pre></div>
 
 <p><img alt="carto" src="img/linkmed1.png"></p>
 <h2>Transform&nbsp;数据转换</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">DataSet</span> <span class="kn">from</span> <span class="s2">&quot;@antv/data-set&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">DataSet</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;@antv/data-set&quot;</span><span class="p">;</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">ds</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">DataSet</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">dv</span> <span class="o">=</span> <span class="nx">ds</span><span class="p">.</span><span class="nx">createView</span><span class="p">().</span><span class="nx">source</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DataSet</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ds</span><span class="p">.</span><span class="nx">createView</span><span class="p">().</span><span class="nx">source</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 
 <span class="c1">// filter</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span>
-  <span class="nx">callback</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">Run</span> <span class="o">!==</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;filter&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">callback</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">Run</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 
 <span class="c1">// map</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span>
-  <span class="nx">callback</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">row</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">row</span><span class="p">;</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">callback</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">row</span><span class="p">.</span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;z&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">row</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 
 <span class="c1">// rename</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;rename&#39;</span><span class="p">,</span>
-  <span class="nx">map</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">a</span><span class="o">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rename&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 
 <span class="c1">// reverse</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;reverse&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;reverse&#39;</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="c1">// sort</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;sort&#39;</span><span class="p">,</span>
-  <span class="nx">callback</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span><span class="p">.</span><span class="nx">year</span> <span class="o">-</span> <span class="nx">b</span><span class="p">.</span><span class="nx">year</span><span class="p">;</span>
-  <span class="p">},</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">callback</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">year</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 
 <span class="c1">// fill-rows 补全行</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;fill-rows&#39;</span><span class="p">,</span>
-  <span class="nx">groupBy</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span>
-  <span class="nx">orderBy</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">],</span>
-  <span class="nx">fillBy</span><span class="o">:</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fill-rows&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">groupBy</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">orderBy</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">fillBy</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;group&#39;</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="c1">// fold 字段展开</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;fold&#39;</span><span class="p">,</span>
-  <span class="nx">fields</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">],</span> <span class="c1">// 展开字段集</span>
-  <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="c1">// key字段</span>
-  <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="c1">// value字段</span>
-  <span class="nx">retains</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span> <span class="c1">// 保留字段集</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fold&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;silver&#39;</span><span class="p">],</span><span class="w"> </span><span class="c1">// 展开字段集</span>
+<span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// key字段</span>
+<span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// value字段</span>
+<span class="w">  </span><span class="nx">retains</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span><span class="w"> </span><span class="c1">// 保留字段集</span>
 <span class="p">});</span>
 
 <span class="c1">// percent 总和百分比</span>
 <span class="nx">dv</span><span class="p">.</span><span class="nx">transform</span><span class="p">({</span>
-  <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;percent&quot;</span><span class="p">,</span>
-  <span class="nx">field</span><span class="o">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="c1">// 统计字段</span>
-  <span class="nx">dimension</span><span class="o">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="c1">// 每个种类的占比</span>
-  <span class="kr">as</span><span class="o">:</span> <span class="s2">&quot;percent&quot;</span><span class="p">,</span> <span class="c1">// 结果存储在 percent 字段</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;percent&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 统计字段</span>
+<span class="w">  </span><span class="nx">dimension</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 每个种类的占比</span>
+<span class="w">  </span><span class="kr">as</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;percent&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 结果存储在 percent 字段</span>
 <span class="p">});</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dv</span><span class="p">.</span><span class="nx">rows</span><span class="p">);</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// 与 fold 相反</span>
-<span class="nx">type</span> <span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">Extract</span><span class="o">&lt;</span><span class="nx">keyof</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">string</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">unfold</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span>
-  <span class="nx">data</span><span class="o">:</span> <span class="nx">T</span><span class="p">[],</span>
-  <span class="nx">key</span><span class="o">:</span> <span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="nx">field</span><span class="o">:</span> <span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="nx">value</span><span class="o">:</span> <span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
-<span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">obj</span><span class="o">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">record</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">[</span><span class="nx">record</span><span class="p">[</span><span class="nx">key</span><span class="p">]])</span> <span class="p">{</span>
-      <span class="nx">obj</span><span class="p">[</span><span class="nx">record</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{};</span>
-    <span class="p">}</span>
-    <span class="nx">obj</span><span class="p">[</span><span class="nx">record</span><span class="p">[</span><span class="nx">key</span><span class="p">]][</span><span class="nx">record</span><span class="p">[</span><span class="nx">field</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">record</span><span class="p">[</span><span class="nx">value</span><span class="p">];</span>
-  <span class="p">});</span>
-  <span class="k">return</span> <span class="nx">addKeytoArr</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+<span class="nx">type</span><span class="w"> </span><span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Extract</span><span class="o">&lt;</span><span class="nx">keyof</span><span class="w"> </span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">unfold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="p">[],</span>
+<span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">StringKeyof</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
+<span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">  </span><span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">record</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">[</span><span class="nx">record</span><span class="p">[</span><span class="nx">key</span><span class="p">]])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">obj</span><span class="p">[</span><span class="nx">record</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">obj</span><span class="p">[</span><span class="nx">record</span><span class="p">[</span><span class="nx">key</span><span class="p">]][</span><span class="nx">record</span><span class="p">[</span><span class="nx">field</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">record</span><span class="p">[</span><span class="nx">value</span><span class="p">];</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">addKeytoArr</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -335,21 +335,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -358,7 +360,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -367,7 +368,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -387,7 +387,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

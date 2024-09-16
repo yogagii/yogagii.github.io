@@ -73,7 +73,7 @@
 <p>Objectives:</p>
 <ul>
 <li>Enable data value for business&nbsp;insight</li>
-<li>Data governance: Identify data ownership , establish data governance rules and process for data creation, using
+<li>Data governance: Identify data ownership, establish data governance rules and process for data creation, using
 and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
 <li>Data protection: Meet the requirement from legal/quality/Cyber security of data&nbsp;protection</li>
 <li><span class="caps">FAIR</span> principle<ul>
@@ -84,6 +84,12 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
 </ul>
 </li>
 </ul>
+<h3><span class="caps">CDL</span></h3>
+<p><span class="caps">EDW</span> 企业数据仓库: The primary function of the Enterprise Data Warehouse, is to provide a centralized data store of enterprise-level&nbsp;data.</p>
+<p>The Common Data Layer (<span class="caps">CDL</span>) is a repository that centralizes the Supply Chain Data.This common layer can support all digital solutions across the business. The <span class="caps">CDL</span> ingests and publishes near real-time data from supply chain systems globally. The Level 0 layer of the <span class="caps">CDL</span> is a direct reflection of the data as it is stored in the upstream source&nbsp;systems.</p>
+<p><span class="caps">CDL</span> defined Databricks as the tool to use for data consumption. A secure access to <span class="caps">CDL</span> is given via an Azure Active Directory (<span class="caps">AD</span>) credential&nbsp;passthrough.</p>
+<h2><span class="caps">DAYU</span></h2>
+<p>MedTech China <span class="caps">SC</span> data foundation project to store and combine data from multiple sources as well as build up data catalog to make it findable, reusable and easier to&nbsp;understand.</p>
 <p>数据来源：</p>
 <ul>
 <li><span class="caps">SAP</span>&nbsp;(WinShuttle)</li>
@@ -163,22 +169,22 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
 <li>第四层&nbsp;Worker：实现具体抽取、转换、加载的任务层，该层根据实际的需要进行设计和开发，并用作并行调度</li>
 </ul>
 <h3>日志输出</h3>
-<div class="highlight"><pre><span></span><code><span class="k">create</span> <span class="k">procedure</span> <span class="n">dayu_ActivityStart</span> 
-<span class="o">@</span><span class="n">BatchRunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">PipelineCode</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">RunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">ActivityCode</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">dayu_ActivityStart</span><span class="w"> </span>
+<span class="o">@</span><span class="n">BatchRunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineCode</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityCode</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 <span class="k">as</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span> <span class="k">with</span> <span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span> <span class="p">(</span><span class="n">BatchRunId</span><span class="p">,</span> <span class="n">RunId</span><span class="p">,</span> <span class="n">PipelineCode</span><span class="p">,</span> <span class="n">ActivityCode</span><span class="p">,</span> <span class="n">StartTime</span><span class="p">)</span> 
-<span class="k">VALUES</span> <span class="p">(</span><span class="o">@</span><span class="n">BatchRunId</span><span class="p">,</span> <span class="o">@</span><span class="n">RunId</span><span class="p">,</span> <span class="o">@</span><span class="n">PipelineCode</span><span class="p">,</span> <span class="o">@</span><span class="n">ActivityCode</span><span class="p">,</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">getUTCdate</span><span class="p">()))</span>
+<span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">BatchRunId</span><span class="p">,</span><span class="w"> </span><span class="n">RunId</span><span class="p">,</span><span class="w"> </span><span class="n">PipelineCode</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityCode</span><span class="p">,</span><span class="w"> </span><span class="n">StartTime</span><span class="p">)</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">BatchRunId</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineCode</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityCode</span><span class="p">,</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">getUTCdate</span><span class="p">()))</span>
 
-<span class="k">exec</span> <span class="n">dayu_ActivityStart</span> <span class="s1">&#39;test01&#39;</span><span class="p">,</span> <span class="s1">&#39;ActivityName&#39;</span><span class="p">,</span> <span class="s1">&#39;test03&#39;</span><span class="p">,</span> <span class="s1">&#39;DIM_Table&#39;</span>
+<span class="k">exec</span><span class="w"> </span><span class="n">dayu_ActivityStart</span><span class="w"> </span><span class="s1">&#39;test01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ActivityName&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test03&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DIM_Table&#39;</span>
 
-<span class="k">create</span> <span class="k">procedure</span> <span class="n">dayu_ActivityLog</span> 
-<span class="o">@</span><span class="n">BatchRunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">RunId</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="k">Result</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="o">@</span><span class="n">ActivityOutput</span> <span class="nb">varchar</span><span class="p">(</span><span class="k">max</span><span class="p">)</span>
+<span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">dayu_ActivityLog</span><span class="w"> </span>
+<span class="o">@</span><span class="n">BatchRunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="k">Result</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityOutput</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="k">max</span><span class="p">)</span>
 <span class="k">as</span>
-<span class="k">update</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span> <span class="k">with</span> <span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span>
-<span class="k">set</span> <span class="n">EndTime</span> <span class="o">=</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">getUTCdate</span><span class="p">()),</span> <span class="n">ActivityStatus</span> <span class="o">=</span> <span class="o">@</span><span class="k">Result</span><span class="p">,</span> <span class="n">ActivityOutput</span> <span class="o">=</span> <span class="o">@</span><span class="n">ActivityOutput</span>
-<span class="k">where</span> <span class="n">BatchRunId</span> <span class="o">=</span> <span class="o">@</span><span class="n">BatchRunId</span> <span class="k">and</span> <span class="n">RunId</span> <span class="o">=</span> <span class="o">@</span><span class="n">RunId</span>
+<span class="k">update</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span>
+<span class="k">set</span><span class="w"> </span><span class="n">EndTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">getUTCdate</span><span class="p">()),</span><span class="w"> </span><span class="n">ActivityStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="k">Result</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityOutput</span>
+<span class="k">where</span><span class="w"> </span><span class="n">BatchRunId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">BatchRunId</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">RunId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span>
 
-<span class="k">exec</span> <span class="n">dayu_ActivityLog</span> <span class="s1">&#39;test01&#39;</span><span class="p">,</span><span class="s1">&#39;test03&#39;</span><span class="p">,</span> <span class="s1">&#39;Success&#39;</span><span class="p">,</span> <span class="s1">&#39;exec Success&#39;</span>
+<span class="k">exec</span><span class="w"> </span><span class="n">dayu_ActivityLog</span><span class="w"> </span><span class="s1">&#39;test01&#39;</span><span class="p">,</span><span class="s1">&#39;test03&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Success&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;exec Success&#39;</span>
 </code></pre></div>
 
 <p>ActivityOutput(Success):&nbsp;@string(activity(&#8216;xxx&#8217;).output)</p>
@@ -272,21 +278,23 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -295,7 +303,6 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -304,7 +311,6 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -324,7 +330,6 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

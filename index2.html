@@ -43,29 +43,37 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/machine-learning.html" rel="bookmark" title="Permalink to Machine Learning">Machine&nbsp;Learning</a>
+			<a href="/azure-blob-storage.html" rel="bookmark" title="Permalink to Azure Blob Storage">Azure Blob&nbsp;Storage</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-01-18T00:00:00+08:00"> 
-				<a href="/archive/2023/ 1/index.html">三 18 一月 2023 </a>
+			<abbr class="date" title="2024-03-29T00:00:00+08:00"> 
+				<a href="/archive/2024/ 3/index.html">五 29 三月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h3>Data</h3>
-<ul>
-<li>Observations&nbsp;(数据行)</li>
-<li>Features&nbsp;(数据列)</li>
-<li>Training data set 训练集&nbsp;80%</li>
-<li>Testing data set 测试集&nbsp;20%</li>
-<li>Validation data set&nbsp;验证集</li>
-</ul>
-<h3>Machine …</h3></div>
+	<div class="summary"><ol>
+<li>list&nbsp;file</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cm">/* eslint-disable no-undef */</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ContainerClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@azure/storage-blob&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">azure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">blobContainer</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">storageAccount</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">sasDomain</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;blob.core.xxx.cn&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">containerName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">sasToken</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;sp=xxx&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">getStorageDetails</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">containerName</span><span class="o">:</span><span class="w"> </span><span class="nx">azure …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/analytics.html">Analytics</a>
+			<a href="/category/cloud.html">Cloud</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -73,20 +81,26 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/nosql.html" rel="bookmark" title="Permalink to NoSQL">NoSQL</a>
+			<a href="/wen-jian-shang-chuan.html" rel="bookmark" title="Permalink to 文件上传">文件上传</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-01-17T00:00:00+08:00"> 
-				<a href="/archive/2023/ 1/index.html">二 17 一月 2023 </a>
+			<abbr class="date" title="2024-03-29T00:00:00+08:00"> 
+				<a href="/archive/2024/ 3/index.html">五 29 三月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><blockquote>
-<p>NoSQL = Not Only <span class="caps">SQL</span></p>
-</blockquote>
-<p>NoSQL是一类非 <span class="caps">SQL</span>（关系）数据库，使用预定义表和列之外的其他数据 …</p></div>
+	<div class="summary"><p>解析 Content-Type:&nbsp;multipart/form-data</p>
+<ul>
+<li>formidable</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">formidable</span><span class="p">({</span><span class="w"> </span><span class="nx">multiples</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">form</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">fields</span><span class="p">,</span><span class="w"> </span><span class="nx">files</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="sb">`Invalid request: </span><span class="si">${</span><span class="nx">err</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -98,27 +112,28 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/antv-g2.html" rel="bookmark" title="Permalink to AntV G2">AntV&nbsp;G2</a>
+			<a href="/snyk.html" rel="bookmark" title="Permalink to Snyk">Snyk</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-12-24T00:00:00+08:00"> 
-				<a href="/archive/2022/12/index.html">六 24 十二月 2022 </a>
+			<abbr class="date" title="2024-03-18T00:00:00+08:00"> 
+				<a href="/archive/2024/ 3/index.html">一 18 三月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p>G2&nbsp;主要用于制作基于网页的可视化</p>
-<div class="highlight"><pre><span></span><code><span class="n">npm</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="nv">@antv</span><span class="o">/</span><span class="n">g2</span><span class="w"></span>
+	<div class="summary"><p>注册:&nbsp;https://snyk.io/</p>
+<p>Install Snyk <span class="caps">CLI</span></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>snyk
 </code></pre></div>
 
-<h2>React+G2&nbsp;Template</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RefObject</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Chart …</span></code></pre></div></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://static.snyk.io/cli/latest/snyk-macos<span class="w"> </span>-o<span class="w"> </span>snyk
+chmod<span class="w"> </span>+x<span class="w"> </span>./snyk
+mv<span class="w"> </span>./snyk<span class="w"> </span>/usr/local/bin …</code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/frontend.html">Frontend</a>
+			<a href="/category/programming.html">Programming</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -126,29 +141,28 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/linkmed-bst-project-data.html" rel="bookmark" title="Permalink to Linkmed BST Project Data">Linkmed <span class="caps">BST</span> Project&nbsp;Data</a>
+			<a href="/reinforcement-learning.html" rel="bookmark" title="Permalink to Reinforcement learning">Reinforcement&nbsp;learning</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-12-24T00:00:00+08:00"> 
-				<a href="/archive/2022/12/index.html">六 24 十二月 2022 </a>
+			<abbr class="date" title="2024-01-15T00:00:00+08:00"> 
+				<a href="/archive/2024/ 1/index.html">一 15 一月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Authentication</h2>
-<blockquote>
-<p><span class="caps">JWT</span> <span class="caps">TOKEN</span> =&nbsp;JWT头.有效载荷.签名</p>
-</blockquote>
+	<div class="summary"><h3>Summit&nbsp;Training</h3>
+<p>Rule-based <span class="caps">VS</span> <span class="caps">ML</span></p>
 <ul>
-<li>JWT头：一个描述JWT元数据的JSON对象</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;HS256&quot;</span><span class="p">,</span> <span class="err">//</span> <span class="err">签名使 …</span></code></pre></div></div>
+<li>
+<p>Rule-based approach: Decision rules are clearly defined by&nbsp;humans</p>
+</li>
+<li>
+<p>Machine Learning: Trained from examples. Rules are note defined by humans but learned by the machine …</p></li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/project.html">Project</a>
+			<a href="/category/analytics.html">Analytics</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -156,55 +170,42 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/dayu-supply-chain-data-analytics.html" rel="bookmark" title="Permalink to DAYU — Supply Chain Data Analytics"><span class="caps">DAYU</span> &#8212; Supply Chain Data&nbsp;Analytics</a>
+			<a href="/aws-redshift.html" rel="bookmark" title="Permalink to AWS Redshift"><span class="caps">AWS</span>&nbsp;Redshift</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
-				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+			<abbr class="date" title="2023-11-30T00:00:00+08:00"> 
+				<a href="/archive/2023/11/index.html">四 30 十一月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h3><span class="caps">SCAN</span></h3>
-<p><span class="caps">SCAN</span> stands for Supply Chain ANalytics. <span class="caps">SCAN</span> is an analytics program within Janssen Supply Chain. Our aim is to accelerate value delivery by providing analytics as a&nbsp;service. </p>
-<ul>
-<li>Capability …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/project.html">Project</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/microsoft-azure-data-factory.html" rel="bookmark" title="Permalink to Microsoft Azure Data Factory">Microsoft Azure Data&nbsp;Factory</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
-				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2><span class="caps">DAYU</span></h2>
-<h3>申请资源</h3>
-<ul>
-<li><span class="caps">ADF</span> PaaS&nbsp;Service</li>
-<li><span class="caps">IR</span></li>
-<li>Azure <span class="caps">SQL</span>&nbsp;Server</li>
-<li>Key&nbsp;Vault</li>
-<li><span class="caps">AWS</span>&nbsp;S3</li>
-<li>Azure Date Lake&nbsp;Storage</li>
-</ul>
-<h2>Linked&nbsp;Service</h2>
-<h3>1.Amazon&nbsp;S3</h3>
-<p>Authentication type: Access&nbsp;Key</p>
-<p>Access …</p></div>
+	<div class="summary"><h3>Encode</h3>
+<p>Amazon Redshift <span class="caps">AZ64</span>、<span class="caps">LZO</span>、<span class="caps">ZSTD</span>&nbsp;字段的支持类型</p>
+<table>
+<thead>
+<tr>
+<th>Type Category</th>
+<th>Type</th>
+<th><span class="caps">LZO</span></th>
+<th><span class="caps">SZTD</span></th>
+<th><span class="caps">AZ64</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="caps">SMALLINT</span></td>
+<td><span class="caps">INT2</span></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><span class="caps">INTEGER</span></td>
+<td><span class="caps">INT</span>、<span class="caps">INT4</span></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -216,22 +217,23 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/microsoft-azure-databricks.html" rel="bookmark" title="Permalink to Microsoft Azure Databricks">Microsoft Azure&nbsp;Databricks</a>
+			<a href="/precision-medicine-idiscover-data-platform.html" rel="bookmark" title="Permalink to Precision Medicine — iDiscover Data Platform">Precision Medicine &#8212; iDiscover Data&nbsp;Platform</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
-				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+			<abbr class="date" title="2023-11-08T00:00:00+08:00"> 
+				<a href="/archive/2023/11/index.html">三 08 十一月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><p><span class="caps">ETL</span>: Extract, Transform and Load&nbsp;数据仓库技术</p>
-<p>databricks是使用Apache&nbsp;Spark™的原始创建者提供的Databricks统一分 …</p></div>
+	<div class="summary"><h2>Business&nbsp;Value</h2>
+<p>Roll out a <span class="caps">CRM</span> platform specific to diagnostic labs in iConnect&nbsp;to:</p>
+<p>• Enable field force teams to capture and create shared visibility of critical lab information, account manage …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/cloud.html">Cloud</a>
+			<a href="/category/project.html">Project</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -239,32 +241,54 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/python-ji-chu.html" rel="bookmark" title="Permalink to Python 基础">Python&nbsp;基础</a>
+			<a href="/swift-supply-chain-data-modeling.html" rel="bookmark" title="Permalink to SWIFT — Supply Chain Data Modeling"><span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-11-22T00:00:00+08:00"> 
-				<a href="/archive/2022/11/index.html">二 22 十一月 2022 </a>
+			<abbr class="date" title="2023-11-08T00:00:00+08:00"> 
+				<a href="/archive/2023/11/index.html">三 08 十一月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>List&nbsp;列表</h2>
-<div class="highlight"><pre><span></span><code><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
-
-<span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># red</span>
-<span class="n">list1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># blue 反向索引</span>
-<span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># red, green [0, 2)</span>
+	<div class="summary"><h2>Business&nbsp;Value</h2>
+<p>The Ultimate Supply Chain Planning&nbsp;Experience</p>
+<p><span class="caps">SWIFT</span> = Scenario and What If analysis enabled Flexibility and Transparency in Supply&nbsp;Chain</p>
+<p>Our Goal is to create capabilities for Global and …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/project.html">Project</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/salesforce.html" rel="bookmark" title="Permalink to Salesforce">Salesforce</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-11-06T00:00:00+08:00"> 
+				<a href="/archive/2023/11/index.html">一 06 十一月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm</p>
+<h2><span class="caps">SOQL</span></h2>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">FIELDS</span><span class="p">(</span><span class="k">ALL</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span>
+<span class="k">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">10</span>
 </code></pre></div>
 
-<ul>
-<li>更新列表项</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">list1 …</span></code></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span>
+<span class="k">Object</span><span class="o">&gt;</span>
+</code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -272,29 +296,22 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/proxy.html" rel="bookmark" title="Permalink to Proxy">Proxy</a>
+			<a href="/exceljs.html" rel="bookmark" title="Permalink to ExcelJS">ExcelJS</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-11-03T00:00:00+08:00"> 
-				<a href="/archive/2022/11/index.html">四 03 十一月 2022 </a>
+			<abbr class="date" title="2023-07-26T00:00:00+08:00"> 
+				<a href="/archive/2023/ 7/index.html">三 26 七月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2><span class="caps">VPN</span></h2>
-<p>cd&nbsp;文件目录</p>
-<p>./v2ray</p>
-<p>SwitchyOmega</p>
-<p>proxy:
- - 代理协议：<span class="caps">SOCKS5</span>
- - 代理服务器：127.0.0.1
- -&nbsp;代理端口：10808</p>
-<p>auto switch …</p></div>
+	<div class="summary"><p>ExcelJS 是一个 Node.js 模块，可用来读写和操作 <span class="caps">XLSX</span> 和 <span class="caps">JSON</span>&nbsp;电子表格数据和样式。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">ExcelJS …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
+			<a href="/category/javascript.html">Javascript</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -302,29 +319,30 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/tools.html" rel="bookmark" title="Permalink to Tools">Tools</a>
+			<a href="/synapse-sql.html" rel="bookmark" title="Permalink to Synapse SQL">Synapse <span class="caps">SQL</span></a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-11-03T00:00:00+08:00"> 
-				<a href="/archive/2022/11/index.html">四 03 十一月 2022 </a>
+			<abbr class="date" title="2023-05-30T00:00:00+08:00"> 
+				<a href="/archive/2023/ 5/index.html">二 30 五月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2><span class="caps">VS</span>&nbsp;Code</h2>
-<p>Extensions:</p>
-<ul>
-<li>Prettier - Code&nbsp;formatter</li>
-<li>Beautify css/sass/scss/less: Beautify css, sass and less&nbsp;code</li>
-<li>Excel&nbsp;Viewer</li>
-<li>File <span class="amp">&amp;</span> Folder&nbsp;Icons</li>
-<li>Live&nbsp;Server</li>
-<li><span class="caps">REST</span> Client: allows you to send …</li></ul></div>
+	<div class="summary"><h2>Synapse <span class="caps">SQL</span></h2>
+<ol>
+<li>无法插入多条数据</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="ss">&quot;user_generated_events&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">event_id</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>error: QueryFailedError: Error: Parse error at line: 1, column: 325: Incorrect syntax near …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -332,7 +350,7 @@
 </ul>
 <p class="paginator">
             <a href="/index.html">&laquo;</a>
-    Page 2 / 13
+    Page 2 / 15
         <a href="/index3.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -393,21 +411,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -416,7 +436,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -425,7 +444,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -445,7 +463,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

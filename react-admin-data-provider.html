@@ -99,85 +99,85 @@
 </table>
 <h2>Simple <span class="caps">REST</span></h2>
 <p>npm install&nbsp;ra-data-simple-rest</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">fetchUtils</span><span class="p">,</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">simpleRestProvider</span> <span class="kr">from</span> <span class="s1">&#39;ra-data-simple-rest&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fetchUtils</span><span class="p">,</span><span class="w"> </span><span class="nx">Admin</span><span class="p">,</span><span class="w"> </span><span class="nx">Resource</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">simpleRestProvider</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ra-data-simple-rest&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">httpClient</span> <span class="o">=</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">options</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">authenticated</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">token</span><span class="o">:</span> <span class="s1">&#39;SRTRDFVESGNJYTUKTYTHRG&#39;</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">fetchUtils</span><span class="p">.</span><span class="nx">fetchJson</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">httpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">options</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">authenticated</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;SRTRDFVESGNJYTUKTYTHRG&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">fetchUtils</span><span class="p">.</span><span class="nx">fetchJson</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">const</span> <span class="nx">dataProvider</span> <span class="o">=</span> <span class="nx">simpleRestProvider</span><span class="p">(</span><span class="s1">&#39;http://path.to.my.api/&#39;</span><span class="p">,</span> <span class="nx">httpClient</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dataProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">simpleRestProvider</span><span class="p">(</span><span class="s1">&#39;http://path.to.my.api/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">httpClient</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
-  <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">dataProvider</span><span class="p">}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span> <span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">Admin</span><span class="w"> </span><span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">dataProvider</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span><span class="w"> </span><span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/Admin&gt;</span>
 <span class="p">);</span>
 </code></pre></div>
 
 <p>Instead of writing your own Data Provider, you can enhance the capabilities of an existing data provider. To enhance a provider with the upload feature, compose addUploadFeature function with the data provider&nbsp;function:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">simpleRestProvider</span> <span class="kr">from</span> <span class="s1">&#39;ra-data-simple-rest&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">addUploadFeature</span> <span class="kr">from</span> <span class="s1">&#39;./addUploadFeature&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">simpleRestProvider</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ra-data-simple-rest&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">addUploadFeature</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./addUploadFeature&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">dataProvider</span> <span class="o">=</span> <span class="nx">simpleRestProvider</span><span class="p">(</span><span class="s1">&#39;http://path.to.my.api/&#39;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">uploadCapableDataProvider</span> <span class="o">=</span> <span class="nx">addUploadFeature</span><span class="p">(</span><span class="nx">dataProvider</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dataProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">simpleRestProvider</span><span class="p">(</span><span class="s1">&#39;http://path.to.my.api/&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">uploadCapableDataProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">addUploadFeature</span><span class="p">(</span><span class="nx">dataProvider</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
-  <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">uploadCapableDataProvider</span><span class="p">}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span> <span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">Admin</span><span class="w"> </span><span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">uploadCapableDataProvider</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span><span class="w"> </span><span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/Admin&gt;</span>
 <span class="p">);</span>
 </code></pre></div>
 
 <h2>Request&nbsp;Format</h2>
 <p>Data queries require a type (e.g. GET_ONE), a resource (e.g. &#8216;posts&#8217;) and a set of&nbsp;parameters.</p>
-<div class="highlight"><pre><span></span><code><span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_LIST</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">pagination</span><span class="o">:</span> <span class="p">{</span> <span class="nx">page</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="nx">perPage</span><span class="o">:</span> <span class="mf">5</span> <span class="p">},</span>
-  <span class="nx">sort</span><span class="o">:</span> <span class="p">{</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="s1">&#39;ASC&#39;</span> <span class="p">},</span>
-  <span class="nx">filter</span><span class="o">:</span> <span class="p">{</span> <span class="nx">author_id</span><span class="o">:</span> <span class="mf">12</span> <span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_LIST</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">pagination</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">page</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">perPage</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ASC&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author_id</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">},</span>
 <span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_ONE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span> <span class="p">});</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_ONE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">CREATE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;hello, world&quot;</span> <span class="p">}</span> <span class="p">});</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">CREATE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello, world&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;hello, world!&quot;</span> <span class="p">},</span>
-  <span class="nx">previousData</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;previous title&quot;</span> <span class="p">}</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello, world!&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">previousData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;previous title&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE_MANY</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span><span class="mf">123</span><span class="p">,</span> <span class="mf">234</span><span class="p">],</span>
-  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">views</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE_MANY</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="mf">234</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">views</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
 <span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-  <span class="nx">previousData</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;hello, world&quot;</span> <span class="p">}</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">previousData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello, world&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE_MANY</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span><span class="mf">123</span><span class="p">,</span> <span class="mf">234</span><span class="p">]</span> <span class="p">});</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE_MANY</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="mf">234</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span><span class="mf">123</span><span class="p">,</span> <span class="mf">124</span><span class="p">,</span> <span class="mf">125</span><span class="p">]</span> <span class="p">});</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="mf">124</span><span class="p">,</span><span class="w"> </span><span class="mf">125</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY_REFERENCE</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;post_id&#39;</span><span class="p">,</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-  <span class="nx">sort</span><span class="o">:</span> <span class="p">{</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="s1">&#39;DESC&#39;</span> <span class="p">}</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY_REFERENCE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;comments&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;post_id&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;DESC&#39;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <h2>Response&nbsp;Format</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_LIST</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">pagination</span><span class="o">:</span> <span class="p">{</span> <span class="nx">page</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="nx">perPage</span><span class="o">:</span> <span class="mf">5</span> <span class="p">},</span>
-    <span class="nx">sort</span><span class="o">:</span> <span class="p">{</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="s1">&#39;ASC&#39;</span> <span class="p">},</span>
-    <span class="nx">filter</span><span class="o">:</span> <span class="p">{</span> <span class="nx">author_id</span><span class="o">:</span> <span class="mf">12</span> <span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_LIST</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pagination</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">page</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">perPage</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ASC&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author_id</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">},</span>
 <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: [</span>
 <span class="c1">//         { id: 126, title: &quot;allo?&quot;, author_id: 12 },</span>
@@ -189,54 +189,54 @@
 <span class="c1">//     total: 27</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_ONE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span> <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_ONE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="w"> </span><span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: { id: 123, title: &quot;hello, world&quot; }</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">CREATE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;hello, world&quot;</span> <span class="p">}</span> <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">CREATE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello, world&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: { id: 450, title: &quot;hello, world&quot; }</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;hello, world!&quot;</span> <span class="p">},</span>
-    <span class="nx">previousData</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;previous title&quot;</span> <span class="p">}</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello, world!&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">previousData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;previous title&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: { id: 123, title: &quot;hello, world!&quot; }</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE_MANY</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span><span class="mf">123</span><span class="p">,</span> <span class="mf">234</span><span class="p">],</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">views</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">UPDATE_MANY</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="mf">234</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">views</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
 <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: [123, 234]</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-    <span class="nx">previousData</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;hello, world!&quot;</span> <span class="p">}</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">previousData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello, world!&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: { id: 123, title: &quot;hello, world&quot; }</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE_MANY</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span><span class="mf">123</span><span class="p">,</span> <span class="mf">234</span><span class="p">]</span> <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">DELETE_MANY</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="mf">234</span><span class="p">]</span><span class="w"> </span><span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: [123, 234]</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY</span><span class="p">,</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ids</span><span class="o">:</span> <span class="p">[</span><span class="mf">123</span><span class="p">,</span> <span class="mf">124</span><span class="p">,</span> <span class="mf">125</span><span class="p">]</span> <span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;posts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="mf">124</span><span class="p">,</span><span class="w"> </span><span class="mf">125</span><span class="p">]</span><span class="w"> </span><span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: [</span>
 <span class="c1">//         { id: 123, title: &quot;hello, world&quot; },</span>
@@ -245,12 +245,12 @@
 <span class="c1">//     ]</span>
 <span class="c1">// }</span>
 
-<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY_REFERENCE</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;post_id&#39;</span><span class="p">,</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-    <span class="nx">sort</span><span class="o">:</span> <span class="p">{</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="s1">&#39;DESC&#39;</span> <span class="p">}</span>
+<span class="nx">dataProvider</span><span class="p">(</span><span class="nx">GET_MANY_REFERENCE</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;comments&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;post_id&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">field</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;DESC&#39;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">});</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="c1">// {</span>
 <span class="c1">//     data: [</span>
 <span class="c1">//         { id: 667, title: &quot;I agree&quot;, post_id: 123 },</span>
@@ -262,133 +262,133 @@
 
 <h2>Request Processing &amp;&amp; Response&nbsp;Processing</h2>
 <p>Data Providers often use a switch statement, and finish by a call to&nbsp;fetch(). </p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">stringify</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;query-string&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span>
-  <span class="nx">GET_LIST</span><span class="p">,</span>
-  <span class="nx">GET_ONE</span><span class="p">,</span>
-  <span class="nx">CREATE</span><span class="p">,</span>
-  <span class="nx">UPDATE</span><span class="p">,</span>
-  <span class="nx">DELETE</span><span class="p">,</span>
-  <span class="nx">GET_MANY</span><span class="p">,</span>
-  <span class="nx">GET_MANY_REFERENCE</span><span class="p">,</span>
-<span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">stringify</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;query-string&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">GET_LIST</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">GET_ONE</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">CREATE</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">UPDATE</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">DELETE</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">GET_MANY</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">GET_MANY_REFERENCE</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">apiUrl</span> <span class="o">=</span> <span class="s1">&#39;http://path.to.my.api/&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">apiUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://path.to.my.api/&#39;</span><span class="p">;</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">resource</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">headers</span> <span class="o">:</span> <span class="ow">new</span> <span class="nx">Headers</span><span class="p">({</span>
-      <span class="nx">Accept</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-    <span class="p">}),</span>
-  <span class="p">};</span>
-  <span class="k">switch</span> <span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">GET_LIST</span><span class="o">:</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="p">{</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">perPage</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">pagination</span><span class="p">;</span>
-      <span class="kd">const</span> <span class="p">{</span> <span class="nx">field</span><span class="p">,</span> <span class="nx">order</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">sort</span><span class="p">;</span>
-      <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">sort</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span><span class="nx">field</span><span class="p">,</span> <span class="nx">order</span><span class="p">]),</span>
-        <span class="nx">range</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span>
-            <span class="p">(</span><span class="nx">page</span> <span class="o">-</span> <span class="mf">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">perPage</span><span class="p">,</span>
-            <span class="nx">page</span> <span class="o">*</span> <span class="nx">perPage</span> <span class="o">-</span> <span class="mf">1</span><span class="p">,</span>
-        <span class="p">]),</span>
-        <span class="nx">filter</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">filter</span><span class="p">),</span>
-      <span class="p">};</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">case</span> <span class="nx">GET_ONE</span><span class="o">:</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">CREATE</span><span class="o">:</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">UPDATE</span><span class="o">:</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="s1">&#39;PUT&#39;</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">UPDATE_MANY</span><span class="o">:</span>
-      <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">filter</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">ids</span> <span class="p">}),</span>
-      <span class="p">};</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="s1">&#39;PATCH&#39;</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">DELETE</span><span class="o">:</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">DELETE_MANY</span><span class="o">:</span>
-      <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">filter</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">ids</span> <span class="p">}),</span>
-      <span class="p">};</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="nx">options</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">GET_MANY</span><span class="o">:</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">filter</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">ids</span> <span class="p">}),</span>
-      <span class="p">};</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">case</span> <span class="nx">GET_MANY_REFERENCE</span><span class="o">:</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="p">{</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">perPage</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">pagination</span><span class="p">;</span>
-      <span class="kd">const</span> <span class="p">{</span> <span class="nx">field</span><span class="p">,</span> <span class="nx">order</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">sort</span><span class="p">;</span>
-      <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">sort</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span><span class="nx">field</span><span class="p">,</span> <span class="nx">order</span><span class="p">]),</span>
-        <span class="nx">range</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span>
-          <span class="p">(</span><span class="nx">page</span> <span class="o">-</span> <span class="mf">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">perPage</span><span class="p">,</span>
-          <span class="nx">page</span> <span class="o">*</span> <span class="nx">perPage</span> <span class="o">-</span> <span class="mf">1</span><span class="p">,</span>
-        <span class="p">]),</span>
-        <span class="nx">filter</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-          <span class="p">...</span><span class="nx">params</span><span class="p">.</span><span class="nx">filter</span><span class="p">,</span>
-          <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">target</span><span class="p">]</span><span class="o">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-        <span class="p">}),</span>
-      <span class="p">};</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">default</span><span class="o">:</span>
-      <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="sb">`Unsupported Data Provider request type </span><span class="si">${</span><span class="nx">type</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">resource</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">headers</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Headers</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">GET_LIST</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">page</span><span class="p">,</span><span class="w"> </span><span class="nx">perPage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">pagination</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">field</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">sort</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span><span class="nx">field</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="p">]),</span>
+<span class="w">        </span><span class="nx">range</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span>
+<span class="w">            </span><span class="p">(</span><span class="nx">page</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">perPage</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">page</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">perPage</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="p">]),</span>
+<span class="w">        </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">filter</span><span class="p">),</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">GET_ONE</span><span class="o">:</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">CREATE</span><span class="o">:</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">UPDATE</span><span class="o">:</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PUT&#39;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">UPDATE_MANY</span><span class="o">:</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">ids</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PATCH&#39;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">DELETE</span><span class="o">:</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">DELETE_MANY</span><span class="o">:</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">ids</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">GET_MANY</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">ids</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">GET_MANY_REFERENCE</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">page</span><span class="p">,</span><span class="w"> </span><span class="nx">perPage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">pagination</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">field</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">sort</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span><span class="nx">field</span><span class="p">,</span><span class="w"> </span><span class="nx">order</span><span class="p">]),</span>
+<span class="w">        </span><span class="nx">range</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span>
+<span class="w">          </span><span class="p">(</span><span class="nx">page</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">perPage</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">page</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">perPage</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">        </span><span class="p">]),</span>
+<span class="w">        </span><span class="nx">filter</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">          </span><span class="p">...</span><span class="nx">params</span><span class="p">.</span><span class="nx">filter</span><span class="p">,</span>
+<span class="w">          </span><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">target</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">apiUrl</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">resource</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Unsupported Data Provider request type </span><span class="si">${</span><span class="nx">type</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">headers</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">headers</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">json</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">switch</span> <span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="nx">GET_LIST</span><span class="o">:</span>
-        <span class="k">case</span> <span class="nx">GET_MANY_REFERENCE</span><span class="o">:</span>
-          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">headers</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;content-range&#39;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span>
-              <span class="s1">&#39;The Content-Range header is missing in the HTTP Response.&#39;</span>
-            <span class="p">);</span>
-          <span class="p">}</span>
-          <span class="k">return</span> <span class="p">{</span>
-            <span class="nx">data</span><span class="o">:</span> <span class="nx">json</span><span class="p">,</span>
-            <span class="nx">total</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span>
-              <span class="nx">headers</span>
-                <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;content-range&#39;</span><span class="p">)</span>
-                <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-                <span class="p">.</span><span class="nx">pop</span><span class="p">(),</span>
-                <span class="mf">10</span>
-            <span class="p">),</span>
-          <span class="p">};</span>
-        <span class="k">case</span> <span class="nx">CREATE</span><span class="o">:</span>
-          <span class="k">return</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">json</span><span class="p">.</span><span class="nx">id</span> <span class="p">}</span> <span class="p">};</span>
-        <span class="k">case</span> <span class="nx">DELETE_MANY</span><span class="o">:</span>
-          <span class="k">return</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">json</span> <span class="o">||</span> <span class="p">[]</span> <span class="p">};</span>
-        <span class="k">default</span><span class="o">:</span>
-          <span class="k">return</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">json</span> <span class="p">};</span>
-      <span class="p">}</span>
-    <span class="p">});</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">headers</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">json</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">GET_LIST</span><span class="o">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">GET_MANY_REFERENCE</span><span class="o">:</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">headers</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;content-range&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span>
+<span class="w">              </span><span class="s1">&#39;The Content-Range header is missing in the HTTP Response.&#39;</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">json</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">total</span><span class="o">:</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span>
+<span class="w">              </span><span class="nx">headers</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;content-range&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">pop</span><span class="p">(),</span>
+<span class="w">                </span><span class="mf">10</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">          </span><span class="p">};</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">CREATE</span><span class="o">:</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">DELETE_MANY</span><span class="o">:</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="p">};</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -475,21 +475,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -498,7 +500,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -507,7 +508,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -527,7 +527,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

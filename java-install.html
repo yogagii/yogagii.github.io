@@ -64,14 +64,14 @@
     </header>
     <div class="post-entry">
         <div class="highlight"><pre><span></span><code><span class="c1">// Hello.java </span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span> <span class="c1">// 类名首字母大写</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Java程序的固定入口方法</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span> <span class="c1">// 输出并换行</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span> <span class="c1">// 不换行</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">arg</span> <span class="p">:</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// java App arg1 arg2</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arg: &quot;</span> <span class="o">+</span> <span class="n">arg</span><span class="p">);</span> <span class="c1">// arg: arg1  arg: arg2</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Hello</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 类名首字母大写</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Java程序的固定入口方法</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输出并换行</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 不换行</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// java App arg1 arg2</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arg: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">arg</span><span class="p">);</span><span class="w"> </span><span class="c1">// arg: arg1  arg: arg2</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -83,17 +83,17 @@
 <ul>
 <li>运行：</li>
 </ul>
-<div class="highlight"><pre><span></span><code>javac Hello.java <span class="c1"># 用javac把Hello.java编译成字节码文件Hello.class</span>
-java Hello <span class="c1"># Hello.class</span>
+<div class="highlight"><pre><span></span><code>javac<span class="w"> </span>Hello.java<span class="w"> </span><span class="c1"># 用javac把Hello.java编译成字节码文件Hello.class</span>
+java<span class="w"> </span>Hello<span class="w"> </span><span class="c1"># Hello.class</span>
 
 <span class="c1"># Java 11可以直接运行一个单文件源码</span>
-java Hello.java
+java<span class="w"> </span>Hello.java
 </code></pre></div>
 
 <ul>
 <li>classpath</li>
 </ul>
-<div class="highlight"><pre><span></span><code>java -cp . com.example.Hello <span class="c1"># classpath缩写cp，默认当前目录.</span>
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-cp<span class="w"> </span>.<span class="w"> </span>com.example.Hello<span class="w"> </span><span class="c1"># classpath缩写cp，默认当前目录.</span>
 </code></pre></div>
 
 <ul>
@@ -101,7 +101,7 @@ java Hello.java
 </ul>
 <p>jar包相当于目录，可以包含很多.class文件</p>
 <p>jar包实际上就是一个zip格式的压缩文件，bin目录右键压缩成zip，把后缀改为jar</p>
-<div class="highlight"><pre><span></span><code>java -jar hello.jar
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>hello.jar
 </code></pre></div>
 
 <hr>
@@ -109,52 +109,71 @@ java Hello.java
 <ul>
 <li>检查安装java</li>
 </ul>
-<p>https://www.oracle.com/java/technologies/javase/javase9-archive-downloads.html 下载 jdk-9.0.1_osx-x64_bin.dmg&nbsp;双击安装</p>
-<div class="highlight"><pre><span></span><code>java -version
+<p>判断自己的mac是macOS x64 还是 macOS <span class="caps">ARM64</span></p>
+<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-a<span class="w"> </span>
+<span class="c1"># Darwin WITSXRQVHQWK75 23.6.0 Darwin Kernel Version 23.6.0: Mon Jul 29 21:14:30 PDT 2024; root:xnu-10063.141.2~1/RELEASE_ARM64_T6000 arm64</span>
+</code></pre></div>
+
+<p>https://www.oracle.com/java/technologies/downloads/?er=221886#jdk22-mac</p>
+<p>下载 jdk-22_macos-aarch64_bin.dmg&nbsp;双击安装</p>
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 <span class="c1"># java version &quot;9.0.1&quot;</span>
 </code></pre></div>
 
 <ul>
 <li>检查安装maven</li>
 </ul>
-<p>https://maven.apache.org/download.cgi 下载&nbsp;apache-maven-3.8.5-bin.zip，解压并放入user目录下</p>
-<div class="highlight"><pre><span></span><code>vim ~/.bash_profile
+<p>https://maven.apache.org/download.cgi 下载&nbsp;apache-maven-3.8.8-bin.zip，解压并放入user目录下</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.zshrc
 
 <span class="c1"># maven</span>
-<span class="nb">export</span> <span class="nv">MAVEN_HOME</span><span class="o">=</span>/Users/jyu36/apache-maven-3.8.5
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$MAVEN_HOME</span>/bin
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAVEN_HOME</span><span class="o">=</span>/Users/jyu/apache-maven-3.8.8
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$MAVEN_HOME</span>/bin
 
-<span class="nb">source</span> ~/.bash_profile
-mvn -v
+<span class="nb">source</span><span class="w"> </span>~/.zshrc
+mvn<span class="w"> </span>-v
 </code></pre></div>
 
 <p>踩坑： No compiler is provided in this environment. Perhaps you are running on a <span class="caps">JRE</span> rather than a <span class="caps">JDK</span>?</p>
-<div class="highlight"><pre><span></span><code>mvn -v
+<div class="highlight"><pre><span></span><code>mvn<span class="w"> </span>-v
 <span class="c1"># Java version: 9.0.1, vendor: Oracle Corporation, runtime: /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home</span>
 
-/usr/libexec/java_home -V <span class="c1"># 找到本地 Java 的jdk安装目录</span>
+/usr/libexec/java_home<span class="w"> </span>-V<span class="w"> </span><span class="c1"># 找到本地 Java 的jdk安装目录</span>
 <span class="c1"># 9.0.1 (x86_64) &quot;Oracle Corporation&quot; - &quot;Java SE 9.0.1&quot; /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home</span>
 
-<span class="c1"># /Users/jyu36/apache-maven-3.8.5/bin</span>
-vim mvn
+<span class="c1"># /Users/jyu/apache-maven-3.8.8/bin</span>
+vim<span class="w"> </span>mvn
 <span class="c1"># 顶部添加</span>
 <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
 
-mvn -v
+mvn<span class="w"> </span>-v
 <span class="c1"># Java version: 9.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home</span>
 </code></pre></div>
 
+<p>换源</p>
+<p>vi&nbsp;/Users/jyu/apache-maven-3.8.8/conf/settings.xml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;mirror&gt;</span>
+<span class="w">  </span><span class="nt">&lt;id&gt;</span>xxx-public-repository-group<span class="nt">&lt;/id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;mirrorOf&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
+<span class="w">  </span><span class="nt">&lt;name&gt;</span>xxx<span class="w"> </span>Public<span class="w"> </span>Repository<span class="w"> </span>Group<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;url&gt;</span>http://repository.xxx.org/nexus/content/groups/public<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/mirror&gt;</span>
+</code></pre></div>
+
+<p>修改</p>
 <ul>
 <li>安装依赖</li>
 </ul>
 <p>进入项目目录</p>
-<div class="highlight"><pre><span></span><code>mvn install
+<div class="highlight"><pre><span></span><code>mvn<span class="w"> </span>install
+mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span><span class="c1"># 先清理项目的工作目录，删除之前构建过程中生成的所有文件（如编译后的类文件、JAR 文件等），确保新的构建是从干净的状态开始的</span>
+mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-Dmaven.wagon.http.ssl.insecure<span class="o">=</span><span class="nb">true</span><span class="w"> </span>-Dmaven.wagon.http.ssl.allowall<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="c1"># 跳过证书检查</span>
 </code></pre></div>
 
 <ul>
 <li>运行项目</li>
 </ul>
-<div class="highlight"><pre><span></span><code>mvn spring-boot:run
+<div class="highlight"><pre><span></span><code>mvn<span class="w"> </span>spring-boot:run
 </code></pre></div>
 
 <hr>
@@ -162,7 +181,7 @@ mvn -v
 <ul>
 <li>properties&nbsp;格式：key=value</li>
 </ul>
-<div class="highlight"><pre><span></span><code># application.properties
+<div class="highlight"><pre><span></span><code>#<span class="w"> </span>application.properties
 
 spring.application.name=<span class="cp">${</span><span class="n">APP_NAME</span><span class="p">:</span><span class="n">unnamed</span><span class="cp">}</span>
 </code></pre></div>
@@ -170,11 +189,11 @@ spring.application.name=<span class="cp">${</span><span class="n">APP_NAME</span
 <ul>
 <li>YAML是一种层级格式，去掉了大量重复的前缀，并且更加易读</li>
 </ul>
-<div class="highlight"><pre><span></span><code># application.yml
+<div class="highlight"><pre><span></span><code>#<span class="w"> </span>application.yml
 
 spring:
-  application:
-    name: <span class="cp">${</span><span class="n">APP_NAME</span><span class="p">:</span><span class="n">unnamed</span><span class="cp">}</span>
+<span class="w">  </span>application:
+<span class="w">    </span>name:<span class="w"> </span><span class="cp">${</span><span class="n">APP_NAME</span><span class="p">:</span><span class="n">unnamed</span><span class="cp">}</span>
 </code></pre></div>
 
 <p>${DB_HOST:localhost}意思是，首先从环境变量查找DB_HOST，如果环境变量定义了，那么使用环境变量的值，否则，使用默认值localhost</p>
@@ -262,21 +281,23 @@ spring:
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -285,7 +306,6 @@ spring:
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -294,7 +314,6 @@ spring:
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -314,7 +333,6 @@ spring:
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

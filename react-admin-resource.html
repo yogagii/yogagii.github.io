@@ -70,21 +70,21 @@
 <li>edit</li>
 <li>show</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">jsonServerProvider</span> <span class="kr">from</span> <span class="s1">&#39;ra-data-json-server&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Admin</span><span class="p">,</span><span class="w"> </span><span class="nx">Resource</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-admin&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">jsonServerProvider</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ra-data-json-server&#39;</span><span class="p">;</span>
 
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PostList</span><span class="p">,</span> <span class="nx">PostCreate</span><span class="p">,</span> <span class="nx">PostEdit</span><span class="p">,</span> <span class="nx">PostShow</span><span class="p">,</span> <span class="nx">PostIcon</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./posts&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">UserList</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./posts&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">CommentList</span><span class="p">,</span> <span class="nx">CommentEdit</span><span class="p">,</span> <span class="nx">CommentCreate</span><span class="p">,</span> <span class="nx">CommentIcon</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./comments&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PostList</span><span class="p">,</span><span class="w"> </span><span class="nx">PostCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">PostEdit</span><span class="p">,</span><span class="w"> </span><span class="nx">PostShow</span><span class="p">,</span><span class="w"> </span><span class="nx">PostIcon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./posts&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserList</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./posts&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CommentList</span><span class="p">,</span><span class="w"> </span><span class="nx">CommentEdit</span><span class="p">,</span><span class="w"> </span><span class="nx">CommentCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">CommentIcon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./comments&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
-  <span class="o">&lt;</span><span class="nx">Admin</span> <span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">jsonServerProvider</span><span class="p">(</span><span class="s1">&#39;http://jsonplaceholder.typicode.com&#39;</span><span class="p">)}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span> <span class="nx">create</span><span class="o">=</span><span class="p">{</span><span class="nx">PostCreate</span><span class="p">}</span> <span class="nx">edit</span><span class="o">=</span><span class="p">{</span><span class="nx">PostEdit</span><span class="p">}</span> <span class="nx">show</span><span class="o">=</span><span class="p">{</span><span class="nx">PostShow</span><span class="p">}</span> <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">PostIcon</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">UserList</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;comments&quot;</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentList</span><span class="p">}</span> <span class="nx">create</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentCreate</span><span class="p">}</span> <span class="nx">edit</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentEdit</span><span class="p">}</span> <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentIcon</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span> <span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="err">/Admin&gt;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">Admin</span><span class="w"> </span><span class="nx">dataProvider</span><span class="o">=</span><span class="p">{</span><span class="nx">jsonServerProvider</span><span class="p">(</span><span class="s1">&#39;http://jsonplaceholder.typicode.com&#39;</span><span class="p">)}</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;posts&quot;</span><span class="w"> </span><span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span><span class="w"> </span><span class="nx">create</span><span class="o">=</span><span class="p">{</span><span class="nx">PostCreate</span><span class="p">}</span><span class="w"> </span><span class="nx">edit</span><span class="o">=</span><span class="p">{</span><span class="nx">PostEdit</span><span class="p">}</span><span class="w"> </span><span class="nx">show</span><span class="o">=</span><span class="p">{</span><span class="nx">PostShow</span><span class="p">}</span><span class="w"> </span><span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">PostIcon</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="w"> </span><span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">UserList</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;comments&quot;</span><span class="w"> </span><span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentList</span><span class="p">}</span><span class="w"> </span><span class="nx">create</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentCreate</span><span class="p">}</span><span class="w"> </span><span class="nx">edit</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentEdit</span><span class="p">}</span><span class="w"> </span><span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">CommentIcon</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/Admin&gt;</span>
 <span class="p">);</span>
 </code></pre></div>
 
@@ -97,7 +97,7 @@
 <p>React-admin uses the name prop both to determine the <span class="caps">API</span> endpoint (passed to the dataProvider), and to form the <span class="caps">URL</span> for the&nbsp;resource.</p>
 <p>React-admin will render the icon prop component in the&nbsp;menu.</p>
 <p>options.label allows to customize the display name of a given resource in the&nbsp;menu.</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">Resource</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;v2/posts&quot;</span> <span class="nx">options</span><span class="o">=</span><span class="p">{{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">&#39;Posts&#39;</span> <span class="p">}}</span> <span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span> <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">PostIcon</span><span class="p">}</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">Resource</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;v2/posts&quot;</span><span class="w"> </span><span class="nx">options</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Posts&#39;</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="nx">list</span><span class="o">=</span><span class="p">{</span><span class="nx">PostList</span><span class="p">}</span><span class="w"> </span><span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">PostIcon</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -183,21 +183,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -206,7 +208,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -215,7 +216,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -235,7 +235,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

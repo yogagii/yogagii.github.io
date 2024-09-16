@@ -67,31 +67,31 @@
 <ul>
 <li>获取系统表 sysobjects:&nbsp;在数据库内创建的每个对象（约束、默认值、日志、规则、存储过程等）在表中占一行。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="n">objects</span> 
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">objects</span><span class="w"> </span>
 </code></pre></div>
 
 <ul>
 <li>获取表结构 syscolumns:&nbsp;每个表和视图中的每列在表中占一行，存储过程中的每个参数在表中也占一行。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="n">columns</span> <span class="c1">--- 用object_id过滤</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="c1">--- 用object_id过滤</span>
 </code></pre></div>
 
 <ul>
 <li>获取存储过程: </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">a</span><span class="p">.[</span><span class="k">type</span><span class="p">],</span><span class="n">b</span><span class="p">.[</span><span class="n">definition</span><span class="p">]</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="n">all_objects</span> <span class="n">a</span><span class="p">,</span><span class="n">sys</span><span class="p">.</span><span class="n">sql_modules</span> <span class="n">b</span>
-<span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">is_ms_shipped</span><span class="o">=</span><span class="mi">0</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">object_id</span> <span class="k">and</span> <span class="n">a</span><span class="p">.[</span><span class="k">type</span><span class="p">]</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span><span class="s1">&#39;V&#39;</span><span class="p">,</span><span class="s1">&#39;AF&#39;</span><span class="p">)</span>
-<span class="k">order</span> <span class="k">by</span> <span class="n">a</span><span class="p">.[</span><span class="n">name</span><span class="p">]</span> <span class="k">asc</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">a</span><span class="p">.[</span><span class="k">type</span><span class="p">],</span><span class="n">b</span><span class="p">.[</span><span class="n">definition</span><span class="p">]</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">all_objects</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">sys</span><span class="p">.</span><span class="n">sql_modules</span><span class="w"> </span><span class="n">b</span>
+<span class="k">where</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">is_ms_shipped</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">object_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">object_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.[</span><span class="k">type</span><span class="p">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">,</span><span class="s1">&#39;V&#39;</span><span class="p">,</span><span class="s1">&#39;AF&#39;</span><span class="p">)</span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">a</span><span class="p">.[</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="k">asc</span>
 </code></pre></div>
 
 <h3>锁</h3>
-<div class="highlight"><pre><span></span><code><span class="k">WITH</span> <span class="n">NOLOCK</span> <span class="c1">-- 无锁, 只能用于select，可能读取到未完成事务</span>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">NOLOCK</span><span class="w"> </span><span class="c1">-- 无锁, 只能用于select，可能读取到未完成事务</span>
 
-<span class="k">WITH</span> <span class="n">HOLDLOCK</span> <span class="c1">-- 保持锁</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">HOLDLOCK</span><span class="w"> </span><span class="c1">-- 保持锁</span>
 
-<span class="k">WITH</span> <span class="n">UPDLOCK</span> <span class="c1">-- 更新锁</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">UPDLOCK</span><span class="w"> </span><span class="c1">-- 更新锁</span>
 
-<span class="k">WITH</span> <span class="n">TABLOCKX</span> <span class="c1">-- 强制使用独占表级锁，这个锁在事务期间阻止任何其他事务使用这个表</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">TABLOCKX</span><span class="w"> </span><span class="c1">-- 强制使用独占表级锁，这个锁在事务期间阻止任何其他事务使用这个表</span>
 </code></pre></div>
 
 <p><span class="caps">INSERT</span>、 <span class="caps">UPDATE</span> 或DELETE 命令时，<span class="caps">SQL</span> Server&nbsp;会自动使用独占锁。</p>
@@ -100,16 +100,16 @@
 <li>允许读取数据（不阻塞其它事务）并在以后更新数据，同时确保自从上次读取数据后数据没有被更改。</li>
 <li>当我们用UPDLOCK来读取记录时可以对取到的记录加上更新锁，从而加上锁的记录在其它的线程中是不能更改的只能等本线程的事务结束后才能更改</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">Qty</span> <span class="k">FROM</span> <span class="n">myTable</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span> <span class="k">WHERE</span> <span class="n">Id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Qty</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">myTable</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>Procedure&nbsp;存储过程</h3>
-<div class="highlight"><pre><span></span><code><span class="k">create</span> <span class="k">procedure</span> <span class="n">Proc_Student</span>
-<span class="o">@</span><span class="n">Proc_Son</span> <span class="nb">int</span>
+<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">Proc_Student</span>
+<span class="o">@</span><span class="n">Proc_Son</span><span class="w"> </span><span class="nb">int</span>
 <span class="k">as</span>
-<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">Student</span> <span class="k">where</span> <span class="n">Sno</span> <span class="o">=</span> <span class="o">@</span><span class="n">Proc_Son</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">Proc_Son</span>
 
-<span class="k">exec</span> <span class="n">Proc_Stu</span>
+<span class="k">exec</span><span class="w"> </span><span class="n">Proc_Stu</span>
 </code></pre></div>
 
 <h3>局部变量</h3>
@@ -117,23 +117,36 @@
 <li>全局变量是由系统定义的，在整个SQL&nbsp;Server实例内都能访问到的变量，以@@作为第一个字符，用户只能访问，不可以赋值</li>
 <li>*局部变量由用户定义，生命周期只在一个批处理有效，局部变量以@作为第一个字符，由用户自己定义和赋值</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">DECLARE</span> <span class="o">@</span><span class="n">i</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="k">SET</span> <span class="o">@</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">PRINT</span> <span class="o">@</span><span class="n">i</span>
+<div class="highlight"><pre><span></span><code><span class="k">DECLARE</span><span class="w"> </span><span class="o">@</span><span class="n">i</span><span class="w"> </span><span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">PRINT</span><span class="w"> </span><span class="o">@</span><span class="n">i</span>
 </code></pre></div>
 
-<h3>for xml path&nbsp;多行合并</h3>
+<h3>多行合并</h3>
+<ul>
+<li>for xml&nbsp;path </li>
+</ul>
 <p>将查询结果集以XML形式展现，将多行的结果，展示在同一行。PATH模式：通过简单的XPath语法来允许用户自定义嵌套的XML结构、元素、属性值。</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="n">name</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">FOR</span> <span class="n">xml</span> <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> 
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 
 <p><span class="caps">SQL</span> <span class="caps">SERVER</span> 分组group&nbsp;by之后，字符串合并在一起，逗号隔开</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span>
-  <span class="n">Batchrunid</span><span class="p">,</span>
-  <span class="n">ActivityCode</span><span class="o">=</span><span class="p">(</span><span class="n">stuff</span><span class="p">((</span><span class="k">select</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">ActivityCode</span> <span class="k">from</span> <span class="n">ActivityLogs</span> <span class="k">where</span> <span class="n">Batchrunid</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">Batchrunid</span> <span class="k">and</span> <span class="n">ActivityStatus</span><span class="o">=</span><span class="s1">&#39;Failed&#39;</span> <span class="k">for</span> <span class="n">xml</span> <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span> 
-<span class="k">from</span> <span class="n">ActivityLogs</span> <span class="n">a</span> 
-<span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">ActivityStatus</span><span class="o">=</span><span class="s1">&#39;Failed&#39;</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">BatchRunId</span><span class="o">=</span><span class="s1">&#39;pipeline().parameters.BatchRunID&#39;</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">Batchrunid</span>
+<span class="w">  </span><span class="n">Batchrunid</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ActivityCode</span><span class="o">=</span><span class="p">(</span><span class="n">stuff</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ActivityCode</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">ActivityLogs</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Batchrunid</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">Batchrunid</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ActivityStatus</span><span class="o">=</span><span class="s1">&#39;Failed&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span><span class="w"> </span>
+<span class="k">from</span><span class="w"> </span><span class="n">ActivityLogs</span><span class="w"> </span><span class="n">a</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">ActivityStatus</span><span class="o">=</span><span class="s1">&#39;Failed&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">BatchRunId</span><span class="o">=</span><span class="s1">&#39;pipeline().parameters.BatchRunID&#39;</span>
+<span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Batchrunid</span>
+</code></pre></div>
+
+<ul>
+<li>STRING_AGG&nbsp;(sqlserver的版本需要2017以上)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">STRING_AGG</span><span class="p">(</span><span class="n">my_col</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">my_result</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_tbl</span><span class="p">;</span>
+</code></pre></div>
+
+<p>If the result is too big, you may get error &#8220;<strong>STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use <span class="caps">LOB</span> types to avoid result truncation.</strong>&#8221; , which can be fixed by changing the query to&nbsp;this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">STRING_AGG</span><span class="p">(</span><span class="k">convert</span><span class="p">(</span><span class="nb">varchar</span><span class="p">(</span><span class="k">max</span><span class="p">),</span><span class="w"> </span><span class="n">my_col</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">my_result</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_tbl</span><span class="p">;</span>
 </code></pre></div>
 
 <h3>聚合函数</h3>
@@ -144,37 +157,76 @@
 <li><span class="caps">MAX</span></li>
 <li><span class="caps">MIN</span>&nbsp;字符串排序</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">WITH</span> <span class="n">ListPrice</span> <span class="k">AS</span> <span class="p">(</span>
-  <span class="k">select</span>
-    <span class="n">MaterialCode</span><span class="p">,</span>
-    <span class="n">CONCAT</span><span class="p">(</span>
-      <span class="n">SalesOrg</span><span class="p">,</span>
-      <span class="s1">&#39;-&#39;</span><span class="p">,</span>
-      <span class="n">Currency</span><span class="p">,</span>
-      <span class="s1">&#39;-&#39;</span><span class="p">,</span>
-      <span class="n">ValuePricingUOM</span>
-    <span class="p">)</span> <span class="n">XH</span>
-  <span class="k">FROM</span> <span class="n">ListPrice</span>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">ListPrice</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">select</span>
+<span class="w">    </span><span class="n">MaterialCode</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CONCAT</span><span class="p">(</span>
+<span class="w">      </span><span class="n">SalesOrg</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">Currency</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">ValuePricingUOM</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="n">XH</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">ListPrice</span>
 <span class="p">),</span>
 <span class="k">SELECT</span>
-  <span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">)</span> <span class="n">XH</span><span class="p">,</span>
-  <span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">SalesOrg</span><span class="p">,</span>
-  <span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Currency</span><span class="p">,</span>
-  <span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">ValuePricingUOM</span>
+<span class="w">  </span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">)</span><span class="w"> </span><span class="n">XH</span><span class="p">,</span>
+<span class="w">  </span><span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">SalesOrg</span><span class="p">,</span>
+<span class="w">  </span><span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="n">Currency</span><span class="p">,</span>
+<span class="w">  </span><span class="n">split</span><span class="p">(</span><span class="k">MIN</span><span class="p">(</span><span class="n">XH</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="n">ValuePricingUOM</span>
 <span class="k">FROM</span>
-  <span class="n">ListPrice</span>
-<span class="k">GROUP</span> <span class="k">BY</span>
-  <span class="n">MaterialCode</span>
+<span class="w">  </span><span class="n">ListPrice</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">  </span><span class="n">MaterialCode</span>
+</code></pre></div>
+
+<p>找出相同code中日期最新的一条数据</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span><span class="w"> </span><span class="n">t1</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">MaterialCode</span><span class="p">,</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">date_column</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">max_date</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">code</span>
+<span class="p">)</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">MaterialCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">MaterialCode</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">date_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">max_date</span><span class="p">;</span>
 </code></pre></div>
 
 <h3><span class="caps">CASE</span>&nbsp;条件</h3>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-  <span class="k">CASE</span>
-    <span class="k">WHEN</span> <span class="n">Currency</span> <span class="o">=</span> <span class="s1">&#39;CNY&#39;</span> <span class="k">THEN</span> <span class="n">ValuePricingUOM</span>
-    <span class="k">ELSE</span> <span class="n">ExchangeRate</span> <span class="o">*</span> <span class="n">ValuePricingUOM</span>
-  <span class="k">END</span> <span class="n">PriceCNY</span><span class="p">,</span>
+<span class="w">  </span><span class="k">CASE</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">Currency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CNY&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">ValuePricingUOM</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExchangeRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ValuePricingUOM</span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">PriceCNY</span><span class="p">,</span>
 <span class="k">FROM</span>
-  <span class="n">ListPrice</span>
+<span class="w">  </span><span class="n">ListPrice</span>
+</code></pre></div>
+
+<h3>convert&nbsp;格式转换</h3>
+<ul>
+<li>varchar 转&nbsp;number</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">convert</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="n">lead_time</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 整数</span>
+<span class="k">convert</span><span class="p">(</span><span class="nb">decimal</span><span class="p">,</span><span class="n">lead_time</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 浮点型 decimal(18,2) 指定保留2位小数</span>
+</code></pre></div>
+
+<ul>
+<li>四舍五入</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">convert</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">.</span><span class="mi">6</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 13</span>
+<span class="n">round</span><span class="p">(</span><span class="mi">13</span><span class="p">.</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 14, 保留0位小数</span>
+<span class="k">cast</span><span class="p">(</span><span class="mi">13</span><span class="p">.</span><span class="mi">6</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">numeric</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">-- 14</span>
+</code></pre></div>
+
+<ul>
+<li>转&nbsp;varchar</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">convert</span><span class="p">(</span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="o">@</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>cast</li>
+</ul>
+<p>Use <code>try_cast</code> to tolerate malformed input and return <span class="caps">NULL</span>&nbsp;instead.</p>
+<div class="highlight"><pre><span></span><code><span class="n">try_cast</span><span class="p">(</span><span class="n">SuggestedInventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">DOUBLE</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>date&nbsp;日期</h3>
@@ -183,71 +235,91 @@
 <li>current_timestamp</li>
 <li>now</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">current_date</span><span class="p">();</span> <span class="c1">-- 2023-02-24</span>
-<span class="k">select</span> <span class="k">current_timestamp</span><span class="p">();</span> <span class="c1">-- 2023-02-24T06:43:26.124+0000</span>
-<span class="k">select</span> <span class="n">now</span><span class="p">();</span> <span class="c1">-- 2023-02-24T06:43:37.100+0000</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">current_date</span><span class="p">();</span><span class="w"> </span><span class="c1">-- 2023-02-24</span>
+<span class="k">select</span><span class="w"> </span><span class="k">current_timestamp</span><span class="p">();</span><span class="w"> </span><span class="c1">-- 2023-02-24T06:43:26.124+0000</span>
+<span class="k">select</span><span class="w"> </span><span class="n">now</span><span class="p">();</span><span class="w"> </span><span class="c1">-- 2023-02-24T06:43:37.100+0000</span>
 
-<span class="k">select</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span> <span class="c1">-- 2022-03-17</span>
-<span class="k">select</span> <span class="k">timestamp</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span> <span class="c1">-- 2022-03-17T00:00:00.000+0000</span>
-<span class="k">select</span> <span class="k">timestamp</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span> <span class="c1">-- insertDate=&#39;20230410&#39;  2023-04-10T00:00:00.000+0000</span>
+<span class="k">select</span><span class="w"> </span><span class="nb">date</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 2022-03-17</span>
+<span class="k">select</span><span class="w"> </span><span class="k">timestamp</span><span class="p">(</span><span class="s1">&#39;2023-03-17&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 2022-03-17T00:00:00.000+0000</span>
+<span class="k">select</span><span class="w"> </span><span class="k">timestamp</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="k">substring</span><span class="p">(</span><span class="n">insertDate</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- insertDate=&#39;20230410&#39;  2023-04-10T00:00:00.000+0000</span>
 </code></pre></div>
 
 <ul>
 <li>dateadd</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">current_date</span><span class="p">()</span><span class="o">-</span><span class="n">weekday</span><span class="p">(</span><span class="k">current_date</span><span class="p">())</span><span class="o">-</span><span class="mi">7</span><span class="p">;</span> <span class="c1">-- 上周一</span>
-<span class="k">select</span> <span class="k">year</span><span class="p">(</span><span class="k">current_date</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="k">month</span><span class="p">(</span><span class="k">current_date</span><span class="p">());</span> <span class="c1">-- 202302</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">current_date</span><span class="p">()</span><span class="o">-</span><span class="n">weekday</span><span class="p">(</span><span class="k">current_date</span><span class="p">())</span><span class="o">-</span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 上周一</span>
+<span class="k">select</span><span class="w"> </span><span class="k">year</span><span class="p">(</span><span class="k">current_date</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="k">month</span><span class="p">(</span><span class="k">current_date</span><span class="p">());</span><span class="w"> </span><span class="c1">-- 202302</span>
 
-<span class="k">select</span> <span class="n">DATEADD</span><span class="p">(</span><span class="k">month</span><span class="p">,</span><span class="o">-</span><span class="mi">24</span><span class="p">,</span><span class="k">CURRENT_DATE</span><span class="p">())</span> <span class="c1">-- 2年前的今天</span>
+<span class="k">select</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="k">month</span><span class="p">,</span><span class="o">-</span><span class="mi">24</span><span class="p">,</span><span class="k">CURRENT_DATE</span><span class="p">())</span><span class="w"> </span><span class="c1">-- 2年前的今天</span>
 </code></pre></div>
 
 <ul>
 <li>date_format</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">--- utc +8小时</span>
-<span class="k">select</span> <span class="n">date_format</span><span class="p">(</span><span class="n">dateadd</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="k">current_timestamp</span><span class="p">()),</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="c1">-- 2023</span>
-<span class="k">select</span> <span class="n">date_format</span><span class="p">(</span><span class="n">dateadd</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="k">current_timestamp</span><span class="p">()),</span><span class="s1">&#39;yMM&#39;</span><span class="p">)</span> <span class="c1">-- 202302</span>
+<span class="k">select</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="n">dateadd</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="k">current_timestamp</span><span class="p">()),</span><span class="s1">&#39;y&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 2023</span>
+<span class="k">select</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="n">dateadd</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="k">current_timestamp</span><span class="p">()),</span><span class="s1">&#39;yMM&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 202302</span>
 </code></pre></div>
 
 <h3>字符串操作</h3>
 <ul>
 <li>substring&nbsp;字符串截取</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">substring</span><span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;02月&#39;</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">-- 02</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;02月&#39;</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 02</span>
 </code></pre></div>
 
 <ul>
 <li><span class="caps">STUFF</span> (source_string, start, length, change_string)&nbsp;字符串替换</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">stuff</span><span class="p">(</span><span class="s1">&#39;02月&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">-- 2月</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">stuff</span><span class="p">(</span><span class="s1">&#39;02月&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 2月</span>
 </code></pre></div>
 
 <ul>
 <li>concat 字符串拼接,&nbsp;忽略NULL</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="k">NUll</span><span class="p">,</span> <span class="s1">&#39;HaHa&#39;</span><span class="p">)</span> <span class="c1">-- &#39;HaHa&#39;</span>
-<span class="k">select</span> <span class="k">NULL</span><span class="o">+</span><span class="s1">&#39;HaHa&#39;</span> <span class="c1">-- NULL</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="k">NUll</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HaHa&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &#39;HaHa&#39;</span>
+<span class="k">select</span><span class="w"> </span><span class="k">NULL</span><span class="o">+</span><span class="s1">&#39;HaHa&#39;</span><span class="w"> </span><span class="c1">-- NULL</span>
 </code></pre></div>
 
 <ul>
 <li>CONCAT_WS(separator,input_string1,input_string2) 用分隔符拼接多个字符串,&nbsp;忽略NULL</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">concat</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="k">NUll</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1">-- &#39;A,B&#39;</span>
-<span class="k">select</span> <span class="n">concat_ws</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">collect_set</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span> <span class="n">totalname</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NUll</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &#39;A,B&#39;</span>
+<span class="k">select</span><span class="w"> </span><span class="n">concat_ws</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">collect_set</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span><span class="w"> </span><span class="n">totalname</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <ul>
 <li><span class="caps">TRIM</span>&nbsp;删除前后空格</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">TRIM</span><span class="p">(</span><span class="s1">&#39; A &#39;</span><span class="p">)</span> <span class="c1">-- &#39;A&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">TRIM</span><span class="p">(</span><span class="s1">&#39; A &#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &#39;A&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>rlike&nbsp;正则匹配</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">df_manu</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="n">rlike</span><span class="w"> </span><span class="s1">&#39;Actual_sales_2[01][0-9][0-9][0-9][0-9].xlsx&#39;</span>
+<span class="c1">-- Actual_sales_202303.xlsx</span>
+</code></pre></div>
+
+<ul>
+<li>right&nbsp;右侧提取给定数量的字符</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">right</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">-- o</span>
 </code></pre></div>
 
 <ul>
 <li>大小写</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">LOWER</span><span class="p">(</span><span class="s1">&#39;yoga&#39;</span><span class="p">)</span> <span class="c1">-- yoga</span>
-<span class="k">select</span> <span class="k">UPPER</span><span class="p">(</span><span class="s1">&#39;yoga&#39;</span><span class="p">)</span> <span class="c1">-- YOGA</span>
-<span class="k">select</span> <span class="n">INITCAP</span><span class="p">(</span><span class="s1">&#39;yoga&#39;</span><span class="p">)</span> <span class="c1">-- Yoga</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">LOWER</span><span class="p">(</span><span class="s1">&#39;yoga&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- yoga</span>
+<span class="k">select</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="s1">&#39;yoga&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- YOGA</span>
+<span class="k">select</span><span class="w"> </span><span class="n">INITCAP</span><span class="p">(</span><span class="s1">&#39;yoga&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Yoga</span>
+</code></pre></div>
+
+<ul>
+<li><span class="caps">CHARINDEX</span> ( expressionToFind , expressionToSearch [ , start_location ] )&nbsp;包含</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">CHARINDEX</span><span class="p">(</span><span class="s1">&#39;Delay&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Delay - Shipment&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 1</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">systems_alerts</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CHARINDEX</span><span class="p">(</span><span class="s1">&#39;Delay&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">alert_type</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
 
 <h3>运算符</h3>
@@ -255,19 +327,23 @@
 <li>&lt;&gt;不等于，不包含null的情况</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">-- ActivityStatus = &#39;Success&#39; | &#39;Failed&#39; | null</span>
-<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">ActivityLogs</span> <span class="k">where</span> <span class="n">ActivityStatus</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;Success&#39;</span> <span class="k">or</span> <span class="n">ActivityStatus</span> <span class="k">is</span> <span class="k">null</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">ActivityLogs</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ActivityStatus</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;Success&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">ActivityStatus</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span>
+<span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">ActivityLogs</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">isNull</span><span class="p">(</span><span class="n">ActivityStatus</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;Success&#39;</span>
 </code></pre></div>
 
 <ul>
 <li><span class="caps">ISNULL</span>(p1, p2)&nbsp;p1为null返回p2，否则返回p1</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">isnull</span><span class="p">(</span><span class="n">TableName</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">Remark</span> <span class="c1">-- 解决其中一个字段为空的情况，等效于concat</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">isnull</span><span class="p">(</span><span class="n">TableName</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">Remark</span><span class="w"> </span><span class="c1">-- 解决其中一个字段为空的情况，等效于concat</span>
 </code></pre></div>
 
 <ul>
 <li><span class="caps">IN</span>&nbsp;(一般比OR操作符清单执行更快)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1002</span><span class="p">);</span> <span class="c1">-- id=1001 or id=1002</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">1002</span><span class="p">);</span><span class="w"> </span><span class="c1">-- id=1001 or id=1002</span>
+<span class="k">IN</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="c1">-- 语法错误</span>
+<span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">NULL</span><span class="p">)</span><span class="w"> </span><span class="c1">-- null和任何值比较运算都返回的false，返回空</span>
+<span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">NULL</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 同理也返回空</span>
 </code></pre></div>
 
 <h3>集合操作</h3>
@@ -276,10 +352,10 @@
 <li><span class="caps">UNION</span> <span class="caps">ALL</span>：并集</li>
 </ul>
 <p>query1 <span class="caps">UNION</span> (<span class="caps">ALL</span>)&nbsp;query2</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">union</span> <span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="c1">-- a</span>
-<span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">union</span> <span class="k">select</span> <span class="s1">&#39;b&#39;</span> <span class="n">A</span> <span class="c1">-- a, b</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="c1">-- a</span>
+<span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="c1">-- a, b</span>
 
-<span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">union</span> <span class="k">all</span> <span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="c1">-- a, a</span>
+<span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="c1">-- a, a</span>
 </code></pre></div>
 
 <ul>
@@ -287,8 +363,8 @@
 <li><span class="caps">INTERSECT</span> <span class="caps">ALL</span>：交集</li>
 </ul>
 <p>query1 <span class="caps">INTERSECT</span>&nbsp;query2</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">intersect</span> <span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="c1">-- a</span>
-<span class="k">select</span> <span class="s1">&#39;a&#39;</span> <span class="n">A</span> <span class="k">intersect</span> <span class="k">select</span> <span class="s1">&#39;b&#39;</span> <span class="n">A</span> <span class="c1">-- null</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">intersect</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="c1">-- a</span>
+<span class="k">select</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">intersect</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="c1">-- null</span>
 </code></pre></div>
 
 <h3><span class="caps">WHERE</span> <span class="caps">VS</span> <span class="caps">HAVING</span></h3>
@@ -296,17 +372,73 @@
 <li>Where 是一个约束声明，使用Where来约束来之数据库的数据，Where是在结果返回之前起作用的，作用在group&nbsp;by子句和having子句之前，Where中不能使用聚合函数。</li>
 <li>Having&nbsp;是一个过滤声明，是在查询返回结果集以后对查询结果进行的过滤操作，在聚合后对组记录进行筛选，在Having中可以使用聚合函数。</li>
 </ul>
+<blockquote>
+<p>在SQL规范中AND操作符的优先级要高于OR操作符，在没有小括号()的限制下，总是优先执行AND语句，再执行OR语句。<strong>把And看做乘法，把OR看做加法</strong></p>
+</blockquote>
+<p>where A or B and C
+<em>==&gt; where A + B * C</em>
+==&gt; where A or (B and&nbsp;C）</p>
+<p>where A and B or C
+<em>==&gt; where A * B + C</em>
+==&gt; where (A and B) or&nbsp;C</p>
 <p>查找重复行</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">RepNum</span><span class="p">,</span> <span class="n">MaterialCode</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span> <span class="k">group</span> <span class="k">by</span> <span class="n">MaterialCode</span> <span class="k">Having</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">RepNum</span><span class="p">,</span><span class="w"> </span><span class="n">MaterialCode</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">MaterialCode</span><span class="w"> </span><span class="k">Having</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 
-<h3><span class="caps">ORDER</span> <span class="caps">BY</span></h3>
-<div class="highlight"><pre><span></span><code><span class="k">order</span> <span class="k">by</span> <span class="n">qty</span> <span class="c1">-- 会逐位比较数字 100 &lt; 20 &lt; 30 </span>
+<p>查找A列相同，B列不同的情况</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">age</span>
+<span class="k">from</span><span class="w"> </span><span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span>
+<span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">age</span><span class="o">&lt;&gt;</span><span class="n">b</span><span class="p">.</span><span class="n">age</span><span class="w"> </span>
+<span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">age</span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span>
+</code></pre></div>
+
+<p>返回结果为空，证明同一个name，虽然有多行数据，但只有相同的一个age；
+a.name&lt;&gt;b.name and a.age=b.age&nbsp;返回多行数据，证明同一个age会有多个name</p>
+<h3>排序</h3>
+<ul>
+<li>order&nbsp;by</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">qty</span><span class="w"> </span><span class="c1">-- 会逐位比较数字 100 &lt; 20 &lt; 30 </span>
 
 <span class="c1">-- 解决方式</span>
-<span class="k">order</span> <span class="k">by</span> <span class="n">qty</span><span class="o">*</span><span class="mi">1</span>
-<span class="k">order</span> <span class="k">by</span> <span class="nb">int</span><span class="p">(</span><span class="n">qty</span><span class="p">)</span>
-<span class="k">order</span> <span class="k">by</span> <span class="n">len</span><span class="p">(</span><span class="n">qty</span><span class="p">)</span> <span class="k">desc</span> <span class="c1">-- 可以同时找出正负最大的数</span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">qty</span><span class="o">*</span><span class="mi">1</span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">qty</span><span class="p">)</span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">qty</span><span class="p">)</span><span class="w"> </span><span class="k">desc</span><span class="w"> </span><span class="c1">-- 可以同时找出正负最大的数</span>
+</code></pre></div>
+
+<ul>
+<li>rank()&nbsp;over</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">rank</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">desc</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;rank&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">-- 新增一列rank 1,2,3...</span>
+</code></pre></div>
+
+<h3><span class="caps">ALTER</span></h3>
+<ul>
+<li>新增字段</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TABLENAME</span><span class="p">]</span>
+<span class="k">ADD</span><span class="w"> </span><span class="p">[</span><span class="n">COLUMNNAME</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nb">decimal</span><span class="p">](</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+
+<p>datatype: <a href="15, 2">decimal</a>, <code>[nvarchar](256)</code>, datetime,&nbsp;[float]</p>
+<ul>
+<li>删除字段</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">column_name</span>
+</code></pre></div>
+
+<ul>
+<li>修改字段名</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">EXECUTE</span><span class="w"> </span><span class="n">sp_rename</span><span class="w"> </span><span class="s1">&#39;table_name.old_name&#39;</span><span class="p">,</span><span class="s1">&#39;new_name&#39;</span><span class="p">,</span><span class="s1">&#39;COLUMN&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>修改字段类型</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="n">nvarchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -392,21 +524,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -415,7 +549,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -424,7 +557,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -444,7 +576,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

@@ -69,24 +69,24 @@
 <p><img src="img/Women.png" width="300px" /></p>
 <h2>HTML2Canvas</h2>
 <p>用HTML2Canvas将叠加后的photo生成为图片，用户长按可下载</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">html2canvas</span> <span class="kr">from</span> <span class="s1">&#39;html2canvas&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">html2canvas</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;html2canvas&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">savePic</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">setModal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mf">0</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="mf">0</span>
-    <span class="nx">html2canvas</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;imgContainer&#39;</span><span class="p">)).</span><span class="nx">then</span><span class="p">(</span><span class="nx">canvas</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;resultImg&#39;</span><span class="p">).</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">());</span>
-    <span class="p">});</span>
-  <span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">savePic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setModal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">    </span><span class="nx">html2canvas</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;imgContainer&#39;</span><span class="p">)).</span><span class="nx">then</span><span class="p">(</span><span class="nx">canvas</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;resultImg&#39;</span><span class="p">).</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">};</span>
 </code></pre></div>
 
 <ul>
 <li>踩坑：字体大小与原dom不符</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">imgContainer</span> <span class="p">{</span>
-  <span class="k">font-variant</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">imgContainer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-variant</span><span class="p">:</span><span class="w"> </span><span class="kc">normal</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -94,98 +94,98 @@
 <li>踩坑：overflow: scroll&nbsp;被隐藏的部分会黑，需要让导出的div完整渲染在页面，靠浏览器的滚动条上下滚动</li>
 </ul>
 <h2>拖拽</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">styles</span> <span class="kr">from</span> <span class="s1">&#39;./index.less&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Icon</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;antd&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">useRebuildOption</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./service&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useRef</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">styles</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./index.less&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Icon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;antd&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useRebuildOption</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./service&#39;</span><span class="p">;</span>
 
 <span class="c1">// initState</span>
-<span class="kd">const</span> <span class="nx">stateOrigin</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">isDragging</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">pointToOffset</span><span class="o">:</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">stateOrigin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">isDragging</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">pointToOffset</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
 <span class="p">};</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">({</span> <span class="nx">picRef</span><span class="p">,</span> <span class="nx">avatarHeight</span> <span class="p">})</span> <span class="p">{</span>
-  <span class="c1">// init</span>
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">stateOrigin</span><span class="p">);</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="p">({</span><span class="w"> </span><span class="nx">picRef</span><span class="p">,</span><span class="w"> </span><span class="nx">avatarHeight</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// init</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="nx">stateOrigin</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">dragRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dragRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">touchInstance</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useRebuildOption</span><span class="p">(</span><span class="nx">dragRef</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">,</span> <span class="nx">picRef</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">touchInstance</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRebuildOption</span><span class="p">(</span><span class="nx">dragRef</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">,</span><span class="w"> </span><span class="nx">picRef</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">handleStart</span> <span class="o">=</span> <span class="nx">touchInstance</span><span class="p">.</span><span class="nx">start</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">handleMove</span> <span class="o">=</span> <span class="nx">touchInstance</span><span class="p">.</span><span class="nx">move</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">handleEnd</span> <span class="o">=</span> <span class="nx">touchInstance</span><span class="p">.</span><span class="nx">end</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">touchInstance</span><span class="p">.</span><span class="nx">start</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleMove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">touchInstance</span><span class="p">.</span><span class="nx">move</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">touchInstance</span><span class="p">.</span><span class="nx">end</span><span class="p">;</span>
 
-  <span class="k">return</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">div</span>
-      <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">dragRef</span><span class="p">}</span>
-      <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">adjustArea</span><span class="p">}</span>
-      <span class="nx">onTouchStart</span><span class="o">=</span><span class="p">{</span><span class="nx">handleStart</span><span class="p">}</span>
-      <span class="nx">onTouchMove</span><span class="o">=</span><span class="p">{</span><span class="nx">handleMove</span><span class="p">}</span>
-      <span class="nx">onTouchEnd</span><span class="o">=</span><span class="p">{</span><span class="nx">handleEnd</span><span class="p">}</span>
-      <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">height</span><span class="o">:</span> <span class="nx">avatarHeight</span> <span class="p">}}</span>
-    <span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">Icon</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;fullscreen&quot;</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">moveIcon</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/div&gt;</span>
-  <span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span>
+<span class="w">      </span><span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">dragRef</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">adjustArea</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">onTouchStart</span><span class="o">=</span><span class="p">{</span><span class="nx">handleStart</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">onTouchMove</span><span class="o">=</span><span class="p">{</span><span class="nx">handleMove</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">onTouchEnd</span><span class="o">=</span><span class="p">{</span><span class="nx">handleEnd</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="nx">avatarHeight</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">    </span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Icon</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;fullscreen&quot;</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">moveIcon</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">Touch</span><span class="p">,</span> <span class="p">{</span> <span class="nx">calPointToOffset</span><span class="p">,</span> <span class="nx">moveTarget</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@/utils/touch&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Touch</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">calPointToOffset</span><span class="p">,</span><span class="w"> </span><span class="nx">moveTarget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/utils/touch&#39;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">touch</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Touch</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">touch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Touch</span><span class="p">();</span>
 
 <span class="c1">// cal the distance between icon and right edge</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">calToRight</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">clientWidth</span> <span class="o">-</span> <span class="mf">55</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">calToRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">clientWidth</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">55</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// set the long touch action and short touch action</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">useRebuildOption</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dragRef</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">,</span> <span class="nx">picRef</span><span class="p">,</span> <span class="nx">containerRef</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">useRebuildOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">dragRef</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">,</span><span class="w"> </span><span class="nx">picRef</span><span class="p">,</span><span class="w"> </span><span class="nx">containerRef</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-  <span class="kd">const</span> <span class="nx">sameEndCallback</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
-    <span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="s1">&#39;all 0.6s&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sameEndCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;all 0.6s&#39;</span><span class="p">;</span>
 
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">setState</span><span class="p">({</span>
-        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
-        <span class="nx">isDragging</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="p">});</span>
-    <span class="p">},</span> <span class="mf">100</span><span class="p">);</span>
-  <span class="p">};</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">setState</span><span class="p">({</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">isDragging</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="nx">touch</span><span class="p">.</span><span class="nx">setOption</span><span class="p">({</span>
-    <span class="nx">edgeSecond</span><span class="o">:</span> <span class="mf">150</span><span class="p">,</span>
-    <span class="nx">judgeOffset</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">startCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">pointToOffset</span> <span class="o">=</span> <span class="nx">calPointToOffset</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">);</span>
-      <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
-      <span class="nx">setState</span><span class="p">({</span>
-        <span class="nx">isDragging</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">pointToOffset</span><span class="p">,</span>
-      <span class="p">});</span>
-    <span class="p">},</span>
-    <span class="c1">//</span>
-    <span class="nx">moveCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">isDragging</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">moveTarget</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span> <span class="nx">state</span><span class="p">.</span><span class="nx">pointToOffset</span><span class="p">);</span>
-        <span class="nx">moveTarget</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">picRef</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span> <span class="nx">state</span><span class="p">.</span><span class="nx">pointToOffset</span><span class="p">);</span>
-        <span class="c1">// console.log(dragRef.current.style.left, dragRef.current.style.top);</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nx">longCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">sameEndCallback</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">shortCallback</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="c1">//sameEndCallback(true);</span>
-    <span class="p">},</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="nx">touch</span><span class="p">.</span><span class="nx">setOption</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">edgeSecond</span><span class="o">:</span><span class="w"> </span><span class="mf">150</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">judgeOffset</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">startCallback</span><span class="o">:</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">pointToOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calPointToOffset</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="w"> </span><span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;none&#39;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">setState</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">isDragging</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">pointToOffset</span><span class="p">,</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="nx">moveCallback</span><span class="o">:</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">isDragging</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">moveTarget</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="w"> </span><span class="nx">dragRef</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">pointToOffset</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">moveTarget</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="w"> </span><span class="nx">picRef</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">pointToOffset</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// console.log(dragRef.current.style.left, dragRef.current.style.top);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">longCallback</span><span class="o">:</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">sameEndCallback</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">shortCallback</span><span class="o">:</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">//sameEndCallback(true);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
 
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">touchInstance</span><span class="o">:</span> <span class="nx">touch</span><span class="p">,</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">touchInstance</span><span class="o">:</span><span class="w"> </span><span class="nx">touch</span><span class="p">,</span>
+<span class="w">  </span><span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -272,21 +272,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -295,7 +297,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -304,7 +305,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -324,7 +324,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

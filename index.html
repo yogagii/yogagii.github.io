@@ -47,8 +47,8 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-04-12T14:33:00+08:00"> 
-				<a href="/archive/2023/ 4/index.html">三 12 四月 2023 </a>
+			<abbr class="date" title="2024-09-16T14:33:00+08:00"> 
+				<a href="/archive/2024/ 9/index.html">一 16 九月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
@@ -58,10 +58,17 @@
 <h4>类dva</h4>
 <h5>redux怎么变成dva的反向</h5>
 <div class="highlight"><pre><span></span><code><span class="c1">// dva结构</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-    <span class="nx">state</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="nx">reducers</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="nx">effects</span><span class="o">:</span> <span class="p">{},</span> <span class="c1">//这一层是saga做 …</span></code></pre></div></div>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nx">reducers</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nx">effects</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">//这一层是saga做的</span>
+<span class="p">}</span>
+
+<span class="c1">// redux结构</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createStore</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;redux&#39;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">};</span><span class="w"> </span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reducers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">state …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -77,14 +84,14 @@
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-04-12T14:33:00+08:00"> 
-				<a href="/archive/2023/ 4/index.html">三 12 四月 2023 </a>
+			<abbr class="date" title="2024-09-16T14:33:00+08:00"> 
+				<a href="/archive/2024/ 9/index.html">一 16 九月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
 	<div class="summary"><h2>Make</h2>
-<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一 …</p></div>
+<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -96,148 +103,17 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/observable.html" rel="bookmark" title="Permalink to Observable">Observable</a>
+			<a href="/nacos.html" rel="bookmark" title="Permalink to Nacos">Nacos</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-04-10T00:00:00+08:00"> 
-				<a href="/archive/2023/ 4/index.html">一 10 四月 2023 </a>
+			<abbr class="date" title="2024-09-09T00:00:00+08:00"> 
+				<a href="/archive/2024/ 9/index.html">一 09 九月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><table>
-<thead>
-<tr>
-<th>Observable</th>
-<th>Promise</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>陈述式，直至subscription才会触发</td>
-<td>promise创建之后立即执行</td>
-</tr>
-<tr>
-<td>支持多值甚至是数据 …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/javascript.html">Javascript</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/azure-powershell.html" rel="bookmark" title="Permalink to Azure PowerShell">Azure&nbsp;PowerShell</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-03-30T00:00:00+08:00"> 
-				<a href="/archive/2023/ 3/index.html">四 30 三月 2023 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><p>Azure PowerShell 是一组 cmdlet，用于直接从 PowerShell 管理 Azure&nbsp;资源。 </p>
-<h3>安装</h3>
-<p>Azure PowerShell 服务管理模块仅适用 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/cloud.html">Cloud</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/shu-ju-cang-ku-ji-zhu.html" rel="bookmark" title="Permalink to 数据仓库技术">数据仓库技术</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-03-01T00:00:00+08:00"> 
-				<a href="/archive/2023/ 3/index.html">三 01 三月 2023 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><table>
-<thead>
-<tr>
-<th>\</th>
-<th>数据仓库</th>
-<th>数据湖</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>特点</td>
-<td>面向主题的、集成的、随时间变化的、非易失的数据集 …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/programming.html">Programming</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/gpt.html" rel="bookmark" title="Permalink to GPT"><span class="caps">GPT</span></a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-02-20T00:00:00+08:00"> 
-				<a href="/archive/2023/ 2/index.html">一 20 二月 2023 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><table>
-<thead>
-<tr>
-<th>版本</th>
-<th>发布时间</th>
-<th>训练方案</th>
-<th>参数量</th>
-<th>模型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="caps">GPT</span>(<span class="caps">GPT</span>-1)</td>
-<td>2018 年 6 月</td>
-<td>无监督学习</td>
-<td>1.17 亿 …</td></tr></tbody></table></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/analytics.html">Analytics</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/sql-server.html" rel="bookmark" title="Permalink to SQL Server"><span class="caps">SQL</span>&nbsp;Server</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-02-07T00:00:00+08:00"> 
-				<a href="/archive/2023/ 2/index.html">二 07 二月 2023 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>系统表&nbsp;sysobjects</h3>
-<ul>
-<li>获取系统表 sysobjects:&nbsp;在数据库内创建的每个对象（约束、默认值、日志、规 …</li></ul></div>
+	<div class="summary"><p>Nacos是一个开源的、易于使用的、功能强大的动态服务发现、配置管理和服务管理平台。Nacos的设计目标是实现一个易于使用的、功 …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -249,23 +125,29 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/azure-machine-learning-service.html" rel="bookmark" title="Permalink to Azure Machine Learning Service">Azure Machine Learning&nbsp;Service</a>
+			<a href="/email-service.html" rel="bookmark" title="Permalink to Email Service">Email&nbsp;Service</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-01-20T00:00:00+08:00"> 
-				<a href="/archive/2023/ 1/index.html">五 20 一月 2023 </a>
+			<abbr class="date" title="2024-09-05T00:00:00+08:00"> 
+				<a href="/archive/2024/ 9/index.html">四 05 九月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Azure Machine Learning&nbsp;Service</h2>
-<p>Azure Machine Learning Service: Combination of Azure cloud services and Python <span class="caps">SDK</span>.</p>
-<p>Create environment -&gt; Prepare data -&gt; Build models -&gt; Train models -&gt; Test models -&gt; Manage models -&gt; Track experiments …</p></div>
+	<div class="summary"><h3>生成邮件模板并发送邮件</h3>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendEmail</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="kt">Buffer</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">subject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;材料下载&quot;</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">htmlTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">generateHtmlForFileDownload</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/cloud.html">Cloud</a>
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -273,24 +155,57 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/azure-machine-learning-studio-designer.html" rel="bookmark" title="Permalink to Azure Machine Learning Studio - Designer">Azure Machine Learning Studio -&nbsp;Designer</a>
+			<a href="/system-design.html" rel="bookmark" title="Permalink to System Design">System&nbsp;Design</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-01-19T00:00:00+08:00"> 
-				<a href="/archive/2023/ 1/index.html">四 19 一月 2023 </a>
+			<abbr class="date" title="2024-06-14T00:00:00+08:00"> 
+				<a href="/archive/2024/ 6/index.html">五 14 六月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Component</h2>
-<h3>Select Columns in Datasets&nbsp;在数据集中选择列</h3>
-<ul>
-<li>select columns: Column names / Column&nbsp;types</li>
+	<div class="summary"><p>https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#step-2-review-the-scalability-article</p>
+<h2>High&nbsp;Scalability</h2>
+<p>Website scaling helps handle growing traffic and user demands while maintaining peak&nbsp;performance.</p>
+<p>Website scaling is the process of improving …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/azure-cli.html" rel="bookmark" title="Permalink to Azure Cli">Azure&nbsp;Cli</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2024-06-13T00:00:00+08:00"> 
+				<a href="/archive/2024/ 6/index.html">四 13 六月 2024 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><ul>
+<li>clouds</li>
 </ul>
-<h3>Split Data&nbsp;拆分数据</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># list available clouds</span>
+az<span class="w"> </span>cloud<span class="w"> </span>list<span class="w"> </span>--output<span class="w"> </span>table
+<span class="c1"># China Azure</span>
+az<span class="w"> </span>cloud<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--name<span class="w"> </span>AzureChinaCloud
+</code></pre></div>
+
 <ul>
-<li>Fraction of rows in the …</li></ul></div>
+<li>login</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># login service account</span>
+az<span class="w"> </span>login<span class="w"> </span>--service-principal<span class="w"> </span>--tenant<span class="w"> </span>xxx<span class="w"> </span>-u<span class="w"> </span>xxx<span class="w"> </span>-p<span class="w"> </span>xxx
+
+<span class="c1"># local …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -302,34 +217,106 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/azure-machine-learning-studio-notebooks.html" rel="bookmark" title="Permalink to Azure Machine Learning Studio - Notebooks">Azure Machine Learning Studio -&nbsp;Notebooks</a>
+			<a href="/kubernetes.html" rel="bookmark" title="Permalink to Kubernetes">Kubernetes</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-01-19T00:00:00+08:00"> 
-				<a href="/archive/2023/ 1/index.html">四 19 一月 2023 </a>
+			<abbr class="date" title="2024-04-16T00:00:00+08:00"> 
+				<a href="/archive/2024/ 4/index.html">二 16 四月 2024 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h3>Import all the required libraries and&nbsp;formatting.</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">pylab</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="kn">from</span> <span class="nn">matplotlib.pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize …</span></code></pre></div></div>
+	<div class="summary"><h2>Kubernetes</h2>
+<h3>Docker <span class="caps">VS</span> <span class="caps">K8S</span></h3>
+<ul>
+<li>Docker是一个轻量级的容器化平台，它允许开发人员将应用程序和其依赖项打包为可移植的容 …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/cloud.html">Cloud</a>
+			<a href="/category/programming.html">Programming</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/knex.html" rel="bookmark" title="Permalink to Knex">Knex</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2024-04-15T00:00:00+08:00"> 
+				<a href="/archive/2024/ 4/index.html">一 15 四月 2024 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>https://knexjs.org/guide/</p>
+<p>Knex can be used as an <span class="caps">SQL</span> query builder. The primary target environment for Knex is&nbsp;Node.js.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>knex<span class="w"> </span>--save
+$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>mysql2<span class="w"> </span><span class="c1"># pg …</span></code></pre></div></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/compliance-portal.html" rel="bookmark" title="Permalink to Compliance Portal">Compliance&nbsp;Portal</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2024-04-14T00:00:00+08:00"> 
+				<a href="/archive/2024/ 4/index.html">日 14 四月 2024 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Project&nbsp;Overview</h2>
+<h3>Introduction</h3>
+<ul>
+<li>
+<p>User Portal - Persona Tool: An easy-to-access, comprehensive, and visualized tool to reflect compliance behavior and empower people and line managers to mitigate and improve compliance behavior efficiently …</p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/project.html">Project</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/drupal.html" rel="bookmark" title="Permalink to Drupal">Drupal</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2024-04-14T00:00:00+08:00"> 
+				<a href="/archive/2024/ 4/index.html">日 14 四月 2024 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2><span class="caps">CMS</span></h2>
+<p>A content management system (<span class="caps">CMS</span>) is a software tool that lets users add, publish, edit, or remove content from a&nbsp;website.</p>
+<p>Drupal is a flexible <span class="caps">CMS</span> based on the …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
 </article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 13
+    Page 1 / 15
         <a href="/index2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -390,21 +377,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -413,7 +402,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -422,7 +410,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -442,7 +429,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

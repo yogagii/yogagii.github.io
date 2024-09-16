@@ -188,12 +188,11 @@
 <p>localeCompare&nbsp;字符串比较</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nx">reportsData</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">localeCompare</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()));</span>
-<span class="nx">reportsData</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span>
-  <span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">?</span> <span class="mf">1</span> <span class="o">:</span> <span class="o">-</span><span class="mf">1</span><span class="p">,</span>
-<span class="p">);</span>
-</code></pre></div>
-
+<p><code>js
+  reportsData.sort((a,b) =&gt; a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  reportsData.sort((a, b) =&gt;
+    a.name.toLowerCase() &gt; b.name.toLowerCase() ? 1 : -1,
+  );</code></p>
 <ul>
 <li>
 <p>trim&nbsp;删除前后空格</p>
@@ -212,20 +211,20 @@
 </blockquote>
 <p>target:&nbsp;目标对象</p>
 <p>sources:&nbsp;源对象</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">c</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
-  <span class="nx">d</span><span class="o">:</span> <span class="mf">5</span>
-<span class="p">};</span>
-<span class="kd">const</span> <span class="nx">object1</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">a</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
-  <span class="nx">b</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
-  <span class="nx">c</span><span class="o">:</span> <span class="mf">3</span>
-<span class="p">};</span>
-<span class="kd">const</span> <span class="nx">object2</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">object1</span><span class="p">);</span>
-<span class="c1">// obj {c: 3, d: 5, a: 1, b: 2}</span>
-<span class="c1">// object2 {c: 3, d: 5, a: 1, b: 2}</span>
-<span class="c1">// object1 {a: 1, b: 2, c: 3}</span>
-</code></pre></div>
+<p><code>js
+  const obj = {
+    c: 4,
+    d: 5
+  };
+  const object1 = {
+    a: 1,
+    b: 2,
+    c: 3
+  };
+  const object2 = Object.assign(obj, object1);
+  // obj {c: 3, d: 5, a: 1, b: 2}
+  // object2 {c: 3, d: 5, a: 1, b: 2}
+  // object1 {a: 1, b: 2, c: 3}</code></p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -310,21 +309,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -333,7 +334,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -342,7 +342,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -362,7 +361,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

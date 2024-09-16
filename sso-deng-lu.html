@@ -1,0 +1,526 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/backend.html">Backend</a> ›<span class="caps">SSO</span>&nbsp;登录
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" ><span class="caps">SSO</span>&nbsp;登录</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-04-18T00:00:00+08:00"> 
+            <a href="/archive/2023/ 4/index.html">二 18 四月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/nest.html">nest</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <div class="highlight"><pre><span></span><code><span class="o">+--------+</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="o">-&gt;|</span><span class="w">   </span><span class="n">Resource</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Owner</span><span class="w">     </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">--</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Grant</span><span class="w"> </span><span class="o">---|</span><span class="w">               </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">--</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Grant</span><span class="w"> </span><span class="o">--&gt;|</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Server</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">-----</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="kt">Token</span><span class="w"> </span><span class="o">-------|</span><span class="w">               </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-----</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="kt">Token</span><span class="w"> </span><span class="o">------&gt;|</span><span class="w">    </span><span class="n">Resource</span><span class="w">   </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Server</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">---</span><span class="w"> </span><span class="n">Protected</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="o">---|</span><span class="w">               </span><span class="o">|</span>
+<span class="o">+--------+</span><span class="w">                               </span><span class="o">+---------------+</span>
+</code></pre></div>
+
+<h3>Step1 Get&nbsp;code</h3>
+<p>[<span class="caps">GET</span>]&nbsp;https://fedlogin.xxx.com/as/authorization.oauth2?client_id=xxx&amp;response_type=code&amp;scope=profile&amp;redirect_uri=https://xxx.com/callback</p>
+<p>Params:</p>
+<ul>
+<li>client_id: the client <span class="caps">ID</span></li>
+<li>redirect_uri: any redirect <span class="caps">URI</span> that has been assigned to the oAuth&nbsp;clientID.</li>
+<li>scope: openid, profile, email. Separate scopes with a&nbsp;space.</li>
+<li>grant_type:&nbsp;&#8216;authorization_code&#8217;</li>
+<li>response_type:&nbsp;&#8216;code&#8217;</li>
+</ul>
+<p>Response:</p>
+<p>https://xxx.com/callback?code=<span class="caps">XYZCODE4TKNABC</span></p>
+<h3>Step2 Exchange code for&nbsp;token</h3>
+<p>[<span class="caps">POST</span>]&nbsp;https://fedlogin.xxx.com/as/token.oauth2</p>
+<p><span class="quo">&#8216;</span>Content-Type&#8217;:&nbsp;&#8216;application/x-www-form-urlencoded&#8217;</p>
+<p>Body:</p>
+<ul>
+<li>grant_type=authorization_code</li>
+<li>client_id=xxx</li>
+<li>client_secret=xxxxxxx</li>
+<li>redirect_uri=https://xxx.com/callback</li>
+<li>code=(get from previous&nbsp;step)</li>
+</ul>
+<p>Response:
+* access_token: xxxxxxxxx
+* refresh_token: xxx
+* token_type: &#8216;Bearer&#8217;
+* expires_in:&nbsp;7199</p>
+<h3>Step3 Validate&nbsp;token</h3>
+<p>[<span class="caps">POST</span>]&nbsp;https://fedlogin.xxx.com/as/token.oauth2</p>
+<p><span class="quo">&#8216;</span>Content-Type&#8217;:&nbsp;&#8216;application/x-www-form-urlencoded&#8217;</p>
+<p>Body:</p>
+<ul>
+<li>grant_type=urn:pingidentity.com:oauth2:grant_type:validate_bearer</li>
+<li>client_id=xxx</li>
+<li>client_secret=xxxxxxx</li>
+<li>token=(get from&nbsp;step2)</li>
+<li>scope=profile</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>access_token: <ul>
+<li>username:&nbsp;邮箱前缀</li>
+<li>mail:&nbsp;邮箱</li>
+<li>givenName:&nbsp;名</li>
+<li>cn:&nbsp;wwid</li>
+<li>sn:&nbsp;姓</li>
+<li>title:&nbsp;职位</li>
+</ul>
+</li>
+<li>scope:&nbsp;profile</li>
+<li>token_type:&nbsp;&#8216;urn:pingidentity.com:oauth2:validated_token&#8217;</li>
+<li>expires_in:&nbsp;7141</li>
+<li>client_id:&nbsp;xxx</li>
+</ul>
+<h3>Step4 Refresh&nbsp;token</h3>
+<p>[<span class="caps">POST</span>]&nbsp;https://fedlogin.xxx.com/as/token.oauth2</p>
+<p><span class="quo">&#8216;</span>Content-Type&#8217;:&nbsp;&#8216;application/x-www-form-urlencoded&#8217;</p>
+<p>Body:</p>
+<ul>
+<li>grant_type=refresh_token</li>
+<li>client_id=xxx</li>
+<li>client_secret=xxxxxxx</li>
+<li>refresh_token=xxx</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>access_token:&nbsp;xxxxxxxxx</li>
+<li>refresh_token:&nbsp;xxx</li>
+<li>token_type:&nbsp;&#8216;Bearer&#8217;</li>
+<li>expires_in:&nbsp;7199</li>
+</ul>
+<h2>NestJS</h2>
+<ul>
+<li>sso-auth.guard.ts<ul>
+<li>检查是否是 public 接口，public直接返回&nbsp;true</li>
+<li>检查 session 中是否有 token，若 token 不存在或已过期，返回拼接好的 redirect_uri&nbsp;(step1)</li>
+<li>验证 token 是否有效&nbsp;(step3)</li>
+<li>token 验证通过，用返回的用户信息中的邮箱去 User表&nbsp;中查找是否为注册用户</li>
+<li>当用户为首次登录，将返回的用户信息更新到&nbsp;User表</li>
+<li>将user_id存入session，给与用户挂钩的接口提供uuid</li>
+</ul>
+</li>
+<li>app.controller.ts<ul>
+<li>callback 接口获取 code，用 code 换取 token&nbsp;(step2)</li>
+<li>将 token 存入session，并添加过期时间&nbsp;expires_at</li>
+</ul>
+</li>
+<li>refreshtoken.interceptor.ts<ul>
+<li>接口请求时刷新 token, 更新 session 中的 expires_at&nbsp;(step4)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// sso-auth.guard.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">Injectable</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ExecutionContext</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">HttpException</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">HttpStatus</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Reflector</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">IS_PUBLIC_KEY</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;src/common/decorators/public.decorator&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">queryString</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;src/common/utils/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AuthService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../auth.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">SSOAuthGuard</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">reflector</span><span class="o">:</span><span class="w"> </span><span class="kt">Reflector</span><span class="p">,</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">authService</span><span class="o">:</span><span class="w"> </span><span class="kt">AuthService</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">canActivate</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isPublic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">reflector</span><span class="p">.</span><span class="nx">getAllAndOverride</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IS_PUBLIC_KEY</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">getHandler</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">getClass</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">]);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isPublic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">().</span><span class="nx">getRequest</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.CLIENT_ID</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">response_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;code&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">redirect_uri</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.REDIRECT_URI</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;profile&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">token</span><span class="p">.</span><span class="nx">expires_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">redirect</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://fedlogin.xxx.com/as/authorization.oauth2</span><span class="si">${</span><span class="nx">queryString</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">params</span><span class="p">,</span>
+<span class="w">          </span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">UNAUTHORIZED</span><span class="p">,</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">access_token</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">token</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="p">.</span><span class="nx">checkToken</span><span class="p">(</span><span class="nx">access_token</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">request</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>Session</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">res</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Set-Cookie&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`access_token=</span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">302</span><span class="p">).</span>
+<span class="w">  </span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>重定向到/导致cookie丢失，token不存在再次重定向到sso，死循环</p>
+<p>将token存入后端session，正式环境需要用MemoryStore设置过期时间防止内存泄漏</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">session</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.SESSION_SECRET</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">resave</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">saveUninitialized</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">store</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">MemoryStore</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">checkPeriod</span><span class="o">:</span><span class="w"> </span><span class="kt">86400000</span><span class="p">,</span><span class="w"> </span><span class="c1">// prune expired entries every 24h</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<h2>Refresh</h2>
+<p>session中token加入过期时间</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// RefreshTokenInterceptor</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">token</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span><span class="nx">token</span><span class="p">.</span><span class="nx">refresh_token</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span><span class="nx">token</span><span class="p">.</span><span class="nx">expires_at</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">3600000</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">authService</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">refreshToken</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">refresh_token</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">expires_at</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">expires_in</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+<span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span>
+</code></pre></div>
+
+<p>不加await设置request.session无效</p>
+<p>加await会使所有接口速度变慢</p>
+<p>加上时间限制，只有当token还有1小时过期时才refresh</p>
+<p>后果：不能保证用户不操作2小时token才过期，若最后一次操作刚好在3600s，则1小时后就会过期</p>
+<h2><span class="caps">AD</span>&nbsp;Group</h2>
+<p>scope=&#8221;openid&#8221;</p>
+<p><span class="caps">SSO</span> Supports all Open <span class="caps">ID</span> Connect response types when &#8220;openid&#8221; is in the scope. This allows for user information to be in &#8220;id_token&#8221; (jwt token). Once decoded, we get an object with access values, expiry time, user/group info,&nbsp;etc.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://fedlogin.xxx.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1684305147</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1684305447</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CN&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AP&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;memberOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;XXX-APP-XXX-USR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;XXX-APP-XXX-DSG&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>npm install&nbsp;@nestjs/jwt</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">JwtService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/jwt&#39;</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">jwtService</span><span class="o">:</span><span class="w"> </span><span class="kt">JwtService</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">userInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">jwtService</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">id_token</span><span class="p">);</span>
+</code></pre></div>
+
+<h2>依赖注入</h2>
+<p>在依赖注入方面, 从任何模块外部main.js注册的全局拦截器 无法插入依赖项, 因为它们不属于任何模块。&nbsp;需要从模块(app.module)中设置拦截器</p>
+<p>区分环境&nbsp;法一：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// app.module.ts</span>
+<span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_INTERCEPTOR</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">RefreshTokenInterceptor</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_GUARD</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.NODE_ENV</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">SSOAuthGuard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">LocalAuthGuard</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>坏处：需要创建一个空的&nbsp;LocalAuthGuard</p>
+<p>LocalAuthGuard没有讲user_id存入session，需要在.env中添加一个测试账号</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// user.controller.ts</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span>
+<span class="w">      </span><span class="o">?</span><span class="w"> </span><span class="nx">session.user_id</span>
+<span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.TEST_USER_ID</span><span class="p">;</span>
+<span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">user_id</span><span class="p">);</span>
+</code></pre></div>
+
+<p>区分环境&nbsp;法二：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalGuards</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">SSOAuthGuard</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Reflector</span><span class="p">(),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AuthService</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpService</span><span class="p">())),</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>坏处：需要传入实例，可能会嵌套很多层</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/backend.html">Backend</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "sso-deng-lu.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

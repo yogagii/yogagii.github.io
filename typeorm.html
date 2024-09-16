@@ -94,27 +94,27 @@
 <li>forRoot:&nbsp;createConnection</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
-  <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
-  <span class="nx">host</span>: <span class="kt">config.host</span><span class="p">,</span>
-  <span class="nx">port</span>: <span class="kt">3306</span><span class="p">,</span>
-  <span class="nx">username</span>: <span class="kt">config.username</span><span class="p">,</span>
-  <span class="nx">password</span>: <span class="kt">config.password</span><span class="p">,</span>
-  <span class="nx">database</span>: <span class="kt">config.database</span><span class="p">,</span>
-  <span class="nx">entityPrefix</span>: <span class="kt">options?.entityPrefix</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-  <span class="nx">entities</span><span class="p">,</span>
-  <span class="nx">synchronize</span>: <span class="kt">config.synchronize</span><span class="p">,</span>
-  <span class="nx">ssl</span>: <span class="kt">config.ssl</span>
-    <span class="o">?</span> <span class="p">{</span>
-        <span class="nx">rejectUnauthorized</span>: <span class="kt">true</span><span class="p">,</span>
-        <span class="nx">ca</span>: <span class="kt">readFileSync</span><span class="p">(</span>
-          <span class="nx">join</span><span class="p">(</span><span class="nx">resolve</span><span class="p">(),</span> <span class="s1">&#39;private/DigiCertGlobalRootCA.crt.pem&#39;</span><span class="p">),</span>
-        <span class="p">),</span>
-      <span class="p">}</span>
-    <span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
-  <span class="nx">name</span>: <span class="kt">options?.name</span><span class="p">,</span>
+<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mysql&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">config.host</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">3306</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="kt">config.username</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="kt">config.password</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">config.database</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">entityPrefix</span><span class="o">:</span><span class="w"> </span><span class="kt">options?.entityPrefix</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">entities</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">synchronize</span><span class="o">:</span><span class="w"> </span><span class="kt">config.synchronize</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ssl</span><span class="o">:</span><span class="w"> </span><span class="kt">config.ssl</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">rejectUnauthorized</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">ca</span><span class="o">:</span><span class="w"> </span><span class="kt">readFileSync</span><span class="p">(</span>
+<span class="w">          </span><span class="nx">join</span><span class="p">(</span><span class="nx">resolve</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;private/DigiCertGlobalRootCA.crt.pem&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">options?.name</span><span class="p">,</span>
 <span class="p">}),</span>
 <span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
-  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;db2&#39;</span> <span class="c1">// 当连接多个db时需要name</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;db2&#39;</span><span class="w"> </span><span class="c1">// 当连接多个db时需要name</span>
 <span class="p">})</span>
 </code></pre></div>
 
@@ -129,16 +129,16 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// users.module.ts</span>
 <span class="kd">@Module</span><span class="p">({</span>
-  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forFeature</span><span class="p">([</span><span class="nx">User</span><span class="p">],</span> <span class="s1">&#39;db2&#39;</span><span class="p">)],</span>
-  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UsersService</span><span class="p">],</span>
-  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UsersController</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forFeature</span><span class="p">([</span><span class="nx">User</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;db2&#39;</span><span class="p">)],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">UsersService</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">UsersController</span><span class="p">],</span>
 <span class="p">})</span>
 
 <span class="c1">// users.service.ts</span>
 <span class="kr">constructor</span><span class="p">(</span>
-  <span class="kd">@InjectRepository</span><span class="p">(</span><span class="nx">User</span><span class="p">,</span> <span class="s1">&#39;db2&#39;</span><span class="p">)</span>
-  <span class="k">private</span> <span class="nx">usersRepository</span>: <span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="p">)</span> <span class="p">{}</span>
+<span class="w">  </span><span class="kd">@InjectRepository</span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;db2&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">usersRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <h3>创建Entity</h3>
@@ -164,12 +164,12 @@
 <tr>
 <td>@PrimaryGeneratedColumn</td>
 <td>自动生成的列</td>
-<td></td>
+<td>@PrimaryGeneratedColumn(&#8216;uuid&#8217;)</td>
 </tr>
 <tr>
 <td>@CreateDateColumn</td>
 <td>创建时间</td>
-<td></td>
+<td><em>注意可能与手动写入 new Date()有时差</em></td>
 </tr>
 <tr>
 <td>@UpdateDateColumn</td>
@@ -178,195 +178,476 @@
 </tr>
 </tbody>
 </table>
+<p>数据类型</p>
+<div class="highlight"><pre><span></span><code><span class="kd">@PrimaryColumn</span><span class="p">(</span><span class="s1">&#39;varchar&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">length</span><span class="o">:</span><span class="w"> </span><span class="kt">36</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="c1">// varchar(36)</span>
+<span class="nx">sku_code</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// 字符串</span>
+
+<span class="kd">@Column</span><span class="p">()</span>
+<span class="nx">lead_time</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// 整数</span>
+
+
+<span class="kd">@Column</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// double is available for mysql, not mssql</span>
+<span class="nx">bo_value</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// 小数</span>
+
+<span class="kd">@Column</span><span class="p">()</span>
+<span class="nx">last_modified_date</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span><span class="w">  </span><span class="c1">// 日期</span>
+</code></pre></div>
+
+<p>https://typeorm.io/entities#column-types-for-mssql</p>
 <p>复合主键：拼合多列作为主键</p>
 <div class="highlight"><pre><span></span><code><span class="kd">@Entity</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">FooBar</span> <span class="p">{</span>
-  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
-  <span class="k">public</span> <span class="nx">fooid?</span>: <span class="kt">number</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooBar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">fooid?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 
-  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
-  <span class="k">public</span> <span class="nx">barid?</span>: <span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">barid?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 
-  <span class="kd">@ManyToOne</span><span class="p">(</span><span class="kr">type</span> <span class="p">=&gt;</span> <span class="nx">Foo</span><span class="p">,</span> <span class="nx">foo</span> <span class="p">=&gt;</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">fooBars</span><span class="p">)</span>
-  <span class="kd">@JoinColumn</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;fooid&quot;</span><span class="p">})</span>
-  <span class="k">public</span> <span class="nx">foo</span>: <span class="kt">Foo</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@Column</span><span class="p">({</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="c1">// 创建重复会报错，大小写不敏感</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToOne</span><span class="p">(</span><span class="kr">type</span> <span class="p">=&gt;</span> <span class="nx">Bar</span><span class="p">,</span> <span class="nx">bar</span> <span class="p">=&gt;</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">fooBars</span><span class="p">)</span>
-  <span class="kd">@JoinColumn</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;barid&quot;</span><span class="p">})</span>
-  <span class="k">public</span> <span class="nx">bar</span>: <span class="kt">Bar</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@ManyToOne</span><span class="p">(</span><span class="kr">type</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">foo</span><span class="p">.</span><span class="nx">fooBars</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@JoinColumn</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fooid&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kt">Foo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">@ManyToOne</span><span class="p">(</span><span class="kr">type</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Bar</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">bar</span><span class="p">.</span><span class="nx">fooBars</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@JoinColumn</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;barid&quot;</span><span class="p">})</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="kt">Bar</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<p><em>踩坑：拼合太多主键时报错 QueryFailedError: ER_TOO_LONG_KEY: Specified key was too long; max key length is 3072 bytes</em>
+<em>解决: @PrimaryColumn(&#8216;varchar&#8217;, { length: 36&nbsp;})</em></p>
 <h3>Repository</h3>
 <div class="highlight"><pre><span></span><code><span class="nx">userRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
-  <span class="nx">select</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
-  <span class="nx">join</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">alias</span><span class="o">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
-    <span class="nx">leftJoinAndSelect</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">photo</span><span class="o">:</span> <span class="s2">&quot;user.photos&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nx">where</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s2">&quot;Timber&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s2">&quot;Stan&quot;</span> <span class="p">}]</span> <span class="c1">// or</span>
-  <span class="nx">order</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;ASC&quot;</span><span class="p">,</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;DESC&quot;</span>
-  <span class="p">},</span>
-  <span class="nx">skip</span>: <span class="kt">5</span><span class="p">,</span>
-  <span class="nx">take</span>: <span class="kt">10</span><span class="p">,</span>
-  <span class="nx">cache</span>: <span class="kt">true</span> <span class="c1">// 缓存</span>
+<span class="w">  </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nx">join</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alias</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">leftJoinAndSelect</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">photo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;user.photos&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Timber&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">region</span><span class="o">:</span><span class="w"> </span><span class="kt">region</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">In</span><span class="p">(</span><span class="nx">region</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">Not</span><span class="p">(</span><span class="nx">IsNull</span><span class="p">()),</span><span class="w"> </span><span class="c1">// 多选过滤</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="kt">ILike</span><span class="p">(</span><span class="sb">`%</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">%`</span><span class="p">),</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// 模糊搜索，不区分大小写</span>
+<span class="w">  </span><span class="p">]</span><span class="w"> </span><span class="c1">// or</span>
+<span class="w">  </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ASC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DESC&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">skip</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">take</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="c1">// 缓存</span>
 <span class="p">});</span>
 </code></pre></div>
 
-<p><em>踩坑： 每个 entity 必须有 primaryColumn，当 primary 重复时，find 主键重复的行只会返回一遍，QueryBuilder&nbsp;会全部返回</em></p>
+<p><em>踩坑： 每个 entity 必须有 primaryColumn，当 primary 重复时，find 主键重复的行只会返回一遍，QueryBuilder&nbsp;会全部返回，可以用复合主键让主键唯一</em></p>
 <h3>QueryBuilder</h3>
 <p>使用 QueryBuilder 构建几乎任何复杂性的 <span class="caps">SQL</span>&nbsp;查询</p>
 <div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
-  <span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">leftJoinAndSelect</span><span class="p">(</span><span class="nx">bc_r_hospital</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">,</span> <span class="s1">&#39;user.hospital_id = hp.id&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">select</span><span class="p">(</span>
-    <span class="sb">`</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">leftJoinAndSelect</span><span class="p">(</span><span class="nx">bc_r_hospital</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user.hospital_id = hp.id&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">select</span><span class="p">(</span>
+<span class="w">    </span><span class="sb">`</span>
 <span class="sb">    user.id,</span>
 <span class="sb">    user.real_name,</span>
 <span class="sb">    user.create_time</span>
 <span class="sb">    hp.ecode,</span>
 <span class="sb">    hp.ename  // 踩坑：报错信息不会告诉你此处不能有，</span>
 <span class="sb">  `</span><span class="p">,</span>
-  <span class="p">)</span>
-  <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;user.id IN (:...userIdList)&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">userIdList</span> <span class="p">})</span>
-  <span class="p">.</span><span class="nx">andWhere</span><span class="p">(</span><span class="s1">&#39;user.create_time &gt;= :START_DATE&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">START_DATE</span> <span class="p">})</span>
-  <span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">getRawMany</span><span class="p">(),</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;user.id IN (:...userIdList)&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">userIdList</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">andWhere</span><span class="p">(</span><span class="s1">&#39;user.create_time &gt;= :START_DATE&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">START_DATE</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="c1">// .distinct(true)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">getRawMany</span><span class="p">(),</span>
 
 <span class="c1">// debug</span>
-<span class="kd">const</span> <span class="nx">sql</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
-  <span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
-  <span class="p">...</span>
-  <span class="p">.</span><span class="nx">getQuery</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">getQuery</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sql</span><span class="p">);</span>
+</code></pre></div>
+
+<p>使用查询构建器查询可以获得两种类型的结果：</p>
+<ul>
+<li>entities: getOne /&nbsp;getMany</li>
+<li>raw results: getRawOne /&nbsp;getRawMany</li>
+</ul>
+<p><strong>子查询</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getConnection</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getConnection</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;user.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">subQuery</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">subQuery</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;user.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">getRawMany</span><span class="p">();</span>
+</code></pre></div>
+
+<p>踩坑：&#8217;getConnection&#8217; is deprecated. Connection was renamed to DataSource. Old Connection is still there, but now it&#8217;s&nbsp;deprecated. </p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">InjectDataSource</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">DataSource</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+
+<span class="kr">constructor</span><span class="p">(</span>
+<span class="w">  </span><span class="kd">@InjectDataSource</span><span class="p">(</span><span class="s1">&#39;dadb&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">datasource</span><span class="o">:</span><span class="w"> </span><span class="kt">DataSource</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">datasource</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">...</span>
+</code></pre></div>
+
+<p><strong>插入</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newSKUs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">ugSKUsRepository</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">insert</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">skuList</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
 </code></pre></div>
 
 <h3>多对多关系</h3>
 <p>一个课程有多位讲师</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// entities/event.ts</span>
-<span class="k">import</span> <span class="p">{</span>
-  <span class="nx">Column</span><span class="p">,</span>
-  <span class="nx">Entity</span><span class="p">,</span>
-  <span class="nx">PrimaryColumn</span><span class="p">,</span>
-  <span class="nx">CreateDateColumn</span><span class="p">,</span>
-  <span class="nx">UpdateDateColumn</span><span class="p">,</span>
-  <span class="nx">ManyToMany</span><span class="p">,</span>
-  <span class="nx">JoinTable</span><span class="p">,</span>
-<span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Doctor</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./doctor&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">Column</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">Entity</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">PrimaryColumn</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">CreateDateColumn</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">UpdateDateColumn</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ManyToMany</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">JoinTable</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Doctor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./doctor&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">Event</span> <span class="p">{</span>
-  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
-  <span class="nx">event_id</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">event_id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@Column</span><span class="p">({</span> <span class="nx">default</span>: <span class="kt">null</span> <span class="p">})</span> <span class="c1">// 默认值</span>
-  <span class="nx">course_name</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@Column</span><span class="p">({</span><span class="w"> </span><span class="nx">default</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="c1">// 默认值</span>
+<span class="w">  </span><span class="nx">course_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToMany</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">Doctor</span><span class="p">,</span> <span class="p">(</span><span class="nx">doctor</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">doctor</span><span class="p">.</span><span class="nx">events</span><span class="p">)</span>
-  <span class="kd">@JoinTable</span><span class="p">()</span> <span class="c1">// 指定这是关系的所有者方</span>
-  <span class="nx">doctors</span>: <span class="kt">Doctor</span><span class="p">[];</span>
+<span class="w">  </span><span class="kd">@ManyToMany</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Doctor</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">doctor</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">doctor</span><span class="p">.</span><span class="nx">events</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@JoinTable</span><span class="p">()</span><span class="w"> </span><span class="c1">// 指定这是关系的所有者方</span>
+<span class="w">  </span><span class="nx">doctors</span><span class="o">:</span><span class="w"> </span><span class="kt">Doctor</span><span class="p">[];</span>
 
-  <span class="kd">@CreateDateColumn</span><span class="p">()</span>
-  <span class="nx">createdAt</span>: <span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@CreateDateColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
 
-  <span class="kd">@UpdateDateColumn</span><span class="p">()</span>
-  <span class="nx">updatedAt</span>: <span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@UpdateDateColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">updatedAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>一个讲师可以上多门课程</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// entities/doctor.ts</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Event</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./event&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Event</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./event&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">iqvia_doctor</span> <span class="p">{</span>
-  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
-  <span class="nx">doctor_id</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">iqvia_doctor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">doctor_id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@Column</span><span class="p">()</span>
-  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@Column</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToMany</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">Event</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span><span class="p">)</span>
-  <span class="nx">events</span>: <span class="kt">Event</span><span class="p">[];</span>
+<span class="w">  </span><span class="kd">@ManyToMany</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Event</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">onDelete</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CASCADE&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 删除讲师时会删除对应关系</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="kt">Event</span><span class="p">[];</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>运行后，<span class="caps">ORM</span>&nbsp;将创建Event_doctors_Doctor联结表。</p>
+<p><em>有关联的数据若需要删除，建议用flag标记而不是直接删除，若不加‘<span class="caps">CASCADE</span>’，直接删除时会报 Cannot delete or update a parent row: a foreign key constraint&nbsp;fails</em></p>
 <p>创建数据</p>
-<div class="highlight"><pre><span></span><code><span class="nx">doctor</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_doctor</span><span class="p">();</span>
-<span class="nx">doctor</span><span class="p">.</span><span class="nx">doctor_id</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
-<span class="nx">doctor</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Doctor1&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nx">doctor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">iqvia_doctor</span><span class="p">();</span>
+<span class="nx">doctor</span><span class="p">.</span><span class="nx">doctor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">;</span>
+<span class="nx">doctor</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Doctor1&#39;</span><span class="p">;</span>
 <span class="nx">doctorList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">doctor</span><span class="p">);</span>
-<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">doctorRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">doctor</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">doctorRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">doctor</span><span class="p">);</span>
 
-<span class="nx">event</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_event</span><span class="p">();</span>
-<span class="nx">event</span><span class="p">.</span><span class="nx">event_id</span> <span class="o">=</span> <span class="s1">&#39;588873&#39;</span><span class="p">;</span>
-<span class="nx">event</span><span class="p">.</span><span class="nx">course_name</span> <span class="o">=</span> <span class="s1">&#39;Wound Clousure&#39;</span><span class="p">;</span>
+<span class="nx">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">iqvia_event</span><span class="p">();</span>
+<span class="nx">event</span><span class="p">.</span><span class="nx">event_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;588873&#39;</span><span class="p">;</span>
+<span class="nx">event</span><span class="p">.</span><span class="nx">course_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Wound Clousure&#39;</span><span class="p">;</span>
 
-<span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span> <span class="o">=</span> <span class="nx">doctorList</span><span class="p">;</span>
+<span class="nx">event</span><span class="p">.</span><span class="nx">doctors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">doctorList</span><span class="p">;</span>
 
-<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">eventWithDoctor</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;588873&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">relations</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;doctors&#39;</span><span class="p">],</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">eventWithDoctor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">eventRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;588873&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">relations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;doctors&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">doctors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">first_name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Yoga&#39;</span><span class="w"> </span><span class="c1">// 过滤关联表</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <h3>一对多关系</h3>
 <p>一个城市有多家医院</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// entities/city.ts</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Entity</span><span class="p">,</span> <span class="nx">PrimaryColumn</span><span class="p">,</span> <span class="nx">OneToMany</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Hospital</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./hospital&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Entity</span><span class="p">,</span><span class="w"> </span><span class="nx">PrimaryColumn</span><span class="p">,</span><span class="w"> </span><span class="nx">OneToMany</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Hospital</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./hospital&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">City</span> <span class="p">{</span>
-  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
-  <span class="nx">city_name</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">City</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">city_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@OneToMany</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">Hospital</span><span class="p">,</span> <span class="p">(</span><span class="nx">hospital</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span><span class="p">)</span>
-  <span class="nx">hospitals</span>: <span class="kt">Hospital</span><span class="p">[];</span>
+<span class="w">  </span><span class="kd">@OneToMany</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Hospital</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">hospital</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">hospitals</span><span class="o">:</span><span class="w"> </span><span class="kt">Hospital</span><span class="p">[];</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>一家医院只能在一个城市</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// entities/hospital.ts</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Entity</span><span class="p">,</span> <span class="nx">PrimaryColumn</span><span class="p">,</span> <span class="nx">Column</span><span class="p">,</span> <span class="nx">ManyToOne</span><span class="p">,</span> <span class="nx">JoinColumn</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">City</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./city&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Entity</span><span class="p">,</span><span class="w"> </span><span class="nx">PrimaryColumn</span><span class="p">,</span><span class="w"> </span><span class="nx">Column</span><span class="p">,</span><span class="w"> </span><span class="nx">ManyToOne</span><span class="p">,</span><span class="w"> </span><span class="nx">JoinColumn</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">City</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./city&#39;</span><span class="p">;</span>
 
 <span class="kd">@Entity</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">Hospital</span> <span class="p">{</span>
-  <span class="kd">@PrimaryColumn</span><span class="p">()</span>
-  <span class="nx">hco_code</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Hospital</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">hco_code</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@Column</span><span class="p">()</span>
-  <span class="nx">hco_name</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@Column</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">hco_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-  <span class="kd">@ManyToOne</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">City</span><span class="p">,</span> <span class="p">(</span><span class="nx">city</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">city</span><span class="p">.</span><span class="nx">hospitals</span><span class="p">)</span>
-  <span class="kd">@JoinColumn</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;city_name&#39;</span> <span class="p">})</span>
-  <span class="nx">city</span>: <span class="kt">City</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">@ManyToOne</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">City</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">city</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">city</span><span class="p">.</span><span class="nx">hospitals</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@JoinColumn</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;city_name&#39;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="kt">City</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>创建数据</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">city</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_city</span><span class="p">();</span>
-<span class="nx">city</span><span class="p">.</span><span class="nx">city_name</span> <span class="o">=</span> <span class="s1">&#39;枣庄&#39;</span><span class="p">;</span>
-<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">city</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">iqvia_city</span><span class="p">();</span>
+<span class="nx">city</span><span class="p">.</span><span class="nx">city_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;枣庄&#39;</span><span class="p">;</span>
+<span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">city</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">hospital</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">iqvia_hospital</span><span class="p">();</span>
-<span class="nx">hospital</span><span class="p">.</span><span class="nx">hco_code</span> <span class="o">=</span> <span class="s1">&#39;MDMC1&#39;</span><span class="p">;</span>
-<span class="nx">hospital</span><span class="p">.</span><span class="nx">hco_name</span> <span class="o">=</span> <span class="s1">&#39;中山医院&#39;</span><span class="p">;</span>
-<span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span> <span class="o">=</span> <span class="nx">city</span><span class="p">;</span>
-<span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">hospitalRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">hospital</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">hospital</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">iqvia_hospital</span><span class="p">();</span>
+<span class="nx">hospital</span><span class="p">.</span><span class="nx">hco_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;MDMC1&#39;</span><span class="p">;</span>
+<span class="nx">hospital</span><span class="p">.</span><span class="nx">hco_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;中山医院&#39;</span><span class="p">;</span>
+<span class="nx">hospital</span><span class="p">.</span><span class="nx">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">city</span><span class="p">;</span>
+<span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">hospitalRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">hospital</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">city_list</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;枣庄&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">relations</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;hospitals&#39;</span><span class="p">],</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">city_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cityRepository</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">&#39;枣庄&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">relations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;hospitals&#39;</span><span class="p">],</span>
 <span class="p">});</span>
 </code></pre></div>
+
+<p><em>踩坑：entity 修改后报错 TypeORM Error: Entity metadata for Users#majors was not found. Check if you specified a correct&nbsp;entity</em></p>
+<p>My guess is that the strict equals (===) is colliding with a cache and thinking that the different relative import paths refer to different classes.&nbsp;先从其他路径引入Entity，成功后可改回原路径</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// src/entities.ts:</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Users</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./userManagement/entities/users.entity&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Majors</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./userPreference/entities/majors.entity&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Users</span><span class="p">,</span><span class="w"> </span><span class="nx">Majors</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// userManagement/entities/users.entity</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Majors</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;src/entities&#39;</span>
+</code></pre></div>
+
+<p>https://stackoverflow.com/questions/59468756/error-object-metadata-not-found-after-adding-many-to-many-relationships</p>
+<h3>日志&nbsp;Logging</h3>
+<ul>
+<li>logging: true&nbsp;启用所有查询和错误的记录</li>
+<li>logging: [&#8220;query&#8221;, &#8220;error&#8221;, &#8220;schema&#8221;, &#8220;warn&#8221;, &#8220;info&#8221;, &#8220;log&#8221;]&nbsp;启用不同类型的日志记录</li>
+<li>logging: &#8220;all&#8221;&nbsp;启用所有日志记录</li>
+</ul>
+<p>app.module.ts</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CustomLogger</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/utils/customLogger&#39;</span><span class="p">;</span>
+<span class="kd">@Module</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+<span class="w">      </span><span class="p">...</span>
+<span class="w">      </span><span class="nx">logging</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;info&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">logger</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">CustomLogger</span><span class="p">(),</span><span class="w"> </span><span class="c1">// 使用自定义记录器</span>
+<span class="w">      </span><span class="nx">maxQueryExecutionTime</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// 记录耗时长 &gt; 1 的查询</span>
+<span class="w">    </span><span class="p">}),</span><span class="w"> </span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>/common/utils/customLogger.ts</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Logger</span><span class="p">,</span><span class="w"> </span><span class="nx">QueryRunner</span><span class="p">,</span><span class="w"> </span><span class="nx">QueryRunnerAlreadyReleasedError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;typeorm&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CustomLogger</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">Logger</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">queryTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+
+<span class="w">  </span><span class="nx">logQuery</span><span class="p">(</span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">[],</span><span class="w"> </span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="nx">query</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="p">(</span><span class="nx">parameters</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">length</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="sb">` -- PARAMETERS: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// console.log(`[Query] ${sql}`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logQueryError</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">parameters?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.error(`[Query Error] ${error}`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logQuerySlow</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">parameters?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">queryTime</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">time</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// console.warn(`[Query Slow] Execution time: ${time} ms - ${query}`);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">tableName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;FROM&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">query</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;WHERE&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">tableName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">query</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;FROM&#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;WHERE&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="sb">`[Query Slow] Execution time: </span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb"> ms - </span><span class="si">${</span><span class="nx">tableName</span><span class="si">}</span><span class="sb"> - </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">queryTime</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 当前 query 耗时 - 查询表名 - 累计耗时</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logSchemaBuild</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(`[Schema Build] ${message}`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logMigration</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(`[Migration] ${message}`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">log</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;log&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;info&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;warn&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(`[${level}] ${message}`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logTransactionStart</span><span class="p">(</span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(`[Transaction Start]`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logTransactionCommit</span><span class="p">(</span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(`[Transaction Commit]`);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">logTransactionRollback</span><span class="p">(</span><span class="nx">queryRunner?</span><span class="o">:</span><span class="w"> </span><span class="kt">QueryRunner</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(`[Transaction Rollback]`);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>缓存&nbsp;Cache</h3>
+<p>app.module.ts</p>
+<div class="highlight"><pre><span></span><code><span class="nx">TypeOrmModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">synchronize</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// 首次启用缓存时，必须同步数据库架构 </span>
+<span class="w">  </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="kt">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="c1">//  默认缓存生存期为1000 ms</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>默认情况下，TypeORM&nbsp;使用一个名为query-result-cache的单独表，并在那里存储所有查询和结果。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;database&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">tableName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;configurable-table-query-result-cache&quot;</span><span class="w"> </span><span class="c1">// 配置表名</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>手动建表</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- mysql</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">query</span><span class="o">-</span><span class="k">result</span><span class="o">-</span><span class="k">cache</span><span class="o">`</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">identifier</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="k">time</span><span class="o">`</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">duration</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">query</span><span class="o">`</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="k">result</span><span class="o">`</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_ai_ci</span><span class="p">;</span>
+</code></pre></div>
+
+<p>将缓存类型更改为&#8221;redis&#8221;</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;redis&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// host: &#39;localhost&#39;,</span>
+<span class="w">    </span><span class="c1">// port: 6379</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;redis://10.xx.xx.xx:6379&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>踩坑：host和post不生效, use redis url&nbsp;instead</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// node_modules/@redis/client/dist/lib/client/index.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">hostname</span><span class="p">,</span><span class="w"> </span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="nx">protocol</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">pathname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">url_1</span><span class="p">.</span><span class="nx">URL</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</code></pre></div>
+
+<p>在query中启用缓存</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">connection</span><span class="p">.</span><span class="nx">getRepository</span><span class="p">(</span><span class="nx">User</span><span class="p">).</span><span class="nx">find</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isAdmin</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>踩坑：.query(’select * from table’) 原始 <span class="caps">SQL</span> 查询&nbsp;无法缓存</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="nx">getLatestDate</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Date</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">workspaceRepository</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;max(last_modified_date) as date&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">15</span><span class="p">)</span><span class="w"> </span><span class="c1">// 15min</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">getRawMany</span><span class="p">()</span>
+<span class="w">    </span><span class="p">)[</span><span class="mf">0</span><span class="p">].</span><span class="nx">date</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">latestDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getLatestDate</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">totalWorkspace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">workspaceRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">last_modified_date</span><span class="o">:</span><span class="w"> </span><span class="kt">latestDate</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>时间缓存踩坑：</p>
+<ol>
+<li>
+<p>当本地和dev共用同一个redis时，不能缓存 max(last_modified_date)，本地得到的时间与dev得到的时间有时差，当用本地用dev缓存下的last_modified_date来执行 select * from sku_workspace where last_modified_date=@1&nbsp;时，会缓存下空数据</p>
+</li>
+<li>
+<p>从缓存中取得的数据为字符串类型，写进 where 语句时需转换为 Date 类型 where: { last_modified_date: new Date(latestDate)&nbsp;}</p>
+</li>
+<li>
+<p>new Date()获取到的时间类型为 &#8216;datetime&#8217; 精确到毫秒, 若数据库中 last_moified_date 类型为 &#8216;datetime2(7)&#8217; 精确到微秒，会使返回结果为空 
+    <code>ts
+    @PrimaryColumn({ type: 'datetime2' })
+    last_modified_date: Date;</code>
+    法一：修改数据库格式：
+    <code>sql
+    ALTER TABLE sku_workspace ALTER COLUMN last_modified_date datetime;</code>
+    法二：获取到的时间减1秒
+    <code>ts
+    latestDate.setMinutes(latestDate.getMinutes() - 1);
+    // 原本获取的时间会丢失微秒的部分，直接用=匹配不上，得用&gt;
+    where: {
+      last_modified_date: MoreThanOrEqual(latestDate),
+    },</code></p>
+</li>
+</ol>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -451,21 +732,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -474,7 +757,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -483,7 +765,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -503,7 +784,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

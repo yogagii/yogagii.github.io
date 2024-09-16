@@ -64,7 +64,7 @@
     <div class="post-entry">
         <p>假设有 6 个待办任务要执行，而我们希望限制同时执行的任务个数，即最多只有 2 个任务能同时执行。当 正在执行任务列表 中的任何 1 个任务完成后，程序会自动从 待办任务列表 中获取新的待办任务并把该任务添加到&nbsp;正在执行任务列表中。</p>
 <h2>async-pool</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">asyncPool</span><span class="p">(</span><span class="nx">poolLimit</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">iteratorFn</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">asyncPool</span><span class="p">(</span><span class="nx">poolLimit</span><span class="p">,</span><span class="w"> </span><span class="nx">array</span><span class="p">,</span><span class="w"> </span><span class="nx">iteratorFn</span><span class="p">){</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <ul>
@@ -79,35 +79,35 @@
 </li>
 </ul>
 <p>使用：</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">i</span> <span class="p">=&gt;</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="p">=&gt;</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="nx">i</span><span class="p">));</span>
-<span class="k">await</span> <span class="nx">asyncPool</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span> <span class="p">[</span><span class="mf">1000</span><span class="p">,</span> <span class="mf">5000</span><span class="p">,</span> <span class="mf">3000</span><span class="p">,</span> <span class="mf">2000</span><span class="p">],</span> <span class="nx">timeout</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span><span class="w"> </span><span class="nx">i</span><span class="p">));</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">asyncPool</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">],</span><span class="w"> </span><span class="nx">timeout</span><span class="p">);</span>
 </code></pre></div>
 
 <p>实现：</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">asyncPool</span><span class="p">(</span><span class="nx">poolLimit</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">iteratorFn</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">ret</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 存储所有的异步任务</span>
-  <span class="kd">const</span> <span class="nx">executing</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 存储正在执行的异步任务</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 调用iteratorFn函数创建异步任务</span>
-    <span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">iteratorFn</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">array</span><span class="p">));</span>
-    <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span> <span class="c1">// 保存新的异步任务</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">asyncPool</span><span class="p">(</span><span class="nx">poolLimit</span><span class="p">,</span><span class="w"> </span><span class="nx">array</span><span class="p">,</span><span class="w"> </span><span class="nx">iteratorFn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="c1">// 存储所有的异步任务</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">executing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="c1">// 存储正在执行的异步任务</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 调用iteratorFn函数创建异步任务</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">iteratorFn</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">array</span><span class="p">));</span>
+<span class="w">    </span><span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// 保存新的异步任务</span>
 
-    <span class="c1">// 当poolLimit值小于或等于总任务个数时，进行并发控制</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">poolLimit</span> <span class="o">&lt;=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// 当任务完成后，从正在执行的任务数组中移除已完成的任务</span>
-      <span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">executing</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">e</span><span class="p">),</span> <span class="mf">1</span><span class="p">));</span>
-      <span class="nx">executing</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="c1">// 保存正在执行的异步任务</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">poolLimit</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">(</span><span class="nx">executing</span><span class="p">);</span> <span class="c1">// 等待较快的任务执行完成</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 当poolLimit值小于或等于总任务个数时，进行并发控制</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">poolLimit</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 当任务完成后，从正在执行的任务数组中移除已完成的任务</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">executing</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">e</span><span class="p">),</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
+<span class="w">      </span><span class="nx">executing</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span><span class="w"> </span><span class="c1">// 保存正在执行的异步任务</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">poolLimit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">(</span><span class="nx">executing</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等待较快的任务执行完成</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>async.mapLimit</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">mapLimit</span><span class="p">(</span><span class="nx">coll</span><span class="p">,</span> <span class="nx">limit</span><span class="p">,</span> <span class="nx">iteratee</span><span class="p">,</span> <span class="nx">callback</span> <span class="nx">opt</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">mapLimit</span><span class="p">(</span><span class="nx">coll</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="p">,</span><span class="w"> </span><span class="nx">iteratee</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="w"> </span><span class="nx">opt</span><span class="p">)</span>
 </code></pre></div>
 
 <ul>
@@ -117,81 +117,81 @@
 <li>callback([ function ]):   所有iteratee 函数完成后或发生错误时触发的回调函数。用(err, results)调用。results可以是iteratee&nbsp;函数完成后触发callback时传递的项。</li>
 </ul>
 <p>使用：</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="k">async</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;async&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;async&#39;</span><span class="p">);</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">tableauJob</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">concurrencyCount</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">workbooks</span> <span class="o">=</span> <span class="p">[{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-  <span class="p">},</span> <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;2&#39;</span>
-  <span class="p">}]</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">tableauJob</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">concurrencyCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">workbooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span>
+<span class="w">  </span><span class="p">}]</span>
 
-  <span class="kd">const</span> <span class="nx">fetchUrl</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">wk</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">concurrencyCount</span> <span class="o">+=</span> <span class="mf">1</span><span class="p">;</span>
-    <span class="nx">sails</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;concurrencyCount: &#39;</span><span class="p">,</span> <span class="nx">concurrencyCount</span><span class="p">,</span> <span class="s1">&#39;，workbook id: &#39;</span><span class="p">,</span> <span class="nx">wk</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fetchUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">wk</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">concurrencyCount</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">sails</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;concurrencyCount: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">concurrencyCount</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;，workbook id: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wk</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
-    <span class="kd">const</span> <span class="nx">wkObj</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">wk</span> <span class="p">};</span>
-    <span class="kd">const</span> <span class="nx">permissions</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">TableauService</span><span class="p">.</span><span class="nx">apiLoader</span><span class="p">(</span><span class="sb">`workbooks/</span><span class="si">${</span><span class="nx">wk</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">/permissions`</span><span class="p">))</span>
-      <span class="p">.</span><span class="nx">permissions</span><span class="p">.</span><span class="nx">granteeCapabilities</span> <span class="o">||</span> <span class="p">[];</span>
-    <span class="nx">concurrencyCount</span> <span class="o">-=</span> <span class="mf">1</span><span class="p">;</span>
-    <span class="nx">wkObj</span><span class="p">.</span><span class="nx">groups</span> <span class="o">=</span> <span class="nx">permissions</span><span class="p">;</span>
-    <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">wkObj</span><span class="p">);</span>
-  <span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">wkObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">wk</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">TableauService</span><span class="p">.</span><span class="nx">apiLoader</span><span class="p">(</span><span class="sb">`workbooks/</span><span class="si">${</span><span class="nx">wk</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">/permissions`</span><span class="p">))</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">permissions</span><span class="p">.</span><span class="nx">granteeCapabilities</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="nx">concurrencyCount</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">wkObj</span><span class="p">.</span><span class="nx">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">permissions</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">wkObj</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="k">await</span> <span class="k">async</span><span class="p">.</span><span class="nx">mapLimit</span><span class="p">(</span><span class="nx">workbooks</span><span class="p">,</span> <span class="mf">10</span><span class="p">,</span> <span class="p">(</span><span class="nx">wk</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">fetchUrl</span><span class="p">(</span><span class="nx">wk</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
-  <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">TableauWorkbook</span><span class="p">.</span><span class="nx">bulkCreate</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="k">async</span><span class="p">.</span><span class="nx">mapLimit</span><span class="p">(</span><span class="nx">workbooks</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">wk</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetchUrl</span><span class="p">(</span><span class="nx">wk</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">TableauWorkbook</span><span class="p">.</span><span class="nx">bulkCreate</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>parallel</h2>
 <p>支付宝笔试：&nbsp;给出一组异步任务方法，和允许同时执行的个数，实现一个方法，用于并发执行异步任务</p>
 <p>当有任务执行完毕后，自动补充任务，始终保持正在执行的任务有 <code>concurrency</code> 个</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">parallel</span><span class="p">(</span><span class="nx">tasks</span><span class="p">,</span> <span class="nx">concurrency</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">executing</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="kd">const</span> <span class="nx">ret</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">concurrency</span> <span class="o">&lt;=</span> <span class="nx">tasks</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">tasks</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">p</span><span class="p">;</span>
-      <span class="nx">p</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="o">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
-        <span class="nx">status</span><span class="o">:</span> <span class="s1">&#39;fail&#39;</span><span class="p">,</span>
-        <span class="nx">data</span><span class="o">:</span> <span class="nx">err</span><span class="p">,</span>
-      <span class="p">}));</span>
-      <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
-      <span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">executing</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">e</span><span class="p">),</span> <span class="mf">1</span><span class="p">));</span>
-      <span class="nx">executing</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">concurrency</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">(</span><span class="nx">executing</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">resolved</span><span class="o">:</span> <span class="p">[],</span>
-    <span class="nx">rejected</span><span class="o">:</span> <span class="p">[],</span>
-  <span class="p">};</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">parallel</span><span class="p">(</span><span class="nx">tasks</span><span class="p">,</span><span class="w"> </span><span class="nx">concurrency</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">executing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">concurrency</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">tasks</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">tasks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">p</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fail&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">,</span>
+<span class="w">      </span><span class="p">}));</span>
+<span class="w">      </span><span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">executing</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">e</span><span class="p">),</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
+<span class="w">      </span><span class="nx">executing</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">executing</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">concurrency</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">(</span><span class="nx">executing</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resolved</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">rejected</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">ret</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">values</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">v</span><span class="o">?</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s1">&#39;fail&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nx">rejected</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nx">resolved</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
-  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">ret</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">values</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="o">?</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;fail&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">result</span><span class="p">.</span><span class="nx">rejected</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">result</span><span class="p">.</span><span class="nx">resolved</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">tasks</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">),</span>
-  <span class="p">()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;ttt&#39;</span><span class="p">)),</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;ttt&#39;</span><span class="p">)),</span>
 <span class="p">];</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">resolved</span><span class="p">,</span> <span class="nx">rejected</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">parallel</span><span class="p">(</span><span class="nx">tasks</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
-<span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">resolved</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
-<span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">rejected</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolved</span><span class="p">,</span><span class="w"> </span><span class="nx">rejected</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">parallel</span><span class="p">(</span><span class="nx">tasks</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">resolved</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">rejected</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
 </code></pre></div>
 
 <ul>
@@ -282,21 +282,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -305,7 +307,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -314,7 +315,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -334,7 +334,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

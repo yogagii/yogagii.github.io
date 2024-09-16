@@ -63,7 +63,7 @@
     </header>
     <div class="post-entry">
         <h2>Spark原理</h2>
-<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是UC Berkeley 开源的类Hadoop MapReduce的通用并行框架,&nbsp;专门用于大数据量下的迭代式计算。</p>
+<p>Spark 是使用 scala 实现的基于内存计算的大数据开源集群计算环境。是UC Berkeley 开源的类Hadoop MapReduce的通用并行框架, 专门用于大数据量下的迭代式计算。提供了 java,scala, python,R&nbsp;等语言的调用接口。</p>
 <p>Spark 在多次运算的情况下是比较快的。因为 Hadoop 在一次 MapReduce 运算之后，会将数据的运算结果从内存写入到磁盘中，第二次运算时再从磁盘中读取数据，2次运算间有多余 <span class="caps">IO</span> 消耗；Spark&nbsp;则是将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘。 </p>
 <ol>
 <li>提供 Cache 机制来支持需要反复迭代计算或者多次数据共享,减少数据读取的 <span class="caps">IO</span>&nbsp;开销;</li>
@@ -146,6 +146,48 @@
 <p>如果程序从头到尾只有一个 Action 操作且子 <span class="caps">RDD</span> 只依赖于一个父RDD 的话，就不需要使用 cache 这个机制， <span class="caps">RDD</span> 会在内存中一直从头计算到尾,最后才根据你的 Action 操作返回一个值或者保存到相应的磁盘中。需要 cache 的是当存在多个 Action 操作或者依赖于多个 <span class="caps">RDD</span> 的时候,&nbsp;可以在那之前缓存RDD。</p>
 <p>原文：https://zhuanlan.zhihu.com/p/34436165</p>
 <hr>
+<h2>Spark <span class="caps">SQL</span></h2>
+<p>Spark专门用于大数据量下的迭代式计算，将数据一直缓存在内存中,直到计算得到最后的结果,再将结果写入到磁盘,所以多次运算的情况下,Spark&nbsp;是比较快的。</p>
+<ul>
+<li>Spark <span class="caps">SQL</span>: 提供了类 <span class="caps">SQL</span> 的查询,返回 Spark-DataFrame 的数据结构(类似&nbsp;Hive)</li>
+<li>Spark Streaming: 流式计算,主要用于处理线上实时时序数据(类似&nbsp;storm)</li>
+<li>MLlib:&nbsp;提供机器学习的各种模型和调优</li>
+<li>GraphX: 提供基于图的算法,如&nbsp;PageRank</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">Select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">exams</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">result</span>
+
+<span class="n">spark</span><span class="p">.</span><span class="k">table</span><span class="p">(</span><span class="ss">&quot;exam&quot;</span><span class="p">).</span><span class="k">select</span><span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;result&quot;</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="ss">&quot;result &gt; 70&quot;</span><span class="p">).</span><span class="n">orderBy</span><span class="p">(</span><span class="ss">&quot;result&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>SparkSQL中的三种Join:</p>
+<ul>
+<li>Broadcast Join&nbsp;小表对大表</li>
+</ul>
+<p>将小表的数据分发到每个节点上，供大表使用。executor存储小表的全部数据，牺牲空间，换取shuffle操作大量的耗时。</p>
+<p>被广播的表首先被collect到driver段，然后被冗余分发到每个executor上，所以当表比较大时，采用broadcast&nbsp;join会对driver端和executor端造成较大的压力。</p>
+<p>基表不能被广播，比如 left outer join&nbsp;时，只能广播右表</p>
+<ul>
+<li>Shuffle Hash&nbsp;Join</li>
+</ul>
+<p>利用key相同必然分区相同的这个原理，先对两张表分别按照join keys进行重分区（shuffle），再对两个表中相对应分区的数据分别进行Hash Join（先将小表分区构造为一张hash表，然后根据大表分区中记录的join&nbsp;keys值拿出来进行匹配）</p>
+<p>分区的平均大小不超过spark.sql.autoBroadcastJoinThreshold所配置的值，默认是10M</p>
+<ul>
+<li>Sort Merge Join&nbsp;大表对大表</li>
+</ul>
+<p>将两张表按照join keys进行了重新shuffle，保证join&nbsp;keys值相同的记录会被分在相应的分区。分区后对每个分区内的数据进行排序，排序后再对相应的分区内的记录进行连接</p>
+<p>https://blog.csdn.net/hellojoy/article/details/113665938</p>
+<p>踩坑：There is not enough memory to build the hash&nbsp;map</p>
+<p><em>If the estimated size of one of the DataFrames is less than the autoBroadcastJoinThreshold, Spark may use BroadcastHashJoin to perform the join. If the available nodes do not have enough resources to accommodate the broadcast DataFrame, your job fails due to an out of memory&nbsp;error.</em></p>
+<p>In Databricks Runtime 7.0 and above, set the join type to SortMergeJoin with join hints&nbsp;enabled.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># disable broadcast</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.autoBroadcastJoinThreshold&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p>A DataFrame is a distributed collection of data grouped into named&nbsp;columns</p>
+<p>DataFrame是一种表格型数据结构，它含有一组有序的列，每列可以是不同的值。DataFrame的行索引是index，列索引是columns。</p>
+<p>DataFrame transformations are methods that return a new DataFrame and are lazily&nbsp;evaluated</p>
+<p>DataFrame actions are methods that trigger computation. An action is needed to trigger the execution of any DataFrame&nbsp;transformations</p>
 <h2>PySpark</h2>
 <p>PySpark is an interface for Apache Spark in&nbsp;Python.</p>
 <h3>pyspark.sql.SparkSession</h3>
@@ -168,13 +210,18 @@
 <span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span> <span class="c1"># 全部</span>
 <span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 第一行</span>
 <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 最后一行</span>
-<span class="n">df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </code></pre></div>
 
 <ul>
 <li>Selecting&nbsp;Data</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 选择列</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;result &gt; 70&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 选择行</span>
 </code></pre></div>
 
@@ -191,6 +238,7 @@
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">applyInPandas</span><span class="p">(</span><span class="n">plus_mean</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 
+<p>A schema defines the column names and types of a&nbsp;DataFrame</p>
 <ul>
 <li>创建或替换本地临时视图</li>
 </ul>
@@ -200,8 +248,12 @@
 <ul>
 <li>toPandas</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">dfp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># spark 转换为pandas的dataframe</span>
+<span class="n">dfp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">display</span><span class="p">(</span><span class="n">dfp</span><span class="p">)</span>
+
+<span class="c1"># pandas的dataframe转化为spark的dataframe</span>
+<span class="n">spark_df</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">pandas_df</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>pyspark.sql.GroupedData</h3>
@@ -218,10 +270,28 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;foo.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;foo.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">jdbc</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">table</span><span class="o">=</span> <span class="s1">&#39;Onhand_Inventory&#39;</span><span class="p">,</span><span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span><span class="p">)</span>
 </code></pre></div>
 
+<ul>
+<li><span class="caps">JDBC</span></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">jdbc</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">table</span><span class="o">=</span> <span class="s1">&#39;Onhand_Inventory&#39;</span><span class="p">,</span><span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">spark</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">jdbc</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+<p>mode：数据更新的模式，append、overwrite、ignore、error（默认，如果数据存在，抛出异常）</p>
+<p>不能使用Spark中的jdbc和dataframes进行单个记录更新，只能追加或替换整个表</p>
+<p>Using <span class="caps">PYODBC</span> to execute query on Azure <span class="caps">SQL</span> in&nbsp;Databricks：https://medium.com/@roger_busser/azure-databricks-and-single-row-updates-fe1844a8dbd3</p>
 <h2>Pandas</h2>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;state&#39;</span><span class="p">:[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span><span class="s1">&#39;Nevada&#39;</span><span class="p">,</span><span class="s1">&#39;Nevada&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:[</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
 <ul>
 <li>pandas.DataFrame.assign&nbsp;根据某个列进行计算得到一个新列</li>
 </ul>
@@ -254,9 +324,18 @@
 <ul>
 <li>pandas.DataFrame.dropna</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span> <span class="c1"># 删除列</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">age</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;Gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 去重</span>
+</code></pre></div>
+
 <p>Drop the rows where at least one element is&nbsp;missing.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Define in which columns to look for missing values.</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;toy&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="p">()</span>  <span class="c1"># 删除任何列包含na的行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;any&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 任何出现NaN/null就丢弃</span>
+<span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 一行都是NaN/null才丢弃</span>
+<span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;any&quot;</span><span class="p">,</span><span class="n">List</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="s2">&quot;dt&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># 针对特定列出现NaN/null就丢弃改行</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">])</span>  <span class="c1"># 删掉col1或col2中任一一列包含na的行</span>
 </code></pre></div>
 
 <ul>
@@ -264,6 +343,70 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="s1">&#39;int32&#39;</span><span class="p">})</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<div class="highlight"><pre><span></span><code><span class="c1"># reading the CDL blob storage using scan_read(SCAN package)</span>
+<span class="kn">from</span> <span class="nn">sca_read.loader</span> <span class="kn">import</span> <span class="n">helper</span><span class="p">,</span> <span class="n">getSysttemRelatedTables</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">getSystemRelatedTables</span><span class="p">(</span><span class="n">storageaccount</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="n">container</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/xx/xx/xx&quot;</span><span class="p">,</span> <span class="n">returnType</span><span class="o">=</span><span class="s2">&quot;pandas_dataframe&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sdf_SAP</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;select * from delta.`abfss://xxx@xxx.net`&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">sdf_SAP</span><span class="o">.</span><span class="n">display</span><span class="p">()</span> <span class="c1">## 点击download下载表格</span>
+</code></pre></div>
+
+<p>underscore variables are related to the pipelining process(sap =&gt; L0), don&#8217;t have any content in&nbsp;it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># creation of a tempview / caching the data</span>
+<span class="n">sdf_SAP</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;SAP_AUFK&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">cacheTable</span><span class="p">(</span><span class="s2">&quot;SAP_AUFK&quot;</span><span class="p">)</span>
+<span class="c1"># SAP_AUFK can be called in spark.sql</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdf_SAP</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># access a storage account</span>
+<span class="n">Storage_account</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">Container</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">SAS_Token</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">secrets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">)</span>
+<span class="n">configOption</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">configOption</span><span class="p">,</span> <span class="n">SAS_Token</span><span class="p">)</span>
+<span class="n">fileSystemUrl</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">fileSystemUrl</span><span class="p">)</span> <span class="c1">#list files</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># display tables, paths, levels</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">showAllTables</span><span class="p">():</span>
+  <span class="n">l0Tables</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">L0_PATH</span><span class="p">)</span>
+  <span class="n">dfL0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">l0Tables</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># print schema</span>
+<span class="n">sdf_SAP</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;Record_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;DATE_CREATED&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;Record_ID == &#39;1&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">window</span>
+<span class="c1"># group by</span>
+<span class="n">windowSpec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;Record_ID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;Record_ID&quot;</span><span class="p">)</span>
+<span class="c1"># expansion</span>
+<span class="n">dfExplode</span> <span class="o">=</span> <span class="n">dfForExplode</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;SEQ_NO&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">row_number</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">windowSpec</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pyspark</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># writes the table in sql server and implements the right table schema</span>
+<span class="k">def</span> <span class="nf">scan_pushDfToSQL</span><span class="p">(</span>
+  <span class="n">df</span><span class="p">:</span> <span class="n">pyspark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+  <span class="n">sqlTable</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+  <span class="n">database</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+  <span class="n">sqlserver</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
+
+<span class="n">sql_table_name</span> <span class="o">=</span> <span class="s2">&quot;SIDE_DEPARTMENT_PROJECT_tableName_DEV &quot;</span> <span class="c1"># naming conventions</span>
+<span class="n">scan_pushDfToSQL</span><span class="p">(</span><span class="n">df</span> <span class="o">=</span> <span class="n">sdf_order_issues_inves</span><span class="p">,</span> <span class="n">sqlTable</span> <span class="o">=</span> <span class="n">sql_table_name</span><span class="p">,</span> <span class="n">database</span> <span class="o">=</span> <span class="s2">&quot;LEIDEN&quot;</span><span class="p">,</span> <span class="n">modeType</span> <span class="o">=</span> <span class="s2">&quot;overwrite&quot;</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -349,21 +492,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -372,7 +517,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -381,7 +525,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -401,7 +544,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

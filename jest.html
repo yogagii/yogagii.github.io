@@ -69,18 +69,18 @@ umi test \allWorkbooks
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// index.test.tsx</span>
-<span class="k">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Index</span> <span class="kr">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;jest&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Index</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">renderer</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ReactTestInstance</span><span class="p">,</span><span class="w"> </span><span class="nx">ReactTestRenderer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Render correctly&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">wrapper</span><span class="o">:</span> <span class="nx">ReactTestRenderer</span> <span class="o">=</span> <span class="nx">renderer</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Index</span> <span class="o">/&gt;</span><span class="p">);</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">outerLayer</span> <span class="o">=</span> <span class="nx">wrapper</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="kr">as</span> <span class="nx">ReactTestInstance</span><span class="p">;</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">outerLayer</span><span class="p">.</span><span class="nx">type</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
-  <span class="p">});</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Render correctly&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">wrapper</span><span class="o">:</span><span class="w"> </span><span class="nx">ReactTestRenderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Index</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">outerLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">ReactTestInstance</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">outerLayer</span><span class="p">.</span><span class="nx">type</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
 
@@ -91,302 +91,302 @@ umi test \allWorkbooks
 <li>render 完整渲染，只调用了组件的 render 方法，得到 jsx 并转码为&nbsp;html，所以组件的生命周期方法内的逻辑都测试不到</li>
 </ul>
 <h2>without&nbsp;state</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span>
-<span class="k">import</span> <span class="nx">SingleBireport</span> <span class="kr">from</span> <span class="s1">&#39;../components/SingleReport/SingleBireport.tsx&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">shallow</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;enzyme&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">singleReport</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./mockData&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">SingleBireport</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../components/SingleReport/SingleBireport.tsx&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">shallow</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;enzyme&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">singleReport</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./mockData&#39;</span>
 
-<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;react-redux&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
-  <span class="nx">connect</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
-  <span class="nx">useSelector</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">((</span><span class="nx">fn</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">fn</span><span class="p">()),</span>
-  <span class="nx">useDispatch</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;react-redux&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">connect</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">useSelector</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">((</span><span class="nx">fn</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fn</span><span class="p">()),</span>
+<span class="w">  </span><span class="nx">useDispatch</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
 <span class="p">}))</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Single Bireport&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">singleBireport</span> <span class="o">=</span> <span class="nx">shallow</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">SingleBireport</span> <span class="nx">workbook</span><span class="o">=</span><span class="p">{</span><span class="nx">singleReport</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> <span class="nx">position</span><span class="o">=</span><span class="p">{</span><span class="nx">position</span><span class="p">}</span> <span class="nx">category</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;category&#39;</span><span class="p">}</span> <span class="o">/&gt;</span>
-  <span class="p">)</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test Single Bireport has icon&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">icon</span> <span class="o">=</span> <span class="nx">singleBireport</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#titleIcon&#39;</span><span class="p">)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">icon</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">exists</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-  <span class="p">})</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Single Bireport&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">singleBireport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">shallow</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">SingleBireport</span><span class="w"> </span><span class="nx">workbook</span><span class="o">=</span><span class="p">{</span><span class="nx">singleReport</span><span class="p">}</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="nx">position</span><span class="o">=</span><span class="p">{</span><span class="nx">position</span><span class="p">}</span><span class="w"> </span><span class="nx">category</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;category&#39;</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test Single Bireport has icon&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">singleBireport</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#titleIcon&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">icon</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">exists</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>mock&nbsp;provider</h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// MockProvider.js</span>
-<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span>
-<span class="k">import</span> <span class="nx">configureStore</span> <span class="kr">from</span> <span class="s1">&#39;redux-mock-store&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-redux&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">mergeDeepRight</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;ramda&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">commonState</span><span class="p">,</span> <span class="nx">userState</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./mockData&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">configureStore</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;redux-mock-store&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Provider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-redux&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">mergeDeepRight</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ramda&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">commonState</span><span class="p">,</span><span class="w"> </span><span class="nx">userState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./mockData&#39;</span>
 
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">getMockProvider</span> <span class="o">=</span> <span class="p">(</span><span class="nx">partialState</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">mockStore</span> <span class="o">=</span> <span class="nx">configureStore</span><span class="p">()</span>
-  <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">mockStore</span><span class="p">(</span>
-    <span class="nx">mergeDeepRight</span><span class="p">(</span>
-      <span class="p">{</span>
-        <span class="nx">common</span><span class="o">:</span> <span class="nx">commonState</span><span class="p">,</span>
-        <span class="nx">user</span><span class="o">:</span> <span class="nx">userState</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="nx">partialState</span>
-    <span class="p">)</span>
-  <span class="p">)</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">getMockProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">partialState</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">configureStore</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mockStore</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">mergeDeepRight</span><span class="p">(</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">common</span><span class="o">:</span><span class="w"> </span><span class="nx">commonState</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">userState</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">partialState</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
 
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">MockProvider</span><span class="o">:</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Provider&gt;</span>
-    <span class="p">},</span>
-    <span class="nx">store</span><span class="p">,</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">MockProvider</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Provider</span><span class="w"> </span><span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Provider&gt;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">store</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>with&nbsp;state</h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// service</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">useDispatch</span><span class="p">,</span> <span class="nx">useHistory</span><span class="p">,</span> <span class="nx">useLocation</span><span class="p">,</span> <span class="nx">useSelector</span><span class="p">,</span> <span class="nx">shallowEqual</span><span class="p">,</span> <span class="nx">useRouteMatch</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;dva&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">initialize</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@/utils/common&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useDispatch</span><span class="p">,</span><span class="w"> </span><span class="nx">useHistory</span><span class="p">,</span><span class="w"> </span><span class="nx">useLocation</span><span class="p">,</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">shallowEqual</span><span class="p">,</span><span class="w"> </span><span class="nx">useRouteMatch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;dva&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">initialize</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/utils/common&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
 
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">useConnect</span> <span class="o">=</span> <span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="nx">compare</span> <span class="o">=</span> <span class="nx">shallowEqual</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">dispatch</span> <span class="o">=</span> <span class="nx">useDispatch</span><span class="p">()</span>
-  <span class="kd">const</span> <span class="nx">history</span> <span class="o">=</span> <span class="nx">useHistory</span><span class="p">()</span>
-  <span class="kd">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="nx">useLocation</span><span class="p">()</span>
-  <span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">useSelector</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="nx">compare</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">useRouteMatch</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">useConnect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span><span class="w"> </span><span class="nx">compare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">shallowEqual</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dispatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useDispatch</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useHistory</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLocation</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span><span class="w"> </span><span class="nx">compare</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRouteMatch</span><span class="p">()</span>
 
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">dispatch</span><span class="p">,</span>
-    <span class="nx">history</span><span class="p">,</span>
-    <span class="nx">location</span><span class="p">,</span>
-    <span class="nx">match</span><span class="p">,</span>
-    <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">dispatch</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">history</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">location</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">match</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span>
-<span class="k">import</span> <span class="nx">AllWorkbooks</span> <span class="kr">from</span> <span class="s1">&#39;../allWorkbooks/allWorkbooks&#39;</span>
-<span class="k">import</span> <span class="nx">DashboardList</span> <span class="kr">from</span> <span class="s1">&#39;../components/DashboardList/DashboardList&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">mount</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;enzyme&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">getMockProvider</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./MockProvider&#39;</span>
-<span class="k">import</span> <span class="nx">reports</span> <span class="kr">from</span> <span class="s1">&#39;@/models/reports&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">AllWorkbooks</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../allWorkbooks/allWorkbooks&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">DashboardList</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../components/DashboardList/DashboardList&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">mount</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;enzyme&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getMockProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./MockProvider&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">reports</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/models/reports&#39;</span>
 
-<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;react-router&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
-  <span class="nx">useHistory</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockReturnValue</span><span class="p">({</span> <span class="nx">location</span><span class="o">:</span> <span class="p">{</span> <span class="nx">pathname</span><span class="o">:</span> <span class="s1">&#39;/reports/all&#39;</span> <span class="p">}</span> <span class="p">}),</span>
-  <span class="nx">useLocation</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockReturnValue</span><span class="p">({</span> <span class="nx">pathname</span><span class="o">:</span> <span class="s1">&#39;/reports/all&#39;</span> <span class="p">}),</span>
-  <span class="nx">useRouteMatch</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span> <span class="nx">match</span><span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="p">}),</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;react-router&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">useHistory</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockReturnValue</span><span class="p">({</span><span class="w"> </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pathname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/reports/all&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">useLocation</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockReturnValue</span><span class="p">({</span><span class="w"> </span><span class="nx">pathname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/reports/all&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">useRouteMatch</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">match</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="p">}),</span>
 <span class="p">}))</span>
 
-<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;umi/link&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;umi/link&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">setup</span> <span class="o">=</span> <span class="p">(</span><span class="nx">partialState</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">MockProvider</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getMockProvider</span><span class="p">(</span><span class="nx">partialState</span><span class="p">)</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">MockProvider</span><span class="p">,</span>
-  <span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">setup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">partialState</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MockProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getMockProvider</span><span class="p">(</span><span class="nx">partialState</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">MockProvider</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;allworkbook list&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">MockProvider</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">setup</span><span class="p">({</span>
-    <span class="nx">reports</span><span class="o">:</span> <span class="nx">reportsState</span><span class="p">,</span>
-  <span class="p">})</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;allworkbook list&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MockProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setup</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">reports</span><span class="o">:</span><span class="w"> </span><span class="nx">reportsState</span><span class="p">,</span>
+<span class="w">  </span><span class="p">})</span>
 
-  <span class="kd">const</span> <span class="nx">workbookListWrapper</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">MockProvider</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">AllWorkbooks</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/MockProvider&gt;</span>
-  <span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">workbookListWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mount</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">MockProvider</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">AllWorkbooks</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/MockProvider&gt;</span>
+<span class="w">  </span><span class="p">)</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test workbook list&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">dashboardLists</span> <span class="o">=</span> <span class="nx">workbookListWrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">DashboardList</span><span class="p">)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">dashboardLists</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test workbook list&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dashboardLists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workbookListWrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">DashboardList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">dashboardLists</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>dva&nbsp;reducers</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span>
-<span class="k">import</span> <span class="nx">AllWorkbooks</span> <span class="kr">from</span> <span class="s1">&#39;../allWorkbooks/allWorkbooks&#39;</span>
-<span class="k">import</span> <span class="nx">DashboardList</span> <span class="kr">from</span> <span class="s1">&#39;../components/DashboardList/DashboardList&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">mount</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;enzyme&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">getMockProvider</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./MockProvider&#39;</span>
-<span class="k">import</span> <span class="nx">bireport</span> <span class="kr">from</span> <span class="s1">&#39;@/models/bireport&#39;</span>
-<span class="k">import</span> <span class="nx">reports</span> <span class="kr">from</span> <span class="s1">&#39;@/models/reports&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">bireportAll</span><span class="p">,</span> <span class="nx">externalData</span><span class="p">,</span> <span class="nx">permissions</span><span class="p">,</span> <span class="nx">siteConfig</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./mockData&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">AllWorkbooks</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../allWorkbooks/allWorkbooks&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">DashboardList</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../components/DashboardList/DashboardList&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">mount</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;enzyme&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getMockProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./MockProvider&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">bireport</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/models/bireport&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">reports</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/models/reports&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">bireportAll</span><span class="p">,</span><span class="w"> </span><span class="nx">externalData</span><span class="p">,</span><span class="w"> </span><span class="nx">permissions</span><span class="p">,</span><span class="w"> </span><span class="nx">siteConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./mockData&#39;</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;allworkbook list&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">reports_initialState</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">externalList</span><span class="o">:</span> <span class="p">{},</span>
-  <span class="p">}</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;allworkbook list&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reports_initialState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">externalList</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">reportsState</span> <span class="o">=</span> <span class="nx">reports</span><span class="p">.</span><span class="nx">reducers</span><span class="p">.</span><span class="nx">saveMarket</span><span class="p">(</span><span class="nx">reports_initialState</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">state</span><span class="o">:</span> <span class="s1">&#39;externalList&#39;</span><span class="p">,</span>
-      <span class="nx">data</span><span class="o">:</span> <span class="nx">externalData</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reportsState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reports</span><span class="p">.</span><span class="nx">reducers</span><span class="p">.</span><span class="nx">saveMarket</span><span class="p">(</span><span class="nx">reports_initialState</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;externalList&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">externalData</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">})</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test reports reducer&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">reportsState</span><span class="p">.</span><span class="nx">externalList</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test reports reducer&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">reportsState</span><span class="p">.</span><span class="nx">externalList</span><span class="p">).</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
 
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">MockProvider</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">setup</span><span class="p">({</span>
-    <span class="nx">reports</span><span class="o">:</span> <span class="nx">reportsState</span><span class="p">,</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MockProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setup</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">reports</span><span class="o">:</span><span class="w"> </span><span class="nx">reportsState</span><span class="p">,</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>dva&nbsp;effects</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">bireport</span> <span class="kr">from</span> <span class="s1">&#39;@/models/bireport&#39;</span>
-<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">usersService</span> <span class="kr">from</span> <span class="s1">&#39;@/services&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">call</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;ramda&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">userState</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./mockData&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">bireport</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/models/bireport&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">usersService</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/services&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">call</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ramda&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">userState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./mockData&#39;</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Dashboard filter&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test fetchAll effects&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">actionCreator</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;bireport/fetchAll&#39;</span><span class="p">,</span>
-      <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">api</span><span class="o">:</span> <span class="s1">&#39;bireportAll&#39;</span><span class="p">,</span>
-        <span class="nx">state</span><span class="o">:</span> <span class="s1">&#39;allWorkbooks&#39;</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="nx">storage</span><span class="o">:</span> <span class="s1">&#39;allMulti&#39;</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="kd">const</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">bireport</span><span class="p">.</span><span class="nx">effects</span><span class="p">.</span><span class="nx">fetchAll</span><span class="p">(</span><span class="nx">actionCreator</span><span class="p">,</span> <span class="p">{</span> <span class="nx">call</span><span class="o">:</span> <span class="nx">call</span><span class="p">,</span> <span class="nx">select</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span> <span class="p">})</span>
-    <span class="kd">let</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">()</span>
-    <span class="nx">next</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">({</span>
-      <span class="nx">user</span><span class="o">:</span> <span class="nx">userState</span><span class="p">,</span>
-    <span class="p">})</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">next</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">call</span><span class="p">(</span><span class="nx">usersService</span><span class="p">.</span><span class="nx">getItem</span><span class="p">,</span> <span class="nx">actionCreator</span><span class="p">.</span><span class="nx">payload</span><span class="p">))</span>
-  <span class="p">})</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Dashboard filter&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test fetchAll effects&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">actionCreator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bireport/fetchAll&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">api</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bireportAll&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;allWorkbooks&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">storage</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;allMulti&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bireport</span><span class="p">.</span><span class="nx">effects</span><span class="p">.</span><span class="nx">fetchAll</span><span class="p">(</span><span class="nx">actionCreator</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">call</span><span class="o">:</span><span class="w"> </span><span class="nx">call</span><span class="p">,</span><span class="w"> </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">userState</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">next</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">call</span><span class="p">(</span><span class="nx">usersService</span><span class="p">.</span><span class="nx">getItem</span><span class="p">,</span><span class="w"> </span><span class="nx">actionCreator</span><span class="p">.</span><span class="nx">payload</span><span class="p">))</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>mock part of&nbsp;module</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@/services/use.js&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">useFunction</span> <span class="o">=</span> <span class="nx">require</span><span class="p">.</span><span class="nx">requireActual</span><span class="p">(</span><span class="s1">&#39;@/services/use.js&#39;</span><span class="p">)</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="p">...</span><span class="nx">useFunction</span><span class="p">,</span>
-    <span class="nx">useDebounce</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">((</span><span class="nx">fn</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">fn</span><span class="p">),</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@/services/use.js&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">useFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">.</span><span class="nx">requireActual</span><span class="p">(</span><span class="s1">&#39;@/services/use.js&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">useFunction</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">useDebounce</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">((</span><span class="nx">fn</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fn</span><span class="p">),</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>mock&nbsp;dispatch</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">service</span> <span class="kr">from</span> <span class="s1">&#39;@/proxy-components/ProxyInput/service&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@/proxy-components/ProxyInput/service&#39;</span>
 
-<span class="kd">const</span> <span class="nx">mockDispatch</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockResolvedValue</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">autoCompleteData</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">.</span><span class="nx">requireActual</span><span class="p">(</span><span class="s1">&#39;./mockData&#39;</span><span class="p">)</span>
-  <span class="k">return</span> <span class="nx">autoCompleteData</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">mockDispatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockResolvedValue</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">autoCompleteData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">.</span><span class="nx">requireActual</span><span class="p">(</span><span class="s1">&#39;./mockData&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">autoCompleteData</span>
 <span class="p">})</span>
 
-<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;react-redux&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
-  <span class="nx">connect</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
-  <span class="nx">useSelector</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">((</span><span class="nx">fn</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">fn</span><span class="p">()),</span>
-  <span class="nx">useDispatch</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">mockDispatch</span><span class="p">,</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;react-redux&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">connect</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">useSelector</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">((</span><span class="nx">fn</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fn</span><span class="p">()),</span>
+<span class="w">  </span><span class="nx">useDispatch</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">mockDispatch</span><span class="p">,</span>
 <span class="p">}))</span>
 
-<span class="kd">const</span> <span class="nx">fetchData</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span> <span class="s1">&#39;fetchCompleteData&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fetchCompleteData&#39;</span><span class="p">)</span>
 <span class="c1">// Simulate input keyword</span>
-<span class="nx">expect</span><span class="p">(</span><span class="nx">fetchData</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">mockDispatch</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">fetchData</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">mockDispatch</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>react-dom/test-utils</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">ReactDOM</span> <span class="kr">from</span> <span class="s1">&#39;react-dom&#39;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">act</span><span class="p">,</span> <span class="nx">Simulate</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-dom/test-utils&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">ReactDOM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">act</span><span class="p">,</span><span class="w"> </span><span class="nx">Simulate</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/test-utils&#39;</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Autocomplete for search input&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">container</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Autocomplete for search input&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">container</span>
 
-  <span class="nx">beforeEach</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
 
-  <span class="nx">afterEach</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
-    <span class="nx">container</span> <span class="o">=</span> <span class="kc">null</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="nx">afterEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">})</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test autocomplete effects&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">act</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">ProxyInput</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">container</span><span class="p">)</span>
-    <span class="p">})</span>
-    <span class="kd">const</span> <span class="nx">searchInput</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test autocomplete effects&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">act</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">ProxyInput</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"> </span><span class="nx">container</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">searchInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-    <span class="c1">// Simulate input keyword</span>
-    <span class="nx">act</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">Simulate</span><span class="p">.</span><span class="nx">focus</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">)</span>
-      <span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
-      <span class="nx">Simulate</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">)</span>
-    <span class="p">})</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
-  <span class="p">})</span>
+<span class="w">    </span><span class="c1">// Simulate input keyword</span>
+<span class="w">    </span><span class="nx">act</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">Simulate</span><span class="p">.</span><span class="nx">focus</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;test&#39;</span>
+<span class="w">      </span><span class="nx">Simulate</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>setTimeout</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test autocomplete effects&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">setImmediate</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#options&#39;</span><span class="p">)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">()</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
-    <span class="nx">options</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">expect</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">)).</span><span class="nx">toBeDefined</span><span class="p">()</span>
-    <span class="p">})</span>
-    <span class="nx">done</span><span class="p">()</span>
-  <span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test autocomplete effects&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#options&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">options</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">)).</span><span class="nx">toBeDefined</span><span class="p">()</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">done</span><span class="p">()</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <h2>Simulate&nbsp;check</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">spy_fetchData</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">fetchDatas</span><span class="p">,</span> <span class="s1">&#39;fetchData&#39;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">dashboardPage</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
-<span class="nx">options</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="p">{</span> <span class="nx">checked</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">spy_fetchData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">fetchDatas</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fetchData&#39;</span><span class="p">)</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dashboardPage</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="nx">options</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">checked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
 <span class="c1">// checked</span>
-<span class="nx">options</span> <span class="o">=</span> <span class="nx">dashboardPage</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dashboardPage</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
 <span class="nx">expect</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;checked&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 <span class="nx">expect</span><span class="p">(</span><span class="nx">spy_fetchData</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span>
 </code></pre></div>
 
 <h2>Simulate&nbsp;input</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">inputWrapper</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">)</span>
-<span class="nx">inputWrapper</span><span class="p">.</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="p">{</span> <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span> <span class="p">}</span> <span class="p">})</span>
-<span class="nx">UpdateModalWrapper</span><span class="p">.</span><span class="nx">update</span><span class="p">()</span> <span class="c1">// 刷新根组件</span>
-<span class="nx">items</span> <span class="o">=</span> <span class="nx">UpdateModalWrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">Item</span><span class="p">)</span>
-<span class="nx">inputWrapper</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">inputWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">)</span>
+<span class="nx">inputWrapper</span><span class="p">.</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
+<span class="nx">UpdateModalWrapper</span><span class="p">.</span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="c1">// 刷新根组件</span>
+<span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">UpdateModalWrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">Item</span><span class="p">)</span>
+<span class="nx">inputWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">)</span>
 <span class="nx">expect</span><span class="p">(</span><span class="nx">inputWrapper</span><span class="p">.</span><span class="nx">props</span><span class="p">().</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>className</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">shallow</span><span class="p">,</span> <span class="nx">mount</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;enzyme&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">shallow</span><span class="p">,</span><span class="w"> </span><span class="nx">mount</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;enzyme&#39;</span>
 
-<span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test filter icon close&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">FilterIconShallow</span> <span class="o">=</span> <span class="nx">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">FilterIcon</span> <span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">FilterIconMount</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">FilterIcon</span> <span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">)</span>
-  <span class="nx">expect</span><span class="p">(</span><span class="nx">FilterIconMount</span><span class="p">.</span><span class="nx">props</span><span class="p">().</span><span class="nx">isOpen</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-  <span class="nx">expect</span><span class="p">(</span><span class="nx">FilterIconShallow</span><span class="p">.</span><span class="nx">props</span><span class="p">().</span><span class="nx">className</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test filter icon close&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">FilterIconShallow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">FilterIcon</span><span class="w"> </span><span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">FilterIconMount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mount</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">FilterIcon</span><span class="w"> </span><span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">FilterIconMount</span><span class="p">.</span><span class="nx">props</span><span class="p">().</span><span class="nx">isOpen</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">FilterIconShallow</span><span class="p">.</span><span class="nx">props</span><span class="p">().</span><span class="nx">className</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
 <span class="p">})</span>
 
-<span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test modeSwitch icon&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">modeWrapper</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">MockProvider</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">ModeSwitch</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/MockProvider&gt;</span>
-  <span class="p">)</span>
-  <span class="c1">// simulate open options;</span>
-  <span class="nx">switchIcon</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">)</span>
+<span class="nx">it</span><span class="p">(</span><span class="s1">&#39;test modeSwitch icon&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">modeWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mount</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">MockProvider</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">ModeSwitch</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/MockProvider&gt;</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// simulate open options;</span>
+<span class="w">  </span><span class="nx">switchIcon</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">)</span>
 
-  <span class="nx">options</span> <span class="o">=</span> <span class="nx">modeWrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#view&#39;</span><span class="p">)</span>
-  <span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;Grid View&#39;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">expect</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;redText&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;Table View&#39;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">expect</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;redText&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">modeWrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;#view&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;Grid View&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;redText&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;Table View&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;redText&#39;</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
 
@@ -487,21 +487,23 @@ umi test \allWorkbooks
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -510,7 +512,6 @@ umi test \allWorkbooks
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -519,7 +520,6 @@ umi test \allWorkbooks
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -539,7 +539,6 @@ umi test \allWorkbooks
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

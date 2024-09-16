@@ -75,42 +75,42 @@
 <ul>
 <li>下载&nbsp;flutter安装包</li>
 </ul>
-<div class="highlight"><pre><span></span><code>git clone -b master https://github.com/flutter/flutter.git
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>master<span class="w"> </span>https://github.com/flutter/flutter.git
 </code></pre></div>
 
 <ul>
 <li>运行 flutter&nbsp;doctor检查依赖项</li>
 </ul>
-<div class="highlight"><pre><span></span><code>flutter doctor
+<div class="highlight"><pre><span></span><code>flutter<span class="w"> </span>doctor
 </code></pre></div>
 
 <ul>
 <li>安装 Android&nbsp;sdk</li>
 <li>安装 Android&nbsp;cmdline-tools</li>
 </ul>
-<div class="highlight"><pre><span></span><code>path/to/sdkmanager --install <span class="s2">&quot;cmdline-tools;latest&quot;</span>
+<div class="highlight"><pre><span></span><code>path/to/sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="s2">&quot;cmdline-tools;latest&quot;</span>
 </code></pre></div>
 
 <ul>
 <li>Android&nbsp;license</li>
 </ul>
-<div class="highlight"><pre><span></span><code>flutter doctor --android-licenses
+<div class="highlight"><pre><span></span><code>flutter<span class="w"> </span>doctor<span class="w"> </span>--android-licenses
 </code></pre></div>
 
 <ul>
 <li>更新&nbsp;Cocoapods</li>
 </ul>
 <p>修改hosts</p>
-<div class="highlight"><pre><span></span><code>sudo vi /etc/hosts
-// <span class="m">199</span>.232.68.133 raw.githubusercontent.com
-// <span class="m">199</span>.232.68.133 user-images.githubusercontent.com
-// <span class="m">199</span>.232.68.133 avatars2.githubusercontent.com
-// <span class="m">199</span>.232.68.133 avatars1.githubusercontent.com
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/hosts
+//<span class="w"> </span><span class="m">199</span>.232.68.133<span class="w"> </span>raw.githubusercontent.com
+//<span class="w"> </span><span class="m">199</span>.232.68.133<span class="w"> </span>user-images.githubusercontent.com
+//<span class="w"> </span><span class="m">199</span>.232.68.133<span class="w"> </span>avatars2.githubusercontent.com
+//<span class="w"> </span><span class="m">199</span>.232.68.133<span class="w"> </span>avatars1.githubusercontent.com
 </code></pre></div>
 
 <p>安装homebrew</p>
-<div class="highlight"><pre><span></span><code>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
-brew -v
+<div class="highlight"><pre><span></span><code>/usr/bin/ruby<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+brew<span class="w"> </span>-v
 </code></pre></div>
 
 <p>安装Xcode的CommandLineTools工具</p>
@@ -118,8 +118,8 @@ brew -v
 </code></pre></div>
 
 <p>安装RVM</p>
-<div class="highlight"><pre><span></span><code>curl -L https://get.rvm.io <span class="p">|</span> bash -s stable
-<span class="nb">source</span> /Users/jyu36/.rvm/scripts/rvm
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-L<span class="w"> </span>https://get.rvm.io<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span>-s<span class="w"> </span>stable
+<span class="nb">source</span><span class="w"> </span>/Users/jyu/.rvm/scripts/rvm
 </code></pre></div>
 
 <p>安装Ruby</p>
@@ -144,13 +144,13 @@ pod --version
 <li>使用zsh终端，终端启动时~/.bash_profile将不会被加载。oh-my-zsh的配置文件是.zshrc，而默认shell(bash)的配置文件为.bash_profile。</li>
 </ul>
 <p>vi&nbsp;~/.bash_profile</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
-<span class="nb">export</span> <span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/Users/jyu36/flutter/bin:<span class="nv">$PATH</span>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/Users/jyu/flutter/bin:<span class="nv">$PATH</span>
 </code></pre></div>
 
 <p>vi&nbsp;~/.zshrc</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span> ~/.bash_profile
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.bash_profile
 </code></pre></div>
 
 <p>source&nbsp;~/.zshrc</p>
@@ -180,10 +180,10 @@ pod --version
 <ul>
 <li>@import显示module not&nbsp;found:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ios
-flutter clean
-flutter pub get
-pod install
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>ios
+flutter<span class="w"> </span>clean
+flutter<span class="w"> </span>pub<span class="w"> </span>get
+pod<span class="w"> </span>install
 </code></pre></div>
 
 <ul>
@@ -274,21 +274,23 @@ pod install
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -297,7 +299,6 @@ pod install
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -306,7 +307,6 @@ pod install
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -326,7 +326,6 @@ pod install
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

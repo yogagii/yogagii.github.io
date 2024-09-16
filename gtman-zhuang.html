@@ -66,37 +66,37 @@
         <p>结果&nbsp;https://analytics.google.com/</p>
 <p>配置&nbsp;https://tagmanager.google.com</p>
 <h2>安装</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">addGtm</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">gtmscript1</span> <span class="o">=</span> <span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">addGtm</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">gtmscript1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:</span>
 <span class="sb">      new Date().getTime(),event:&#39;gtm.js&#39;});var f=d.getElementsByTagName(s)[0],</span>
 <span class="sb">      j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.async=true;j.src=</span>
 <span class="sb">      &#39;https://www.googletagmanager.com/gtm.js?id=&#39;+i+dl;f.parentNode.insertBefore(j,f);</span>
 <span class="sb">      })(window,document,&#39;script&#39;,&#39;dataLayer&#39;,&#39;GTM-XXXXXXX&#39;)`</span><span class="p">;</span>
-  <span class="kd">let</span> <span class="nx">gtmscript2</span> <span class="o">=</span> <span class="sb">`&lt;iframe src=&quot;&quot;https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX&quot;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">gtmscript2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;iframe src=&quot;&quot;https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX&quot;</span>
 <span class="sb">    height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;`</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">STAGE_ADDRESS_FRONT_E</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">gtmscript1</span> <span class="o">=</span> <span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">STAGE_ADDRESS_FRONT_E</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">gtmscript1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:</span>
 <span class="sb">      new Date().getTime(),event:&#39;gtm.js&#39;});var f=d.getElementsByTagName(s)[0],</span>
 <span class="sb">      j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.async=true;j.src=</span>
 <span class="sb">      &#39;https://www.googletagmanager.com/gtm.js?id=&#39;+i+dl+ &#39;&amp;gtm_auth=C50yozlbjSv2u_j2wDptBw&amp;gtm_preview=env-3&amp;gtm_cookies_win=x&#39;;f.parentNode.insertBefore(j,f);</span>
 <span class="sb">      })(window,document,&#39;script&#39;,&#39;dataLayer&#39;,&#39;GTM-XXXXXXX&#39;)`</span><span class="p">;</span>
-    <span class="nx">gtmscript2</span> <span class="o">=</span> <span class="sb">`&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX&amp;gtm_auth=C50yozlbjSv2u_j2wDptBw&amp;gtm_preview=env-3&amp;gtm_cookies_win=x&quot;</span>
+<span class="w">    </span><span class="nx">gtmscript2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX&amp;gtm_auth=C50yozlbjSv2u_j2wDptBw&amp;gtm_preview=env-3&amp;gtm_cookies_win=x&quot;</span>
 <span class="sb">      height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;`</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kd">const</span> <span class="nx">head</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
-  <span class="kd">const</span> <span class="nx">script1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-  <span class="nx">script1</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">gtmscript1</span><span class="p">;</span>
-  <span class="nx">prependChild</span><span class="p">(</span><span class="nx">script1</span><span class="p">,</span> <span class="nx">head</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
-  <span class="kd">const</span> <span class="nx">script2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;noscript&#39;</span><span class="p">);</span>
-  <span class="nx">script2</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">gtmscript2</span><span class="p">;</span>
-  <span class="nx">prependChild</span><span class="p">(</span><span class="nx">script2</span><span class="p">,</span> <span class="nx">body</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">script1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">script1</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gtmscript1</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">prependChild</span><span class="p">(</span><span class="nx">script1</span><span class="p">,</span><span class="w"> </span><span class="nx">head</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">script2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;noscript&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">script2</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gtmscript2</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">prependChild</span><span class="p">(</span><span class="nx">script2</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
 <h2>变量</h2>
-<div class="highlight"><pre><span></span><code>document.cookie = `apiErrorCode=<span class="cp">${</span><span class="n">error</span><span class="o">.</span><span class="n">status</span><span class="cp">}</span>`;
+<div class="highlight"><pre><span></span><code>document.cookie<span class="w"> </span>=<span class="w"> </span>`apiErrorCode=<span class="cp">${</span><span class="n">error</span><span class="o">.</span><span class="n">status</span><span class="cp">}</span>`;
 </code></pre></div>
 
 <ul>
@@ -110,9 +110,9 @@
 </ul>
 <p>命名变量：Clicked Video&nbsp;Title</p>
 <p>变量类型：自定义Javascript</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">var</span> <span class="n">clickedDOM</span> <span class="o">=</span> <span class="p">{{</span><span class="n">Click</span> <span class="n">Element</span><span class="p">}};</span> <span class="o">//</span> <span class="err">内置变量</span>
-  <span class="k">return</span> <span class="n">clickedDOM</span><span class="o">.</span><span class="n">parentElement</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">innerText</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">clickedDOM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="n">Click</span><span class="w"> </span><span class="n">Element</span><span class="p">}};</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="err">内置变量</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">clickedDOM</span><span class="o">.</span><span class="n">parentElement</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">innerText</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -123,25 +123,25 @@
 <p>数据层变量名：apiErrorMessage</p>
 <p>变量类型：数据层变量</p>
 <h2>触发器</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">dva</span><span class="p">({</span>
-  <span class="nx">history</span><span class="o">:</span> <span class="nx">browserHistory</span><span class="p">(),</span>
-  <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mf">401</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">sso_url</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">error</span><span class="p">.</span><span class="nx">sso_url</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-        <span class="nx">event</span><span class="o">:</span> <span class="s1">&#39;api-error&#39;</span><span class="p">,</span>
-        <span class="nx">apiErrorCode</span><span class="o">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="p">,</span>
-        <span class="nx">apiErrorMessage</span><span class="o">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">statusText</span><span class="p">,</span>
-        <span class="nx">apiErrorUrl</span><span class="o">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">url</span>
-      <span class="p">});</span> 
-      <span class="nx">message</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span>
-        <span class="nx">error</span><span class="p">.</span><span class="nx">statusText</span><span class="p">,</span>
-      <span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dva</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">history</span><span class="o">:</span><span class="w"> </span><span class="nx">browserHistory</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">sso_url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">sso_url</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">event</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;api-error&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">apiErrorCode</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">apiErrorMessage</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">statusText</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">apiErrorUrl</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">url</span>
+<span class="w">      </span><span class="p">});</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">message</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">error</span><span class="p">.</span><span class="nx">statusText</span><span class="p">,</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 
@@ -250,21 +250,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -273,7 +275,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -282,7 +283,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -302,7 +302,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

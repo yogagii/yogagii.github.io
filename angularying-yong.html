@@ -69,13 +69,13 @@
 * <span class="caps">CSS</span> 选择器 (&#8216;app-&#8216;+组件名称)
 * <span class="caps">HTML</span> 模板
 * 一组可选的 <span class="caps">CSS</span>&nbsp;样式</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
-  <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-root&#39;</span><span class="p">,</span>
-  <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;./app.component.html&#39;</span>
+<span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;app-root&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">templateUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./app.component.html&#39;</span>
 <span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppComponent</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppComponent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <p>@input()&nbsp;装饰器：</p>
@@ -85,10 +85,10 @@
 <li>双花括号：插入动态值</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">//app.component.html</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span> <span class="nx">message</span> <span class="p">}}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
 <span class="c1">//app.component.ts</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">HelloWorldInterpolationComponent</span> <span class="p">{</span>
-    <span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;Hello, World!&#39;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HelloWorldInterpolationComponent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -107,18 +107,18 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">//app.component.html</span>
 <span class="o">&lt;</span><span class="nx">button</span>
-  <span class="p">[</span><span class="nx">disabled</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;canClick&quot;</span>
-  <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;sayMessage()&quot;</span><span class="o">&gt;</span>
-  <span class="nx">Trigger</span> <span class="nx">alert</span> <span class="nx">message</span>
+<span class="w">  </span><span class="p">[</span><span class="nx">disabled</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;canClick&quot;</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;sayMessage()&quot;</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="nx">Trigger</span><span class="w"> </span><span class="nx">alert</span><span class="w"> </span><span class="nx">message</span>
 <span class="o">&lt;</span><span class="err">/button&gt;</span>
 <span class="c1">//app.component.ts</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">HelloWorldBindingsComponent</span> <span class="p">{</span>
-  <span class="nx">canClick</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;Hello, World&#39;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HelloWorldBindingsComponent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">canClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hello, World&#39;</span><span class="p">;</span>
 
-  <span class="nx">sayMessage</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nx">sayMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -126,30 +126,30 @@
 <ul>
 <li>指令directives：<em>ngIf，</em>ngFor</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">div</span> <span class="o">*</span><span class="nx">ngIf</span><span class="o">=</span><span class="s2">&quot;canEdit; else noEdit&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">can</span> <span class="nx">edit</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">paragraph</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="o">*</span><span class="nx">ngIf</span><span class="o">=</span><span class="s2">&quot;canEdit; else noEdit&quot;</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">edit</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">following</span><span class="w"> </span><span class="nx">paragraph</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
 <span class="o">&lt;</span><span class="err">/div&gt;</span>
 </code></pre></div>
 
 <h2>依赖注入 Dependency&nbsp;injection</h2>
 <p>声明 TypeScript&nbsp;类的依赖项</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// logger.service.ts</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
 
-<span class="kd">@Injectable</span><span class="p">({</span><span class="nx">providedIn</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span><span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">Logger</span> <span class="p">{</span>
-  <span class="nx">writeCount</span><span class="p">(</span><span class="nx">count</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="kd">@Injectable</span><span class="p">({</span><span class="nx">providedIn</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Logger</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">writeCount</span><span class="p">(</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">//app.component.ts</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Logger</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;../logger.service&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Logger</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../logger.service&#39;</span><span class="p">;</span>
 
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">HelloWorldDependencyInjectionComponent</span>  <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">logger</span>: <span class="kt">Logger</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
-  <span class="nx">onLogMe</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">writeCount</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HelloWorldDependencyInjectionComponent</span><span class="w">  </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">logger</span><span class="o">:</span><span class="w"> </span><span class="kt">Logger</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">onLogMe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">writeCount</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
@@ -236,21 +236,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -259,7 +261,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -268,7 +269,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -288,7 +288,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

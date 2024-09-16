@@ -64,82 +64,118 @@
     </header>
     <div class="post-entry">
         <h2>interface <span class="caps">VS</span>&nbsp;type</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nx">Name</span> <span class="p">{</span>
-  <span class="nx">name</span>: <span class="kt">string</span>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 
-<span class="kr">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
 <li>拓展（extends）</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// interface extends interface</span>
-<span class="kd">interface</span> <span class="nx">User</span> <span class="k">extends</span> <span class="nx">Name</span> <span class="p">{</span>
-  <span class="nx">age</span>: <span class="kt">number</span>
-<span class="p">}</span>
-
-<span class="c1">// interface extends type</span>
-<span class="kd">interface</span> <span class="nx">User</span> <span class="k">extends</span> <span class="nx">Name</span> <span class="p">{</span>
-  <span class="nx">age</span>: <span class="kt">number</span>
-<span class="p">}</span>
-
-<span class="c1">// type extends type</span>
-<span class="kr">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
-  <span class="nx">age</span>: <span class="kt">number</span>
-<span class="p">}</span>
-<span class="c1">// type extends interface</span>
-<span class="kr">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">Name</span> <span class="o">&amp;</span> <span class="p">{</span>
-  <span class="nx">age</span>: <span class="kt">number</span>
-<span class="p">}</span>
-</code></pre></div>
-
+<p><span class="dquo">&#8220;</span>`ts
+  // interface extends interface
+  interface User extends Name {
+    age: number&nbsp;}</p>
+<p>// interface extends type
+  interface User extends Name {
+    age: number&nbsp;}</p>
+<p>// type extends type
+  type User = Name <span class="amp">&amp;</span> {
+    age: number
+  }
+  // type extends interface
+  type User = Name <span class="amp">&amp;</span> {
+    age: number
+  }&nbsp;&#8220;`</p>
 <ul>
 <li>type&nbsp;可以声明基本类型别名，联合类型，元组等类型</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="kt">string</span> <span class="c1">// 基本类型别名</span>
-<span class="kr">type</span> <span class="nx">PetList</span> <span class="o">=</span> <span class="p">[</span><span class="nx">Dog</span><span class="p">,</span> <span class="nx">Pet</span><span class="p">]</span> <span class="c1">// 具体定义数组每个位置的类型</span>
-</code></pre></div>
-
+<p><code>ts
+  type Name = string // 基本类型别名
+  type PetList = [Dog, Pet] // 具体定义数组每个位置的类型</code></p>
 <ul>
 <li>type 语句中还可以使用 typeof 获取实例的&nbsp;类型进行赋值</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
-<span class="kr">type</span> <span class="nx">B</span> <span class="o">=</span> <span class="ow">typeof</span> <span class="nx">div</span>
-</code></pre></div>
-
+<p><code>ts
+  let div = document.createElement('div')
+  type B = typeof div</code></p>
 <ul>
 <li>interface&nbsp;能够声明合并</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nx">User</span> <span class="p">{</span>
-  <span class="nx">name</span>: <span class="kt">string</span>
+<p><span class="dquo">&#8220;</span>`ts
+  interface User {
+    name: string&nbsp;}</p>
+<p>interface User {
+    sex: string&nbsp;}</p>
+<p>/<em>
+  User 接口为 {
+  name: string
+  sex: string 
+  }
+  </em>/&nbsp;&#8220;`</p>
+<p>原文链接：https://juejin.im/post/5c2723635188252d1d34dc7d#heading-11</p>
+<h3>泛型</h3>
+<ul>
+<li>Pick&nbsp;选择</li>
+</ul>
+<p>pick<T，keys>：从Type中选择一系列属性来构造新类型</p>
+<ul>
+<li>Omit&nbsp;省略</li>
+</ul>
+<p>omit<T，keys>：从Type中移除一系列属性值</p>
+<p><code>ts
+  interface Props{
+    A:string
+    B:string
+    C:number[]
+  }
+  type PickProps= Pick&lt;Props,'A'|'B'&gt; // A, B
+  type OmitProps = Omit&lt;Props,'A'|'B'&gt;; // C</code></p>
+<ul>
+<li>Exclude&nbsp;排除</li>
+</ul>
+<p>Exclude<T,U> 从第一个联合类型参数中，将第二个联合类型中出现的联合项全部排除</p>
+<ul>
+<li>Extract&nbsp;提取</li>
+</ul>
+<p>Extract<T,U> 提取Type中所有能够赋值给Union的属性</p>
+<p><code>ts
+  type A = "age" | "name";
+  type B = "like" | "name";
+  type C = Exclude&lt;A, B&gt;; // 'age'
+  type D = Extract&lt;A, B&gt;; // 'name'</code></p>
+<h3>Type&nbsp;Guards</h3>
+<p>Create type guards that will check whether the record is of type A or&nbsp;B.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Type guards to determine the type of record</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">isAType</span><span class="p">(</span><span class="nx">record</span><span class="o">:</span><span class="w"> </span><span class="kt">A</span><span class="o">|</span><span class="nx">B</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">A</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">interface</span> <span class="nx">User</span> <span class="p">{</span>
-  <span class="nx">sex</span>: <span class="kt">string</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">isBType</span><span class="p">(</span><span class="nx">record</span><span class="o">:</span><span class="w"> </span><span class="kt">A</span><span class="o">|</span><span class="nx">B</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">B</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">;</span>
 <span class="p">}</span>
-
-<span class="cm">/*</span>
-<span class="cm">User 接口为 {</span>
-<span class="cm"> name: string</span>
-<span class="cm"> sex: string </span>
-<span class="cm">}</span>
-<span class="cm">*/</span>
 </code></pre></div>
 
-<p>原文链接：https://juejin.im/post/5c2723635188252d1d34dc7d#heading-11</p>
-<hr>
+<p>Use these type guards in your loop to narrow the type of record inside the conditional&nbsp;blocks.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">res</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">record</span><span class="o">:</span><span class="w"> </span><span class="kt">A</span><span class="o">|</span><span class="nx">B</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isAType</span><span class="p">(</span><span class="nx">record</span><span class="p">))</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isBType</span><span class="p">(</span><span class="nx">record</span><span class="p">))</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">})</span>
+</code></pre></div>
+
 <h2>装饰器&nbsp;Decorators</h2>
 <p>随着 TypeScript 和 <span class="caps">ES6</span> 里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。&nbsp;装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。</p>
 <p>在命令行或 tsconfig.json 里启用 experimentalDecorators&nbsp;编译器选项：</p>
-<div class="highlight"><pre><span></span><code><span class="err">//</span> <span class="kc">ts</span><span class="err">co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// tsconfig.json</span>
 <span class="p">{</span>
-  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;es2017&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;experimentalDecorators&quot;</span><span class="p">:</span> <span class="kc">true</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es2017&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;experimentalDecorators&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -149,25 +185,25 @@
 </ul>
 <p>普通装饰器，无法传参，装饰器工厂,可传参</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 定义装饰器工厂</span>
-<span class="kd">function</span> <span class="nx">logClass</span><span class="p">(</span><span class="nx">params</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;target：&#39;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;params：&#39;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">logClass</span><span class="p">(</span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;target：&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">target</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;params：&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">);</span>
 
-    <span class="nx">target</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apiUrl</span> <span class="o">=</span> <span class="nx">params</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="nx">target</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apiUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">@logClass</span><span class="p">(</span><span class="s1">&#39;http:www.baidu.com&#39;</span><span class="p">)</span>
-<span class="kd">class</span> <span class="nx">HttpClient</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
-  <span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">HttpClient</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="nx">getData</span><span class="p">()</span> <span class="p">{</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nx">getData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">http</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">HttpClient</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpClient</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">apiUrl</span><span class="p">);</span>
 </code></pre></div>
 
@@ -175,7 +211,7 @@
 <li>装饰器组合</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// 书写在同一行上</span>
-<span class="kd">@f</span> <span class="kd">@g</span> <span class="nx">x</span>
+<span class="kd">@f</span><span class="w"> </span><span class="kd">@g</span><span class="w"> </span><span class="nx">x</span>
 
 <span class="c1">// 书写在多行上</span>
 <span class="kd">@f</span>
@@ -189,71 +225,71 @@
 <p>类装饰器在类声明之前被声明（紧靠着类声明）。&nbsp;类装饰器应用于类构造函数，可以用来监视，修改或替换类定义。</p>
 <p>类装饰器表达式会在运行时当作函数被调用，类的构造函数作为其唯一的参数。如果类装饰器返回一个值，它会使用提供的构造函数来替换类的声明。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">@sealed</span>
-<span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Greeter</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <ul>
 <li>方法装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
-  <span class="kd">@enumerable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-  <span class="nx">greet</span><span class="p">()</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Greeter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@enumerable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">greet</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
 <li>访问器装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Point</span> <span class="p">{</span>
-  <span class="kd">@configurable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-  <span class="nx">get</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_x</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Point</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@configurable</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">x</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_x</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
 <li>属性装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
-  <span class="kd">@format</span><span class="p">(</span><span class="s1">&#39;Hello, %s&#39;</span><span class="p">)</span>
-  <span class="nx">greeting</span>: <span class="kt">string</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Greeter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@format</span><span class="p">(</span><span class="s1">&#39;Hello, %s&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">greeting</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
 <li>参数装饰器</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
-  <span class="nx">greet</span><span class="p">(</span><span class="kd">@required</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Greeter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">greet</span><span class="p">(</span><span class="kd">@required</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <hr>
 <h2>依赖注入</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
-<span class="kd">class</span> <span class="nx">A</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">;</span>
-  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类需要修改A类</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">B</span><span class="p">;</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">B</span><span class="p">();</span><span class="w"> </span><span class="c1">// 修改B类需要修改A类</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// main</span>
-<span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">A</span><span class="p">();</span>
 </code></pre></div>
 
 <p><strong>依赖注入（<span class="caps">DI</span>）</strong>：&nbsp;通过A的构造函数将B的实例注入</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">B</span> <span class="p">{</span> <span class="p">}</span>
-<span class="kd">class</span> <span class="nx">A</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">b</span>: <span class="kt">B</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">public</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// main</span>
-<span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">B</span><span class="p">();</span> <span class="c1">// 修改B类只需要修改主程序即可</span>
-<span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">A</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 将B的实例注入到a中</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">B</span><span class="p">();</span><span class="w"> </span><span class="c1">// 修改B类只需要修改主程序即可</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">A</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span><span class="w"> </span><span class="c1">// 将B的实例注入到a中</span>
 </code></pre></div>
 
 <p>解决问题
@@ -267,11 +303,11 @@
 <h2>Config</h2>
 <p>踩坑：</p>
 <p>Consider using &#8216;&#8212;resolveJsonModule&#8217; to import module with &#8216;.json&#8217;&nbsp;extension.</p>
-<div class="highlight"><pre><span></span><code><span class="err">//</span> <span class="kc">ts</span><span class="err">co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// tsconfig.json</span>
 <span class="p">{</span>
-  <span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;resolveJsonModule&quot;</span><span class="p">:</span> <span class="kc">true</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;resolveJsonModule&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -361,21 +397,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -384,7 +422,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -393,7 +430,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -413,7 +449,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

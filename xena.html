@@ -44,7 +44,7 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›<span class="caps">XENA</span>
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›<span class="caps">XENA</span>
                 </section>
 
 
@@ -54,144 +54,237 @@
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
-        <abbr class="date" title="2020-08-21T00:00:00+08:00"> 
-            <a href="/archive/2020/ 8/index.html">五 21 八月 2020 </a>
+        <abbr class="date" title="2020-09-22T00:00:00+08:00"> 
+            <a href="/archive/2020/ 9/index.html">二 22 九月 2020 </a>
         </abbr>
         <span class="meta-prep"> |Tags</span>
-                <a href="/tag/docker.html">Docker</a>
         <!-- TOBE COMMENTS -->
     </div>
     </header>
     <div class="post-entry">
-        <h2>Docker</h2>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/docker/getting-started.git
-
-cd getting-started
-docker build -t docker101tutorial
-
-docker run -d -p 80:80 \ —name docker-tutorial docker101tutorial
-
-docker tag docker101tutorial yogadock/docker101tutorial
-docker push yogadock/docker101tutorial
+        <p><span class="caps">JPM</span> Application Development&nbsp;Pipeline</p>
+<blockquote>
+<p>Checkout -&gt; Manifest Load -&gt; Setup &#8212;&gt; Unit Test -&gt; Lint -&gt; Static Analysis -&gt; Package -&gt; Publish -&gt; Deploy -&gt; Integration Test -&gt; Regression&nbsp;Test</p>
+</blockquote>
+<h2>Jenkins&nbsp;Pipeline</h2>
+<h3>1. Creating <span class="caps">JPM</span> Pipeline&nbsp;Job</h3>
+<p>This can be done <strong>manually</strong> or <strong>automatically</strong> via Automation Pipelines integration&nbsp;hook</p>
+<ul>
+<li>Jenkinsfile</li>
+</ul>
+<p>Jenkinsfile tells Jenkins to use the Jenkins Pipeline Manager Global Shared Library and also tells it to check manifest-sources.yaml file for the location of pipeline manifests that declare the logic of <span class="caps">CI</span>/<span class="caps">CD</span>&nbsp;jobs.</p>
+<ul>
+<li>manifest.yaml</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span>
+<span class="nt">sources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">locationType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">      </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+<span class="w">    </span><span class="nt">manifest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">locationType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">      </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+<span class="w">    </span><span class="nt">manifest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">by-environment</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environments</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 
-<p>Docker&nbsp;安装phpmyadmin</p>
-<p>https://hub.docker.com/_/phpmyadmin</p>
-<div class="highlight"><pre><span></span><code>docker run --name myadmin -d -e PMA_ARBITRARY=1 -p 4000:80 phpmyadmin
-
-docker ps
+<h3>2. Job Manifest&nbsp;Environments</h3>
+<ul>
+<li>environment-mapping.yaml</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;(feature|bugfix|hotfix)/.*&#39;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PREDEV&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">branchNamePattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;develop&#39;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;DEV&#39;</span>
 </code></pre></div>
 
-<table>
-<thead>
-<tr>
-<th><span class="caps">CONTAINER</span> <span class="caps">ID</span></th>
-<th><span class="caps">IMAGE</span></th>
-<th><span class="caps">PORTS</span></th>
-<th><span class="caps">NAMES</span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0bfccc26fcfe</td>
-<td>phpmyadmin</td>
-<td>0.0.0.0:4000 -&gt; 80/tcp</td>
-<td>myadmin</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code>docker stop 0bfccc26fcfe
-docker rm 0bfccc26fcfe
+<p>branchName 来源于Jenkins job中 Branches to&nbsp;build</p>
+<h3>3. Unit Tests <span class="amp">&amp;</span>&nbsp;Lint</h3>
+<p>npm run&nbsp;test</p>
+<p>npm run&nbsp;lint</p>
+<div class="highlight"><pre><span></span><code><span class="nt">unitTest</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">lint</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 
-<p>nginx</p>
-<div class="highlight"><pre><span></span><code><span class="nt">location</span> <span class="o">/</span><span class="nt">php</span><span class="o">/</span> <span class="p">{</span>
-  <span class="err">rewrite</span> <span class="err">&quot;^/php/(.*)$&quot;</span> <span class="err">/$1</span> <span class="err">break</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">Host</span> <span class="err">$host</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">X-Real-IP</span> <span class="err">$remote_addr</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-For</span> <span class="err">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-  <span class="err">proxy_set_header</span> <span class="err">X-Forwarded-Proto</span> <span class="err">$scheme</span><span class="p">;</span>
-  <span class="err">proxy_buffering</span> <span class="err">off</span><span class="p">;</span>
-  <span class="err">proxy_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.216.104.80</span><span class="o">:</span><span class="mi">4000</span><span class="p">;</span>
+<h3>4. Static Code&nbsp;Analysis</h3>
+<p>SonarQube increases productivity by enabling development teams to detect duplication and redundancy of code allowing to optimize the code complexity, maintenance time and&nbsp;cost.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">staticAnalysis</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi</span>
+<span class="w">  </span><span class="nt">stages</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sonar</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonar</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+
+<h3>5.&nbsp;Package</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">package</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dist/xxx-app</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip</span>
+<span class="w">  </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">  </span><span class="nt">exclude</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Jenkinsfile</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifest.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifest-sources.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment-mapping.yaml</span>
+<span class="w">  </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dist/**</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node_modules/**</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">package.json</span>
+<span class="w">  </span><span class="nt">versionPackageName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">versionFileUpdates</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-package</span>
+</code></pre></div>
+
+<h2>JFrog</h2>
+<p>JFrog Artifactory 作为 Docker Hub 的拉入式缓存。通过在 JFrog Artifactory 上本地缓存 Docker 映像,对该图像的所有请求首先来自缓存,而不是直接来自 Docker&nbsp;Hub，减少了外部流量。</p>
+<h3>5. Build Docker Image and Publish to&nbsp;Artifactory</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">publish</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi</span>
+<span class="w">  </span><span class="nt">stages</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Docker</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="w">      </span><span class="nt">credsList</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://.artifactrepo.xxx.com</span>
+<span class="w">          </span><span class="nt">credentialsId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
+</code></pre></div>
+
+<ul>
+<li>_scm_container/<docker_image_name>/container.yaml</li>
+</ul>
+<p>pull images directly from the internet and upload them to artifactory in the&nbsp;repo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker_image_name&gt;</span>
+<span class="nt">tagStrategies</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dev</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">feature/.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bugfix/.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotfix/.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tagStrategies&gt;</span>
+<span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">artifactoryRepository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
+<span class="nt">overrideImageSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+
+<ul>
+<li>_scm_container/<docker_image_name>/Dockerfile</li>
+</ul>
+<p>build images from a&nbsp;Dockerfile </p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:18</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>./
+<span class="k">COPY</span><span class="w"> </span>package-lock.json<span class="w"> </span>./<span class="w"> </span>#<span class="w"> </span>锁定包版本号，加快安装速度
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+
+<span class="k">COPY</span><span class="w"> </span>./<span class="w"> </span>./
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<h3>6. JFrog&nbsp;Xray</h3>
+<p>JFrog Xray is an enterprise approved tool for scanning of the software artifacts effectively enhancing artifact security and <span class="caps">OSS</span> license&nbsp;compliance.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">buildAnalysis</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+
+<h3>7. Pull Docker Images From&nbsp;Artifactory</h3>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login<span class="w"> </span>&lt;account_id&gt;.artifactrepo.xxx.com
+
+<span class="c1"># You will be prompted with the following</span>
+Username:<span class="w"> </span>&lt;service_account_username&gt;
+Password:<span class="w"> </span>&lt;service_account_password&gt;
+</code></pre></div>
+
+<p>~/.docker/config.json</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;auths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;&lt;docker_image_name&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;USERNAME&gt;:&lt;PASSWORD&gt; (converted to base 64)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;&lt;docker_image_name&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;credsStore&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;desktop&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h2><span class="caps">XENA</span></h2>
-<p>username: <span class="caps">TST</span>-<span class="caps">ITS</span>-SCMStudent17</p>
-<p>password:&nbsp;Scm$tudent17a</p>
-<div class="highlight"><pre><span></span><code><span class="nx">docker</span> <span class="nx">ps</span>
-<span class="nx">docker</span> <span class="nx">volumn</span> <span class="nx">ls</span>
-<span class="nx">docker</span> <span class="nx">volume</span> <span class="nx">rm</span> <span class="nx">文件名和</span>
-<span class="nx">docker</span> <span class="nx">volume</span> <span class="nx">create</span> <span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span>
-<span class="nx">docker</span> <span class="nx">volume</span> <span class="nx">inspect</span> <span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>&lt;account_id&gt;.artifactrepo.xxx.com/&lt;image_name&gt;:&lt;image_tag&gt;
 
-<span class="nx">docker</span> <span class="nx">login</span> <span class="nx">xxx</span><span class="p">.</span><span class="nx">artifactrepo</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">com</span>
-<span class="c1">// username</span>
-<span class="c1">// password</span>
-<span class="nx">docker</span> <span class="nx">pull</span> <span class="nx">xxx</span><span class="p">.</span><span class="nx">artifactrepo</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">xena</span><span class="o">/</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">toolbox</span>
-<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">itd</span> <span class="o">--</span><span class="nx">name</span><span class="o">=</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">toolbox</span> <span class="o">--</span><span class="nx">mount</span> <span class="nx">source</span><span class="o">=</span><span class="nx">xena</span><span class="o">-</span><span class="nx">training</span><span class="o">-</span><span class="nx">volume</span><span class="p">,</span><span class="nx">target</span><span class="o">=</span><span class="err">/root/xena xxx.artifactrepo.xxx.com/xena/xena-training-toolbox</span>
-<span class="nx">Copy</span> <span class="nx">to</span> <span class="nx">clipboard</span>
-
-<span class="c1">// open docker extension screen</span>
-<span class="nx">ll</span>
-<span class="c1">// /root/xena </span>
-<span class="nx">kubectl</span>
-<span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span> <span class="s2">&quot;TST-ITS-SCMStudent#@its.xxx.com&quot;</span>
-<span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="nx">student</span><span class="err">#</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//sourcecode.xxx.com/scm/asx-ncnl/student#.git</span>
+docker<span class="w"> </span>pull<span class="w"> </span>xxx.artifactrepo.xxx.com/xena/xena-training-toolbox
+docker<span class="w"> </span>run<span class="w"> </span>-itd<span class="w"> </span>--name<span class="o">=</span>xena-training-toolbox<span class="w"> </span>--mount<span class="w"> </span><span class="nv">source</span><span class="o">=</span>xena-training-volume,target<span class="o">=</span>/root/xena<span class="w"> </span>xxx.artifactrepo.xxx.com/xena/xena-training-toolbox
 </code></pre></div>
 
-<p><span class="caps">JPM</span> Application Development&nbsp;Pipeline</p>
-<p><img alt="docker" src="img/jpm.png"></p>
-<h2>节省磁盘空间部署</h2>
-<h3>法1.&nbsp;Monorepo</h3>
-<p>monorepo模式: 该模式将代码工件作为轻量级 monorepo&nbsp;的一部分，可能更适合开发团队或多项目环境。</p>
-<p>可以从一个标准模式结构开始，然后添加&nbsp;project </p>
-<div class="highlight"><pre><span></span><code>nest new my-project
-
-cd my-project
-nest generate app my-app
-</code></pre></div>
-
-<h3>法2.&nbsp;pnpm</h3>
-<p>pnpm 会在全局的 store 目录里存储项目 node_modules 文件的 hard links&nbsp;。因为这样一个机制，导致每次安装依赖的时候，如果是个相同的依赖，有好多项目都用到这个依赖，那么这个依赖实际上最优情况(即版本相同)只用安装一次。</p>
-<div class="highlight"><pre><span></span><code>npm i pnpm -g
-pnpm install
-</code></pre></div>
-
-<p>硬链接 <span class="caps">VS</span>&nbsp;软连接：</p>
+<h3>8. Deployment to Linux virtual machine via <span class="caps">SSH</span></h3>
+<p>ssh - which sets up an ssh-agent that uses an ssh key to authenticate with the remote&nbsp;service.</p>
 <ul>
-<li>硬链接是同一个文件多个名字，软链接不是同一个文件</li>
-<li>原始文件删掉，硬链接的文件可以访问，软链接的原始文件删掉，访问失效</li>
-<li>软连接的指向文件大小是路径的大小，硬链接的大小就是文件的大小</li>
+<li>step1.&nbsp;本机生成私钥+公钥：</li>
 </ul>
-<p>du -sh&nbsp;显示文件大小</p>
-<h3>法3.&nbsp;用docker管理node_module</h3>
-<hr>
-<h2>peerDependency&nbsp;对等依赖关系</h2>
-<div class="highlight"><pre><span></span><code>APP
-└---node_modules
-    |---KeyPackage 核心依赖库（e.g React）
-    |---Package_A
-    |   └---node_modules
-    |       └---KeyPackage 核心依赖库
-    |---Package_B
-    |   └---node_modules
-    |       └---KeyPackage 核心依赖库
+<p>ssh-keygen -t&nbsp;rsa</p>
+<p><em>没有rsa时生成的私钥格式为<code>-----BEGIN OPENSSH PRIVATE KEY-----</code> (踩坑：jenkins 2.263 版本在检验密钥时还不支持这种格式)
+  加上rsa的私钥格式为<code>-----BEGIN RSA PRIVATE KEY-----</code></em></p>
+<p>查看本机私钥：cat&nbsp;~/.ssh/id_rsa</p>
+<p>查看本机公钥：cat&nbsp;~/.ssh/id_rsa.pub</p>
+<p>ssh-copy-id&nbsp;[user]@[server]</p>
+<ol>
+<li>把公钥放到服务器服务器：</li>
+</ol>
+<p>cat /home/[user]/.ssh/authorized_keys&nbsp;确定文件中有公钥</p>
+<p>本机：ssh [user]@[server]&nbsp;若不用输入密码则成功</p>
+<ol>
+<li>把私钥放到Jenkins</li>
+</ol>
+<p>Manage Jenkins → Configure System → <span class="caps">SSH</span> remote&nbsp;hosts:</p>
+<p>Hostname:&nbsp;10.xx.xx.xx</p>
+<p>Port:&nbsp;22</p>
+<p>Credentials: <span class="caps">ADD</span> →&nbsp;Jenkins</p>
+<p>Kind: <span class="caps">SSH</span> Username with private&nbsp;key</p>
+<p>Username:&nbsp;[user]</p>
+<p>Private&nbsp;Key：粘贴私钥，需带上Begin和End</p>
+<p>Check connection: Successfull&nbsp;connection</p>
+<p>Manage Jenkins → Manage Credentials →&nbsp;复制credentialsId</p>
+<div class="highlight"><pre><span></span><code><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">#!/bin/bash</span>
+<span class="w">      </span><span class="no">set -x</span>
+<span class="w">      </span><span class="no">set -e</span>
+<span class="w">      </span><span class="no">mkdir -p unpack</span>
+<span class="w">      </span><span class="no">unzip -d unpack dist/xxx-app.zip</span>
+<span class="w">      </span><span class="no">scp -o StrictHostKeyChecking=no \</span>
+<span class="w">      </span><span class="no">-r unpack/* \</span>
+<span class="w">      </span><span class="no">${manifest.deploy.userName}@${manifest.deploy.serverName}:${manifest.deploy.applicationDir}</span>
 </code></pre></div>
 
-<p>npm&nbsp;从版本v7开始，install默认以peerDependencies的方式下载，避免核心依赖库被重复下载</p>
-<p><em>踩坑：
-用户依赖的包版本与各个子项目依赖的包版本相互不兼容，那么就会报错：无法解析依赖树的问题（依赖冲突）Conflicting peer dependency:&nbsp;mssql@6.4.1</em></p>
-<div class="highlight"><pre><span></span><code>npm install xxxx --legacy-peer-deps 
+<p>ssh 只能连上user，连不上root，打包后的文件只能放在 /home/user，软连接到&nbsp;/var/www</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// package.json</span>
+<span class="nt">&quot;start:qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node dist/main&quot;</span><span class="p">,</span>
 </code></pre></div>
 
-<p>绕过peerDependency里依赖的自动安装，忽略项目中引入的各个依赖模块之间依赖相同但版本不同的问题，以npm&nbsp;v3-v6的方式去继续执行安装操作。</p>
+<p>pm2 start npm &#8212;name project-name &#8212;watch &#8212; run&nbsp;start:qa </p>
+<p>&#8212;watch&nbsp;只要当前目录下有任意文件发生改变，PM2都会尝试重启进程。</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
         <abbr class="category">
-            <a href="/category/analytics.html">Analytics</a>
+            <a href="/category/programming.html">Programming</a>
         </abbr>
         <p>
         <span class="meta-prep">Author: </span><span>Yoga</span>
@@ -271,21 +364,23 @@ pnpm install
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -294,7 +389,6 @@ pnpm install
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -303,7 +397,6 @@ pnpm install
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -323,7 +416,6 @@ pnpm install
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

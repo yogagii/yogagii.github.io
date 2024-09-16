@@ -1,0 +1,517 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/programming.html">Programming</a> ›Kubernetes
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Kubernetes</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2024-04-16T00:00:00+08:00"> 
+            <a href="/archive/2024/ 4/index.html">二 16 四月 2024 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/cicd.html">CI/CD</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2>Kubernetes</h2>
+<h3>Docker <span class="caps">VS</span> <span class="caps">K8S</span></h3>
+<ul>
+<li>Docker是一个轻量级的容器化平台，它允许开发人员将应用程序和其依赖项打包为可移植的容器镜像，并在不同的环境中进行部署。Docker采用单机模式，适用于部署和管理单个主机上的容器。它提供了容器的构建、运行和管理功能，并使得应用程序的部署变得简单和可靠。</li>
+<li>对于复杂的应用程序，可能需要使用编排工具（如 Docker&nbsp;Compose、Kubernetes）来管理多个容器的部署、协作和扩展。Kubernetes是一个分布式的容器编排工具，适合构建、管理和调度多个容器的集群。它可以管理数千个容器，并提供高自动扩展、负载平衡和故障恢复的功能。</li>
+</ul>
+<h3>核心概念</h3>
+<ul>
+<li>
+<p>Pod：<span class="caps">K8S</span> 最小的部署单元，是一组容器的集合。每个 Pod 都由一个特殊的根容器 Pause&nbsp;容器，以及一个或多个紧密相关的用户业务容器组成。</p>
+</li>
+<li>
+<p>Pause 容器作为 Pod 的根容器，以它的状态代表整个容器组的状态。<span class="caps">K8S</span> 为每个 Pod 都分配了唯一的 <span class="caps">IP</span> 地址，称之为 Pod <span class="caps">IP</span>。Pod 里的多个业务容器共享 Pause 容器的IP，共享 Pause 容器挂载的&nbsp;Volume。</p>
+</li>
+<li>
+<p>Label：标签，附加到某个资源上，用于关联对象、查询和筛选。一个 Label 是一个 key=value 的键值对，<span class="caps">K8S</span> 通过 Label Selector（标签选择器）来查询和筛选拥有某些 Label&nbsp;的资源对象</p>
+</li>
+<li>
+<p>ReplicaSet（<span class="caps">RC</span>）：用来确保预期的 Pod 副本数量，如果有过多的 Pod 副本在运行，系统就会停掉一些 Pod，否则系统就会再自动创建一些&nbsp;Pod</p>
+</li>
+<li>
+<p>Service：定义了一个服务的访问入口，创建 Service 时，K8S会自动为它分配一个全局唯一的虚拟 <span class="caps">IP</span> 地址，即 Cluster <span class="caps">IP</span>。服务发现就是通过 Service 的 Name 和 Service 的 ClusterIP 地址做一个 <span class="caps">DNS</span>&nbsp;域名映射来解决的</p>
+</li>
+<li>
+<p>Namespace：命名空间，Namespace 多用于实现多租户的资源隔离，Namespace&nbsp;通过将集群内部的资源对象“分配”到不同的Namespace中，形成逻辑上分组的不同项目、小组或用户组</p>
+</li>
+</ul>
+<h3>kubectl</h3>
+<p>kubectl 是操作 k8s 集群的命令行工具， 可在 k8s 集群的 master&nbsp;节点执行</p>
+<p>mac&nbsp;安装</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>kubectl
+kubectl<span class="w"> </span>version<span class="w"> </span>--client
+</code></pre></div>
+
+<h3><span class="caps">AKS</span></h3>
+<p>Azure Kubernetes 服务 (<span class="caps">AKS</span>) 是一种托管 Kubernetes&nbsp;服务</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># login service account</span>
+az<span class="w"> </span>login<span class="w"> </span>--service-principal<span class="w"> </span>--tenant<span class="w"> </span>xxx<span class="w"> </span>-u<span class="w"> </span>xxx<span class="w"> </span>-p<span class="w"> </span>xxx
+
+<span class="c1"># 访问 aks</span>
+az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span>xxx<span class="w"> </span>--name<span class="w"> </span>xxx
+</code></pre></div>
+
+<p>配置kubeconfig</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 添加 Context</span>
+kubectl<span class="w"> </span>config<span class="w"> </span>set-context<span class="w"> </span>prod<span class="w"> </span>--cluster<span class="o">=</span>xxx<span class="w"> </span>--namespace<span class="o">=</span>default<span class="w"> </span>--user<span class="o">=</span>xxx<span class="w"> </span>--kubeconfig<span class="o">=</span><span class="nv">$HOME</span>/.kube/kube-prod.config
+<span class="c1"># 查看 kubeconfig 文件信息</span>
+kubectl<span class="w"> </span>config<span class="w"> </span>view<span class="w"> </span>--kubeconfig<span class="o">=</span><span class="nv">$HOME</span>/.kube/kube-prod.config
+kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts<span class="w"> </span>--kubeconfig<span class="o">=</span><span class="nv">$HOME</span>/.kube/kube-prod.config<span class="w"> </span>
+<span class="c1"># 切换 Context</span>
+kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>prod<span class="w">  </span>--kubeconfig<span class="o">=</span><span class="nv">$HOME</span>/.kube/kube-prod.config
+<span class="c1"># 查看当前 Context</span>
+kubectl<span class="w"> </span>config<span class="w"> </span>current-context
+kubectl<span class="w"> </span>config<span class="w"> </span>view
+<span class="c1"># 列出所有 Context </span>
+kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts
+</code></pre></div>
+
+<p>https://learn.microsoft.com/zh-cn/azure/aks/learn/quick-kubernetes-deploy-cli</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 获取所有部署的 service</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>services<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--all-namespaces
+
+<span class="c1"># logs</span>
+kubectl<span class="w"> </span>logs<span class="w"> </span>--tail<span class="o">=</span><span class="m">100</span><span class="w"> </span>-n<span class="w"> </span>dev<span class="w"> </span>pod-xxxxx
+kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>dev<span class="w"> </span>pod-xxxxx<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-C<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="s2">&quot;your_search_string&quot;</span><span class="w"> </span><span class="c1">#上下行数</span>
+kubectl<span class="w"> </span>logs<span class="w"> </span>pod-xxxxx<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span>&lt;num_lines&gt;<span class="w"> </span><span class="s2">&quot;your_search_string&quot;</span><span class="w"> </span><span class="c1">#下行数</span>
+
+<span class="c1"># check the pod docker image tag version, every release there is a new version tagged on bitbucket</span>
+kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>pod-xxxxx<span class="w"> </span>-n<span class="w"> </span>qa
+
+kubectl<span class="w"> </span>--namespace<span class="o">=</span>dev<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pod-xxxxx<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>-al<span class="w">  </span>
+kubectl<span class="w"> </span>--namespace<span class="o">=</span>dev<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pod-xxxxx--<span class="w"> </span>ls<span class="w"> </span>-al<span class="w"> </span>/mnt/secrets
+kubectl<span class="w"> </span>--namespace<span class="o">=</span>dev<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pod-xxxxx<span class="w"> </span>--<span class="w"> </span>cat<span class="w"> </span>/mnt/secrets/AZURE-PASSWORD
+</code></pre></div>
+
+<p>Debug</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 显示资源使用情况：</span>
+kubectl<span class="w"> </span>top<span class="w"> </span>nodes
+kubectl<span class="w"> </span>top<span class="w"> </span>pods<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--all-namespaces<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAMESPACE:.metadata.namespace,NAME:.metadata.name,CPU_REQUESTS:.spec.containers[*].resources.requests.cpu,CPU_LIMITS:.spec.containers[*].resources.limits.cpu,MEMORY_REQUESTS:.spec.containers[*].resources.requests.memory,MEMORY_LIMITS:.spec.containers[*].resources.limits.memory,AGE:.status.startTime&#39;</span>
+
+kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-n<span class="w"> </span>dev
+</code></pre></div>
+
+<p>Azure Kubernetes Service status is Red, as the total <span class="caps">CPU</span> limits is reaching the maximum of a&nbsp;node.</p>
+<p><strong>排查 <span class="caps">AKS</span> 群集中 <span class="caps">CPU</span>&nbsp;使用率过高</strong></p>
+<p>https://learn.microsoft.com/zh-cn/troubleshoot/azure/azure-kubernetes/availability-performance/identify-high-cpu-consuming-containers-aks?tabs=command-line#step-2-review-best-practices-to-avoid-high-cpu-usage</p>
+<p>Your service will be not stable if the pods are running in system node, since there will have periodic scanning to increase the workload on system&nbsp;node.</p>
+<p>service pod 不应该挂载到 system node 上，应该在 working&nbsp;node</p>
+<p>要给node&nbsp;pool打label然后在deployment指定label，默认的agentpool=wg1</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># dev.values.yaml</span>
+<span class="nt">workerPoolLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wg1</span>
+<span class="c1"># admin-authorization-deployment.yaml</span>
+<span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">agentpool</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.workerPoolLabel</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+
+<p>working node 从之前的 2 个根据系统流量自动扩展到 5 个，业务 pod 不会在 system node&nbsp;抢系统资源导致不稳定发生</p>
+<p>手动部署</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.<span class="w"> </span>-n<span class="w"> </span>namespace
+kubectl<span class="w"> </span>edit<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>namespace<span class="w"> </span>authentication
+<span class="w">       </span>-<span class="w"> </span>backend:
+<span class="w">          </span>service:
+<span class="w">            </span>name:<span class="w"> </span>blob-service
+<span class="w">            </span>port:
+<span class="w">              </span>number:<span class="w"> </span><span class="m">80</span>
+<span class="w">        </span>path:<span class="w"> </span>/api/internal-course/video
+<span class="w">        </span>pathType:<span class="w"> </span>Prefix
+</code></pre></div>
+
+<h2>Helm</h2>
+<p>Helm 可以理解为 Kubernetes&nbsp;的包管理工具，可以方便地发现、共享和使用为Kubernetes构建的应用。</p>
+<ul>
+<li>Chart：Helm应用(package)，包括该应用的所有Kubernetes&nbsp;manifest模版</li>
+<li>Repository：Helm&nbsp;package存储仓库</li>
+<li>Release：chart的部署实例，每个chart可以部署一个或多个release</li>
+</ul>
+<p>Helm把Kubernetes资源(比如deployments、services或 ingress等)&nbsp;打包到一个chart中，而chart被保存到chart仓库。通过chart仓库可用来存储和分享chart。Helm使发布可配置，支持发布应用配置的版本管理，简化了Kubernetes部署应用的版本控制、打包、发布、删除、更新等操作。</p>
+<p>Helm&nbsp;采用客户端/服务器架构</p>
+<ul>
+<li>客户端 Helm <span class="caps">CLI</span>&nbsp;是一个命令行工具，负责管理charts、reprepository和release</li>
+<li>服务端 tiller 接收来自 helm&nbsp;客户端的请求，并把相关资源的操作发送到Kubernetes，负责管理（安装、查询、升级或删除等）和跟踪Kubernetes资源。release的相关信息保存在kubernetes的ConfigMap中。</li>
+</ul>
+<h3>Template</h3>
+<p>在部署kubernetes的时候，会使用kubectl apply&nbsp;-f的命令定义Deployment、Service、ConfigMap等对象</p>
+<p>Helm帮助我们管理kubenetes的yaml对象文件，借助go的template语法，将kubernetes对象模板化，并允许自己定义填充模板的值，做到一套模板多个发布，并支持版本管理。</p>
+<ul>
+<li>kind:&nbsp;Deployment</li>
+</ul>
+<p>Deployment是一种控制器，用于管理Pod的部署。Deployment确保了在指定的策略下，应用的多个副本可以持续运行，并且如果有任何容器崩溃，Deployment会替换它。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.adminAuthorization.name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.Chart.Name</span><span class="nv"> </span><span class="s">}}-{{</span><span class="nv"> </span><span class="s">.Chart.Version</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.adminAuthorization.name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.env</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.adminAuthorization.replicas</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># 副本数量</span>
+</code></pre></div>
+
+<ul>
+<li>kind:&nbsp;ConfigMap</li>
+</ul>
+<p>ConfigMap是一种API对象，用于存储不包含敏感信息的配置信息，可以用作环境变量、命令行参数、配置文件等。</p>
+<ul>
+<li>kind:&nbsp;Service</li>
+</ul>
+<p>kuberntes中四层的负载均衡调度机制，Ingress借助service的服务发现机制实现集群中Pod资源的动态感知</p>
+<blockquote>
+<p>四层负载均衡：负载均衡器用 ip+port&nbsp;接收请求，再直接转发到后端对应服务上；工作在传输层</p>
+</blockquote>
+<ul>
+<li>kind:&nbsp;Ingress</li>
+</ul>
+<p>Ingress 是一种用于管理外部 <span class="caps">HTTP</span> 和 <span class="caps">HTTPS</span> 访问到 K8s 集群内服务的资源对象。它提供了更复杂的负载均衡和路由规则，通过一个外部入口点将流量引导到集群内部的服务上。
+  对外暴露服务，实现http，域名，<span class="caps">URI</span>，证书等请求方式，配置规则，Controller控制器通过service服务发现机制动态实现后端Pod路由转发规则的实现</p>
+<blockquote>
+<p>七层负载均衡：负载均衡器根据 虚拟的 url 或主机名&nbsp;来接收请求，经过处理后再转向相应的后端服务上；工作在应用层</p>
+</blockquote>
+<p>Ingress 控制器通常会运行一个反向代理负载均衡器（如&nbsp;Nginx），接收外部请求并根据定义的规则将请求转发到集群内部的服务</p>
+<p><code>yaml
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: authentication
+  spec:
+    ingressClassName: nginx
+    rules:
+      - host: dev.xxx.com
+        http:
+          paths:
+            - path: /
+              pathType: Prefix
+      - host: dev.admin.xxx.com
+        http:
+          paths:
+            - path: /
+              pathType: Prefix</code></p>
+<ul>
+<li>kind:&nbsp;CronJob</li>
+</ul>
+<p><code>yaml
+  apiVersion: batch/v1
+  kind: CronJob
+  metadata:
+    name: job-1
+  spec:
+    schedule: "*/5 * * * *"
+    concurrencyPolicy: Forbid
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            restartPolicy: OnFailure
+            imagePullSecrets:
+              - name: "{{ .Values.imagePullSecrets }}"
+            containers:
+              - name:  {{.Values.businessDataSync.name}}
+                image: "{{.Values.businessDataSync.appImage.name}}:{{.Values.businessDataSync.appImage.tag }}"</code></p>
+<p><span class="dquo">&#8220;</span>`ts
+  // index.ts
+  import { sync } from &#8220;./syncData&#8221;;
+  import { uploadToBlob } from&nbsp;&#8220;./uploadToBlob&#8221;;</p>
+<p>async function main() {
+    const args =&nbsp;process.argv;</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="s2">&quot;--upload&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">uploadToBlob</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">sync</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>}</p>
+<p>main()
+    .then(() =&gt; {
+      process.exit(0);
+    })
+    .catch(() =&gt; {
+      process.exit(1);
+    });&nbsp;&#8220;`</p>
+<h3>Package&nbsp;Stage</h3>
+<p>In order to package the helm chart the root project directory must contain a _scm_helm directory with a Chart.yaml file inside of&nbsp;it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># manifest.yaml</span>
+<span class="nt">package</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm</span>
+<span class="w">  </span><span class="nt">lint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">chartExtraRepos</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="c1">#repo name</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="c1">#repo url</span>
+<span class="w">      </span><span class="nt">credentialsId</span><span class="p">:</span><span class="w"> </span><span class="c1">#credentialsId, if needed, to access the helm repo </span>
+<span class="w">  </span><span class="nt">versionFileUpdates</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yaml</span>
+<span class="w">      </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_scm_helm/Chart.yaml</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">version</span>
+</code></pre></div>
+
+<h3>Publish&nbsp;Stage</h3>
+<p>In order to publish a helm chart it must first be packaged using the packageHelmChart function and stashed to the project&nbsp;stash. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">publish</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm</span>
+<span class="w">  </span><span class="nt">publicChart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">chartRepo</span><span class="p">:</span><span class="w"> </span><span class="c1">#artifactory repository (team key for the repo for the chart to be published to)</span>
+</code></pre></div>
+
+<h3>Deploy&nbsp;Stage</h3>
+<p>Deploys a published Helm chart to a Kubernetes&nbsp;cluster.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="c1">#name of helm release</span>
+<span class="w">  </span><span class="nt">helmUpgradeAdditionalArgs</span><span class="p">:</span><span class="w"> </span><span class="c1">#helm upgrade command additional args</span>
+<span class="w">  </span><span class="nt">atomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">kubernetesConfig</span><span class="p">:</span><span class="w"> </span><span class="c1"># configuration for connecting to kubernetes</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aks</span>
+<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="c1">#clusterRegion</span>
+<span class="w">    </span><span class="nt">credentialsId</span><span class="p">:</span><span class="w"> </span><span class="c1">#VPCx api user credentials</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="c1">#cluster name</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/programming.html">Programming</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "kubernetes.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

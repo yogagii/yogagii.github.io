@@ -68,97 +68,97 @@
 <p><img alt="janssen" src="img/janssen1.jpg"></p>
 <h3>决策树</h3>
 <p>reference：https://g6.antv.vision/zh/docs/manual/getting-started</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">G6</span> <span class="kr">from</span> <span class="s1">&#39;@antv/g6&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">G6</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@antv/g6&#39;</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">graph</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">graph</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">graph</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">graph</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
 <span class="p">}</span>
-<span class="nx">graph</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">G6</span><span class="p">.</span><span class="nx">Graph</span><span class="p">({</span>
-  <span class="nx">container</span><span class="o">:</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">findDOMNode</span><span class="p">(</span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="kr">as</span> <span class="nx">HTMLElement</span><span class="p">,</span>
-  <span class="nx">modes</span><span class="o">:</span> <span class="p">{</span>
-    <span class="k">default</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;drag-canvas&#39;</span><span class="p">,</span> <span class="s1">&#39;zoom-canvas&#39;</span><span class="p">],</span>
-  <span class="p">},</span>
-  <span class="nx">minZoom</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
-  <span class="nx">maxZoom</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
-  <span class="nx">defaultNode</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;modelRect&#39;</span><span class="p">,</span>
-    <span class="p">...</span>
-  <span class="p">},</span>
-  <span class="nx">defaultEdge</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;cubic-horizontal&#39;</span><span class="p">,</span>
-    <span class="p">...</span>
-  <span class="p">},</span>
+<span class="nx">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">G6</span><span class="p">.</span><span class="nx">Graph</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">findDOMNode</span><span class="p">(</span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">modes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;drag-canvas&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;zoom-canvas&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">defaultNode</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;modelRect&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">defaultEdge</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cubic-horizontal&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;node:click&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="o">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">item</span><span class="p">;</span>
-  <span class="p">...</span>
+<span class="nx">graph</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;node:click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">ev</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ev</span><span class="p">.</span><span class="nx">item</span><span class="p">;</span>
+<span class="w">  </span><span class="p">...</span>
 <span class="p">});</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;wheel&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="p">...</span>
+<span class="nx">graph</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;wheel&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
 <span class="p">});</span>
-<span class="nx">graph</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;canvas:mouseout&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="p">...</span>
+<span class="nx">graph</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;canvas:mouseout&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
 <span class="p">});</span>
 <span class="nx">graph</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">rootNode</span><span class="p">);</span>
 </code></pre></div>
 
 <h3>中英切换</h3>
 <p>reference：https://umijs.org/plugins/plugin-locale#useintl</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useIntl</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;umi&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useIntl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;umi&#39;</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">intl</span> <span class="o">=</span> <span class="nx">useIntl</span><span class="p">()</span>
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s1">&#39;primary&#39;</span><span class="o">&gt;</span>
-      <span class="p">{</span><span class="nx">intl</span><span class="p">.</span><span class="nx">formatMessage</span><span class="p">(</span>
-        <span class="p">{</span>
-          <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
-          <span class="nx">defaultMessage</span><span class="o">:</span> <span class="s1">&#39;Hello, traveler&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Traveler&#39;</span><span class="p">,</span>
-        <span class="p">}</span>
-      <span class="p">)}</span>
-    <span class="o">&lt;</span><span class="err">/button&gt;</span>
-  <span class="p">)</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">intl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useIntl</span><span class="p">()</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s1">&#39;primary&#39;</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">intl</span><span class="p">.</span><span class="nx">formatMessage</span><span class="p">(</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello, traveler&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Traveler&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">)}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">setLocale</span><span class="p">,</span> <span class="nx">getLocale</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;umi&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setLocale</span><span class="p">,</span><span class="w"> </span><span class="nx">getLocale</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;umi&#39;</span>
 
 <span class="c1">// refresh page</span>
-<span class="nx">setLocale</span><span class="p">(</span><span class="s1">&#39;zh-TW&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="nx">setLocale</span><span class="p">(</span><span class="s1">&#39;zh-TW&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
 
 <span class="c1">// Do not refresh the page</span>
-<span class="nx">setLocale</span><span class="p">(</span><span class="s1">&#39;zh-TW&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="nx">setLocale</span><span class="p">(</span><span class="s1">&#39;zh-TW&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">getLocale</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;zh-CN&#39;</span> <span class="o">?</span> <span class="nx">titleCh</span> <span class="o">:</span> <span class="nx">titleEn</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">getLocale</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;zh-CN&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">titleCh</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">titleEn</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>mobile&nbsp;platform</h2>
 <p><img alt="janssen" src="img/janssen2.jpg"></p>
 <h3>react-infinite-scroll-component</h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">InfiniteScroll</span> <span class="kr">from</span> <span class="s1">&#39;react-infinite-scroll-component&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">InfiniteScroll</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-infinite-scroll-component&#39;</span><span class="p">;</span>
 
 <span class="o">&lt;</span><span class="nx">InfiniteScroll</span>
-  <span class="nx">next</span><span class="o">=</span><span class="p">{</span><span class="nx">getMore</span><span class="p">}</span>
-  <span class="nx">hasMore</span><span class="o">=</span><span class="p">{</span><span class="nx">hasMore</span><span class="p">}</span>
-  <span class="nx">dataLength</span><span class="o">=</span><span class="p">{</span><span class="nx">dataList</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span>
-  <span class="nx">loader</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">p</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span> <span class="p">}}</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/p&gt;}</span>
-  <span class="nx">scrollableTarget</span><span class="o">=</span><span class="s1">&#39;scrollableDiv&#39;</span>
-  <span class="nx">endMessage</span><span class="o">=</span><span class="p">{</span>
-    <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span> <span class="p">}}</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">到底啦</span><span class="o">~&lt;</span><span class="err">/span&gt;</span>
-    <span class="o">&lt;</span><span class="err">/p&gt;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nx">next</span><span class="o">=</span><span class="p">{</span><span class="nx">getMore</span><span class="p">}</span>
+<span class="w">  </span><span class="nx">hasMore</span><span class="o">=</span><span class="p">{</span><span class="nx">hasMore</span><span class="p">}</span>
+<span class="w">  </span><span class="nx">dataLength</span><span class="o">=</span><span class="p">{</span><span class="nx">dataList</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span>
+<span class="w">  </span><span class="nx">loader</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">p</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/p&gt;}</span>
+<span class="w">  </span><span class="nx">scrollableTarget</span><span class="o">=</span><span class="s1">&#39;scrollableDiv&#39;</span>
+<span class="w">  </span><span class="nx">endMessage</span><span class="o">=</span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">}}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">到底啦</span><span class="o">~&lt;</span><span class="err">/span&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="o">&gt;</span>
-  <span class="p">{</span><span class="nx">dataList</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">InterestSubjectsMsg</span> <span class="o">/&gt;</span>
-    <span class="p">)</span>
-  <span class="p">})}</span>
+<span class="w">  </span><span class="p">{</span><span class="nx">dataList</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">InterestSubjectsMsg</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">})}</span>
 <span class="o">&lt;</span><span class="err">/InfiniteScroll&gt;</span>
 </code></pre></div>
 
@@ -167,140 +167,140 @@
 <h3>Lodash</h3>
 <p>Lodash 是一个一致性、模块化、高性能的 JavaScript&nbsp;实用工具库</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 执行深比较来确定两者的值是否相等</span>
-<span class="k">import</span> <span class="nx">isEqual</span> <span class="kr">from</span> <span class="s1">&#39;lodash/isEqual&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">isEqual</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;lodash/isEqual&#39;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isEqual</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">))</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">setRenderComponent</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isEqual</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setRenderComponent</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// 创建一个对象，key 是 iteratee 遍历 collection(集合) 中的每个元素返回的结果</span>
-<span class="k">import</span> <span class="nx">groupBy</span> <span class="kr">from</span> <span class="s1">&#39;lodash/groupBy&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">groupBy</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;lodash/groupBy&#39;</span>
 
-<span class="nx">_</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">([</span><span class="mf">6.1</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">)</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">([</span><span class="mf">6.1</span><span class="p">,</span><span class="w"> </span><span class="mf">4.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.3</span><span class="p">],</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">)</span>
 <span class="c1">// =&gt; { &#39;4&#39;: [4.2], &#39;6&#39;: [6.1, 6.3] }</span>
 
-<span class="nx">_</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">],</span> <span class="s1">&#39;length&#39;</span><span class="p">)</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;three&#39;</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;length&#39;</span><span class="p">)</span>
 <span class="c1">// =&gt; { &#39;3&#39;: [&#39;one&#39;, &#39;two&#39;], &#39;5&#39;: [&#39;three&#39;] }</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// 数组去重</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">uniq</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;lodash&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">uniq</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;lodash&#39;</span><span class="p">)</span>
 
-<span class="nx">_</span><span class="p">.</span><span class="nx">uniq</span><span class="p">([</span><span class="mf">2</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">])</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">uniq</span><span class="p">([</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">])</span>
 <span class="c1">// =&gt; [2, 1]</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">clone</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;lodash&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;lodash&#39;</span>
 
-<span class="kd">var</span> <span class="nx">shallow</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">clone</span><span class="p">(</span><span class="nx">objects</span><span class="p">)</span> <span class="c1">// 浅拷贝</span>
-<span class="kd">var</span> <span class="nx">deep</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">cloneDeep</span><span class="p">(</span><span class="nx">objects</span><span class="p">)</span> <span class="c1">// 深拷贝</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">shallow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_</span><span class="p">.</span><span class="nx">clone</span><span class="p">(</span><span class="nx">objects</span><span class="p">)</span><span class="w"> </span><span class="c1">// 浅拷贝</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">deep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_</span><span class="p">.</span><span class="nx">cloneDeep</span><span class="p">(</span><span class="nx">objects</span><span class="p">)</span><span class="w"> </span><span class="c1">// 深拷贝</span>
 </code></pre></div>
 
 <h3>omit.js</h3>
 <p>Utility function to create a shallow copy of an object which had dropped some&nbsp;fields.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">omit</span> <span class="kr">from</span> <span class="s1">&#39;omit.js&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">omit</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;omit.js&#39;</span>
 
-<span class="nx">omit</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Benjy&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mf">18</span> <span class="p">},</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="c1">// =&gt; { age: 18 }</span>
+<span class="nx">omit</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Benjy&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="w"> </span><span class="c1">// =&gt; { age: 18 }</span>
 </code></pre></div>
 
 <h3>react-helmet</h3>
 <p>React Helmet 是一个 <span class="caps">HTML</span> 文档 head&nbsp;管理工具，管理对文档头的所有更改。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Helmet</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-helmet&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Helmet</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-helmet&#39;</span>
 
 <span class="p">;</span><span class="o">&lt;</span><span class="nx">Helmet</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/title&gt;</span>
-  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">name</span><span class="o">=</span><span class="s1">&#39;description&#39;</span> <span class="nx">content</span><span class="o">=</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span> <span class="o">/&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/title&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">meta</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s1">&#39;description&#39;</span><span class="w"> </span><span class="nx">content</span><span class="o">=</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
 <span class="o">&lt;</span><span class="err">/Helmet&gt;</span>
 </code></pre></div>
 
 <h3>SparkMD5</h3>
 <p>SparkMD5 is a fast md5 implementation of the <span class="caps">MD5</span> algorithm.用 <span class="caps">MD5</span>&nbsp;进行文件识别、文件秒传、文件安全性检查等</p>
 <p>利用 input 选择文件 -&gt; 对文件进行分片 -&gt; 用 FileReader 方法读取文件 -&gt; 交由 Spark-md5&nbsp;进行处理</p>
-<div class="highlight"><pre><span></span><code><span class="nx">onst</span> <span class="nx">customRequest</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
-    <span class="k">async</span> <span class="p">({</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">onSuccess</span><span class="p">,</span> <span class="nx">onError</span><span class="p">,</span> <span class="nx">onProgress</span> <span class="p">}</span><span class="o">:</span> <span class="nx">RcCustomRequestOptions</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="k">try</span> <span class="p">{</span>
-        <span class="cm">/** 文件后缀名 */</span>
-        <span class="kd">const</span> <span class="nx">fileType</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">));</span>
-        <span class="cm">/** 切片总数 */</span>
-        <span class="kd">const</span> <span class="nx">chunksSize</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span> <span class="o">/</span> <span class="nx">chunkSize</span><span class="p">);</span>
-        <span class="cm">/** 当前切片编号 */</span>
-        <span class="kd">let</span> <span class="nx">currentChunk</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
-        <span class="cm">/**文件的Hash */</span>
-        <span class="kd">let</span> <span class="nx">fileHash</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
-        <span class="cm">/** 切片hash数组 */</span>
-        <span class="kd">const</span> <span class="nx">blockIdList</span><span class="o">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="highlight"><pre><span></span><code><span class="nx">onst</span><span class="w"> </span><span class="nx">customRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">onSuccess</span><span class="p">,</span><span class="w"> </span><span class="nx">onError</span><span class="p">,</span><span class="w"> </span><span class="nx">onProgress</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">RcCustomRequestOptions</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/** 文件后缀名 */</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">));</span>
+<span class="w">        </span><span class="cm">/** 切片总数 */</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">chunksSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">chunkSize</span><span class="p">);</span>
+<span class="w">        </span><span class="cm">/** 当前切片编号 */</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">currentChunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">        </span><span class="cm">/**文件的Hash */</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">fileHash</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="w">        </span><span class="cm">/** 切片hash数组 */</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">blockIdList</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
 
-        <span class="kd">const</span> <span class="nx">fileReader</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">FileReader</span><span class="p">();</span>
-        <span class="nx">fileReader</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-        <span class="nx">fileReader</span><span class="p">.</span><span class="nx">onloadend</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">spark</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="o">?</span><span class="p">.</span><span class="nx">result</span> <span class="kr">as</span> <span class="nb">ArrayBuffer</span><span class="p">);</span>
-          <span class="nx">fileHash</span> <span class="o">=</span> <span class="nx">spark</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span> <span class="o">+</span> <span class="nx">fileType</span><span class="p">;</span>
-          <span class="cm">/** 已上传成功对切片数 */</span>
-          <span class="kd">let</span> <span class="nx">currentUploadChunk</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileReader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FileReader</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">fileReader</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">fileReader</span><span class="p">.</span><span class="nx">onloadend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">spark</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="o">?</span><span class="p">.</span><span class="nx">result</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nb">ArrayBuffer</span><span class="p">);</span>
+<span class="w">          </span><span class="nx">fileHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">spark</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fileType</span><span class="p">;</span>
+<span class="w">          </span><span class="cm">/** 已上传成功对切片数 */</span>
+<span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">currentUploadChunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 
-          <span class="kd">let</span> <span class="nx">ap</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">AsyncSerial</span><span class="p">();</span>
+<span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">ap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AsyncSerial</span><span class="p">();</span>
 
-          <span class="k">while</span> <span class="p">(</span><span class="nx">currentChunk</span> <span class="o">&lt;</span> <span class="nx">chunksSize</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ap</span><span class="p">.</span><span class="nx">tap</span><span class="p">((</span><span class="nx">cb</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="ow">void</span><span class="p">,</span> <span class="nx">index</span><span class="o">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-              <span class="kd">const</span> <span class="nx">sliceData</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">index</span> <span class="o">*</span> <span class="nx">chunkSize</span><span class="p">,</span> <span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="mf">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">chunkSize</span><span class="p">);</span>
-              <span class="kd">const</span> <span class="nx">sliceReader</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+<span class="w">          </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">currentChunk</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">chunksSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">ap</span><span class="p">.</span><span class="nx">tap</span><span class="p">((</span><span class="nx">cb</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="kd">const</span><span class="w"> </span><span class="nx">sliceData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">chunkSize</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">chunkSize</span><span class="p">);</span>
+<span class="w">              </span><span class="kd">const</span><span class="w"> </span><span class="nx">sliceReader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FileReader</span><span class="p">();</span>
 
-              <span class="nx">sliceReader</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="nx">sliceData</span><span class="p">);</span>
-              <span class="nx">sliceReader</span><span class="p">.</span><span class="nx">onloadend</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                <span class="nx">spark</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="o">?</span><span class="p">.</span><span class="nx">result</span> <span class="kr">as</span> <span class="nb">ArrayBuffer</span><span class="p">);</span>
-                <span class="kd">let</span> <span class="nx">form</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">FormData</span><span class="p">();</span>
-                <span class="kd">let</span> <span class="nx">sliceHash</span> <span class="o">=</span> <span class="nx">btoa</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="nx">spark</span><span class="p">.</span><span class="nx">end</span><span class="p">()));</span>
-                <span class="nx">blockIdList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">sliceHash</span><span class="p">);</span>
-                <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="nx">sliceData</span><span class="p">,</span> <span class="nx">sliceHash</span> <span class="o">+</span> <span class="nx">fileType</span><span class="p">);</span>
-                <span class="k">await</span> <span class="nx">axios</span>
-                  <span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-                    <span class="sb">`/upload/video/block?fileName=</span><span class="si">${</span><span class="nx">fileHash</span><span class="si">}</span><span class="sb">&amp;blockId=</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span>
-                      <span class="nx">sliceHash</span><span class="p">,</span>
-                    <span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-                    <span class="nx">form</span><span class="p">,</span>
-                  <span class="p">)</span>
-                  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                    <span class="nx">currentUploadChunk</span> <span class="o">+=</span> <span class="mf">1</span><span class="p">;</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">currentUploadChunk</span> <span class="o">===</span> <span class="nx">chunksSize</span><span class="p">)</span> <span class="p">{</span>
-                      <span class="nx">setTimeout</span><span class="p">(</span>
-                        <span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span>
-                          <span class="k">await</span> <span class="nx">axios</span>
-                            <span class="p">.</span><span class="nx">post</span><span class="p">(</span>
-                              <span class="sb">`/upload/video/block/merge`</span><span class="p">,</span>
-                              <span class="p">{</span>
-                                <span class="nx">blockIdList</span><span class="p">,</span>
-                                <span class="nx">fileName</span><span class="o">:</span> <span class="nx">fileHash</span><span class="p">,</span>
-                              <span class="p">},</span>
-                              <span class="p">{</span> <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span> <span class="p">}</span> <span class="p">},</span>
-                            <span class="p">)</span>
-                            <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                              <span class="nx">onSuccess</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="nx">file</span><span class="p">);</span>
-                            <span class="p">})</span>
-                            <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                              <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-                            <span class="p">}),</span>
-                        <span class="mf">500</span><span class="p">,</span>
-                      <span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="nx">onProgress</span><span class="p">({</span> <span class="nx">percent</span><span class="o">:</span> <span class="p">(</span><span class="nx">currentUploadChunk</span> <span class="o">*</span> <span class="mf">100</span><span class="p">)</span> <span class="o">/</span> <span class="nx">chunksSize</span> <span class="p">},</span> <span class="nx">file</span><span class="p">);</span>
-                    <span class="nx">cb</span><span class="p">();</span>
-                  <span class="p">})</span>
-                  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                    <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-                  <span class="p">});</span>
-              <span class="p">};</span>
-            <span class="p">});</span>
-            <span class="nx">currentChunk</span> <span class="o">+=</span> <span class="mf">1</span><span class="p">;</span>
-          <span class="p">}</span>
-          <span class="nx">ap</span><span class="p">.</span><span class="nx">call</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{});</span>
-        <span class="p">};</span>
-      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">onError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="p">[</span><span class="nx">axios</span><span class="p">,</span> <span class="nx">spark</span><span class="p">],</span>
-  <span class="p">);</span>
+<span class="w">              </span><span class="nx">sliceReader</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="nx">sliceData</span><span class="p">);</span>
+<span class="w">              </span><span class="nx">sliceReader</span><span class="p">.</span><span class="nx">onloadend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">spark</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="o">?</span><span class="p">.</span><span class="nx">result</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nb">ArrayBuffer</span><span class="p">);</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FormData</span><span class="p">();</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliceHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">btoa</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="nx">spark</span><span class="p">.</span><span class="nx">end</span><span class="p">()));</span>
+<span class="w">                </span><span class="nx">blockIdList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">sliceHash</span><span class="p">);</span>
+<span class="w">                </span><span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">sliceData</span><span class="p">,</span><span class="w"> </span><span class="nx">sliceHash</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fileType</span><span class="p">);</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span>
+<span class="w">                  </span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
+<span class="w">                    </span><span class="sb">`/upload/video/block?fileName=</span><span class="si">${</span><span class="nx">fileHash</span><span class="si">}</span><span class="sb">&amp;blockId=</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span>
+<span class="w">                      </span><span class="nx">sliceHash</span><span class="p">,</span>
+<span class="w">                    </span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">                    </span><span class="nx">form</span><span class="p">,</span>
+<span class="w">                  </span><span class="p">)</span>
+<span class="w">                  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">currentUploadChunk</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentUploadChunk</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">chunksSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                      </span><span class="nx">setTimeout</span><span class="p">(</span>
+<span class="w">                        </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">                          </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span>
+<span class="w">                            </span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
+<span class="w">                              </span><span class="sb">`/upload/video/block/merge`</span><span class="p">,</span>
+<span class="w">                              </span><span class="p">{</span>
+<span class="w">                                </span><span class="nx">blockIdList</span><span class="p">,</span>
+<span class="w">                                </span><span class="nx">fileName</span><span class="o">:</span><span class="w"> </span><span class="nx">fileHash</span><span class="p">,</span>
+<span class="w">                              </span><span class="p">},</span>
+<span class="w">                              </span><span class="p">{</span><span class="w"> </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="p">)</span>
+<span class="w">                            </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                              </span><span class="nx">onSuccess</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">);</span>
+<span class="w">                            </span><span class="p">})</span>
+<span class="w">                            </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                              </span><span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">                            </span><span class="p">}),</span>
+<span class="w">                        </span><span class="mf">500</span><span class="p">,</span>
+<span class="w">                      </span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nx">onProgress</span><span class="p">({</span><span class="w"> </span><span class="nx">percent</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">currentUploadChunk</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">chunksSize</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">file</span><span class="p">);</span>
+<span class="w">                    </span><span class="nx">cb</span><span class="p">();</span>
+<span class="w">                  </span><span class="p">})</span>
+<span class="w">                  </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">                  </span><span class="p">});</span>
+<span class="w">              </span><span class="p">};</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">            </span><span class="nx">currentChunk</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="nx">ap</span><span class="p">.</span><span class="nx">call</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">onError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="nx">spark</span><span class="p">],</span>
+<span class="w">  </span><span class="p">);</span>
 </code></pre></div>
 
 <h2>Layered&nbsp;Architecture</h2>
@@ -392,21 +392,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -415,7 +417,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -424,7 +425,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -444,7 +444,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

@@ -71,10 +71,10 @@
 <p><img alt="wx" src="img/wx.png"></p>
 <h1>企微接口</h1>
 <p>nodejs+express</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;view engine&#39;</span><span class="p">,</span><span class="s1">&#39;ejs&#39;</span><span class="p">);</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">8800</span><span class="p">);</span>
@@ -88,146 +88,146 @@
 <p><img alt="wx" src="img/wx3.png"></p>
 <h3>回调服务需要作出正确的响应才能通过URL验证</h3>
 <p>https://github.com/beary/wx-ding-aes</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">aes</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;wx-ding-aes&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">aes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;wx-ding-aes&#39;</span><span class="p">)</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">wxVerify</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">wxVerify</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span>
 <span class="p">})</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">wxVerify</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">EncodingAESKey</span> <span class="o">=</span> <span class="s1">&#39;f5CEXQmHokzCDJVNiLtQosRwQIbnBdPPBwmTDDTL8Uf&#39;</span>
-  <span class="kd">let</span> <span class="nx">msg_encrypt</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">echostr</span>
-  <span class="kd">let</span> <span class="nx">aes_msg</span> <span class="o">=</span> <span class="nx">msg_encrypt</span> <span class="o">&amp;&amp;</span> <span class="nx">aes</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">msg_encrypt</span><span class="p">,</span> <span class="nx">EncodingAESKey</span><span class="p">)</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">aes_msg</span><span class="p">)</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">wxVerify</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">EncodingAESKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;f5CEXQmHokzCDJVNiLtQosRwQIbnBdPPBwmTDDTL8Uf&#39;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">msg_encrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">echostr</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">aes_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg_encrypt</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">aes</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">msg_encrypt</span><span class="p">,</span><span class="w"> </span><span class="nx">EncodingAESKey</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">aes_msg</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>添加外部联系人事件</h3>
 <p>https://www.npmjs.com/package/express-xml-bodyparser</p>
 <p>https://www.jianshu.com/p/87d5f4987abf</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">xmlparser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-xml-bodyparser&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">xmlparser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-xml-bodyparser&#39;</span><span class="p">)</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">xmlparser</span><span class="p">())</span>
 </code></pre></div>
 
 <p>https://work.weixin.qq.com/api/doc/90000/90135/92130</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">convert</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;xml-js&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">convert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;xml-js&#39;</span><span class="p">)</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">wxAddUser</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">wxAddUser</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span>
 <span class="p">})</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">wxAddUser</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">msg_encrypt</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
-  <span class="kd">let</span> <span class="nx">aes_msg</span> <span class="o">=</span> <span class="nx">msg_encrypt</span> <span class="o">&amp;&amp;</span> <span class="nx">aes</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">msg_encrypt</span><span class="p">,</span> <span class="nx">EncodingAESKey</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">aes_msg_string</span> <span class="o">=</span> <span class="nx">convert</span><span class="p">.</span><span class="nx">xml2json</span><span class="p">(</span><span class="nx">aes_msg</span><span class="p">,</span> <span class="p">{</span> <span class="nx">compact</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">spaces</span><span class="o">:</span> <span class="mf">4</span> <span class="p">})</span>
-  <span class="kd">const</span> <span class="nx">aes_msg_json</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">aes_msg_string</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">welcomeCode</span> <span class="o">=</span> <span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">WelcomeCode</span> <span class="o">&amp;&amp;</span> <span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">WelcomeCode</span><span class="p">.</span><span class="nx">_cdata</span>
-  <span class="kd">const</span> <span class="nx">UserID</span> <span class="o">=</span> <span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">UserID</span> <span class="o">&amp;&amp;</span> <span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">UserID</span><span class="p">.</span><span class="nx">_cdata</span>
-  <span class="kd">const</span> <span class="nx">ExternalUserID</span> <span class="o">=</span> <span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">ExternalUserID</span> <span class="o">&amp;&amp;</span> <span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">ExternalUserID</span><span class="p">.</span><span class="nx">_cdata</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; welcomeCode&#39;</span><span class="p">,</span> <span class="nx">welcomeCode</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; UserID&#39;</span><span class="p">,</span> <span class="nx">UserID</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; ExternalUserID&#39;</span><span class="p">,</span> <span class="nx">ExternalUserID</span><span class="p">)</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">aes_msg</span><span class="p">)</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">wxAddUser</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">msg_encrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">aes_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg_encrypt</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">aes</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">msg_encrypt</span><span class="p">,</span><span class="w"> </span><span class="nx">EncodingAESKey</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">aes_msg_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">convert</span><span class="p">.</span><span class="nx">xml2json</span><span class="p">(</span><span class="nx">aes_msg</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">compact</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">spaces</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">aes_msg_string</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">welcomeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">WelcomeCode</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">WelcomeCode</span><span class="p">.</span><span class="nx">_cdata</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">UserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">UserID</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">UserID</span><span class="p">.</span><span class="nx">_cdata</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ExternalUserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">ExternalUserID</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">aes_msg_json</span><span class="p">.</span><span class="nx">xml</span><span class="p">.</span><span class="nx">ExternalUserID</span><span class="p">.</span><span class="nx">_cdata</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; welcomeCode&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">welcomeCode</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; UserID&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">UserID</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; ExternalUserID&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ExternalUserID</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">aes_msg</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>获取ACCESS_TOKEN</h3>
 <p>https://work.weixin.qq.com/api/doc/90000/90135/91039</p>
 <p>开发者需要缓存access_token，用于后续接口的调用（注意：不能频繁调用gettoken接口，否则会受到频率拦截）。当access_token失效或过期时，需要重新获取。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">getAccessToken</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">getAccessUrl</span> <span class="o">=</span> <span class="sb">`https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=</span><span class="si">${</span><span class="nx">appID</span><span class="si">}</span><span class="sb">&amp;corpsecret=</span><span class="si">${</span><span class="nx">appSerect</span><span class="si">}</span><span class="sb">`</span>
-    <span class="c1">//获取当前时间</span>
-    <span class="kd">const</span> <span class="nx">currentTime</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">access_token</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span> <span class="o">||</span> <span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">expires_time</span> <span class="o">&lt;</span> <span class="nx">currentTime</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- get new token ----&#39;</span><span class="p">)</span>
-      <span class="nx">https</span>
-        <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">getAccessUrl</span><span class="p">,</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="kd">var</span> <span class="nx">resText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-          <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">resText</span> <span class="o">+=</span> <span class="nx">d</span>
-          <span class="p">})</span>
-          <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">resObj</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">resText</span><span class="p">)</span>
-            <span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">access_token</span> <span class="o">=</span> <span class="nx">resObj</span><span class="p">.</span><span class="nx">access_token</span>
-            <span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">expires_time</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">resObj</span><span class="p">.</span><span class="nx">expires_in</span><span class="p">)</span> <span class="o">-</span> <span class="mf">200</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1000</span>
-            <span class="c1">//更新本地存储的</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">&#39;./access_token.json&#39;</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">accessTokenJson</span><span class="p">),</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-              <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- write in new token success ----&#39;</span><span class="p">)</span>
-              <span class="p">}</span>
-            <span class="p">})</span>
-            <span class="nx">resolve</span><span class="p">(</span><span class="nx">resObj</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
-          <span class="p">})</span>
-        <span class="p">})</span>
-        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-        <span class="p">})</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- read old token ----&#39;</span><span class="p">)</span>
-      <span class="nx">resolve</span><span class="p">(</span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getAccessToken</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">getAccessUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=</span><span class="si">${</span><span class="nx">appID</span><span class="si">}</span><span class="sb">&amp;corpsecret=</span><span class="si">${</span><span class="nx">appSerect</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">    </span><span class="c1">//获取当前时间</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">access_token</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">expires_time</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">currentTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- get new token ----&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">https</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">getAccessUrl</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="kd">var</span><span class="w"> </span><span class="nx">resText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">          </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">d</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">resText</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">d</span>
+<span class="w">          </span><span class="p">})</span>
+<span class="w">          </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">resObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">resText</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">access_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resObj</span><span class="p">.</span><span class="nx">access_token</span>
+<span class="w">            </span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">expires_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">resObj</span><span class="p">.</span><span class="nx">expires_in</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span>
+<span class="w">            </span><span class="c1">//更新本地存储的</span>
+<span class="w">            </span><span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">&#39;./access_token.json&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">accessTokenJson</span><span class="p">),</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">              </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- write in new token success ----&#39;</span><span class="p">)</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">resObj</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
+<span class="w">          </span><span class="p">})</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- read old token ----&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">accessTokenJson</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>发送新客户欢迎语</h3>
 <p>https://work.weixin.qq.com/api/doc/90000/90135/92137</p>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">))</span> <span class="c1">//定义静态文件夹</span>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">))</span><span class="w"> </span><span class="c1">//定义静态文件夹</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">sendWelcomeMessage</span><span class="p">(</span><span class="nx">CALLBACK_CODE</span><span class="p">,</span> <span class="nx">TOKEN</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">welcomeMsgUrl</span> <span class="o">=</span> <span class="sb">`https://qyapi.weixin.qq.com/cgi-bin/externalcontact/send_welcome_msg?access_token=</span><span class="si">${</span><span class="nx">TOKEN</span><span class="si">}</span><span class="sb">`</span>
-  <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span> <span class="p">},</span>
-      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-      <span class="nx">body</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-        <span class="nx">welcome_code</span><span class="o">:</span> <span class="nx">CALLBACK_CODE</span><span class="p">,</span>
-        <span class="nx">link</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;消费者调研问卷&#39;</span><span class="p">,</span>
-          <span class="nx">picurl</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">host</span><span class="si">}</span><span class="sb">/icon.png`</span><span class="p">,</span>
-          <span class="nx">desc</span><span class="o">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
-          <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://wxquestionnaire.xxx.com/&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">}),</span>
-    <span class="p">}</span>
-    <span class="nx">fetch</span><span class="p">(</span><span class="nx">welcomeMsgUrl</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span>
-        <span class="p">.</span><span class="nx">json</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">json</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-          <span class="nx">resolve</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-        <span class="p">})</span>
-        <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-          <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-        <span class="p">})</span>
-    <span class="p">})</span>
-  <span class="p">})</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendWelcomeMessage</span><span class="p">(</span><span class="nx">CALLBACK_CODE</span><span class="p">,</span><span class="w"> </span><span class="nx">TOKEN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">welcomeMsgUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://qyapi.weixin.qq.com/cgi-bin/externalcontact/send_welcome_msg?access_token=</span><span class="si">${</span><span class="nx">TOKEN</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">welcome_code</span><span class="o">:</span><span class="w"> </span><span class="nx">CALLBACK_CODE</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">link</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;消费者调研问卷&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">picurl</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">host</span><span class="si">}</span><span class="sb">/icon.png`</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">desc</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://wxquestionnaire.xxx.com/&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">welcomeMsgUrl</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">res</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">json</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="w">          </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="w">          </span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>获取客户及用户详情</h3>
 <p>https://work.weixin.qq.com/api/doc/90000/90135/90196</p>
 <p>https://work.weixin.qq.com/api/doc/90000/90135/92114</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">getClientInfo</span><span class="p">(</span><span class="nx">client_id</span><span class="p">,</span> <span class="nx">TOKEN</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">getClientUrl</span> <span class="o">=</span> <span class="sb">`https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get?access_token=</span><span class="si">${</span><span class="nx">TOKEN</span><span class="si">}</span><span class="sb">&amp;external_userid=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">`</span>
-    <span class="nx">https</span>
-      <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">getClientUrl</span><span class="p">,</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">resText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">resText</span> <span class="o">+=</span> <span class="nx">d</span>
-        <span class="p">})</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">resolve</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">resText</span><span class="p">))</span>
-        <span class="p">})</span>
-      <span class="p">})</span>
-      <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-        <span class="nx">reject</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-      <span class="p">})</span>
-  <span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getClientInfo</span><span class="p">(</span><span class="nx">client_id</span><span class="p">,</span><span class="w"> </span><span class="nx">TOKEN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">getClientUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get?access_token=</span><span class="si">${</span><span class="nx">TOKEN</span><span class="si">}</span><span class="sb">&amp;external_userid=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">    </span><span class="nx">https</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">getClientUrl</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">resText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">d</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">resText</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">d</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">resolve</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">resText</span><span class="p">))</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -236,110 +236,110 @@
 <p><img src="img/wx4.png" width="300px" /></p>
 <h3>接收数据</h3>
 <p>解析application/json&nbsp;https://www.jianshu.com/p/80b502efe255</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;body-parser&#39;</span><span class="p">)</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="nx">limit</span><span class="o">:</span> <span class="s1">&#39;1mb&#39;</span> <span class="p">}))</span> <span class="c1">//body-parser 解析json格式数据</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">bodyParser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;body-parser&#39;</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1mb&#39;</span><span class="w"> </span><span class="p">}))</span><span class="w"> </span><span class="c1">//body-parser 解析json格式数据</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
-  <span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span>
-    <span class="c1">//此项必须在 bodyParser.json 下面,为参数编码</span>
-    <span class="nx">extended</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">})</span>
+<span class="w">  </span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span>
+<span class="w">    </span><span class="c1">//此项必须在 bodyParser.json 下面,为参数编码</span>
+<span class="w">    </span><span class="nx">extended</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">)</span>
 </code></pre></div>
 
 <p>设置允许跨域访问该服务&nbsp;https://blog.csdn.net/qq_34545192/article/details/80177362</p>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">);</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Headers&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Methods&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">);</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;application/json;charset=utf-8&#39;</span><span class="p">);</span>
-  <span class="nx">next</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Headers&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Methods&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;application/json;charset=utf-8&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <p>缓存机制：为了避免同时读写csv导致数据覆盖，先将数据缓存在本地，每分钟定时读写csv</p>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/postQuestionnaire&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">saveData</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/postQuestionnaire&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">saveData</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span>
 <span class="p">})</span>
 
-<span class="kd">let</span> <span class="nx">tempData</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">tempData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">saveData</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="nx">status</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span> <span class="p">})</span>
-    <span class="nx">tempData</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="nx">status</span><span class="o">:</span> <span class="s1">&#39;failure&#39;</span> <span class="p">})</span>
-  <span class="p">}</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saveData</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;success&#39;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">tempData</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;failure&#39;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>定时写入数据</h3>
 <p>Nodejs定时任务&nbsp;https://www.jianshu.com/p/8d303ff8fdeb</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">schedule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;node-schedule&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;node-schedule&#39;</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">scheduleCronstyleSaveData</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">//每分钟0秒触发:</span>
-  <span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s1">&#39;0 * * * * *&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; scheduleCronstyleSaveData: &#39;</span> <span class="o">+</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">())</span>
-    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">existData</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">csvContent</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">csvColumn</span><span class="p">)</span>
-        <span class="nx">csvContent</span> <span class="o">=</span> <span class="s1">&#39;\ufeff&#39;</span> <span class="o">+</span> <span class="nx">title</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;\n&#39;</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- create new csv ----&#39;</span><span class="p">)</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- existData ----&#39;</span><span class="p">)</span>
-        <span class="nx">csvContent</span> <span class="o">=</span> <span class="nx">existData</span>
-      <span class="p">}</span>
-      <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
-      <span class="nx">tempData</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">newData</span> <span class="o">=</span> <span class="nx">formatData</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">csvColumn</span><span class="p">)</span>
-        <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-        <span class="nx">csvContent</span> <span class="o">+=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">newData</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;\n&#39;</span>
-      <span class="p">});</span>
-      <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">&#39;./data.csv&#39;</span><span class="p">,</span> <span class="nx">csvContent</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="c1">// tempData = [] 不能直接置空，写入csv的时差可能正有数据写入</span>
-          <span class="nx">tempData</span> <span class="o">=</span> <span class="nx">tempData</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- write in new data success ----&#39;</span><span class="p">)</span>
-        <span class="p">}</span>
-      <span class="p">})</span>
-    <span class="p">})</span>
-  <span class="p">})</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">scheduleCronstyleSaveData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">//每分钟0秒触发:</span>
+<span class="w">  </span><span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s1">&#39;0 * * * * *&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; scheduleCronstyleSaveData: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">existData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">csvContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">csvColumn</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">csvContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;\ufeff&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">title</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- create new csv ----&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- existData ----&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">csvContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">existData</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">tempData</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">newData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">formatData</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">csvColumn</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">csvContent</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">newData</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">      </span><span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">&#39;./data.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">csvContent</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="c1">// tempData = [] 不能直接置空，写入csv的时差可能正有数据写入</span>
+<span class="w">          </span><span class="nx">tempData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tempData</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- write in new data success ----&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 <span class="nx">scheduleCronstyleSaveData</span><span class="p">();</span>
 </code></pre></div>
 
 <h3>定时发送数据</h3>
 <p>node 使用 ssh2-sftp-client 实现 <span class="caps">FTP</span> 的文件上传和下载功能&nbsp;https://www.npmjs.com/package/ssh2-sftp-client</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;ssh2-sftp-client&#39;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">sftpOption</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./sftp_option&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;ssh2-sftp-client&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sftpOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./sftp_option&#39;</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">scheduleCronstylePostData</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">//每小时0分30秒触发:</span>
-  <span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s1">&#39;0 30 * * * *&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; scheduleCronstylePostData: &#39;</span> <span class="o">+</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">())</span>
-    <span class="kd">const</span> <span class="nx">sftp</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Client</span><span class="p">();</span>
-    <span class="nx">sftp</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">sftpOption</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">sftp</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;./data.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;/Dabao questionaire_UAT/data.csv&#39;</span><span class="p">);</span>
-    <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;---- Upload finish ----&quot;</span><span class="p">);</span>
-        <span class="nx">sftp</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
-        <span class="c1">// 删除文件</span>
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">unlink</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">){</span>
-              <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-              <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-          <span class="p">}</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- delete csv success ----&#39;</span><span class="p">);</span>
-        <span class="p">})</span>
-    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">})</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">scheduleCronstylePostData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">//每小时0分30秒触发:</span>
+<span class="w">  </span><span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s1">&#39;0 30 * * * *&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; scheduleCronstylePostData: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">())</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sftp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">sftp</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">sftpOption</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">sftp</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;./data.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/Dabao questionaire_UAT/data.csv&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;---- Upload finish ----&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">sftp</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+<span class="w">        </span><span class="c1">// 删除文件</span>
+<span class="w">        </span><span class="nx">fs</span><span class="p">.</span><span class="nx">unlink</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+<span class="w">              </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- delete csv success ----&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 <span class="nx">scheduleCronstylePostData</span><span class="p">();</span>
 </code></pre></div>
@@ -347,19 +347,19 @@
 <h3>静态资源访问权限</h3>
 <p>https://blog.csdn.net/x746655242/article/details/53318464</p>
 <p>中间件有很多用处，可以做权限的配置，访问前的各种参数校验，</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">,</span><span class="nx">next</span><span class="p">){</span>
-  <span class="kd">var</span> <span class="k">static</span><span class="o">=</span> <span class="sr">/^(\/data)/g</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">static</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">path</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; user: &#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; password: &#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">user</span><span class="o">!==</span><span class="s2">&quot;yoga&quot;</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="o">!==</span><span class="s2">&quot;123&quot;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- illegal request ----&#39;</span><span class="p">);</span>
-      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;请求非法&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="nx">next</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="k">static</span><span class="o">=</span><span class="w"> </span><span class="sr">/^(\/data)/g</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">static</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">path</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; user: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; password: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">user</span><span class="o">!==</span><span class="s2">&quot;yoga&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="o">!==</span><span class="s2">&quot;123&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---- illegal request ----&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;请求非法&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">()</span>
 <span class="p">});</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">)));</span>
 
@@ -370,57 +370,57 @@
 <ul>
 <li>res.sendFile&nbsp;(chrome在浏览器里打开，ie下载)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">root</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/data/&#39;</span><span class="p">,</span>
-    <span class="nx">dotfiles</span><span class="o">:</span> <span class="s1">&#39;deny&#39;</span><span class="p">,</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s1">&#39;x-timestamp&#39;</span><span class="o">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
-      <span class="s1">&#39;x-sent&#39;</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
-  <span class="p">};</span>
-  <span class="kd">var</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="s1">&#39;total_data.csv&#39;</span><span class="p">;</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">fileName</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; Sent:&#39;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">root</span><span class="o">:</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/data/&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">dotfiles</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;deny&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;x-timestamp&#39;</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+<span class="w">      </span><span class="s1">&#39;x-sent&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;total_data.csv&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">fileName</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; Sent:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fileName</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <ul>
 <li>res.download&nbsp;(所有浏览器都下载)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="s1">&#39;total_data.csv&#39;</span><span class="p">;</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="sb">`./data/</span><span class="si">${</span><span class="nx">fileName</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; Sent:&#39;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;total_data.csv&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="sb">`./data/</span><span class="si">${</span><span class="nx">fileName</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">fileName</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; Sent:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fileName</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
 
 <p>nodejs解析csv成json</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">parse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;csv-parse/lib/sync&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;csv-parse/lib/sync&#39;</span><span class="p">)</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;./data/total_data.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">existData</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({});</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">records</span> <span class="o">=</span> <span class="nx">parse</span><span class="p">(</span><span class="nx">existData</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">columns</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">skip_empty_lines</span><span class="o">:</span> <span class="kc">true</span>
-      <span class="p">})</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">records</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/data&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;./data/total_data.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">existData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({});</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parse</span><span class="p">(</span><span class="nx">existData</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">columns</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">skip_empty_lines</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">      </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">records</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">})</span>
 <span class="p">});</span>
 </code></pre></div>
 
@@ -522,21 +522,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -545,7 +547,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -554,7 +555,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -574,7 +574,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

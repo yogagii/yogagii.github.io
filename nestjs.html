@@ -71,33 +71,33 @@
 <li>解析数据库schema，产出swagger，对typeORM的整合的非常不错</li>
 </ol>
 <p>A nestjs template that contains basic functions (typeorm, task, email, unit test):&nbsp;https://github.com/yogagii/nest_startup</p>
-<div class="highlight"><pre><span></span><code>$ npm i -g @nestjs/cli
-$ nest new project-name
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>i<span class="w"> </span>-g<span class="w"> </span>@nestjs/cli
+$<span class="w"> </span>nest<span class="w"> </span>new<span class="w"> </span>project-name
 </code></pre></div>
 
 <h2>Structure</h2>
-<div class="highlight"><pre><span></span><code>my-project
-  │── src
-  │   │── common
-  │   │  │── decorators
-  │   │  │── pipe
-  │   │  └── utils
-  │   │── custom
-  │   │  │── dto
-  │   │  │── entities
-  │   │  │── custom.controller.ts
-  │   │  │── custom.service.ts
-  │   │  │── custom.module.ts
-  │   │  │── custom.controller.spec.ts
-  │   │  └── custom.service.spec.ts
-  │   │── app.module.ts
-  │   └── main.ts
-  │── nest-cli.json
-  │── package.json
-  │── tslint.json
-  │── test
-  │   │── app.e2e-spec.ts
-  └── tsconfig.json
+<div class="highlight"><pre><span></span><code><span class="nx">my</span><span class="o">-</span><span class="nx">project</span>
+<span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">src</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│──</span><span class="w"> </span><span class="nx">common</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">decorators</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">pipe</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">└──</span><span class="w"> </span><span class="nx">utils</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│──</span><span class="w"> </span><span class="nx">custom</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">dto</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">entities</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">custom</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">custom</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">custom</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">custom</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">└──</span><span class="w"> </span><span class="nx">custom</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│──</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">main</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">nest</span><span class="o">-</span><span class="nx">cli</span><span class="p">.</span><span class="nx">json</span>
+<span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="kn">package</span><span class="p">.</span><span class="nx">json</span>
+<span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">tslint</span><span class="p">.</span><span class="nx">json</span>
+<span class="w">  </span><span class="err">│──</span><span class="w"> </span><span class="nx">test</span>
+<span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="err">│──</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">e2e</span><span class="o">-</span><span class="nx">spec</span><span class="p">.</span><span class="nx">ts</span>
+<span class="w">  </span><span class="err">└──</span><span class="w"> </span><span class="nx">tsconfig</span><span class="p">.</span><span class="nx">json</span>
 </code></pre></div>
 
 <h2>Controllers&nbsp;控制器</h2>
@@ -114,41 +114,48 @@ $ nest new project-name
 <li>@Patch()</li>
 <li>@Delete()</li>
 <li>@Options()</li>
-<li>@Header(&#8216;Cache-Control&#8217;, &#8216;none&#8217;)&nbsp;指定自定义响应头</li>
+<li>@Header(&#8216;Cache-Control&#8217;, &#8216;none&#8217;) 指定自定义响应头 Response&nbsp;Headers</li>
 <li>@Redirect(&#8216;https://nestjs.com&#8217;, 301)&nbsp;重定向</li>
 </ul>
 <p>Param decorators:
 * @Request(), @Req()：@Req() 只是 @Request() 的别名
 * @Param(key?: string)
 * @Body(key?: string)
-* @Query(key?:&nbsp;string)</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Req</span><span class="p">,</span> <span class="nx">Param</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+* @Query(key?: string)
+* @Headers()：Request&nbsp;Headers</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Controller</span><span class="p">,</span><span class="w"> </span><span class="nx">Get</span><span class="p">,</span><span class="w"> </span><span class="nx">Req</span><span class="p">,</span><span class="w"> </span><span class="nx">Param</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">moment</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;moment-timezone&#39;</span><span class="p">;</span>
+
 <span class="err">@</span><span class="nx">Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
-<span class="nx">findOne</span><span class="p">(</span><span class="err">@</span><span class="nx">Param</span><span class="p">()</span> <span class="nx">params</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span> <span class="c1">//@Param(&#39;id&#39;) id</span>
-  <span class="k">return</span> <span class="sb">`This action returns a #</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb"> cat`</span><span class="p">;</span>
+<span class="nx">findOne</span><span class="p">(</span>
+<span class="w">  </span><span class="err">@</span><span class="nx">Param</span><span class="p">()</span><span class="w"> </span><span class="nx">params</span><span class="w">  </span><span class="c1">//@Param(&#39;id&#39;) id</span>
+<span class="w">  </span><span class="err">@</span><span class="nx">Headers</span><span class="p">()</span><span class="w"> </span><span class="nx">headers</span><span class="w"> </span><span class="c1">// headers.timezone = &#39;Asia/Shanghai&#39; (模拟时区Chrome -&gt; More tools -&gt; Sensors -&gt; Location)</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">localeTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">moment</span><span class="p">(</span><span class="nx">date</span><span class="p">).</span><span class="nx">tz</span><span class="p">(</span><span class="nx">timezone</span><span class="p">).</span><span class="nx">format</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`This action returns a #</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb"> cat`</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="err">@</span><span class="nx">Post</span><span class="p">()</span>
-<span class="k">async</span> <span class="nx">create</span><span class="p">(</span><span class="err">@</span><span class="nx">Body</span><span class="p">()</span> <span class="nx">createCatDto</span><span class="o">:</span> <span class="nx">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s1">&#39;This action adds a new cat&#39;</span><span class="p">;</span>
+<span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="err">@</span><span class="nx">Body</span><span class="p">()</span><span class="w"> </span><span class="nx">createCatDto</span><span class="o">:</span><span class="w"> </span><span class="nx">CreateCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;This action adds a new cat&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p><span class="caps">DTO</span>（数据传输对象）模式。DTO是一个对象，它定义了如何通过网络发送数据。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">CreateCatDto</span> <span class="p">{</span>
-  <span class="k">readonly</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
-  <span class="k">readonly</span> <span class="nx">age</span>: <span class="kt">number</span><span class="p">;</span>
-  <span class="k">readonly</span> <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CreateCatDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">breed</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p><strong>Response:</strong></p>
 <p>返回object or&nbsp;array，自动序列化为JSON</p>
 <p>返回string，number，boolean，只发送值</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Response</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
 
-<span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res</span><span class="p">()</span> <span class="nx">response</span><span class="p">){</span>
-  <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">()</span>
+<span class="nx">findAll</span><span class="p">(</span><span class="err">@</span><span class="nx">Res</span><span class="p">()</span><span class="w"> </span><span class="nx">response</span><span class="p">){</span>
+<span class="w">  </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">()</span>
 <span class="p">})</span>
 </code></pre></div>
 
@@ -161,8 +168,8 @@ $ nest new project-name
 </li>
 </ul>
 <p>异步</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">[];</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -173,23 +180,23 @@ $ nest new project-name
 </blockquote>
 <p><strong>依赖注入</strong></p>
 <p>Nest 将 catsService 通过创建并返回一个实例来解析&nbsp;CatsService，解析此依赖关系并将其传递给控制器的构造函数，实现数据共享</p>
-<div class="highlight"><pre><span></span><code><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">catsService</span>: <span class="kt">CatsService</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">catsService</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <p>Provider 通常具有与应用程序生命周期同步的生命周期（“作用域”）。在启动应用程序时，必须解析每个依赖项，因此必须实例化每个提供程序。同样，当应用程序关闭时，每个 provider&nbsp;都将被销毁。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">Inject</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
-<span class="kd">@Injectable</span><span class="p">()</span> <span class="c1">// 类装饰器：基于构造函数的注入</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">HttpService</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kd">@Inject</span><span class="p">(</span><span class="s1">&#39;HTTP_OPTIONS&#39;</span><span class="p">)</span> <span class="c1">// 属性装饰器：基于属性的注入</span>
-  <span class="k">private</span> <span class="k">readonly</span> <span class="nx">httpClient</span>: <span class="kt">T</span><span class="p">;</span>
+<span class="kd">@Injectable</span><span class="p">()</span><span class="w"> </span><span class="c1">// 类装饰器：基于构造函数的注入</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HttpService</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@Inject</span><span class="p">(</span><span class="s1">&#39;HTTP_OPTIONS&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 属性装饰器：基于属性的注入</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">httpClient</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// app.module.ts</span>
 <span class="kd">@Module</span><span class="p">({</span>
-  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span> <span class="c1">// 服务的使用者</span>
-  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span> <span class="c1">// 服务的提供者</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span><span class="w"> </span><span class="c1">// 服务的使用者</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span><span class="w"> </span><span class="c1">// 服务的提供者</span>
 <span class="p">})</span>
 </code></pre></div>
 
@@ -198,10 +205,10 @@ $ nest new project-name
 <p>每个 Nest 应用程序至少有一个模块，即根模块。根模块是 Nest&nbsp;开始安排应用程序树的地方，根模块可能是应用程序中唯一的模块.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// app.module.ts</span>
 <span class="kd">@Module</span><span class="p">({</span>
-  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppController</span><span class="p">,</span> <span class="nx">CatsController</span><span class="p">],</span>
-  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppService</span><span class="p">,</span> <span class="nx">CatsService</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppController</span><span class="p">,</span><span class="w"> </span><span class="nx">CatsController</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppService</span><span class="p">,</span><span class="w"> </span><span class="nx">CatsService</span><span class="p">],</span>
 <span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <blockquote>
@@ -210,19 +217,19 @@ $ nest new project-name
 <div class="highlight"><pre><span></span><code><span class="c1">// cats.module.ts</span>
 <span class="c1">// @Global() // 全局模块，不需要在 imports 数组中导入</span>
 <span class="kd">@Module</span><span class="p">({</span>
-  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
-  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
-  <span class="c1">// exports: [CatsService], // 每个导入CatsModule的模块都可以访问CatsService，共享相同的CatsService实例</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+<span class="w">  </span><span class="c1">// exports: [CatsService], // 每个导入CatsModule的模块都可以访问CatsService，共享相同的CatsService实例</span>
 <span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">CatsModule</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="c1">// app.module.ts</span>
 <span class="kd">@Module</span><span class="p">({</span>
-  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
-  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppController</span><span class="p">],</span>
-  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppService</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppController</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppService</span><span class="p">],</span>
 <span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <p><img alt="nestjs" src="img/nest1.png"></p>
@@ -234,49 +241,53 @@ $ nest new project-name
 <li>如果当前的中间件函数没有结束请求-响应周期, 它必须调用 next() 将控制传递给下一个中间件函数。否则,&nbsp;请求将被挂起。</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// app.module.ts</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="k">implements</span> <span class="nx">NestModule</span> <span class="p">{</span>
-  <span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span>: <span class="kt">MiddlewareConsumer</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">consumer</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">exclude</span><span class="p">(</span>
-      <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="nx">method</span>: <span class="kt">RequestMethod.GET</span> <span class="p">},</span>
-      <span class="s1">&#39;cats/(.*)&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">consumer</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">exclude</span><span class="p">(</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="s1">&#39;cats/(.*)&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>forRoutes()&nbsp;可接受一个字符串、多个字符串、对象、一个控制器类甚至多个控制器类(逗号分隔)。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">logger</span><span class="p">);</span> <span class="c1">// 绑定到每个注册路由</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">logger</span><span class="p">);</span><span class="w"> </span><span class="c1">// 绑定到每个注册路由</span>
 </code></pre></div>
 
 <h2>Exception filters&nbsp;异常过滤器</h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ForbiddenException</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
-<span class="kd">@Get</span><span class="p">()</span>
-<span class="k">async</span> <span class="nx">findAll</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">throw</span> <span class="ow">new</span> <span class="nx">ForbiddenException</span><span class="p">();</span> <span class="c1">// 内置异常</span>
-  <span class="k">throw</span> <span class="ow">new</span> <span class="nx">HttpException</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span> <span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span> <span class="c1">// 基础异常类</span>
-  <span class="k">throw</span> <span class="ow">new</span> <span class="nx">HttpException</span><span class="p">({</span>
-    <span class="nx">status</span>: <span class="kt">HttpStatus.FORBIDDEN</span><span class="p">,</span>  <span class="c1">// 403</span>
-    <span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;This is a custom message&#39;</span><span class="p">,</span>
-  <span class="p">},</span> <span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span>
+<span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"> </span><span class="c1">// 内置异常</span>
+<span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"> </span><span class="c1">// 基础异常类</span>
+<span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpStatus.FORBIDDEN</span><span class="p">,</span><span class="w">  </span><span class="c1">// 403</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is a custom message&#39;</span><span class="p">,</span>
+<span class="p">},</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">userToUpdate</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">sqlMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">BAD_REQUEST</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>绑定过滤器</p>
-<div class="highlight"><pre><span></span><code><span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span> <span class="nx">HttpExceptionFilter</span><span class="p">())</span>  <span class="c1">// 实例</span>
-<span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span> <span class="c1">// 类</span>
+<div class="highlight"><pre><span></span><code><span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w">  </span><span class="c1">// 实例</span>
+<span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span><span class="w"> </span><span class="c1">// 类</span>
 </code></pre></div>
 
 <blockquote>
 <p>尽可能使用类而不是实例。由于 Nest&nbsp;可以轻松地在整个模块中重复使用同一类的实例，因此可以减少内存使用。</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="ow">new</span> <span class="nx">HttpExceptionFilter</span><span class="p">());</span> <span class="c1">// 全局范围的过滤器</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">());</span><span class="w"> </span><span class="c1">// 全局范围的过滤器</span>
 </code></pre></div>
 
+<p>若已经设置了useGlobalFilters，在单个接口上加UseFilters会覆盖掉全局的useGlobalFilters</p>
 <h2>Pipes&nbsp;管道</h2>
 <p>管道有两个类型:</p>
 <ul>
@@ -294,11 +305,112 @@ $ nest new project-name
 <li>ParseEnumPipe</li>
 <li>ParseFloatPipe</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">@Post</span><span class="p">()</span>
-<span class="kd">@UsePipes</span><span class="p">(</span><span class="nx">ValidationPipe</span><span class="p">)</span>
-<span class="k">async</span> <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+<p>验证字符串是否是 <span class="caps">UUID</span></p>
+<div class="highlight"><pre><span></span><code><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;/users/:id&#39;</span><span class="p">)</span>
+<span class="nx">getUserDetail</span><span class="p">(</span>
+<span class="w">  </span><span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ParseUUIDPipe</span><span class="p">())</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
 <span class="p">}</span>
+</code></pre></div>
+
+<p>Pagination 分页&nbsp;法一：</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ParseIntPipe</span><span class="p">,</span><span class="w"> </span><span class="nx">DefaultValuePipe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">getUserList</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">@Query</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DefaultValuePipe</span><span class="p">(</span><span class="mf">1</span><span class="p">),</span><span class="w"> </span><span class="nx">ParseIntPipe</span><span class="p">)</span><span class="w"> </span><span class="nx">page?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">@Query</span><span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DefaultValuePipe</span><span class="p">(</span><span class="mf">10</span><span class="p">),</span><span class="w"> </span><span class="nx">ParseIntPipe</span><span class="p">)</span><span class="w"> </span><span class="nx">limit?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+
+<p>Pagination 分页&nbsp;法二：</p>
+<p>npm i &#8212;save class-validator&nbsp;class-transformer</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// pagination.dto.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApiPropertyOptional</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/swagger&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">IsOptional</span><span class="p">,</span><span class="w"> </span><span class="nx">IsPositive</span><span class="p">,</span><span class="w"> </span><span class="nx">IsInt</span><span class="p">,</span><span class="w"> </span><span class="nx">Max</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;class-validator&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Type</span><span class="p">,</span><span class="w"> </span><span class="nx">Expose</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;class-transformer&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">PaginationDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@IsOptional</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@IsInt</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@IsPositive</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@Type</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Number</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@Expose</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@ApiPropertyOptional</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">default</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">page</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">@IsOptional</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@IsInt</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@IsPositive</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@Type</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Number</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@Expose</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@Max</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@ApiPropertyOptional</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">default</span><span class="o">:</span><span class="w"> </span><span class="kt">50</span><span class="p">,</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span><span class="w"> </span><span class="c1">// 加:number才会显示在swagger中</span>
+
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">skip</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">limit</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">take</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">limit</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// controller</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UsePipes</span><span class="p">,</span><span class="w"> </span><span class="nx">ValidationPipe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PaginationDto</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;src/core/pagination.dto&#39;</span><span class="p">;</span>
+<span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">)</span>
+<span class="kd">@UsePipes</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">ValidationPipe</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">transformOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">excludeExtraneousValues</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// 排除dto中没有定义的query，当有其他filter时不能为true</span>
+<span class="w">        </span><span class="nx">exposeDefaultValues</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// 没有query时使用默认值</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="nx">getUserList</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">@Query</span><span class="p">()</span><span class="w"> </span><span class="nx">dto</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginationDto</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="nx">dto</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="c1">// service</span>
+<span class="nx">findAll</span><span class="p">(</span><span class="nx">ListUserDto</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">usersRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">skip</span><span class="o">:</span><span class="w"> </span><span class="kt">ListUserDto.skip</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">take</span><span class="o">:</span><span class="w"> </span><span class="kt">ListUserDto.take</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>query 转string为float
+(url /solutions/:id?boMin=xxx&nbsp;中的query直接拿到都是string)</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Transform</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;class-transformer&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">DetailMdSolutionDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@ApiPropertyOptional</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@Transform</span><span class="p">(({</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span>
+<span class="w">  </span><span class="nx">boMin?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;/solutions/:id&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@UsePipes</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">ValidationPipe</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="nx">getSolution</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">@Query</span><span class="p">()</span><span class="w"> </span><span class="nx">detailSolutionDto</span><span class="o">:</span><span class="w"> </span><span class="kt">DetailMdSolutionDto</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 </code></pre></div>
 
 <h2>Guards&nbsp;守卫</h2>
@@ -310,19 +422,58 @@ $ nest new project-name
 <p>每个守卫必须实现一个canActivate()函数。此函数应该返回一个布尔值，指示是否允许当前请求。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
 <span class="kd">@UseGuards</span><span class="p">(</span><span class="nx">RolesGuard</span><span class="p">)</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">CatsController</span> <span class="p">{</span>
-  <span class="kd">@Post</span><span class="p">()</span>
-  <span class="kd">@Roles</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
-  <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@Post</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">@Roles</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span><span class="w"> </span><span class="nx">createCatDto</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>Nest提供了通过 @SetMetadata()&nbsp;装饰器将定制元数据附加到路由处理程序的能力。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">@SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// roles.decorator.ts</span>
+<span class="kd">@SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">])</span>
 </code></pre></div>
 
+<p>创建一个RolesGuard类来比较当前用户拥有的角色和当前路径需要的角色</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// roles.guard.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">CanActivate</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">RolesGuard</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">CanActivate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">reflector</span><span class="o">:</span><span class="w"> </span><span class="kt">Reflector</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="nx">canActivate</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">requiredRoles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">reflector</span><span class="p">.</span><span class="nx">getAllAndOverride</span><span class="o">&lt;</span><span class="nx">UserRole</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">ROLES_KEY</span><span class="p">,</span>
+<span class="w">      </span><span class="p">[</span><span class="nx">context</span><span class="p">.</span><span class="nx">getHandler</span><span class="p">(),</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">getClass</span><span class="p">()],</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">requiredRoles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 没有@Roles()的接口直接返回true</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">().</span><span class="nx">getRequest</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_role</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">session</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="nx">requiredRoles</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">role</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">role</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">user_role</span><span class="p">);</span><span class="w"> </span><span class="c1">// 判断用户权限是否大于接口所需权限</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>全局注册RolesGuard</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// app.module.ts</span>
+<span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_GUARD</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.NODE_ENV</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">SSOAuthGuard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">LocalAuthGuard</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_GUARD</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.NODE_ENV</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">RolesGuard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">LocalAuthGuard</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">],</span>
+</code></pre></div>
+
+<p>SSOAuthGuard 会在 RolesGuard 之前执行，SSOAuthGuard 返回 true 才会执行到 RolesGuard。所以可以在 SSOAuthGuard 中在session里存下用户权限&nbsp;user_role。</p>
 <h2>Interceptor&nbsp;拦截器</h2>
 <p>拦截器是使用 @Injectable() 装饰器注解的类。拦截器应该实现 NestInterceptor&nbsp;接口。</p>
 <p>功能：在函数执行之前/之后绑定额外的逻辑；转换从函数返回的结果；转换从函数抛出的异常</p>
@@ -332,39 +483,88 @@ $ nest new project-name
 <li>缓存拦截器</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">@Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">TransformInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="k">implements</span> <span class="nx">NestInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
-  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">({</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">code</span>: <span class="kt">200</span><span class="p">,</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;请求成功&#39;</span><span class="p">,</span> <span class="p">})));</span> <span class="c1">// After</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TransformInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;请求成功&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">})));</span><span class="w"> </span><span class="c1">// After</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div>
+
+<p>全局拦截器用于整个应用程序、每个控制器和每个路由处理程序。在依赖注入方面, 从任何模块外部注册的全局拦截器 无法插入依赖项,&nbsp;因为它们不属于任何模块。</p>
+<p>刷新&nbsp;Token</p>
+<div class="highlight"><pre><span></span><code><span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">RefreshTokenInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">authService</span><span class="o">:</span><span class="w"> </span><span class="kt">AuthService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">intercept</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">().</span><span class="nx">getRequest</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="w"> </span><span class="c1">// 若没有await，先执行next.handle()，then中更新session不会生效</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">refreshToken</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">refresh_token</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">request</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">expires_at</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">expires_in</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalInterceptors</span><span class="p">(</span>
+<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">RefreshTokenInterceptor</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">AuthService</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpService</span><span class="p">(),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserManagementService</span><span class="p">()),</span><span class="w"> </span>
+<span class="w">  </span><span class="p">),</span><span class="w"> </span><span class="c1">// 只能传入实例，不能传入类，当传入的实例又调用其他类时会嵌套多层</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p>从模块(app.module)中设置拦截器可以传入类</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// app.module</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_INTERCEPTOR</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_INTERCEPTOR</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">RefreshTokenInterceptor</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">})</span>
 </code></pre></div>
 
 <h2>Task Scheduling&nbsp;定时任务</h2>
+<p>npm install &#8212;save&nbsp;@nestjs/schedule</p>
 <ul>
 <li>计时工作(cron&nbsp;job)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">@Cron</span><span class="p">(</span><span class="s1">&#39;45 * * * * *&#39;</span><span class="p">)</span> <span class="c1">// 该方法每分钟执行一次，在第 45 秒执行。</span>
-<span class="nx">handleCron</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called when the current second is 45&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">@Cron</span><span class="p">(</span><span class="s1">&#39;45 * * * * *&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 该方法每分钟执行一次，在第 45 秒执行。</span>
+<span class="nx">handleCron</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called when the current second is 45&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>* * * * * *
-<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span>
-<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> day of week
-<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> month
-<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> day of month
-<span class="p">|</span> <span class="p">|</span> hour
-<span class="p">|</span> minute
-second <span class="o">(</span>optional<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*
+<span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>day<span class="w"> </span>of<span class="w"> </span>week
+<span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>month
+<span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>day<span class="w"> </span>of<span class="w"> </span>month
+<span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>hour
+<span class="p">|</span><span class="w"> </span>minute
+second<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>
 </code></pre></div>
 
+<p>cron patterns:&nbsp;http://crontab.org/</p>
 <p>stop()-停止一个按调度运行的任务</p>
 <p>start()-重启一个停止的任务</p>
 <p>setTime(time:CronTime)-停止一个任务，为它设置一个新的时间，然后再启动它</p>
 <p>lastDate()-返回一个表示工作最后执行日期的字符串</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">job</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schedulerRegistry</span><span class="p">.</span><span class="nx">getCronJob</span><span class="p">(</span><span class="s1">&#39;notifications&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">schedulerRegistry</span><span class="p">.</span><span class="nx">getCronJob</span><span class="p">(</span><span class="s1">&#39;notifications&#39;</span><span class="p">);</span>
 
 <span class="nx">job</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">job</span><span class="p">.</span><span class="nx">lastDate</span><span class="p">());</span>
@@ -374,8 +574,8 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <li>间隔（Interval）</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">@Interval</span><span class="p">(</span><span class="mf">10000</span><span class="p">)</span>
-<span class="nx">handleInterval</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called every 10 seconds&#39;</span><span class="p">);</span>
+<span class="nx">handleInterval</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called every 10 seconds&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -383,21 +583,21 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <li>延时任务（Timeout）</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">@Timeout</span><span class="p">(</span><span class="mf">5000</span><span class="p">)</span>
-<span class="nx">handleTimeout</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called once after 5 seconds&#39;</span><span class="p">);</span>
+<span class="nx">handleTimeout</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Called once after 5 seconds&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2>跨域</h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">bootstrap</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">cors</span>: <span class="kt">process.env.ENABLE_CORS</span> <span class="o">===</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
-  <span class="p">});</span>
-  <span class="nx">app</span><span class="p">.</span><span class="nx">enableCors</span><span class="p">({</span>
-    <span class="nx">origin</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;http://localhost:3008&#39;</span><span class="p">],</span>
-  <span class="p">});</span>
-  <span class="k">await</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3007</span><span class="p">);</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.ENABLE_CORS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">enableCors</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;http://localhost:3008&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3007</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nx">bootstrap</span><span class="p">();</span>
 </code></pre></div>
@@ -418,63 +618,63 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <h2>Event&nbsp;监听事件</h2>
 <p>使用 try catch&nbsp;无法处理异步代码块内出现的异常</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 异常捕获成功</span>
-<span class="k">try</span> <span class="p">{</span>
-  <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;异常捕获&#39;</span><span class="p">);</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;异常捕获&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// 异常捕获失败</span>
-<span class="k">try</span> <span class="p">{</span>
-  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
-  <span class="p">})</span>
-<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;异常捕获&#39;</span><span class="p">);</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;异常捕获&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>使用event方式来处理异常</p>
-<div class="highlight"><pre><span></span><code>npm i --save @nestjs/event-emitter
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>i<span class="w"> </span>--save<span class="w"> </span>@nestjs/event-emitter
 </code></pre></div>
 
 <p>事件监听</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">OnEvent</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/event-emitter&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">OnEvent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/event-emitter&#39;</span><span class="p">;</span>
 
 <span class="kd">@Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">UpdateStatusListener</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">mdmService</span>: <span class="kt">MdmService</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UpdateStatusListener</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">mdmService</span><span class="o">:</span><span class="w"> </span><span class="kt">MdmService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
-  <span class="kd">@OnEvent</span><span class="p">(</span><span class="s1">&#39;updateStatus.sendFormFailed&#39;</span><span class="p">)</span>
-  <span class="nx">handleOrderCreatedEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;sendFormFailed: &#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">@OnEvent</span><span class="p">(</span><span class="s1">&#39;updateStatus.sendFormFailed&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">handleOrderCreatedEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;sendFormFailed: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="kd">@Module</span><span class="p">({</span>
-  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">UpdateStatusListener</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">UpdateStatusListener</span><span class="p">],</span>
 <span class="p">})</span>
 </code></pre></div>
 
 <p>事件触发</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">EventEmitter2</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/event-emitter&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">EventEmitter2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/event-emitter&#39;</span><span class="p">;</span>
 <span class="kd">@Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">EmailService</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">(</span>
-    <span class="k">private</span> <span class="nx">eventEmitter</span>: <span class="kt">EventEmitter2</span><span class="p">,</span>
-  <span class="p">)</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">EmailService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">eventEmitter</span><span class="o">:</span><span class="w"> </span><span class="kt">EventEmitter2</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
-  <span class="k">async</span> <span class="nx">sendEmailCode</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="p">{</span>
-      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">sendMailOptions</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">eventEmitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;updateStatus.sendFormFailed&#39;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">event_id</span>: <span class="kt">courseData.event_id</span><span class="p">,</span>
-      <span class="p">});</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">sendEmailCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">mailerService</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">sendMailOptions</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">eventEmitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;updateStatus.sendFormFailed&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">event_id</span><span class="o">:</span><span class="w"> </span><span class="kt">courseData.event_id</span><span class="p">,</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -485,118 +685,344 @@ second <span class="o">(</span>optional<span class="o">)</span>
 <li>给经过身份验证的状态签发token（<span class="caps">JWT</span>），或创建一个 Express&nbsp;会话</li>
 <li>将经过身份验证的用户的信息附加到请求对象以便进一步使用</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">JwtService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/jwt&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">CipherService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;../common/cipher&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">jwtConstants</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./constants&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">JwtService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/jwt&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CipherService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../common/cipher&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">jwtConstants</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./constants&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AuthService</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">(</span>
-    <span class="kr">private</span> <span class="nx">readonly</span> <span class="nx">jwtService</span><span class="o">:</span> <span class="nx">JwtService</span><span class="p">,</span>
-    <span class="kr">private</span> <span class="nx">cipherService</span><span class="o">:</span> <span class="nx">CipherService</span><span class="p">,</span>
-  <span class="p">)</span> <span class="p">{}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="kr">private</span><span class="w"> </span><span class="nx">readonly</span><span class="w"> </span><span class="nx">jwtService</span><span class="o">:</span><span class="w"> </span><span class="nx">JwtService</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">private</span><span class="w"> </span><span class="nx">cipherService</span><span class="o">:</span><span class="w"> </span><span class="nx">CipherService</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
-  <span class="k">async</span> <span class="nx">validateUser</span><span class="p">(</span><span class="nx">username</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">pass</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span>
-      <span class="nx">username</span> <span class="o">===</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADMIN_USERNAME</span> <span class="o">&amp;&amp;</span>
-      <span class="nx">pass</span> <span class="o">===</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADMIN_PASSWORD</span>
-    <span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">{</span> <span class="nx">username</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">};</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">validateUser</span><span class="p">(</span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">pass</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="nx">username</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADMIN_USERNAME</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">      </span><span class="nx">pass</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ADMIN_PASSWORD</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">pass</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="k">async</span> <span class="nx">login</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;login: &#39;</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">sub</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">cipherService</span><span class="p">.</span><span class="nx">encryptAES128ECB</span><span class="p">(</span>
-        <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
-        <span class="nx">jwtConstants</span><span class="p">.</span><span class="nx">cipherKey</span><span class="p">,</span>
-      <span class="p">),</span>
-    <span class="p">};</span>
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="nx">access_token</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">jwtService</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
-    <span class="p">};</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;login: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cipherService</span><span class="p">.</span><span class="nx">encryptAES128ECB</span><span class="p">(</span>
+<span class="w">        </span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">jwtConstants</span><span class="p">.</span><span class="nx">cipherKey</span><span class="p">,</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">access_token</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">jwtService</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>Passport <span class="caps">JWT</span></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ExtractJwt</span><span class="p">,</span> <span class="nx">Strategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;passport-jwt&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PassportStrategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/passport&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">jwtConstants</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./constants&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ExtractJwt</span><span class="p">,</span><span class="w"> </span><span class="nx">Strategy</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;passport-jwt&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PassportStrategy</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/passport&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">jwtConstants</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./constants&#39;</span><span class="p">;</span>
 
 <span class="kd">@Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">JwtStrategy</span> <span class="k">extends</span> <span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">({</span>
-      <span class="nx">jwtFromRequest</span>: <span class="kt">ExtractJwt.fromAuthHeaderAsBearerToken</span><span class="p">(),</span>
-      <span class="nx">ignoreExpiration</span>: <span class="kt">false</span><span class="p">,</span>
-      <span class="nx">secretOrKey</span>: <span class="kt">jwtConstants.secret</span><span class="p">,</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">JwtStrategy</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">jwtFromRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">ExtractJwt.fromAuthHeaderAsBearerToken</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">ignoreExpiration</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">secretOrKey</span><span class="o">:</span><span class="w"> </span><span class="kt">jwtConstants.secret</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="k">async</span> <span class="nx">validate</span><span class="p">(</span><span class="nx">payload</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span> <span class="nx">userId</span>: <span class="kt">payload.sub</span><span class="p">,</span> <span class="nx">username</span>: <span class="kt">payload.username</span> <span class="p">};</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">validate</span><span class="p">(</span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">payload.sub</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="kt">payload.username</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>Node.js提供了一个内置的crypto模块可用于加密和解密字符串</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">createCipheriv</span><span class="p">,</span> <span class="nx">createDecipheriv</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;crypto&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createCipheriv</span><span class="p">,</span><span class="w"> </span><span class="nx">createDecipheriv</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;crypto&#39;</span><span class="p">;</span>
 
 <span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">CipherService</span> <span class="p">{</span>
-  <span class="nx">encryptAES128ECB</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">key</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">cipher</span> <span class="o">=</span> <span class="nx">createCipheriv</span><span class="p">(</span><span class="s1">&#39;aes-128-ecb&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
-    <span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">encrypted</span> <span class="o">=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">encrypted</span> <span class="o">+</span> <span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CipherService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">encryptAES128ECB</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCipheriv</span><span class="p">(</span><span class="s1">&#39;aes-128-ecb&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">encrypted</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="nx">decryptAES128ECB</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">key</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">cipher</span> <span class="o">=</span> <span class="nx">createDecipheriv</span><span class="p">(</span><span class="s1">&#39;aes-128-ecb&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
-    <span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">receivedPlaintext</span> <span class="o">=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">receivedPlaintext</span> <span class="o">+</span> <span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="nx">decryptAES128ECB</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createDecipheriv</span><span class="p">(</span><span class="s1">&#39;aes-128-ecb&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cipher</span><span class="p">.</span><span class="nx">setAutoPadding</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">receivedPlaintext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cipher</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;base64&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">receivedPlaintext</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cipher</span><span class="p">.</span><span class="kr">final</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>自定义JwtStrategy</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">PassportStrategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/passport&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Strategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;passport&#39;</span><span class="p">;</span>
+<p>自定义CustomStrategy</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PassportStrategy</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/passport&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Strategy</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;passport&#39;</span><span class="p">;</span>
 
 <span class="kd">@Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">CustomStrategy</span> <span class="k">extends</span> <span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">,</span> <span class="s1">&#39;custom&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 自定义Strategy名字</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CustomStrategy</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">Strategy</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;custom&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 自定义Strategy名字</span>
 
 <span class="p">}</span>
 </code></pre></div>
 
 <p>aadAuthGuard</p>
 <p>https://www.npmjs.com/package/passport-azure-ad</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">OIDCStrategy</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;passport-azure-ad&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">OIDCStrategy</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;passport-azure-ad&#39;</span><span class="p">;</span>
 
 <span class="kd">@Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AADStrategy</span> <span class="k">extends</span> <span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">OIDCStrategy</span><span class="p">,</span> <span class="s1">&#39;aad&#39;</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">(</span>
-      <span class="p">{</span>
-        <span class="nx">identityMetadata</span><span class="o">:</span> <span class="s1">&#39;https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration&#39;</span><span class="p">,</span>
-        <span class="nx">clientID</span><span class="o">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
-        <span class="nx">clientSecret</span><span class="o">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
-        <span class="nx">responseType</span><span class="o">:</span> <span class="s1">&#39;id_token&#39;</span><span class="p">,</span>
-        <span class="nx">responseMode</span><span class="o">:</span> <span class="s1">&#39;form_post&#39;</span><span class="p">,</span>
-        <span class="nx">redirectUrl</span><span class="o">:</span> <span class="s1">&#39;xxx/callback&#39;</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="p">(</span><span class="nx">iss</span><span class="p">,</span> <span class="nx">sub</span><span class="p">,</span> <span class="nx">profile</span><span class="p">,</span> <span class="nx">accessToken</span><span class="p">,</span> <span class="nx">refreshToken</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="p">},</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AADStrategy</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">PassportStrategy</span><span class="p">(</span><span class="nx">OIDCStrategy</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;aad&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">identityMetadata</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">clientID</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">clientSecret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">responseType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;id_token&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">responseMode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;form_post&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">redirectUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xxx/callback&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">(</span><span class="nx">iss</span><span class="p">,</span><span class="w"> </span><span class="nx">sub</span><span class="p">,</span><span class="w"> </span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">accessToken</span><span class="p">,</span><span class="w"> </span><span class="nx">refreshToken</span><span class="p">,</span><span class="w"> </span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<p>跳转到aad登录界面</p>
+<h2>Swagger&nbsp;接口文档</h2>
+<p>配置</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NestFactory</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">SwaggerModule</span><span class="p">,</span><span class="w"> </span><span class="nx">DocumentBuilder</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/swagger&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApplicationModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./app.module&#39;</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">ApplicationModule</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DocumentBuilder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s1">&#39;Project API&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s1">&#39;The Project API description&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">setVersion</span><span class="p">(</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">addTag</span><span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nb">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SwaggerModule</span><span class="p">.</span><span class="nx">createDocument</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">SwaggerModule</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">app</span><span class="p">,</span><span class="w"> </span><span class="nb">document</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">bootstrap</span><span class="p">();</span>
+</code></pre></div>
+
+<p>在DTO中添加request&nbsp;schema</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApiPropertyOptional</span><span class="p">,</span><span class="w"> </span><span class="nx">ApiProperty</span><span class="p">,</span><span class="w"> </span><span class="nx">IntersectionType</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/swagger&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="nx">UserRole</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s1">&#39;READER&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;DESIGNER&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;APPROVER&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;ADMIN&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@ApiProperty</span><span class="p">()</span><span class="w">  </span><span class="c1">// 必填项</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">@ApiPropertyOptional</span><span class="p">()</span><span class="w"> </span><span class="c1">// 非必填</span>
+<span class="w">  </span><span class="nx">last_name?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ListUserDto</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">IntersectionType</span><span class="p">(</span><span class="nx">PaginationDto</span><span class="p">,</span><span class="w"> </span><span class="nx">SortDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@ApiPropertyOptional</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;filter: role&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">enum</span><span class="o">:</span><span class="w"> </span><span class="nx">UserRole</span><span class="p">,</span><span class="w"> </span><span class="c1">// 枚举</span>
+<span class="w">    </span><span class="nx">isArray</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// ?role=0,1</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="nx">role?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><em>踩坑：body为数组类型时显示为 [&#8220;string&#8221;], 需要用 @ApiBody({ type: [CreateCatDto] })&nbsp;显示定义schema</em></p>
+<p>Mapped&nbsp;types:</p>
+<ul>
+<li>IntersectionType:&nbsp;可以将两个类型中所有属性组合在一起生成一个新类型，但是继承不到pagination的getter</li>
+<li>PartialType:&nbsp;把所有字段变为optional</li>
+<li>PickType:&nbsp;选择部分字段</li>
+<li>OmitType:&nbsp;排除部分字段</li>
+</ul>
+<p>https://docs.nestjs.com/openapi/mapped-types#composition</p>
+<p>在controller中添加response&nbsp;schema</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApiCreatedResponse</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/swagger&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserDto</span><span class="p">,</span><span class="w"> </span><span class="nx">ListUserDto</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./dto/user&#39;</span><span class="p">;</span>
+
+<span class="kd">@Controller</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">@ApiCreatedResponse</span><span class="p">({</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">UserDto</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">isArray</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="nx">getUserList</span><span class="p">(</span><span class="kd">@Query</span><span class="p">()</span><span class="w"> </span><span class="nx">listUserDto</span><span class="o">:</span><span class="w"> </span><span class="kt">ListUserDto</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Pagination</span><span class="o">&lt;</span><span class="nx">UserDto</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+
+<h2>Session&nbsp;会话</h2>
+<p>$ npm i&nbsp;express-session</p>
+<p>$ npm i -D&nbsp;@types/express-session</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express-session&#39;</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">session</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.SESSION_SECRET</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">resave</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">saveUninitialized</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p>从路径处理程序中读取session</p>
+<div class="highlight"><pre><span></span><code><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;callback&#39;</span><span class="p">)</span>
+<span class="k">async</span><span class="w"> </span><span class="nx">ssoCallback</span><span class="p">(</span><span class="kd">@Session</span><span class="p">()</span><span class="w"> </span><span class="nx">session</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">any</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">session</span><span class="p">.</span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">expires_at</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">expires_in</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><em>踩坑：Warning: connect.session() MemoryStore is not
+designed for a production environment, as it will leak
+memory, and will not scale past a single&nbsp;process.</em></p>
+<p>解决：</p>
+<p>npm install&nbsp;memorystore</p>
+<p>express-session full featured MemoryStore module without leaks! A session store implementation for Express using lru-cache. Because the default MemoryStore for express-session will lead to a memory leak due to it haven&#8217;t a suitable way to make them expire. The sessions are still stored in memory, so they&#8217;re not shared with other processes or&nbsp;services.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express-session&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">createMemoryStore</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;memorystore&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">MemoryStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createMemoryStore</span><span class="p">(</span><span class="nx">session</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">session</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.SESSION_SECRET</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">resave</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">saveUninitialized</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">store</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">MemoryStore</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">checkPeriod</span><span class="o">:</span><span class="w"> </span><span class="kt">86400000</span><span class="p">,</span><span class="w"> </span><span class="c1">// prune expired entries every 24h</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">);</span>
+
+<span class="c1">// tsconfig.json</span>
+<span class="s2">&quot;esModuleInterop&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+
+<p>https://www.npmjs.com/package/memorystore</p>
+<p>checkPeriod: This option specifies the time interval (in milliseconds) between two consecutive checks for expired sessions. In this case, expired entries are pruned every 24 hours (86400000&nbsp;milliseconds).</p>
+<h2>Caching&nbsp;缓存</h2>
+<ol>
+<li>整个接口缓存</li>
+</ol>
+<p>只有使用 <span class="caps">GET</span>&nbsp;方式声明的节点会被缓存，只要api参数相同，则从缓存返回</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@nestjs/cache-manager
+</code></pre></div>
+
+<p>全局注册CacheModule</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CacheModule</span><span class="p">,</span><span class="w"> </span><span class="nx">CacheInterceptor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/cache-manager&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">CacheModule</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">ttl</span><span class="o">:</span><span class="w"> </span><span class="kt">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2h</span>
+<span class="w">      </span><span class="nx">isGlobal</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// 声明为全局模块</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="c1">// 若全局绑定到所有controller就无需手动给需要的接口加Interceptors</span>
+<span class="w">  </span><span class="c1">// providers: [</span>
+<span class="w">  </span><span class="c1">//   {</span>
+<span class="w">  </span><span class="c1">//     provide: APP_INTERCEPTOR,</span>
+<span class="w">  </span><span class="c1">//     useClass: CacheInterceptor,</span>
+<span class="w">  </span><span class="c1">//   },</span>
+<span class="w">  </span><span class="c1">// ],</span>
+<span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+
+<p>手动给需要的接口加上Interceptors</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Controller</span><span class="p">,</span><span class="w"> </span><span class="nx">Get</span><span class="p">,</span><span class="w"> </span><span class="nx">UseInterceptors</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CacheInterceptor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/cache-manager&#39;</span><span class="p">;</span>
+
+<span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+<span class="kd">@UseInterceptors</span><span class="p">(</span><span class="nx">CacheInterceptor</span><span class="p">)</span><span class="w"> </span><span class="c1">// 作用于整个controller</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@UseInterceptors</span><span class="p">(</span><span class="nx">CacheInterceptor</span><span class="p">)</span><span class="w"> </span><span class="c1">// 或者只作用于单个接口</span>
+<span class="w">  </span><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;dashboard&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>1.接口涉及的表若是会随用户操作更新，则不能开启缓存</p>
+<p>2.若接口中使用到 @Session 中的&nbsp;user_id也不能开启缓存，不同用户会返回相同数据</p>
+<ol>
+<li>自定义缓存</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>cache-manager
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@types/cache-manager
+</code></pre></div>
+
+<p>common/cache/cache.module.ts</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">CacheModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CacheService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cache.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">CacheModule</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">ttl</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// 缓存永不过期</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CacheService</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CacheService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CustomCacheModule</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+
+<p>common/cache/cache.service.ts</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">Inject</span><span class="p">,</span><span class="w"> </span><span class="nx">CACHE_MANAGER</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Cache</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;cache-manager&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CacheService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">@Inject</span><span class="p">(</span><span class="nx">CACHE_MANAGER</span><span class="p">)</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">cacheManager</span><span class="o">:</span><span class="w"> </span><span class="kt">Cache</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="nx">cacheSet</span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">cacheGet</span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2><span class="caps">ENV</span></h2>
+<p>nest start 时 .dto.ts 文件内拿不到&nbsp;process.env.xxx</p>
+<p>nest build 时 .dto.ts 文件内可用&nbsp;process.env.xxx</p>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -681,21 +1107,23 @@ second <span class="o">(</span>optional<span class="o">)</span>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -704,7 +1132,6 @@ second <span class="o">(</span>optional<span class="o">)</span>
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -713,7 +1140,6 @@ second <span class="o">(</span>optional<span class="o">)</span>
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -733,7 +1159,6 @@ second <span class="o">(</span>optional<span class="o">)</span>
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

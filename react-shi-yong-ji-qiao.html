@@ -68,11 +68,11 @@
         <h3>绑定未提供的事件</h3>
 <hr>
 <p>在componentDidMount中获取对应的真实DOM元素绑定事件</p>
-<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">onWindowResize</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -82,22 +82,22 @@
 <p>最好在componentDidMount函数中加载数据，加载成功后调用setState来触发渲染更新界面</p>
 <p>当请求到达之前可能已更换页面或移除组件，此时setState会报错：setState on an unmounted&nbsp;component</p>
 <p>1.通过this.isMounted()来检测组件的状态是否已经mounted（ES6已废除）</p>
-<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">//AJAX</span>
-  <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({});</span>
-    <span class="p">}</span>
-  <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">//AJAX</span>
+<span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>2.在组件卸载之前取消未完成的请求</p>
-<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(...);</span>
+<div class="highlight"><pre><span></span><code><span class="nx">componentDidMount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(...);</span>
 <span class="p">}</span>
-<span class="nx">componentWillUnmount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
+<span class="nx">componentWillUnmount</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -105,13 +105,13 @@
 <h3>ref属性</h3>
 <hr>
 <p>ref字符串</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="s2">&quot;theInput&quot;</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">ref</span><span class="o">=</span><span class="s2">&quot;theInput&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
 <span class="c1">//获得真实DOM</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">theInput</span><span class="p">.</span><span class="nx">getDOMNode</span><span class="p">().</span><span class="nx">focus</span><span class="p">();</span>
 </code></pre></div>
 
 <p>ref回调函数(回调函数会在组件被挂载后立刻执行)</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">compInstance</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">theInput</span> <span class="o">=</span> <span class="nx">compInstance</span><span class="p">}</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">compInstance</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">theInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">compInstance</span><span class="p">}</span><span class="o">&gt;</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">theInput</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
 </code></pre></div>
 
@@ -122,26 +122,26 @@
 <h3>className.js</h3>
 <hr>
 <p>根据isBgRed状态切换不同class项的效果</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="nx">isBgRed</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">classString</span> <span class="o">=</span> <span class="s1">&#39;bg-red&#39;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="nx">classString</span> <span class="o">=</span> <span class="s1">&#39;bg-green&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isBgRed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">classString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;bg-red&#39;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">classString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;bg-green&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>className工具</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">classNames</span> <span class="kr">from</span> <span class="s1">&#39;classnames&#39;</span><span class="p">;</span>
-<span class="nx">classSting</span> <span class="o">=</span> <span class="nx">classNames</span><span class="p">({</span> <span class="s1">&#39;bg-red&#39;</span><span class="o">:</span> <span class="nx">isBgRed</span><span class="p">,</span> <span class="s1">&#39;bg-green&#39;</span><span class="o">:</span> <span class="o">!</span><span class="nx">isBgRed</span> <span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">classNames</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;classnames&#39;</span><span class="p">;</span>
+<span class="nx">classSting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">classNames</span><span class="p">({</span><span class="w"> </span><span class="s1">&#39;bg-red&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">isBgRed</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bg-green&#39;</span><span class="o">:</span><span class="w"> </span><span class="o">!</span><span class="nx">isBgRed</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">classNames</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;boo&#39;</span><span class="p">);</span> <span class="c1">//&quot;foo boo&quot;</span>
-<span class="nx">classNames</span><span class="p">({</span> <span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//&quot;foo&quot;</span>
-<span class="nx">classNames</span><span class="p">({</span> <span class="nx">foo</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">boo</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//&quot;foo boo&quot;</span>
-<span class="nx">classNames</span><span class="p">({</span> <span class="nx">foo</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">boo</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//&quot;foo boo&quot;</span>
-<span class="kd">let</span> <span class="nx">buttonType</span> <span class="o">=</span> <span class="s1">&#39;primary&#39;</span><span class="p">;</span>
-<span class="nx">classNames</span><span class="p">({</span> <span class="p">[</span><span class="sb">`btn-</span><span class="si">${</span><span class="nx">buttonType</span><span class="si">}</span><span class="sb">`</span><span class="p">]</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span> <span class="c1">//ES6</span>
+<span class="nx">classNames</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;boo&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">//&quot;foo boo&quot;</span>
+<span class="nx">classNames</span><span class="p">({</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//&quot;foo&quot;</span>
+<span class="nx">classNames</span><span class="p">({</span><span class="w"> </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">boo</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//&quot;foo boo&quot;</span>
+<span class="nx">classNames</span><span class="p">({</span><span class="w"> </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">boo</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//&quot;foo boo&quot;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">buttonType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;primary&#39;</span><span class="p">;</span>
+<span class="nx">classNames</span><span class="p">({</span><span class="w"> </span><span class="p">[</span><span class="sb">`btn-</span><span class="si">${</span><span class="nx">buttonType</span><span class="si">}</span><span class="sb">`</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//ES6</span>
 
 <span class="c1">//多类名去重</span>
-<span class="kd">var</span> <span class="nx">classNames</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;classnames/dedupe&#39;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">classNames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;classnames/dedupe&#39;</span><span class="p">);</span>
 </code></pre></div>
 
 <p><br></p>
@@ -149,10 +149,10 @@
 <hr>
 <p><strong>持久化数据结构</strong>：对Immutable数据对象的任何修改、添加、删除操作都会返回一个新的Immutable对象，同时原对象不变。</p>
 <p><strong>结构共享</strong>：如果对象树中只有一个节点发生了变化，则只修改受到影响的父节点对它的引用，其他节点与原对象共享，避免深拷贝。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">Immutable</span> <span class="kr">from</span> <span class="s1">&#39;immutable&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">imtArray</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">fromJS</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="p">{</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span> <span class="p">}]);</span>
-<span class="kd">var</span> <span class="nx">imtList</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">]);</span>
-<span class="kd">var</span> <span class="nx">imtMap</span> <span class="o">=</span> <span class="nx">Immutable</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span> <span class="nx">a</span><span class="o">:</span> <span class="mf">1</span> <span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Immutable</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;immutable&#39;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">imtArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">fromJS</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">}]);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">imtList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Immutable</span><span class="p">.</span><span class="nx">List</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">]);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">imtMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Immutable</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -238,21 +238,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -261,7 +263,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -270,7 +271,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -290,7 +290,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

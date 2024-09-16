@@ -65,59 +65,59 @@
     <div class="post-entry">
         <h2>nextjs12.x 集成&nbsp;less</h2>
 <p>1）安装依赖</p>
-<div class="highlight"><pre><span></span><code>npm install next-plugin-antd-less
-npm install classnames
-npm install less-loader
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>next-plugin-antd-less
+npm<span class="w"> </span>install<span class="w"> </span>classnames
+npm<span class="w"> </span>install<span class="w"> </span>less-loader
 </code></pre></div>
 
 <p>2）在next.config.js中加配置</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">withAntdLess</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;next-plugin-antd-less&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">withAntdLess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;next-plugin-antd-less&#39;</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">nextConfig</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">reactStrictMode</span>: <span class="kt">true</span><span class="p">,</span>
-  <span class="nx">swcMinify</span>: <span class="kt">true</span><span class="p">,</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">nextConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reactStrictMode</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">swcMinify</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="kr">module</span><span class="nx">.exports</span> <span class="o">=</span> <span class="nx">withAntdLess</span><span class="p">(</span><span class="nx">nextConfig</span><span class="p">);</span>
+<span class="kr">module</span><span class="nx">.exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">withAntdLess</span><span class="p">(</span><span class="nx">nextConfig</span><span class="p">);</span>
 </code></pre></div>
 
 <p>3) 文件名&nbsp;xx.module.less</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// index.tsx</span>
-<span class="k">import</span> <span class="nx">styles</span> <span class="kr">from</span> <span class="s2">&quot;./menu.module.less&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">styles</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./menu.module.less&quot;</span><span class="p">;</span>
 </code></pre></div>
 
 <h2>注册全局变量</h2>
 <p>config.ts</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">globalAny</span>: <span class="kt">any</span> <span class="o">=</span> <span class="nb">global</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">globalAny</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">global</span><span class="p">;</span>
 
-<span class="nx">globalAny</span><span class="p">.</span><span class="nx">Theme</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">primaryColor</span><span class="o">:</span> <span class="s2">&quot;#E88570&quot;</span><span class="p">,</span>
-  <span class="nx">secondaryColor</span><span class="o">:</span> <span class="s2">&quot;#BE46D8&quot;</span><span class="p">,</span>
+<span class="nx">globalAny</span><span class="p">.</span><span class="nx">Theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">primaryColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#E88570&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">secondaryColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#BE46D8&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">export</span> <span class="p">{};</span>
+<span class="k">export</span><span class="w"> </span><span class="p">{};</span>
 </code></pre></div>
 
 <p>index.d.ts</p>
-<div class="highlight"><pre><span></span><code><span class="kr">declare</span> <span class="nx">module</span> <span class="s1">&#39;*.js&#39;</span>
-<span class="kr">declare</span> <span class="nx">module</span> <span class="s1">&#39;*.less&#39;</span>
-<span class="kr">declare</span> <span class="nx">module</span> <span class="s1">&#39;*.jpg&#39;</span>
-<span class="kr">declare</span> <span class="nx">module</span> <span class="s1">&#39;*.svg&#39;</span>
-<span class="kr">declare</span> <span class="kd">const</span> <span class="nx">Theme</span><span class="o">:</span> <span class="p">{</span>
-  <span class="nx">primaryColor</span>: <span class="kt">string</span><span class="p">;</span>
-  <span class="nx">secondaryColor</span>: <span class="kt">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">declare</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="s1">&#39;*.js&#39;</span>
+<span class="kr">declare</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="s1">&#39;*.less&#39;</span>
+<span class="kr">declare</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="s1">&#39;*.jpg&#39;</span>
+<span class="kr">declare</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="s1">&#39;*.svg&#39;</span>
+<span class="kr">declare</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Theme</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">primaryColor</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">secondaryColor</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 
 <p>_app.tsx</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">type</span> <span class="p">{</span> <span class="n">AppProps</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;next/app&quot;</span><span class="p">;</span>
-<span class="kn">import</span> <span class="s2">&quot;../config&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AppProps</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="s2">&quot;next/app&quot;</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s2">&quot;../config&quot;</span><span class="p">;</span>
 
-<span class="n">function</span> <span class="n">MyApp</span><span class="p">({</span> <span class="n">Component</span><span class="p">,</span> <span class="n">pageProps</span> <span class="p">}:</span> <span class="n">AppProps</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&lt;</span><span class="n">Component</span> <span class="p">{</span><span class="o">...</span><span class="n">pageProps</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+<span class="n">function</span><span class="w"> </span><span class="n">MyApp</span><span class="p">({</span><span class="w"> </span><span class="n">Component</span><span class="p">,</span><span class="w"> </span><span class="n">pageProps</span><span class="w"> </span><span class="p">}:</span><span class="w"> </span><span class="n">AppProps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Component</span><span class="w"> </span><span class="p">{</span><span class="o">...</span><span class="n">pageProps</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">export</span> <span class="n">default</span> <span class="n">MyApp</span><span class="p">;</span>
+<span class="n">export</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">MyApp</span><span class="p">;</span>
 </code></pre></div>
 
 <p>使用：Theme.primaryColor</p>
@@ -125,81 +125,81 @@ npm install less-loader
 <p>踩坑：window is not&nbsp;defined</p>
 <p>next.js是服务器渲染，运行在node上的，并不是浏览器上的；</p>
 <p>所以使用生命周期componentDidMount，在页面渲染到浏览器后，才能找到window</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="p">[</span><span class="nx">isDeskTop</span><span class="p">,</span> <span class="nx">setDeskTop</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">isDeskTop</span><span class="p">,</span><span class="w"> </span><span class="nx">setDeskTop</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 
-<span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">setDeskTop</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nb">window</span><span class="o">?</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">&lt;=</span> <span class="mf">576</span><span class="p">));</span>
-<span class="p">},</span> <span class="p">[]);</span>
+<span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setDeskTop</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nb">window</span><span class="o">?</span><span class="p">.</span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">576</span><span class="p">));</span>
+<span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
 </code></pre></div>
 
 <p>引入外部模块</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">jsPDF</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="s1">&#39;./jspdf.debug&#39;</span><span class="p">)).</span><span class="k">default</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">pdf</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">jsPDF</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;pt&quot;</span><span class="p">,</span> <span class="s2">&quot;a4&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">jsPDF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;./jspdf.debug&#39;</span><span class="p">)).</span><span class="k">default</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">pdf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">jsPDF</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;a4&quot;</span><span class="p">);</span>
 </code></pre></div>
 
 <h2>Layout <span class="amp">&amp;</span>&nbsp;Route</h2>
 <p>在 Next.js 中，一个 page 就是一个从 .js、jsx、.ts 或 .tsx 文件导出的 React 组件 ，这些文件存放在 pages 目录下。每个 page&nbsp;都使用其文件名作为路由。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// _app.tsx</span>
-<span class="k">import</span> <span class="kr">type</span> <span class="p">{</span> <span class="nx">AppProps</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;next/app&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Layout</span> <span class="kr">from</span> <span class="s2">&quot;@/components/Layout&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s2">&quot;../config&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AppProps</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next/app&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Layout</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/components/Layout&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s2">&quot;../config&quot;</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">MyApp</span><span class="p">({</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">pageProps</span> <span class="p">}</span><span class="o">:</span> <span class="nx">AppProps</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">Layout</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="err">/Layout&gt;</span>
-  <span class="p">);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">MyApp</span><span class="p">({</span><span class="w"> </span><span class="nx">Component</span><span class="p">,</span><span class="w"> </span><span class="nx">pageProps</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">AppProps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Layout</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Component</span><span class="w"> </span><span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/Layout&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="nx">MyApp</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">MyApp</span><span class="p">;</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// components/Layout/index.tsx</span>
-<span class="k">import</span> <span class="nx">Head</span> <span class="kr">from</span> <span class="s2">&quot;next/head&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s2">&quot;antd/dist/antd.css&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Menu</span> <span class="kr">from</span> <span class="s2">&quot;@/components/Menu&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Head</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next/head&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s2">&quot;antd/dist/antd.css&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Menu</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/components/Menu&quot;</span><span class="p">;</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Layout</span><span class="p">({</span> <span class="nx">children</span> <span class="p">}</span><span class="o">:</span> <span class="p">{</span> <span class="nx">children</span>: <span class="kt">React.ReactNode</span> <span class="p">})</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;&gt;</span>
-      <span class="o">&lt;</span><span class="nx">Head</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Carto</span> <span class="nx">Dashboard</span><span class="o">&lt;</span><span class="err">/title&gt;</span>
-        <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/favicon.ico&quot;</span> <span class="o">/&gt;</span>
-      <span class="o">&lt;</span><span class="err">/Head&gt;</span>
-      <span class="o">&lt;</span><span class="nx">Menu</span> <span class="o">/&gt;</span>
-      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-    <span class="o">&lt;</span><span class="err">/&gt;</span>
-  <span class="p">);</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Layout</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="kt">React.ReactNode</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Head</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Carto</span><span class="w"> </span><span class="nx">Dashboard</span><span class="o">&lt;</span><span class="err">/title&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">link</span><span class="w"> </span><span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/favicon.ico&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/Head&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Menu</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// components/Menu/index.tsx</span>
-<span class="kd">const</span> <span class="nx">routeMap</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">chart</span><span class="o">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
-  <span class="nx">operation</span><span class="o">:</span> <span class="s2">&quot;/operation&quot;</span><span class="p">,</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">routeMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">chart</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">operation</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/operation&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="kd">const</span> <span class="nx">SideMenu</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">onClick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">Router</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">routeMap</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="kr">as</span> <span class="nx">keyof</span> <span class="ow">typeof</span> <span class="nx">routeMap</span><span class="p">]);</span>
-  <span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">SideMenu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Router</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">routeMap</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">keyof</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">routeMap</span><span class="p">]);</span>
+<span class="w">  </span><span class="p">};</span>
 
-  <span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;chart&quot;</span><span class="p">,</span> <span class="nx">icon</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">AreaChartOutlined</span> <span class="o">/&gt;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span> <span class="nx">icon</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">ExceptionOutlined</span> <span class="o">/&gt;</span> <span class="p">},</span>
-  <span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;chart&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">AreaChartOutlined</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;operation&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">ExceptionOutlined</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">];</span>
 
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">Menu</span>
-      <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span>
-      <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">width</span>: <span class="kt">60</span> <span class="p">}}</span>
-      <span class="nx">items</span><span class="o">=</span><span class="p">{</span><span class="nx">items</span><span class="p">}</span>
-    <span class="o">/&gt;</span>
-  <span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">Menu</span>
+<span class="w">      </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">60</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">      </span><span class="nx">items</span><span class="o">=</span><span class="p">{</span><span class="nx">items</span><span class="p">}</span>
+<span class="w">    </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="nx">SideMenu</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SideMenu</span><span class="p">;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
@@ -285,21 +285,23 @@ npm install less-loader
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -308,7 +310,6 @@ npm install less-loader
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -317,7 +318,6 @@ npm install less-loader
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -337,7 +337,6 @@ npm install less-loader
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

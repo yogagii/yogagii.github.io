@@ -65,13 +65,15 @@
 	</header>
 	<div class="summary"><h2>nextjs12.x 集成&nbsp;less</h2>
 <p>1）安装依赖</p>
-<div class="highlight"><pre><span></span><code>npm install next-plugin-antd-less
-npm install classnames
-npm install less-loader
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>next-plugin-antd-less
+npm<span class="w"> </span>install<span class="w"> </span>classnames
+npm<span class="w"> </span>install<span class="w"> </span>less-loader
 </code></pre></div>
 
 <p>2）在next.config.js中加配置</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">withAntdLess …</span></code></pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">withAntdLess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;next-plugin-antd-less&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">nextConfig …</span></code></pre></div></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -99,10 +101,10 @@ umi test \allWorkbooks
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// index.test.tsx</span>
-<span class="k">import</span> <span class="s1">&#39;jest&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Index</span> <span class="kr">from</span> <span class="s1">&#39;..&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">renderer</span><span class="p">,</span> <span class="p">{</span> <span class="nx">ReactTestInstance</span><span class="p">,</span> <span class="nx">ReactTestRenderer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;jest&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Index</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">renderer</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ReactTestInstance</span><span class="p">,</span><span class="w"> </span><span class="nx">ReactTestRenderer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-test-renderer&#39;</span><span class="p">;</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Page: index …</span></code></pre></div></div>
 	<footer>
@@ -220,11 +222,11 @@ umi test \allWorkbooks
 		</div>
 	</header>
 	<div class="summary"><h2>Setting&nbsp;Up</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
-<span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
-<span class="nx">cd</span> <span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
-<span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">admin</span> <span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span> <span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
-<span class="nx">yarn</span> <span class="nx">start</span>
+<div class="highlight"><pre><span></span><code><span class="nx">npm</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="o">-</span><span class="nx">g</span><span class="w"> </span><span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span>
+<span class="nx">create</span><span class="o">-</span><span class="nx">react</span><span class="o">-</span><span class="nx">app</span><span class="w"> </span><span class="nx">test</span><span class="o">-</span><span class="nx">admin</span>
+<span class="nx">cd</span><span class="w"> </span><span class="nx">test</span><span class="o">-</span><span class="nx">admin</span><span class="o">/</span>
+<span class="nx">yarn</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">react</span><span class="o">-</span><span class="nx">admin</span><span class="w"> </span><span class="nx">ra</span><span class="o">-</span><span class="nx">data</span><span class="o">-</span><span class="nx">json</span><span class="o">-</span><span class="nx">server</span><span class="w"> </span><span class="nx">prop</span><span class="o">-</span><span class="nx">types</span>
+<span class="nx">yarn</span><span class="w"> </span><span class="nx">start</span>
 </code></pre></div>
 
 <h2>Data&nbsp;Provider …</h2></div>
@@ -252,7 +254,7 @@ umi test \allWorkbooks
 	<div class="summary"><p>React 16.8.0 是第一个支持Hook的版本。React Native 从0.59版本开始支持&nbsp;Hook。</p>
 <h2>Why react hook&nbsp;?</h2>
 <hr>
-<h3>在 …</h3></div>
+<h3>在组件之间复用状态逻 …</h3></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -276,15 +278,15 @@ umi test \allWorkbooks
 	</header>
 	<div class="summary"><h3>导出</h3>
 <div class="highlight"><pre><span></span><code><span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">a</span><span class="p">({</span>
-  <span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;data.csv&#39;</span>
-<span class="p">},</span> <span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">_download</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CSV&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">href</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;data.csv&#39;</span>
+<span class="p">},</span><span class="w"> </span><span class="s1">&#39;Export CSV&#39;</span><span class="p">);</span>
 </code></pre></div>
 
 <h3>展开运算符</h3>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
-  <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">href</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://example.org&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
 <span class="p">};</span>
 <span class="k">return …</span></code></pre></div></div>
 	<footer>
@@ -458,21 +460,23 @@ umi test \allWorkbooks
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -481,7 +485,6 @@ umi test \allWorkbooks
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -490,7 +493,6 @@ umi test \allWorkbooks
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -510,7 +512,6 @@ umi test \allWorkbooks
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

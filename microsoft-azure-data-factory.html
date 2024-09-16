@@ -68,12 +68,15 @@
 <h3>申请资源</h3>
 <ul>
 <li><span class="caps">ADF</span> PaaS&nbsp;Service</li>
-<li><span class="caps">IR</span></li>
+<li><span class="caps">IR</span> (Integration&nbsp;Runtime)</li>
 <li>Azure <span class="caps">SQL</span>&nbsp;Server</li>
 <li>Key&nbsp;Vault</li>
 <li><span class="caps">AWS</span>&nbsp;S3</li>
 <li>Azure Date Lake&nbsp;Storage</li>
 </ul>
+<h3>Integration&nbsp;Runtime</h3>
+<p>If you want to perform data integration securely in a private network environment that doesn&#8217;t have a direct line-of-sight from the public cloud environment, you can install a self-hosted <span class="caps">IR</span> in your on-premises environment behind a firewall, or inside a virtual private network. The self-hosted integration runtime only makes outbound <span class="caps">HTTP</span>-based connections to the&nbsp;internet.</p>
+<p><em>踩坑：Linked service with Self-hosted Integration runtime is not supported in data&nbsp;flow.</em></p>
 <h2>Linked&nbsp;Service</h2>
 <h3>1.Amazon&nbsp;S3</h3>
 <p>Authentication type: Access&nbsp;Key</p>
@@ -104,7 +107,7 @@
 <p>Sharepoint <span class="caps">API</span> 见&nbsp;https://yogagii.github.io/ms-graph-api.html</p>
 <hr>
 <h2>Activities</h2>
-<h2>Move <span class="amp">&amp;</span>&nbsp;transform</h2>
+<h3>Move <span class="amp">&amp;</span>&nbsp;transform</h3>
 <h3>&gt;&gt;&gt; Copy&nbsp;data</h3>
 <h3><span class="caps">AWS</span> S3 -&gt; Azure Data Lake&nbsp;Storage</h3>
 <p>Source: 
@@ -129,12 +132,25 @@
 <p><em>踩坑: ErrorCode=ParquetNotSupportedTypeGeneric,&#8217;Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Parquet file contained column &#8216;txn&#8217;, which is of a non-primitive, unsupported&nbsp;type.,Source=Microsoft.DataTransfer.Richfile.ParquetTransferPlugin,&#8217;</em></p>
 <p>加上 <em>.snappy.parquet 而不是 </em>.parquet，_delta_log/里包含checkpoint.parquet&nbsp;files</p>
 <p><em>踩坑：若原表是 delta table，数据源用 parquet 会导致数据中留下全部历史数据，link service 需选&nbsp;AzureDatebricksDeltaLake</em></p>
+<h3>Databricks Delta Table -&gt; <span class="caps">SQL</span>&nbsp;Server</h3>
+<p>Source: 
+* Linked service: Azure Databricks Delta&nbsp;Lake</p>
+<p>Sink:&nbsp;同上</p>
+<p>Setting:
+* Enable staging: (Specify whether to copy data via an interim staging store.)
+    Storage Path:&nbsp;raw-sc/temp</p>
+<p>staged copy:&nbsp;https://learn.microsoft.com/zh-cn/azure/data-factory/copy-activity-performance-features</p>
+<p><em>踩坑：delta table导入到sql&nbsp;server表的每个字段格式都是nvarchar</em></p>
+<p>解决方案1：先在sql&nbsp;server手动创建好表，解决方案2：先用source=parquet跑一次创建完所有表，以后再用source=delta主意不要用drop</p>
+<p>Sink:
+* Table option: None
+* Pre-copy script: @{concat(&#8216;truncate table&nbsp;&#8216;,item().TableName)}</p>
 <h3>Rest Resource&nbsp;-&gt;</h3>
 <p>Source:
 * Linked Service: <span class="caps">REST</span>
 * Dataset properties: v_url = concat(variables(&#8216;v_url&#8217;), item(), concat(&#8216;?agentId=&#8217;,pipeline().parameters.v_agentId,&#8217;&amp;agentName=&#8217;,pipeline().parameters.v_agentName),&#8217;&amp;stockDate=&#8217;,formatDateTime(adddays(addhours(utcnow(),8),-1),&#8217;yyyy-<span class="caps">MM</span>-dd&#8217;))</p>
 <p><em>踩坑：默认UTC时间，需addhours(utcnow(),8)转成北京时间</em></p>
-<h3><span class="caps">HTTP</span> -&gt; Azure Data Lake&nbsp;Storage</h3>
+<h3>Sharepoint (<span class="caps">HTTP</span>) -&gt; Azure Data Lake&nbsp;Storage</h3>
 <p>用 <span class="caps">HTTP</span> 调取 Sharepoint&nbsp;接口，将sharepoint文件入湖</p>
 <p>Source:
 * Linked Service: <span class="caps">HTTP</span>
@@ -147,7 +163,13 @@
 * Linked Service: Azure Data Lake Storage Gen2
 * format:&nbsp;Binary</p>
 <p>用Binary可以保留原始文件格式，亲测csv，excel，pdf，png均能成功</p>
-<h2>General</h2>
+<h3>Azure Data Lake Storage -&gt; Sharepoint (<span class="caps">HTTP</span>)</h3>
+<ol>
+<li><span class="caps">ADF</span> Copy data 格式错误&nbsp;失败</li>
+<li>微软建议：ADF调Azure Function：Webhook+<span class="caps">API</span> （可行但没必要，Azure&nbsp;Function另外计费，已被Databricks取代）</li>
+<li>Databricks 调取 Sharepoint <span class="caps">API</span>&nbsp;成功</li>
+</ol>
+<h3>General</h3>
 <h3>&gt;&gt;&gt;&nbsp;Web</h3>
 <p>Get Token
 * <span class="caps">URL</span>: https://xxx/oauth2/token
@@ -171,7 +193,7 @@
 <li>Stored procedure name:&nbsp;[Procedure_Name]</li>
 <li>Stored procedure&nbsp;parameters</li>
 </ul>
-<h2>Iteration <span class="amp">&amp;</span>&nbsp;conditionals</h2>
+<h3>Iteration <span class="amp">&amp;</span>&nbsp;conditionals</h3>
 <h3>&gt;&gt;&gt;&nbsp;ForEach</h3>
 <p>在sql server中创建config&nbsp;table，遍历所有表执行worker</p>
 <ul>
@@ -181,7 +203,7 @@
 <ul>
 <li>Sequential:&nbsp;勾选后顺序执行</li>
 </ul>
-<h2>Databricks</h2>
+<h3>Databricks</h3>
 <h3>&gt;&gt;&gt;&nbsp;Notebook</h3>
 <ul>
 <li>Notebook&nbsp;path</li>
@@ -215,46 +237,46 @@
 <li>Value: </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;MessageCard&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@context&quot;</span><span class="p">:</span> <span class="s2">&quot;http://schema.org/extensions&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;themeColor&quot;</span><span class="p">:</span> <span class="s2">&quot;0076D7&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;ADF Pipeline Fail Alert message​​​​&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sections&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;activityTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;@{concat(&#39;【&#39;,pipeline().parameters.Status,&#39;】【&#39;,pipeline().globalParameters.Environment,&#39;】 &#39;,pipeline().parameters.GrandpaName,&#39; has executed &#39;,pipeline().parameters.Status)}​​​​&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;facts&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Environment:&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().globalParameters.Environment}&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Data Factory name:&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().DataFactory}&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Grandpa name:&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().parameters.GrandpaName}&quot;</span>
-                <span class="p">},</span>                  
-                <span class="p">{</span>
-                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Batch RunID:&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;@{pipeline().parameters.BatchRunID}&quot;</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;markdown&quot;</span><span class="p">:</span> <span class="kc">true</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;potentialAction&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenUri&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;View pipeline run&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;targets&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;os&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;@{concat(&#39;https://adf.azure.cn/monitoring/pipelineruns/&#39;,pipeline().parameters.BatchRunID,&#39;?factory=/subscriptions/&#39;,pipeline().globalParameters.ADFSubscription,&#39;/resourceGroups/&#39;,pipeline().globalParameters.ADFResourceGroup,&#39;/providers/Microsoft.DataFactory/factories/&#39;,pipeline().DataFactory)}&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MessageCard&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://schema.org/extensions&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;themeColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0076D7&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ADF Pipeline Fail Alert message​​​​&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;activityTitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@{concat(&#39;【&#39;,pipeline().parameters.Status,&#39;】【&#39;,pipeline().globalParameters.Environment,&#39;】 &#39;,pipeline().parameters.GrandpaName,&#39; has executed &#39;,pipeline().parameters.Status)}​​​​&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;facts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Environment:&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@{pipeline().globalParameters.Environment}&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data Factory name:&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@{pipeline().DataFactory}&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Grandpa name:&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@{pipeline().parameters.GrandpaName}&quot;</span>
+<span class="w">                </span><span class="p">},</span><span class="w">                  </span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Batch RunID:&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@{pipeline().parameters.BatchRunID}&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;markdown&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;potentialAction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenUri&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;View pipeline run&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;os&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@{concat(&#39;https://adf.azure.cn/monitoring/pipelineruns/&#39;,pipeline().parameters.BatchRunID,&#39;?factory=/subscriptions/&#39;,pipeline().globalParameters.ADFSubscription,&#39;/resourceGroups/&#39;,pipeline().globalParameters.ADFResourceGroup,&#39;/providers/Microsoft.DataFactory/factories/&#39;,pipeline().DataFactory)}&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -370,21 +392,23 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -393,7 +417,6 @@
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -402,7 +425,6 @@
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -422,7 +444,6 @@
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

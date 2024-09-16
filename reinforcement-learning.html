@@ -1,0 +1,433 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/analytics.html">Analytics</a> ›Reinforcement&nbsp;learning
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Reinforcement&nbsp;learning</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2024-01-15T00:00:00+08:00"> 
+            <a href="/archive/2024/ 1/index.html">一 15 一月 2024 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/ml.html">ML</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3>Summit&nbsp;Training</h3>
+<p>Rule-based <span class="caps">VS</span> <span class="caps">ML</span></p>
+<ul>
+<li>
+<p>Rule-based approach: Decision rules are clearly defined by&nbsp;humans</p>
+</li>
+<li>
+<p>Machine Learning: Trained from examples. Rules are note defined by humans but learned by the machine from&nbsp;data.</p>
+</li>
+</ul>
+<p><span class="caps">AI</span> <span class="caps">VS</span> <span class="caps">ML</span> <span class="caps">VS</span> <span class="caps">DL</span></p>
+<ul>
+<li>
+<p>Artificial Intelligence: A concept of machines to make human intelligence. Ability to solve different kinds of work from managing schedule to analyizing marketing&nbsp;trends.</p>
+</li>
+<li>
+<p>Machine Learning: A method for computers to learn from data. A scale in making prediction based on past experience. Using past sales data and learn to predict future sales trends baesd on patterns it&nbsp;observes.</p>
+<ol>
+<li>Supervised Learning: learn the relationship of given inputs to a given output<ul>
+<li>linear&nbsp;regression</li>
+<li>logistic regression (output is&nbsp;binary)</li>
+<li>naive&nbsp;bayes</li>
+<li>support vector machine (non linear&nbsp;problem)</li>
+<li>ada&nbsp;boost</li>
+<li>decision&nbsp;tree</li>
+<li>random&nbsp;forest</li>
+<li>simple neural&nbsp;network</li>
+</ul>
+</li>
+<li>Un-supervised Learning: without and explicit output<ul>
+<li>K Means Clustering: puts data into&nbsp;groups</li>
+<li>Hierarchal&nbsp;Clustering</li>
+<li>Gaussian&nbsp;Mixture </li>
+<li>Recommender&nbsp;System</li>
+<li>Apriori&nbsp;algorithm</li>
+</ul>
+</li>
+<li>Reinforcement Learning: learning through interaction with an environment and&nbsp;rewards/punishments</li>
+</ol>
+</li>
+<li>
+<p>Deep Learning: Specialized technique using neural networks to process data deeply A specialty in deeply analysizing data to understand even a tiniest enfluences on sales. Not just understang which product sales well, but also recognizing many patterns, such as how weather changes might influence&nbsp;sales.</p>
+</li>
+</ul>
+<hr>
+<p>种群的勘探(Exploration)与开发(Exploitation)</p>
+<p>Exploration：当算法发散时，种群个体之间维数值的差异增大，意味着种群个体在搜索环境中是分散的。通过Exploration，算法能够访问搜索环境中不可见的邻域，以最大限度地提高找到全局最优位置的效率。</p>
+<p>Exploitation：当种群收敛时，差异减小，种群个体聚集到一个集中区域。Exploitation可以使群体个体成功地收敛到一个潜在的领域，并极有可能获得全局最优解。</p>
+<p>https://blog.csdn.net/jieyanping/article/details/129189230</p>
+<hr>
+<h3>Hyperparameter&nbsp;超参数</h3>
+<ul>
+<li>gradient descent batch size: 64&nbsp;梯度下降样本数</li>
+<li>number of epochs: 10&nbsp;迭代次数</li>
+<li>learning rate: 0.0003&nbsp;学习率（初次训练0.01尽快到最优解附近，后续训练降低学习率微调）</li>
+<li>entropy: 0.01&nbsp;熵</li>
+<li>discount factor: 0.999 折扣率 learning rate = epoch * discount factor&nbsp;使学习率逐渐下降</li>
+<li>loss type:&nbsp;huber</li>
+</ul>
+<h3>Action&nbsp;space</h3>
+<ul>
+<li>continus action space 连续 (由算法决定)<ul>
+<li>steering angel range: -30 - 30&nbsp;转弯角度范围（取决于地图）</li>
+<li>speed: 0.1 - 4&nbsp;速度范围</li>
+</ul>
+</li>
+<li>discrete action space 离散&nbsp;(手动输入：角度越大，速度越慢)</li>
+</ul>
+<p>https://github.com/dgnzlz/Capstone_AWS_DeepRacer/blob/master/Compute_Speed_And_Actions/RaceLine_Speed_ActionSpace.ipynb</p>
+<h3>Reward&nbsp;function</h3>
+<p>https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-reward-function-input.html#reward-function-input-distance_from_center</p>
+<ul>
+<li>Follow the center line in time&nbsp;trials</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">distance_from_center</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">marker_1</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span>
+<span class="nx">elif</span><span class="w"> </span><span class="nx">distance_from_center</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">marker_2</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="nx">elif</span><span class="w"> </span><span class="nx">distance_from_center</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">marker_3</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
+<span class="k">else</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-3</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">likely</span><span class="w"> </span><span class="nx">crashed</span><span class="o">/</span><span class="w"> </span><span class="nx">close</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">off</span><span class="w"> </span><span class="nx">track</span>
+
+<span class="k">return</span><span class="w"> </span><span class="nx">reward</span>
+</code></pre></div>
+
+<ul>
+<li>Stay inside the two borders in time&nbsp;trials</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">all_wheels_on_track</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="nx">track_width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">distance_from_center</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.05</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span>
+</code></pre></div>
+
+<ul>
+<li>Prevent zig-zag in time&nbsp;trials</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Steering</span><span class="w"> </span><span class="nx">penality</span><span class="w"> </span><span class="nx">threshold</span><span class="p">,</span><span class="w"> </span><span class="nx">change</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">based</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">action</span><span class="w"> </span><span class="nx">space</span><span class="w"> </span><span class="nx">setting</span>
+<span class="nx">ABS_STEERING_THRESHOLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span>
+
+<span class="err">#</span><span class="w"> </span><span class="nx">Penalize</span><span class="w"> </span><span class="nx">reward</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">car</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">steering</span><span class="w"> </span><span class="nx">too</span><span class="w"> </span><span class="nx">much</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">abs_steering</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">ABS_STEERING_THRESHOLD</span><span class="o">:</span>
+<span class="w">    </span><span class="nx">reward</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.8</span>
+</code></pre></div>
+
+<p>Params&nbsp;dictionary</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;all_wheels_on_track&quot;</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">,</span>        <span class="c1"># flag to indicate if the agent is on the track</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                            <span class="c1"># agent&#39;s x-coordinate in meters</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                            <span class="c1"># agent&#39;s y-coordinate in meters</span>
+    <span class="s2">&quot;distance_from_center&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>         <span class="c1"># distance in meters from the track center </span>
+    <span class="s2">&quot;is_left_of_center&quot;</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">,</span>          <span class="c1"># Flag to indicate if the agent is on the left side to the track center or not. </span>
+    <span class="s2">&quot;is_offtrack&quot;</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">,</span>                <span class="c1"># Boolean flag to indicate whether the agent has gone off track.</span>
+    <span class="s2">&quot;is_reversed&quot;</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">,</span>                <span class="c1"># 反向</span>
+    <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                      <span class="c1"># 朝向</span>
+    <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                     <span class="c1"># progress尽可能大，steps尽可能小</span>
+    <span class="s2">&quot;steps&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>                          <span class="c1"># 1 秒15个steps</span>
+    <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                        <span class="c1"># agent&#39;s speed in meters per second (m/s)</span>
+    <span class="s2">&quot;steering_angle&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>               <span class="c1"># 轮子角度</span>
+    <span class="s2">&quot;track_length&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                 <span class="c1"># 轨道长度</span>
+    <span class="s2">&quot;track_width&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>                  <span class="c1"># 轨道宽度</span>
+    <span class="s2">&quot;closest_waypoints&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>       <span class="c1"># 最近的两点</span>
+    <span class="s2">&quot;waypoints&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">]</span>        <span class="c1"># 地图信息</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>原始轨道：https://github.com/aws-deepracer-community/deepracer-race-data/tree/main/raw_data/tracks</p>
+<p>最优路径：https://github.com/cdthompson/deepracer-k1999-race-lines</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Define the default reward ##</span>
+<span class="n">reward</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">progress</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;progress&#39;</span><span class="p">]</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;steps&#39;</span><span class="p">]</span>
+<span class="n">TOTAL_NUM_STEPS</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">15</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">steps</span> <span class="o">%</span> <span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">progress</span><span class="o">/</span><span class="mi">100</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">steps</span><span class="o">/</span><span class="n">TOTAL_NUM_STEPS</span><span class="p">):</span>
+    <span class="n">reward</span> <span class="o">+=</span> <span class="mf">2.22</span> <span class="c1">#for each second faster than 45s projected</span>
+    <span class="c1"># reward += progress - (steps/TOTAL_NUM_STEPS)*100</span>
+
+<span class="c1">## Reward if car goes close to optimal racing line ##</span>
+<span class="n">DISTANCE_MULTIPLE</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">dist_to_racing_line</span><span class="p">(</span><span class="n">optimals</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">optimals_second</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+<span class="n">distance_reward</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">dist</span><span class="o">/</span><span class="p">(</span><span class="n">track_width</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)))</span>
+<span class="n">reward</span> <span class="o">+=</span> <span class="n">distance_reward</span> <span class="o">*</span> <span class="n">DISTANCE_MULTIPLE</span>
+
+<span class="c1">## Reward if speed is close to optimal speed ##</span>
+<span class="n">SPEED_DIFF_NO_REWARD</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">SPEED_MULTIPLE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">speed_diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">optimals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">speed_diff</span> <span class="o">&lt;=</span> <span class="n">SPEED_DIFF_NO_REWARD</span><span class="p">:</span>
+    <span class="c1"># we use quadratic punishment (not linear) bc we&#39;re not as confident with the optimal speed</span>
+    <span class="c1"># so, we do not punish small deviations from optimal speed</span>
+    <span class="n">speed_reward</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">speed_diff</span><span class="o">/</span><span class="p">(</span><span class="n">SPEED_DIFF_NO_REWARD</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">speed_reward</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reward</span> <span class="o">+=</span> <span class="n">speed_reward</span> <span class="o">*</span> <span class="n">SPEED_MULTIPLE</span>
+
+
+<span class="c1"># Zero reward if obviously wrong direction (e.g. spin)</span>
+<span class="n">direction_diff</span> <span class="o">=</span> <span class="n">racing_direction_diff</span><span class="p">(</span>
+    <span class="n">optimals</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">optimals_second</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">heading</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">direction_diff</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="mf">1e-3</span>
+
+<span class="c1"># Zero reward of obviously too slow</span>
+<span class="n">speed_diff_zero</span> <span class="o">=</span> <span class="n">optimals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">speed</span>
+<span class="k">if</span> <span class="n">speed_diff_zero</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="mf">1e-3</span>
+
+<span class="c1">## Incentive for finishing the lap in less steps ##</span>
+<span class="n">REWARD_FOR_FASTEST_TIME</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># should be adapted to track length and other rewards</span>
+<span class="n">STANDARD_TIME</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># seconds (time that is easily done by model)</span>
+<span class="n">FASTEST_TIME</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1"># seconds (best time of 1st place on the track)</span>
+<span class="k">if</span> <span class="n">progress</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">finish_reward</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">REWARD_FOR_FASTEST_TIME</span> <span class="o">/</span>
+                <span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="p">(</span><span class="n">STANDARD_TIME</span><span class="o">-</span><span class="n">FASTEST_TIME</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="n">steps</span><span class="o">-</span><span class="n">STANDARD_TIME</span><span class="o">*</span><span class="mi">15</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">finish_reward</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reward</span> <span class="o">+=</span> <span class="n">finish_reward</span>
+
+<span class="c1">## Zero reward if off track ##</span>
+<span class="k">if</span> <span class="n">all_wheels_on_track</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="mf">1e-3</span>
+</code></pre></div>
+
+<p>Best-route strategy:&nbsp;https://github.com/dgnzlz/Capstone_AWS_DeepRacer</p>
+<p><span class="caps">AWS</span> Deepracer Community:&nbsp;https://github.com/aws-deepracer-community/deepracer-analysis</p>
+<p>https://zhuanlan.zhihu.com/p/635604595?utm_id=0</p>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/analytics.html">Analytics</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "reinforcement-learning.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

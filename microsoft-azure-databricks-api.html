@@ -1,0 +1,452 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Microsoft Azure Databricks <span class="caps">API</span>
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Microsoft Azure Databricks <span class="caps">API</span></h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2023-05-15T00:00:00+08:00"> 
+            <a href="/archive/2023/ 5/index.html">一 15 五月 2023 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/azure.html">Azure</a>
+                <a href="/tag/etl.html">ETL</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <p>https://docs.databricks.com/api-explorer/workspace/jobs</p>
+<h3>Step0: Connection&nbsp;variables</h3>
+<p>Compute → Cluster → Configuration → Advanced options → <span class="caps">JDBC</span>/<span class="caps">ODBC</span></p>
+<ul>
+<li>
+<p>Databricks_HOST:&nbsp;adb-xxx.azuredatabricks.net</p>
+</li>
+<li>
+<p><span class="caps">HTTP</span> Path:&nbsp;sql/protocolv1/o/6201908139262714/xxxx</p>
+</li>
+<li>
+<p>Cluster_ID:&nbsp;xxxx</p>
+</li>
+<li>
+<p>Notebook_path: Databricks workspace → create a notebook → Copy file&nbsp;path</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span><span class="p">;</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)</span>
+<span class="n">dbutils</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="n">key</span>
+<span class="p">}))</span>
+</code></pre></div>
+
+<h3>Step1: Access&nbsp;Token</h3>
+<ol>
+<li>Personal_TOKEN</li>
+</ol>
+<p>Login with service&nbsp;account</p>
+<p>Databricks workspace → User Settings → Developer -&gt; Access tokens → Generate new&nbsp;token.</p>
+<p>Lifetime (days): 90 (max&nbsp;400)</p>
+<ol>
+<li>Service&nbsp;Principal</li>
+</ol>
+<p>创建 Service Principal: Click + Add and select App&nbsp;registration.</p>
+<p>添加 client secret: Certificates <span class="amp">&amp;</span> secrets -&gt; new Client&nbsp;secrets </p>
+<p>To access the Databricks <span class="caps">REST</span> <span class="caps">API</span> with the service principal, you get and then use an Azure <span class="caps">AD</span> access token for the service principal. Each Azure <span class="caps">AD</span> token is short-lived, typically expiring within one&nbsp;hour.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span><span class="w"> </span><span class="se">\</span>
+https://login.microsoftonline.com/&lt;tenant-id&gt;/oauth2/v2.0/token<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;client_id=&lt;client-id&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;grant_type=client_credentials&#39;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;scope=2ff814a6-3304-4ab8-85cb-cd0e6f879c1d%2F.default&#39;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;client_secret=&lt;client-secret&gt;&#39;</span>
+</code></pre></div>
+
+<p>因为是short-lived，所以需要通过API动态获取</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="nx">getADToken</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">loginUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://login.microsoftonline.com/</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TENANT_ID</span><span class="si">}</span><span class="sb">/oauth2/v2.0/token`</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">lastValueFrom</span><span class="p">(</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">httpService</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">loginUrl</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">grant_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.SP_CLIENT_ID</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">client_secret</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.SP_CLIENT_SECRET</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2ff814a6-3304-4ab8-85cb-cd0e6f879c1d/.default&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// the programmatic ID for Azure Databricks</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="kt">AxiosResponse</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">access_token</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">catchError</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">r</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>https://learn.microsoft.com/en-us/azure/databricks/security/auth-authz/access-control/service-principal-acl</p>
+<h3>Step2: Create and trigger a&nbsp;job</h3>
+<ol>
+<li>Create and trigger a one-time&nbsp;run</li>
+</ol>
+<p><span class="caps">POST</span>&nbsp;https://adb-{{Databricks_HOST}}.azuredatabricks.net/api/2.1/jobs/runs/submit</p>
+<p>Header: Authorization: Bearer Bearer&nbsp;{{Personal_TOKEN}}</p>
+<p>可以用all-purpose&nbsp;cluster：existing_cluster_id：xxx</p>
+<p>也可以用job cluster，job cluster会在job运行结束后停止且不能重启，需要每次创建&nbsp;new_cluster</p>
+<p>Body: </p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;run_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test_Run_postman&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;existing_cluster_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{Cluster_ID}}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;notebook_task&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;notebook_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{Notebook_path}}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;base_parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_key&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="c1">// Maximum completion time for this task. The default behavior is no timeout.</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;run_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5455</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>Trigger a&nbsp;job</li>
+</ol>
+<p><span class="caps">POST</span>&nbsp;https://adb-{{Databricks_HOST}}.azuredatabricks.net/api/2.1/jobs/run-now</p>
+<p>Body: </p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;notebook_params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_key&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Step3: Get the output for a single&nbsp;run</h3>
+<p><span class="caps">GET</span>&nbsp;https://adb-{{Databricks_HOST}}.azuredatabricks.net/api/2.1/jobs/runs/get-output?run_id=5455</p>
+<p>Header: Authorization: Bearer Bearer&nbsp;{{Personal_TOKEN}}</p>
+<p>注意如果是job的运行结果，run_id是Task run ID不能是Job run <span class="caps">ID</span></p>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">727829565007789</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;run_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5455</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;life_cycle_state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TERMINATED&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;result_state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;notebook_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;status\&quot;: \&quot;ok\&quot;, \&quot;params\&quot;: \&quot;test_key\&quot;}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>超时：</li>
+</ul>
+<p>Maximum completion time for this task. The default behavior is no timeout. If you configure both Timeout and Retries, the timeout applies to each&nbsp;retry.</p>
+<p>If the task does not complete in this time, Azure Databricks sets its status to “Timed&nbsp;Out”.</p>
+<p>life_cycle_state: “<span class="caps">TERMINATED</span>”,</p>
+<p>result_state: “<span class="caps">TIMEDOUT</span>”</p>
+<ul>
+<li>并发：</li>
+</ul>
+<p>A workspace is limited to 1000 concurrent task runs. A <code>429 Too Many Requests</code> response is returned when you request a run that cannot start&nbsp;immediately.</p>
+<p>The number of jobs a workspace can create in an hour is limited to 10000 (includes “runs submit”). This limit also affects jobs created by the <span class="caps">REST</span> <span class="caps">API</span> and notebook&nbsp;workflows.</p>
+<p>Maximum concurrent runs: Set this value higher than the default of 1 if you want to be able to perform multiple runs of the same job&nbsp;concurrently.</p>
+<ul>
+<li>通知：</li>
+</ul>
+<p>配置里面只能写死邮箱，不能根据谁提交的job就把邮件发给谁</p>
+<p>You can monitor job runs by configuring notifications when a job run starts, completes successfully, or fails. Notifications can be sent to one or more email addresses or system destinations such as webhook destinations or&nbsp;Slack.</p>
+<ul>
+<li>集群：</li>
+</ul>
+<p>all-purpose cluster可以设定关闭时间，Job&nbsp;Clusters的话job跑完就关了</p>
+<p>get out-put&nbsp;接口不会触发集群启动就能拿到结果</p>
+<p>The Azure Databricks job scheduler creates <em>a job cluster</em> when you run a <a href="https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/create-run-jobs">job</a> on a <em>new job cluster</em> and terminates the cluster when the job is complete. You <em>cannot</em> restart a job&nbsp;cluster.</p>
+<p><strong>New Job Clusters</strong> are dedicated clusters for a job or task run. A shared job cluster is created and started when the first task using the cluster starts and terminates after the last task using the cluster completes. The cluster is not terminated when idle but terminates only after all tasks using it have&nbsp;completed. </p>
+<p>https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/use-compute</p>
+<hr>
+<h3>Databricks <span class="caps">SQL</span> Driver for&nbsp;Node.js</h3>
+<p>https://docs.databricks.com/dev-tools/nodejs-sql-driver.html</p>
+<p>npm i&nbsp;@databricks/sql</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">DBSQLClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@databricks/sql&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">IDBSQLSession</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@databricks/sql/dist/contracts/IDBSQLSession&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">IOperation</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@databricks/sql/dist/contracts/IOperation&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="o">:</span><span class="w"> </span><span class="kt">DBSQLClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DBSQLClient</span><span class="p">();</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w">  </span><span class="kt">process.env.DATABRICKS_SERVER_HOSTNAME</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">path</span><span class="o">:</span><span class="w">  </span><span class="kt">process.env.DATABRICKS_HTTP_PATH</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABRICKS_TOKEN</span>
+<span class="w">  </span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="o">:</span><span class="w"> </span><span class="kt">IDBSQLSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">openSession</span><span class="p">();</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryOperation</span><span class="o">:</span><span class="w"> </span><span class="kt">IOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">executeStatement</span><span class="p">(</span>
+<span class="w">        </span><span class="s1">&#39;SELECT * FROM default.diamonds LIMIT 2&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">runAsync</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">maxRows</span><span class="o">:</span><span class="w"> </span><span class="kt">10000</span><span class="w"> </span><span class="c1">// This option enables the direct results feature.</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queryOperation</span><span class="p">.</span><span class="nx">fetchAll</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">progress</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">queryOperation</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="w">      </span><span class="nx">client</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "microsoft-azure-databricks-api.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

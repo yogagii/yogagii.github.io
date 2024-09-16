@@ -68,81 +68,90 @@
 <p>document:&nbsp;https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html</p>
 <h3>安装</h3>
 <p>下载 macOS pkg 文件：https://awscli.amazonaws.com/<span class="caps">AWSCLIV2</span>.pkg</p>
-<div class="highlight"><pre><span></span><code>$ which aws
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>which<span class="w"> </span>aws
 </code></pre></div>
 
 <h3>配置</h3>
-<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"></span>
-<span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">xxx</span><span class="w"></span>
-<span class="n">AWS</span><span class="w"> </span><span class="n">Secret</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">xxx</span><span class="w"></span>
-<span class="k">Default</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">ap</span><span class="o">-</span><span class="n">southeast</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-<span class="k">Default</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">json</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure
+AWS<span class="w"> </span>Access<span class="w"> </span>Key<span class="w"> </span>ID<span class="w"> </span><span class="o">[</span>None<span class="o">]</span>:<span class="w"> </span>xxx
+AWS<span class="w"> </span>Secret<span class="w"> </span>Access<span class="w"> </span>Key<span class="w"> </span><span class="o">[</span>None<span class="o">]</span>:<span class="w"> </span>xxx
+Default<span class="w"> </span>region<span class="w"> </span>name<span class="w"> </span><span class="o">[</span>None<span class="o">]</span>:<span class="w"> </span>ap-southeast-1
+Default<span class="w"> </span>output<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>None<span class="o">]</span>:<span class="w"> </span>json
 </code></pre></div>
 
 <ul>
 <li>列出所有配置</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aws configure list
-aws configure get &lt;key&gt;
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span>list
+aws<span class="w"> </span>configure<span class="w"> </span>get<span class="w"> </span>&lt;key&gt;
+aws<span class="w"> </span>configure<span class="w"> </span>list-profiles<span class="w"> </span>
+</code></pre></div>
+
+<ul>
+<li>profile</li>
+</ul>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span>&lt;profilename&gt;
+aws<span class="w"> </span>configure<span class="w"> </span>list-profiles<span class="w"> </span>
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;/<span class="w"> </span>--profile<span class="w"> </span>&lt;profilename&gt;
 </code></pre></div>
 
 <h3>使用</h3>
 <ul>
 <li>Listing all user owned&nbsp;buckets</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aws s3 ls
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls
 </code></pre></div>
 
 <ul>
 <li>Listing all prefixes and objects in a&nbsp;bucket</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aws s3 ls s3://&lt;bucketname&gt;
-aws s3 ls s3://&lt;bucketname&gt;/&lt;foldername&gt;/
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;/&lt;foldername&gt;/
 </code></pre></div>
 
 <ul>
 <li>上传文件</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aws s3 cp ./teacher.xlsx s3://&lt;bucketname&gt;
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./teacher.xlsx<span class="w"> </span>s3://&lt;bucketname&gt;
 </code></pre></div>
 
 <ul>
 <li>上传文件夹</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aws s3 cp ~/Desktop/ManuData s3://&lt;bucketname&gt;/  --recursive
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>~/Desktop/ManuData<span class="w"> </span>s3://&lt;bucketname&gt;/<span class="w">  </span>--recursive
 </code></pre></div>
 
 <ul>
 <li>删除folder</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aws s3 rm s3://&lt;bucketname&gt;/RawZone --recursive
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://&lt;bucketname&gt;/RawZone<span class="w"> </span>--recursive
 </code></pre></div>
 
 <hr>
 <h2>crontab (Linux /&nbsp;Mac)</h2>
 <p>新建task.sh脚本</p>
-<div class="highlight"><pre><span></span><code>vi task.sh
+<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>task.sh
 
-<span class="nv">folder</span><span class="o">=</span><span class="k">$(</span>date +%Y-%m-%d<span class="k">)</span>
-<span class="nb">echo</span> <span class="nv">$folder</span>
-aws s3 cp ~/Desktop/manu s3://&lt;bucketname&gt;/<span class="nv">$folder</span>/ --recursive
-aws s3 cp ./teacher.xlsx s3://&lt;bucketname&gt;
-aws s3 rm s3://&lt;bucketname&gt;/<span class="nv">$folder</span>/.DS_Store
-aws s3 ls s3://&lt;bucketname&gt;
+<span class="nv">folder</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$folder</span>
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>~/Desktop/manu<span class="w"> </span>s3://&lt;bucketname&gt;/<span class="nv">$folder</span>/<span class="w"> </span>--recursive
+aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>./teacher.xlsx<span class="w"> </span>s3://&lt;bucketname&gt;
+aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://&lt;bucketname&gt;/<span class="nv">$folder</span>/.DS_Store
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://&lt;bucketname&gt;
 
-chmod <span class="m">755</span> task.sh
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>task.sh
 </code></pre></div>
 
 <p>打开定时任务</p>
-<div class="highlight"><pre><span></span><code>crontab -e <span class="c1"># 编辑定时任务</span>
+<div class="highlight"><pre><span></span><code>crontab<span class="w"> </span>-e<span class="w"> </span><span class="c1"># 编辑定时任务</span>
 
-* * * * * /Users/yoga/Desktop/DnA/crontab/task.sh <span class="c1"># 每分钟执行一次</span>
+*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/Users/yoga/Desktop/DnA/crontab/task.sh<span class="w"> </span><span class="c1"># 每分钟执行一次</span>
 
-crontab -l <span class="c1"># 查看当前定时任务</span>
+crontab<span class="w"> </span>-l<span class="w"> </span><span class="c1"># 查看当前定时任务</span>
 
 <span class="c1"># sudo cron start # 开始</span>
 
-crontab -r <span class="c1"># 删除定时任务</span>
+crontab<span class="w"> </span>-r<span class="w"> </span><span class="c1"># 删除定时任务</span>
 </code></pre></div>
 
 <p>踩坑：You have new mail in&nbsp;/var/mail/yoga</p>
@@ -262,21 +271,23 @@ aws s3 cp C:\Users\<span class="p">&lt;</span>folder<span class="p">&gt;</span>\
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -285,7 +296,6 @@ aws s3 cp C:\Users\<span class="p">&lt;</span>folder<span class="p">&gt;</span>\
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -294,7 +304,6 @@ aws s3 cp C:\Users\<span class="p">&lt;</span>folder<span class="p">&gt;</span>\
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -314,7 +323,6 @@ aws s3 cp C:\Users\<span class="p">&lt;</span>folder<span class="p">&gt;</span>\
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>

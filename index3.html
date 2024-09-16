@@ -43,21 +43,22 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/aws-s3.html" rel="bookmark" title="Permalink to AWS S3"><span class="caps">AWS</span>&nbsp;S3</a>
+			<a href="/databricks-machine-learning.html" rel="bookmark" title="Permalink to Databricks Machine Learning">Databricks Machine&nbsp;Learning</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-09-08T00:00:00+08:00"> 
-				<a href="/archive/2022/ 9/index.html">四 08 九月 2022 </a>
+			<abbr class="date" title="2023-05-17T00:00:00+08:00"> 
+				<a href="/archive/2023/ 5/index.html">三 17 五月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2><span class="caps">AWS</span> <span class="caps">CLI</span></h2>
-<p>https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/welcome-examples.html</p>
-<p>document:&nbsp;https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html</p>
-<h3>安装</h3>
-<p>下 …</p></div>
+	<div class="summary"><h2>Databricks&nbsp;机器学习</h2>
+<p><strong>数据仓库 Data Warehouse</strong>：</p>
+<p>Structured Data -&gt; <span class="caps">ETL</span> -&gt; Data Warehouse -&gt; Business&nbsp;Intelligence</p>
+<p>e.g. snowflake, Azure Synapse Analytics, amazon <span class="caps">REDSHIFT</span>, Goodle Big&nbsp;Query</p>
+<ul>
+<li>通 …</li></ul></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -69,29 +70,99 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/nextjs.html" rel="bookmark" title="Permalink to Next.js">Next.js</a>
+			<a href="/microsoft-azure-databricks-api.html" rel="bookmark" title="Permalink to Microsoft Azure Databricks API">Microsoft Azure Databricks <span class="caps">API</span></a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-08-31T00:00:00+08:00"> 
-				<a href="/archive/2022/ 8/index.html">三 31 八月 2022 </a>
+			<abbr class="date" title="2023-05-15T00:00:00+08:00"> 
+				<a href="/archive/2023/ 5/index.html">一 15 五月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>nextjs12.x 集成&nbsp;less</h2>
-<p>1）安装依赖</p>
-<div class="highlight"><pre><span></span><code>npm install next-plugin-antd-less
-npm install classnames
-npm install less-loader
+	<div class="summary"><p>https://docs.databricks.com/api-explorer/workspace/jobs</p>
+<h3>Step0: Connection&nbsp;variables</h3>
+<p>Compute → Cluster → Configuration → Advanced options → <span class="caps">JDBC</span>/<span class="caps">ODBC</span></p>
+<ul>
+<li>
+<p>Databricks_HOST:&nbsp;adb-xxx.azuredatabricks.net</p>
+</li>
+<li>
+<p><span class="caps">HTTP</span> Path:&nbsp;sql/protocolv1/o/6201908139262714/xxxx</p>
+</li>
+<li>
+<p>Cluster_ID:&nbsp;xxxx …</p></li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/cloud.html">Cloud</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/neo4j.html" rel="bookmark" title="Permalink to NEO4J"><span class="caps">NEO4J</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-04-28T00:00:00+08:00"> 
+				<a href="/archive/2023/ 4/index.html">五 28 四月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Neo4j&nbsp;Desktop</h2>
+<p>https://neo4j.com/download/</p>
+<h2>图数据库</h2>
+<p>Neo4j是一个高性能的,NOSQL图形数据库，它将结构化数据存储在网络上而不是表中 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/sso-deng-lu.html" rel="bookmark" title="Permalink to SSO 登录"><span class="caps">SSO</span>&nbsp;登录</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-04-18T00:00:00+08:00"> 
+				<a href="/archive/2023/ 4/index.html">二 18 四月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><div class="highlight"><pre><span></span><code><span class="o">+--------+</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="o">-&gt;|</span><span class="w">   </span><span class="n">Resource</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Owner</span><span class="w">     </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">--</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Grant</span><span class="w"> </span><span class="o">---|</span><span class="w">               </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">--</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Grant</span><span class="w"> </span><span class="o">--&gt;|</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Server</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">-----</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="kt">Token</span><span class="w"> </span><span class="o">-------|</span><span class="w">               </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-----</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="kt">Token</span><span class="w"> </span><span class="o">------&gt;|</span><span class="w">    </span><span class="n">Resource</span><span class="w">   </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Server</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">---</span><span class="w"> </span><span class="n">Protected</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="o">---|</span><span class="w">               </span><span class="o">|</span>
+<span class="o">+--------+</span><span class="w">                               </span><span class="o">+---------------+</span>
 </code></pre></div>
 
-<p>2）在next.config.js中加配置</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">withAntdLess …</span></code></pre></div></div>
+<h3>Step1 Get&nbsp;code</h3>
+<p>[<span class="caps">GET</span>]&nbsp;https …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/react.html">React</a>
+			<a href="/category/backend.html">Backend</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -99,24 +170,38 @@ npm install less-loader
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/smart-joint.html" rel="bookmark" title="Permalink to Smart Joint">Smart&nbsp;Joint</a>
+			<a href="/observable.html" rel="bookmark" title="Permalink to Observable">Observable</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-08-17T00:00:00+08:00"> 
-				<a href="/archive/2022/ 8/index.html">三 17 八月 2022 </a>
+			<abbr class="date" title="2023-04-10T00:00:00+08:00"> 
+				<a href="/archive/2023/ 4/index.html">一 10 四月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>关键点检测</h2>
-<h2>Keras</h2>
-<h3>Step1:&nbsp;Keras模型</h3>
-<p>在Keras中有两种深度学习的模型：序列模型（Sequential）和通 …</p></div>
+	<div class="summary"><table>
+<thead>
+<tr>
+<th>Observable</th>
+<th>Promise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>陈述式，直至subscription才会触发</td>
+<td>promise创建之后立即执行</td>
+</tr>
+<tr>
+<td>支持多值甚至是数据流</td>
+<td>只能提供单个值</td>
+</tr>
+<tr>
+<td>能够在执 …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
-			<a href="/category/project.html">Project</a>
+			<a href="/category/javascript.html">Javascript</a>
 		</abbr>
 	</footer>
 	<hr />
@@ -124,23 +209,52 @@ npm install less-loader
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/linux-fu-wu-qi-pei-zhi.html" rel="bookmark" title="Permalink to Linux 服务器配置">Linux&nbsp;服务器配置</a>
+			<a href="/azure-powershell.html" rel="bookmark" title="Permalink to Azure PowerShell">Azure&nbsp;PowerShell</a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-21T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">四 21 四月 2022 </a>
+			<abbr class="date" title="2023-03-30T00:00:00+08:00"> 
+				<a href="/archive/2023/ 3/index.html">四 30 三月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>安装node</h2>
-<ol>
-<li>到 node&nbsp;官网</li>
-</ol>
-<p>http://nodejs.cn/download/</p>
-<p>https://registry.npmmirror.com/binary.html?path=node/ </p>
-<p>去下载一个 linux 可用的 node&nbsp;版 …</p></div>
+	<div class="summary"><p>Azure PowerShell 是一组 cmdlet，用于直接从 PowerShell 管理 Azure&nbsp;资源。 </p>
+<h3>安装</h3>
+<p>Azure PowerShell 服务管理模块仅适用 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/cloud.html">Cloud</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/data-governance.html" rel="bookmark" title="Permalink to Data Governance">Data&nbsp;Governance</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-03-01T00:00:00+08:00"> 
+				<a href="/archive/2023/ 3/index.html">三 01 三月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><table>
+<thead>
+<tr>
+<th>\</th>
+<th>数据仓库</th>
+<th>数据湖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特点</td>
+<td>面向主题的、集成的、随时间变化的、非易失的数据集 …</td></tr></tbody></table></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -152,20 +266,80 @@ npm install less-loader
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
-			<a href="/microsoft-azure-adminstrator.html" rel="bookmark" title="Permalink to Microsoft Azure Adminstrator">Microsoft Azure&nbsp;Adminstrator</a>
+			<a href="/gpt.html" rel="bookmark" title="Permalink to GPT"><span class="caps">GPT</span></a>
 		</h2>
 		<div class="post-info">
 			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-13T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">三 13 四月 2022 </a>
+			<abbr class="date" title="2023-02-20T00:00:00+08:00"> 
+				<a href="/archive/2023/ 2/index.html">一 20 二月 2023 </a>
 			</abbr>
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary"><h2>Azure Active&nbsp;Directory</h2>
-<p>用户和组身份：身份验证 +&nbsp;访问授权</p>
-<p>https://portal.azure.com/</p>
-<p>https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade …</p></div>
+	<div class="summary"><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>发布时间</th>
+<th>训练方案</th>
+<th>参数量</th>
+<th>模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="caps">GPT</span>(<span class="caps">GPT</span>-1)</td>
+<td>2018 年 6 月</td>
+<td>无监督学习</td>
+<td>1.17 亿 …</td></tr></tbody></table></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/analytics.html">Analytics</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/sql-server.html" rel="bookmark" title="Permalink to SQL Server"><span class="caps">SQL</span>&nbsp;Server</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-02-07T00:00:00+08:00"> 
+				<a href="/archive/2023/ 2/index.html">二 07 二月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>系统表&nbsp;sysobjects</h3>
+<ul>
+<li>获取系统表 sysobjects:&nbsp;在数据库内创建的每个对象（约束、默认值、日志、规 …</li></ul></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/azure-machine-learning-service.html" rel="bookmark" title="Permalink to Azure Machine Learning Service">Azure Machine Learning&nbsp;Service</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2023-01-20T00:00:00+08:00"> 
+				<a href="/archive/2023/ 1/index.html">五 20 一月 2023 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h2>Azure Machine Learning&nbsp;Service</h2>
+<p>Azure Machine Learning Service: Combination of Azure cloud services and Python <span class="caps">SDK</span>.</p>
+<p>Create environment -&gt; Prepare data -&gt; Build models -&gt; Train models -&gt; Test models -&gt; Manage models -&gt; Track experiments …</p></div>
 	<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
@@ -174,134 +348,10 @@ npm install less-loader
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/spring.html" rel="bookmark" title="Permalink to Spring">Spring</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-09T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">六 09 四月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>Spring</h2>
-<p>Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/java-object-oriented.html" rel="bookmark" title="Permalink to JAVA Object Oriented"><span class="caps">JAVA</span> Object&nbsp;Oriented</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-04T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">一 04 四月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>面向对象</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
-  <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
-  <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span> <span class="c1">// private修饰field拒绝外部访问</span>
-  <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">hobbies</span><span class="p">;</span>
-
-  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this …</span></code></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/java-grammer.html" rel="bookmark" title="Permalink to JAVA Grammer"><span class="caps">JAVA</span>&nbsp;Grammer</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-04-03T00:00:00+08:00"> 
-				<a href="/archive/2022/ 4/index.html">日 03 四月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2>变量</h2>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 第一次定义变量n需要指定变量类型int</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">// 重新赋值不能 …</span></code></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/java-install.html" rel="bookmark" title="Permalink to JAVA Install"><span class="caps">JAVA</span>&nbsp;Install</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-03-30T00:00:00+08:00"> 
-				<a href="/archive/2022/ 3/index.html">三 30 三月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><code><span class="c1">// Hello.java </span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span> <span class="c1">// 类名首字母大写</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Java程序的固定入口方法</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out …</span></code></pre></div></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/typeorm.html" rel="bookmark" title="Permalink to TypeORM">TypeORM</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2022-02-15T00:00:00+08:00"> 
-				<a href="/archive/2022/ 2/index.html">二 15 二月 2022 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h2><span class="caps">ORM</span>（Object Relactional&nbsp;Mapping，对象关系映射）</h2>
-<p>ORM是一种解决面向对象与关系型数据库存在的 …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
             <a href="/index2.html">&laquo;</a>
-    Page 3 / 13
+    Page 3 / 15
         <a href="/index4.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -362,21 +412,23 @@ npm install less-loader
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
                         <span><a href="/tag/azure.html">Azure</a></span>
-                        <span><a href="/tag/ml.html">ML</a></span>
-                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
                         <span><a href="/tag/antv.html">AntV</a></span>
                         <span><a href="/tag/next.html">Next</a></span>
-                        <span><a href="/tag/nest.html">Nest</a></span>
-                        <span><a href="/tag/etl.html">ETL</a></span>
-                        <span><a href="/tag/aws.html">AWS</a></span>
                         <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
-                        <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/flutter.html">Flutter</a></span>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
-                        <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
                         <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
@@ -385,7 +437,6 @@ npm install less-loader
                         <span><a href="/tag/token.html">Token</a></span>
                         <span><a href="/tag/regexp.html">Regexp</a></span>
                         <span><a href="/tag/unit-test.html">Unit test</a></span>
-                        <span><a href="/tag/docker.html">Docker</a></span>
                         <span><a href="/tag/nginx.html">Nginx</a></span>
                         <span><a href="/tag/nodejs.html">nodeJS</a></span>
                         <span><a href="/tag/sails.html">sails</a></span>
@@ -394,7 +445,6 @@ npm install less-loader
                         <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
                         <span><a href="/tag/swift.html">Swift</a></span>
                         <span><a href="/tag/jenkins.html">Jenkins</a></span>
-                        <span><a href="/tag/proxy.html">proxy</a></span>
                         <span><a href="/tag/js.html">JS</a></span>
                         <span><a href="/tag/event.html">event</a></span>
                         <span><a href="/tag/gtm.html">GTM</a></span>
@@ -414,7 +464,6 @@ npm install less-loader
                         <span><a href="/tag/form.html">Form</a></span>
                         <span><a href="/tag/jsx.html">JSX</a></span>
                         <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
-                        <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/javascript.html">Javascript</a></span>
                         <span><a href="/tag/css.html">CSS</a></span>
                         <span><a href="/tag/design-pattern.html">design pattern</a></span>
