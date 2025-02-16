@@ -53,6 +53,56 @@
 <li class="posts"><article class="post hentry">
 	<header>
 		<h2 class="post-title" >
+			<a href="/java-application.html" rel="bookmark" title="Permalink to JAVA Application"><span class="caps">JAVA</span>&nbsp;Application</a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2025-02-07T00:00:00+08:00"> 
+				<a href="/archive/2025/ 2/index.html">五 07 二月 2025 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><h3>Memory Leak&nbsp;Monitoring</h3>
+<p>Java is not really efficient in its garbage collection so we need to be mindful of potential memory leaks. Here we list two ways to help identify …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
+			<a href="/java-logging-slf4j.html" rel="bookmark" title="Permalink to JAVA Logging - SLF4J"><span class="caps">JAVA</span> Logging - <span class="caps">SLF4J</span></a>
+		</h2>
+		<div class="post-info">
+			<span class="post-lable">Post in</span>
+			<abbr class="date" title="2025-02-05T00:00:00+08:00"> 
+				<a href="/archive/2025/ 2/index.html">三 05 二月 2025 </a>
+			</abbr>
+			<!-- COMMENTS -->
+		</div>
+	</header>
+	<div class="summary"><p>Java log发展历史：
+* System.out.println
+* java.until.logging (<span class="caps">JDK1</span>.4)
+* log4j: Ceki Gülcü将Log4j捐献给了Apache
+* LogBack: Ceki Gülcü出走后另起炉灶，开发出LogBack，受到LogBack的冲击，2015年9月Apache软件基金业宣布Log4j不再维护
+* Log4J2是Apache开发的一个新的日志框架，改进了很多 …</p></div>
+	<footer>
+		<span class="post-lable">Category:</span>
+		<abbr class="category">
+			<a href="/category/backend.html">Backend</a>
+		</abbr>
+	</footer>
+	<hr />
+</article></li>
+<li class="posts"><article class="post hentry">
+	<header>
+		<h2 class="post-title" >
 			<a href="/nacos.html" rel="bookmark" title="Permalink to Nacos">Nacos</a>
 		</h2>
 		<div class="post-info">
@@ -268,75 +318,9 @@ $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </sp
 	</footer>
 	<hr />
 </article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/sso-deng-lu.html" rel="bookmark" title="Permalink to SSO 登录"><span class="caps">SSO</span>&nbsp;登录</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-04-18T00:00:00+08:00"> 
-				<a href="/archive/2023/ 4/index.html">二 18 四月 2023 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><div class="highlight"><pre><span></span><code><span class="o">+--------+</span><span class="w">                               </span><span class="o">+---------------+</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="o">-&gt;|</span><span class="w">   </span><span class="n">Resource</span><span class="w">    </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Owner</span><span class="w">     </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">--</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Grant</span><span class="w"> </span><span class="o">---|</span><span class="w">               </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">--</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="n">Grant</span><span class="w"> </span><span class="o">--&gt;|</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Server</span><span class="w">    </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">-----</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="kt">Token</span><span class="w"> </span><span class="o">-------|</span><span class="w">               </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">+---------------+</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|--</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-----</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="kt">Token</span><span class="w"> </span><span class="o">------&gt;|</span><span class="w">    </span><span class="n">Resource</span><span class="w">   </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|</span><span class="w">                               </span><span class="o">|</span><span class="w">     </span><span class="n">Server</span><span class="w">    </span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="o">|&lt;-</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">---</span><span class="w"> </span><span class="n">Protected</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="o">---|</span><span class="w">               </span><span class="o">|</span>
-<span class="o">+--------+</span><span class="w">                               </span><span class="o">+---------------+</span>
-</code></pre></div>
-
-<h3>Step1 Get&nbsp;code</h3>
-<p>[<span class="caps">GET</span>]&nbsp;https …</p></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
-<li class="posts"><article class="post hentry">
-	<header>
-		<h2 class="post-title" >
-			<a href="/sql-server.html" rel="bookmark" title="Permalink to SQL Server"><span class="caps">SQL</span>&nbsp;Server</a>
-		</h2>
-		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="2023-02-07T00:00:00+08:00"> 
-				<a href="/archive/2023/ 2/index.html">二 07 二月 2023 </a>
-			</abbr>
-			<!-- COMMENTS -->
-		</div>
-	</header>
-	<div class="summary"><h3>系统表&nbsp;sysobjects</h3>
-<ul>
-<li>获取系统表 sysobjects:&nbsp;在数据库内创建的每个对象（约束、默认值、日志、规 …</li></ul></div>
-	<footer>
-		<span class="post-lable">Category:</span>
-		<abbr class="category">
-			<a href="/category/backend.html">Backend</a>
-		</abbr>
-	</footer>
-	<hr />
-</article></li>
 </ul>
 <p class="paginator">
-    Page 1 / 3
+    Page 1 / 4
         <a href="/category/backend2.html">&raquo;</a>
 </p>
         </section><!-- #content -->
@@ -367,6 +351,12 @@ $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </sp
                         <li>
                           <a href="/category/backend.html" >Backend</a>
                             <ul>
+                                <li>
+                                  <a href="/java-application.html"><span class="caps">JAVA</span>&nbsp;Application</a>
+                                </li>
+                                <li>
+                                  <a href="/java-logging-slf4j.html"><span class="caps">JAVA</span> Logging - <span class="caps">SLF4J</span></a>
+                                </li>
                                 <li>
                                   <a href="/nacos.html">Nacos</a>
                                 </li>
@@ -489,10 +479,12 @@ $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </sp
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -507,7 +499,6 @@ $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </sp
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

@@ -169,6 +169,7 @@ mvn<span class="w"> </span>-v
 <div class="highlight"><pre><span></span><code>mvn<span class="w"> </span>install
 mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span><span class="c1"># 先清理项目的工作目录，删除之前构建过程中生成的所有文件（如编译后的类文件、JAR 文件等），确保新的构建是从干净的状态开始的</span>
 mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-Dmaven.wagon.http.ssl.insecure<span class="o">=</span><span class="nb">true</span><span class="w"> </span>-Dmaven.wagon.http.ssl.allowall<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="c1"># 跳过证书检查</span>
+mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-DskipTests<span class="w"> </span><span class="c1"># 跳过单元测试</span>
 </code></pre></div>
 
 <ul>
@@ -282,10 +283,12 @@ spring:
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -300,7 +303,6 @@ spring:
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

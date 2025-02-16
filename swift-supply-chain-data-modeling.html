@@ -44,13 +44,13 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›<span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> › <span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" ><span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling</h2>
+    <h2 class="post-title" > <span class="caps">SWIFT</span> &#8212; Supply Chain Data&nbsp;Modeling</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
@@ -62,109 +62,109 @@
     </div>
     </header>
     <div class="post-entry">
-        <h2>Business&nbsp;Value</h2>
-<p>The Ultimate Supply Chain Planning&nbsp;Experience</p>
-<p><span class="caps">SWIFT</span> = Scenario and What If analysis enabled Flexibility and Transparency in Supply&nbsp;Chain</p>
-<p>Our Goal is to create capabilities for Global and Regional Planners that predict and analyze the changing needs and disruptions in <span class="caps">SC</span> by improving end to end visibility and responsiveness from source to customer for MedTech <span class="caps">SC</span> in the <span class="caps">ASPAC</span> region.&nbsp;​ </p>
-<p>Project <span class="caps">SWIFT</span> is focused on delivering a <span class="caps">MVP</span> solution for a Digital Twin Control Tower for the Endo-mech business from Manufacturing / Distribution Center to the&nbsp;Distributors.</p>
-<p>The pilot seeks to provide end-to-end visibility of products within the supply chain through creation of a network digital twin, scenario planning capabilities and timely responsiveness to help better predict and assess changing needs and supply chain disruptions, escalate decision making and improve&nbsp;resiliency.</p>
-<h2>Network Lead&nbsp;Time</h2>
-<p>A graphical network view shows digital representations of supply chain networks. Tabular view to show the lead time by&nbsp;Lane.</p>
-<p>lead time一般指前置时间。&nbsp;前置时间是指从受订到出货所间隔的时间，通常以天数或小时计算。前置时间的减少会使生产商和零售商平均库存水平得到减少。</p>
-<p>Shipments which were supposed to arrive (<span class="caps">GR</span> date is null) in current date (Shipment <span class="caps">ETA</span>). 
-Planned Shipments (Shipment <span class="caps">ETA</span>) is calculated using <span class="caps">GI</span> date + transport Lead time from gdm transport for particular <span class="caps">SKU</span> in the&nbsp;lane. </p>
-<p>https://yogagii.github.io/neo4j.html</p>
-<h2>User Generated&nbsp;Event</h2>
-<p><strong>Event Type</strong>:</p>
-<ul>
-<li>Demand: Model changes to demand&nbsp;需求变化</li>
-<li>Supply: Model changes to inventory levels&nbsp;库存变化</li>
-</ul>
-<p><strong><span class="caps">SS</span> Level:</strong> Average safety stock level for event&nbsp;timeline</p>
-<p><strong>Loss Sale Value</strong>: Estimated sum of loss from sales that cannot be carried out- ex. customer moves to a&nbsp;competitor</p>
-<p><strong>Cost</strong>: Estimated sum of cost to carry out&nbsp;solution</p>
-<p><strong><span class="caps">BO</span>&nbsp;Value</strong></p>
-<ul>
-<li>Start <span class="caps">BO</span> value: the <span class="caps">BO</span> value of each <span class="caps">SKU</span>, site, in the start week of the&nbsp;event.</li>
-<li>End <span class="caps">BO</span> value: the <span class="caps">BO</span> value of each <span class="caps">SKU</span>, site, in the end week of the&nbsp;event.</li>
-<li><span class="caps">POST</span> <span class="caps">BO</span> value: inventory of the end week + (end week demand - adjust demand of end week). display the negative value is <span class="caps">BO</span> value and 0 if it is&nbsp;positive.</li>
-<li><span class="caps">BO</span> Change: (<span class="caps">POST</span> <span class="caps">BO</span> - End <span class="caps">BO</span>) / End <span class="caps">BO</span> *&nbsp;100</li>
-<li>Safety Stock % by week: new_cal_inventory / safety_stock *&nbsp;100;</li>
-</ul>
-<p><strong>Event&nbsp;Forecast</strong></p>
-<ul>
-<li>Scenario 1: If previous week (W-1) inventory is Initial&nbsp;Inventory</li>
-<li>Scenario 2: If previous week (W-1) inventory is not Initial Inventory and is future&nbsp;bucket</li>
-<li>Scenario 3: If previous week (W-1) inventory is not Initial Inventory and is <span class="caps">NOT</span> future&nbsp;bucket</li>
-</ul>
-<p>Need to calculate event forecast week by&nbsp;week!</p>
-<h2>Modeled&nbsp;Solution</h2>
-<p><strong>Solution&nbsp;Type:</strong></p>
-<ol>
-<li>Standard Node to Node Transfer: uses the standard transportation mode in system suggested&nbsp;lane</li>
-<li>Expedited Node to Node Transfer: uses a faster alternative transportation mode in system suggested&nbsp;lane</li>
-<li>Mod&nbsp;Substitution</li>
-<li>Alternative Code Substitution: Alternate Code Substitution adjusts what % of demand can be replaced with an alternative <span class="caps">SKU</span> of the planner&#8217;s&nbsp;choice</li>
-</ol>
-<p><strong>Periods:</strong> </p>
-<p>periods just correspond to time periods (of length 1 week) in the planning horizon, starting with the current week which is period&nbsp;1</p>
-<ul>
-<li>transfer_period - this is the week number where the suggested transfer will take place relative to the current week (period&nbsp;1)</li>
-<li>transfer_week - This is the week-year combination date where the transfer will take&nbsp;place</li>
-<li>transfer_lt - the number of periods (i.e. weeks) it will take for the transfer to arrive at the destination&nbsp;node</li>
-<li>arrival_period - the period (week) where the transferred inventory will arrive at the destination node and actually change the inventory values at the&nbsp;destination</li>
-</ul>
-<p>transfer_period + transfer_lt =&nbsp;arrival_period</p>
-<p><strong>Databricks&nbsp;Job:</strong></p>
-<ol>
-<li>Scenario Planning for existing&nbsp;event</li>
-<li>Scenario Planning for user generated&nbsp;event</li>
-<li>Solution Forecast with applied&nbsp;transfer</li>
-</ol>
-<p>Remodel: Display Alert and Action when solutions modeled are past a time threshold where solution may no longer be&nbsp;accurate</p>
-<p>https://yogagii.github.io/databricks-api.html</p>
-<p><strong><span class="caps">BO</span>&nbsp;Value:</strong></p>
-<ul>
-<li><strong>Pre-Model <span class="caps">BO</span></strong> is calculated in the <span class="caps">UI</span> from user-generated event forecast. Pre-Model <span class="caps">BO</span> only needs to be updated if the solution is re-modelled or&nbsp;adjusted.</li>
-<li><strong>Post-Model <span class="caps">BO</span></strong> from <span class="caps">DS</span><ul>
-<li>for each transfer (if I were to apply one&nbsp;transfer)</li>
-<li>for each solution (if I were to apply <span class="caps">ALL</span> transfers in standard/expetited <span class="caps">N2N</span>&nbsp;Transfer)</li>
-</ul>
-</li>
-</ul>
-<h2>Email&nbsp;Notification</h2>
-<ol>
-<li>User share user generated&nbsp;event</li>
-<li>User share model&nbsp;solution</li>
-<li>Solution ready&nbsp;notification</li>
-<li>Solution forecast ready&nbsp;notification</li>
-<li>Feedback&nbsp;required</li>
-<li>Review <span class="caps">SKU</span>&nbsp;notification</li>
-<li>Weekly Activity Report&nbsp;Summary</li>
-</ol>
-<h2>User&nbsp;Preference</h2>
-<ol>
-<li>Content&nbsp;Preference</li>
-<li>Threshold Preference (Default / Custom <span class="caps">SKU</span>)
-  These custom preferences will determine the colour coding on the <span class="caps">PSI</span> table. Depending on the alert timeframe set by the user, the colour coding will be reflected as needed. customizable by different user id, custom threshold always has more priority compared to&nbsp;default</li>
-<li>Email&nbsp;Preference</li>
-</ol>
-<h2>Web&nbsp;Analytics</h2>
-<ul>
-<li>Google&nbsp;Analytics</li>
-<li>Microsoft&nbsp;Clarity</li>
-</ul>
-<h2><span class="caps">CICD</span></h2>
-<p>https://yogagii.github.io/cicd-pipeline.html</p>
-<h2><span class="caps">UI</span> Shared&nbsp;Component</h2>
-<p><span class="caps">UI</span> developer&nbsp;workflow:</p>
-<ol>
-<li>Check if the common repo already has a component that fits with the user&nbsp;story</li>
-<li>If nothing exists, they should add it, <span class="caps">PR</span>&nbsp;it</li>
-<li>Then in the reliability hub (<span class="caps">RH</span>) repo, import that shared component from the shared repo (once published in&nbsp;artifactory)</li>
-<li>If they want to alter an existing shared component, there should be a conversation with the Lead Developers on all squads, to ensure not to make a breaking change that affects another&nbsp;project</li>
-<li>If for some reason the story has something that shouldn&#8217;t be added to the shared lib, then add it directly into the <span class="caps">RH</span> repo (however this should be&nbsp;rare).</li>
-</ol>
+        <div id="pec-encrypted-content" style="display:none">feRZBYxNjUHx0o7DWSsrTA==;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;^</div>
+<div id="pec-decrypted-content">
+    <h4><i>This content is encrypted.</i></h4>
+</div>
+
+<form id="pec-decrypt-form">
+    <label for="pec-content-password">Password</label>
+    <input type="password" id="pec-content-password" placeholder="Password" />
+    <button type="button" id="pec-decrypt-content">Decrypt</button>
+</form>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, { iv: iv, padding: CryptoJS.pad.NoPadding });
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            var decrypt_document = function (event) {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+                event.preventDefault();
+                return false;
+            }
+            
+            decrypt_btn.addEventListener('click', decrypt_document);
+            decrypt_form.addEventListener('submit', decrypt_document);
+        });
+    })();
+</script>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -249,10 +249,12 @@ Planned Shipments (Shipment <span class="caps">ETA</span>) is calculated using <
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -267,7 +269,6 @@ Planned Shipments (Shipment <span class="caps">ETA</span>) is calculated using <
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

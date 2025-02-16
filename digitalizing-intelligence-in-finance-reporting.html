@@ -44,13 +44,13 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›Digitalizing Intelligence in Finance&nbsp;Reporting
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> › Digitalizing Intelligence in Finance&nbsp;Reporting
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" >Digitalizing Intelligence in Finance&nbsp;Reporting</h2>
+    <h2 class="post-title" > Digitalizing Intelligence in Finance&nbsp;Reporting</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
@@ -64,488 +64,109 @@
     </div>
     </header>
     <div class="post-entry">
-        <h2>Background</h2>
-<p>The Digital Platform is a web application that hosts finance reports, training, access management, and incident management. When accessing reports, the Digital Platform provides users a personalized experience. The increasing number of users interacting with reports online creates a huge data set that gives us millions of potential insights into user experience, personalization, and finance report improvements. <span class="caps">AI</span> technologies such as Market basket analysis and collaboration filtering methods are deployed to learn users’ behaviors and recommend the relevant finance reports in real-time. Based on the user’s persona, different personalized announcements, training, and finance reports are&nbsp;prioritized.</p>
-<p>The Digital Platform is an innovative solution for finance reports including a creative way to source the data, customizable machine learning algorithm to improve user experience. To source the data from different technologies servers, Google Analytics is deployed to track every users’ behavior. Machine learning Recommendation Engine is implemented to study the user’s behavior. Users are split into Cold and Hot User based on the view&nbsp;history.</p>
-<p>link:&nbsp;https://yogagii.github.io/recommend-system.html</p>
-<h2>Business&nbsp;Value</h2>
-<p>There are more than 600 finance users actively utilize the platform service every month. Because of the good customizable personal user experience, the utilization of the platform is to keep increasing. Every user uses 8.2 times of the Digital Platform every month. User&#8217;s experiences are improved and users spend more than 700 hours per month on the Digital Platform. The digital platform is providing users the customized personalized experience also keeping improve the financial reporting based on&nbsp;feedback.</p>
-<p><img alt="f1nance" src="img/f1nance19.png"></p>
-<h1>Dashboard</h1>
-<p><img alt="f1nance" src="img/f1nance1.png">
-<img alt="f1nance" src="img/f1nance3.png"></p>
-<h1>Tableau&nbsp;Report</h1>
-<p><img alt="f1nance" src="img/f1nance2.png">
-<img alt="c4model" src="img/tableauDiagram1.png">
-<img alt="c4model" src="img/tableauDiagram2.png">
-<img alt="c4model" src="img/tableauDiagram3.png"></p>
-<h2>Tableau <span class="caps">REST</span> <span class="caps">API</span>:</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th><span class="caps">API</span></th>
-<th>Params</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Get Users in Group</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/groups/group-id/users</td>
-<td>pageSize</td>
-</tr>
-<tr>
-<td>Get Users on Site</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/users</td>
-<td>pageSize, filter</td>
-</tr>
-<tr>
-<td>Query Views for Site</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/views</td>
-<td>includeUsageStatistics, fields, pageNumber</td>
-</tr>
-<tr>
-<td>Query Views for Workbook</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/workbooks/workbook-id/views</td>
-<td></td>
-</tr>
-<tr>
-<td>Query Workbook</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/workbooks/workbook-id</td>
-<td></td>
-</tr>
-<tr>
-<td>Query Workbook Permissions</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/workbooks/workbook-id/permissions</td>
-<td></td>
-</tr>
-<tr>
-<td>Query Workbooks for User</td>
-<td><span class="caps">GET</span> /api/api-version/sites/site-id/users/user-id/workbooks</td>
-<td>pageSize, pageNumber</td>
-</tr>
-</tbody>
-</table>
-<p>link: https://help.tableau.com/current/api/rest_api/en-us/<span class="caps">REST</span>/rest_api_ref.htm</p>
-<h2>Viz&nbsp;Option:</h2>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>hideTabs</td>
-<td>true</td>
-</tr>
-<tr>
-<td>&#8216;:toolbar&#8217;</td>
-<td>&#8216;top&#8217;</td>
-</tr>
-<tr>
-<td>&#8216;:showShareOptions&#8217;</td>
-<td>false</td>
-</tr>
-<tr>
-<td>&#8216;:render&#8217;</td>
-<td>false</td>
-</tr>
-<tr>
-<td>width</td>
-<td>&#8216;100%&#8217;</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Workbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">hideTabs</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;:toolbar&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;:showShareOptions&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;:linktarget&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;_self&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;:render&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;100%&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="p">};</span>
+        <div id="pec-encrypted-content" style="display:none">xDBXmZUeO0AdHp53LIwY+g==;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;^</div>
+<div id="pec-decrypted-content">
+    <h4><i>This content is encrypted.</i></h4>
+</div>
 
-<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">viz</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">viz</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">vizContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;vizContainer&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">viz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">tableau</span><span class="p">.</span><span class="nx">Viz</span><span class="p">(</span><span class="nx">iframeContent</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">option</span><span class="p">);</span>
-<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
+<form id="pec-decrypt-form">
+    <label for="pec-content-password">Password</label>
+    <input type="password" id="pec-content-password" placeholder="Password" />
+    <button type="button" id="pec-decrypt-content">Decrypt</button>
+</form>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">vizContainerWrapper</span><span class="p">}</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span>
-<span class="w">        </span><span class="nx">id</span><span class="o">=</span><span class="s1">&#39;vizContainer&#39;</span>
-<span class="w">        </span><span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">iframeContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">node</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}}</span>
-<span class="w">      </span><span class="o">/&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
 
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Workbook</span><span class="p">;</span>
-</code></pre></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
 
-<h2>Viz <span class="caps">API</span>:</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Properties</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Viz</td>
-<td>getWorkbook()</td>
-<td>Workbook</td>
-<td>One Workbook is supported per visualization.</td>
-</tr>
-<tr>
-<td>Workbook</td>
-<td>getActiveSheet()</td>
-<td>Sheet</td>
-<td>Gets the currently active sheet (the active tab)</td>
-</tr>
-<tr>
-<td>SheetInfo</td>
-<td>getName()</td>
-<td>string</td>
-<td>Gets the name of the sheet.</td>
-</tr>
-<tr>
-<td>SheetInfo</td>
-<td>getUrl()</td>
-<td>string</td>
-<td>Gets the <span class="caps">URL</span> for this sheet.</td>
-</tr>
-<tr>
-<td>SheetInfo</td>
-<td>getSheetType()</td>
-<td>SheetType</td>
-<td>Gets the type of the sheet. SheetType is an enum with the following values: <span class="caps">WORKSHEET</span>, <span class="caps">DASHBOARD</span> and <span class="caps">STORY</span>.</td>
-</tr>
-<tr>
-<td>Dashboard</td>
-<td>getWorksheets()</td>
-<td>Worksheet[]</td>
-<td>Gets the collection of worksheets contained in the dashboard.</td>
-</tr>
-<tr>
-<td>Worksheet</td>
-<td>getFiltersAsync()</td>
-<td>Promise<Filter[]></td>
-<td>Fetches the collection of filters used on the sheet.</td>
-</tr>
-<tr>
-<td>Workbook</td>
-<td>getParametersAsync()</td>
-<td>Promise<Parameter[]></td>
-<td>Fetches the parameters for this workbook.</td>
-</tr>
-<tr>
-<td>Workbook</td>
-<td>getCustomViewsAsync()</td>
-<td>Promise<CustomView[]></td>
-<td>Gets the collection of CustomView objects associated with the workbook.</td>
-</tr>
-<tr>
-<td>Filter</td>
-<td>getFieldName()</td>
-<td>string</td>
-<td>Gets the name of the field being filtered.</td>
-</tr>
-<tr>
-<td>CategoricalFilter</td>
-<td>getAppliedValues()</td>
-<td>DataValue[]</td>
-<td>Gets the collection of values that are currently set on the filter.</td>
-</tr>
-<tr>
-<td>Parameter</td>
-<td>getCurrentValue()</td>
-<td>DataValue</td>
-<td>The current value of the parameter.</td>
-</tr>
-</tbody>
-</table>
-<h2>Viz Event&nbsp;Classes:</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Event Class Passed in the Callback</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CUSTOM_VIEW_LOAD</td>
-<td>CustomViewEvent</td>
-<td>Raised when a custom view has finished loading.</td>
-</tr>
-<tr>
-<td>PARAMETER_VALUE_CHANGE</td>
-<td>ParameterEvent</td>
-<td>Raised when any parameter has changed state.</td>
-</tr>
-<tr>
-<td>FILTER_CHANGE</td>
-<td>FilterEvent</td>
-<td>Raised when any filter has changed state.</td>
-</tr>
-<tr>
-<td>TAB_SWITCH</td>
-<td>TabSwitchEvent</td>
-<td>Raised after the tab switched.</td>
-</tr>
-</tbody>
-</table>
-<p>link:&nbsp;https://help.tableau.com/v2018.2/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm</p>
-<h3>split&nbsp;report</h3>
-<p><img alt="f1nance" src="img/f1nance4.png">
-<img alt="f1nance" src="img/f1nance5.png"></p>
-<h3>interactive&nbsp;training</h3>
-<p><img alt="f1nance" src="img/f1nance6.png"></p>
-<h3>share customized&nbsp;view</h3>
-<p><img alt="f1nance" src="img/f1nance7.png"></p>
-<h1><span class="caps">SAP</span>&nbsp;Report</h1>
-<p><img alt="f1nance" src="img/f1nance8.png"></p>
-<h2>FIlter for&nbsp;report:</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>Store</th>
-<th>Function</th>
-<th>Action</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>get report filter list</td>
-<td>getReportStore</td>
-<td>getInputControls</td>
-<td>/</td>
-<td>viewContext</td>
-</tr>
-<tr>
-<td>get report filter detail</td>
-<td>getReportInputControlStore</td>
-<td>getInputControl</td>
-<td>/</td>
-<td>viewContext, inputControlId</td>
-</tr>
-<tr>
-<td>get report filter options</td>
-<td>getReportInputControlStore</td>
-<td>getLov</td>
-<td>/</td>
-<td>viewContext, inputControlId</td>
-</tr>
-<tr>
-<td>get report filter value</td>
-<td>getReportInputControlStore</td>
-<td>getSelection</td>
-<td>/</td>
-<td>viewContext, inputControlId</td>
-</tr>
-<tr>
-<td>set report filter value</td>
-<td>/</td>
-<td>/</td>
-<td>USER_SET_INPUT_CONTROL_SELECTION</td>
-<td>viewContext, inputControlId, selection</td>
-</tr>
-</tbody>
-</table>
-<h2>FIlter for&nbsp;document:</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>Store</th>
-<th>Function</th>
-<th>Action</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>get document filter list</td>
-<td>getDocumentStore</td>
-<td>getInputControls</td>
-<td>/</td>
-<td>viewContext</td>
-</tr>
-<tr>
-<td>get document filter detail</td>
-<td>getDocumentInputControlStore</td>
-<td>getInputControl</td>
-<td>/</td>
-<td>viewContext, inputControlId</td>
-</tr>
-<tr>
-<td>get document filter options</td>
-<td>getDocumentInputControlStore</td>
-<td>getLov</td>
-<td>/</td>
-<td>viewContext, inputControlId</td>
-</tr>
-<tr>
-<td>get document filter value</td>
-<td>getDocumentInputControlStore</td>
-<td>getSelection</td>
-<td>/</td>
-<td>viewContext, inputControlId</td>
-</tr>
-<tr>
-<td>set document filter value</td>
-<td>/</td>
-<td>/</td>
-<td>USER_SET_INPUT_CONTROL_SELECTION</td>
-<td>viewContext, inputControlId, selection</td>
-</tr>
-</tbody>
-</table>
-<h2><span class="caps">SAP</span> Prompt&nbsp;Function:</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>Store</th>
-<th>Function</th>
-<th>Action</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>activate prompt options</td>
-<td>/</td>
-<td>/</td>
-<td>GET_PARAMETER_LOV</td>
-<td>viewContext, parameterId, (prepare, data)</td>
-</tr>
-<tr>
-<td>get prompt value</td>
-<td>getDocumentStore</td>
-<td>getParameters</td>
-<td>/</td>
-<td>viewContext</td>
-</tr>
-<tr>
-<td>get prompt options</td>
-<td>getParameterStore</td>
-<td>getLov</td>
-<td>/</td>
-<td>viewContext, parameterId</td>
-</tr>
-<tr>
-<td>set prompt value</td>
-<td>/</td>
-<td>/</td>
-<td>USER_VALIDATE_PROMPTS</td>
-<td>viewContext, inputControlId, selection</td>
-</tr>
-</tbody>
-</table>
-<h2><span class="caps">SAP</span> Driller&nbsp;Function:</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>Store</th>
-<th>Function</th>
-<th>Action</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>get driller current list</td>
-<td>getReportStore</td>
-<td>getDrillerElements</td>
-<td>/</td>
-<td>viewContext</td>
-</tr>
-<tr>
-<td>get driller all list</td>
-<td>getReportStore</td>
-<td>getDrillerFilters</td>
-<td>/</td>
-<td>viewContext</td>
-</tr>
-<tr>
-<td>get driller detail</td>
-<td>getDrillerFilterStore</td>
-<td>getDrillerFilter</td>
-<td>/</td>
-<td>viewContext, filterId</td>
-</tr>
-</tbody>
-</table>
-<h2>Post&nbsp;Message:</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>Type</th>
-<th>Value</th>
-<th>Interval</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Code injection finished</td>
-<td>string</td>
-<td>&#8216;SAP_WEBI_INJECTED&#8217;</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Filter data</td>
-<td>object</td>
-<td>{ type: &#8216;filters-selection&#8217;, data: filters, docId: getWebiViewerArgs().id }</td>
-<td>true</td>
-</tr>
-<tr>
-<td>Tab data</td>
-<td>object</td>
-<td>{ type: &#8216;tab-selection&#8217;, data: tab, docId: getWebiViewerArgs().id }</td>
-<td>true</td>
-</tr>
-<tr>
-<td>Prompt data</td>
-<td>object</td>
-<td>{ type: &#8216;parameter-selection&#8217;, data: parameters, docId: getWebiViewerArgs().id }</td>
-<td>true</td>
-</tr>
-<tr>
-<td>Click link event</td>
-<td>object</td>
-<td>{ type: &#8216;document-url&#8217;, data: item.href, docId: getWebiViewerArgs().id }</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h2>Code&nbsp;Injection:</h2>
-<p><img alt="f1nance" src="img/f1nance9.png"></p>
-<h1>Design of other&nbsp;page</h1>
-<p><img alt="f1nance" src="img/f1nance14.png">
-<img alt="f1nance" src="img/f1nance10.png">
-<img alt="f1nance" src="img/f1nance11.png">
-<img alt="f1nance" src="img/f1nance12.png">
-<img alt="f1nance" src="img/f1nance13.png">
-<img alt="f1nance" src="img/f1nance15.png">
-<img alt="f1nance" src="img/f1nance16.png">
-<img alt="f1nance" src="img/f1nance17.png">
-<img alt="f1nance" src="img/f1nance18.png"></p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, { iv: iv, padding: CryptoJS.pad.NoPadding });
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            var decrypt_document = function (event) {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+                event.preventDefault();
+                return false;
+            }
+            
+            decrypt_btn.addEventListener('click', decrypt_document);
+            decrypt_form.addEventListener('submit', decrypt_document);
+        });
+    })();
+</script>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -630,10 +251,12 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -648,7 +271,6 @@
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

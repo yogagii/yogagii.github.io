@@ -210,6 +210,74 @@
 <span class="w">    </span><span class="p">})(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<hr>
+<h3>Monut&nbsp;blob</h3>
+<p>Linux&nbsp;挂载步骤如下：</p>
+<ol>
+<li>sudo su&nbsp;-</li>
+<li>
+<p>rpm -Uvh&nbsp;https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm</p>
+<p>报错：rpm: unknown option
+<code>wget https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm</code>
+<code>rpm -Uvh packages-microsoft-prod.rpm</code></p>
+</li>
+<li>
+<p>yum install&nbsp;blobfuse2</p>
+</li>
+<li>blobfuse2&nbsp;&#8212;version</li>
+<li>cd /app&nbsp;切回到自己权限再挂载，否则无法查看挂载后的文件夹</li>
+<li>mkdir&nbsp;landing-blob</li>
+<li>vi&nbsp;blobfuse-landing-blob.yaml</li>
+<li>
+<p>blobfuse2 mount ./mnt/landing-blob &#8212;config-file=./blobfuse-landing-blob-qa.yaml&nbsp;&#8212;disable-writeback-cache=true</p>
+<p>有缓存的情况下，相同文件名在blob里更新后vm上不会更新</p>
+</li>
+<li>
+<p>验证文件同步</p>
+</li>
+</ol>
+<p>使用blobfuse2将Azure&nbsp;Blob挂载到VM上时，VM重启后挂载确实可能会失效。这是因为blobfuse2的挂载通常是临时的，并不会在系统重启后自动重新挂载。采取以下几种方法来保持挂载的持久性：</p>
+<ol>
+<li><strong>使用fstab文件</strong>：你可以将blobfuse2的挂载信息添加到Linux系统的<code>/etc/fstab</code>文件中，这样在每次启动时，系统会自动尝试挂载指定的存储。</li>
+<li><strong>使用启动脚本</strong>：创建一个启动脚本来自动挂载blobfuse2，并将该脚本添加到系统的启动过程中。这样，每次VM启动时，都会自动执行挂载操作。</li>
+</ol>
+<hr>
+<h3>Proxy</h3>
+<blockquote>
+<p>https://${storageAccount}.privatelink.${sasDomain}/${blobContainer}/${destination}/${fileType}/${encodeURIComponent(encodedFilename)}</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">azure</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getConfig</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sasToken</span><span class="p">,</span><span class="w"> </span><span class="nx">sasDomain</span><span class="p">,</span><span class="w"> </span><span class="nx">blobContainer</span><span class="p">,</span><span class="w"> </span><span class="nx">storageAccount</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">azure</span><span class="p">.</span><span class="nx">cpBlob</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">azureHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://</span><span class="si">${</span><span class="nx">storageAccount</span><span class="si">}</span><span class="sb">.privatelink.</span><span class="si">${</span><span class="nx">sasDomain</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">targetPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`/</span><span class="si">${</span><span class="nx">blobContainer</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">destination</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">fileType</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">encodedFilename</span>
+<span class="p">)</span><span class="si">}</span><span class="sb">?</span><span class="si">${</span><span class="nx">sasToken</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+
+<span class="nx">proxy</span><span class="p">(</span><span class="nx">azureHost</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">proxyReqPathResolver</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">targetPath</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">proxyReqOptDecorator</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">proxyReqOpts</span><span class="o">:</span><span class="w"> </span><span class="nx">ExtendedRequestOptions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">proxyReqOpts</span><span class="p">.</span><span class="nx">rejectUnauthorized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">proxyReqOpts</span><span class="p">.</span><span class="nx">headers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="ow">delete</span><span class="w"> </span><span class="nx">proxyReqOpts</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;authorization&quot;</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">proxyReqOpts</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">})(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">);</span>
+</code></pre></div>
+
+<p>下载图片</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span>--url<span class="w"> </span><span class="s1">&#39;https://xxx.privatelink.blob.core.xxx.cn/blob/xxx/test.jpg?sasToken&#39;</span><span class="w">  </span>-k<span class="w"> </span>--output<span class="w"> </span>/home/test.jpg
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">blobUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blobClient</span><span class="p">.</span><span class="na">getBlobUrl</span><span class="p">();</span>
+<span class="c1">// https://&lt;your-account-name&gt;.blob.core.windows.net/&lt;your-container-name&gt;/&lt;your-blob-name&gt;</span>
+<span class="c1">// SAS 令牌访问 Blob</span>
+<span class="n">String</span><span class="w"> </span><span class="n">sasToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;?sv=&lt;your-sas-token&gt;&quot;</span><span class="p">;</span>
+<span class="n">String</span><span class="w"> </span><span class="n">fullBlobUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blobUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sasToken</span><span class="p">;</span>
+</code></pre></div>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -294,10 +362,12 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -312,7 +382,6 @@
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

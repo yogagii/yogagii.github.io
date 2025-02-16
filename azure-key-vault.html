@@ -1,0 +1,418 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Azure Key&nbsp;Vault
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Azure Key&nbsp;Vault</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2025-02-07T00:00:00+08:00"> 
+            <a href="/archive/2025/ 2/index.html">五 07 二月 2025 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/microsoft.html">Microsoft</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h3><span class="caps">AZ</span>-Cli</h3>
+<h4>Secret</h4>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login<span class="w"> </span>--use-device-code
+<span class="c1"># https://microsoft.com/deviceloginchina</span>
+
+<span class="c1"># 需要 Key Vault Reader</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span>list<span class="w"> </span>--vault-name<span class="w"> </span>xxx
+
+<span class="c1"># 需要 Key Vault Secrets Officer</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span>show<span class="w"> </span>--vault-name<span class="w"> </span>xxx<span class="w"> </span>--name<span class="w"> </span>Test
+<span class="c1"># {</span>
+<span class="c1">#   &quot;attributes&quot;: {</span>
+<span class="c1">#     &quot;created&quot;: &quot;2024-09-29T09:57:21+00:00&quot;,</span>
+<span class="c1">#     &quot;enabled&quot;: true,</span>
+<span class="c1">#     &quot;expires&quot;: &quot;2099-09-29T09:56:45+00:00&quot;,</span>
+<span class="c1">#     &quot;notBefore&quot;: null,</span>
+<span class="c1">#     &quot;recoveryLevel&quot;: &quot;Recoverable&quot;,</span>
+<span class="c1">#     &quot;updated&quot;: &quot;2024-09-29T09:57:21+00:00&quot;</span>
+<span class="c1">#   },</span>
+<span class="c1">#   &quot;contentType&quot;: null,</span>
+<span class="c1">#   &quot;id&quot;: &quot;https://xxx.vault.azure.cn/secrets/Test/***&quot;,</span>
+<span class="c1">#   &quot;kid&quot;: null,</span>
+<span class="c1">#   &quot;managed&quot;: null,</span>
+<span class="c1">#   &quot;name&quot;: &quot;Test&quot;,</span>
+<span class="c1">#   &quot;tags&quot;: {},</span>
+<span class="c1">#   &quot;value&quot;: &quot;Test&quot;</span>
+<span class="c1"># }</span>
+
+<span class="c1"># 创建</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--name<span class="w"> </span>Test<span class="w"> </span>--vault-name<span class="w"> </span>xxx<span class="w"> </span>--value<span class="w"> </span>Test<span class="w"> </span>--expires<span class="w"> </span><span class="m">2025</span>-11-01
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--name<span class="w"> </span>rsa-private-key-2048-pkcs8<span class="w"> </span>--vault-name<span class="w"> </span>xxx<span class="w"> </span>--file<span class="w"> </span><span class="s2">&quot;rsa_private_key_2048_pkcs8.pem&quot;</span><span class="w"> </span>--expires<span class="w"> </span><span class="m">2025</span>-11-01
+
+<span class="c1"># delete</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span>delete<span class="w"> </span>--name<span class="w"> </span>rsa-private-key-2048-pkcs8<span class="w"> </span>--vault-name<span class="w"> </span>xxx<span class="w"> </span>
+<span class="c1"># Secret rsa-private-key-2048-pkcs8 is currently in a deleted but recoverable state, and its name cannot be reused; in this state, the secret can only be recovered or purged.</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span>recover<span class="w"> </span>--name<span class="w"> </span>rsa-private-key-2048-pkcs8<span class="w"> </span>--vault-name<span class="w"> </span>xxx
+
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span>show<span class="w"> </span>--vault-name<span class="w"> </span>xxx<span class="w"> </span>--name<span class="w"> </span>rsa-private-key-2048-pkcs8
+</code></pre></div>
+
+<h4>Key</h4>
+<p>私钥应该存储在Azure Key&nbsp;Vault中以保护其安全，公钥可以安全地公开，因为它不用于解密或签名，而是用来加密数据或验证签名。将私钥和公钥分开存储可以减少安全风险。</p>
+<p>https://learn.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>import<span class="w"> </span>--vault-name<span class="w"> </span><span class="s2">&quot;ContosoKeyVault&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;rsa-public-key-2048&quot;</span><span class="w"> </span>--pem-file<span class="w"> </span><span class="s2">&quot;rsa_public_key_2048.pem&quot;</span>
+
+az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>list<span class="w"> </span>--vault-name<span class="w"> </span>xxx
+az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>import<span class="w"> </span>--vault-name<span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;rsa-private-key-2048-pkcs8&quot;</span><span class="w"> </span>--pem-file<span class="w"> </span><span class="s2">&quot;rsa_private_key_2048_pkcs8.pem&quot;</span><span class="w">  </span>--expires<span class="w"> </span><span class="m">2025</span>-11-01
+az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>import<span class="w"> </span>--vault-name<span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;rsa-private-key-2048-pkcs8-2&quot;</span><span class="w"> </span>--pem-file<span class="w"> </span><span class="s2">&quot;rsa_private_key_2048_pkcs8.pem&quot;</span><span class="w">  </span>--expires<span class="w"> </span><span class="m">2025</span>-11-01<span class="w"> </span>--exportable
+az<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>my-private-key<span class="w"> </span>--from-file<span class="o">=</span>rsa_private_key_2048_pkcs8.pem
+
+az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>show<span class="w"> </span>--vault-name<span class="w"> </span>xxx<span class="w"> </span>--name<span class="w"> </span>rsa-private-key-2048-pkcs8
+
+az<span class="w"> </span>keyvault<span class="w"> </span>set-policy<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="w"> </span>--secret-permissions<span class="w"> </span>get
+
+<span class="c1"># 下载公钥</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>download<span class="w"> </span>--vault-name<span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;rsa-private-key-2048-pkcs8&quot;</span><span class="w"> </span>--file<span class="w"> </span><span class="s2">&quot;public_key.pem&quot;</span>
+<span class="c1"># 如果私钥可导出，则下载私钥，默认情况下不允许导出私钥，但可以导出公钥</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>key<span class="w"> </span>download<span class="w"> </span>--vault-name<span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;rsa-private-key-2048-pkcs8&quot;</span><span class="w"> </span>--file<span class="w"> </span><span class="s2">&quot;private_key.pem&quot;</span>
+</code></pre></div>
+
+<p>当您使用 <code>az keyvault key import</code> 命令将私钥导入到 Azure Key Vault 时，Key Vault 会存储整个密钥对，包括私钥和公钥。这是因为 Key Vault 设计为管理整个密钥生命周期，包括使用密钥进行加密、解密、签名和验证等操作。因此，即使您只提供了私钥，Key Vault&nbsp;也会生成相应的公钥。</p>
+<p>如果您在使用AKS 并通过 Helm 将密钥挂载到虚拟机 (<span class="caps">VM</span>) 上时，发现挂载的信息变成了公钥，这可能是因为 Key Vault&nbsp;默认提供了公钥</p>
+<h3>Mount into&nbsp;vm</h3>
+<p>service1-deployment.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.mountPath</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">              </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">          </span><span class="nt">csi</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secrets-store.csi.k8s.io</span>
+<span class="w">            </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">volumeAttributes</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">secretProviderClass</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.name</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w"> </span>
+</code></pre></div>
+
+<p>secret-provider-class.yml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secrets-store.csi.x-k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SecretProviderClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.env</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure</span>
+<span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cloudName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AzureChinaCloud</span>
+<span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.tenantId</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">useVMManagedIdentity</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">userAssignedIdentityID</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.userAssignedIdentityID</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">keyvaultName</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.secretProviderClass.keyvaultName</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">objects</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">array:</span>
+<span class="w">        </span><span class="no">- |</span>
+<span class="w">          </span><span class="no">objectName: SECRET1</span>
+<span class="w">          </span><span class="no">objectType: secret</span>
+<span class="w">        </span><span class="no">- |</span>
+<span class="w">          </span><span class="no">objectName: SECRET2</span>
+<span class="w">          </span><span class="no">objectType: secret</span>
+</code></pre></div>
+
+<p>验证</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>services<span class="w"> </span>--all-namespaces
+
+kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>service/service1<span class="w"> </span>-n<span class="w"> </span>dev<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>/mnt/secrets
+kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>service/service1<span class="w"> </span>-n<span class="w"> </span>dev<span class="w"> </span>--<span class="w"> </span>cat<span class="w"> </span>/mnt/secrets/SECRET1
+</code></pre></div>
+
+<h3>Read Secret with&nbsp;Java</h3>
+<p>https://docs.azure.cn/zh-cn/key-vault/secrets/quick-create-java?tabs=azure-cli</p>
+<p>https://learn.microsoft.com/en-us/java/api/overview/azure/identity-readme?view=azure-java-stable#authenticating-with-defaultazurecredential</p>
+<ol>
+<li><span class="caps">VM</span> → Identity → system assigned → status:&nbsp;On</li>
+<li>Key vaults → Access control → add role assignment → members → Managed Identity → <span class="caps">VM</span></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getSecret</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;apikey&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">apikey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">keyVaultUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://xxx.vault.azure.cn/&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">ManagedIdentityCredential</span><span class="w"> </span><span class="n">defaultCredential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ManagedIdentityCredentialBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">HttpClient</span><span class="w"> </span><span class="n">httpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NettyAsyncHttpClientBuilder</span><span class="p">()</span>
+<span class="w">          </span><span class="p">.</span><span class="na">responseTimeout</span><span class="p">(</span><span class="n">Duration</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="mi">120</span><span class="p">))</span>
+<span class="w">          </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">SecretClient</span><span class="w"> </span><span class="n">secretClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SecretClientBuilder</span><span class="p">()</span>
+<span class="w">          </span><span class="p">.</span><span class="na">vaultUrl</span><span class="p">(</span><span class="n">keyVaultUri</span><span class="p">)</span>
+<span class="w">          </span><span class="p">.</span><span class="na">credential</span><span class="p">(</span><span class="n">defaultCredential</span><span class="p">)</span>
+<span class="w">          </span><span class="p">.</span><span class="na">httpClient</span><span class="p">(</span><span class="n">httpClient</span><span class="p">)</span>
+<span class="w">          </span><span class="p">.</span><span class="na">buildClient</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">KeyVaultSecret</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secretClient</span><span class="p">.</span><span class="na">getSecret</span><span class="p">(</span><span class="s">&quot;SECRET1&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">apikeyValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secret</span><span class="p">.</span><span class="na">getValue</span><span class="p">();</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;apikeyValue: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">apikeyValue</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ResultGenerator</span><span class="p">.</span><span class="na">success</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Read Secret with&nbsp;Python</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">azure.identity</span> <span class="kn">import</span> <span class="n">ManagedIdentityCredential</span>
+<span class="kn">from</span> <span class="nn">azure.keyvault.secrets</span> <span class="kn">import</span> <span class="n">SecretClient</span>
+
+<span class="c1"># 设置存储账户和Key Vault的名称</span>
+<span class="n">storage_account</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">key_vault_name</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
+<span class="n">secret_name</span> <span class="o">=</span> <span class="n">storage_account</span>
+
+<span class="c1"># 构建Key Vault的URL</span>
+<span class="n">key_vault_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">key_vault_name</span><span class="si">}</span><span class="s2">.vault.azure.cn/&quot;</span>
+
+<span class="c1"># 使用托管标识获取凭据</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="n">ManagedIdentityCredential</span><span class="p">(</span><span class="n">authority</span><span class="o">=</span><span class="s2">&quot;https://login.chinacloudapi.cn&quot;</span><span class="p">)</span>
+
+<span class="c1"># 创建SecretClient</span>
+<span class="n">secret_client</span> <span class="o">=</span> <span class="n">SecretClient</span><span class="p">(</span><span class="n">vault_url</span><span class="o">=</span><span class="n">key_vault_url</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+
+<span class="c1"># 获取秘密值</span>
+<span class="n">secret</span> <span class="o">=</span> <span class="n">secret_client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="n">secret_name</span><span class="p">)</span>
+<span class="n">secret_value</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">value</span>
+
+<span class="c1"># 打印秘密值</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Secret Value: </span><span class="si">{</span><span class="n">secret_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "azure-key-vault.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

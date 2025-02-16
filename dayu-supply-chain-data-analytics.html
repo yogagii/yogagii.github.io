@@ -44,13 +44,13 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›<span class="caps">DAYU</span> &#8212; Supply Chain Data&nbsp;Analytics
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> › <span class="caps">DAYU</span> &#8212; Supply Chain Data&nbsp;Analytics
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" ><span class="caps">DAYU</span> &#8212; Supply Chain Data&nbsp;Analytics</h2>
+    <h2 class="post-title" > <span class="caps">DAYU</span> &#8212; Supply Chain Data&nbsp;Analytics</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
@@ -62,138 +62,109 @@
     </div>
     </header>
     <div class="post-entry">
-        <h3><span class="caps">SCAN</span></h3>
-<p><span class="caps">SCAN</span> stands for Supply Chain ANalytics. <span class="caps">SCAN</span> is an analytics program within Janssen Supply Chain. Our aim is to accelerate value delivery by providing analytics as a&nbsp;service. </p>
-<ul>
-<li>Capability building (data and analytics&nbsp;training)</li>
-<li>Democratized&nbsp;data</li>
-<li>Dashboarding <span class="amp">&amp;</span> visualisation&nbsp;support</li>
-<li>Advanced&nbsp;analytics</li>
-</ul>
-<p>Objectives:</p>
-<ul>
-<li>Enable data value for business&nbsp;insight</li>
-<li>Data governance: Identify data ownership, establish data governance rules and process for data creation, using
-and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
-<li>Data protection: Meet the requirement from legal/quality/Cyber security of data&nbsp;protection</li>
-<li><span class="caps">FAIR</span> principle<ul>
-<li>Build up data catalog to make sure data can be findable, and easier to&nbsp;understand</li>
-<li>Data can be accessible by&nbsp;user,</li>
-<li>build up integration function to make sure data Interoperable by other&nbsp;applications.</li>
-<li>Store, combine and clean data to make the data reusable by user and other&nbsp;applications. </li>
-</ul>
-</li>
-</ul>
-<h3><span class="caps">CDL</span></h3>
-<p><span class="caps">EDW</span> 企业数据仓库: The primary function of the Enterprise Data Warehouse, is to provide a centralized data store of enterprise-level&nbsp;data.</p>
-<p>The Common Data Layer (<span class="caps">CDL</span>) is a repository that centralizes the Supply Chain Data.This common layer can support all digital solutions across the business. The <span class="caps">CDL</span> ingests and publishes near real-time data from supply chain systems globally. The Level 0 layer of the <span class="caps">CDL</span> is a direct reflection of the data as it is stored in the upstream source&nbsp;systems.</p>
-<p><span class="caps">CDL</span> defined Databricks as the tool to use for data consumption. A secure access to <span class="caps">CDL</span> is given via an Azure Active Directory (<span class="caps">AD</span>) credential&nbsp;passthrough.</p>
-<h2><span class="caps">DAYU</span></h2>
-<p>MedTech China <span class="caps">SC</span> data foundation project to store and combine data from multiple sources as well as build up data catalog to make it findable, reusable and easier to&nbsp;understand.</p>
-<p>数据来源：</p>
-<ul>
-<li><span class="caps">SAP</span>&nbsp;(WinShuttle)</li>
-<li><span class="caps">IMDB</span> (<span class="caps">API</span> /&nbsp;Parquet)</li>
-<li>Manual report (Azure Storage&nbsp;Explorer)</li>
-</ul>
-<h2>Data&nbsp;flow</h2>
-<p><img alt="dataflow" src="img/dayu1.png"></p>
-<ul>
-<li>
-<p>Raw Zone: 数据通过source源接入湖raw层，原始数据格式（excel，<span class="caps">CSV</span>，json，txt），处理完后移入Archive</p>
-</li>
-<li>
-<p>Archive Zone:&nbsp;历史所有全量文件，按时间戳分文件夹，原始数据格式</p>
-</li>
-<li>
-<p>Prepared Zone:&nbsp;数据清洗和规范化，Parquet格式，STG保留全部增量（增加insert_time字段），CSTG根据不同更新方式（增量/容错性增量/全量更新）清洗得到全量数据</p>
-</li>
-<li>
-<p>Curated Zone:&nbsp;数据逻辑处理</p>
-<ul>
-<li>
-<p><span class="caps">DWD</span>:&nbsp;数据细节层，采用雪花模型，维度表没有冗余</p>
-<ul>
-<li>dw_:&nbsp;事实表</li>
-<li>dim_:&nbsp;维度表(主数据)</li>
-</ul>
-</li>
-<li>
-<p><span class="caps">DWS</span>:&nbsp;数据服务层，星型模型，维度表可有冗余，对通用业务逻辑进行统一处理，按年度、季度进行预汇总</p>
-</li>
-<li>
-<p><span class="caps">ADS</span>:&nbsp;数据应用层，按需汇总成报表所需结果，可适当采用大宽表</p>
-<ul>
-<li>dm_:&nbsp;聚合为摸个主题的宽表</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>雪花模型：连接多，冗余低，性能低 <br/>星型模型：连接少，冗余高，性能高</p>
-</blockquote>
-<h2>Azure Blob&nbsp;Storage</h2>
-<p>Azure Blob Storage 是 Microsoft 提供的适用于云的对象存储解决方案。 Blob&nbsp;存储最适合存储巨量的非结构化数据。</p>
-<p>Azure Data Lake Storage Gen2 在 Blob 存储的基础上构建，提供了分层文件系统以及 Blob&nbsp;存储的优势，并通过以下方式增强了性能、管理和安全性：</p>
-<ul>
-<li>分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。</li>
-<li>管理更为容易，可以通过目录和子目录来组织和操作文件。</li>
-<li>可以在目录或单个文件上定义 <span class="caps">POSIX</span>&nbsp;权限。</li>
-</ul>
-<p>Azure storage offers different access&nbsp;tiers:</p>
-<ul>
-<li>Hot tier:&nbsp;适用于存储经常访问或修改的数据的联机层。存储成本最高，但访问成本最低。</li>
-<li>Cool tier: 适用于存储不经常访问或修改的数据的联机层。至少存储 30&nbsp;天。存储成本较低，访问成本较高。</li>
-<li>Archive tier: 适用于存储极少访问且延迟要求不严格的数据的脱机层。应至少存储 180&nbsp;天。</li>
-</ul>
-<p>Lifecycle management&nbsp;policy:</p>
-<p>Azure 存储生命周期管理可提供基于规则的策略，用于将 blob&nbsp;数据转移到最适合的访问层，或在数据生命周期结束时使数据过期。</p>
-<p>Storage account -&gt; Lifecycle management -&gt; Add a&nbsp;rule</p>
-<h2>Data&nbsp;Modeling</h2>
-<ul>
-<li><span class="caps">DCL</span> (Data Control Language): 数据控制语句，用于控制访问级别，grant /&nbsp;deny</li>
-<li><span class="caps">DDL</span> (Data Definition Languages): 建表语句 create / drop / alter<ul>
-<li><span class="caps">SCHEMA</span>: raw/archive/prepared 以数据源命名，curated&nbsp;以主题域命名</li>
-<li><span class="caps">TABLE</span></li>
-</ul>
-</li>
-<li><span class="caps">DML</span> (Data Manipulation Language): 数据处理语句，添加、删除、更新和查询数据库记录 insert / delete / update /&nbsp;select</li>
-</ul>
-<h2>Data&nbsp;Factory</h2>
-<h3>作业编排</h3>
-<ul>
-<li>第一层&nbsp;GrandParent：最高级别，触发业务流程，按业务分组</li>
-<li>第二层&nbsp;Parent：次高级别，支持和管理子活动的并行执行</li>
-<li>第三层&nbsp;Child：配合Parent的功能层，获取在父级别需要执行的对象，然后进行执行任务，若存在依赖检查依赖状态</li>
-<li>第四层&nbsp;Worker：实现具体抽取、转换、加载的任务层，该层根据实际的需要进行设计和开发，并用作并行调度</li>
-</ul>
-<h3>日志输出</h3>
-<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">dayu_ActivityStart</span><span class="w"> </span>
-<span class="o">@</span><span class="n">BatchRunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineCode</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityCode</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-<span class="k">as</span>
-<span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">BatchRunId</span><span class="p">,</span><span class="w"> </span><span class="n">RunId</span><span class="p">,</span><span class="w"> </span><span class="n">PipelineCode</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityCode</span><span class="p">,</span><span class="w"> </span><span class="n">StartTime</span><span class="p">)</span><span class="w"> </span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">BatchRunId</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineCode</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityCode</span><span class="p">,</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">getUTCdate</span><span class="p">()))</span>
+        <div id="pec-encrypted-content" style="display:none">5EmuJEHiomjc5S6jEY0+xg==;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;^</div>
+<div id="pec-decrypted-content">
+    <h4><i>This content is encrypted.</i></h4>
+</div>
 
-<span class="k">exec</span><span class="w"> </span><span class="n">dayu_ActivityStart</span><span class="w"> </span><span class="s1">&#39;test01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ActivityName&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test03&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DIM_Table&#39;</span>
+<form id="pec-decrypt-form">
+    <label for="pec-content-password">Password</label>
+    <input type="password" id="pec-content-password" placeholder="Password" />
+    <button type="button" id="pec-decrypt-content">Decrypt</button>
+</form>
 
-<span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">dayu_ActivityLog</span><span class="w"> </span>
-<span class="o">@</span><span class="n">BatchRunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="k">Result</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityOutput</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="k">max</span><span class="p">)</span>
-<span class="k">as</span>
-<span class="k">update</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">ADF_ActivityLogs</span><span class="p">]</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">UPDLOCK</span><span class="p">)</span>
-<span class="k">set</span><span class="w"> </span><span class="n">EndTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="n">HOUR</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">getUTCdate</span><span class="p">()),</span><span class="w"> </span><span class="n">ActivityStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="k">Result</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">ActivityOutput</span>
-<span class="k">where</span><span class="w"> </span><span class="n">BatchRunId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">BatchRunId</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">RunId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">RunId</span>
 
-<span class="k">exec</span><span class="w"> </span><span class="n">dayu_ActivityLog</span><span class="w"> </span><span class="s1">&#39;test01&#39;</span><span class="p">,</span><span class="s1">&#39;test03&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Success&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;exec Success&#39;</span>
-</code></pre></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
 
-<p>ActivityOutput(Success):&nbsp;@string(activity(&#8216;xxx&#8217;).output)</p>
-<p>ActivityOutput(Failed):&nbsp;@activity(&#8216;xxx&#8217;).output.errors[0].Message</p>
-<h2><span class="caps">SQL</span>&nbsp;Server</h2>
-<p>将 <span class="caps">DIM</span>/<span class="caps">DM</span> 层数据导入 <span class="caps">SQL</span> Server 供 Power <span class="caps">BI</span>&nbsp;消费可降低成本。</p>
-<p>A low cost option would be to create an Azure Synapse Analytics workspace and use a serverless <span class="caps">SQL</span> pool to query the delta content. A serverless pool exposes itself as an Azure <span class="caps">SQL</span> <span class="caps">DB</span>. Since this is a serverless instance there is no provisioning costs. You&#8217;d only pay for the consumption (e.g. the actual&nbsp;query).</p>
-<p>若要直接读取 Delta table 需要 Set Up the <span class="caps">API</span> Server，会使用到 databricks 的cluster&nbsp;计算资源，成本更高。</p>
-<p>https://www.cdata.com/kb/tech/databricks-odata-nodejs.rst</p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, { iv: iv, padding: CryptoJS.pad.NoPadding });
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            var decrypt_document = function (event) {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+                event.preventDefault();
+                return false;
+            }
+            
+            decrypt_btn.addEventListener('click', decrypt_document);
+            decrypt_form.addEventListener('submit', decrypt_document);
+        });
+    })();
+</script>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -278,10 +249,12 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -296,7 +269,6 @@ and sharing internally <span class="amp">&amp;</span>&nbsp;externally.</li>
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

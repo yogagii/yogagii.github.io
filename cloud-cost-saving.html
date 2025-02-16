@@ -1,0 +1,322 @@
+<!--
+ * @Author: your name
+ * @Date: 2013-11-02 09:09:18
+ * @LastEditTime : 2019-12-29 22:05:43
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /YogaBlog/pelican-themes/Responsive-Pelican/templates/article.html
+ -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Frontend Learning Book</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/style.css' type="text/css" media="all" />
+    <link rel="stylesheet" id="responsive-style-css"  href='/theme/css/highlight.css' type="text/css" media="all" />
+    
+</head>
+
+<body id="index" class="blog">
+<div id="container" class="hfeed">
+    <header id="header" >
+        <div id="logo">
+          <h1>
+            <!-- <img src="/theme/image/default-logo.png" width="300" height="100" alt="小铱的故事" /> -->
+            Frontend Learning Book
+          </h1>
+        </div> <!-- /#logo-->
+        <nav id="menu" class="main-nav"><ul class="menu">
+            <li  class="active"><a href="/category/javascript.html">Javascript</a></li>
+            <li  class="active"><a href="/category/react.html">React</a></li>
+            <li  class="active"><a href="/category/ios.html">IOS</a></li>
+            <li  class="active"><a href="/category/frontend.html">Frontend</a></li>
+            <li  class="active"><a href="/category/analytics.html">Analytics</a></li>
+            <li  class="active"><a href="/category/programming.html">Programming</a></li>
+            <li  class="active"><a href="/category/project.html">Project</a></li>
+            <li  class="active"><a href="/category/backend.html">Backend</a></li>
+            <li  class="active"><a href="/category/angular.html">Angular</a></li>
+            <li  class="active"><a href="/category/cloud.html">Cloud</a></li>
+
+        </ul></nav><!-- /#menu -->
+    </header>
+    <section id="wrapper" class="clearfix">
+        <section id="content" class="grid col-620" >
+                <section class="breadcrumb-list">
+<a href="">Blog</a> ›<a href="category/cloud.html">Cloud</a> ›Cloud Cost&nbsp;Saving
+                </section>
+
+
+<section id="post" class="post hentry">
+    <header>
+    <h2 class="post-title" >Cloud Cost&nbsp;Saving</h2>
+    
+    <div class="post-meta">
+        <span class="meta-prep">Post in</span>
+        <abbr class="date" title="2025-02-13T00:00:00+08:00"> 
+            <a href="/archive/2025/ 2/index.html">四 13 二月 2025 </a>
+        </abbr>
+        <span class="meta-prep"> |Tags</span>
+                <a href="/tag/azure.html">Azure</a>
+        <!-- TOBE COMMENTS -->
+    </div>
+    </header>
+    <div class="post-entry">
+        <h2><span class="caps">AKS</span></h2>
+<p>以下是降低Azure服务成本的四种方法的比较：</p>
+<p><strong>1. 使用 Azure Kubernetes 服务 (<span class="caps">AKS</span>)&nbsp;中的群集自动缩放程序</strong></p>
+<p>Azure&nbsp;AKS是有autoscaling能力的，它可以监测node上所有pod的综合负载，在超过阈值时自动减少node数量或增加数量，min/max的node数量可以指定，autoscaling有默认规则，也可以进一步定制化。</p>
+<p>https://learn.microsoft.com/zh-cn/azure/aks/cluster-autoscaler?tabs=azure-cli</p>
+<ul>
+<li><strong>原理</strong>：AKS的集群自动缩放程序可以根据集群的资源需求自动调整节点池中的节点数量。当工作负载增加时，自动缩放程序会添加更多节点；当工作负载减少时，它会移除多余的节点，从而优化资源使用并降低成本。</li>
+<li><strong>优点</strong>：无需手动干预，能够根据实时需求动态调整资源，确保在满足应用性能要求的同时，避免资源浪费。</li>
+<li><strong>缺点</strong>：需要一定的时间来响应资源需求的变化，可能会存在短暂的资源不足或过剩的情况。</li>
+</ul>
+<p><strong>2. 使用 Kubernetes Event-driven Autoscaling (<span class="caps">KEDA</span>)&nbsp;加载项简化的应用程序自动缩放</strong></p>
+<p>AKS支持Kubernetes Event-driven Autoscaling (<span class="caps">KEDA</span>) 方式来使用external event driven的方式来支持application&nbsp;scale-to-zero。但使用KEDA的方式相对复杂</p>
+<p>https://learn.microsoft.com/zh-cn/azure/aks/keda-about</p>
+<ul>
+<li><strong>原理</strong>：KEDA是一种开源组件，可以根据事件数量动态缩放工作负载。它通过扩展Kubernetes的自定义资源定义（<span class="caps">CRD</span>），即_ScaledObject_，来描述应用程序应如何根据特定流量进行缩放。</li>
+<li><strong>优点</strong>：提供了更细粒度的控制，能够根据实际的事件流量进行缩放，避免了基于资源利用率的传统缩放方法可能导致的过度配置。此外，KEDA支持丰富的Azure&nbsp;KEDA缩放器，可以与多种事件源集成，实现更灵活的缩放策略。</li>
+<li><strong>缺点</strong>：需要与Kubernetes的水平Pod自动缩放器（<span class="caps">HPA</span>）配合使用，且在某些情况下，可能会因为事件源的复杂性而导致配置和管理较为复杂。</li>
+</ul>
+<p><strong>3. 定时启动和停止 Azure Kubernetes 服务 (<span class="caps">AKS</span>)&nbsp;节点池</strong></p>
+<p>shutdown AKS里的node pool，通过CLI 命令行可以把AKS里的node pool关闭（system pool不能关闭），这样node&nbsp;pool就降为0了</p>
+<p>https://learn.microsoft.com/zh-cn/azure/aks/start-stop-nodepools</p>
+<ul>
+<li><strong>原理</strong>：通过设置定时任务，在业务高峰期启动节点池，在业务低谷期停止节点池。这样可以在不需要资源时节省成本，同时在需要时快速恢复服务。</li>
+<li><strong>优点</strong>：能够根据已知的业务周期性需求，精确控制资源的使用时间，避免在非工作时间支付不必要的费用。</li>
+<li><strong>缺点</strong>：需要预先知道业务的高峰期和低谷期，并且在业务需求突然变化时，可能无法及时调整。</li>
+</ul>
+<p><strong>4. 定时停止和启动 Azure Kubernetes 服务 (<span class="caps">AKS</span>)&nbsp;群集</strong></p>
+<p>https://learn.microsoft.com/zh-cn/azure/aks/start-stop-cluster?tabs=azure-cli</p>
+<ul>
+<li><strong>原理</strong>：与定时启动和停止节点池类似，但操作对象是整个AKS集群。在不需要使用集群时，将其完全停止，以节省所有相关资源的成本；在需要时再启动集群。</li>
+<li><strong>优点</strong>：最大程度地节省成本，因为当集群停止时，不会产生任何计算资源的费用。</li>
+<li><strong>缺点</strong>：启动和停止整个集群可能需要更长的时间，这可能会导致服务中断。此外，频繁地启动和停止集群可能会对集群的稳定性和性能产生一定影响。</li>
+</ul>
+<p>总结
+- 如果你的工作负载具有可预测的周期性需求，并且你希望在非工作时间节省成本，<strong>定时启动和停止节点池</strong>或<strong>定时停止和启动AKS集群</strong>可能是较好的选择。
+- 如果你的工作负载需求变化较为频繁且不可预测，<strong>使用AKS的集群自动缩放程序</strong>或<strong><span class="caps">KEDA</span></strong>将更适</p>
+<h3>定时启动和停止整个AKS集群</h3>
+<p>vi&nbsp;~/.bashrc</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AZURE SPN</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_CLIENT_ID</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_CLIENT_SECRET</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+</code></pre></div>
+
+<p>source&nbsp;~/.bashrc</p>
+<p>vi&nbsp;start-aks.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+<span class="nv">RESOURCE_GROUP</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+<span class="nv">TENANT</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+<span class="nv">SUBSCRIPTION</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="s2">&quot;aks_log.txt&quot;</span>
+
+az<span class="w"> </span>cloud<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--name<span class="w"> </span>AzureChinaCloud
+az<span class="w"> </span>login<span class="w"> </span>--service-principal<span class="w"> </span>--tenant<span class="w"> </span><span class="nv">$TENANT</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$AZURE_CLIENT_ID</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$AZURE_CLIENT_SECRET</span>
+az<span class="w"> </span>account<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--subscription<span class="w"> </span><span class="nv">$SUBSCRIPTION</span>
+
+<span class="c1"># 记录当前时间</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">: Starting AKS cluster &#39;</span><span class="nv">$CLUSTER_NAME</span><span class="s2">&#39; ...&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$LOG_FILE</span>
+
+<span class="c1"># 运行Azure CLI命令以启动AKS</span>
+az<span class="w"> </span>aks<span class="w"> </span>start<span class="w"> </span>--name<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--resource-group<span class="w"> </span><span class="nv">$RESOURCE_GROUP</span>
+
+<span class="c1"># 检查命令的退出状态</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">: Successfully started AKS cluster &#39;</span><span class="nv">$CLUSTER_NAME</span><span class="s2">&#39;.&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$LOG_FILE</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">: Failed to start AKS cluster &#39;</span><span class="nv">$CLUSTER_NAME</span><span class="s2">&#39;.&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$LOG_FILE</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<p>crontab&nbsp;-e</p>
+<div class="highlight"><pre><span></span><code><span class="m">0</span><span class="w"> </span><span class="m">18</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/bin/bash<span class="w"> </span>/app/aks/start-aks.sh
+</code></pre></div>
+    </div><!-- /.entry-content -->
+    <footer class="post-meta">
+        <span class="meta-prep">Category:</span>
+        <abbr class="category">
+            <a href="/category/cloud.html">Cloud</a>
+        </abbr>
+        <p>
+        <span class="meta-prep">Author: </span><span>Yoga</span>
+      </p>
+    </footer>
+    <!-- <section id="respond">
+        <div id="disqus_thread">
+        <script type="text/javascript">
+        var disqus_identifier = "cloud-cost-saving.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        </div>
+
+    </section> -->
+</section>
+
+
+        </section><!-- #content -->
+        <section id="widgets" class="grid col-300 fit" >
+            <!--
+            <section id="widget-search" class="widget-wrapper widget_search">
+
+                <form id="searchform" action="http://www.google.com/search" method="get">
+                    <input id="q" class="field" type="text" placeholder="Search Blog" name="q" ></input>
+                    <input id="ie" name="ie" type="hidden" value="utf-8" ></input>
+                    <input id="oe" name="oe" type="hidden" value="utf-8" ></input>
+                    <input id="channel" name="channel" type="hidden" value="suggest" ></input>
+                    <input id="searchsubmit" class="submit" type="submit" value="">
+                </form>
+            </section>
+            -->
+            <section id="widget-category" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Article
+                </div>
+                <ul>
+                        <li>
+                          <a href="/category/analytics.html" >Analytics</a>
+                        </li>
+                        <li>
+                          <a href="/category/angular.html" >Angular</a>
+                        </li>
+                        <li>
+                          <a href="/category/backend.html" >Backend</a>
+                        </li>
+                        <li>
+                          <a href="/category/cloud.html" >Cloud</a>
+                        </li>
+                        <li>
+                          <a href="/category/frontend.html" >Frontend</a>
+                        </li>
+                        <li>
+                          <a href="/category/ios.html" >IOS</a>
+                        </li>
+                        <li>
+                          <a href="/category/javascript.html" >Javascript</a>
+                        </li>
+                        <li>
+                          <a href="/category/programming.html" >Programming</a>
+                        </li>
+                        <li>
+                          <a href="/category/project.html" >Project</a>
+                        </li>
+                        <li>
+                          <a href="/category/react.html" >React</a>
+                        </li>
+                </ul>
+            </section>
+
+            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Tagcloud
+                </div>
+                <div>
+                        <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
+                        <span><a href="/tag/java.html">Java</a></span>
+                        <span><a href="/tag/express.html">Express</a></span>
+                        <span><a href="/tag/architecture.html">Architecture</a></span>
+                        <span><a href="/tag/cicd.html">CI/CD</a></span>
+                        <span><a href="/tag/database.html">database</a></span>
+                        <span><a href="/tag/ml.html">ML</a></span>
+                        <span><a href="/tag/aws.html">AWS</a></span>
+                        <span><a href="/tag/etl.html">ETL</a></span>
+                        <span><a href="/tag/nest.html">nest</a></span>
+                        <span><a href="/tag/sql.html">sql</a></span>
+                        <span><a href="/tag/antv.html">AntV</a></span>
+                        <span><a href="/tag/next.html">Next</a></span>
+                        <span><a href="/tag/deep-learning.html">Deep Learning</a></span>
+                        <span><a href="/tag/flutter.html">Flutter</a></span>
+                        <span><a href="/tag/typescript.html">TypeScript</a></span>
+                        <span><a href="/tag/angular.html">Angular</a></span>
+                        <span><a href="/tag/devtools.html">DevTools</a></span>
+                        <span><a href="/tag/egg.html">egg</a></span>
+                        <span><a href="/tag/tableau.html">Tableau</a></span>
+                        <span><a href="/tag/sap.html">SAP</a></span>
+                        <span><a href="/tag/token.html">Token</a></span>
+                        <span><a href="/tag/regexp.html">Regexp</a></span>
+                        <span><a href="/tag/unit-test.html">Unit test</a></span>
+                        <span><a href="/tag/nginx.html">Nginx</a></span>
+                        <span><a href="/tag/nodejs.html">nodeJS</a></span>
+                        <span><a href="/tag/sails.html">sails</a></span>
+                        <span><a href="/tag/wechat.html">wechat</a></span>
+                        <span><a href="/tag/jmeter.html">Jmeter</a></span>
+                        <span><a href="/tag/html2canvas.html">HTML2Canvas</a></span>
+                        <span><a href="/tag/swift.html">Swift</a></span>
+                        <span><a href="/tag/jenkins.html">Jenkins</a></span>
+                        <span><a href="/tag/js.html">JS</a></span>
+                        <span><a href="/tag/event.html">event</a></span>
+                        <span><a href="/tag/gtm.html">GTM</a></span>
+                        <span><a href="/tag/algorithm.html">Algorithm</a></span>
+                        <span><a href="/tag/echarts.html">Echarts</a></span>
+                        <span><a href="/tag/react-admin.html">React-Admin</a></span>
+                        <span><a href="/tag/rest.html">Rest</a></span>
+                        <span><a href="/tag/react.html">React</a></span>
+                        <span><a href="/tag/hook.html">hook</a></span>
+                        <span><a href="/tag/flux.html">Flux</a></span>
+                        <span><a href="/tag/redux.html">Redux</a></span>
+                        <span><a href="/tag/es6.html">ES6</a></span>
+                        <span><a href="/tag/route.html">Route</a></span>
+                        <span><a href="/tag/component.html">Component</a></span>
+                        <span><a href="/tag/ref.html">Ref</a></span>
+                        <span><a href="/tag/ajax.html">AJAX</a></span>
+                        <span><a href="/tag/form.html">Form</a></span>
+                        <span><a href="/tag/jsx.html">JSX</a></span>
+                        <span><a href="/tag/virtual-dom.html">Virtual Dom</a></span>
+                        <span><a href="/tag/javascript.html">Javascript</a></span>
+                        <span><a href="/tag/css.html">CSS</a></span>
+                        <span><a href="/tag/design-pattern.html">design pattern</a></span>
+                </div>
+            </section>
+
+
+            <section id="widget-links" class="widget-wrapper widget_archive">
+                <div class="widget-title">
+                    Links
+                </div>
+                <ul>
+                        <li><a href="https://github.com/yogagii">Github</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F20%2F013c587ff42ef5f36ccb923c9d7a3765.pdf">UI/UX/Frontend/Game Design</a></li>
+                        <li><a href="https://preview-static.clewm.net/cli/view-doc/view.html?url=https%3A%2F%2Fncstatic.clewm.net%2Frsrc%2F2021%2F0510%2F19%2F64852862e888e4db944b06eea147d035.pdf">Industrial Design Portfolio</a></li>
+                </ul>
+            </section>
+            
+        </section><!-- widgets -->
+    </section><!-- /#wrapper -->
+    <footer id="footer" class="clearfix"><section class="footer-wrapper">
+        <div class="grid col-940" >
+            <div class="grid col-540"></div>
+            <div class="grid col-380 fit" >
+                <ul class="social-icons">
+                    <!-- TO BE CONTINUED -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid col-300 copyright" >
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
+            </a>
+        </div>
+        <div class="grid col-300 ">
+
+        </div>
+        <div class="grid col-300 fit powered">
+            Powered by <a href="http://getpelican.com/">Pelican</a> <br />
+            which takes great advantage of <a href="http://python.org">Python</a>
+        </div>
+    </section></footer>
+</div>
+</body>
+</html>

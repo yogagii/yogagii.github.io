@@ -44,13 +44,13 @@
     <section id="wrapper" class="clearfix">
         <section id="content" class="grid col-620" >
                 <section class="breadcrumb-list">
-<a href="">Blog</a> ›<a href="category/project.html">Project</a> ›Precision Medicine &#8212; iDiscover Data&nbsp;Platform
+<a href="">Blog</a> ›<a href="category/project.html">Project</a> › Precision Medicine &#8212; iDiscover Data&nbsp;Platform
                 </section>
 
 
 <section id="post" class="post hentry">
     <header>
-    <h2 class="post-title" >Precision Medicine &#8212; iDiscover Data&nbsp;Platform</h2>
+    <h2 class="post-title" > Precision Medicine &#8212; iDiscover Data&nbsp;Platform</h2>
     
     <div class="post-meta">
         <span class="meta-prep">Post in</span>
@@ -62,84 +62,109 @@
     </div>
     </header>
     <div class="post-entry">
-        <h2>Business&nbsp;Value</h2>
-<p>Roll out a <span class="caps">CRM</span> platform specific to diagnostic labs in iConnect&nbsp;to:</p>
-<p>• Enable field force teams to capture and create shared visibility of critical lab information, account manage, set objectives for each lab and associated <span class="caps">HCP</span> accounts across&nbsp;TAs</p>
-<p>• Enable <span class="caps">TA</span> leaders and brand teams to understand current testing practice and&nbsp;uptake</p>
-<h2>Data&nbsp;Flow</h2>
-<ul>
-<li>
-<p>Ingest objects from iConnect to&nbsp;iDiscover</p>
-</li>
-<li>
-<p>Conduct data transformation in&nbsp;Redshift</p>
-</li>
-</ul>
-<blockquote>
-<p>Data Source (Salesforce) -&gt; Data Ingestion (Data Lake - S3 Bucket) -&gt; Data Transformation (Data Warehouse - Amazon Redshift) -&gt; Data Consumption&nbsp;(Tableau)</p>
-</blockquote>
-<h3>Dag: <span class="caps">SFDC</span> -&gt;&nbsp;S3</h3>
-<p><strong>send_email_cluster_start &gt;&gt; emr_tasks[0] &gt;&gt; emr_tasks[1] &gt;&gt; emr_tasks[2] &gt;&gt; emr_tasks[3] &gt;&gt;  emr_tasks[4] &gt;&gt; send_email_cluster_termination &gt;&gt;&nbsp;end</strong></p>
-<ul>
-<li>S3 Bucket<ul>
-<li>context:&nbsp;配置环境变量</li>
-<li>metadata:&nbsp;配置字段表</li>
-<li>metadata/delta_filter:&nbsp;配置增量字段</li>
-<li>status:&nbsp;生成日志文件</li>
-<li>source:&nbsp;存储目标文件(csv)</li>
-<li>archive:&nbsp;存储历史文件</li>
-<li>script:&nbsp;部署代码</li>
-</ul>
-</li>
-<li>Secrets Manager<ul>
-<li>data source (<span class="caps">SFDC</span>)&nbsp;credentials</li>
-<li>data target (s3)&nbsp;credentials</li>
-</ul>
-</li>
-<li>Managed Apache Airflow<ul>
-<li>Dags: job&nbsp;list</li>
-<li>Admin/Variables:&nbsp;dna_env_variables</li>
-</ul>
-</li>
-<li><span class="caps">EMR</span><ul>
-<li><span class="caps">EMR</span> on <span class="caps">EC2</span>/Clusters:&nbsp;查看集群日志</li>
-</ul>
-</li>
-<li>CloudWatch<ul>
-<li>Logs group:&nbsp;运行日志</li>
-</ul>
-</li>
-<li>Salesforce: iConnect <span class="caps">DB</span></li>
-<li>Postgre: job&nbsp;metadata</li>
-<li>Bitbucket: 生成dags的python&nbsp;script</li>
-<li>Jenkins: <span class="caps">CICD</span></li>
-</ul>
-<p>Amazon Managed Workflows for Apache Airflow (<span class="caps">MWAA</span>) 是一项适用于 Apache Airflow&nbsp;的托管编排服务</p>
-<p>EMR适合跨平台的操作，可以发挥他的集群优势和算力优势；warehouse 内部操作 <span class="caps">RS</span> -&gt; <span class="caps">RS</span> 去EMR绕一圈性能和性价比都很低，S3 -&gt;&nbsp;Redshift都属于aws范畴内</p>
-<h3>Dag: S3 -&gt;&nbsp;Redshift</h3>
-<h3>Dag: Redshift -&gt;&nbsp;Redshift</h3>
-<ul>
-<li>stg -&gt;&nbsp;itg</li>
-<li>itg -&gt;&nbsp;dm</li>
-<li>dm -&gt;&nbsp;dm</li>
-</ul>
-<p>t1 &gt;&gt;&nbsp;end</p>
-<ul>
-<li>S3 Bucket<ul>
-<li>metadata: 配置sql语句，按country_code&nbsp;delete目标表数据，并插入新数据（调用存储过程）</li>
-</ul>
-</li>
-<li>Redshift
-    Procedure: <span class="caps">LANGUAGE</span>&nbsp;plpgsql</li>
-</ul>
-<h2>Control-M</h2>
-<p>Control-M是BMC&nbsp;Software提供的企业级集中作业调度管理解决方案</p>
-<p>建立工作流：将需要执行的任务按照逻辑顺序组织成一个工作流。</p>
-<p>定义任务：针对不同的任务，可以给出各自相应的调度规则并指定参数。</p>
-<p>创建日历：可设置各种类型的调度日历，来约束任务的执行时间。</p>
-<p>配置资源：可为任务分配特定的资源，如服务器、数据库等。</p>
-<p>运行和监控：将定义好的工作流提交到Control-M服务器上，系统会按照设定好的规则进行执行，并且实时监控任务的执行情况和运行状态。</p>
-<p>https://blog.csdn.net/2301_76522810/article/details/131143824</p>
+        <div id="pec-encrypted-content" style="display:none">KXyy+lBOQJnqbdWvgMs0Hg==;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;^</div>
+<div id="pec-decrypted-content">
+    <h4><i>This content is encrypted.</i></h4>
+</div>
+
+<form id="pec-decrypt-form">
+    <label for="pec-content-password">Password</label>
+    <input type="password" id="pec-content-password" placeholder="Password" />
+    <button type="button" id="pec-decrypt-content">Decrypt</button>
+</form>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i - 1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, { iv: iv, padding: CryptoJS.pad.NoPadding });
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            var decrypt_document = function (event) {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+                event.preventDefault();
+                return false;
+            }
+            
+            decrypt_btn.addEventListener('click', decrypt_document);
+            decrypt_form.addEventListener('submit', decrypt_document);
+        });
+    })();
+</script>
     </div><!-- /.entry-content -->
     <footer class="post-meta">
         <span class="meta-prep">Category:</span>
@@ -224,10 +249,12 @@
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -242,7 +269,6 @@
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>

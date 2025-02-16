@@ -72,16 +72,16 @@
 <ol>
 <li>传输到服务器 /home/jyu&nbsp;并解压</li>
 </ol>
-<p>scp ~/Desktop/node-v18.16.0-linux-x64.tar.xz&nbsp;jyu@xx.xx.xx.xx:~</p>
-<div class="highlight"><pre><span></span><code>xz<span class="w"> </span>-d<span class="w"> </span>node-v14.18.2-linux-x64.tar.xz
-tar<span class="w"> </span>-xvf<span class="w"> </span>node-v14.18.2-linux-x64.tar
+<p>scp ~/Desktop/node-v20.18.0-linux-x64.tar.xz&nbsp;jyu@xx.xx.xx.xx:~</p>
+<div class="highlight"><pre><span></span><code>xz<span class="w"> </span>-d<span class="w"> </span>node-v20.18.0-linux-x64.tar.xz
+tar<span class="w"> </span>-xvf<span class="w"> </span>node-v20.18.0-linux-x64.tar
 </code></pre></div>
 
 <ol>
 <li>软连接&nbsp;(步骤3,4二选一)</li>
 </ol>
-<div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v14.18.2-linux-x64/bin/npm<span class="w"> </span>/usr/local/bin
-ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v14.18.2-linux-x64/bin/node<span class="w"> </span>/usr/local/bin
+<div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v20.18.0-linux-x64/bin/npm<span class="w"> </span>/usr/local/bin
+ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v20.18.0-linux-x64/bin/node<span class="w"> </span>/usr/local/bin
 </code></pre></div>
 
 <ol>
@@ -90,7 +90,7 @@ ln<span class="w"> </span>-s<span class="w"> </span>/home/jyu/node-v14.18.2-linu
 <p>env 查看环境变量 <span class="caps">PATH</span>=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</p>
 <div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/profile
 
-<span class="nb">export</span><span class="w"> </span><span class="nv">NODEJS_HOME</span><span class="o">=</span>/home/jyu/node-v14.18.2-linux-x64
+<span class="nb">export</span><span class="w"> </span><span class="nv">NODEJS_HOME</span><span class="o">=</span>/home/jyu/node-v20.18.0-linux-x64
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$NODEJS_HOME</span>/bin
 
 <span class="nb">source</span><span class="w"> </span>/etc/profile
@@ -495,10 +495,12 @@ crontab<span class="w"> </span>-l<span class="w"> </span><span class="c1"># veri
                 </div>
                 <div>
                         <span><a href="/tag/dva.html">DVA</a></span>
+                        <span><a href="/tag/azure.html">Azure</a></span>
+                        <span><a href="/tag/security.html">Security</a></span>
+                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/java.html">Java</a></span>
                         <span><a href="/tag/express.html">Express</a></span>
                         <span><a href="/tag/architecture.html">Architecture</a></span>
-                        <span><a href="/tag/azure.html">Azure</a></span>
                         <span><a href="/tag/cicd.html">CI/CD</a></span>
                         <span><a href="/tag/database.html">database</a></span>
                         <span><a href="/tag/ml.html">ML</a></span>
@@ -513,7 +515,6 @@ crontab<span class="w"> </span>-l<span class="w"> </span><span class="c1"># veri
                         <span><a href="/tag/typescript.html">TypeScript</a></span>
                         <span><a href="/tag/angular.html">Angular</a></span>
                         <span><a href="/tag/devtools.html">DevTools</a></span>
-                        <span><a href="/tag/microsoft.html">Microsoft</a></span>
                         <span><a href="/tag/egg.html">egg</a></span>
                         <span><a href="/tag/tableau.html">Tableau</a></span>
                         <span><a href="/tag/sap.html">SAP</a></span>
